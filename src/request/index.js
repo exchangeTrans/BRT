@@ -1,0 +1,115 @@
+import api from './api.js';
+import datastorage from "../static/js/datastorage";
+// import monitorFunc from '@/static/js/monitorFunc.js';
+// import {gloabeData} from '@/static/common.js';
+// import toast from "../static/dialog";
+
+
+// 请求头
+const formatHeaders = (acHeaders) => {
+    // debugger
+    let headers = {};
+    // headers['exchange-token'] = getCookie('token') || 'c5fa97c1140aafea1ef1e84b67503d5e0db18d0ca0ff4819a0ca3f24722407df';
+    // headers['exchange-client'] = 'pc';
+    // headers['exchange-language'] = getCookie('lan') || 'zh_CN';
+    // headers['Content-type'] = 'application/x-www-form-urlencoded';
+    headers['Content-type'] = "application/x-www-form-urlencoded";
+    // eslint-disable-next-line no-undef
+    // headers["__token"] = uni.getStorageSync("tooken");
+    // headers["Security"] = datastorage.getSync({key:"userToken"})
+    // headers["Authorization"] = "Bearer "+datastorage.getSync({key:"userToken"});
+    // headers["AuthorizationType"] = "tool"
+    // headers['Content-type'] = "multipart/form-data";
+
+    // headers["__token"] = getCookie("tooken");
+    // headers['Accept'] = 'application/msword'
+
+    // headers['exchange-time'] = formatTime(new Date().getTime()) Access-Control-Allow-Origin
+
+    if (acHeaders) {
+        headers = {...headers, ...acHeaders};
+    }
+    // // console.log(headers);
+    return headers;
+};
+const getParams = (params) => {
+    // debugger
+    // let postData = {
+    //     appPackage:"com.xinshenkj.mm",//App 包名
+    //     appChannel :"vivo",//App 渠道
+    //     appVersion :"v1.0.5",//App 版本
+    //     deviceToken:"423423",//App 设备应用 Token
+    //     operatingSystem :"ANDROID",//App 操作系统: ANDROID(Android), IOS(苹果)可用值:ANDROID,IOSg
+    // }
+    // eslint-disable-next-line no-undef
+    // let postData = uni.getStorageSync("mobileMsg");
+    let postData = datastorage.getSync({key:"mobileMsg"});
+    // let showMsg={title:JSON.stringify(postData)};
+    // toast.show(showMsg);
+    //// console.log(postData);
+    // let isGuest = datastorage.getSync({key:"islogin"})?false:true;
+    // isGuest = true;
+    if (params) {
+        postData = {...postData, ...params};
+    }
+    // // console.log(postData);
+    // let phoneMsg = uni.getSystemInfoSync();
+	// 		// console.log(JSON.parse(plus))
+            // // console.log(phoneMsg);
+
+    // // console.log(plus.device.uuid)
+    // // console.log(plus.push.getClientInfo())
+
+
+    return postData;
+};
+const http = ({
+        url, headers, params, method,dataType, hostType, responseType
+    }) => {
+    let timestamp = (new Date()).valueOf();
+    let prefix = '';
+    if(hostType){
+       prefix = api[hostType];
+    }else{
+       prefix = api.commApi;
+    }
+    return new Promise((resolve, reject) => {
+        // eslint-disable-next-line no-undef
+        uni.request({
+            url: `${prefix}/${url}?&&t=${timestamp}`, //
+            data: getParams(params),
+            method: method || 'post',
+            header: formatHeaders(headers),
+            responseType: responseType || '',
+            dataType: dataType||'json',
+        }).then((res) => {
+            // eslint-disable-next-line no-undef
+            // uni.showToast({
+            //     title: '标题',
+            //     duration: 2000,
+            //     position:"center"
+            // });
+            // if (url.indexOf('login') !== -1) {
+            //     gloabeData.set({otherLoginFlag: 0});
+            // }
+            // let otherLoginFlag = gloabeData.get( 'otherLoginFlag');
+
+            // if (res[1].data.errorCode.toString() === '1001010'||res[1].data.errorCode.toString() === '1001001') {
+            //     // if (otherLoginFlag === 0) {
+            //     //     gloabeData.set({otherLoginFlag:1});
+            //     //     monitorFunc.emit('devicesNotificationOffLine');
+            //     // }
+            // }
+            // else {
+                resolve(res[1]);
+            // }
+        }
+        ).catch((response) => {
+                reject(response)
+            }
+        )
+
+    });
+
+};
+export default http;

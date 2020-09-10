@@ -1,0 +1,554 @@
+html, body, img, dl, dt, dd, ol, ul, li, form, table, tbody, tr, th, td, p, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* vertical-align: baseline; */
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+    font-family: 'Source Han Sans CN';
+    font-weight: normal;
+    font-style: normal;
+}
+
+i, del, s, u, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+b, th {
+    font-weight: normal;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a, a:hover {
+    /* color: inherit; */
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+    color: #24a0f5;
+}
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+button {
+    cursor: pointer
+}
+
+button, input, select, textarea {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    background: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    /* min-width: 1180rpx; */
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+uni-page-body {
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+uni-page {
+    overflow: hidden !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+}
+
+body {
+    font: 14 rpx/1 Open Sans, robotoregular, PingFang SC, Hiragino Sans GB, Heiti SC, Microsoft YaHei, WenQuanYi Micro Hei, monospace, serif
+}
+
+b, em, h1, h2, h3, h4, h5, h6, strong, p, input, textarea, select, button {
+    font-weight: 400
+}
+
+.child-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: all .6s cubic-bezier(.55, 0, .1, 1);
+}
+
+/* font-size */
+.fontS12 {
+    font-size: 12rpx;
+}
+
+.fontS14 {
+    font-size: 14rpx;
+}
+
+.fontS16 {
+    font-size: 16rpx;
+}
+
+.fontS18 {
+    font-size: 18rpx;
+}
+
+.fontS20 {
+    font-size: 20rpx;
+}
+
+.fontS22 {
+    font-size: 22rpx;
+}
+
+.fontS24 {
+    font-size: 24rpx;
+}
+
+.fontS26 {
+    font-size: 26rpx;
+}
+
+.fontS30 {
+    font-size: 30rpx;
+}
+
+.fontS40 {
+    font-size: 40rpx;
+}
+
+/* margin */
+.mg5 {
+    margin: 5rpx;
+}
+
+.mg10 {
+    margin: 10rpx;
+}
+
+.mg15 {
+    margin: 15rpx;
+}
+
+.mg20 {
+    margin: 20rpx;
+}
+
+.mg30 {
+    margin: 30rpx;
+}
+
+.mgR5 {
+    margin-right: 5rpx;
+}
+
+.mgR10 {
+    margin-right: 10rpx;
+}
+
+.mgR15 {
+    margin-right: 15rpx;
+}
+
+.mgR20 {
+    margin-right: 20rpx;
+}
+
+.mgR30 {
+    margin-right: 30rpx;
+}
+
+.mgL5 {
+    margin-left: 5rpx;
+}
+
+.mgL10 {
+    margin-left: 10rpx;
+}
+
+.mgL15 {
+    margin-left: 15rpx;
+}
+
+.mgL20 {
+    margin-left: 20rpx;
+}
+
+.mgL30 {
+    margin-left: 30rpx;
+}
+
+.mgT5 {
+    margin-top: 5rpx;
+}
+
+.mgT10 {
+    margin-top: 10rpx;
+}
+
+.mgT15 {
+    margin-top: 15rpx;
+}
+
+.mgT20 {
+    margin-top: 20rpx;
+}
+
+.mgT30 {
+    margin-top: 30rpx;
+}
+
+.mgB5 {
+    margin-bottom: 5rpx;
+}
+
+.mgB10 {
+    margin-bottom: 10rpx;
+}
+
+.mgB15 {
+    margin-bottom: 15rpx;
+}
+
+.mgB20 {
+    margin-bottom: 20rpx;
+}
+
+.mgB30 {
+    margin-bottom: 30rpx;
+}
+
+/* padding */
+.pd5 {
+    padding: 5rpx;
+}
+
+.pd10 {
+    padding: 10rpx;
+}
+
+.pd15 {
+    padding: 15rpx;
+}
+
+.pd20 {
+    padding: 20rpx;
+}
+
+.pd30 {
+    padding: 30rpx;
+}
+
+.pdR5 {
+    padding-right: 5rpx;
+}
+
+.pdR10 {
+    padding-right: 10rpx;
+}
+
+.pdR15 {
+    padding-right: 15rpx;
+}
+
+.pdR20 {
+    padding-right: 20rpx;
+}
+
+.pdR30 {
+    padding-right: 30rpx;
+}
+
+.pdL5 {
+    padding-left: 5rpx;
+}
+
+.pdL10 {
+    padding-left: 10rpx;
+}
+
+.pdL15 {
+    padding-left: 15rpx;
+}
+
+.pdL20 {
+    padding-left: 20rpx;
+}
+
+.pdL30 {
+    padding-left: 30rpx;
+}
+
+.pdT5 {
+    padding-top: 5rpx;
+}
+
+.pdT10 {
+    padding-top: 10rpx;
+}
+
+.pdT15 {
+    padding-top: 15rpx;
+}
+
+.pdT20 {
+    padding-top: 20rpx;
+}
+
+.pdT30 {
+    padding-top: 30rpx;
+}
+
+.pdB5 {
+    padding-bottom: 5rpx;
+}
+
+.pdB10 {
+    padding-bottom: 10rpx;
+}
+
+.pdB15 {
+    padding-bottom: 15rpx;
+}
+
+.pdB20 {
+    padding-bottom: 20rpx;
+}
+
+.pdB30 {
+    padding-bottom: 30rpx;
+}
+
+/* float */
+.fL {
+    float: left;
+}
+
+.fR {
+    float: right;
+}
+
+/* width */
+.winth20 {
+    width: 20rpx;
+}
+
+.winth30 {
+    width: 30rpx;
+}
+
+.winth50 {
+    width: 50rpx;
+}
+/* uni-image { pointer-events: auto; } */
+
+/* height */
+.height20 {
+    height: 20rpx;
+}
+
+.height30 {
+    height: 30rpx;
+}
+
+.height50 {
+    height: 50rpx;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* .uni-textarea-textarea */
+/* .uni-textarea-compute, .uni-textarea-placeholder, .uni-textarea-textarea */
+.uni-textarea-textarea {
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    /*font-size: 30rpx;*/
+    color: #444444;
+}
+
+.uni-textarea-placeholder {
+
+    /*font-size: 30rpx;*/
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+}
+
+.uni-input-input {
+    /*font-size: 28rpx;*/
+    text-indent: 10rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    /*color: #444444;*/
+}
+
+.uni-numbox__value .uni-input-input {
+    /*color: #fff !important;*/
+}
+
+.uni-input-placeholder {
+    /*font-size: 28rpx;*/
+    text-indent: 10rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+}
+
+uni-radio .uni-radio-input {
+    width: 25rpx;
+    height: 25rpx;
+    border: 2rpx solid rgba(194,195,196,1);
+    background: rgba(255, 248, 248, 1);
+}
+
+
+uni-swiper .uni-swiper-wrapper {
+    overflow: inherit !important;
+}
+
+uni-swiper-item {
+    overflow: inherit !important;
+}
+
+wx-swiper .wx-swiper-wrapper {
+    overflow: inherit !important;
+}
+
+wx-swiper-item {
+    overflow: inherit !important;
+}
+uni-slider{
+    margin: 0 0;
+}
+uni-slider .uni-slider-handle{
+
+}
+/* .listenStatus uni-switch{
+    height: 48rpx!important;
+}
+.listenStatus uni-switch .uni-switch-wrapper{
+    height: 48rpx!important;
+}
+.listenStatus uni-switch .uni-switch-input{
+    height: 48rpx!important;
+} */
+
+/* uni-app{
+  width: 750urpx!important;
+  height: 100%!important;
+} */
+
+/* ::-webkit-scrollbar {滚动条整体样式 */
+/* width: 6rpx!important;    高宽分别对应横竖滚动条的尺寸 */
+/* height: 6rpx!important;
+} */
+
+/* ::-webkit-scrollbar-thumb {滚动条里面小方块 */
+/* border-radius: 10rpx !important;
+-webkit-box-shadow: inset 0 0 5rpx rgba(0,0,0,0.2);
+background: #535353;
+border-radius: 7rpx;
+
+} */
+
+/* ::-webkit-scrollbar-track {滚动条里面轨道 */
+/* -webkit-box-shadow: inset 0 0 5rpx rgba(0,0,0,0.2);
+border-radius: 10rpx;
+background: #EDEDED;
+} */
+/* input:hover, select:hover, textarea:hover, .input_keynote {
+  border-color: #66afe9 !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1rpx 1rpx rgba(0, 0, 0, 0.075), 0 0 8rpx rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1rpx 1rpx rgba(0, 0, 0, 0.075), 0 0 8rpx rgba(102, 175, 233, 0.6);
+} */
+/* .datepickbox input:hover{
+  border-color: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+#common-input-date .dateBox:hover{
+  border-color: #66afe9 !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1rpx 1rpx rgba(0, 0, 0, 0.075), 0 0 8rpx rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1rpx 1rpx rgba(0, 0, 0, 0.075), 0 0 8rpx rgba(102, 175, 233, 0.6);
+
+} */
+/* input::-webkit-input-placeholder { WebKit browsers
+  color:    #999;
+}
+input:-moz-placeholder { Mozilla Firefox 4 to 18
+  color:    #999;
+}
+input::-moz-placeholder { Mozilla Firefox 19+
+  color:    #999;
+}
+input:-ms-input-placeholder { Internet Explorer 10+
+  color:    #999;
+} */
+
+[nvue] uni-image, [nvue] uni-input, [nvue] uni-scroll-view, [nvue] uni-swiper, [nvue] uni-swiper-item, [nvue] uni-text, [nvue] uni-textarea, [nvue] uni-video, [nvue] uni-view {
+    /* position: relative; */
+    border: none;
+    box-sizing: content-box;
+    position: initial;
+}
+
+[nvue-dir-column] uni-swiper-item, [nvue-dir-column] uni-view {
+    /* -webkit-box-orient: vertical; */
+    /* -webkit-box-direction: normal; */
+    /* -webkit-flex-direction: column; */
+    /* flex-direction: column; */
+    flex-direction: inherit;
+}
+[nvue] uni-scroll-view, [nvue] uni-swiper-item, [nvue] uni-view {
+    /* display: -webkit-box; */
+    /* display: -webkit-flex; */
+    display: block;
+    /* display: block!important; */
+    /* -webkit-flex-shrink: 0; */
+    /* flex-shrink: 0; */
+    /* -webkit-box-flex: 0; */
+    /* -webkit-flex-grow: 0; */
+    /* flex-grow: 0; */
+    /* -webkit-flex-basis: auto; */
+    /* flex-basis: auto; */
+    /* -webkit-box-align: stretch; */
+    /* -webkit-align-items: stretch; */
+    /* align-items: stretch; */
+    /* -webkit-align-content: flex-start; */
+    /* align-content: flex-start; */
+}
+/* uni-image>img {
+    position: relative!important;
+    opacity: 1!important;
+} */
