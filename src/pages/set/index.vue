@@ -1,5 +1,6 @@
 <template>
 	<view class="setIndex" id="setIndex">
+		<app-header :headerOptions="headerOptions"></app-header>
 
 		<view class="content">
 			<view class="model">
@@ -32,13 +33,27 @@
 </template>
 
 <script>
-	import btn from "@/compoents/btn/index.vue"
+	import btn from "@/components/btn/index.vue"
+    import appHeader from "@/components/common/header.vue"
     export default {
 	    components:{
-	      btn
+            appHeader,
+			btn,
+
 		},
         data() {
             return {
+                headerOptions:{
+                    show:true,
+                    isAllowReturn:true,
+                    text:"设置",
+                    rightItem:{
+                        type:"text",
+                        text:"",
+                    },
+                    bodyPadding:{"padding":'0,0,0,0'},
+                    headerIsNoBoder: true,
+                },
                 currencyData:[
 					{
 					    name:'人民币（CNY）'
@@ -66,6 +81,7 @@
 		width: 100%;
 		height: 100%;
 		.content{
+			margin-top: 100rpx;
 			font-family: PingFangSC-Semibold, PingFang SC;
 			.model{
 				padding: 0 30rpx;
