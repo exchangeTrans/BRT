@@ -19,12 +19,16 @@
 
 			</view>
 
-			<view class="currencyItem" v-for="item in currencyData">
+			<view class="currencyItem" v-for="item in currencyData" @>
 				<view class="currencyIcon"></view>
 				<view class="currencyText">{{item.name}}</view>
 			</view>
 
-			<btn></btn>
+			<view class="confirmBtn">
+				<btn></btn>
+			</view>
+
+
 
 		</view>
 
@@ -168,6 +172,9 @@
 					color: #1A1A1A;
 					margin-left: 16rpx;
 				}
+			}
+			.confirmBtn{
+				margin-top: 80rpx;
 			}
 		}
 

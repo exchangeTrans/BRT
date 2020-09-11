@@ -34,7 +34,7 @@
         line-height: 100rpx;
         background: linear-gradient(139deg, #5D6CFF 0%, #835DFF 100%);
         border-radius: 50rpx;
-        margin: 80rpx auto 0;
+        margin: 0 auto;
         font-size: 32rpx;
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;

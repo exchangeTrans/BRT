@@ -1,9 +1,23 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
+	<view class="index" id="index">
+		<scroll-view class="content">
+			<view class="indexTop">
+				<view class="iconGroup">
+					<view class="logo"></view>
+					<view class="fucIcon"></view>
+				</view>
+
+				<view class="earning">
+					<view>矿池收益(HDU)</view>
+					<view>
+						<span>0</span>
+						<span>≈￥0</span>
+					</view>
+				</view>
+
+			</view>
+		</scroll-view>
+
 	</view>
 </template>
 
@@ -11,7 +25,6 @@
     export default {
         data() {
             return {
-                title: 'Hello'
             }
         },
         onLoad() {
@@ -23,27 +36,20 @@
     }
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+<style lang="less">
+	.index{
+		width: 100%;
+		height: 100%;
+		.content{
+			width: 100%;
+			height: 100%;
+			.indexTop{
+				width: 100%;
+				height: 420rpx;
+				padding-top:80rpx;
+				box-sizing: border-box;
+				background: #1A1A1A;
+			}
+		}
 	}
 </style>
