@@ -6,8 +6,8 @@
 			<view class="model">
 				<view class="modelText">日夜模式</view>
 				<view class="chooseModel">
-					<view class="chooseItem active">日间模式</view>
-					<view class="chooseItem night">夜晚模式</view>
+					<view :class="modelFlag==='day'?'chooseItem active':'chooseItem'" @tap="chooseModel('day')">日间模式</view>
+					<view :class="modelFlag==='night'?'chooseItem active night':'chooseItem night'" @tap="chooseModel('night')">夜晚模式</view>
 				</view>
 				<view class="clearfix"></view>
 			</view>
@@ -64,14 +64,18 @@
                     {
                         name:'日元（JPY）'
                     }
-				]
+				],
+
+				modelFlag:'day',//day 白天模式；night 黑夜模式
             }
         },
         onLoad() {
 
         },
         methods: {
-
+            chooseModel(item){
+                this.modelFlag=item;
+			}
         }
     }
 </script>
