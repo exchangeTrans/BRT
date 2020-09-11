@@ -32,7 +32,7 @@
 </template>
 
 <script>
-	import btn from "@/components/btn/index.vue"
+	import btn from "@/compoents/btn/index.vue"
     export default {
 	    components:{
 	      btn
