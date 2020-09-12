@@ -1,7 +1,7 @@
 <template>
     <view class="loginHead" id="loginHead">
 		<appHeader :headerOptions="headerOptions"></appHeader>
-		<div class="headerBackImg"></div>
+		<div class="headerBackImg" :style="{'backgroundImage':headerBackImg}"></div>
 		<div class="logo"></div>
     </view>
 </template>
@@ -14,7 +14,7 @@
         },
         data() {
             return{
-                
+				headerBackImg:`url(${require('@/static/images/login/longHeader.png')})`,
             }
         },
         mounted(){
