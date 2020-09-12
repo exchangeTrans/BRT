@@ -1,12 +1,21 @@
 <template>
-	<view class="loginHead" :style="loginHeadStyle" id="loginHead">
-		<div class="headerBackImg" :style="{'background-image':headerBackImg}"></div>
-		<div class="logo" :style="{'background-image':headerLogo}"></div>
+	<view class="loginHead"
+		  :style="loginHeadStyle" id="loginHead">
+		<div class="headerBackImg"
+			 :style="{'background-image':headerBackImg}"></div>
+		<div class="logo"
+			 :style="{'background-image':headerLogo}"></div>
 		<div class="choiceType">
-			<div class="leftChoice" :style="{'background-image': leftBackground}">{{leftText}}</div>
-			<div class="rightChoice" :style="{'background-image': rightBackground}">{{rightText}}</div>
+			<div class="leftChoice"
+				 :style="{'background-image': leftBackground}">{{leftText}}</div>
+			<div class="rightChoice"
+				 :style="{'background-image': rightBackground}">{{rightText}}</div>
 		</div>
-		<loginInput :iconShow="true" :iconSrc="icon" :firstTextShow="true" :firstText="firstText" :placeHolder="placeHold"></loginInput>
+		<loginInput :iconShow="true"
+					:iconSrc="icon"
+					:firstTextShow="true"
+					:firstText="firstText"
+					:placeHolder="placeHold"></loginInput>
 	</view>
 </template>
 

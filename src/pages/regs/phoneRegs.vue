@@ -1,7 +1,8 @@
 <template>
 	<view class="phoneRegs" id="phoneRegs">
 		<appHeader :headerOptions="headerOptions"></appHeader>
-		<loginHead :leftText="leftText" :rightText="rightText" :loginHeadStyle="loginHeadStyle"></loginHead>
+		<loginHead :leftText="leftText" :rightText="rightText"
+				   :loginHeadStyle="loginHeadStyle"></loginHead>
 		<!-- <div class="regsTypeChoice">
 			<div class="phoneRegsType" :class="{'active': regsType === 'PHONE'}">手机号注册
 				<div class="activeBack" v-show="regsType === 'PHONE'"></div>
