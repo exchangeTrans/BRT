@@ -31,6 +31,12 @@
 			}
 		},
 		{
+			"path": "pages/property/property",
+			"style": {
+				"navigationBarTitleText": "资产"
+			}
+		},
+		{
 			"path": "pages/regs/phoneRegs",
 			"style": {
 				//"navigationBarTitleText": ""
@@ -56,6 +62,12 @@
 				"selectedIconPath": "static/search.png"
 			},
 			{
+				"pagePath":"pages/property/property",
+				"text":"资产",
+				"iconPath":"static/alert_normal.png",
+				"selectedIconPath":"static/alert.png"
+			},
+			{
 				"pagePath": "pages/user/user",
 				"text": "我的",
 				"iconPath": "static/search_normal.png",
@@ -67,12 +79,7 @@
 			// 	"iconPath":"static/paihangbang_normal.png",
 			// 	"selectedIconPath":"static/paihangbang.png"
 			// },
-			// {
-			// 	"pagePath":"pages/dongdongqiang/dongdongqiang",
-			// 	"text":"资产",
-			// 	"iconPath":"static/alert_normal.png",
-			// 	"selectedIconPath":"static/alert.png"
-			// },
+
 			// {
 			// 	"pagePath":"pages/me/me",
 			// 	"text":"我的",
