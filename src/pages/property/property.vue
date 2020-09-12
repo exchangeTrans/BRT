@@ -81,7 +81,7 @@
 <style scoped lang="less">
     #property {
         width: 750rpx;
-        height: 1500rpx;
+        height: 93vh;
 
         .property-wrap {
             box-sizing: border-box;

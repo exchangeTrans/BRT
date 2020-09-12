@@ -1,5 +1,5 @@
 <template>
-    <view id="user">
+    <scroll-view id="user" scroll-y="true">
         <view class="bgimg">
             <image :src="backgroundImage"></image>
         </view>
@@ -91,7 +91,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </scroll-view>
 </template>
 
 <script>
@@ -159,7 +159,7 @@
 <style scoped lang="less">
     #user {
         width: 750rpx;
-        height: 100%;
+        height: 93vh;
         background: #F9FAFA no-repeat;
         background-size: cover;
         position: relative;

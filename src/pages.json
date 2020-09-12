@@ -37,6 +37,12 @@
 			}
 		},
 		{
+			"path": "pages/directPush/directPush",
+			"style": {
+				"navigationBarTitleText": "资产"
+			}
+		},
+		{
 			"path": "pages/regs/phoneRegs",
 			"style": {
 				//"navigationBarTitleText": ""
