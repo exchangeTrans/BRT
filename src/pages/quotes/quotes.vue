@@ -1,6 +1,6 @@
 <template>
     <view id="quotes">
-        <view class="quotes-nav">
+        <!--<view class="quotes-nav">
             <view class="quotes-nav-wrap">
                 <view class="quotes-nav-wrap-content" @click="switchTab(1)">
                     <span :class="active=== 1 ? 'span active':'span'">我的关注</span>
@@ -12,7 +12,7 @@
                     <span :class="active=== 3 ? 'span active':'span'">数字货币</span>
                 </view>
             </view>
-        </view>
+        </view>-->
         <view class="quotes-content">
             <view class="quotes-content-wrap">
                 <view class="quotes-content-wrap-title">
@@ -20,14 +20,18 @@
                         <view class="currency">
                             <span>计价货币：</span>
                             <span>USTD</span>
-                            <view class="icon"></view>
+                            <view class="icon">
+                                <image :src="currencyIcon"></image>
+                            </view>
                         </view>
                         <view class="price">
                             <span>价格</span>
                         </view>
                         <view class="upsAndDowns">
                             <span>24H涨跌</span>
-                            <view class="icon"></view>
+                            <view class="icon">
+                                <image :src="upsAndDownsIcon"></image>
+                            </view>
                         </view>
                     </view>
                 </view>
@@ -60,21 +64,26 @@
                         price: "1.0000",
                         rate: "0.00%",
                         status: "unchanging",
+                        img:`${require('@/static/images/quotes/TATO.png')}`,
                     },{
                         name: "TATO",
                         number: 1,
                         price: "1.0000",
                         rate: "0.00%",
                         status: "down",
+                        img:`${require('@/static/images/quotes/IMU.png')}`,
                     },{
                         name: "TATO",
                         number: 1,
                         price: "1.0000",
                         rate: "0.00%",
                         status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
                     },
 
-                ]
+                ],
+                currencyIcon: `${require('@/static/images/quotes/down.png')}`,
+                upsAndDownsIcon: `${require('@/static/images/quotes/upAndDown.png')}`,
             };
         },
         onLoad() {
@@ -141,7 +150,7 @@
                         .icon {
                             width: 28rpx;
                             height: 28rpx;
-                            background: #D8D8D8;
+                            /*background: #D8D8D8;*/
                             margin-left: 4rpx;
                         }
 
@@ -156,7 +165,30 @@
                         .currency, .upsAndDowns, .price {
                             display: flex;
                             align-items: center;
+                            .icon {
+                                image {
+                                    width: 100%;
+                                    height: 100%;
+                                    display: block;
+                                }
+                            }
                         }
+                       /* .upsAndDowns {
+                            .icon {
+                                image {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                        }
+                        .currency {
+                            .icon {
+                                image {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                        }*/
 
                         .price {
                             margin-left: 110rpx;
