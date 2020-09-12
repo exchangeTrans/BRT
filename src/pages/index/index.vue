@@ -1,10 +1,10 @@
 <template>
 	<view class="index" id="index">
 		<scroll-view class="content" :scroll-y="true">
-			<view class="indexTop">
+			<view class="indexTop" :style="{'background-image':'url('+topBg+')'}">
 				<view class="iconGroup">
-					<view class="logo"></view>
-					<view class="fucIcon"></view>
+					<view class="logo" :style="{'background-image':'url('+logo+')'}"></view>
+					<view class="fucIcon" :style="{'background-image':'url('+qr+')'}"></view>
 				</view>
 
 				<view class="earning">
@@ -18,18 +18,18 @@
 			</view>
 			<view class="gird">
 				<view class="girdItem" v-for="item in girdData">
-					<view class="girdIcon"></view>
+					<view class="girdIcon" :style="{'background-image':'url('+item.img+')'}"></view>
 					<view class="text">{{item.text}}</view>
 				</view>
 				<view class="clearfix"></view>
 			</view>
 			<view class="notice">
-				<view class="noticeIcon"></view>
+				<view class="noticeIcon" :style="{'background-image':'url('+notice2+')'}"></view>
 				<view class="noticeText">关于BRT上线的公告</view>
-				<view class="more">···</view>
+				<view class="more" :style="{'background-image':'url('+more+')'}"></view>
 				<view class="clearfix"></view>
 			</view>
-			<view class="advertising">
+			<view class="advertising" :style="{'background-image':'url('+advertising+')'}">
 				广告位
 			</view>
 
@@ -59,46 +59,67 @@
 
 		</scroll-view>
 
-
-
+		<forcedUpdating ref="update" name="update"></forcedUpdating>
 	</view>
 </template>
 
 <script>
+	import forcedUpdating from "@/components/forcedUpdating/index.vue"
     export default {
+	    components:{
+            forcedUpdating
+		},
         data() {
             return {
                 girdData:[
 					{
-					    text:'转账'
+					    text:'矿池',
+						img:`${require('@/static/images/home/pool.png')}`
 					},
                     {
-                        text:'邀请激活'
+                        text:'分红',
+                        img:`${require('@/static/images/home/dividend.png')}`
                     },
                     {
-                        text:'矿池'
+                        text:'量化交易',
+                        img:`${require('@/static/images/home/deal.png')}`
                     },
                     {
-                        text:'账本'
+                        text:'公告',
+                        img:`${require('@/static/images/home/notice.png')}`
                     },
                     {
-                        text:'投票上币'
+                        text:'推广链接',
+                        img:`${require('@/static/images/home/link.png')}`
                     },
                     {
-                        text:'募集'
+                        text:'直推列表',
+                        img:`${require('@/static/images/home/list.png')}`
                     },
                     {
-                        text:'社区'
+                        text:'团队收益',
+                        img:`${require('@/static/images/home/team.png')}`
                     },
                     {
-                        text:'收款'
+                        text:'收益明细',
+                        img:`${require('@/static/images/home/detail.png')}`
                     }
-				]
+				],
+                logo:`${require('@/static/images/home/logo.png')}`,//logo
+				qr:`${require('@/static/images/home/qr.png')}`,//二维码
+                topBg:`${require('@/static/images/home/topBg.png')}`,//背景
+                advertising:`${require('@/static/images/home/advertising.png')}`,//广告牌
+                notice2:`${require('@/static/images/home/notice2.png')}`,//公告
+                more:`${require('@/static/images/home/more.png')}`//公告
+
             }
         },
         onLoad() {
 
         },
+		mounted(){
+          this.$refs.update.open();
+		},
         methods: {
 
         }
@@ -119,10 +140,20 @@
 				height: 420rpx;
 				padding-top:80rpx;
 				box-sizing: border-box;
-				background: #1A1A1A;
+				//background: #1A1A1A;
+				background-size: cover;
 				.iconGroup{
 					height: 100rpx;
 					position: relative;
+					.logo{
+						width: 98rpx;
+						height: 60rpx;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						transform: translate(-50%,-50%);
+						background-size: cover;
+					}
 					.fucIcon{
 						position: absolute;
 						right: 30rpx;
@@ -130,8 +161,9 @@
 						transform: translateY(-50%);
 						width: 48rpx;
 						height: 48rpx;
-						background: #D8D8D8;
+						//background: #D8D8D8;
 						border-radius: 4rpx;
+						background-size: cover;
 
 					}
 				}
@@ -169,9 +201,10 @@
 					.girdIcon{
 						width: 60rpx;
 						height: 60rpx;
-						background: #D8D8D8;
+						//background: #D8D8D8;
 						border-radius: 4rpx;
 						margin: 14rpx auto 6rpx;
+						background-size: cover;
 					}
 					.text{
 						font-size: 24rpx;
@@ -196,8 +229,9 @@
 					margin-top: 20rpx;
 					width: 40rpx;
 					height: 40rpx;
-					background: #D8D8D8;
+					//background: #D8D8D8;
 					border-radius: 3rpx;
+					background-size: cover;
 				}
 				.noticeText{
 					float: left;
@@ -207,6 +241,10 @@
 				}
 				.more{
 					float: right;
+					width: 32rpx;
+					height: 8rpx;
+					margin-top:36rpx;
+					background-size: cover;
 				}
 
 			}
@@ -215,11 +253,12 @@
 				margin: 0 auto;
 				width: 690rpx;
 				height: 146rpx;
-				background: #1A1A1A;
+		//		background: #1A1A1A;
 				border-radius: 16rpx;
-				line-height: 146rpx;
-				color: #ffffff;
-				text-align: center;
+				//line-height: 146rpx;
+				//color: #ffffff;
+				//text-align: center;
+				background-size: cover;
 
 			}
 

@@ -13,6 +13,7 @@
                 type:String,
                 default:'确认'
             },
+            background:{type:String, default:''},
             backgroundColor:{type:String, default:''},
             borderRadius:{type:String, default:''},
             fontColor:{type:String, default:''},
@@ -25,12 +26,14 @@
                 let {
                     backgroundColor,
                     borderRadius,
+                    background,
                     fontColor,
                     Opacity,
                     width,
                 } = this.$props
                 return {
                     backgroundColor: backgroundColor,
+                    background:background,
                     borderRadius,
                     color: fontColor,
                     opacity: Opacity,

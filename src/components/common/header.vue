@@ -5,7 +5,7 @@
 
             <!-- isAllowReturn:false,
                     isClose:false, -->
-            
+
             <div class="left" v-if="headerOptions.isAllowReturn" @tap="headertap(headerOptions.isSetPage?headerOptions.isSetPage:'pageReturn')">
                 <div class="imgBox" v-if="headerOptions.isAllowReturn"
                      :style=" headerOptions.isWhiteIcon===true?'background-image:url('+arrow.arrow_w+')':'background-image:url('+arrow.arrow+')'"
@@ -107,9 +107,9 @@
                 //     },], //导航栏格式 --导航栏组件
                 arrow: {
                     // eslint-disable-next-line no-undef
-                    arrow: "imgMaps.header.arrow",
+                    arrow: `${require('@/static/images/header/arrow.png')}`,
                     // eslint-disable-next-line no-undef
-                    arrow_w:"imgMaps.header.arrow_w",
+                    arrow_w: `${require('@/static/images/header/arrow_w.png')}`,
                     // eslint-disable-next-line no-undef
                     close:"imgMaps.header.close",
                 }
@@ -240,8 +240,8 @@
                 box-sizing: border-box;
 
                 .imgBox {
-                    width:28rpx;
-                    height:28rpx;
+                    width:48rpx;
+                    height:48rpx;
                     text-align: left;
                     margin: 28rpx 0;
                     background-size:contain;
