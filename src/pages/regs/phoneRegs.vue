@@ -1,14 +1,15 @@
 <template>
 	<view class="phoneRegs" id="phoneRegs">
-		<div class="regsTypeChoice">
-			<loginHead></loginHead>
+		<appHeader :headerOptions="headerOptions"></appHeader>
+		<loginHead :leftText="leftText" :rightText="rightText" :loginHeadStyle="loginHeadStyle"></loginHead>
+		<!-- <div class="regsTypeChoice">
 			<div class="phoneRegsType" :class="{'active': regsType === 'PHONE'}">手机号注册
 				<div class="activeBack" v-show="regsType === 'PHONE'"></div>
 			</div>
 			<div class="emailRegsType" :class="{'active': regsType === 'EMAIL'}">邮箱注册
 				<div class="activeBack" v-show="regsType === 'EMAIL'"></div>
 			</div>
-		</div>
+		</div> -->
 	</view>
 </template>
 
@@ -23,6 +24,13 @@
 		},
 		data() {
 			return {
+				regsType: "PHONE",
+				leftText: "手机号注册",
+				rightText: "邮箱注册",
+				loginHeadStyle: {
+					"width": "100%",
+					"height": "666rpx",
+				},
 				headerOptions: {
 					show: false,
 					isAllowReturn: true,
@@ -36,7 +44,6 @@
 					},
 					headerIsNoBoder: true,
 				},
-				regsType: "PHONE"
 			}
 		},
 		mounted() {
@@ -55,6 +62,7 @@
 		.regsTypeChoice {
 			margin-top: 62rpx;
 			text-align: center;
+
 			.phoneRegsType {
 				display: inline-block;
 				height: 44rpx;
@@ -64,6 +72,7 @@
 				color: #000000;
 				line-height: 44rpx;
 			}
+
 			.emailRegsType {
 				margin-left: 70rpx;
 				display: inline-block;
@@ -82,6 +91,7 @@
 				color: #000000;
 				line-height: 50rpx;
 			}
+
 			.activeBack {
 				margin: -20rpx 0 0 -10rpx;
 				position: absolute;
