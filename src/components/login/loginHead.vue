@@ -44,7 +44,7 @@
 			background: url(../../static/images/login/loginIcon.png) no-repeat center center;
 			background-size: cover;
 			margin: 206rpx auto 0 auto;
-			width: 306rpx;
+			width: auto;
 			height: 164rpx;
 		}
 	}
