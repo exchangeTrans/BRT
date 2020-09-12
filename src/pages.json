@@ -16,6 +16,12 @@
 			"style": {
 				//"navigationBarTitleText": ""
 			}
+		},
+		{
+			"path": "pages/regs/phoneRegs",
+			"style": {
+				//"navigationBarTitleText": ""
+			}
 		}
 	],
 	"globalStyle": {
