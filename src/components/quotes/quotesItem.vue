@@ -5,7 +5,7 @@
                 <view class="quotesItem-item">
                     <view class="currency-name">
                         <view class="currency-name-img">
-
+                            <image :src="quotesData.img"></image>
                         </view>
                         <view class="currency-name-content">
                             <span class="name">{{quotesData.name}}币</span>
@@ -87,8 +87,13 @@
                         .currency-name-img {
                             width: 80rpx;
                             height: 80rpx;
-                            background: #D8D8D8;
+                            /*background: #D8D8D8;*/
                             border-radius: 50%;
+                            image {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                            }
                         }
 
                         .currency-name-content {
@@ -116,6 +121,7 @@
 
                     .price {
                         margin-left: 100rpx;
+                        min-width: 45rpx;
 
                         span {
                             font-size: 28rpx;
