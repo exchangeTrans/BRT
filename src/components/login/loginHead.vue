@@ -34,7 +34,7 @@
 		.headerBackImg {
 			z-index: -1;
 			position: absolute;
-			background: url(../../static/images/login/longHeader.png) no-repeat center center;
+			background: no-repeat center center;
 			background-size: cover;
 			width: 750rpx;
 			height: 666rpx;
