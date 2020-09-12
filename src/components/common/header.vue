@@ -105,6 +105,7 @@
                 //         code: 3,
                 //         text: "关注"
                 //     },], //导航栏格式 --导航栏组件
+                // img:`${require('@/static/images/quotes/TATO.png')}`,
                 arrow: {
                     // eslint-disable-next-line no-undef
                     arrow: `${require('@/static/images/header/arrow.png')}`,
@@ -141,10 +142,10 @@
             headerStyle() {
                 let {headerOptions} = this.$props;
                 let background = '';
-                let borderBottom = "1rpx solid rgba(242,243,244,1)";
+                let borderBottom = "1rpx solid #F9FAFA";
                 let style=headerOptions.style;
                 if (headerOptions && headerOptions.headerIsNoBoder) {
-                    borderBottom = "0  solid rgba(242,243,244,1)";
+                    borderBottom = "0  solid #F9FAFA";
                 }
                 if (headerOptions && headerOptions.background) {
                     background=headerOptions.background
@@ -215,18 +216,18 @@
         box-sizing: border-box;
        // padding: 0 30rpx;
         z-index: 9;
-        // border-bottom: 1rpx solid rgba(242, 243, 244, 1);
+        border-bottom: 1rpx solid #F9FAFA;
         // background: darkblue;
 
         .headerContent {
             width: 750rpx;
-            height: 90rpx;
+            height: 100rpx;
             margin: 0 auto;
             position: relative;
             .tabBox{
                 float: left;
                 // width: 500rpx;
-                height: 90rpx;
+                height: 100rpx;
                 position: absolute;
                 left: 80rpx;
                 // margin-left:00rpx;
@@ -234,16 +235,16 @@
             // background: red;
             .left {
                  float: left;
-                 height: 90rpx;
+                 height: 100rpx;
                  width:160rpx;
-                 padding-left: 40rpx;
+                 padding-left: 30rpx;
                 box-sizing: border-box;
 
                 .imgBox {
                     width:48rpx;
                     height:48rpx;
                     text-align: left;
-                    margin: 28rpx 0;
+                    margin: 26rpx 0;
                     background-size:contain;
                     background-repeat: no-repeat;
                 }
@@ -251,22 +252,21 @@
             .middle {
                 float: left;
                 width:430rpx;
-                height: 90rpx;
+                height: 100rpx;
                 text-align: center;
-                line-height: 90rpx;
+                line-height: 100rpx;
 
                 span {
                     font-size:36rpx;
-                    font-family:Source Han Sans CN;
-                    display:block;
-                    font-weight:550;
-                    color: rgba(68, 68, 68, 1);
+                    font-family: PingFangSC-Semibold, PingFang SC;
+                    font-weight: 600;
+                    color: #1A1A1A;
                 }
             }
             .right {
                 float: right;
                 width: 160rpx;
-                height: 90rpx;
+                height: 100rpx;
                 padding-right: 40rpx;
                 box-sizing: border-box;
                 position: relative;

@@ -1,5 +1,5 @@
 <template>
-    <view id="quotes">
+    <scroll-view id="quotes" scroll-y="true">
         <!--<view class="quotes-nav">
             <view class="quotes-nav-wrap">
                 <view class="quotes-nav-wrap-content" @click="switchTab(1)">
@@ -44,7 +44,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </scroll-view>
 </template>
 
 <script>
@@ -80,6 +80,118 @@
                         status: "up",
                         img:`${require('@/static/images/quotes/HBT.png')}`,
                     },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
+                    {
+                        name: "TATO",
+                        number: 1,
+                        price: "1.0000",
+                        rate: "0.00%",
+                        status: "up",
+                        img:`${require('@/static/images/quotes/HBT.png')}`,
+                    },
 
                 ],
                 currencyIcon: `${require('@/static/images/quotes/down.png')}`,
@@ -99,6 +211,7 @@
 <style scoped lang="less">
     #quotes {
         width: 750rpx;
+        height: 93vh;
 
         .quotes-nav {
             width: 100%;
@@ -146,7 +259,8 @@
                 .quotes-content-wrap-title {
                     .quotes-content-wrap-title-container {
                         display: flex;
-
+                        justify-content: space-between;
+                        text-align: center;
                         .icon {
                             width: 28rpx;
                             height: 28rpx;
@@ -191,11 +305,14 @@
                         }*/
 
                         .price {
-                            margin-left: 110rpx;
+                            box-sizing: border-box;
+                            margin-left: 80rpx;
+                            flex-grow: 2;
+                            /*margin-left: 110rpx;*/
                         }
 
                         .upsAndDowns {
-                            margin-left: 180rpx;
+                            /*margin-left: 180rpx;*/
                         }
                     }
                 }
