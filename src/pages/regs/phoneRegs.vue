@@ -1,6 +1,7 @@
 <template>
 	<view class="phoneRegs" id="phoneRegs">
 		<div class="regsTypeChoice">
+			<loginHead></loginHead>
 			<div class="phoneRegsType" :class="{'active': regsType === 'PHONE'}">手机号注册
 				<div class="activeBack" v-show="regsType === 'PHONE'"></div>
 			</div>
@@ -17,7 +18,8 @@
 	export default {
 		name: "phoneRegs",
 		components: {
-			appHeader
+			appHeader,
+			loginHead
 		},
 		data() {
 			return {
@@ -50,28 +52,9 @@
 	.phoneRegs {
 		width: 100%;
 		height: 100%;
-		position: absolute;
-		.headerBackImg {
-			z-index: -1;
-			position: absolute;
-			background: url(../../static/images/login/longHeader.png) no-repeat center center;
-			background-size: cover;
-			width: 750rpx;
-			height: 666rpx;
-		}
-
-		.logo {
-			background: url(../../static/images/login/loginIcon.png) no-repeat center center;
-			background-size: cover;
-			margin: 206rpx auto 0 auto;
-			width: 306rpx;
-			height: 164rpx;
-		}
-
 		.regsTypeChoice {
 			margin-top: 62rpx;
 			text-align: center;
-
 			.phoneRegsType {
 				display: inline-block;
 				height: 44rpx;
@@ -81,7 +64,6 @@
 				color: #000000;
 				line-height: 44rpx;
 			}
-
 			.emailRegsType {
 				margin-left: 70rpx;
 				display: inline-block;
