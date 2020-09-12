@@ -1,5 +1,5 @@
 <template>
-    <view id="property">
+    <scroll-view id="property" scroll-y="true">
         <view class="property-wrap">
             <view class="property-wrap-content">
                 <view class="property-wrap-content-asset">
@@ -37,7 +37,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </scroll-view>
 </template>
 
 <script>
@@ -81,7 +81,7 @@
 <style scoped lang="less">
     #property {
         width: 750rpx;
-        height: auto;
+        height: 1500rpx;
 
         .property-wrap {
             box-sizing: border-box;
@@ -89,7 +89,6 @@
             margin: 0 30rpx;
 
             .property-wrap-content {
-
                 .property-wrap-content-asset {
                     width: 690rpx;
                     height: 232rpx;

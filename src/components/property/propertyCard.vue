@@ -1,5 +1,5 @@
 <template>
-    <view id="property">
+    <view id="propertyCard">
         <view class="property-wrap">
             <view class="property-wrap-content">
                 <view class="property-wrap-content-asset">
@@ -75,7 +75,7 @@
 </script>
 
 <style scoped lang="less">
-    #property {
+    #propertyCard {
         width: 690rpx;
 
         .property-wrap {
