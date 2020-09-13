@@ -1,5 +1,5 @@
 <template>
-    <scroll-view id="quotes" scroll-y="true">
+    <scroll-view id="quotes" :scroll-y="true">
         <!--<view class="quotes-nav">
             <view class="quotes-nav-wrap">
                 <view class="quotes-nav-wrap-content" @click="switchTab(1)">

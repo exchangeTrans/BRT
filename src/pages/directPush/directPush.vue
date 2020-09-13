@@ -1,5 +1,5 @@
 <template>
-    <scroll-view id="directPush" scroll-y="true">
+    <scroll-view id="directPush" :scroll-y="true">
         <view class="directPush-wrap">
             <view class="directPush-wrap-nav">
                 <view class="directPush-wrap-nav-container">

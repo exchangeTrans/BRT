@@ -1,5 +1,5 @@
 <template>
-    <view class="btn"  :style="btnStyle" id="btn" @tap="btnClick">
+    <view class="btn" :style="btnStyle" id="btn" @tap="btnClick">
         {{btnText}}
     </view>
 
@@ -8,32 +8,30 @@
 <script>
     export default {
         name: "btn",
-        props:{
-            btnText:{
-                type:String,
-                default:'确认'
+        props: {
+            btnText: {
+                type: String,
+                default: '确认'
             },
-            background:{type:String, default:''},
-            backgroundColor:{type:String, default:''},
-            borderRadius:{type:String, default:''},
-            fontColor:{type:String, default:''},
-            Opacity:{type:String, default:''},
-            width:{type:String, default:''},
+            background: {type: String, default: ''},
+            backgroundColor: {type: String, default: ''},
+            borderRadius: {type: String, default: ''},
+            fontColor: {type: String, default: ''},
+            Opacity: {type: String, default: ''},
+            width: {type: String, default: ''},
 
         },
         computed: {
-            btnStyle () {
+            btnStyle() {
                 let {
                     backgroundColor,
                     borderRadius,
-                    background,
                     fontColor,
                     Opacity,
                     width,
                 } = this.$props
                 return {
-                    backgroundColor: backgroundColor,
-                    background:background,
+                    background: backgroundColor,
                     borderRadius,
                     color: fontColor,
                     opacity: Opacity,
@@ -41,13 +39,11 @@
                 }
             }
         },
-        data(){
-            return {
-
-            }
+        data() {
+            return {}
         },
-        methods:{
-            btnClick(){
+        methods: {
+            btnClick() {
                 this.$emit('btnClick')
             }
         }
@@ -55,7 +51,7 @@
 </script>
 
 <style lang="less">
-    .btn{
+    .btn {
         width: 710rpx;
         height: 100rpx;
         line-height: 100rpx;

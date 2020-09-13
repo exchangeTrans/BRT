@@ -552,3 +552,7 @@ input:-ms-input-placeholder { Internet Explorer 10+
     position: relative!important;
     opacity: 1!important;
 } */
+
+.blue {
+    color: #098FE0 !important;
+}
