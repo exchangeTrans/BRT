@@ -96,7 +96,7 @@
 		height: 100%;
 
 		.content{
-			margin-top: 100rpx;
+			margin-top: calc(100rpx + var(--status-bar-height));
 			font-family: PingFangSC-Semibold, PingFang SC;
 			.model{
 				padding: 0 30rpx;

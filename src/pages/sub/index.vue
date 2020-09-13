@@ -21,7 +21,7 @@
 				</view>
 			</view>
 			<view class="circle" :style="{'background-image':'url('+circleBg+')'}">
-				<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}">
+				<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}" @tap="transferInAmount">
 					质押挖矿
 				</view>
 				<view class="circleText">最小持币：1000 BRT</view>
@@ -49,18 +49,19 @@
 		</scroll-view>
 
 
+		<transferInAmount ref="transferInAmount"></transferInAmount>
 
 	</view>
 </template>
 
 <script>
 
-    import appHeader from "@/components/common/header.vue"
+    import appHeader from "@/components/common/header.vue";
+    import transferInAmount from "@/components/popup/transferInAmount/index.vue"
     export default {
 	    components:{
             appHeader,
-
-
+            transferInAmount
 		},
         data() {
             return {
@@ -104,7 +105,9 @@
 
         },
         methods: {
-
+            transferInAmount(){
+                this.$refs.transferInAmount.open();
+			}
         }
     }
 </script>

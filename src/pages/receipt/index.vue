@@ -87,7 +87,7 @@
 		.content{
 			width: 100%;
 			height: 100%;
-			padding-top: 100rpx;
+			padding-top: calc(100rpx + var(--status-bar-height));
 			background-color: #F9FAFA;
 			.qrCode{
 				width: 690rpx;
