@@ -1,6 +1,7 @@
 <template>
-    <scroll-view id="property" :scroll-y="true">
-        <view class="property-wrap">
+    <view id="property">
+        <pageHeader :headerOptions="headerOptions"/>
+        <scroll-view class="property-wrap" :scroll-y="true">
             <view class="property-wrap-content">
                 <view class="property-wrap-content-asset">
                     <view class="property-wrap-content-asset-container">
@@ -36,16 +37,21 @@
                     </view>
                 </view>
             </view>
-        </view>
-    </scroll-view>
+        </scroll-view>
+    </view>
 </template>
 
 <script>
+    import pageHeader from '@/components/common/header.vue'
     import PropertyCard from "../../components/property/propertyCard";
+
     export default {
         name: "property",
-        components: {PropertyCard},
-        data () {
+        components: {
+            PropertyCard,
+            pageHeader
+        },
+        data() {
             return {
                 propertyCardData: [
                     {
@@ -70,25 +76,34 @@
                         lockBalance: "",
                     }
                 ],
+                headerOptions: {
+                    show: true,
+                    isAllowReturn: false,
+                    text: "资产",
+                    rightItem: {
+                        type: "text",
+                        text: "",
+                    },
+                    headerIsNoBoder: false,
+                },
             }
         },
-        methods: {
-
-        }
+        methods: {}
     }
 </script>
 
 <style scoped lang="less">
     #property {
-        width: 750rpx;
-        height: 93vh;
-
+        width: 100vw;
+        height: 100vh;
+        padding-top: calc(100rpx + var(--status-bar-height));
         .property-wrap {
+            width: 100%;
             box-sizing: border-box;
-            width: 690rpx;
-            margin: 0 30rpx;
-
+            height: calc(100vh - var(--status-bar-height) - 200rpx);
             .property-wrap-content {
+                width: 690rpx;
+                margin: 0 auto;
                 .property-wrap-content-asset {
                     width: 690rpx;
                     height: 232rpx;
@@ -100,10 +115,12 @@
                         box-sizing: border-box;
                         height: 100%;
                         padding: 34rpx 30rpx;
-                        .totalAsset{
+
+                        .totalAsset {
                             display: flex;
                             justify-content: space-between;
                             height: 60rpx;
+
                             .totalAsset-text {
                                 span {
                                     font-size: 24rpx;
@@ -112,9 +129,11 @@
                                     color: rgba(255, 255, 255, 0.7);
                                 }
                             }
+
                             .totalAsset-money {
                                 display: flex;
                                 align-items: center;
+
                                 span {
                                     font-size: 48rpx;
                                     font-family: PingFangSC-Regular, PingFang SC;
@@ -122,6 +141,7 @@
                                     color: #FFFFFF;
                                     /*line-height: 60rpx;*/
                                 }
+
                                 .about {
                                     margin-left: 6rpx;
                                     font-size: 24rpx;
@@ -134,17 +154,20 @@
 
                         }
 
-                        .balance{
+                        .balance {
                             margin-top: 24rpx;
                             width: 100%;
-                            .balance-container{
+
+                            .balance-container {
                                 display: flex;
                                 justify-content: center;
+
                                 .balance-content {
                                     display: inline-block;
                                     text-align: center;
                                     margin-left: 32rpx;
                                     width: 264rpx;
+
                                     span {
                                         display: block;
                                         font-size: 36rpx;
@@ -160,6 +183,7 @@
                                         color: #FFFFFF;
                                     }
                                 }
+
                                 .balance-content:first-child {
                                     margin-left: 0;
                                 }

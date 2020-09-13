@@ -26,7 +26,7 @@
 				</view>
 				<view class="circleText">最小持币：1000 BRT</view>
 			</view>
-			<view class="earningsList" v-for="item in 3">
+			<view class="earningsList" v-for="(item,index) in 3" :key="index">
 				<view class="earningsText">
 					<view class="line" ></view>
 					质押挖矿记录

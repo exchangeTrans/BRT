@@ -1,5 +1,5 @@
 <template>
-    <scroll-view id="quotes" :scroll-y="true">
+    <view id="quotes">
         <!--<view class="quotes-nav">
             <view class="quotes-nav-wrap">
                 <view class="quotes-nav-wrap-content" @click="switchTab(1)">
@@ -13,7 +13,8 @@
                 </view>
             </view>
         </view>-->
-        <view class="quotes-content">
+        <pageHeader :headerOptions="headerOptions"/>
+        <scroll-view class="quotes-content" :scroll-y="true">
             <view class="quotes-content-wrap">
                 <view class="quotes-content-wrap-title">
                     <view class="quotes-content-wrap-title-container">
@@ -43,17 +44,20 @@
                     </view>
                 </view>
             </view>
-        </view>
-    </scroll-view>
+        </scroll-view>
+    </view>
 </template>
 
 <script>
     import QuotesItem from "../../components/quotes/quotesItem";
-
+    import pageHeader from '@/components/common/header.vue'
     export default {
 
         name: "quotes",
-        components: {QuotesItem},
+        components: {
+            QuotesItem,
+            pageHeader,
+        },
         data() {
             return {
                 active: 1,
@@ -196,6 +200,20 @@
                 ],
                 currencyIcon: `${require('@/static/images/quotes/down.png')}`,
                 upsAndDownsIcon: `${require('@/static/images/quotes/upAndDown.png')}`,
+                headerOptions: {
+                    show:true,
+                    isAllowReturn:false,
+                    text:"行情",
+                    rightItem:{
+                        type:"icon",
+                        path: `${require('@/static/images/quotes/search.png')}`,
+                        style:{
+                            'width':'48rpx',
+                            'height':'48rpx',
+                        }
+                    },
+                    headerIsNoBoder: false,
+                },
             };
         },
         onLoad() {
@@ -210,8 +228,12 @@
 
 <style scoped lang="less">
     #quotes {
-        width: 750rpx;
-        height: 93vh;
+        width: 100vw;
+        height: 100vh;
+        padding-top: calc(100rpx + var(--status-bar-height));
+        /*padding-bottom: calc(var(--window-bottom));*/
+        padding-bottom: 100rpx;
+        box-sizing: border-box;
 
         .quotes-nav {
             width: 100%;
@@ -252,6 +274,7 @@
         }
 
         .quotes-content {
+            height: calc(100vh - var(--status-bar-height) - 200rpx);
             .quotes-content-wrap {
                 margin: 0 30rpx;
                 padding-top: 30rpx;

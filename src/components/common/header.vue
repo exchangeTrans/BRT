@@ -78,6 +78,7 @@
     import uniStatusBar from '@/components/uniComponents/uni-status-bar/uni-status-bar.vue'
     // import imgMaps from "@/static/imgPath/index.js"
     export default {
+        name: "pageHeader",
         components: {
             headerTab,
             // navTab,

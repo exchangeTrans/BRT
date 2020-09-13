@@ -21,6 +21,18 @@
       }
     },
     {
+      "path": "pages/withdrawal/withdrawal",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/promotion/promotion",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
       "path": "pages/sub/index",
       "style": {
         //"navigationBarTitleText": ""
@@ -88,6 +100,12 @@
     },
     {
       "path": "pages/login/forgetPassword",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/set/chooseCountry",
       "style": {
         //"navigationBarTitleText": ""
       }

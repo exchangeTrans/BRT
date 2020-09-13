@@ -107,9 +107,12 @@
 
 <style scoped lang="less">
     #promotion {
+        width: 100vw;
+        height: 100vh;
+        padding-top: calc(100rpx + var(--status-bar-height));
+        
         .promotion-wrap {
-            width: 100vw;
-            padding-top: calc(100rpx + var(--status-bar-height));
+            height: calc(100vh - var(--status-bar-height) - 100rpx);
 
             .promotion-wrap-content {
                 width: 100%;
