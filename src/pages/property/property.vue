@@ -1,5 +1,5 @@
 <template>
-    <scroll-view id="property" scroll-y="true">
+    <scroll-view id="property" :scroll-y="true">
         <view class="property-wrap">
             <view class="property-wrap-content">
                 <view class="property-wrap-content-asset">

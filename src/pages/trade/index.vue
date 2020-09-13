@@ -53,8 +53,12 @@
                 </view>
                 
             </view>
+            <block v-if="tableTabSelect.code==='table1'"><tradeTable1/></block>
+            <block v-if="tableTabSelect.code==='table2'"><tradeTable2/></block>
+            <block v-if="tableTabSelect.code==='table3'"><tradeTable3/></block>
             <!-- <tradeTable1/> -->
-            <tradeTable2/>
+            <!-- <tradeTable2/> -->
+            <!-- <tradeTable3/> -->
         </view>
         </scroll-view>
         <view class="tradeBtnBox">
@@ -105,11 +109,11 @@
                 ],
                 chartTabSelect:{code:'2',name:"15分",id:''},
                 tableTabArray:[
-                    {code:'1',name:"买单/卖单",id:''},
-                    {code:'2',name:"最新成交",id:''},
-                    {code:'3',name:"币种简介",id:''},
+                    {code:'table1',name:"买单/卖单",id:''},
+                    {code:'table2',name:"最新成交",id:''},
+                    {code:'table3',name:"币种简介",id:''},
                 ],
-                tableTabSelect:{code:'2',name:"最新成交",id:''},
+                tableTabSelect:{code:'table2',name:"最新成交",id:''},
                 
 
             }

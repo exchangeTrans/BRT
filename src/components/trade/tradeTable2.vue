@@ -1,5 +1,5 @@
 <template>
-	<view class="tradeTable1" id="tradeTable1">
+	<view class="tradeTable2" id="tradeTable2">
 		<view class="tableHeader">
             <view class="tableLi tableLi1">时间</view>
             <view class="tableLi tableLi2">方向</view>
@@ -84,7 +84,7 @@
 </script>
 
 <style lang="less">
-	.tradeTable1{
+	.tradeTable2{
 		width: 100vw;
         height: auto;
         .tableHeader{
