@@ -80,8 +80,6 @@
 				subBg:`${require('@/static/images/sub/subBg.png')}`,
                 circleBg:`${require('@/static/images/sub/circleBg.png')}`,
                 circleBg2:`${require('@/static/images/sub/circleBg2.png')}`,
-          
-
 
             }
         },
