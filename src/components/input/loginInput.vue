@@ -1,20 +1,11 @@
 <template>
-	<view class="loginInput"
-		  id="loginInput"
-		  :style="inputStyle">
-		<div class="content">
-			<div class="icon"
-				 v-show="iconShow"
-				 :style="{'background-image': iconSrc}"></div>
-			<div class="firstText"
-				 v-show="firstTextShow"
-				 :style="firstTextStyle">{{firstText}}</div>
-			<input :placeholder="placeHolder"
-				   class="inputClass" />
-			<div class="lastText"
-				 v-show="lastTextShow"
-				 :style="lastTextStyle">{{lastText}}</div>
-		</div>
+	<view class="loginInput" id="loginInput" :style="wrapStyle">
+		<view class="content">
+			<view class="icon" v-show="iconShow" :style="{'background-image': iconSrc}"></view>
+			<view class="firstText" v-show="firstTextShow" :style="firstTextStyle">{{firstText}}</view>
+			<input :placeholder="placeHolder" class="inputClass" :style="inputStyle" @input="inputChange($event)"/>
+			<view class="lastText" v-show="lastTextShow" :style="lastTextStyle" @tap="sendVerifyCode">{{lastText}}</view>
+		</view>
 	</view>
 </template>
 
@@ -26,6 +17,7 @@
 		},
 		props: {
 			placeHolder: "",
+			wrapStyle: {},
 			inputStyle: {
 
 			},
@@ -34,6 +26,7 @@
 			firstText: "",
 			firstTextShow: false,
 			firstTextStyle: {},
+			inputStyle: {},
 			lastText: "",
 			lastTextShow: false,
 			lastTextStyle: {}
@@ -48,7 +41,13 @@
 
 		},
 		methods: {
-
+			sendVerifyCode() {
+				this.$emit('lastTextClick')
+			},
+			inputChange(e) {
+				let value = e.detail.value;
+				this.$emit('inputChange', value)
+			}
 		},
 	}
 </script>
@@ -58,27 +57,24 @@
 		width: 690rpx;
 		height: 120rpx;
 		background: #FFFFFF;
-		box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1);
+		box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
 		margin: 0 auto 0;
 		text-align: left;
-
+		// position: relative;
 		.content {
-			/*padding: 36rpx 20rpx 36rpx 30rpx;*/
-			position: relative;
+			display: flex;
 			height: 100%;
 
-
 			.firstText {
-				position: absolute;
-				left: 98rpx;
-				top: 35rpx;
+				margin: auto 0;
 			}
+
 			.inputClass {
-				box-sizing: border-box;
-				padding-left: 216rpx;
-				height: 100%;
 				float: left;
-				width: 100%;
+				margin-left: 20rpx;
+				
+				box-sizing: border-box;
+				height: 100%;
 				font-size: 32rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
 				font-weight: 400;
@@ -88,25 +84,27 @@
 			}
 
 			.icon {
-				position: absolute;
+				margin: auto 0 auto 30rpx;
+				
 				display: inline-block;
 				width: 48rpx;
 				height: 48rpx;
 				background: no-repeat center center;
 				background-size: cover;
-				left: 30rpx;
-				top: 36rpx;
 			}
 
 			.lastText {
 				position: absolute;
-				/*display: inline-block;*/
-
+				right: 30rpx;
+				margin: auto 30rpx auto 0;
+				display: inline-block;
+				height: 120rpx;
+				font-size: 32rpx;
+				font-family: PingFangSC-Regular, PingFang SC;
+				font-weight: 400;
+				color: #098FE0;
+				line-height: 120rpx;
 			}
 		}
-
-
-
-
 	}
 </style>

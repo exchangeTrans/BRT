@@ -31,7 +31,19 @@
 			}
 		},
 		{
-			"path": "pages/regs/phoneRegs",
+			"path": "pages/regs/regs",
+			"style": {
+				//"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				//"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/login/forgetPassword",
 			"style": {
 				//"navigationBarTitleText": ""
 			}

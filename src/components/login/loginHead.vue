@@ -1,56 +1,66 @@
 <template>
-	<view class="loginHead"
-		  :style="loginHeadStyle" id="loginHead">
-		<div class="headerBackImg"
-			 :style="{'background-image':headerBackImg}"></div>
-		<div class="logo"
-			 :style="{'background-image':headerLogo}"></div>
-		<div class="choiceType">
-			<div class="leftChoice"
-				 :style="{'background-image': leftBackground}">{{leftText}}</div>
-			<div class="rightChoice"
-				 :style="{'background-image': rightBackground}">{{rightText}}</div>
-		</div>
-		<loginInput :iconShow="true"
-					:iconSrc="icon"
-					:firstTextShow="true"
-					:firstText="firstText"
-					:placeHolder="placeHold"></loginInput>
+	<view class="loginHead" :style="loginHeadStyle" id="loginHead">
+		<view class="headerBackImg" :style="{'background-image':headerBackImg}">
+			<view class="logo" :style="{'background-image':headerLogo}"></view>
+			<view class="choiceType">
+				<view :class="type === 'PHONE' ? 'activeChoice' : 'inactiveChoice'" :style="{'background-image': leftBackground}"
+				 @tap="typeClick('PHONE')">{{leftText}}</view>
+				<view :class="type === 'EMAIL' ? 'activeChoice' : 'inactiveChoice'" :style="{'background-image': rightBackground}"
+				 @tap="typeClick('EMAIL')">{{rightText}}</view>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
-	import loginInput from '@/components/input/loginInput.vue'
 	export default {
 		name: "loginHead",
-		components: {
-			loginInput
-		},
+		components: {},
 		props: {
-			defaultChoice: "PHONE",
+			defaultChoice: "",
 			leftText: "",
 			rightText: "",
 			loginHeadStyle: {}
 		},
+		mounted() {
+			let {
+				defaultChoice
+			} = this.$props
+			this.type = defaultChoice
+		},
 		data() {
 			return {
-
-				icon: `url(${require('@/static/images/login/phoneNumber.png')})`,
-				firstText: "+86",
-				placeHold: "手机号码",
-
-
 				headerBackImg: `url(${require('@/static/images/login/longHeader.png')})`,
 				headerLogo: `url(${require('@/static/images/login/loginIcon.png')})`,
 				leftBackground: `url(${require('@/static/images/login/leftWhite.png')})`,
 				rightBackground: `url(${require('@/static/images/login/rightBlack.png')})`,
+				type: "PHONE",
+			}
+		},
+		watch: {
+			type(val) {
+				switch (val) {
+					case "PHONE":
+						this.leftBackground = `url(${require('@/static/images/login/leftWhite.png')})`
+						this.rightBackground = `url(${require('@/static/images/login/rightBlack.png')})`
+						break;
+					case "EMAIL":
+						this.leftBackground = `url(${require('@/static/images/login/leftBlack.png')})`
+						this.rightBackground = `url(${require('@/static/images/login/rightWhite.png')})`
+						break;
+				}
 			}
 		},
 		mounted() {
 
 		},
 		methods: {
-
+			typeClick(type) {
+				if (type !== this.type) {
+					this.type = type
+					this.$emit('typeChange', type)
+				}
+			}
 		},
 	}
 </script>
@@ -61,28 +71,29 @@
 		height: 100%;
 
 		.headerBackImg {
-			z-index: -1;
-			position: absolute;
 			background: no-repeat center center;
 			background-size: cover;
 			width: 750rpx;
 			height: 666rpx;
+			padding-top: 206rpx;
+			box-sizing: border-box;
+
+			.logo {
+				background: no-repeat center center;
+				background-size: cover;
+				width: auto;
+				height: 164rpx;
+			}
 		}
 
-		.logo {
-			background: no-repeat center center;
-			background-size: cover;
-			padding-top: 206rpx;
-			width: auto;
-			height: 164rpx;
-		}
 
 		.choiceType {
 			display: inline-block;
 			text-align: center;
 			width: 100%;
+			margin-top: 62rpx;
 
-			.leftChoice {
+			.activeChoice {
 				background: no-repeat center center;
 				background-size: cover;
 				display: inline-block;
@@ -96,7 +107,7 @@
 
 			}
 
-			.rightChoice {
+			.inactiveChoice {
 				background: no-repeat center center;
 				background-size: cover;
 				display: inline-block;
