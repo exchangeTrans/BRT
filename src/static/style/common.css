@@ -405,7 +405,7 @@ b, em, h1, h2, h3, h4, h5, h6, strong, p, input, textarea, select, button {
 
 .uni-input-input {
     /*font-size: 28rpx;*/
-    text-indent: 10rpx;
+    /*text-indent: 10rpx;*/
     font-family: Source Han Sans CN;
     font-weight: 400;
     /*color: #444444;*/
