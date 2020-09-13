@@ -1,5 +1,5 @@
 <template>
-	<view class="welcome" id="welcome" :style="{'background-image':'url('+welcomeBg+')'}">
+	<view class="aboutUs" id="aboutUs" :style="{'background-image':'url('+welcomeBg+')'}">
 		<!--<view class="logo"></view>-->
 		<!--<view class="welcomeText">欢迎来到 BRT 交易平台</view>-->
 		<appHeader :headerOptions="headerOptions"></appHeader>
@@ -33,6 +33,8 @@
                 headerOptions:{
                     show:true,
                     isAllowReturn:true,
+                    isWhiteIcon:true,
+					leftText:'返回',
                     text:"",
                     rightItem:{
                         type:"text",
@@ -60,7 +62,7 @@
 </script>
 
 <style lang="less">
-	.welcome{
+	.aboutUs{
 		width: 100%;
 		height: 100%;
 		background-size: 100% 100%;

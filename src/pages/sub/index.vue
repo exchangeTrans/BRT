@@ -80,25 +80,9 @@
 				subBg:`${require('@/static/images/sub/subBg.png')}`,
                 circleBg:`${require('@/static/images/sub/circleBg.png')}`,
                 circleBg2:`${require('@/static/images/sub/circleBg2.png')}`,
-                currencyData:[
-					{
-					    name:'人民币（CNY）',
-                        img:`${require('@/static/images/set/rmb.png')}`,
-					},
-                    {
-                        name:'美元（USD）',
-                        img:`${require('@/static/images/set/dollar.png')}`,
-                    },
-                    {
-                        name:'日元（JPY）',
-                        img:`${require('@/static/images/set/yen.png')}`,
-                    }
-				],
-				titleLine:`${require('@/static/images/set/titleLine.png')}`,
+          
 
-				background:'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
-                borderRadius:'50rpx',
-				modelFlag:'day',//day 白天模式；night 黑夜模式
+
             }
         },
         onLoad() {
@@ -120,7 +104,7 @@
 		.content{
 			width: 100%;
 			height: 100%;
-			padding-top: 100rpx ;
+			padding-top: calc(100rpx + var(--status-bar-height));
 			box-sizing: border-box;
 			.contentPadding{
 				padding: 0 30rpx;

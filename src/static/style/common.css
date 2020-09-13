@@ -430,6 +430,15 @@ uni-radio .uni-radio-input {
     background: rgba(255, 248, 248, 1);
 }
 
+uni-slider .uni-slider-handle-wrapper{
+    height: 16rpx;
+
+
+}
+
+uni-slider .uni-slider-track{
+    background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
+}
 
 uni-swiper .uni-swiper-wrapper {
     overflow: inherit !important;
@@ -450,7 +459,7 @@ uni-slider{
     margin: 0 0;
 }
 uni-slider .uni-slider-handle{
-
+    background:  linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 }
 /* .listenStatus uni-switch{
     height: 48rpx!important;

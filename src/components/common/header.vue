@@ -10,6 +10,7 @@
                 <div class="imgBox" v-if="headerOptions.isAllowReturn"
                      :style=" headerOptions.isWhiteIcon===true?'background-image:url('+arrow.arrow_w+')':'background-image:url('+arrow.arrow+')'"
                      ></div>
+                <view class="leftText" v-if="headerOptions.leftText">{{headerOptions.leftText}}</view>
             </div>
             <div class="left" v-else-if="headerOptions.isClose">
                 <div class="imgBox" v-if="headerOptions.isClose"
@@ -241,12 +242,22 @@
                 box-sizing: border-box;
 
                 .imgBox {
+                    display: inline-block;
                     width:48rpx;
                     height:48rpx;
                     text-align: left;
                     margin: 26rpx 0;
                     background-size:contain;
                     background-repeat: no-repeat;
+                }
+                .leftText{
+                    display: inline-block;
+                    transform: translateY(-80%);
+                    font-size: 36rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #FFFFFF;
+
                 }
             }
             .middle {

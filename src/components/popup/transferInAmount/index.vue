@@ -1,21 +1,21 @@
 <template>
     <view>
-
         <uni-popup ref="transferInAmount" type="bottom" >
             <view class="transfer" >
                 <view class="transferTop">
                     <view class="transferTitle">转入</view>
-                    <view class="close">取消</view>
+                    <view class="close" @tap="close">取消</view>
+                    <view class="clearfix"></view>
                 </view>
                 <view class="beUsedNum">可用数量：40.24 BRT</view>
 
-                <view class="transferInput">
-                    <input type="text">
-                    <view class="allTransfer">全部转入</view>
+                <view class="transferInput" >
+                    <input type="text" class="input" placeholder="请输入转入数量">
+                    <view class="allTransfer"  @tap="allTransfer">全部转入</view>
                 </view>
                 <view class="intro">质押週期为15日，到期后会自动解锁。</view>
 
-                <view class="transferBtn">转入</view>
+                <view class="transferBtn" @tap="transfer">转入</view>
             </view>
         </uni-popup>
     </view>
@@ -57,6 +57,12 @@
                     this.$refs['transferInAmount'].close();
                 })
             },
+            allTransfer(){
+
+            },
+            transfer(){
+
+            }
 
 		}
 	}
@@ -86,22 +92,38 @@
             }
         }
         .beUsedNum{
+            margin-top: 15rpx;
             font-size: 32rpx;
             color: #1A1A1A;
         }
         .transferInput{
+            margin-top: 40rpx;
             width: 670rpx;
             height: 88rpx;
+            padding: 24rpx 30rpx;
+            box-sizing: border-box;
             background: #F4F6F7;
             border-radius: 8rpx;
+            .input{
+                float: left;
+
+                width: 500rpx;
+            }
             .allTransfer{
+                float: right;
                 font-size: 28rpx;
                 color: #098FE0;
             }
 
         }
+        .intro{
+            margin-top: 15rpx;
+            font-size: 26rpx;
+            color: #1A1A1A;
+        }
 
         .transferBtn{
+            margin-top: 40rpx;
             width: 670rpx;
             height: 100rpx;
             line-height: 100rpx;
@@ -109,6 +131,7 @@
             border-radius: 50rpx;
             font-size: 32rpx;
             color: #FFFFFF;
+            text-align: center;
         }
 
     }
