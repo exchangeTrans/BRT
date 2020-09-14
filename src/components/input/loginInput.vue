@@ -1,10 +1,17 @@
 <template>
-    <view class="loginInput" id="loginInput" :style="wrapStyle">
+    <view class="loginInput" id="loginInput"
+          :style="[wrapStyle, {'background': mode !== 'DARK' ? '#FFFFFF' : '#272A2E'}]">
         <view class="content">
             <view class="icon" v-show="iconShow" :style="{'background-image': iconSrc}"></view>
-            <view class="firstText" v-show="firstTextShow" :style="firstTextStyle">{{firstText}}</view>
-            <input :placeholder="placeHolder" class="inputClass" :style="inputStyle" @input="inputChange($event)"/>
-            <view class="lastText" v-show="lastTextShow" :style="lastTextStyle" @tap="sendVerifyCode">{{lastText}}
+            <view class="firstText" v-show="firstTextShow"
+                  :style="[firstTextStyle, {'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}]">{{firstText}}
+            </view>
+            <input :placeholder="placeHolder" class="inputClass"
+                   :style="[inputStyle, {'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}]"
+                   @input="inputChange($event)"/>
+            <view class="lastText" v-show="lastTextShow"
+                  :style="lastTextStyle" @tap="sendVerifyCode">
+                {{lastText}}
             </view>
         </view>
     </view>
@@ -15,6 +22,7 @@
         name: "loginInput",
         components: {},
         props: {
+            mode: "",
             placeHolder: "",
             wrapStyle: {},
             inputStyle: {},
@@ -73,7 +81,6 @@
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
-                color: #1A1A1A;
                 line-height: 120rpx;
 
             }
