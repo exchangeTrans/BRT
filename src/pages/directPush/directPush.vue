@@ -1,6 +1,7 @@
 <template>
-    <scroll-view id="directPush" :scroll-y="true">
-        <view class="directPush-wrap">
+    <view id="directPush">
+        <PageHeader :headerOptions="headerOptions"></PageHeader>
+        <scroll-view class="directPush-wrap" :scroll-y="true">
             <view class="directPush-wrap-nav">
                 <view class="directPush-wrap-nav-container">
                     <view class="directPush-wrap-nav-text">
@@ -32,15 +33,27 @@
                 </view>
             </view>
 
-        </view>
-    </scroll-view>
+        </scroll-view>
+    </view>
 </template>
 
 <script>
+    
+    
+    import PageHeader from "../../components/common/header";
     export default {
         name: "directPush",
+        components: {PageHeader},
         data () {
             return {
+                headerOptions:{
+                    show:true,
+                    isAllowReturn:true,
+                    isWhiteIcon:true,
+                    text:"直推明细",
+                    bodyPadding:{"padding":'0,0,0,0'},
+                    headerIsNoBoder: true,
+                },
                 inviteData: [
                     {
                         inviteTime: "+86 17362511772",
@@ -135,12 +148,13 @@
 
 <style scoped lang="less">
     #directPush {
-        width: 750rpx;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
+        padding-top: calc(100rpx + var(--status-bar-height));
 
         .directPush-wrap {
-            padding-bottom: 50rpx;
             width: 100%;
+            height: calc(100vh - var(--status-bar-height) - 100rpx);
             .directPush-wrap-nav {
                 width: 100%;
                 height: 90rpx;

@@ -29,7 +29,19 @@
 			"style": {
 				//"navigationBarTitleText": ""
 			}
-		},{
+		},
+      {
+        "path": "pages/withdrawal/withdrawal",
+        "style": {
+          //"navigationBarTitleText": ""
+        }
+      },
+      {
+        "path": "pages/promotion/promotion",
+        "style": {
+          //"navigationBarTitleText": ""
+        }
+      },{
 			"path": "pages/sub/index",
 			"style": {
 				//"navigationBarTitleText": ""
@@ -153,4 +165,5 @@
 		"backgroundColor": "#F8F8F8",
 		"navigationStyle": "custom"
 	}
+
 }

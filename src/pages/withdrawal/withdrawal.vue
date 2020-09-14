@@ -1,8 +1,8 @@
 <template>
     <view id="withdrawal">
         <app-header :headerOptions="headerOptions" @headertap=headertap></app-header>
-        <view class="withdrawal-wrap">
-            <scroll-view class="withdrawal-wrap-container" scroll-y="true">
+        <scroll-view class="withdrawal-wrap" :scroll-y="true">
+            <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item"
                           v-for="(item, index) in inputDatas"
@@ -35,9 +35,8 @@
                          width="690rpx"
                          borderRadius="50rpx"></Btn>
                 </view>
-
-            </scroll-view>
-        </view>
+            </view>
+        </scroll-view>
     </view>
 </template>
 
@@ -121,17 +120,16 @@
 
 <style scoped lang="less">
     #withdrawal {
-        width: 750rpx;
+        width: 100%;
+        height: 100%;
+        padding-top: calc(100rpx + var(--status-bar-height));
 
         .withdrawal-wrap {
-            /*height: 100%;*/
-            width: 100%;
-            padding-top: calc(100rpx + var(--status-bar-height));
             box-sizing: border-box;
+            width: 100%;
+            height: calc(100vh - var(--status-bar-height) - 100rpx);
 
             .withdrawal-wrap-container {
-                width: 100%;
-                height: calc(100vh - var(--status-bar-height));
                 box-sizing: border-box;
 
                 .withdrawal-wrap-container-list {
@@ -195,7 +193,7 @@
 
                 .withdrawal-wrap-container-btn {
                     margin-top: 40rpx;
-
+                    margin-bottom: 80rpx;
                 }
             }
         }

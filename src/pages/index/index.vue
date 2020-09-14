@@ -17,7 +17,7 @@
 
 			</view>
 			<view class="gird">
-				<view class="girdItem" v-for="item in girdData">
+				<view class="girdItem" v-for="(item,index) in girdData" :key="index">
 					<view class="girdIcon" :style="{'background-image':'url('+item.img+')'}"></view>
 					<view class="text">{{item.text}}</view>
 				</view>
@@ -42,7 +42,7 @@
 					<view class="upAndDown">24H涨跌</view>
 				</view>
 
-				<view class="performerItem" v-for="item in 8">
+				<view class="performerItem" v-for="(item,index) in 8" :key="index">
 					<view class="currency">
 						<view class="currencyTitle"> <span>LED</span>/HDU</view>
 						<view class="currencyData">24H量85661.9866</view>

@@ -2,64 +2,62 @@
 	<view class="trade" id="trade">
 		<pageHeader :headerOptions="headerOptions"/>
         <scroll-view class="tradeContent" scroll-y>
+            <view class="tradeTopView">
+                <view class="priceView add">0.0641</view>
+                <view class="moneyView">
+                    <view class="money">≈6.68 CNY</view>
+                    <view class="range add">+1.00%</view>
+                </view>
+                <view class="rightView">
+                    <view class="rightLi">
+                        <view class="text">0.062</view>
+                        <view class="title">高</view>
+                    </view>
+                    <view class="rightLi">
+                        <view class="text">0.062</view>
+                        <view class="title">低</view>
+                    </view>
+                    <view class="rightLi">
+                        <view class="text">49833</view>
+                        <view class="title">24H</view>
 
-        
-        <view class="tradeTopView">
-            <view class="priceView add">0.0641</view>
-            <view class="moneyView">
-                <view class="money">≈6.68 CNY</view>
-                <view class="range add">+1.00%</view>
-            </view>
-            <view class="rightView">
-                <view class="rightLi">
-                    <view class="text">0.062</view>
-                    <view class="title">高</view>
-                </view>
-                <view class="rightLi">
-                    <view class="text">0.062</view>
-                    <view class="title">低</view>
-                </view>
-                <view class="rightLi">
-                    <view class="text">49833</view>
-                    <view class="title">24H</view>
-                    
+                    </view>
                 </view>
             </view>
-        </view>
 
-        <view class="chartBox">
-            <view class="chartTab">
-                <view :class="chartTabSelect.code===item.code?'chartTabLi active':'chartTabLi'" 
-                v-for="(item,index) in chartTabArray"
-                :key="index"
-                @tap='selectChartTab(item)'>
-                    {{item.name}}
-                    <view class="line"></view>
-                </view>
-                
-            </view>
-            <view class="chart1" id="chart1"></view>
-            <view class="chart2" id="chart2"></view>
-        </view>
+            <view class="chartBox">
+                <view class="chartTab">
+                    <view :class="chartTabSelect.code===item.code?'chartTabLi active':'chartTabLi'"
+                    v-for="(item,index) in chartTabArray"
+                    :key="index"
+                    @tap='selectChartTab(item)'>
+                        {{item.name}}
+                        <view class="line"></view>
+                    </view>
 
-        <view class="tableBox">
-            <view class="tableTab">
-                <view :class="tableTabSelect.code===item.code?'tableTabLi active':'tableTabLi'" 
-                v-for="(item,index) in tableTabArray"
-                :key="index"
-                @tap='selectTableTab(item)'>
-                    {{item.name}}
-                    <view class="line"></view>
                 </view>
-                
+                <view class="chart1" id="chart1"></view>
+                <view class="chart2" id="chart2"></view>
             </view>
-            <block v-if="tableTabSelect.code==='table1'"><tradeTable1/></block>
-            <block v-if="tableTabSelect.code==='table2'"><tradeTable2/></block>
-            <block v-if="tableTabSelect.code==='table3'"><tradeTable3/></block>
-            <!-- <tradeTable1/> -->
-            <!-- <tradeTable2/> -->
-            <!-- <tradeTable3/> -->
-        </view>
+
+            <view class="tableBox">
+                <view class="tableTab">
+                    <view :class="tableTabSelect.code===item.code?'tableTabLi active':'tableTabLi'"
+                    v-for="(item,index) in tableTabArray"
+                    :key="index"
+                    @tap='selectTableTab(item)'>
+                        {{item.name}}
+                        <view class="line"></view>
+                    </view>
+
+                </view>
+                <block v-if="tableTabSelect.code==='table1'"><tradeTable1/></block>
+                <block v-if="tableTabSelect.code==='table2'"><tradeTable2/></block>
+                <block v-if="tableTabSelect.code==='table3'"><tradeTable3/></block>
+                <!-- <tradeTable1/> -->
+                <!-- <tradeTable2/> -->
+                <!-- <tradeTable3/> -->
+            </view>
         </scroll-view>
         <view class="tradeBtnBox">
             <view class="tradeBtn buy">买入</view>
