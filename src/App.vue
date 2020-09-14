@@ -1,13 +1,20 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			// console.log('App Launch')
+			//white black
+			let theme = this.$storage.getSync({key:'theme'});
+			if(!theme){
+				this.$storage.setSync({key: "theme", data: "white"});
+			}
+			
+			
 		},
 		onShow: function() {
-			console.log('App Show')
+			// console.log('App Show')
 		},
 		onHide: function() {
-			console.log('App Hide')
+			// console.log('App Hide')
 		}
 	}
 </script>
