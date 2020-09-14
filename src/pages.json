@@ -2,6 +2,24 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
 		{
+			"path": "blackPages/index/index",
+			"style": {
+				//"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "blackPages/sub/index",
+			"style": {
+				//"navigationBarTitleText": "uni-app"
+			}
+		},
+
+		{
+			"path": "pages/index/index",
+			"style": {
+				//"navigationBarTitleText": "uni-app"
+			}
+		},{
 			"path": "pages/changePhone/index",
 			"style": {
 				//"navigationBarTitleText": ""
@@ -24,11 +42,6 @@
 		},
 		{
 			"path": "pages/receipt/index",
-			"style": {
-				//"navigationBarTitleText": "uni-app"
-			}
-		},{
-			"path": "pages/index/index",
 			"style": {
 				//"navigationBarTitleText": "uni-app"
 			}

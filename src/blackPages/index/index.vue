@@ -130,7 +130,8 @@
 	.index{
 		width: 100%;
 		height: 100%;
-		background: #EEEFEF;
+
+		background: #22252A;
 		.content{
 			width: 100%;
 			height: 100%;
@@ -188,7 +189,7 @@
 				height: 290rpx;
 				padding: 20rpx 0 10rpx;
 				box-sizing: border-box;
-				background: #FFFFFF;
+				background: #272A2E;
 				border-radius: 8rpx;
 				margin: 0 auto;
 				transform: translateY(-20%);
@@ -208,7 +209,8 @@
 					}
 					.text{
 						font-size: 24rpx;
-						color: #000000;
+
+						color: #D9DADB;
 					}
 
 				}
@@ -220,7 +222,8 @@
 				box-sizing: border-box;
 				width: 690rpx;
 				height: 80rpx;
-				background: #FFFFFF;
+
+				background: #272A2E;
 				border-radius: 8rpx;
 				line-height: 80rpx;
 				transform: translateY(-35%);
@@ -237,7 +240,7 @@
 					float: left;
 					margin-left: 20rpx;
 					font-size: 24rpx;
-					color: #1A1A1A;
+					color: #D9DADB;
 				}
 				.more{
 					float: right;
@@ -268,10 +271,10 @@
 				height: auto;
 				padding: 20rpx 30rpx 0 30rpx;
 				box-sizing: border-box;
-				background-color: #ffffff;
+				background: #272A2E;
 				.performerTitle{
 					font-size: 28rpx;
-					color: #1A1A1A;
+					color: #D9DADB;
 					span{
 						color: #835DFF;
 						margin-left: 10rpx;
@@ -283,7 +286,8 @@
 					flex-wrap: nowrap;
 					justify-content: space-between;
 					font-size: 24rpx;
-					color: #1A1A1A;
+
+					color: #D9DADB;
 					view{
 						flex: 1;
 					}
@@ -302,7 +306,7 @@
 					flex-wrap: nowrap;
 					justify-content: space-between;
 					font-size: 24rpx;
-					color: #1A1A1A;
+					color: #D9DADB;
 					view{
 						flex: 1;
 					}
@@ -310,7 +314,8 @@
 						padding: 20rpx 0;
 						box-sizing: border-box;
 						font-size: 24rpx;
-						color: #1A1A1A;
+
+						color: #D9DADB;
 						font-weight: 400;
 						.currencyTitle{
 							span{
@@ -328,7 +333,8 @@
 						box-sizing: border-box;
 						text-align: center;
 						font-size: 24rpx;
-						color: #1A1A1A;
+
+						color: #D9DADB;
 						.newestPercentage{
 							font-size: 28rpx;
 							font-weight: 600;
