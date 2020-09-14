@@ -7,6 +7,7 @@
 			if(!theme){
 				this.$storage.setSync({key: "theme", data: "white"});
 			}
+			// this.$mySocket.createSocket();
 			
 			
 		},
