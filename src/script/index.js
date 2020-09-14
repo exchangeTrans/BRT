@@ -52,7 +52,7 @@ export default {
 
     },
     mounted() {
-        // this.$refs.update.open();
+        this.$refs.update.open();
     },
     methods: {}
 }

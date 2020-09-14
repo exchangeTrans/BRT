@@ -59,7 +59,7 @@
 
 		</scroll-view>
 
-		<forcedUpdating ref="update" name="update"></forcedUpdating>
+		<forcedUpdating ref="update" name="update"  :mode="'night'"></forcedUpdating>
 	</view>
 </template>
 
@@ -130,7 +130,6 @@
 	.index{
 		width: 100%;
 		height: 100%;
-
 		background: #22252A;
 		.content{
 			width: 100%;

@@ -47,6 +47,7 @@
                 headerOptions:{
                     show:true,
                     isAllowReturn:true,
+					isWhiteIcon:true,
                     text:"USTD收款",
                     rightItem:{
                         type:"icon",
@@ -57,7 +58,10 @@
 							'height':'48rpx',
 						}
                     },
-					background:'#ffffff',
+					style:{
+                      'color':'#D9DADB'
+					},
+					background:'#00001A',
 
                     headerIsNoBoder: true,
                 },
@@ -84,11 +88,12 @@
 		width: 100%;
 		height: 100%;
 
+		background: #22252A;
 		.content{
 			width: 100%;
 			height: 100%;
 			padding-top: calc(100rpx + var(--status-bar-height));
-			background-color: #F9FAFA;
+
 			.qrCode{
 				width: 690rpx;
 				height: 934rpx;
@@ -96,7 +101,7 @@
 				padding: 40rpx 0 60rpx;
 				box-sizing: border-box;
 				margin: 20rpx auto 40rpx;
-				background-color: #ffffff;
+				background-color: #272A2E;
 
 				.nameItem{
 					margin: 0 auto;
@@ -110,7 +115,7 @@
 					font-size: 32rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-weight: 400;
-					color: #000000;
+					color: #D9DADB;
 					position: relative;
 
 
@@ -175,7 +180,7 @@
 						height: 100rpx;
 						background: rgba(21, 21, 21, 0.16);
 						border-radius: 50rpx;
-						border: 2rpx solid #FFFFFF;
+						//border: 2rpx solid #FFFFFF;
 						background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 						text-align: center;
 						line-height: 100rpx;

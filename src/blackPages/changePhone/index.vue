@@ -11,7 +11,7 @@
 				</view>
 
 				<view class="oldPhone">
-					<loginInput :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'旧手机号码'" :lastTextShow="true" :lastText="'发送验证码'"
+					<loginInput :wrapStyle='wrapStyle'  :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'旧手机号码'" :lastTextShow="true" :lastText="'发送验证码'"
 								:lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 
 				</view>
@@ -27,9 +27,9 @@
 					<view class="countryText">{{country}}</view>
 					<view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
 				</view>
-				<loginInput :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber" :firstTextStyle="phoneFirstTextStyle"
+				<loginInput :wrapStyle='wrapStyle' :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber" :firstTextStyle="phoneFirstTextStyle"
 				 :placeHolder="'手机号码'" @inputChange="inputChange('phone', $event)"></loginInput>
-				<loginInput :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'验证码'" :lastTextShow="true" :lastText="'发送验证码'"
+				<loginInput :wrapStyle='wrapStyle' :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'验证码'" :lastTextShow="true" :lastText="'发送验证码'"
 				 :lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'" @inputChange="inputChange('passsword', $event)"></loginInput>-->
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'" @inputChange="inputChange('surePassword', $event)"></loginInput>-->
@@ -93,6 +93,10 @@
 				},
 				phoneLastTextStyle: {
 
+
+				},
+                wrapStyle:{
+                    'background': '#272A2E',
 				},
 				emailStyle: {
 					'background': '#FFFFFF',
@@ -149,9 +153,7 @@
 	.changePhone {
 		width: 100%;
 		height: 100%;
-		background: #F9FAFA;
-
-
+		background: #22252A;
 		.wrap {
 			display: block;
 			.changePhoneTop{
@@ -199,7 +201,7 @@
 					box-sizing: border-box;
 					font-family: PingFangSC-Medium, PingFang SC;
 					font-weight: 500;
-					color: #333333;
+					color: #D9DADB;
 					font-size: 32rpx;
 					.line {
 						display: inline-block;
@@ -220,7 +222,7 @@
 
 					width: 690rpx;
 					height: 120rpx;
-					background: #FFFFFF;
+					background: #272A2E;
 					box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
 					border-radius: 16rpx 16px 0px 0px;
 
@@ -237,7 +239,8 @@
 						font-size: 32rpx;
 						font-family: PingFangSC-Regular, PingFang SC;
 						font-weight: 400;
-						color: #1A1A1A;
+
+						color: #D9DADB;
 						line-height: 44px;
 					}
 

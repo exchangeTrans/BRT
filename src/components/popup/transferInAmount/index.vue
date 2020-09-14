@@ -1,7 +1,9 @@
 <template>
     <view>
         <uni-popup ref="transferInAmount" type="bottom" >
-            <view class="transfer" >
+            <view class="transfer"
+                  :style="{'background':mode==='night'?'#22252A':'#ffffff',
+            'color':mode==='night'?'#D9DADB':'#1A1A1A'}">
                 <view class="transferTop">
                     <view class="transferTitle">参与挖矿</view>
                     <view class="close" @tap="close">取消</view>
@@ -9,7 +11,7 @@
                 </view>
                 <view class="beUsedNum">可用数量：40.24 BRT</view>
 
-                <view class="transferInput" >
+                <view class="transferInput"   :style="{'background':mode==='night'?'#272A2E':'#ffffff'}">
                     <input type="text" class="input" placeholder="请输入转入数量">
                     <view class="allTransfer"  @tap="allTransfer">全部转入</view>
                 </view>
@@ -41,7 +43,7 @@
 
         },
 		props: {
-
+		    mode:{type:String,default:'day'}
         },
 		mounted(){
 
@@ -73,7 +75,6 @@
     .transfer{
         width: 750rpx;
         height: 534rpx;
-        background: #FFFFFF;
         padding: 60rpx 40rpx 40rpx 40rpx;
         box-sizing: border-box;
         border-radius: 60rpx 60rpx 0rpx 0rpx;
@@ -83,18 +84,15 @@
             .transferTitle{
                 float: left;
                 font-size: 40rpx;
-                color: #1A1A1A;
             }
             .close{
                 float: right;
                 font-size: 32rpx;
-                color: #1A1A1A;
             }
         }
         .beUsedNum{
             margin-top: 15rpx;
             font-size: 32rpx;
-            color: #1A1A1A;
         }
         .transferInput{
             margin-top: 40rpx;
@@ -119,7 +117,6 @@
         .intro{
             margin-top: 15rpx;
             font-size: 26rpx;
-            color: #1A1A1A;
         }
 
         .transferBtn{

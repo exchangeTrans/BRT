@@ -1,6 +1,6 @@
 
 import appHeader from "@/components/common/header.vue";
-import transferInAmount from "@/components/popup/transferInAmount/indexBlack.vue";
+import transferInAmount from "@/components/popup/transferInAmount/index.vue";
 export default {
     components:{
         appHeader,

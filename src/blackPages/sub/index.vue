@@ -50,7 +50,7 @@
 		</scroll-view>
 
 
-		<transferInAmount ref="transferInAmount"></transferInAmount>
+		<transferInAmount ref="transferInAmount" :mode="'night'"></transferInAmount>
 
 	</view>
 </template>
