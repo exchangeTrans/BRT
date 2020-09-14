@@ -1,29 +1,29 @@
 <template>
-    <view class="login" id="login">
+    <view class="login" id="login" :style="{'background': mode !== 'DARK' ? '#F9FAFA' : '#22252A'}">
         <app-header :headerOptions="headerOptions"></app-header>
         <view class="wrap">
             <loginHead :defaultChoice="defaultType" :leftText="leftText" :rightText="rightText"
                        @typeChange="typeChange"/>
             <view class="phoneLoginFlag" v-show="type === 'PHONE'">
-                <view class="lastInput">
+                <view class="lastInput" :style="{'background': mode !== 'DARK' ? '#FFFFFF' : '#272A2E'}">
                     <view class="icon" :style="{'background-image': cityChoiceIcon}"></view>
-                    <view class="cityChoice">{{country}}</view>
+                    <view class="cityChoice" :style="{'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}">{{country}}</view>
                     <view class="lastIcon" :style="{'background-image': cityChoiceLastIcon}"></view>
                 </view>
-                <loginInput :wrapStyle="wrapStyle" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
+                <loginInput :mode="mode" :wrapStyle="wrapStyle" :iconShow="true" :iconSrc="phoneIcon"
+                            :firstTextShow="true"
                             :firstText="countryNumber"
                             :firstTextStyle="phoneFirstText" :placeHolder="'请输入手机号码'"
                             @inputChange="inputChange('phone', $event)"></loginInput>
-                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入登录密码'"
+                <loginInput :mode="mode" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="'请输入登录密码'"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
             <view class="emailLoginFlag" v-show="type === 'EMAIL'">
-                <view class="lastInput">
-                    <view class="icon" :style="{'background-image': emailChoice}"></view>
-                    <input class="emailInput" placeholder="请输入邮箱" @input="inputChange('email', $event)"/>
-                    <view class="lastIcon" :style="{'background-image': cityChoiceLastIcon}"></view>
-                </view>
-                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入登录密码'"
+                <loginInput :mode="mode" :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailChoice" :placeHolder="'请输入邮箱'"
+                            @inputChange="inputChange('email', $event)"></loginInput>
+                <loginInput :mode="mode" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="'请输入登录密码'"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
             <loginBtn :btnStyle="btnStyle" :btnText="'登录'" @btnClick="loginClick"></loginBtn>
@@ -134,7 +134,7 @@
     .login {
         width: 100%;
         height: 100%;
-        background: #F9FAFA;
+        background: #22252A;
 
         .wrap {
             display: block;

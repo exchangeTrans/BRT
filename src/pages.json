@@ -98,6 +98,18 @@
       }
     },
     {
+      "path": "blackPages/regs/regs",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/login/login",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
       "path": "pages/property/property",
       "style": {
         "navigationBarTitleText": "资产"
@@ -111,6 +123,12 @@
     },
     {
       "path": "pages/login/forgetPassword",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/login/forgetPassword",
       "style": {
         //"navigationBarTitleText": ""
       }
