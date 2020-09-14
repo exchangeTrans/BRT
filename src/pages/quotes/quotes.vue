@@ -228,53 +228,52 @@
 
 <style scoped lang="less">
     #quotes {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         padding-top: calc(100rpx + var(--status-bar-height));
         /*padding-bottom: calc(var(--window-bottom));*/
-        padding-bottom: 100rpx;
-        box-sizing: border-box;
+        /*box-sizing: border-box;*/
 
-        .quotes-nav {
-            width: 100%;
-            height: 90rpx;
-            background: #eeefef;
+        /*.quotes-nav {*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    background: #eeefef;*/
 
-            .quotes-nav-wrap {
-                height: 100%;
-                margin: 0 30rpx;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
+        /*    .quotes-nav-wrap {*/
+        /*        height: 100%;*/
+        /*        margin: 0 30rpx;*/
+        /*        display: flex;*/
+        /*        justify-content: flex-start;*/
+        /*        align-items: center;*/
 
-                .quotes-nav-wrap-content {
-                    margin-left: 56rpx;
-                    height: 50rpx;
+        /*        .quotes-nav-wrap-content {*/
+        /*            margin-left: 56rpx;*/
+        /*            height: 50rpx;*/
 
-                    .span {
-                        font-size: 28rpx;
-                        font-family: PingFangSC-Regular, PingFang SC;
-                        font-weight: 400;
-                        color: #1a1a1a;
-                        line-height: 50rpx;
-                    }
+        /*            .span {*/
+        /*                font-size: 28rpx;*/
+        /*                font-family: PingFangSC-Regular, PingFang SC;*/
+        /*                font-weight: 400;*/
+        /*                color: #1a1a1a;*/
+        /*                line-height: 50rpx;*/
+        /*            }*/
 
-                    .active {
-                        font-size: 36rpx;
-                        font-family: PingFangSC-Semibold, PingFang SC;
-                        font-weight: 600;
-                        color: #835dff;
-                    }
-                }
+        /*            .active {*/
+        /*                font-size: 36rpx;*/
+        /*                font-family: PingFangSC-Semibold, PingFang SC;*/
+        /*                font-weight: 600;*/
+        /*                color: #835dff;*/
+        /*            }*/
+        /*        }*/
 
-                .quotes-nav-wrap-content:first-child {
-                    margin-left: 0;
-                }
-            }
-        }
+        /*        .quotes-nav-wrap-content:first-child {*/
+        /*            margin-left: 0;*/
+        /*        }*/
+        /*    }*/
+        /*}*/
 
         .quotes-content {
-            height: calc(100vh - var(--status-bar-height) - 200rpx);
+            height: calc(100vh - var(--status-bar-height) - 100rpx);
             .quotes-content-wrap {
                 margin: 0 30rpx;
                 padding-top: 30rpx;

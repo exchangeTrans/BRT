@@ -166,7 +166,8 @@
         /*position: relative;*/
         /*padding-top: calc(100rpx + var(--status-bar-height));*/
         .user-wrap {
-            height: calc(100vh - var(--status-bar-height) - 100rpx);
+            width: 100%;
+            height: 100%;
             background: #F9FAFA;
             position: relative;
             .bgimg {

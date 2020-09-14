@@ -2,14 +2,14 @@
     <view id="chooseCountry">
         <app-header :headerOptions="headerOptions"
                     @headertap=headertap></app-header>
-        <view class="chooseCountry-wrap">
+        <scroll-view class="chooseCountry-wrap" :scroll-y="true">
             <view class="chooseCountry-wrap-content">
                 <view class="chooseCountry-wrap-list">
                     <view class="chooseCountry-wrap-item"
                          v-for="(item,index) in countryData"
                          :key="index"
                          @click="chooseItem(item)">
-                        <image :src=item.icon alt="">
+                        <image :src=item.icon alt=""/>
                         <view class="name">
                             {{item.name}}
                         </view>
@@ -19,7 +19,7 @@
                     </view>
                 </view>
             </view>
-        </view>
+        </scroll-view>
     </view>
 </template>
 
@@ -112,13 +112,13 @@
 
 <style scoped lang="less">
     #chooseCountry {
-        width: 100%;
-        height: auto;
+        width: 100vw;
+        height: 100vh;
+        padding-top:calc(100rpx + var(--status-bar-height));
 
         .chooseCountry-wrap {
             width: 100%;
-            padding-top:calc(100rpx + var(--status-bar-height));
-
+            height: 100%;
             .chooseCountry-wrap-content {
                 /*margin: 0 1.5rpx;*/
 
