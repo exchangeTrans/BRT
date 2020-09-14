@@ -4,7 +4,7 @@
 
 		<view class="content">
 			<view class="model">
-				<view class="modelText">日夜模式</view>
+				<view class="modelText"><view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>日夜模式</view>
 				<view class="chooseModel">
 					<view :class="modelFlag==='day'?'chooseItem active':'chooseItem'" @tap="chooseModel('day')">日间模式</view>
 					<view :class="modelFlag==='night'?'chooseItem active night':'chooseItem night'" @tap="chooseModel('night')">夜晚模式</view>
@@ -14,18 +14,18 @@
 
 			<view class="currency">
 				<view class="currencyTitle">
-				<view class="line"></view>	显示币种
+				<view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>	显示币种
 				</view>
 
 			</view>
 
 			<view class="currencyItem" v-for="item in currencyData" @>
-				<view class="currencyIcon"></view>
+				<view class="currencyIcon" :style="{'background-image':'url('+item.img+')'}"></view>
 				<view class="currencyText">{{item.name}}</view>
 			</view>
 
 			<view class="confirmBtn">
-				<btn></btn>
+				<btn :background="background" :borderRadius="borderRadius"></btn>
 			</view>
 
 
@@ -60,16 +60,22 @@
                 },
                 currencyData:[
 					{
-					    name:'人民币（CNY）'
+					    name:'人民币（CNY）',
+                        img:`${require('@/static/images/set/rmb.png')}`,
 					},
                     {
-                        name:'美元（USD）'
+                        name:'美元（USD）',
+                        img:`${require('@/static/images/set/dollar.png')}`,
                     },
                     {
-                        name:'日元（JPY）'
+                        name:'日元（JPY）',
+                        img:`${require('@/static/images/set/yen.png')}`,
                     }
 				],
+				titleLine:`${require('@/static/images/set/titleLine.png')}`,
 
+				background:'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
+                borderRadius:'50rpx',
 				modelFlag:'day',//day 白天模式；night 黑夜模式
             }
         },
@@ -88,8 +94,9 @@
 	.setIndex{
 		width: 100%;
 		height: 100%;
+
 		.content{
-			margin-top: 100rpx;
+			margin-top: calc(100rpx + var(--status-bar-height));
 			font-family: PingFangSC-Semibold, PingFang SC;
 			.model{
 				padding: 0 30rpx;
@@ -100,6 +107,14 @@
 				color: #1A1A1A;
 				box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1), 0px -1px 0px 0px rgba(0, 0, 0, 0.1);
 				.modelText{
+					.line{
+						display: inline-block;
+						width: 4rpx;
+						height: 30rpx;
+						background-size: cover;
+						margin-right: 12rpx;
+						transform: translateY(15%);
+					}
 					float: left;
 					line-height: 120rpx;
 				}
@@ -115,7 +130,7 @@
 						color: #835DFF;
 						text-align: center;
 						line-height: 76rpx;
-						background: #F2EFF9;
+						background: #EFF3F9;
 						border-radius: 16rpx 0rpx 0rpx 16rpx;
 					}
 					.night{
@@ -123,7 +138,7 @@
 					}
 					.chooseItem.active{
 						color: #FFFFFF;
-						background: linear-gradient(139deg, #5D6CFF 0%, #835DFF 100%);
+						background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 					}
 
 				}
@@ -142,8 +157,7 @@
 						display: inline-block;
 						width: 4rpx;
 						height: 30rpx;
-						background: #835DFF;
-						border-radius: 2rpx;
+						background-size: cover;
 						margin-right: 12rpx;
 						transform: translateY(15%);
 					}
@@ -161,8 +175,9 @@
 					display: inline-block;
 					width: 48rpx;
 					height: 48rpx;
-					background: #D8D8D8;
+					//background: #D8D8D8;
 					border-radius: 4rpx;
+					background-size: cover;
 					transform: translateY(30%);
 				}
 				.currencyText{

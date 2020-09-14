@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/noticedetails/index",
@@ -58,4 +59,204 @@
 		"backgroundColor": "#F8F8F8",
 		"navigationStyle": "custom"
 	}
+=======
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path":"blackPages/regs/regs"
+      //"style":
+    },
+
+    {
+      "path": "blackPages/user/user",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "blackPages/index/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/changePhone/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/earnings/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/withdrawal/withdrawal",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/promotion/promotion",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/sub/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/trade/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/receipt/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/aboutUs/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/quotes/quotes",
+      "style": {
+        "navigationBarTitleText": "行情"
+      }
+    },
+    {
+      "path": "pages/user/user",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/regs/regs",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/regs/regs",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/login/login",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/property/property",
+      "style": {
+        "navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "pages/directPush/directPush",
+      "style": {
+        "navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "pages/login/forgetPassword",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/login/forgetPassword",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/trade/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    }
+  ],
+  "tabBar": {
+    // "color":"#8a8a8a",
+    // "selectedColor":"#d4237a",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/home_normal.png",
+        "selectedIconPath": "static/home.png"
+      },
+      {
+        "pagePath": "pages/quotes/quotes",
+        "text": "行情",
+        "iconPath": "static/search_normal.png",
+        "selectedIconPath": "static/search.png"
+      },
+      {
+        "pagePath": "pages/property/property",
+        "text": "资产",
+        "iconPath": "static/alert_normal.png",
+        "selectedIconPath": "static/alert.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "static/search_normal.png",
+        "selectedIconPath": "static/search.png"
+      }
+      // {
+      // 	"pagePath":"pages/rankingList/rankingList",
+      // 	"text":"交易",
+      // 	"iconPath":"static/paihangbang_normal.png",
+      // 	"selectedIconPath":"static/paihangbang.png"
+      // },
+
+      // {
+      // 	"pagePath":"pages/me/me",
+      // 	"text":"我的",
+      // 	"iconPath":"static/me_normal.png",
+      // 	"selectedIconPath":"static/me.png"
+      // }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  }
+>>>>>>> 55348d080cf9cc7015a0fdbfbcfc85dd3d00f153
 }
