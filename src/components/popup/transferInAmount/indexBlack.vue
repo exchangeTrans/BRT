@@ -73,28 +73,27 @@
     .transfer{
         width: 750rpx;
         height: 534rpx;
-        background: #FFFFFF;
+
+        background: #22252A;
         padding: 60rpx 40rpx 40rpx 40rpx;
         box-sizing: border-box;
         border-radius: 60rpx 60rpx 0rpx 0rpx;
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
+        color: #D9DADB;
         .transferTop{
             .transferTitle{
                 float: left;
                 font-size: 40rpx;
-                color: #1A1A1A;
             }
             .close{
                 float: right;
                 font-size: 32rpx;
-                color: #1A1A1A;
             }
         }
         .beUsedNum{
             margin-top: 15rpx;
             font-size: 32rpx;
-            color: #1A1A1A;
         }
         .transferInput{
             margin-top: 40rpx;
@@ -102,7 +101,8 @@
             height: 88rpx;
             padding: 24rpx 30rpx;
             box-sizing: border-box;
-            background: #F4F6F7;
+
+            background: #272A2E;
             border-radius: 8rpx;
             .input{
                 float: left;
@@ -119,7 +119,6 @@
         .intro{
             margin-top: 15rpx;
             font-size: 26rpx;
-            color: #1A1A1A;
         }
 
         .transferBtn{

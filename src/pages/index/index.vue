@@ -4,11 +4,11 @@
 			<view class="indexTop" :style="{'background-image':'url('+topBg+')'}">
 				<view class="iconGroup">
 					<view class="logo" :style="{'background-image':'url('+logo+')'}"></view>
-					<view class="fucIcon" :style="{'background-image':'url('+qr+')'}"></view>
+					<!--<view class="fucIcon" :style="{'background-image':'url('+qr+')'}"></view>-->
 				</view>
 
 				<view class="earning">
-					<view>矿池收益(HDU)</view>
+					<view>BRT总余额 420.24 BRT </view>
 					<view class="earningNumber">
 						<span>0</span>
 						<span>≈￥0</span>

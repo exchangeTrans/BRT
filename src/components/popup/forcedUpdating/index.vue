@@ -7,7 +7,7 @@
                 <view class="findNew">发现新版本</view>
                 <view class="updateText">钱包管理增加排序功能，优化网络速度</view>
                 <view   class="updateBtn" @tap="updateBtn">立即更新</view>
-                <view class="closeIcon" @tap="close()" :style="{'background-image':'url('+closeIcon+')'}"></view>
+                <!--<view class="closeIcon" @tap="close()" :style="{'background-image':'url('+closeIcon+')'}"></view>-->
             </view>
         </uni-popup>
     </view>

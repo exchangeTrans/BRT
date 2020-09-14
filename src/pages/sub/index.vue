@@ -5,6 +5,7 @@
 			<view class="contentPadding">
 			<view class="subTop" :style="{'background-image':'url('+subBg+')'}">
 				<view class="available">可用余额：1200 BRT</view>
+				<view class="notice" :style="{'background-image':'url('+notice+')'}"></view>
 				<view class="dataGroup">
 					<view class="dataGroupItem">
 						<view class="dataGroupItemTitle">累计收益</view>
@@ -22,7 +23,7 @@
 			</view>
 			<view class="circle" :style="{'background-image':'url('+circleBg+')'}">
 				<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}" @tap="transferInAmount">
-					质押挖矿
+                    开始挖矿
 				</view>
 				<view class="circleText">最小持币：1000 BRT</view>
 			</view>
@@ -54,44 +55,44 @@
 	</view>
 </template>
 
-<script>
+<script src="@/script/sub.js">
 
-    import appHeader from "@/components/common/header.vue";
-    import transferInAmount from "@/components/popup/transferInAmount/index.vue"
-    export default {
-	    components:{
-            appHeader,
-            transferInAmount
-		},
-        data() {
-            return {
-                headerOptions:{
-                    show:true,
-                    isAllowReturn:true,
-                    text:"挖矿",
-                    rightItem:{
-                        type:"text",
-                        text:"",
-                    },
-                    bodyPadding:{"padding":'0,0,0,0'},
-                    headerIsNoBoder: true,
-                },
-
-				subBg:`${require('@/static/images/sub/subBg.png')}`,
-                circleBg:`${require('@/static/images/sub/circleBg.png')}`,
-                circleBg2:`${require('@/static/images/sub/circleBg2.png')}`,
-
-            }
-        },
-        onLoad() {
-
-        },
-        methods: {
-            transferInAmount(){
-                this.$refs.transferInAmount.open();
-			}
-        }
-    }
+    // import appHeader from "@/components/common/header.vue";
+   // import transferInAmount from "@/components/popup/transferInAmount/index.vue"
+    // export default {
+	//     components:{
+    //         appHeader,
+    //         transferInAmount
+	// 	},
+    //     data() {
+    //         return {
+    //             headerOptions:{
+    //                 show:true,
+    //                 isAllowReturn:true,
+    //                 text:"挖矿",
+    //                 rightItem:{
+    //                     type:"text",
+    //                     text:"",
+    //                 },
+    //                 bodyPadding:{"padding":'0,0,0,0'},
+    //                 headerIsNoBoder: true,
+    //             },
+    //
+	// 			subBg:`${require('@/static/images/sub/subBg.png')}`,
+    //             circleBg:`${require('@/static/images/sub/circleBg.png')}`,
+    //             circleBg2:`${require('@/static/images/sub/circleBg2.png')}`,
+    //
+    //         }
+    //     },
+    //     onLoad() {
+    //
+    //     },
+    //     methods: {
+    //         transferInAmount(){
+    //             this.$refs.transferInAmount.open();
+	// 		}
+    //     }
+    // }
 </script>
 
 <style lang="less">
@@ -118,8 +119,17 @@
 					font-family: PingFangSC-, PingFang SC;
 					color: #FFFFFF;
 					font-weight: normal;
+					position: relative;
 					.available{
 						font-size: 32rpx;
+					}
+					.notice{
+						width: 40rpx;
+						height: 40rpx;
+						background-size: cover;
+						position: absolute;
+						right: 30rpx;
+						top: 30rpx;
 					}
 					.dataGroup{
 						margin-top: 60rpx;

@@ -2,17 +2,22 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
 		{
+			"path": "blackPages/earnings/index",
+			"style": {
+				//"navigationBarTitleText": "uni-app"
+			}
+		},{
+        "path": "blackPages/sub/index",
+        "style": {
+          //"navigationBarTitleText": "uni-app"
+        }
+      },{
 			"path": "blackPages/index/index",
 			"style": {
 				//"navigationBarTitleText": "uni-app"
 			}
 		},
-		{
-			"path": "blackPages/sub/index",
-			"style": {
-				//"navigationBarTitleText": "uni-app"
-			}
-		},
+
 
 		{
 			"path": "pages/index/index",
