@@ -1,28 +1,28 @@
 <template>
-    <view class="login" id="login" :style="{'background': mode !== 'DARK' ? '#F9FAFA' : '#22252A'}">
+    <view class="login" id="login">
         <app-header :headerOptions="headerOptions"></app-header>
         <view class="wrap">
             <loginHead :defaultChoice="defaultType" :leftText="leftText" :rightText="rightText"
                        @typeChange="typeChange"/>
             <view class="phoneLoginFlag" v-show="type === 'PHONE'">
-                <view class="lastInput" :style="{'background': mode !== 'DARK' ? '#FFFFFF' : '#272A2E'}">
+                <view class="lastInput">
                     <view class="icon" :style="{'background-image': cityChoiceIcon}"></view>
-                    <view class="cityChoice" :style="{'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}">{{country}}</view>
+                    <view class="cityChoice">{{country}}</view>
                     <view class="lastIcon" :style="{'background-image': cityChoiceLastIcon}"></view>
                 </view>
-                <loginInput :mode="mode" :wrapStyle="wrapStyle" :iconShow="true" :iconSrc="phoneIcon"
+                <loginInput :mode="'DARK'" :wrapStyle="wrapStyle" :iconShow="true" :iconSrc="phoneIcon"
                             :firstTextShow="true"
                             :firstText="countryNumber"
                             :firstTextStyle="phoneFirstText" :placeHolder="'请输入手机号码'"
                             @inputChange="inputChange('phone', $event)"></loginInput>
-                <loginInput :mode="mode" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                <loginInput :mode="'DARK'" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
                             :placeHolder="'请输入登录密码'"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
             <view class="emailLoginFlag" v-show="type === 'EMAIL'">
-                <loginInput :mode="mode" :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailChoice" :placeHolder="'请输入邮箱'"
+                <loginInput :mode="'DARK'" :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailChoice" :placeHolder="'请输入邮箱'"
                             @inputChange="inputChange('email', $event)"></loginInput>
-                <loginInput :mode="mode" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                <loginInput :mode="'DARK'" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
                             :placeHolder="'请输入登录密码'"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
@@ -144,8 +144,8 @@
                 display: flex;
                 width: 690rpx;
                 height: 120rpx;
-                background: #FFFFFF;
-                box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
+                background: #272A2E;
+                box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(255, 255, 255, 0.1);
                 border-radius: 16rpx 16rpx 0rpx 0rpx;
                 margin: 40rpx auto 0;
 
@@ -162,7 +162,7 @@
                     font-size: 32rpx;
                     font-family: PingFangSC-Regular, PingFang SC;
                     font-weight: 400;
-                    color: #1A1A1A;
+                    color: #D9DADB;
                     line-height: 120rpx;
 
                 }

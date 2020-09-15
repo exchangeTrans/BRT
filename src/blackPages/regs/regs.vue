@@ -1,44 +1,45 @@
 <template>
-    <view class="regs" id="regs" :style="{'background': mode !== 'DARK' ? '#F9FAFA' : '#22252A'}">
+    <view class="regs" id="regs">
         <app-header :headerOptions="headerOptions"></app-header>
         <view class="wrap">
             <loginHead :defaultChoice="defaultChoice" :leftText="leftText" :rightText="rightText"
                        @typeChange="typeChange"></loginHead>
             <view v-show="type === 'PHONE'" class="phoneRegsFlag">
-                <view class="countryChoice" :style="{'background': mode !== 'DARK' ? '#FFFFFF' : '#272A2E'}">
+                <view class="countryChoice">
                     <view class="chountryChoiceIcon" :style="{'background-image': countryIcon}"></view>
-                    <view class="countryText" :style="{'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}">{{country}}</view>
+                    <view class="countryText">{{country}}
+                    </view>
                     <view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
                 </view>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
                             :firstText="countryNumber"
                             :firstTextStyle="phoneFirstTextStyle"
                             :placeHolder="'请输入手机号码'" @inputChange="inputChange('phone', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'请输入手机验证码'"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'请输入手机验证码'"
                             :lastTextShow="true"
                             :lastText="'发送验证码'"
                             :lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify"
                             @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'"
                             @inputChange="inputChange('passsword', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'"
                             @inputChange="inputChange('surePassword', $event)"></loginInput>
-                <loginInput :mode="mode" :wrapStyle="inviteWrapStyle" :iconShow="true" :iconSrc="inviteCode"
+                <loginInput :mode="'DARK'" :wrapStyle="inviteWrapStyle" :iconShow="true" :iconSrc="inviteCode"
                             :placeHolder="'请输入推广码'"
                             @inputChange="inputChange('inviteCode', $event)"></loginInput>
             </view>
             <view v-show="type === 'EMAIL'" class="emailRegsFlag">
-                <loginInput :mode="mode" :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailIcon"
+                <loginInput :mode="'DARK'" :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailIcon"
                             :placeHolder="'请填写邮箱'"
                             @inputChange="inputChange('email', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="smsVerifyCode" :lastTextShow="true"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="smsVerifyCode" :lastTextShow="true"
                             :lastText="'发送验证码'"
                             :placeHolder="'请输入邮箱验证码'" @inputChange="inputChange('emailVerify', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'"
                             @inputChange="inputChange('emailPassword', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'"
                             @inputChange="inputChange('emailSurePassword', $event)"></loginInput>
-                <loginInput :mode="mode" :wrapStyle="inviteWrapStyle" :iconShow="true" :iconSrc="inviteCode"
+                <loginInput :mode="'DARK'" :wrapStyle="inviteWrapStyle" :iconShow="true" :iconSrc="inviteCode"
                             :placeHolder="'请输入推广码'"
                             @inputChange="inputChange('emailInviteCode', $event)"></loginInput>
             </view>
@@ -159,11 +160,10 @@
                     position: relative;
                     display: flex;
                     margin: 0 auto;
-
+                    background: #272A2E;
                     width: 690rpx;
                     height: 120rpx;
-                    background: #FFFFFF;
-                    box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
+                    box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(255, 255, 255, 0.1);
                     border-radius: 16rpx 16rpx 0px 0px;
 
                     .chountryChoiceIcon {
@@ -179,7 +179,7 @@
                         font-size: 32rpx;
                         font-family: PingFangSC-Regular, PingFang SC;
                         font-weight: 400;
-                        color: #1A1A1A;
+                        color: #D9DADB;
                         line-height: 44rpx;
                     }
 
