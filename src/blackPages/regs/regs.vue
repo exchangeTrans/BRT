@@ -180,7 +180,7 @@
                         font-family: PingFangSC-Regular, PingFang SC;
                         font-weight: 400;
                         color: #1A1A1A;
-                        line-height: 44px;
+                        line-height: 44rpx;
                     }
 
                     .lastCountryIcon {
