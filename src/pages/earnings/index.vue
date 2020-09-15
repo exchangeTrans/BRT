@@ -57,7 +57,7 @@
 						<view class="line" ></view>
 						规则
 					</view>
-					<view class="rulerInfo">囤币数量100-200000枚，随进随出，无锁仓！基础收益比例为1%。7天内未转出，包括一枚，那么收益增0.1%，币未转出的情况下，每周增加0.1%最高收益增加到2%封顶，若中途有转出（包含1枚），直接掉回1%。</view>
+					<view class="rulerInfo">{{rulerText}}</view>
 					<view class="btnGroup">
 						<view class="btnItem">转入</view>
 						<view class="btnItem export">转出</view>
@@ -100,6 +100,7 @@
                 moneyIcon:`${require('@/static/images/earning/moneyIcon.png')}`,
                 logoIcon:`${require('@/static/images/earning/logoIcon.png')}`,
 				sliderValue:50,
+				rulerText:'囤币数量100-200000枚，随进随出，无锁仓！基础收益比例为1%。7天内未转出，包括一枚，那么收益增0.1%，币未转出的情况下，每周增加0.1%最高收益增加到2%封顶，若中途有转出（包含1枚），直接掉回1%。'
             }
         },
         onLoad() {
