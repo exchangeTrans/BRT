@@ -119,10 +119,11 @@
         .promotion-wrap {
             height: calc(100vh - var(--status-bar-height) - 100rpx);
             width: 100%;
+            background: #22252A;
             /*height: 100%;*/
             .promotion-wrap-content {
                 width: 100%;
-                background: #F9FAFA;
+                /*background: #F9FAFA;*/
                 height: 100vh;
                 padding-top: 28rpx;
 
@@ -197,10 +198,10 @@
                                 margin-left: 10rpx;
 
                                 span {
+                                    color: #D9DADB;
                                     font-size: 32rpx;
                                     font-family: PingFangSC-Medium, PingFang SC;
                                     font-weight: 500;
-                                    color: #333333;
                                 }
                             }
 
@@ -213,7 +214,7 @@
 
                             .promotion-wrap-records-content-list {
                                 .promotion-wrap-records-content-item {
-                                    background: #fff;
+                                    background: #272A2E;
                                     margin-top: 20rpx;
                                     width: 690rpx;
                                     height: 184rpx;
@@ -228,7 +229,7 @@
                                             font-size: 32rpx;
                                             font-family: PingFangSC-Regular, PingFang SC;
                                             font-weight: 400;
-                                            color: #000000;
+                                            color: #D9DADB;
                                         }
 
                                         .text-money {
@@ -246,7 +247,7 @@
                                             font-size: 28rpx;
                                             font-family: PingFangSC-Regular, PingFang SC;
                                             font-weight: 400;
-                                            color: #000000;
+                                            color: rgba(217, 218, 219, 0.5);
                                         }
                                     }
                                 }

@@ -7,12 +7,12 @@
                         <view class="currency-name-img">
                             <image :src="quotesData.img"></image>
                         </view>
-                        <view class="currency-name-content">
+                        <view :class="isBlack ? 'currency-name-content black' : 'currency-name-content'">
                             <span class="name">{{quotesData.name}}币</span>
                             <span class="number">{{quotesData.number}}{{quotesData.name}}</span>
                         </view>
                     </view>
-                    <view class="price">
+                    <view :class="isBlack ? 'price black' : 'price'">
                         <span>{{quotesData.price}}</span>
                     </view>
                     <view class="upsAndDowns">
@@ -39,6 +39,10 @@
                 type: Object,
                 default: () => {
                 }
+            },
+            isBlack: {
+                type: Boolean,
+                default: false,
             }
         },
         mounted() {
@@ -116,6 +120,27 @@
                                 margin-left: 10rpx;
                             }
                         }
+                        .black {
+                            color: #D9DADB;
+                            .name {
+                                font-size: 28rpx;
+                                font-family: PingFangSC-Semibold, PingFang SC;
+                                font-weight: 600;
+                                color: #D9DADB;
+                            }
+
+                            .number {
+                                font-size: 24rpx;
+                                font-family: PingFangSC-Regular, PingFang SC;
+                                font-weight: 400;
+                                color: rgba(217, 218, 219, 0.5);
+                            }
+
+                            span {
+                                display: block;
+                                margin-left: 10rpx;
+                            }
+                        }
 
                     }
 
@@ -128,6 +153,14 @@
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
                             color: #1A1A1A;
+                        }
+                    }
+                    .black {
+                        span {
+                            font-size: 28rpx;
+                            font-family: PingFangSC-Regular, PingFang SC;
+                            font-weight: 400;
+                            color: #D9DADB;
                         }
                     }
 
