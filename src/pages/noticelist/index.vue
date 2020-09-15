@@ -1,49 +1,49 @@
 <template>
 	<view>
 		<view class="head">
-			<image src="../../images/noticelist/left.png" mode="" class="headleft"></image>
+			<image src="../../static/images/noticelist/left.png" mode="" class="headleft"></image>
 			<view class="headname">公告列表</view>
 		</view>
 		<scroll-view class="notice_list" scroll-y>
 			<view class="item">
 				<view class="notice_content">BRT关于调整USDT提币手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 			<view class="item">
 				<view class="notice_content">BRT关于调整USDT提币手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 			<view class="item">
 				<view class="notice_content">BRT关于手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 			<view class="item">
 				<view class="notice_content">BRT提币手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 			<view class="item">
 				<view class="notice_content">BRT2222222关于手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 			<view class="item">
 				<view class="notice_content">BRT1111提币手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 			<view class="item">
 				<view class="notice_content">BRT444关于手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 			<view class="item">
 				<view class="notice_content">BRT3333提币手续公告</view>
 				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../images/noticelist/right.png" mode="" class="item_right"></image>
+				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
 			</view>
 		</scroll-view>
 	</view>

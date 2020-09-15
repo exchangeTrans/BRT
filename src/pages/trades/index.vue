@@ -5,36 +5,36 @@
 		</view>
 		<view class="msg">
 			<view class="msgleft">
-				<image src="../../images/trades/headleft.png" mode="" class="lefticon"></image>
+				<image src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
 				<text class="tradetype">LED/HDU</text>
 			</view>
 			<view class="msgright">
-				<image src="../../images/trades/headright.png" mode=""  class="righticon"></image>
+				<image src="../../static/images/trades/headright.png" mode=""  class="righticon"></image>
 				<view class="change">+1.46%</view>
 			</view>
 		</view>
 		<view class="main">
 			<view class="left">
 				<view class="buy">
-					<image src="../../images/trades/bluebg.png" mode=""></image>
+					<image src="../../static/images/trades/bluebg.png" mode=""></image>
 					<view class="fonts">买入</view>
 				</view>
 				
 				<view class="sale">
-					<image src="../../images/trades/whitebg.png" mode=""></image>
+					<image src="../../static/images/trades/whitebg.png" mode=""></image>
 					<view class="fonts">卖出</view>
 				</view>
 				
 				<view class="charge">
-					<image src="../../images/trades/sub.png" mode="" class="sub"></image>
+					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
 					<text class="charge_name">价格(HDU)</text>
-					<image src="../../images/trades/add.png" mode="" class="add"></image>
+					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
 				</view>
 				
 				<view class="num">
-					<image src="../../images/trades/sub.png" mode="" class="sub"></image>
+					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
 					<text class="charge_num">数量(LED)</text>
-					<image src="../../images/trades/add.png" mode="" class="add"></image>
+					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
 				</view>
 				
 				<view class="hdunum">可用：0 HDU</view>
@@ -62,16 +62,16 @@
 					<data-list :colorOptions="red"></data-list>
 				</view>
 				<view class="icon_list">
-					<image src="../../images/trades/choose.png" mode="" class="icon_item"></image>
-					<image src="../../images/trades/maichu.png" mode="" class="icon_item"></image>
-					<image src="../../images/trades/mairu.png" mode="" class="icon_item"></image>
+					<image src="../../static/images/trades/choose.png" mode="" class="icon_item"></image>
+					<image src="../../static/images/trades/maichu.png" mode="" class="icon_item"></image>
+					<image src="../../static/images/trades/mairu.png" mode="" class="icon_item"></image>
 				</view>
 			</view>
 		</view>
 		<view class="footer">
 			<view class="descript">当前委托</view>
 			<view class="img">
-				<image src="../../images/trades/footer.png" mode=""></image>
+				<image src="../../static/images/trades/footer.png" mode=""></image>
 			</view>
 		</view>
 	</view>
