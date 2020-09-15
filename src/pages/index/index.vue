@@ -8,10 +8,10 @@
 				</view>
 
 				<view class="earning">
-					<view>BRT总余额 420.24 BRT </view>
+					<view>BRT总余额</view>
 					<view class="earningNumber">
-						<span>0</span>
-						<span>≈￥0</span>
+						<span>420.24 BRT</span>
+						<span>≈￥10098 人民币</span>
 					</view>
 				</view>
 
@@ -177,7 +177,7 @@
 					.earningNumber{
 						margin-top: 20rpx;
 						span:nth-of-type(1){
-							font-size: 60rpx;
+							font-size: 48rpx;
 							margin-right: 10rpx;
 						}
 					}

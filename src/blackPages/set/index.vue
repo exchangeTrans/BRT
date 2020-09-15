@@ -31,7 +31,7 @@
 
 			</view>
 
-			<chooseLanguage></chooseLanguage>
+			<chooseLanguage :mode="'night'"></chooseLanguage>
 
 			<view class="confirmBtn">
 				<btn :background="background" :borderRadius="borderRadius"></btn>
@@ -61,12 +61,17 @@
                 headerOptions:{
                     show:true,
                     isAllowReturn:true,
+					isWhiteIcon:true,
                     text:"设置",
                     rightItem:{
                         type:"text",
                         text:"",
                     },
-                    bodyPadding:{"padding":'0,0,0,0'},
+					style:{
+                      'color':'#D9DADB'
+					},
+
+                    background: '#00001A',
                     headerIsNoBoder: true,
                 },
                 currencyData:[
@@ -106,17 +111,18 @@
 		width: 100%;
 		height: 100%;
 
+		background: #22252A;
 		.content{
 			margin-top: calc(100rpx + var(--status-bar-height));
 			font-family: PingFangSC-Semibold, PingFang SC;
+			color: #D9DADB;
 			.model{
 				padding: 0 30rpx;
 				height: 120rpx;
 				box-sizing: border-box;
 				font-size: 32rpx;
 				font-weight: 400;
-				color: #1A1A1A;
-				box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1), 0px -1px 0px 0px rgba(0, 0, 0, 0.1);
+				box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.1), 0px -1px 0px 0px rgba(255, 255, 255, 0.1);
 				.modelText{
 					.line{
 						display: inline-block;
@@ -138,7 +144,7 @@
 						width: 172rpx;
 						height: 76rpx;
 						font-size: 28rpx;
-						color: #835DFF;
+						color:#098FE0;
 						text-align: center;
 						line-height: 76rpx;
 						background: #EFF3F9;
@@ -151,6 +157,7 @@
 						color: #FFFFFF;
 						background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 					}
+
 				}
 			}
 			.currency{
@@ -160,9 +167,8 @@
 				box-sizing: border-box;
 				font-size: 32rpx;
 				font-weight: 600;
-				color: #1A1A1A;
 				line-height: 84rpx;
-				border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+				border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
 				.currencyTitle{
 					.line{
 						display: inline-block;
@@ -181,7 +187,7 @@
 				box-sizing: border-box;
 				height: 100rpx;
 				line-height: 100rpx;
-				border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+				border-bottom:1rpx solid rgba(255, 255, 255, 0.1);
 				.currencyIcon{
 					display: inline-block;
 					width: 48rpx;
@@ -195,7 +201,6 @@
 					display: inline-block;
 					font-size: 28rpx;
 					font-weight: 400;
-					color: #1A1A1A;
 					margin-left: 16rpx;
 				}
 			}
