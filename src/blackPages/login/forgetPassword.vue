@@ -1,40 +1,40 @@
 <template>
-    <view class="forgetPassword" id="forgetPassword" :style="{'background': mode !== 'DARK' ? '#F9FAFA' : '#22252A'}">
+    <view class="forgetPassword" id="forgetPassword">
         <app-header :headerOptions="headerOptions">
         </app-header>
         <view class="wrap">
             <loginHead :defaultType="defaultType" :leftText="leftText" :rightText="rightText"
                        @typeChange="typeChange"></loginHead>
             <view class="phoneForgetFlag" v-show="type === 'PHONE'">
-                <view class="countryChoice" :style="{'background': mode !== 'DARK' ? '#FFFFFF' : '#272A2E'}">
+                <view class="countryChoice">
                     <view class="countryChoiceIcon" :style="{'background-image': countryChoiceIcon}"></view>
-                    <view class="countryText" :style="{'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}">{{country}}</view>
+                    <view class="countryText">{{country}}</view>
                     <view class="lastCountryIcon" :style="{'background-image': countryChoiceLastIcon}"></view>
                 </view>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
                             :firstText="countryNumber"
                             :firstTextStyle="phoneFirstStyle" :placeHolder="'请输入注册手机号码'"
                             @inputChange="inputChange('phone', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true"
                             :lastText="'发送验证码'"
                             :placeHolder="'请输入手机验证码'" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入新登录密码'"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入新登录密码'"
                             @inputChange="inputChange('password', $event)"></loginInput>
-                <loginInput :mode="mode" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                <loginInput :mode="'DARK'" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
                             :placeHolder="'请确认新登录密码'"
                             @inputChange="inputChange('surePassword', $event)"></loginInput>
             </view>
             <view class="emailForgetFlag" v-show="type === 'EMAIL'">
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="emailIcon" :iconStyle="emailIconStyle"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="emailIcon" :iconStyle="emailIconStyle"
                             :wrapStyle="emailWrapStyle"
                             :placeHolder="'请输入注册邮箱'" @inputChange="inputChange('email', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true"
                             :lastText="'发送验证码'"
                             :placeHolder="'请输入邮箱验证码'"
                             @inputChange="inputChange('emailVerifyCode', $event)"></loginInput>
-                <loginInput :mode="mode" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入新登录密码'"
+                <loginInput :mode="'DARK'" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入新登录密码'"
                             @inputChange="inputChange('emailPassword', $event)"></loginInput>
-                <loginInput :mode="mode" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                <loginInput :mode="'DARK'" :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
                             :placeHolder="'请确认新登录密码'"
                             @inputChange="inputChange('emailSurePassword', $event)"></loginInput>
             </view>
@@ -154,10 +154,10 @@
                     display: flex;
                     position: relative;
                     margin: 0 auto;
-
+                    background: #272A2E;
                     width: 690rpx;
                     height: 120rpx;
-                    box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
+                    box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(255, 255, 255, 0.1);
                     border-radius: 16rpx 16rpx 0rpx 0rpx;
 
                     .countryChoiceIcon {

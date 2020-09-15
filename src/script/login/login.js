@@ -26,11 +26,11 @@ export default {
             country: "中国",
             wrapStyle: {
                 'background': '#FFFFFF',
-                'box-shadow': ' 0px -1px 0px 0px rgba(0, 0, 0, 0.1)',
+                'box-shadow': ' 0px 1px 0px 0px rgba(0, 0, 0, 0.1)',
             },
             lastWrapStyle: {
                 'background': '#FFFFFF',
-                'box-shadow': '0px -1px 0px 0px rgba(0, 0, 0, 0.1)',
+                'box-shadow': '0px 1px 0px 0px rgba(0, 0, 0, 0.1)',
                 'border-radius': '0px 0px 16px 16px',
             },
             phoneFirstText: {
@@ -44,7 +44,7 @@ export default {
             },
             emailStyle: {
                 'background': '#FFFFFF',
-                'box-shadow': '0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1)',
+                'box-shadow': '0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1)',
                 'border-radius': '16rpx 16rpx 0rpx 0rpx',
                 'margin-top': '40rpx',
             },
