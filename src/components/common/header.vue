@@ -133,9 +133,7 @@
 				type: Boolean,
 				default: false
             },
-            hearderOpacity:{type:Number,default:1}
-
-
+            hearderOpacity:{type:Number,default:1},
         },
         onLoad() {
 

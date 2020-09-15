@@ -1,69 +1,9 @@
 {
-<<<<<<< HEAD
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/noticedetails/index",
-			"style": {
-				"app-plus":{
-						"scrollIndicator":"all"
-					}
-			}
-		},
-		{
-			"path": "pages/trades/index",
-			"style": {
-				//"navigationBarTitleText": "uni-app"
-			}
-		},
-		{
-			"path": "pages/myteam/index",
-			"style": {
-				"app-plus":{
-						"scrollIndicator":"all"
-					}
-			}
-		},
-		
-		{
-			"path": "pages/noticelist/index",
-			"style": {
-				//"navigationBarTitleText": "uni-app"
-				"app-plus":{
-						"scrollIndicator":"all"
-					}
-			}
-		},
-		
-		{
-			"path": "pages/index/index",
-			"style": {
-				//"navigationBarTitleText": "uni-app"
-			}
-		},{
-			"path": "pages/welcome/index",
-			"style": {
-				//"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/set/index",
-			"style": {
-				//"navigationBarTitleText": ""
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8",
-		"navigationStyle": "custom"
-	}
-=======
+
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
-      "path":"blackPages/regs/regs"
+      "path":"blackPages/changePhone/index"
       //"style":
     },
 
@@ -258,5 +198,4 @@
     "backgroundColor": "#F8F8F8",
     "navigationStyle": "custom"
   }
->>>>>>> 55348d080cf9cc7015a0fdbfbcfc85dd3d00f153
 }

@@ -11,7 +11,7 @@
 				</view>
 
 				<view class="oldPhone">
-					<loginInput :wrapStyle='wrapStyle'  :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'旧手机号码'" :lastTextShow="true" :lastText="'发送验证码'"
+					<loginInput :mode="'DARK'"   :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'旧手机号码'" :lastTextShow="true" :lastText="'发送验证码'"
 								:lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 
 				</view>
@@ -27,9 +27,9 @@
 					<view class="countryText">{{country}}</view>
 					<view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
 				</view>
-				<loginInput :wrapStyle='wrapStyle' :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber" :firstTextStyle="phoneFirstTextStyle"
+				<loginInput :mode="'DARK'" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber" :firstTextStyle="phoneFirstTextStyle"
 				 :placeHolder="'手机号码'" @inputChange="inputChange('phone', $event)"></loginInput>
-				<loginInput :wrapStyle='wrapStyle' :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'验证码'" :lastTextShow="true" :lastText="'发送验证码'"
+				<loginInput :mode="'DARK'"  :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'验证码'" :lastTextShow="true" :lastText="'发送验证码'"
 				 :lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'" @inputChange="inputChange('passsword', $event)"></loginInput>-->
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'" @inputChange="inputChange('surePassword', $event)"></loginInput>-->

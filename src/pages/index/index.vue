@@ -63,7 +63,7 @@
 	</view>
 </template>
 
-<script src="@/script/index.js">
+<script src="@/script/index/index.js">
 	// import forcedUpdating from "@/components/popup/forcedUpdating/index.vue"
     // export default {
 	//     components:{

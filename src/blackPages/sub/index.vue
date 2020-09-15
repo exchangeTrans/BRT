@@ -55,7 +55,7 @@
 	</view>
 </template>
 
-<script src="@/script/sub.js">
+<script src="@/script/sub/sub.js">
     import transferInAmount from "@/components/popup/transferInAmount/index.vue"
 //    import appHeader from "@/components/common/header.vue";
 
