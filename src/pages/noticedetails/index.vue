@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="head">
-			<image src="../../images/noticelist/left.png" mode="" class="headleft"></image>
+			<image src="../../static/images/noticelist/left.png" mode="" class="headleft"></image>
 			<view class="headname">公告详情</view>
 		</view>
 		<view class="notice_list">

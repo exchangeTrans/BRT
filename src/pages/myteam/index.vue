@@ -2,7 +2,7 @@
 	<view>
 		<view class="headbg">
 			<view class="head">
-				<image src="../../images/myteam/left.png" mode="" class="headleft"></image>
+				<image src="../../static/images/myteam/left.png" mode="" class="headleft"></image>
 				<view class="headname">我的团队</view>
 			</view>
 			<view class="usermsgcon">
@@ -28,7 +28,7 @@
 				</view>
 			</view>
 			<view class="invitelog">
-				<image src="../../images/myteam/item.png" mode="" class="img"></image>
+				<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
 				<view class="log">邀请记录</view>
 			</view>
 			<view class="datalisthead">
