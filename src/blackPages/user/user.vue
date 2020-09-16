@@ -97,8 +97,8 @@
     </view>
 </template>
 
-<script>
-    import Btn from "../../components/btn/index";
+<script src="@/script/user/user.js">
+    /*import Btn from "../../components/btn/index";
     export default {
         name: "user",
         components: {Btn},
@@ -156,7 +156,7 @@
                 eyesIcon: `${require('@/static/images/user/eyes.png')}`,
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

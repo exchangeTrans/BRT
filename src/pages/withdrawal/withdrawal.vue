@@ -40,8 +40,8 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue"
+<script src="@/script/withdrawal/withdrawal.js">
+    /*import appHeader from "@/components/common/header.vue"
     import WithdrawalInput from "../../components/withdrawal/withdrawalInput";
     import Btn from "../../components/btn/index";
 
@@ -115,7 +115,7 @@
                 console.log(type)
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

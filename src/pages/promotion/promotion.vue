@@ -46,8 +46,8 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue"
+<script src="@/script/promotion/promotion.js">
+    /*import appHeader from "@/components/common/header.vue"
 
     export default {
         components: {
@@ -60,16 +60,11 @@
                 headerOptions: {
                     show: true,
                     isAllowReturn: true,
-                    isWhiteIcon:true,
                     text: "推广收益",
                     rightItem: {
                         type: "text",
                         text: "",
                     },
-                    style:{
-                        'color':'#D9DADB'
-                    },
-                    background: '#00001A',
                     bodyPadding: {"padding": '0,0,0,0'},
                     headerIsNoBoder: true,
                 },
@@ -107,7 +102,7 @@
                 console.log(type)
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

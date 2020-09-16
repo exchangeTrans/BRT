@@ -8,7 +8,7 @@
                           v-for="(item, index) in inputDatas"
                           :key="index">
                         <WithdrawalInput :inputData="item"
-                                         :isBlack="true"></WithdrawalInput>
+                                         :isBlack="isBlack"></WithdrawalInput>
                     </view>
                 </view>
                 <view :class="isBlack ? 'withdrawal-wrap-container-text black':'withdrawal-wrap-container-text'">
@@ -42,8 +42,8 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue"
+<script src="@/script/withdrawal/withdrawal.js">
+    /*import appHeader from "@/components/common/header.vue"
     import WithdrawalInput from "../../components/withdrawal/withdrawalInput";
     import Btn from "../../components/btn/index";
 
@@ -118,12 +118,57 @@
                 }
             }
         },
+        mounted() {
+            let theme = this.$storage.getSync({key:'theme'});
+            if(theme === 'white'){
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: true,
+                    text: "BRT 提币",
+                    rightItem: {
+                        type: "text",
+                        text: "提现记录",
+                        style: {
+                            fontSize: "28rpx",
+                            color: "#098FE0",
+                        },
+                    },
+                    bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                };
+                this.isBlack = false;
+                this.BtnackgroundColor = "#B4BBC0";
+            } else {
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: true,
+                    isWhiteIcon: true,
+                    text: "BRT 提币",
+                    rightItem: {
+                        type: "text",
+                        text: "提现记录",
+                        style: {
+                            fontSize: "28rpx",
+                            color: "#098FE0",
+                        },
+                    },
+                    style: {
+                        'color': '#D9DADB'
+                    },
+                    background: '#00001A',
+                    bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                };
+                this.isBlack = true;
+                this.BtnackgroundColor = "#8C939B";
+            }
+        },
         methods: {
             headertap(type) {
                 console.log(type)
             }
         }
-    }
+    }*/ 
 </script>
 
 <style scoped lang="less">

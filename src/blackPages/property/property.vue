@@ -34,7 +34,7 @@
                           v-for="(item, index) in propertyCardData"
                           :key="index">
                         <PropertyCard :propertyCardData="item"
-                                      :isBlack="true"></PropertyCard>
+                                      :isBlack="isBlack"></PropertyCard>
                     </view>
                 </view>
             </view>
@@ -42,8 +42,8 @@
     </view>
 </template>
 
-<script>
-    import pageHeader from '@/components/common/header.vue'
+<script  src="@/script/property/property.js">
+    /*import pageHeader from '@/components/common/header.vue'
     import PropertyCard from "../../components/property/propertyCard";
 
     export default {
@@ -51,6 +51,39 @@
         components: {
             PropertyCard,
             pageHeader
+        },
+        mounted() {
+            let theme = this.$storage.getSync({key:'theme'});
+            // console.log(theme);
+            if(theme === 'white'){
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: false,
+                    text: "资产",
+                    rightItem: {
+                        type: "text",
+                        text: "",
+                    },
+                    headerIsNoBoder: false,
+                };
+                this.isBlack = false;
+            } else {
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: false,
+                    text: "资产",
+                    rightItem: {
+                        type: "text",
+                        text: "",
+                    },
+                    style:{
+                        'color':'#D9DADB'
+                    },
+                    background: '#00001A',
+                    headerIsNoBoder: true,
+                };
+                this.isBlack = true;
+            }
         },
         data() {
             return {
@@ -91,10 +124,11 @@
                     background: '#00001A',
                     headerIsNoBoder: true,
                 },
+                isBlack: false,
             }
         },
         methods: {}
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

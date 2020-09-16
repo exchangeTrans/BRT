@@ -49,8 +49,8 @@
     </view>
 </template>
 
-<script>
-    import QuotesItem from "../../components/quotes/quotesItem";
+<script src="@/script/quotes/quotes.js">
+    /*import QuotesItem from "../../components/quotes/quotesItem";
     import pageHeader from '@/components/common/header.vue'
     export default {
 
@@ -228,7 +228,7 @@
                 this.active = index;
             },
         },
-    };
+    };*/
 </script>
 
 <style scoped lang="less">

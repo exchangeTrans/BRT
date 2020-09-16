@@ -54,6 +54,35 @@ export default {
             headerOptions: {
                 show: true,
                 isAllowReturn: true,
+                text: "选择国家",
+                rightItem: {
+                    type: "text",
+                    text: "",
+                },
+                bodyPadding: {"padding": '0,0,0,0'},
+                headerIsNoBoder: true,
+            },
+        }
+    },
+    mounted() {
+        let theme = this.$storage.getSync({key:'theme'});
+        // console.log(theme);
+        if(theme === 'white'){
+            this.headerOptions = {
+                show: true,
+                isAllowReturn: true,
+                text: "选择国家",
+                rightItem: {
+                    type: "text",
+                    text: "",
+                },
+                bodyPadding: {"padding": '0,0,0,0'},
+                headerIsNoBoder: true,
+            }
+        } else {
+            this.headerOptions = {
+                show: true,
+                isAllowReturn: true,
                 isWhiteIcon:true,
                 text: "选择国家",
                 rightItem: {
@@ -66,7 +95,7 @@ export default {
                 background: '#00001A',
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
-            },
+            }
         }
     },
     methods: {

@@ -41,10 +41,9 @@
     </view>
 </template>
 
-<script>
-    import pageHeader from '@/components/common/header.vue'
+<script src="@/script/property/property.js">
+    /*import pageHeader from '@/components/common/header.vue'
     import PropertyCard from "../../components/property/propertyCard";
-
     export default {
         name: "property",
         components: {
@@ -89,7 +88,7 @@
             }
         },
         methods: {}
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

@@ -97,8 +97,8 @@
     </view>
 </template>
 
-<script>
-    import Btn from "../../components/btn/index";
+<script src="@/script/user/user.js">
+    /*import Btn from "../../components/btn/index";
     export default {
         name: "user",
         components: {Btn},
@@ -155,8 +155,42 @@
                 headerImgRight: `${require('@/static/images/user/headerRight.png')}`,
                 eyesIcon: `${require('@/static/images/user/eyes.png')}`,
             }
+        },
+        mounted() {
+            /!*let theme = this.$storage.getSync({key:'theme'});
+            // console.log(theme);
+            if(theme === 'white'){
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: false,
+                    text: "资产",
+                    rightItem: {
+                        type: "text",
+                        text: "",
+                    },
+                    headerIsNoBoder: false,
+                };
+            } else {
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: false,
+                    text: "资产",
+                    rightItem: {
+                        type: "text",
+                        text: "",
+                    },
+                    style:{
+                        'color':'#D9DADB'
+                    },
+                    background: '#00001A',
+                    headerIsNoBoder: true,
+                };
+            }*!/
+        },
+        methods: {
+
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

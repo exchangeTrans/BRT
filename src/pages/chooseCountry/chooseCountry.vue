@@ -23,8 +23,8 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue"
+<script src="@/script/chooseCountry/chooseCountry.js">
+    /*import appHeader from "@/components/common/header.vue"
 
     export default {
         name: "chooseCountry",
@@ -90,6 +90,40 @@
                 },
             }
         },
+        mounted() {
+            let theme = this.$storage.getSync({key:'theme'});
+            // console.log(theme);
+            if(theme === 'white'){
+                this.headerOptions = {
+                    show: true,
+                        isAllowReturn: true,
+                        text: "选择国家",
+                        rightItem: {
+                        type: "text",
+                            text: "",
+                    },
+                    bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                }
+            } else {
+                this.headerOptions = {
+                    show: true,
+                        isAllowReturn: true,
+                        isWhiteIcon:true,
+                        text: "选择国家",
+                        rightItem: {
+                        type: "text",
+                            text: "",
+                    },
+                    style:{
+                        'color':'#D9DADB'
+                    },
+                    background: '#00001A',
+                        bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                }
+            }
+        },
         methods: {
             chooseItem(item) {
                 // eslint-disable-next-line no-debugger
@@ -107,7 +141,7 @@
                 console.log(type)
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">
