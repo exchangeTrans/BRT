@@ -71,7 +71,7 @@
                 },
                 currencyData:[
 					{
-					    name:'人民币（CNY）',
+					    name:'人民币（RMB）',
                         img:`${require('@/static/images/set/rmb.png')}`,
 					},
                     {

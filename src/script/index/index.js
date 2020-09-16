@@ -27,12 +27,12 @@ export default {
                     img: `${require('@/static/images/home/link.png')}`
                 },
                 {
-                    text: '直推列表',
-                    img: `${require('@/static/images/home/list.png')}`
+                    text: '团队详情',
+                    img: `${require('@/static/images/home/team.png')}`
                 },
                 {
-                    text: '团队收益',
-                    img: `${require('@/static/images/home/team.png')}`
+                    text: '推广收益',
+                    img: `${require('@/static/images/home/list.png')}`
                 },
                 {
                     text: '收益明细',
@@ -52,7 +52,7 @@ export default {
 
     },
     mounted() {
-        //this.$refs.update.open();
+        this.$refs.update.open();
     },
     methods: {}
 }

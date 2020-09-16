@@ -1,17 +1,17 @@
 <template>
-	<view class="changePhone" id="changePhone">
+	<view class="changeEmail" id="changeEmail">
 		<app-header :headerOptions="headerOptions"></app-header>
 		<view class="wrap">
 			<view class="changePhoneTop" :style="{'background-image':topBg}">
 
 
 				<view class="nowPhone">
-					<view class="nowPhoneTitle">当前绑定手机号码：</view>
-					<view class="phoneNum">+86 13590086535</view>
+					<view class="nowPhoneTitle">当前绑定邮箱：</view>
+					<view class="phoneNum">497876789@126.com</view>
 				</view>
 
 				<view class="oldPhone">
-					<loginInput :mode="'DARK'"   :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'请输入当前手机验证码'" :lastTextShow="true" :lastText="'发送验证码'"
+					<loginInput :mode="'DARK'" :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'输入当前邮箱验证码'" :lastTextShow="true" :lastText="'发送验证码'"
 								:lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 
 				</view>
@@ -20,16 +20,16 @@
 			<view  class="phoneRegsFlag">
 				<view class="changePhoneText">
 					<view class="line" ></view>
-					新绑定手机号码
+					新绑定邮箱
 				</view>
-				<view class="countryChoice">
-					<view class="chountryChoiceIcon" :style="{'background-image': countryIcon}"></view>
-					<view class="countryText">{{country}}</view>
-					<view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
-				</view>
-				<loginInput :mode="'DARK'" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber" :firstTextStyle="phoneFirstTextStyle"
-				 :placeHolder="'请输入新绑定手机号码'" @inputChange="inputChange('phone', $event)"></loginInput>
-				<loginInput :mode="'DARK'"  :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'请输入新手机验证码'" :lastTextShow="true" :lastText="'发送验证码'"
+				<!--<view class="countryChoice">-->
+					<!--<view class="chountryChoiceIcon" :style="{'background-image': countryIcon}"></view>-->
+					<!--<view class="countryText">{{country}}</view>-->
+					<!--<view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>-->
+				<!--</view>-->
+				<loginInput :mode="'DARK'" :iconShow="true" :iconSrc="emailIcon" :firstTextShow="true"
+				 :placeHolder="'请输入新绑定邮箱'" @inputChange="inputChange('phone', $event)"></loginInput>
+				<loginInput :mode="'DARK'" :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'请输入新邮箱验证码'" :lastTextShow="true" :lastText="'发送验证码'"
 				 :lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'" @inputChange="inputChange('passsword', $event)"></loginInput>-->
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'" @inputChange="inputChange('surePassword', $event)"></loginInput>-->
@@ -61,7 +61,7 @@
 				defaultChoice: "PHONE",
 				leftText: "手机号注册",
 				rightText: "邮箱注册",
-				btnText: "更换手机绑定",
+				btnText: "更换邮箱绑定",
 				country: "中国",
 				countryNumber: "+86",
 
@@ -93,10 +93,6 @@
 				},
 				phoneLastTextStyle: {
 
-
-				},
-                wrapStyle:{
-                    'background': '#272A2E',
 				},
 				emailStyle: {
 					'background': '#FFFFFF',
@@ -108,7 +104,7 @@
 				    show:true,
 				    isAllowReturn:true,
 					isWhiteIcon:true,
-				    text:"更换手机号码",
+				    text:"更换邮箱",
 
 				    rightItem:{
 				        type:"text",
@@ -150,10 +146,12 @@
 </script>
 
 <style lang="less">
-	.changePhone {
+	.changeEmail {
 		width: 100%;
 		height: 100%;
 		background: #22252A;
+
+
 		.wrap {
 			display: block;
 			.changePhoneTop{
@@ -222,7 +220,7 @@
 
 					width: 690rpx;
 					height: 120rpx;
-					background: #272A2E;
+						color: #D9DADB;
 					box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
 					border-radius: 16rpx 16px 0px 0px;
 
@@ -239,8 +237,7 @@
 						font-size: 32rpx;
 						font-family: PingFangSC-Regular, PingFang SC;
 						font-weight: 400;
-
-						color: #D9DADB;
+						color: #1A1A1A;
 						line-height: 44px;
 					}
 

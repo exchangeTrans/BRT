@@ -8,10 +8,10 @@
 				</view>
 
 				<view class="earning">
-					<view>BRT总余额</view>
+					<view>资产总额</view>
 					<view class="earningNumber">
-						<span>420.24 BRT</span>
-						<span>≈￥10098 人民币</span>
+						<span>420.24 USDT</span>
+						<span>≈￥10098 CNY</span>
 					</view>
 				</view>
 
@@ -44,7 +44,7 @@
 
 				<view class="performerItem" v-for="item in 8">
 					<view class="currency">
-						<view class="currencyTitle"> <span>LED</span>/HDU</view>
+						<view class="currencyTitle"> <span>BRT</span>/USDT</view>
 						<view class="currencyData">24H量85661.9866</view>
 					</view>
 					<view class="newest">

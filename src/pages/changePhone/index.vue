@@ -11,7 +11,7 @@
 				</view>
 
 				<view class="oldPhone">
-					<loginInput :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'旧手机号码'" :lastTextShow="true" :lastText="'发送验证码'"
+					<loginInput :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'输入当前手机验证码'" :lastTextShow="true" :lastText="'发送验证码'"
 								:lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 
 				</view>
@@ -20,7 +20,7 @@
 			<view  class="phoneRegsFlag">
 				<view class="changePhoneText">
 					<view class="line" ></view>
-					新手机号码
+					新绑定手机号码
 				</view>
 				<view class="countryChoice">
 					<view class="chountryChoiceIcon" :style="{'background-image': countryIcon}"></view>
@@ -28,8 +28,8 @@
 					<view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
 				</view>
 				<loginInput :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber" :firstTextStyle="phoneFirstTextStyle"
-				 :placeHolder="'手机号码'" @inputChange="inputChange('phone', $event)"></loginInput>
-				<loginInput :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'验证码'" :lastTextShow="true" :lastText="'发送验证码'"
+				 :placeHolder="'请输入新绑定手机号码'" @inputChange="inputChange('phone', $event)"></loginInput>
+				<loginInput :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'请输入新手机验证码'" :lastTextShow="true" :lastText="'发送验证码'"
 				 :lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'" @inputChange="inputChange('passsword', $event)"></loginInput>-->
 				<!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'" @inputChange="inputChange('surePassword', $event)"></loginInput>-->
@@ -61,7 +61,7 @@
 				defaultChoice: "PHONE",
 				leftText: "手机号注册",
 				rightText: "邮箱注册",
-				btnText: "更换手机号码",
+				btnText: "更换手机绑定",
 				country: "中国",
 				countryNumber: "+86",
 

@@ -16,7 +16,7 @@
 						<view class="dataGroupItemText">123</view>
 					</view>
 					<view class="dataGroupItem">
-						<view class="dataGroupItemTitle">最佳持币</view>
+						<view class="dataGroupItemTitle">昨日最佳持币</view>
 						<view class="dataGroupItemText">3</view>
 					</view>
 				</view>
@@ -41,8 +41,8 @@
 						质押数量：1000 BRT
 					</view>
 					<view class="times">
-						<view class="timeItem startTime">起始时间：2020/09/28</view>
-						<view class="timeItem endTime">结束时间：2020/09/30</view>
+						<view class="timeItem startTime">起始时间：09/28 12:43</view>
+						<view class="timeItem endTime">结束时间：09/30 14:56</view>
 					</view>
 				</view>
 			</view>

@@ -31,7 +31,7 @@
 			return {
                 title: 'dialog',
                 type:'',
-                isMustUpDate:false,
+                isMustUpDate:true,
                 updateIcon:`${require('@/static/images/home/updateIcon.png')}`,
                 closeIcon:`${require('@/static/images/home/close.png')}`,
                 updateText:'钱包管理增加排序功能，优化网络速度'
@@ -69,15 +69,16 @@
         height: 800rpx;
         border-radius: 20rpx;
         position: relative;
-        padding-top: 30rpx;
+        padding-top: 78rpx;
         box-sizing: border-box;
         .image{
-            width: 400rpx;
-            height: 400rpx;
-            background-size: cover;
+            width: 344rpx;
+            height: 314rpx;
+            background-size: 100% 100%;
             margin: 0 auto 30rpx;
         }
         .findNew{
+            margin-top: 60rpx;
             text-align: center;
             font-size: 36rpx;
             font-family: PingFangSC-Semibold, PingFang SC;
