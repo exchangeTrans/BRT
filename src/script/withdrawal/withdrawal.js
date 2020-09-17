@@ -13,7 +13,7 @@ export default {
         return {
             isBlack: true,
             headerOptions: {
-                show: true,
+                /*show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
                 text: "BRT 提币",
@@ -24,13 +24,15 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
+                    tipText:"AVV491",
+                    haveTip:true,
                 },
                 style: {
                     'color': '#D9DADB'
                 },
                 background: '#00001A',
                 bodyPadding: {"padding": '0,0,0,0'},
-                headerIsNoBoder: true,
+                headerIsNoBoder: true,*/
             },
             btnText: "提币",
             BtnackgroundColor: "#8C939B",
@@ -87,6 +89,8 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
+                    tipText:"AVV491",
+                    haveTip:true,
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
@@ -106,6 +110,8 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
+                    tipText:"AVV491",
+                    haveTip:true,
                 },
                 style: {
                     'color': '#D9DADB'

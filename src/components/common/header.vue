@@ -59,7 +59,7 @@
                         'fontWeight':headerOptions.rightItem.style&&headerOptions.rightItem.style.fontWeight?headerOptions.rightItem.style.fontWeight:'',}">
                     {{headerOptions.rightItem.text}}
                 </div>
-                <div class="imgBox" v-else-if="headerOptions.rightItem.type==='icon'"  @tap.stop="headertap(headerOptions.funcType)">
+                <div class="imgBox" v-if="headerOptions.rightItem.type==='icon'"  @tap.stop="headertap(headerOptions.funcType)">
                     <image :src="headerOptions.rightItem.path" :style="{'width':headerOptions.rightItem.style.width,'height':headerOptions.rightItem.style.height}"></image>
                     <!-- <div class="cricle">
                         <div class="cricle-item"></div>
@@ -67,6 +67,9 @@
                         <div class="cricle-item"></div>
                     </div> -->
                 </div>
+
+                <div class="haveTip" v-if="headerOptions.rightItem.haveTip">ID: {{headerOptions.rightItem.tipText}}</div>
+                
             </div>
         </view>
     </view>
@@ -286,8 +289,20 @@
                     text-align:right;
                     position: absolute;
                     margin-top: 30rpx;
+                    font-size: 28rpx;
                     right: 40rpx;
                     width: 100%;
+
+                }
+                .haveTip {
+                    text-align:right;
+                    font-size: 24rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: rgba(0, 0, 0, 0.5);
+                    display:block;
+                    position: absolute;
+                    margin-top: 60rpx;
                 }
                 .imgBox {
                     float:right;

@@ -9,19 +9,23 @@ export default {
                     name:"修改绑定手机邮箱",
                     path:"",
                     img:`${require('@/static/images/user/alter.png')}`,
-                },{
+                },
+                {
                     name:"修改密码",
                     path:"",
                     img:`${require('@/static/images/user/password.png')}`,
-                },{
+                },
+                {
                     name:"分享链接",
                     path:"",
                     img:`${require('@/static/images/user/link.png')}`,
-                },{
+                },
+                {
                     name:"联系客服",
                     path:"",
                     img:`${require('@/static/images/user/service.png')}`,
-                },{
+                },
+                {
                     name:"设置",
                     path:"",
                     img:`${require('@/static/images/user/set.png')}`,
@@ -32,18 +36,25 @@ export default {
                     name:"官网",
                     path:"",
                     img:`${require('@/static/images/user/official.png')}`,
-                },{
+                    url:"https://drrfffs.brt.com/https://drrfffs.brt.com/https://drrfffs.brt.com/",
+                },
+                {
                     name:"区块链浏览器",
                     path:"",
                     img:`${require('@/static/images/user/blockchain.png')}`,
-                },{
+                    url:"https://drrfffs.brt.com/",
+                },
+                {
                     name:"开发者支持",
                     path:"",
                     img:`${require('@/static/images/user/dev.png')}`,
-                },{
+                    url:"https://drrfffs.brt.com/",
+                },
+                {
                     name:"版本",
                     path:"",
                     img:`${require('@/static/images/user/version.png')}`,
+                    url:"https://drrfffs.brt.com/",
                 },
             ],
             btnText: "退出登录",
