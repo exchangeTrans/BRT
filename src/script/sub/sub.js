@@ -28,6 +28,7 @@ export default {
             subBg:`${require('@/static/images/sub/subBg.png')}`,
             circleBg:`${require('@/static/images/sub/circleBg.png')}`,
             circleBg2:`${require('@/static/images/sub/circleBg2.png')}`,
+            circleBg3:`${require('@/static/images/sub/circleBg3.png')}`,
             notice:`${require('@/static/images/sub/notice.png')}`,
 
         }

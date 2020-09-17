@@ -21,12 +21,23 @@
 					</view>
 				</view>
 			</view>
-			<view class="circle" :style="{'background-image':'url('+circleBg+')'}">
-				<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}" @tap="transferInAmount">
-                    开始挖矿
+			<!--<view class="circle" :style="{'background-image':'url('+circleBg+')'}">-->
+				<!--<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}" @tap="transferInAmount">-->
+                    <!--开始挖矿-->
+				<!--</view>-->
+				<!--<view class="circleText">最小持币：1000 BRT</view>-->
+			<!--</view>-->
+
+				<view class="circle pledge" :style="{'background-image':'url('+circleBg+')'}">
+					<view class="circleBtn" :style="{'background-image':'url('+circleBg3+')'}" @tap="transferInAmount">
+						<view class="pledgeTitle">目前质押 BRT</view>
+							<view class="pledgeText">1001</view>
+					</view>
+					<view class="circleText">将于 2020/09/12 12:30 释放质押</view>
 				</view>
-				<view class="circleText">最小持币：1000 BRT</view>
-			</view>
+
+
+
 			<view class="earningsList" v-for="(item,index) in 3" :key="index">
 				<view class="earningsText">
 					<view class="line" ></view>
@@ -178,6 +189,7 @@
 						line-height: 300rpx;
 					}
 					.circleText{
+						width: 100%;
 						position: absolute;
 						bottom: 150rpx;
 						left: 50%;
@@ -186,6 +198,23 @@
 						font-weight: 400;
 						color: #098FE0;
 						text-align: center;
+					}
+				}
+				.pledge{
+					position: relative;
+					.circleBtn{
+						line-height: 120rpx;
+						.pledgeTitle{
+							margin-top: 50rpx;
+							font-size: 24rpx;
+						}
+						.pledgeText{
+							width: 100%;
+							text-align: center;
+							position: absolute;
+							left: 0;
+							top: 100rpx;
+						}
 					}
 				}
 				.earningsList{
@@ -236,7 +265,7 @@
 								display: inline-block;
 							}
 							.endTime{
-								margin-left: 50rpx;
+								margin-left: 30rpx;
 							}
 						}
 					}
