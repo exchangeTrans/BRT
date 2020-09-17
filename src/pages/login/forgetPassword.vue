@@ -34,7 +34,7 @@
                             @inputChange="inputChange('emailSurePassword', $event)"></loginInput>
             </view>
             <loginBtn :btnText="'重置密码'" :btnStyle="btnStyle"></loginBtn>
-            <view class="regsTouch">
+            <view class="regsTouch" @tap="jumpRegs">
                 没有账号？立即注册
             </view>
         </view>

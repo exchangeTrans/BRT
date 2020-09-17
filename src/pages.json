@@ -1,41 +1,37 @@
 {
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-<<<<<<< HEAD
-	{
-	  "path": "blackPages/myteam/index",
-	  "style": {
-	    //"navigationBarTitleText": "uni-app"
-	  }
-	},
-	{
-	  "path": "pages/myteam/index",
-	  "style": {
-	    //"navigationBarTitleText": "uni-app"
-	  }
-	},
-	{
-	  "path":"blackPages/noticedetails/index"
-	  //"style":
-	},
-	{
-	  "path": "blackPages/trades/index",
-	  "style": {
-	    "navigationBarTitleText": "交易"
-	  }
-	},
-	{
-		"path":"blackPages/noticelist/index"
-	},
-	{
-	  "path": "pages/trades/index",
-	  "style": {
-	    //"navigationBarTitleText": "uni-app"
-	  }
-	},
-	{
-=======
-
+    {
+      "path": "blackPages/myteam/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/myteam/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/noticedetails/index"
+      //"style":
+    },
+    {
+      "path": "blackPages/trades/index",
+      "style": {
+        "navigationBarTitleText": "交易"
+      }
+    },
+    {
+      "path": "blackPages/noticelist/index"
+    },
+    {
+      "path": "pages/trades/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
     {
       "path": "pages/miningEarnings/index",
       "style": {
@@ -53,21 +49,24 @@
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
-    },  {
+    },
+    {
       "path": "blackPages/earnings/index",
       "style": {
         //"navigationBarTitleText": ""
       }
-    }, {
->>>>>>> origin
-      "path":"blackPages/changePhone/index"
+    },
+    {
+      "path": "blackPages/changePhone/index"
       //"style":
-    },{
+    },
+    {
       "path": "blackPages/set/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
-    }, {
+    },
+    {
       "path": "pages/aboutUs/index",
       "style": {
         //"navigationBarTitleText": ""
@@ -78,13 +77,13 @@
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
-    },{
+    },
+    {
       "path": "pages/sub/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
     },
-
     {
       "path": "blackPages/receipt/index",
       "style": {
@@ -108,8 +107,9 @@
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
-    },{
-      "path":"blackPages/changePhone/index"
+    },
+    {
+      "path": "blackPages/changePhone/index"
       //"style":
     },
     {
@@ -166,7 +166,6 @@
         //"navigationBarTitleText": ""
       }
     },
-
     {
       "path": "pages/changePhone/index",
       "style": {

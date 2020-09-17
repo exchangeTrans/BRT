@@ -84,9 +84,9 @@ export default {
             console.log("发送验证码")
         },
         loginTouch() {
-            this.jumPage.jump({
+            this.$jumpPage.jump({
                 type: 'navigateTo',
-                name: 'login'
+                url: 'login/login'
             })
         }
     },

@@ -83,6 +83,12 @@ export default {
         inputChange(key, value) {
             console.log(key)
             console.log(value)
+        },
+        jumpRegs() {
+            this.$jumpPage.jump({
+                type: "navigateTo",
+                url: "regs/regs",
+            })
         }
     },
 }

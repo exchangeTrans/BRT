@@ -77,15 +77,15 @@ export default {
             console.log(value)
         },
         jumpForgetPassword() {
-            this.jumpPage.jump({
+            this.$jumpPage.jump({
                 type: 'navigateTo',
-                name: 'forgetPassword'
+                url: 'login/forgetPassword'
             })
         },
         jumpRegs() {
-            this.jumpPage.jump({
+            this.$jumpPage.jump({
                 type: 'navigateTo',
-                name: 'regs'
+                url: 'regs/regs'
             })
         },
         loginClick() {
