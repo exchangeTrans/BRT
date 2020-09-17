@@ -3,12 +3,12 @@
         <view class="withdrawalInput-wrap">
             <view class="withdrawalInput-wrap-content">
                 <view class="withdrawalInput-item">
-                    <view class="withdrawalInput-item-title">
+                    <view :class="isBlack ? 'withdrawalInput-item-title block':'withdrawalInput-item-title'">
                         <span>{{inputData.textTitle}}</span>
                     </view>
                     <view class="withdrawalInput-item-content">
                         <input type="text" :placeholder="inputData.placeholder">
-                        <view class="withdrawalInput-item-rightItem">
+                        <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
                                 <span>{{inputData.rightItem.text}}</span>
                             </view>
@@ -20,7 +20,8 @@
                             </view>
                         </view>
                     </view>
-                    <view class="withdrawalInput-item-tip" v-if="inputData.haveTip">
+                    <view :class="isBlack?'withdrawalInput-item-tip black':'withdrawalInput-item-tip'"
+                          v-if="inputData.haveTip">
                         <span>{{inputData.haveTip}}</span>
                     </view>
                 </view>
@@ -37,6 +38,10 @@
                 type: Object,
                 default: () => {
                 },
+            },
+            isBlack: {
+                type: Boolean,
+                default: false,
             }
         },
         data() {
@@ -65,10 +70,16 @@
                         }
                     }
 
+                    .block {
+                        span {
+                            color: #D9DADB !important;
+                        }
+                    }
+
                     .withdrawalInput-item-content {
                         width: 100%;
                         height: 112rpx;
-                        border-bottom: 1rpx solid #EDEDED;
+                        border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
                         position: relative;
 
                         input {
@@ -76,7 +87,8 @@
                             font-size: 32rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #000000;
+                            color: #D9DADB;
+
                             .uni-input-input {
                                 text-indent: 0;
                             }
@@ -92,6 +104,7 @@
                             position: absolute;
                             right: 0;
                             top: 0;
+
                             .isText, .isIcon, .isBtn {
                                 height: 100%;
                                 display: flex;
@@ -123,12 +136,20 @@
                                 }
                             }
                         }
-                    }
 
+                        .black {
+                            .isText {
+                                span {
+                                    color: #D9DADB;
+                                }
+                            }
+                        }
+                    }
 
 
                     .withdrawalInput-item-tip {
                         height: 50rpx;
+
                         span {
                             font-size: 28rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
@@ -136,8 +157,15 @@
                             color: rgba(0, 0, 0, 0.5);
                             line-height: 50rpx;
                         }
+
                         .blue {
                             color: #098FE0 !important;
+                        }
+                    }
+
+                    .black {
+                        span {
+                            color: rgba(217, 218, 219, 0.5);
                         }
                     }
                 }

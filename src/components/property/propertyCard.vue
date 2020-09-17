@@ -2,27 +2,27 @@
     <view id="propertyCard">
         <view class="property-wrap">
             <view class="property-wrap-content">
-                <view class="property-wrap-content-asset">
+                <view :class="isBlack ? 'property-wrap-content-asset blackBackground' : 'property-wrap-content-asset'">
                     <view class="property-wrap-content-asset-container">
                         <view class="totalAsset">
-                            <view class="totalAsset-text">
+                            <view :class="isBlack ? 'totalAsset-text black' : 'totalAsset-text'">
                                 <view class="icon">
                                     <image :src="nameIcon"></image>
                                 </view>
                                 <span>{{propertyCardData.name}}</span>
                             </view>
-                            <view class="totalAsset-money">
+                            <view :class="isBlack ? 'totalAsset-money black' : 'totalAsset-money'">
                                 <span>{{propertyCardData.money}}</span>
                                 <span class="about">≈{{propertyCardData.aboutMoney}} CNY</span>
                             </view>
                         </view>
                         <view class="balance">
                             <view class="balance-container">
-                                <view class="balance-content">
+                                <view :class="isBlack ? 'balance-content black':'balance-content'">
                                     <span>{{propertyCardData.availableBalance}}</span>
                                     <span class="balance-content-text">可用馀额</span>
                                 </view>
-                                <view class="balance-content">
+                                <view :class="isBlack ? 'balance-content black':'balance-content'">
                                     <span>{{propertyCardData.lockBalance}}</span>
                                     <span class="balance-content-text">锁仓馀额</span>
                                 </view>
@@ -30,13 +30,13 @@
                         </view>
                     </view>
                     <view class="property-wrap-content-asset-option">
-                        <view class="text">
+                        <view :class="isBlack? 'text black' : 'text'">
                             <span>收款</span>
                         </view>
-                        <view class="text haveBorder">
+                        <view :class="isBlack? 'text black haveBorder' : 'text haveBorder'">
                             <span>转账</span>
                         </view>
-                        <view class="text">
+                        <view :class="isBlack? 'text black' : 'text'">
                             <span>帐本明细</span>
                         </view>
                     </view>
@@ -50,27 +50,28 @@
 <script>
     export default {
         name: "propertyCard",
-        props:{
+        props: {
             propertyCardData: {
                 type: Object,
-                default: ()=> {}
+                default: () => {
+                }
+            },
+            isBlack: {
+                type: Boolean,
+                default: false,
             }
         },
-        computed:{
+        computed: {
             nameIcon() {
                 let {propertyCardData} = this.$props
-                return `${require('@/static/images/property/'+ propertyCardData.name+'.png')}`
+                return `${require('@/static/images/property/' + propertyCardData.name + '.png')}`
 
             }
         },
-        data () {
-            return {
-
-            }
+        data() {
+            return {}
         },
-        methods: {
-
-        }
+        methods: {}
     }
 </script>
 
@@ -96,23 +97,29 @@
                         box-sizing: border-box;
                         height: 300rpx;
                         padding: 34rpx 30rpx 0;
-                        .totalAsset{
+
+                        .totalAsset {
                             display: flex;
                             justify-content: space-between;
                             height: 60rpx;
+
                             .totalAsset-text {
                                 display: flex;
                                 align-items: center;
+
                                 .icon {
                                     width: 40rpx;
                                     height: 40rpx;
+
                                     image {
                                         width: 100%;
                                         height: 100%;
                                         display: block;
                                     }
+
                                     display: inline-block;
                                 }
+
                                 span {
                                     margin-left: 10rpx;
                                     font-size: 32rpx;
@@ -121,15 +128,18 @@
                                     color: #1A1A1A;
                                 }
                             }
+
                             .totalAsset-money {
                                 display: flex;
                                 align-items: center;
+
                                 span {
                                     font-size: 48rpx;
                                     font-family: PingFangSC-Regular, PingFang SC;
                                     font-weight: 400;
                                     color: #1A1A1A;
                                 }
+
                                 .about {
                                     margin-left: 6rpx;
                                     font-size: 24rpx;
@@ -140,19 +150,35 @@
                                 }
                             }
 
+                            .black {
+                                color: #D9DADB !important;
+
+                                .about {
+                                    opacity: 0.5 !important;
+                                    color: #D9DADB !important;
+                                }
+
+                                span {
+                                    color: #D9DADB !important;
+                                }
+                            }
+
                         }
 
-                        .balance{
+                        .balance {
                             margin-top: 60rpx;
                             width: 100%;
-                            .balance-container{
+
+                            .balance-container {
                                 display: flex;
                                 justify-content: center;
+
                                 .balance-content {
                                     display: inline-block;
                                     text-align: center;
                                     margin-left: 32rpx;
                                     width: 264rpx;
+
                                     span {
                                         display: block;
                                         font-size: 36rpx;
@@ -168,8 +194,15 @@
                                         color: #A0A0A0;
                                     }
                                 }
+
                                 .balance-content:first-child {
                                     margin-left: 0;
+                                }
+
+                                .black {
+                                    span {
+                                        color: #D9DADB;
+                                    }
                                 }
                             }
                         }
@@ -187,6 +220,7 @@
                             width: 230rpx;
                             height: 88rpx;
                             text-align: center;
+
                             span {
                                 line-height: 88rpx;
                                 font-size: 28rpx;
@@ -195,6 +229,14 @@
                                 color: #1A1A1A;
                             }
                         }
+
+                        .black {
+                            span {
+                                color: #D9DADB !important;
+                            }
+
+                        }
+
                         .haveBorder {
                             border-left: 1rpx solid #E6E6E6;
                             border-right: 1rpx solid #E6E6E6;
@@ -203,8 +245,23 @@
 
                 }
 
+                .blackBackground {
+                    background: #272A2E;
+                    border: 2rpx solid rgba(255, 255, 255, 0.1);
+
+                    .property-wrap-content-asset-option {
+                        border-top: 1rpx solid rgba(255, 255, 255, 0.1);
+                    }
+
+                    .haveBorder {
+                        border-left: 1rpx solid rgba(255, 255, 255, 0.1) !important;
+                        border-right: 1rpx solid rgba(255, 255, 255, 0.1) !important;
+                    }
+                }
+
             }
         }
+
 
     }
 </style>

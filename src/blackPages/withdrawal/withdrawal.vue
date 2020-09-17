@@ -7,10 +7,11 @@
                     <view class="withdrawal-wrap-container-item"
                           v-for="(item, index) in inputDatas"
                           :key="index">
-                        <WithdrawalInput :inputData="item"></WithdrawalInput>
+                        <WithdrawalInput :inputData="item"
+                                         :isBlack="isBlack"></WithdrawalInput>
                     </view>
                 </view>
-                <view class="withdrawal-wrap-container-text">
+                <view :class="isBlack ? 'withdrawal-wrap-container-text black':'withdrawal-wrap-container-text'">
                     <view class="text">
                         <span>到账数量</span>
                     </view>
@@ -19,10 +20,11 @@
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-phoneInput">
-                    <WithdrawalInput :inputData="phoneInput"></WithdrawalInput>
+                    <WithdrawalInput :inputData="phoneInput"
+                                     :isBlack="true"></WithdrawalInput>
                 </view>
                 <view class="withdrawal-wrap-container-tip">
-                    <view class="withdrawal-wrap-container-tip-content">
+                    <view :class="isBlack?'withdrawal-wrap-container-tip-content black': 'withdrawal-wrap-container-tip-content'">
                         <span class="tipTitle">最小提币数量：10.0（BRT）</span>
                         <span class="tipContent">为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。</span>
                         <span class="tipContent mgt">请务必确认电脑及浏览器安全，防止信息被篡改或泄露</span>
@@ -54,9 +56,11 @@
         name: "withdrawal",
         data() {
             return {
+                isBlack: true,
                 headerOptions: {
                     show: true,
                     isAllowReturn: true,
+                    isWhiteIcon: true,
                     text: "BRT 提币",
                     rightItem: {
                         type: "text",
@@ -66,11 +70,15 @@
                             color: "#098FE0",
                         },
                     },
+                    style: {
+                        'color': '#D9DADB'
+                    },
+                    background: '#00001A',
                     bodyPadding: {"padding": '0,0,0,0'},
                     headerIsNoBoder: true,
                 },
                 btnText: "提币",
-                BtnackgroundColor: "#B4BBC0",
+                BtnackgroundColor: "#8C939B",
 
                 inputDatas: [
                     {
@@ -88,7 +96,7 @@
                             type: "isText",//isText isBtn isIcon
                             text: "BRT",
                         },
-                        haveTip: "余额：0.562 BRT"
+                        // haveTip: "余额：0.562 BRT"
                     },
                     {
                         textTitle: "手续费",
@@ -110,12 +118,57 @@
                 }
             }
         },
+        mounted() {
+            let theme = this.$storage.getSync({key:'theme'});
+            if(theme === 'white'){
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: true,
+                    text: "BRT 提币",
+                    rightItem: {
+                        type: "text",
+                        text: "提现记录",
+                        style: {
+                            fontSize: "28rpx",
+                            color: "#098FE0",
+                        },
+                    },
+                    bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                };
+                this.isBlack = false;
+                this.BtnackgroundColor = "#B4BBC0";
+            } else {
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: true,
+                    isWhiteIcon: true,
+                    text: "BRT 提币",
+                    rightItem: {
+                        type: "text",
+                        text: "提现记录",
+                        style: {
+                            fontSize: "28rpx",
+                            color: "#098FE0",
+                        },
+                    },
+                    style: {
+                        'color': '#D9DADB'
+                    },
+                    background: '#00001A',
+                    bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                };
+                this.isBlack = true;
+                this.BtnackgroundColor = "#8C939B";
+            }
+        },
         methods: {
             headertap(type) {
                 console.log(type)
             }
         }
-    }*/
+    }*/ 
 </script>
 
 <style scoped lang="less">
@@ -128,6 +181,7 @@
             box-sizing: border-box;
             width: 100%;
             height: calc(100vh - var(--status-bar-height) - 100rpx);
+            background: #22252A;
 
             .withdrawal-wrap-container {
                 box-sizing: border-box;
@@ -155,6 +209,14 @@
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
                             color: #1A1A1A;
+                        }
+                    }
+                }
+                .black {
+                    border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+                    .text {
+                        span {
+                            color: #D9DADB;
                         }
                     }
                 }
@@ -188,6 +250,9 @@
                         .mgt {
                             margin-top: 50rpx;
                         }
+                    }
+                    .black {
+                        background: #272A2E;
                     }
                 }
 

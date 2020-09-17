@@ -23,8 +23,8 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue"
+<script src="@/script/chooseCountry/chooseCountry.js">
+    /*import appHeader from "@/components/common/header.vue"
 
     export default {
         name: "chooseCountry",
@@ -80,11 +80,16 @@
                 headerOptions: {
                     show: true,
                     isAllowReturn: true,
+                    isWhiteIcon:true,
                     text: "选择国家",
                     rightItem: {
                         type: "text",
                         text: "",
                     },
+                    style:{
+                        'color':'#D9DADB'
+                    },
+                    background: '#00001A',
                     bodyPadding: {"padding": '0,0,0,0'},
                     headerIsNoBoder: true,
                 },
@@ -107,7 +112,7 @@
                 console.log(type)
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">
@@ -119,6 +124,7 @@
         .chooseCountry-wrap {
             width: 100%;
             height: 100%;
+            background: #22252A;
             .chooseCountry-wrap-content {
                 /*margin: 0 1.5rpx;*/
 
@@ -132,7 +138,7 @@
                         height: 110rpx;
                         display: flex;
                         align-items: center;
-                        border-bottom: 1rpx solid #F2F2F2;
+                        border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
 
 
                         image {
@@ -145,7 +151,8 @@
                             font-size: 28rpx;
                             font-family: "PingFang";
                             font-weight: 400;
-                            color: rgba(51, 51, 51, 1);
+
+                            color: #D9DADB;
                         }
                     }
                 }

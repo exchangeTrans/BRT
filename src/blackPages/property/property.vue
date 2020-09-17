@@ -33,7 +33,8 @@
                     <view class="property-wrap-content-item"
                           v-for="(item, index) in propertyCardData"
                           :key="index">
-                        <PropertyCard :propertyCardData="item"></PropertyCard>
+                        <PropertyCard :propertyCardData="item"
+                                      :isBlack="isBlack"></PropertyCard>
                     </view>
                 </view>
             </view>
@@ -41,14 +42,48 @@
     </view>
 </template>
 
-<script src="@/script/property/property.js">
+<script  src="@/script/property/property.js">
     /*import pageHeader from '@/components/common/header.vue'
     import PropertyCard from "../../components/property/propertyCard";
+
     export default {
         name: "property",
         components: {
             PropertyCard,
             pageHeader
+        },
+        mounted() {
+            let theme = this.$storage.getSync({key:'theme'});
+            // console.log(theme);
+            if(theme === 'white'){
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: false,
+                    text: "资产",
+                    rightItem: {
+                        type: "text",
+                        text: "",
+                    },
+                    headerIsNoBoder: false,
+                };
+                this.isBlack = false;
+            } else {
+                this.headerOptions = {
+                    show: true,
+                    isAllowReturn: false,
+                    text: "资产",
+                    rightItem: {
+                        type: "text",
+                        text: "",
+                    },
+                    style:{
+                        'color':'#D9DADB'
+                    },
+                    background: '#00001A',
+                    headerIsNoBoder: true,
+                };
+                this.isBlack = true;
+            }
         },
         data() {
             return {
@@ -83,8 +118,13 @@
                         type: "text",
                         text: "",
                     },
-                    headerIsNoBoder: false,
+                    style:{
+                        'color':'#D9DADB'
+                    },
+                    background: '#00001A',
+                    headerIsNoBoder: true,
                 },
+                isBlack: false,
             }
         },
         methods: {}
@@ -101,6 +141,7 @@
             width: 100%;
             box-sizing: border-box;
             height: calc(100vh - var(--status-bar-height) - 100rpx);
+            background: #22252A;
             .property-wrap-content {
                 width: 690rpx;
                 margin: 0 auto;

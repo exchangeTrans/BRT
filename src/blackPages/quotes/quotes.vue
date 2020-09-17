@@ -40,7 +40,8 @@
                     <view class=""
                           v-for="(item, index) in quotesData"
                           :key="index">
-                        <QuotesItem :quotesData="item"></QuotesItem>
+                        <QuotesItem :quotesData="item"
+                                    :isBlack="true"></QuotesItem>
                     </view>
                 </view>
             </view>
@@ -206,41 +207,6 @@
                     text:"行情",
                     rightItem:{
                         type:"icon",
-                        path: `${require('@/static/images/quotes/search.png')}`,
-                        style:{
-                            'width':'48rpx',
-                            'height':'48rpx',
-                        }
-                    },
-                    headerIsNoBoder: false,
-                },
-            };
-        },
-        mounted() {
-            let theme = this.$storage.getSync({key:'theme'});
-            // console.log(theme);
-            if(theme === 'white'){
-                this.headerOptions = {
-                    show:true,
-                    isAllowReturn:false,
-                    text:"行情",
-                    rightItem:{
-                        type:"icon",
-                        path: `${require('@/static/images/quotes/search.png')}`,
-                        style:{
-                            'width':'48rpx',
-                            'height':'48rpx',
-                        }
-                    },
-                    headerIsNoBoder: false,
-                };
-            } else {
-                this.headerOptions = {
-                    show:true,
-                    isAllowReturn:false,
-                    text:"行情",
-                    rightItem:{
-                        type:"icon",
                         path: `${require('@/static/images/quotes/blacksearch.png')}`,
                         style:{
                             'width':'48rpx',
@@ -252,8 +218,10 @@
                     },
                     background: '#00001A',
                     headerIsNoBoder: true,
-                };
-            }
+                },
+            };
+        },
+        onLoad() {
         },
         methods: {
             switchTab(index) {
@@ -311,6 +279,7 @@
 
         .quotes-content {
             height: calc(100vh - var(--status-bar-height) - 100rpx);
+            background: #22252A;
             .quotes-content-wrap {
                 margin: 0 30rpx;
                 padding-top: 30rpx;
@@ -331,7 +300,7 @@
                             font-size: 24rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #1a1a1a;
+                            color: #D9DADB;
                             opacity: .5;
                         }
 

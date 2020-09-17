@@ -29,11 +29,40 @@
       "path":"blackPages/changePhone/index"
       //"style":
     },
-
     {
       "path": "blackPages/user/user",
       "style": {
         "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "blackPages/chooseCountry/chooseCountry",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/directPush/directPush",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/promotion/promotion",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/quotes/quotes",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "components/success/success",
+      "style": {
+        //"navigationBarTitleText": ""
       }
     },
     {
@@ -46,6 +75,12 @@
       "path": "blackPages/sub/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/chooseCountry/chooseCountry",
+      "style": {
+        //"navigationBarTitleText": ""
       }
     },
     {
@@ -68,6 +103,12 @@
     },
     {
       "path": "pages/withdrawal/withdrawal",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/withdrawal/withdrawal",
       "style": {
         //"navigationBarTitleText": ""
       }
@@ -145,9 +186,15 @@
       }
     },
     {
-      "path": "pages/directPush/directPush",
+      "path": "blackPages/property/property",
       "style": {
         "navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "pages/directPush/directPush",
+      "style": {
+        //"navigationBarTitleText": "资产"
       }
     },
     {

@@ -51,6 +51,7 @@
                 headerOptions: {
                     show: true,
                     isAllowReturn: true,
+                    isWhiteIcon: true,
                     text: "直推明细",
                     rightItem: {
                         type: "text",
@@ -60,6 +61,10 @@
                             color: "#098FE0",
                         },
                     },
+                    style: {
+                        'color': '#D9DADB'
+                    },
+                    background: '#00001A',
                     bodyPadding: {"padding": '0,0,0,0'},
                     headerIsNoBoder: true,
                 },
@@ -151,6 +156,50 @@
                     },
                 ]
             }
+        },
+        mounted() {
+            let theme = this.$storage.getSync({key:'theme'});// console.log(theme);
+            if(theme === 'white'){
+                headerOptions = {
+                    show: true,
+                        isAllowReturn: true,
+                        text: "直推明细",
+                        rightItem: {
+                        type: "text",
+                            text: "",
+                            style: {
+                            fontSize: "28rpx",
+                                color: "#098FE0",
+                        },
+                    },
+                    bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                }
+            } else {
+                headerOptions = {
+                    show: true,
+                        isAllowReturn: true,
+                        isWhiteIcon: true,
+                        text: "直推明细",
+                        rightItem: {
+                        type: "text",
+                            text: "",
+                            style: {
+                            fontSize: "28rpx",
+                                color: "#098FE0",
+                        },
+                    },
+                    style: {
+                        'color': '#D9DADB'
+                    },
+                    background: '#00001A',
+                        bodyPadding: {"padding": '0,0,0,0'},
+                    headerIsNoBoder: true,
+                }
+            }
+        },
+        methods: {
+            
         }
     }*/
 </script>
@@ -168,7 +217,7 @@
             .directPush-wrap-nav {
                 width: 100%;
                 height: 90rpx;
-                background: #F9FAFA;
+                background: #22252A;
                 box-sizing: border-box;
 
                 .directPush-wrap-nav-container {
@@ -186,11 +235,12 @@
                             font-size: 28rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #1A1A1A;
+                            color: #D9DADB;
                             line-height: 90rpx;
                         }
 
                     }
+
                     .inviteAccount {
                         width: 230rpx;
                     }
@@ -213,6 +263,7 @@
                     height: 100rpx;
                     padding: 0 30rpx;
                     border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+                    background: #272A2E;
 
                     .directPush-wrap-content-text {
                         float: left;
@@ -221,7 +272,7 @@
                             font-size: 28rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #1A1A1A;
+                            color: #D9DADB;
                             line-height: 100rpx;
                         }
                     }
