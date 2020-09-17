@@ -5,12 +5,12 @@
             <view class="tableLi tableLi1">LED</view>
         </view>
         <view class="tableTr tableTr2">
-            <view class="tableLi tableLi1">发行时间</view>
+            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[0]}}</view>
             <view class="tableLi tableLi2">2020-09-12</view>
         </view>
         <view class="tableTr tableTr3">
-            <view class="tableLi tableLi1">发行总量</view>
-            <view class="tableLi tableLi2">100000万</view>
+            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[1]}}</view>
+            <view class="tableLi tableLi2">1000{{$t('trade').unit}}</view>
         </view>
 	</view>
 </template>

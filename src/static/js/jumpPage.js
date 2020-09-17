@@ -1,5 +1,5 @@
 
-import {datastorage} from "@/static/js/datastorage.js";
+import datastorage from "@/static/js/datastorage.js";
 
 
 let jumpPage={
@@ -19,8 +19,8 @@ let jumpPage={
         // "blackPages/index/index"
         //只需要传递后边那部分
         let pageUrl=options.url;
-        pageUrl = theme==='black'?'blackPages/'+pageUrl:'pages/'
-        
+        pageUrl = theme==='black'?('/blackPages/'+pageUrl):('/pages/'+pageUrl)
+        // debugger
 
 
 
