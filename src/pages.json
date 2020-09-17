@@ -2,7 +2,38 @@
 
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-    {
+	{
+	  "path": "blackPages/myteam/index",
+	  "style": {
+	    //"navigationBarTitleText": "uni-app"
+	  }
+	},
+	{
+	  "path": "pages/myteam/index",
+	  "style": {
+	    //"navigationBarTitleText": "uni-app"
+	  }
+	},
+	{
+	  "path":"blackPages/noticedetails/index"
+	  //"style":
+	},
+	{
+	  "path": "blackPages/trades/index",
+	  "style": {
+	    "navigationBarTitleText": "交易"
+	  }
+	},
+	{
+		"path":"blackPages/noticelist/index"
+	},
+	{
+	  "path": "pages/trades/index",
+	  "style": {
+	    //"navigationBarTitleText": "uni-app"
+	  }
+	},
+	{
       "path":"blackPages/changePhone/index"
       //"style":
     },

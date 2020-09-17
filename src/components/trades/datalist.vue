@@ -60,18 +60,22 @@
 		margin-bottom: 10rpx;
 	}
 	.item{
-		font-size: 24rpx;
-		width: 100%;
+		display: inline-block;
+		font-size: 0;
+		width: 89%;
 		height: 52rpx;
-		// background-color: #DEF4E7;
+		// text-align: center;
+		line-height: 52rpx;
+		margin-left: 20rpx;
+		display: block;
+		vertical-align:middle;
 		.money{
 			float: left;
-			margin-left: 20rpx;
-			
+			font-size: 24rpx;
 		}
 		.num{
 			float: right;
-			margin-right: 20rpx;
+			font-size: 24rpx;
 		}
 	}
 </style>

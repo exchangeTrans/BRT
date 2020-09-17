@@ -21,7 +21,7 @@
 				</view>
 				
 				<view class="sale">
-					<image src="../../static/images/trades/whitebg.png" mode=""></image>
+					<image src="../../static/images/trades/blackbg.png" mode=""></image>
 					<view class="fonts">卖出</view>
 				</view>
 				
@@ -87,11 +87,11 @@
 	  data(){
 	    return{
 			green:{
-				bgc:"#DEF4E7",
+				bgc:"#2D453C",
 				fonts_color:"#5BC788"
 			},
 			red:{
-				bgc:"#FEEBEE",
+				bgc:"#37272E",
 				fonts_color:"#FC3C5A"
 			}
 	    }
@@ -100,6 +100,9 @@
 </script>
 
 <style lang="less">
+	*{
+		background: #272A2E;
+	}
 	.head{
 		width: 100%;
 		height: 100rpx;
@@ -107,13 +110,15 @@
 		line-height: 100rpx;
 		font-size: 40rpx;
 		border-bottom: 2rpx #CCCCCC solid;
-		color: #1A1A1A;
+		color: #D9DADB;
 		font-family: PingFangSC-Semibold, PingFang SC;
+		background: #00001A;
 	}
 	
 	.msg{
 		width: 100%;
 		height: 88rpx;
+		
 		.msgleft{
 			float: left;
 			margin-top: 16rpx;
@@ -131,7 +136,7 @@
 				line-height: 60rpx;
 				font-weight:bold;
 				margin-left: 10rpx;
-				color: #1A1A1A;
+				color: #D9DADB;
 				font-family: PingFangSC-Semibold, PingFang SC;
 			}
 		}
@@ -155,14 +160,16 @@
 				text-align: center;
 				margin-right: 20rpx;
 				border-radius: 5rpx;
-				color: #1A1A1A;
+				color: #D9DADB;
 			}
 		}
 	}
 	.main{
 		margin-top: 20rpx;
 		width: 100%;
-		height: 654rpx;
+		height: 704rpx;
+		background: #22252A;
+		z-index: -999;
 		.left{
 			width: 50%;
 			height: 704rpx;
@@ -179,7 +186,7 @@
 				position: absolute;
 				overflow: hidden;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				color: #D9DADB;
 				image{
 					width: 174rpx;
 					height: 76rpx;
@@ -188,7 +195,6 @@
 				}
 				.fonts{
 					text-align: center;
-					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
 				}
 			}
@@ -197,7 +203,7 @@
 				height: 76rpx;
 				float: left;
 				line-height: 76rpx;
-				color: #000000;
+				color: #D9DADB;
 				position: absolute;
 				overflow: hidden;
 				margin-left: 178.7rpx;
@@ -210,7 +216,6 @@
 				}
 				.fonts{
 					text-align: center;
-					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
 				}
 			}
@@ -251,7 +256,7 @@
 				.charge_name{
 					font-size: 28rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #1A1A1A;
+					color: #D9DADB;
 					margin-left: 100rpx;
 				}
 				
@@ -295,7 +300,7 @@
 				.charge_num{
 					font-size: 28rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #1A1A1A;
+					color: #D9DADB;
 					margin-left: 100rpx;
 				}
 			}
@@ -305,7 +310,7 @@
 				font-size: 24rpx;
 				margin-left: 20rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				color: #D9DADB;
 				margin-top: 320rpx;
 			}
 			.hdupercent{
@@ -314,7 +319,7 @@
 				position: absolute;
 				margin-top: -30rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				color: #D9DADB;
 				.precent{
 					margin-right: 12rpx;
 					margin-top: 50rpx;
@@ -326,14 +331,14 @@
 					line-height: 38rpx;
 					font-size: 24rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #1A1A1A;
+					color: #D9DADB;
 				}
 			}
 			.tradenum{
 				margin-top: 90rpx;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				color: #D9DADB;
 				margin-left: 20rpx;
 				float: left;
 			}
@@ -343,7 +348,7 @@
 				margin-left: 20rpx;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				color: #D9DADB;
 			}
 			.buyit{
 				margin-top: 155rpx;
@@ -368,7 +373,7 @@
 					float: left;
 					font-size: 30rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #1A1A1A;
+					color: #D9DADB;
 					margin-left: 20rpx;
 					overflow: hidden;
 				}
@@ -376,7 +381,7 @@
 					float: right;
 					font-size: 30rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #1A1A1A;
+					color: #D9DADB;
 					margin-right: 20rpx;
 					overflow: hidden;
 				}
@@ -397,7 +402,7 @@
 				.exchange_rate2{
 					font-size: 24rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #1A1A1A;
+					color: #D9DADB;
 				}
 			}
 			.icon_list{
@@ -415,15 +420,16 @@
 	.line{
 		width: 100%;
 		height: 20rpx;
-		background-color: #F9FAFA;
+		background: #272A2E;
 		
 	}
 	.footer{
+		background: #272A2E;
 		.descript{
 			font-size: 32rpx;
 			font-weight: bold;
 			margin-left: 20rpx;
-			color: #1A1A1A;
+			color: #D9DADB;
 			font-family: PingFangSC-Semibold, PingFang SC;
 		}
 		.img{
@@ -438,7 +444,7 @@
 			text-align: center;
 			font-size: 28rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
-			color: #1A1A1A;
+			color: #D9DADB;
 			margin-top: 20rpx;
 		}
 	}
