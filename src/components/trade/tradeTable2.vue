@@ -1,26 +1,26 @@
 <template>
 	<view class="tradeTable2" id="tradeTable2">
 		<view class="tableHeader">
-            <view class="tableLi tableLi1">时间</view>
-            <view class="tableLi tableLi2">方向</view>
-            <view class="tableLi tableLi3">价格(HDU)</view>
-            <view class="tableLi tableLi4">数量</view>
+            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr1[0]}}</view>
+            <view class="tableLi tableLi2">{{$t('trade').tableHeadTr1[1]}}</view>
+            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr1[2]}}(HDU)</view>
+            <view class="tableLi tableLi4">{{$t('trade').tableHeadTr1[3]}}</view>
         </view>
         <view class="tableTr">
             <view class="tableLi tableLi1">14:34:43</view>
-            <view class="tableLi tableLi2">卖出</view>
+            <view class="tableLi tableLi2">{{$t('trade').sell}}</view>
             <view class="tableLi tableLi3">1200.96</view>
             <view class="tableLi tableLi4">1</view>
         </view>
         <view class="tableTr">
             <view class="tableLi tableLi1">14:34:43</view>
-            <view class="tableLi tableLi2 buy">买入</view>
+            <view class="tableLi tableLi2 buy">{{$t('trade').buy}}</view>
             <view class="tableLi tableLi3">1200.96</view>
             <view class="tableLi tableLi4">1</view>
         </view>
         <view class="tableTr">
             <view class="tableLi tableLi1">14:34:43</view>
-            <view class="tableLi tableLi2 buy">买入</view>
+            <view class="tableLi tableLi2 buy">{{$t('trade').sell}}</view>
             <view class="tableLi tableLi3">1200.96</view>
             <view class="tableLi tableLi4">1</view>
         </view>

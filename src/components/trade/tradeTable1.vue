@@ -1,11 +1,11 @@
 <template>
 	<view class="tradeTable1" id="tradeTable1">
 		<view class="tableHeader">
-            <view class="tableLi tableLi1">买盘</view>
-            <view class="tableLi tableLi2">数量(LED)</view>
-            <view class="tableLi tableLi3">价格(HDU)</view>
-            <view class="tableLi tableLi4">数量(LED)</view>
-            <view class="tableLi tableLi5">卖盘</view>
+            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr1[0]}}</view>
+            <view class="tableLi tableLi2">{{$t('trade').tableHeadTr1[1]}}(LED)</view>
+            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr1[2]}}(HDU)</view>
+            <view class="tableLi tableLi4">{{$t('trade').tableHeadTr1[3]}}(LED)</view>
+            <view class="tableLi tableLi5">{{$t('trade').tableHeadTr1[4]}}</view>
         </view>
         <view class="tableTr">
             <view class="tableLi tableLi1">1</view>
@@ -83,8 +83,17 @@
             }
         },
         onLoad() {
-
+            
         },
+        mounted(){
+            console.log(this.$t('trade'))
+        },
+        computed: {  
+            pageText () {  
+                // console.log(this.$t('trade'))
+                return this.$t('trade')  
+            }  
+        },  
         methods: {
             selectChartTab(item){
                 this.chartTabSelect = item;
