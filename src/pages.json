@@ -1,13 +1,61 @@
 {
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
     {
+      "path": "pages/miningEarnings/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },  {
+      "path": "blackPages/earnings/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    }, {
+      "path":"blackPages/changePhone/index"
+      //"style":
+    },{
+      "path": "blackPages/set/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    }, {
+      "path": "pages/aboutUs/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },{
       "path": "pages/sub/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
     },
 
+    {
+      "path": "blackPages/receipt/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
     {
       "path": "blackPages/changeEmail/index",
       "style": {
@@ -83,12 +131,7 @@
         //"navigationBarTitleText": ""
       }
     },
-    {
-      "path": "pages/index/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
+
     {
       "path": "pages/changePhone/index",
       "style": {

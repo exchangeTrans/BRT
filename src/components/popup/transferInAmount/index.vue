@@ -91,6 +91,7 @@
             }
         }
         .beUsedNum{
+            opacity: 0.5;
             margin-top: 15rpx;
             font-size: 32rpx;
         }

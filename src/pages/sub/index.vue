@@ -261,6 +261,7 @@
 						.times{
 							margin-top: 10rpx;
 							font-size: 28rpx;
+							opacity: 0.5;
 							.timeItem{
 								display: inline-block;
 							}

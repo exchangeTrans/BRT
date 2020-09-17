@@ -8,8 +8,8 @@
 				this.$storage.setSync({key: "theme", data: "white"});
 			}
 			// this.$mySocket.createSocket();
-			
-			
+
+
 		},
 		onShow: function() {
 			// console.log('App Show')

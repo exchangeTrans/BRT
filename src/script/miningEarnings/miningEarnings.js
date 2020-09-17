@@ -1,10 +1,10 @@
 
 import appHeader from "@/components/common/header.vue";
-import transferInAmount from "@/components/popup/transferInAmount/index.vue";
+import earningsRecordList from "@/components/earningsRecordList/index.vue";
 export default {
     components:{
         appHeader,
-        transferInAmount
+        earningsRecordList
     },
     mounted(){
         let theme = this.$storage.getSync({key:'theme'});
@@ -12,7 +12,7 @@ export default {
             this.headerOptions={
                 show:true,
                     isAllowReturn:true,
-                    text:"质押挖矿",
+                    text:"挖矿收益",
                     rightItem:{
                     type:"text",
                         text:"",
@@ -25,10 +25,11 @@ export default {
                 show:true,
                 isAllowReturn:true,
                 isWhiteIcon:true,
-                text:"质押挖矿",
+                text:"挖矿收益",
                 rightItem:{
                     type:"text",
                     text:"",
+                    style: {}
                 },
                 style:{
                     'color': '#D9DADB'
@@ -42,11 +43,27 @@ export default {
         return {
             headerOptions:{},
 
+
+
+            titleLine:`${require('@/static/images/set/titleLine.png')}`,
             subBg:`${require('@/static/images/sub/subBg.png')}`,
             circleBg:`${require('@/static/images/sub/circleBg.png')}`,
             circleBg2:`${require('@/static/images/sub/circleBg2.png')}`,
             circleBg3:`${require('@/static/images/sub/circleBg3.png')}`,
             notice:`${require('@/static/images/sub/notice.png')}`,
+
+            earningsRecordData:[
+                {
+                    type:'挖矿收益',
+                    num:'+190.32',
+                    time:'2020/09/28'
+                },
+                {
+                    type:'挖矿收益',
+                    num:'+190.32',
+                    time:'2020/09/28'
+                }
+            ]
 
         }
     },
@@ -54,8 +71,6 @@ export default {
 
     },
     methods: {
-        transferInAmount(){
-            this.$refs.transferInAmount.open();
-        }
+
     }
 }

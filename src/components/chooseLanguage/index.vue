@@ -69,12 +69,12 @@
                         icon: `${require('@/static/images/user/Chinese.png')}`,
                     },
                     {
-                        name: "英文",
+                        name: "English",
 
                         icon: `${require('@/static/images/user/UK.png')}`,
                     },
                     {
-                        name: "韩语",
+                        name: "한국어",
 
                         icon: `${require('@/static/images/user/Korea.png')}`,
                     }, /*{

@@ -8,7 +8,7 @@
 				</view>
 
 				<view class="earning">
-					<view>资产总额</view>
+					<view class="earningTitle">资产总额</view>
 					<view class="earningNumber">
 						<span>420.24 USDT</span>
 						<span>≈￥10098 CNY</span>
@@ -17,7 +17,7 @@
 
 			</view>
 			<view class="gird">
-				<view class="girdItem" v-for="item in girdData">
+				<view class="girdItem" v-for="item in girdData" @tap="toInfo(item)">
 					<view class="girdIcon" :style="{'background-image':'url('+item.img+')'}"></view>
 					<view class="text">{{item.text}}</view>
 				</view>
@@ -174,6 +174,9 @@
 					font-weight: 400;
 					color: #FFFFFF;
 					box-sizing: border-box;
+                    .earningTitle{
+                        opacity: 0.64;
+                    }
 					.earningNumber{
 						margin-top: 20rpx;
 						span:nth-of-type(1){
@@ -275,7 +278,7 @@
 					font-size: 28rpx;
 					color: #D9DADB;
 					span{
-						color: #835DFF;
+						color: #098FE0;
 						margin-left: 10rpx;
 					}
 				}
@@ -285,8 +288,8 @@
 					flex-wrap: nowrap;
 					justify-content: space-between;
 					font-size: 24rpx;
-
 					color: #D9DADB;
+					opacity: 0.5;
 					view{
 						flex: 1;
 					}
@@ -325,6 +328,7 @@
 						.currencyData{
 							margin-top: 10rpx;
 							line-height: 34rpx;
+							opacity: 0.5;
 						}
 					}
 					.newest{
@@ -341,6 +345,7 @@
 						.newestMoney{
 							margin-top: 10rpx;
 							font-weight: 400;
+							opacity: 0.5;
 						}
 					}
 					.upAndDown{
