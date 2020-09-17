@@ -1,9 +1,10 @@
 <template>
 	<view>
 		<view class="head">
-			<image src="../../static/images/noticelist/left.png" mode="" class="headleft"></image>
+			<image src="../../static/images/noticelist/blackleft.png" mode="" class="headleft"></image>
 			<view class="headname">公告详情</view>
 		</view>
+		<view class="setbg">
 		<view class="notice_list">
 			<view class="item">
 				<view class="notice_content">BRT关于调整USDT提币手续公告</view>
@@ -24,6 +25,7 @@
 			<view>BRT实验室</view>
 			<view>2020年9月8日</view>
 		</scroll-view>
+		</view>
 	</view>
 </template>
 
@@ -39,6 +41,9 @@
 		height: 100rpx;
 		width: 100%;
 		border-bottom: 1rpx #CCCCCC solid;
+		background: #00001A;
+		color: #FFFFFF;
+		font-size: 0rpx;
 		.headleft{
 			width: 50rpx;
 			height: 50rpx;
@@ -50,18 +55,28 @@
 			margin-left: 300rpx;
 			line-height: 100rpx;
 			font-weight: bolder;
-			font-size: 32rpx;
+			font-size: 36rpx;
 		}
+	}
+	.notice_list{
+		width: 100%;
+		height: 180rpx;
+	}
+	
+	.setbg{
+		background: #272A2E;
+		color: #D9DADB;
+		font-size: 0rpx;
 	}
 	.item{
 		height: 150rpx;
 		width: 100%;
 		border-bottom: 1rpx #CCCCCC solid;
-		// padding-bottom: 20rpx;
+		padding-top: 30rpx;
 		.notice_content{
 			margin-left: 20rpx;
 			font-size: 38rpx;
-			margin-top: 30rpx;
+			// margin-top: 30rpx;
 			margin-bottom: 20rpx;
 		}
 		.notice_time{
@@ -84,3 +99,4 @@
 		height: calc(100vh - 300rpx);
 	}
 </style>
+

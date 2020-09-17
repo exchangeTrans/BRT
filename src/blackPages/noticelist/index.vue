@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="head">
-			<image src="../../static/images/noticelist/left.png" mode="" class="headleft"></image>
+			<image src="../../static/images/noticelist/blackleft.png" mode="" class="headleft"></image>
 			<view class="headname">公告列表</view>
 		</view>
 		<scroll-view class="notice_list" scroll-y>
@@ -53,6 +53,9 @@
 </script>
 
 <style lang="less">
+	*{
+		background: #272A2E;
+	}
 	.head{
 		height: 100rpx;
 		width: 100%;
@@ -65,10 +68,14 @@
 			margin-top: 25rpx;
 		}
 		.headname{
-			text-align: center;
+			// text-align: center;
+			padding-left: 300rpx;
 			line-height: 100rpx;
 			font-weight: bolder;
-			font-size: 32rpx;
+			font-size: 36rpx;
+			background: #00001A;
+			font-family: PingFangSC-Semibold, PingFang SC;
+			color: #D9DADB;
 		}
 	}
 	.notice_list{
@@ -78,17 +85,20 @@
 		height: 150rpx;
 		width: 100%;
 		border-bottom: 1rpx #CCCCCC solid;
+		color: #D9DADB;
+		font-family: PingFangSC-Regular, PingFang SC;
 		// padding-bottom: 20rpx;
 		.notice_content{
 			margin-left: 20rpx;
 			font-size: 38rpx;
 			margin-top: 30rpx;
 			margin-bottom: 20rpx;
+			
 		}
 		.notice_time{
 			margin-left: 20rpx;
 			font-size: 34rpx;
-			color: #CCCCCC;
+			color: #D9DADB;
 		}
 	}
 	.item_right{

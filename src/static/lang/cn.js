@@ -8,5 +8,5 @@ export default {
       unit:'万',
       high:"高",
       low:'低',
-    }  
+    },
 }
