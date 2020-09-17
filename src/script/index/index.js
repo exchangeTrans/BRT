@@ -14,7 +14,7 @@ export default {
                 {
                     text: '挖矿收益',
                     img: `${require('@/static/images/home/dividend.png')}`,
-                    url:'sub/index'
+                    url:'miningEarnings/index'
                 },
                 {
                     text: '量化理财',
