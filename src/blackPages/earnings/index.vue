@@ -18,20 +18,24 @@
 				</view>
 
 				<view class="yield">
-					<view class="yieldTitle">量化收益率</view>
-					<view class="slider">
-						<slider :value="sliderValue"
-								@changing="sliderChange"
-								min="0"
-								max="100"
-								 />
+					<view class="yieldText">
+						<view class="yieldPercent">32.<span>68%</span></view>
+						<view class="addUp">累计收益率</view>
 					</view>
-					<view class="percent">≈ {{sliderValue}}%</view>
+					<!--<view class="yieldTitle">量化收益率</view>-->
+					<!--<view class="slider">-->
+						<!--<slider :value="sliderValue"-->
+								<!--@changing="sliderChange"-->
+								<!--min="0"-->
+								<!--max="100"-->
+								 <!--/>-->
+					<!--</view>-->
+					<!--<view class="percent">≈ {{sliderValue}}%</view>-->
 				</view>
 
 				<view class="tab">
-					<view class="tabItem earningInfo">收益详情</view>
-					<view class="tabItem active data">量化数据</view>
+					<view :class="selectedTab==='earningInfo'?'tabItem active earningInfo':'tabItem earningInfo'" @tap="chooseTab('earningInfo')">收益详情</view>
+					<view :class="selectedTab==='data'?'tabItem active data':'tabItem data'" @tap="chooseTab('data')">量化数据</view>
 				</view>
 
 				<view class="info">
@@ -39,16 +43,16 @@
 						<view class="logoIcon" :style="{'background-image':'url('+logoIcon+')'}"></view>
 						<view class="dataList">
 							<view class="dataItem">
-								<view class="itemTitle">囤币数量</view>
-								<view class="itemText">0.0000</view>
+								<view class="itemTitle">投资金额</view>
+								<view class="itemText">1000.00 USDT</view>
 							</view>
 							<view class="dataItem">
-								<view class="itemTitle">可用数量</view>
-								<view class="itemText">0.0000</view>
+								<view class="itemTitle">量化余额</view>
+								<view class="itemText">1321.68 USDT</view>
 							</view>
 							<view class="dataItem">
-								<view class="itemTitle">当前收益率</view>
-								<view class="itemText">0.0000</view>
+								<view class="itemTitle">昨日收益率</view>
+								<view class="itemText">2.68%</view>
 							</view>
 						</view>
 						<view class="clearfix"></view>
@@ -57,7 +61,7 @@
 						<view class="line" ></view>
 						规则
 					</view>
-					<view class="rulerInfo">囤币数量100-200000枚，随进随出，无锁仓！基础收益比例为1%。7天内未转出，包括一枚，那么收益增0.1%，币未转出的情况下，每周增加0.1%最高收益增加到2%封顶，若中途有转出（包含1枚），直接掉回1%。</view>
+					<view class="rulerInfo">{{rulerText}}</view>
 					<view class="btnGroup">
 						<view class="btnItem">转入</view>
 						<view class="btnItem export">转出</view>
@@ -74,50 +78,50 @@
 	</view>
 </template>
 
-<script>
+<script src="@/script/earnings/earning.js">
 
-    import appHeader from "@/components/common/header.vue";
-    export default {
-	    components:{
-            appHeader,
-
-		},
-        data() {
-            return {
-                headerOptions:{
-                    show:true,
-                    isAllowReturn:true,
-					isWhiteIcon:true,
-                    text:"收益",
-                    rightItem:{
-                        type:"text",
-                        text:"",
-                    },
-					style:{
-                        'color':'#D9DADB'
-					},
-                   //background:'#ffffff',
-                    headerIsNoBoder: true,
-                },
-
-                topBg:`${require('@/static/images/earning/topBg.png')}`,
-                moneyIcon:`${require('@/static/images/earning/moneyIcon.png')}`,
-                logoIcon:`${require('@/static/images/earning/logoIcon.png')}`,
-				sliderValue:50,
-            }
-        },
-        onLoad() {
-
-        },
-        methods: {
-            transferInAmount(){
-                this.$refs.transferInAmount.open();
-			},
-            sliderChange(e) {
-               this.sliderValue= e.detail.value;
-            }
-        }
-    }
+//    import appHeader from "@/components/common/header.vue";
+//    export default {
+//	    components:{
+//            appHeader,
+//
+//		},
+//        data() {
+//            return {
+//                headerOptions:{
+//                    show:true,
+//                    isAllowReturn:true,
+//					isWhiteIcon:true,
+//                    text:"收益",
+//                    rightItem:{
+//                        type:"text",
+//                        text:"",
+//                    },
+//					style:{
+//                        'color':'#D9DADB'
+//					},
+//                   //background:'#ffffff',
+//                    headerIsNoBoder: true,
+//                },
+//
+//                topBg:`${require('@/static/images/earning/topBg.png')}`,
+//                moneyIcon:`${require('@/static/images/earning/moneyIcon.png')}`,
+//                logoIcon:`${require('@/static/images/earning/logoIcon.png')}`,
+//				sliderValue:50,
+//            }
+//        },
+//        onLoad() {
+//
+//        },
+//        methods: {
+//            transferInAmount(){
+//                this.$refs.transferInAmount.open();
+//			},
+//            sliderChange(e) {
+//               this.sliderValue= e.detail.value;
+//            }
+//        }
+//    }
 </script>
 
 <style lang="less">
@@ -178,28 +182,75 @@
 						}
 					}
 				}
-
 				.yield{
-					margin: 56rpx 0 30rpx;
-					width: 690rpx;
-					height: 214rpx;
-					border-radius: 10rpx;
-					padding: 30rpx 44rpx 20rpx 44rpx;
-					box-sizing: border-box;
-					font-size: 28rpx;
+					margin: 40rpx auto;
+					width: 220rpx;
+					height: 220rpx;
+					border-radius: 50%;
+					position: relative;
+					background: linear-gradient(135deg, rgba(0, 79, 168, 1), rgba(0, 124, 211, 1), rgba(37, 212, 237, 1));
+					/*margin: 56rpx 0 30rpx;*/
+					/*width: 690rpx;*/
+					/*height: 214rpx;*/
+					/*background: #FFFFFF;*/
+					/*border-radius: 10rpx;*/
+					/*padding: 30rpx 44rpx 20rpx 44rpx;*/
+					/*box-sizing: border-box;*/
+					/*font-size: 28rpx;*/
 					font-family: PingFangSC-Regular, PingFang SC;
-					font-weight: 400;
-					color: #D9DADB;
-					background: #272A2E;
+					/*font-weight: 400;*/
+					/*color: #1A1A1A;*/
+					.yieldText{
+						width: 188rpx;
+						height: 188rpx;
+						border-radius: 50%;
+						background: white;
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						transform: translate(-50%,-50%);
+						text-align: center;
+						.yieldPercent{
+							margin-top: 30rpx;
+							font-size: 56rpx;
+							font-weight: 600;
+							color: #098FE0;
+							span{
+								font-size: 36rpx;
+							}
+
+						}
+						.addUp{
+							font-size: 24rpx;
+							font-weight: 400;
+							color: #000000;
+							opacity: 0.5;
+						}
+					}
 				}
 
-				.slider{
-					margin: 38rpx 0 24rpx;
-				}
-				.percent{
-					text-align: center;
-					color: #098FE0;
-				}
+
+				/*.yield{*/
+					/*margin: 56rpx 0 30rpx;*/
+					/*width: 690rpx;*/
+					/*height: 214rpx;*/
+					/*border-radius: 10rpx;*/
+					/*padding: 30rpx 44rpx 20rpx 44rpx;*/
+					/*box-sizing: border-box;*/
+					/*font-size: 28rpx;*/
+					/*font-family: PingFangSC-Regular, PingFang SC;*/
+					/*font-weight: 400;*/
+					/*color: #D9DADB;*/
+					/*background: #272A2E;*/
+				/*}*/
+
+				/*.slider{*/
+					/*margin: 38rpx 0 24rpx;*/
+				/*}*/
+				/*.percent{*/
+					/*text-align: center;*/
+					/*color: #098FE0;*/
+				/*}*/
 			}
 			.tab{
 				.tabItem{

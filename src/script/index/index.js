@@ -7,36 +7,44 @@ export default {
         return {
             girdData: [
                 {
-                    text: '矿池',
-                    img: `${require('@/static/images/home/pool.png')}`
+                    text: '质押挖矿',
+                    img: `${require('@/static/images/home/pool.png')}`,
+                    url:'sub/index'
                 },
                 {
-                    text: '分红',
-                    img: `${require('@/static/images/home/dividend.png')}`
+                    text: '挖矿收益',
+                    img: `${require('@/static/images/home/dividend.png')}`,
+                    url:'sub/index'
                 },
                 {
-                    text: '量化交易',
-                    img: `${require('@/static/images/home/deal.png')}`
+                    text: '量化理财',
+                    img: `${require('@/static/images/home/deal.png')}`,
+                    url:'earning/index'
                 },
                 {
-                    text: '公告',
-                    img: `${require('@/static/images/home/notice.png')}`
+                    text: '公告列表',
+                    img: `${require('@/static/images/home/notice.png')}`,
+                    url:'sub/index'
                 },
                 {
                     text: '推广链接',
-                    img: `${require('@/static/images/home/link.png')}`
+                    img: `${require('@/static/images/home/link.png')}`,
+                    url:'sub/index'
                 },
                 {
-                    text: '直推列表',
-                    img: `${require('@/static/images/home/list.png')}`
+                    text: '团队详情',
+                    img: `${require('@/static/images/home/team.png')}`,
+                    url:'sub/index'
                 },
                 {
-                    text: '团队收益',
-                    img: `${require('@/static/images/home/team.png')}`
+                    text: '推广收益',
+                    img: `${require('@/static/images/home/list.png')}`,
+                    url:'sub/index'
                 },
                 {
-                    text: '收益明细',
-                    img: `${require('@/static/images/home/detail.png')}`
+                    text: '矿池分红',
+                    img: `${require('@/static/images/home/detail.png')}`,
+                    url:'sub/index'
                 }
             ],
             logo: `${require('@/static/images/home/logo.png')}`,//logo
@@ -52,7 +60,14 @@ export default {
 
     },
     mounted() {
-        this.$refs.update.open();
+     //   this.$refs.update.open();
     },
-    methods: {}
+    methods: {
+        toInfo(item){
+            this.jumpPage.jump({
+                type:'navigateTo',
+                url:item.url
+            })
+        }
+    }
 }

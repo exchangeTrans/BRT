@@ -1,7 +1,9 @@
 <template>
 	<view class="trade" id="trade">
 		<pageHeader :headerOptions="headerOptions"/>
+        
         <scroll-view class="tradeContent" scroll-y>
+            <view @tap="changeTest">tatsadd</view>
             <view class="tradeTopView">
                 <view class="priceView add">0.0641</view>
                 <view class="moneyView">
@@ -11,11 +13,11 @@
                 <view class="rightView">
                     <view class="rightLi">
                         <view class="text">0.062</view>
-                        <view class="title">高</view>
+                        <view class="title">{{$t('trade').high}}</view>
                     </view>
                     <view class="rightLi">
                         <view class="text">0.062</view>
-                        <view class="title">低</view>
+                        <view class="title">{{$t('trade').low}}</view>
                     </view>
                     <view class="rightLi">
                         <view class="text">49833</view>
@@ -125,6 +127,18 @@
             },
             selectTableTab(item){
                 this.tableTabSelect = item;
+            },
+            changeTest(){
+                console.log(1111)
+                this.$storage.setSync({key: "lang", data: "zh-CN"});
+                // let url = '/blackPages/login/forgetPassword'
+                // uni.navigateTo({
+                //     url: url
+                // });
+                this.$jumpPage.jump({
+					type: 'navigateTo',
+					url: 'trade/index'
+				})
             },
         }
     }

@@ -36,51 +36,53 @@
 	</view>
 </template>
 
-<script>
-	import appHeader from '@/components/common/header.vue'
-    export default {
-	    components:{
-            appHeader
-		},
-        data() {
-            return {
-                headerOptions:{
-                    show:true,
-                    isAllowReturn:true,
-					isWhiteIcon:true,
-                    text:"USTD收款",
-                    rightItem:{
-                        type:"icon",
-                        text:"",
-						path:`${require('@/static/images/receipt/detail.png')}`,
-						style:{
-                            'width':'48rpx',
-							'height':'48rpx',
-						}
-                    },
-					style:{
-                      'color':'#D9DADB'
-					},
-					background:'#00001A',
-
-                    headerIsNoBoder: true,
-                },
-                rightIcon:`${require('@/static/images/receipt/rightIcon.png')}`
-
-            }
-        },
-        onLoad() {
-
-        },
-        methods: {
-            createAddress(){
-
-			},
-            importAddress(){
-
-			}
-        }
-    }
+<script src="@/script/receipt/receipt.js">
+	// import appHeader from '@/components/common/header.vue'
+    // export default {
+	//     components:{
+    //         appHeader
+	// 	},
+    //     data() {
+    //         return {
+    //             headerOptions:{
+    //                 show:true,
+    //                 isAllowReturn:true,
+	// 				isWhiteIcon:true,
+    //                 text:"USTD收款",
+    //                 rightItem:{
+    //                     type:"text",
+    //                     text:"充币记录",
+    //                     path:`${require('@/static/images/receipt/detail.png')}`,
+    //                     style:{
+    //                         'fontSize':'28rpx',
+    //                         'color':'#098FE0'
+    //                     },
+    //                     tipText:'ID:AVV491',
+    //                     haveTip:true
+    //                 },
+	// 				style:{
+    //                   'color':'#D9DADB'
+	// 				},
+	// 				background:'#00001A',
+	//
+    //                 headerIsNoBoder: true,
+    //             },
+    //             rightIcon:`${require('@/static/images/receipt/rightIcon.png')}`
+	//
+    //         }
+    //     },
+    //     onLoad() {
+	//
+    //     },
+    //     methods: {
+    //         createAddress(){
+	//
+	// 		},
+    //         importAddress(){
+	//
+	// 		}
+    //     }
+    // }
 </script>
 
 <style lang="less">
@@ -110,7 +112,8 @@
 					padding: 0 32rpx 0 40rpx;
 					box-sizing: border-box;
 					border-radius: 4rpx;
-					border: 2rpx solid #E5E9EA;
+					border: 2rpx solid rgba(229, 233, 234, 0.2);
+
 					line-height: 100rpx;
 					font-size: 32rpx;
 					font-family: PingFangSC-Regular, PingFang SC;

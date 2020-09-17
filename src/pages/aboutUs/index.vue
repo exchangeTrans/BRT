@@ -34,7 +34,7 @@
                     show:true,
                     isAllowReturn:true,
                     isWhiteIcon:true,
-					leftText:'返回',
+					leftText:'',
                     text:"",
                     rightItem:{
                         type:"text",

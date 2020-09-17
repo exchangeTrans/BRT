@@ -47,6 +47,7 @@
                         //     "color": 'rgba(68,68,68,1)'
                         // }
                     },
+                    
                     headerIsNoBoder: false,
                 },
             }

@@ -1,6 +1,7 @@
 <template>
     <view class="loginInput" id="loginInput"
-          :style="[wrapStyle, {'background': mode !== 'DARK' ? '#FFFFFF' : '#272A2E'}]">
+          :style="[wrapStyle, {'background': mode !== 'DARK' ? '#FFFFFF' : '#272A2E', 'box-shadow': mode !== 'DARK' ? '0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1)' :
+'0px -1rpx 0px 0px rgba(255, 255, 255, 0.1)'}]">
         <view class="content">
             <view class="icon" v-show="iconShow" :style="{'background-image': iconSrc}"></view>
             <view class="firstText" v-show="firstTextShow"
@@ -60,7 +61,7 @@
         width: 690rpx;
         height: 120rpx;
         background: #FFFFFF;
-        box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
+        box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
         margin: 0 auto 0;
         text-align: left;
         // position: relative;

@@ -24,6 +24,7 @@
         computed: {
             btnStyle() {
                 let {
+                    background,
                     backgroundColor,
                     borderRadius,
                     fontColor,
@@ -31,7 +32,8 @@
                     width,
                 } = this.$props
                 return {
-                    background: backgroundColor,
+                    background:background,
+                    backgroundColor: backgroundColor,
                     borderRadius,
                     color: fontColor,
                     opacity: Opacity,

@@ -38,8 +38,8 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue"
+<script src="@/script/directPush/directPush.js">
+    /*import appHeader from "@/components/common/header.vue"
 
     export default {
         name: "directPush",
@@ -152,7 +152,7 @@
                 ]
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

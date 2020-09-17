@@ -46,8 +46,8 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue"
+<script src="@/script/promotion/promotion.js">
+    /*import appHeader from "@/components/common/header.vue"
 
     export default {
         components: {
@@ -102,7 +102,7 @@
                 console.log(type)
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">

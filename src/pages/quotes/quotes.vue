@@ -48,8 +48,8 @@
     </view>
 </template>
 
-<script>
-    import QuotesItem from "../../components/quotes/quotesItem";
+<script src="@/script/quotes/quotes.js">
+    /*import QuotesItem from "../../components/quotes/quotesItem";
     import pageHeader from '@/components/common/header.vue'
     export default {
 
@@ -216,14 +216,51 @@
                 },
             };
         },
-        onLoad() {
+        mounted() {
+            let theme = this.$storage.getSync({key:'theme'});
+            // console.log(theme);
+            if(theme === 'white'){
+                this.headerOptions = {
+                    show:true,
+                    isAllowReturn:false,
+                    text:"行情",
+                    rightItem:{
+                        type:"icon",
+                        path: `${require('@/static/images/quotes/search.png')}`,
+                        style:{
+                            'width':'48rpx',
+                            'height':'48rpx',
+                        }
+                    },
+                    headerIsNoBoder: false,
+                };
+            } else {
+                this.headerOptions = {
+                    show:true,
+                    isAllowReturn:false,
+                    text:"行情",
+                    rightItem:{
+                        type:"icon",
+                        path: `${require('@/static/images/quotes/blacksearch.png')}`,
+                        style:{
+                            'width':'48rpx',
+                            'height':'48rpx',
+                        }
+                    },
+                    style:{
+                        'color':'#D9DADB'
+                    },
+                    background: '#00001A',
+                    headerIsNoBoder: true,
+                };
+            }
         },
         methods: {
             switchTab(index) {
                 this.active = index;
             },
         },
-    };
+    };*/
 </script>
 
 <style scoped lang="less">

@@ -9,7 +9,7 @@
             >
                 <view class="image" :style="{'background-image':'url('+updateIcon+')'}"></view>
                 <view class="findNew" :style="{'color':mode==='night'?'#D9DADB':'#000000'}">发现新版本</view>
-                <view class="updateText">钱包管理增加排序功能，优化网络速度</view>
+                <view class="updateText">{{updateText}}</view>
                 <view   class="updateBtn" @tap="updateBtn">立即更新</view>
                 <!--<view class="closeIcon" @tap="close()" :style="{'background-image':'url('+closeIcon+')'}"></view>-->
             </view>
@@ -31,9 +31,10 @@
 			return {
                 title: 'dialog',
                 type:'',
-                isMustUpDate:false,
+                isMustUpDate:true,
                 updateIcon:`${require('@/static/images/home/updateIcon.png')}`,
                 closeIcon:`${require('@/static/images/home/close.png')}`,
+                updateText:'钱包管理增加排序功能，优化网络速度'
 			}
 		},
         watch:{
@@ -53,6 +54,9 @@
                     this.$refs['update'].close();
                 })
             },
+            updateBtn(){
+
+            }
 
 		}
 	}
@@ -65,15 +69,16 @@
         height: 800rpx;
         border-radius: 20rpx;
         position: relative;
-        padding-top: 30rpx;
+        padding-top: 78rpx;
         box-sizing: border-box;
         .image{
-            width: 400rpx;
-            height: 400rpx;
-            background-size: cover;
+            width: 344rpx;
+            height: 314rpx;
+            background-size: 100% 100%;
             margin: 0 auto 30rpx;
         }
         .findNew{
+            margin-top: 60rpx;
             text-align: center;
             font-size: 36rpx;
             font-family: PingFangSC-Semibold, PingFang SC;

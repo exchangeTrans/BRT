@@ -8,16 +8,16 @@
 				</view>
 
 				<view class="earning">
-					<view>BRT总余额 420.24 BRT </view>
+					<view class="earningTitle">资产总额</view>
 					<view class="earningNumber">
-						<span>0</span>
-						<span>≈￥0</span>
+						<span>420.24 USDT</span>
+						<span>≈￥10098 CNY</span>
 					</view>
 				</view>
 
 			</view>
 			<view class="gird">
-				<view class="girdItem" v-for="(item,index) in girdData" :key="index">
+				<view class="girdItem" v-for="(item,index) in girdData" :key="index" @tap="toInfo(item)">
 					<view class="girdIcon" :style="{'background-image':'url('+item.img+')'}"></view>
 					<view class="text">{{item.text}}</view>
 				</view>
@@ -44,7 +44,7 @@
 
 				<view class="performerItem" v-for="(item,index) in 8" :key="index">
 					<view class="currency">
-						<view class="currencyTitle"> <span>LED</span>/HDU</view>
+						<view class="currencyTitle"> <span>BRT</span>/USDT</view>
 						<view class="currencyData">24H量85661.9866</view>
 					</view>
 					<view class="newest">
@@ -174,10 +174,13 @@
 					font-weight: 400;
 					color: #FFFFFF;
 					box-sizing: border-box;
+                    .earningTitle{
+                        opacity: 0.64;
+                    }
 					.earningNumber{
 						margin-top: 20rpx;
 						span:nth-of-type(1){
-							font-size: 60rpx;
+							font-size: 48rpx;
 							margin-right: 10rpx;
 						}
 					}
@@ -273,7 +276,7 @@
 					font-size: 28rpx;
 					color: #1A1A1A;
 					span{
-						color: #835DFF;
+						color: #098FE0;
 						margin-left: 10rpx;
 					}
 				}
@@ -284,6 +287,7 @@
 					justify-content: space-between;
 					font-size: 24rpx;
 					color: #1A1A1A;
+                    opacity: 0.5;
 					view{
 						flex: 1;
 					}
@@ -321,6 +325,7 @@
 						.currencyData{
 							margin-top: 10rpx;
 							line-height: 34rpx;
+							opacity: 0.5;
 						}
 					}
 					.newest{
@@ -336,6 +341,7 @@
 						.newestMoney{
 							margin-top: 10rpx;
 							font-weight: 400;
+							opacity: 0.5;
 						}
 					}
 					.upAndDown{

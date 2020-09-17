@@ -159,7 +159,7 @@
                     width: 690rpx;
                     height: 120rpx;
                     background: #FFFFFF;
-                    box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
+                    box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
                     border-radius: 16rpx 16px 0px 0px;
 
                     .chountryChoiceIcon {

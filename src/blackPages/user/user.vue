@@ -1,5 +1,5 @@
 <template>
-    <view id="user" >
+    <view id="user">
         <scroll-view class="user-wrap" :scroll-y="true">
             <view class="bgimg">
                 <image :src="backgroundImage"></image>
@@ -33,12 +33,12 @@
                                     <span>我的资产</span>
                                 </view>
                                 <view class="valuation">
-                                    <view class="icon">
+                                    <!--<view class="icon">
                                         <image :src="eyesIcon"></image>
-                                    </view>
-                                    <span>总资产估值</span>
+                                    </view>-->
+                                    <!--<span>总资产估值</span>-->
                                     <view class="balance">
-                                        <span>≈0.00CNY</span>
+                                        <span>2000.00 USDT≈14000 RMB</span>
                                     </view>
                                 </view>
 
@@ -79,6 +79,9 @@
                                 <view class="icon iconRight">
                                     <image :src="rightIcon"></image>
                                 </view>
+                                <view class="urlText">
+                                    <span>{{item.url}}</span>
+                                </view>
                                 <view class="clearfix"></view>
                             </view>
                         </view>
@@ -97,8 +100,8 @@
     </view>
 </template>
 
-<script>
-    import Btn from "../../components/btn/index";
+<script src="@/script/user/user.js">
+    /*import Btn from "../../components/btn/index";
     export default {
         name: "user",
         components: {Btn},
@@ -156,7 +159,7 @@
                 eyesIcon: `${require('@/static/images/user/eyes.png')}`,
             }
         }
-    }
+    }*/
 </script>
 
 <style scoped lang="less">
@@ -165,11 +168,13 @@
         height: 100vh;
         /*position: relative;*/
         /*padding-top: calc(100rpx + var(--status-bar-height));*/
+
         .user-wrap {
             width: 100%;
             height: 100%;
             background: #22252A;
             position: relative;
+
             .bgimg {
                 position: absolute;
                 z-index: 1;
@@ -179,6 +184,7 @@
                     height: 660rpx;
                 }
             }
+
             .user-wrap-content {
                 position: absolute;
                 z-index: 2;
@@ -191,6 +197,7 @@
                 .user-wrap-container {
                     width: 690rpx;
                     margin: 0 auto;
+
                     .user-wrap-userMassage {
                         padding-bottom: 30rpx;
                         /*height: 140rpx;*/
@@ -205,6 +212,7 @@
                                 height: 136rpx;
                                 background: #000;
                                 border-radius: 50%;
+
                                 image {
                                     width: 100%;
                                     height: 100%;
@@ -215,6 +223,7 @@
 
                         .userMassage {
                             margin-left: 20rpx;
+
                             span {
                                 display: block;
                                 font-size: 24rpx;
@@ -249,6 +258,7 @@
                             height: 48rpx;
                             /*background: #D8D8D8;*/
                             border-radius: 5rpx;
+
                             image {
                                 width: 100%;
                                 height: 100%;
@@ -272,7 +282,7 @@
                             align-items: center;
 
                             .asset-massage {
-                                .my-asset{
+                                .my-asset {
                                     display: flex;
                                     align-items: center;
 
@@ -281,6 +291,7 @@
                                         height: 36rpx;
                                         /*background: #D8D8D8;*/
                                         border-radius: 5rpx;
+
                                         image {
                                             width: 100%;
                                             height: 100%;
@@ -298,7 +309,8 @@
                                     }
 
                                 }
-                                .valuation{
+
+                                .valuation {
                                     display: flex;
                                     align-items: center;
                                     margin-top: 24rpx;
@@ -308,12 +320,14 @@
                                         font-family: PingFangSC-Regular, PingFang SC;
                                         font-weight: 400;
                                         color: rgba(255, 255, 255, 0.5);
-                                        margin-left: 16rpx;
+                                        /*margin-left: 16rpx;*/
                                     }
+
                                     .icon {
                                         width: 36rpx;
                                         height: 24rpx;
                                         /*background: #D8D8D8;*/
+
                                         image {
                                             width: 100%;
                                             height: 100%;
@@ -321,8 +335,10 @@
                                         }
                                     }
                                 }
-                                .balance{
+
+                                .balance {
                                     /*margin-top: 20rpx;*/
+
                                     span {
                                         font-size: 36rpx;
                                         font-family: PingFangSC-Medium, PingFang SC;
@@ -336,17 +352,20 @@
                             .asset-btn {
                                 height: 110rpx;
                                 display: flex;
+
                                 .recharge, .reflect {
                                     display: flex;
                                     flex-direction: column;
                                     justify-content: center;
                                     align-items: center;
+
                                     .icon {
                                         width: 64rpx;
                                         height: 64rpx;
                                         background: #D8D8D8;
                                         border-radius: 5rpx;
                                     }
+
                                     span {
                                         font-size: 24rpx;
                                         font-family: PingFangSC-Regular, PingFang SC;
@@ -355,9 +374,11 @@
                                         margin-top: 4rpx;
                                     }
                                 }
+
                                 .recharge {
                                     padding-right: 40rpx;
                                 }
+
                                 .reflect {
                                     padding-left: 40rpx;
                                     border-left: 2rpx solid rgba(255, 255, 255, 0.2);
@@ -367,6 +388,7 @@
                         }
 
                     }
+
                     .user-wrap-list {
                         margin-top: 20rpx;
                         /*border-radius: 16rpx;*/
@@ -377,11 +399,11 @@
                         .set {
                             border-radius: 16rpx;
                         }
+
                         .about {
                             margin-top: 20rpx;
                             border-radius: 16rpx;
                         }
-
 
 
                         .user-wrap-list-item {
@@ -421,10 +443,28 @@
                                 float: right;
                                 width: 48rpx;
                                 height: 48rpx;
+
                                 image {
                                     width: 100%;
                                     height: 100%;
                                     display: block;
+                                }
+                            }
+
+                            .urlText {
+                                max-width: 260rpx;
+                                float: right;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                color: #098FE0;
+
+                                span {
+                                    font-size: 24rpx;
+                                    font-family: PingFangSC-Regular, PingFang SC;
+                                    font-weight: 400;
+                                    color: #098FE0;
+                                    line-height: 100rpx;
                                 }
                             }
                         }
@@ -432,6 +472,7 @@
                         .user-wrap-list-item:first-child {
                             border-radius: 16rpx 16rpx 0rpx 0rpx;
                         }
+
                         .user-wrap-list-item:last-child {
                             border-radius: 0rpx 0rpx 16rpx 16rpx;
                         }
@@ -444,9 +485,6 @@
                         margin-bottom: 40rpx;
                     }
                 }
-               
-
-
 
 
             }

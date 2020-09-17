@@ -145,7 +145,7 @@
                 width: 690rpx;
                 height: 120rpx;
                 background: #FFFFFF;
-                box-shadow: 0rpx -1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
+                box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
                 border-radius: 16rpx 16rpx 0rpx 0rpx;
                 margin: 40rpx auto 0;
 

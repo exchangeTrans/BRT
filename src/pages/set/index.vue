@@ -19,10 +19,19 @@
 
 			</view>
 
-			<view class="currencyItem" v-for="item in currencyData" @>
+			<view class="currencyItem" v-for="item in currencyData" >
 				<view class="currencyIcon" :style="{'background-image':'url('+item.img+')'}"></view>
 				<view class="currencyText">{{item.name}}</view>
 			</view>
+
+			<view class="currency">
+				<view class="currencyTitle">
+					<view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>	显示币种
+				</view>
+
+			</view>
+
+			<chooseLanguage></chooseLanguage>
 
 			<view class="confirmBtn">
 				<btn :background="background" :borderRadius="borderRadius"></btn>
@@ -36,58 +45,60 @@
 	</view>
 </template>
 
-<script>
-	import btn from "@/components/btn/index.vue"
-    import appHeader from "@/components/common/header.vue"
-    export default {
-	    components:{
-            appHeader,
-			btn,
-
-		},
-        data() {
-            return {
-                headerOptions:{
-                    show:true,
-                    isAllowReturn:true,
-                    text:"设置",
-                    rightItem:{
-                        type:"text",
-                        text:"",
-                    },
-                    bodyPadding:{"padding":'0,0,0,0'},
-                    headerIsNoBoder: true,
-                },
-                currencyData:[
-					{
-					    name:'人民币（CNY）',
-                        img:`${require('@/static/images/set/rmb.png')}`,
-					},
-                    {
-                        name:'美元（USD）',
-                        img:`${require('@/static/images/set/dollar.png')}`,
-                    },
-                    {
-                        name:'日元（JPY）',
-                        img:`${require('@/static/images/set/yen.png')}`,
-                    }
-				],
-				titleLine:`${require('@/static/images/set/titleLine.png')}`,
-
-				background:'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
-                borderRadius:'50rpx',
-				modelFlag:'day',//day 白天模式；night 黑夜模式
-            }
-        },
-        onLoad() {
-
-        },
-        methods: {
-            chooseModel(item){
-                this.modelFlag=item;
-			}
-        }
-    }
+<script src="@/script/set/set.js">
+	// import btn from "@/components/btn/index.vue"
+    // import appHeader from "@/components/common/header.vue"
+	// import chooseLanguage from "@/components/chooseLanguage/index.vue"
+    // export default {
+	//     components:{
+    //         appHeader,
+	// 		btn,
+    //         chooseLanguage,
+	//
+	// 	},
+    //     data() {
+    //         return {
+    //             headerOptions:{
+    //                 show:true,
+    //                 isAllowReturn:true,
+    //                 text:"设置",
+    //                 rightItem:{
+    //                     type:"text",
+    //                     text:"",
+    //                 },
+    //                 bodyPadding:{"padding":'0,0,0,0'},
+    //                 headerIsNoBoder: true,
+    //             },
+    //             currencyData:[
+	// 				{
+	// 				    name:'人民币（RMB）',
+    //                     img:`${require('@/static/images/set/rmb.png')}`,
+	// 				},
+    //                 {
+    //                     name:'美元（USD）',
+    //                     img:`${require('@/static/images/set/dollar.png')}`,
+    //                 },
+    //                 {
+    //                     name:'日元（JPY）',
+    //                     img:`${require('@/static/images/set/yen.png')}`,
+    //                 }
+	// 			],
+	// 			titleLine:`${require('@/static/images/set/titleLine.png')}`,
+	//
+	// 			background:'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
+    //             borderRadius:'50rpx',
+	// 			modelFlag:'day',//day 白天模式；night 黑夜模式
+    //         }
+    //     },
+    //     onLoad() {
+	//
+    //     },
+    //     methods: {
+    //         chooseModel(item){
+    //             this.modelFlag=item;
+	// 		}
+    //     }
+    // }
 </script>
 
 <style lang="less">
@@ -140,17 +151,17 @@
 						color: #FFFFFF;
 						background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 					}
-
 				}
 			}
 			.currency{
 				padding: 0 30rpx;
-				height: 104rpx;
+				margin-top: 20rpx;
+				height: 84rpx;
 				box-sizing: border-box;
 				font-size: 32rpx;
 				font-weight: 600;
 				color: #1A1A1A;
-				line-height: 104rpx;
+				line-height: 84rpx;
 				border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
 				.currencyTitle{
 					.line{

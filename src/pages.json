@@ -1,7 +1,7 @@
 {
-
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+<<<<<<< HEAD
 	{
 	  "path": "blackPages/myteam/index",
 	  "style": {
@@ -34,14 +34,118 @@
 	  }
 	},
 	{
+=======
+
+    {
+      "path": "pages/miningEarnings/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },  {
+      "path": "blackPages/earnings/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    }, {
+>>>>>>> origin
+      "path":"blackPages/changePhone/index"
+      //"style":
+    },{
+      "path": "blackPages/set/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    }, {
+      "path": "pages/aboutUs/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },{
+      "path": "pages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+
+    {
+      "path": "blackPages/receipt/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/changeEmail/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/set/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },{
       "path":"blackPages/changePhone/index"
       //"style":
     },
-
     {
       "path": "blackPages/user/user",
       "style": {
         "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "blackPages/chooseCountry/chooseCountry",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/directPush/directPush",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/promotion/promotion",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/quotes/quotes",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "components/success/success",
+      "style": {
+        //"navigationBarTitleText": ""
       }
     },
     {
@@ -57,11 +161,12 @@
       }
     },
     {
-      "path": "pages/index/index",
+      "path": "pages/chooseCountry/chooseCountry",
       "style": {
-        //"navigationBarTitleText": "uni-app"
+        //"navigationBarTitleText": ""
       }
     },
+
     {
       "path": "pages/changePhone/index",
       "style": {
@@ -76,6 +181,12 @@
     },
     {
       "path": "pages/withdrawal/withdrawal",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/withdrawal/withdrawal",
       "style": {
         //"navigationBarTitleText": ""
       }
@@ -153,9 +264,15 @@
       }
     },
     {
-      "path": "pages/directPush/directPush",
+      "path": "blackPages/property/property",
       "style": {
         "navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "pages/directPush/directPush",
+      "style": {
+        //"navigationBarTitleText": "资产"
       }
     },
     {
