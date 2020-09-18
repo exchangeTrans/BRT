@@ -11,31 +11,48 @@
                     <view class="countryText">{{country}}</view>
                     <view class="lastCountryIcon" :style="{'background-image': countryChoiceLastIcon}"></view>
                 </view>
-                <loginInput :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber"
-                            :firstTextStyle="phoneFirstStyle" :placeHolder="'请输入注册手机号码'"
+                <loginInput  :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
+                            :firstText="countryNumber"
+                            :firstTextStyle="phoneFirstStyle" :placeHolder="$t('forgetPassword').inputPhone"
+                            :inputStyle="inputPhoneStyle"
                             @inputChange="inputChange('phone', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true" :lastText="'发送验证码'"
-                            :placeHolder="'请输入手机验证码'" @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入新登录密码'"
+                <loginInput  :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true"
+                            :lastText="$t('forgetPassword').sendVerifyCode"
+                            :placeHolder="$t('forgetPassword').inputVerifyCode"
+                            :inputStyle="inputVerifyCodeStyle"
+                            @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
+                <loginInput  :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('forgetPassword').inputPassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('password', $event)"></loginInput>
-                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
-                            :placeHolder="'请确认新登录密码'"
+                <loginInput  :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('forgetPassword').inputSurePassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('surePassword', $event)"></loginInput>
             </view>
             <view class="emailForgetFlag" v-show="type === 'EMAIL'">
-                <loginInput :iconShow="true" :iconSrc="emailIcon" :iconStyle="emailIconStyle"
+                <loginInput  :iconShow="true" :iconSrc="emailIcon" :iconStyle="emailIconStyle"
                             :wrapStyle="emailWrapStyle"
-                            :placeHolder="'请输入注册邮箱'" @inputChange="inputChange('email', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true" :lastText="'发送验证码'"
-                            :placeHolder="'请输入邮箱验证码'" @inputChange="inputChange('emailVerifyCode', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入新登录密码'"
+                            :placeHolder="$t('forgetPassword').inputEmail"
+                            :inputStyle="passwordStyle"
+                            @inputChange="inputChange('email', $event)"></loginInput>
+                <loginInput  :iconShow="true" :iconSrc="verifyCodeIcon" :lastTextShow="true"
+                            :lastText="$t('forgetPassword').sendVerifyEmailCode"
+                            :placeHolder="$t('forgetPassword').inputEmailVerifyCode"
+                            :inputStyle="inputVerifyCodeStyle"
+                            @inputChange="inputChange('emailVerifyCode', $event)"></loginInput>
+                <loginInput  :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('forgetPassword').inputEmailPassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('emailPassword', $event)"></loginInput>
-                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请确认新登录密码'"
+                <loginInput  :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('forgetPassword').inputEmailSurePassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('emailSurePassword', $event)"></loginInput>
             </view>
-            <loginBtn :btnText="'重置密码'" :btnStyle="btnStyle"></loginBtn>
+            <loginBtn :btnText="$t('forgetPassword').forgetBtn" :btnStyle="btnStyle"></loginBtn>
             <view class="regsTouch" @tap="jumpRegs">
-                没有账号？立即注册
+                {{$t('forgetPassword').regsJump}}
             </view>
         </view>
 

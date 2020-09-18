@@ -20,10 +20,11 @@ export default {
             emailChoice: `url(${require('@/static/images/login/emailChoice.png')})`,
             phoneIcon: `url(${require('@/static/images/login/phoneNumber.png')})`,
             passwordIcon: `url(${require('@/static/images/login/passwordIcon.png')})`,
-            leftText: "手机登录",
-            rightText: "邮箱登录",
+            leftText: this.$t('login').phoneLogin,
+            rightText: this.$t('login').emailLogin,
             defaultType: "PHONE",
             country: "中国",
+            countryNumber: "+86",
             wrapStyle: {
                 'background': '#FFFFFF',
                 'box-shadow': ' 0px 1px 0px 0px rgba(0, 0, 0, 0.1)',
@@ -39,8 +40,14 @@ export default {
                 'font-weight': '400',
                 'color': '#1A1A1A',
                 'line-height': '120rpx',
-
-                'margin': 'auto 60rpx auto 20rpx',
+                'width': "98rpx",
+                'margin': 'auto 0rpx auto 20rpx',
+            },
+            inputPhoneStyle: {
+              width: "444rpx",
+            },
+            passwordStyle: {
+                width: '562rpx',
             },
             emailStyle: {
                 'background': '#FFFFFF',
@@ -62,7 +69,6 @@ export default {
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             },
-            countryNumber: "+86",
         }
     },
     mounted() {

@@ -34,8 +34,8 @@ export default {
             },
             mode: "",
             defaultType: "PHONE",
-            leftText: "手机号找回",
-            rightText: "邮箱找回",
+            leftText: this.$t('forgetPassword').phoneForget,
+            rightText: this.$t('forgetPassword').emailForget,
             type: "PHONE",
             phoneIcon: `url(${require('@/static/images/login/phoneNumber.png')})`,
             countryChoiceIcon: `url(${require('@/static/images/login/phoneHead.png')})`,
@@ -49,10 +49,11 @@ export default {
                 "margin-top": "60rpx"
             },
             phoneFirstStyle: {
-                "margin": "auto 60rpx auto 20rpx",
+                "margin": "auto 0rpx auto 20rpx",
                 'font-size': '32rpx',
                 'font-family': 'PingFangSC-Regular, PingFang SC',
                 'font-weight': '400',
+                'width': "98rpx",
                 'color': '#1A1A1A',
                 'line-height': '120rpx',
 
@@ -69,8 +70,16 @@ export default {
                 'background': '#FFFFFF',
                 'box-shadow': '0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1)',
                 'border-radius': '0rpx 0rpx 16rpx 16rpx',
-
-            }
+            },
+            inputPhoneStyle: {
+                width: "444rpx",
+            },
+            passwordStyle: {
+                width: '562rpx',
+            },
+            inputVerifyCodeStyle: {
+                width: '390rpx'
+            },
         }
     },
     mounted() {

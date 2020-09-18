@@ -10,36 +10,57 @@
                     <view class="countryText">{{country}}</view>
                     <view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
                 </view>
-                <loginInput :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true" :firstText="countryNumber"
+                <loginInput :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
+                            :firstText="countryNumber"
                             :firstTextStyle="phoneFirstTextStyle"
-                            :placeHolder="'请输入手机号码'" @inputChange="inputChange('phone', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="smsVerifyCode" :placeHolder="'请输入手机验证码'" :lastTextShow="true"
-                            :lastText="'发送验证码'"
+                            :placeHolder="$t('regs').inputPhone"
+                            :inputStyle="inputPhoneStyle"
+                            @inputChange="inputChange('phone', $event)"></loginInput>
+                <loginInput :iconShow="true" :iconSrc="smsVerifyCode"
+                            :placeHolder="$t('regs').inputPhoneVerifyCode"
+                            :inputStyle="inputVerifyCodeStyle"
+                            :lastTextShow="true"
+                            :lastText="$t('regs').sendVerifyCode"
                             :lastTextStyle="phoneLastTextStyle" @lastTextClick="sendSmsVerify"
                             @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'"
+                <loginInput :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('regs').inputPhonePassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('passsword', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'"
+                <loginInput :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('regs').inputPhoneSurePassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('surePassword', $event)"></loginInput>
                 <loginInput :wrapStyle="inviteWrapStyle" :iconShow="true" :iconSrc="inviteCode"
-                            :placeHolder="'请输入推广码'"
+                            :placeHolder="$t('regs').inputInviteCode"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('inviteCode', $event)"></loginInput>
             </view>
             <view v-show="type === 'EMAIL'" class="emailRegsFlag">
-                <loginInput :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailIcon" :placeHolder="'请填写邮箱'"
+                <loginInput :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailIcon"
+                            :placeHolder="$t('regs').inputEmail"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('email', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="smsVerifyCode" :lastTextShow="true" :lastText="'发送验证码'"
-                            :placeHolder="'请输入邮箱验证码'" @inputChange="inputChange('emailVerify', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'"
+                <loginInput :iconShow="true" :iconSrc="smsVerifyCode" :lastTextShow="true"
+                            :lastText="$t('regs').sendVerifyEmailCode"
+                            :placeHolder="$t('regs').inputEmail"
+                            :inputStyle="inputVerifyCodeStyle"
+                            @inputChange="inputChange('emailVerify', $event)"></loginInput>
+                <loginInput :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('regs').inputEmailPassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('emailPassword', $event)"></loginInput>
-                <loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'"
+                <loginInput :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('regs').inputEmailSurePassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('emailSurePassword', $event)"></loginInput>
                 <loginInput :wrapStyle="inviteWrapStyle" :iconShow="true" :iconSrc="inviteCode"
-                            :placeHolder="'请输入推广码'"
+                            :placeHolder="$t('regs').inputEmailInviteCode"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('emailInviteCode', $event)"></loginInput>
             </view>
             <loginBtn :btnText="btnText" :btnStyle="btnStyle" @btnClick="btnClick"></loginBtn>
-            <view class="loginTouch" @tap="loginTouch">已有账号，立即登录</view>
+            <view class="loginTouch" @tap="loginTouch">{{$t('regs').loginJump}}</view>
         </view>
     </view>
 </template>

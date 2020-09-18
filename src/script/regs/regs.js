@@ -15,9 +15,9 @@ export default {
         return {
             mode: "",
             defaultChoice: "PHONE",
-            leftText: "手机号注册",
-            rightText: "邮箱注册",
-            btnText: "下一步",
+            leftText: this.$t('regs').phoneRegs,
+            rightText: this.$t('regs').emailRegs,
+            btnText: this.$t('regs').regsBtn,
             country: "中国",
             countryNumber: "+86",
             countryIcon: `url(${require('@/static/images/login/phoneHead.png')})`,
@@ -38,7 +38,8 @@ export default {
                 'font-weight': '400',
                 'color': '#1A1A1A',
                 'line-height': '120rpx',
-                'margin': 'auto 60rpx auto 20rpx',
+                'width': "98rpx",
+                'margin': 'auto 0rpx auto 20rpx',
             },
             inviteWrapStyle: {
                 'background': '#FFFFFF',
@@ -46,6 +47,15 @@ export default {
                 'border-radius': '0rpx 0rpx 16rpx 16rpx',
             },
             phoneLastTextStyle: {},
+            inputPhoneStyle: {
+                width: "444rpx",
+            },
+            passwordStyle: {
+                width: '562rpx',
+            },
+            inputVerifyCodeStyle: {
+                width: '390rpx'
+            },
             emailStyle: {
                 'background': '#FFFFFF',
                 'box-shadow': '0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1)',

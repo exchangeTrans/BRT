@@ -12,27 +12,31 @@
                 </view>
                 <loginInput :wrapStyle="wrapStyle" :iconShow="true" :iconSrc="phoneIcon" :firstTextShow="true"
                             :firstText="countryNumber"
-                            :firstTextStyle="phoneFirstText" :placeHolder="'请输入手机号码'"
+                            :firstTextStyle="phoneFirstText" :placeHolder="$t('login').inputPhone"
+                            :inputStyle="inputPhoneStyle"
                             @inputChange="inputChange('phone', $event)"></loginInput>
-                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入登录密码'"
+                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('login').inputPassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
             <view class="emailLoginFlag" v-show="type === 'EMAIL'">
-                <view class="lastInput">
-                    <view class="icon" :style="{'background-image': emailChoice}"></view>
-                    <input class="emailInput" placeholder="请输入邮箱" @input="inputChange('email', $event)"/>
-                    <view class="lastIcon" :style="{'background-image': cityChoiceLastIcon}"></view>
-                </view>
-                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入登录密码'"
+                <loginInput :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailChoice"
+                            :placeHolder="$t('login').inputEmail"
+                            :inputStyle="passwordStyle"
+                            @inputChange="inputChange('email', $event)"></loginInput>
+                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                            :placeHolder="$t('login').inputEmailPassword"
+                            :inputStyle="passwordStyle"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
-            <loginBtn :btnStyle="btnStyle" :btnText="'登录'" @btnClick="loginClick"></loginBtn>
+            <loginBtn :btnStyle="btnStyle" :btnText="$t('login').loginBtn" @btnClick="loginClick"></loginBtn>
             <view class="touchFunc">
                 <view class="forgetPasswordTouch" @tap="jumpForgetPassword">
-                    忘记密码？
+                    {{$t('login').forgetPasswordJump}}
                 </view>
                 <view class="regsTouch" @tap="jumpRegs">
-                    没有账号？立即注册
+                    {{$t('login').regsJump}}
                 </view>
             </view>
         </view>
