@@ -64,6 +64,7 @@ export default {
     },
     methods: {
         toInfo(item){
+            console.log(item)
             this.$jumpPage.jump({
                 type:'navigateTo',
                 url:item.url
