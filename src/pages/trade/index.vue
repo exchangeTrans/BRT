@@ -3,7 +3,7 @@
 		<pageHeader :headerOptions="headerOptions"/>
         
         <scroll-view class="tradeContent" scroll-y>
-            <view @tap="changeTest">tatsadd</view>
+            <!-- <view @tap="changeTest">tatsadd</view> -->
             <view class="tradeTopView">
                 <view class="priceView add">0.0641</view>
                 <view class="moneyView">
@@ -133,11 +133,11 @@
                 this.$storage.setSync({key: "lang", data: "zh-CN"});
                 // let url = '/blackPages/login/forgetPassword'
                 // uni.navigateTo({
-                //     url: url
+                //     url: '/pages/miningEarnings/index'
                 // });
                 this.$jumpPage.jump({
 					type: 'navigateTo',
-					url: 'trade/index'
+					url: 'miningEarnings/index'
 				})
             },
         }
@@ -271,12 +271,12 @@
             .chart1{
                 width: 100%;
                 height: 526rpx;
-                background: darkblue;
+                // background: darkblue;
             }
             .chart2{
                 width: 100%;
                 height: 200rpx;
-                background: firebrick;
+                // background: firebrick;
             }
             
         }

@@ -13,9 +13,9 @@
                         <view class="name">
                             {{item.name}}
                         </view>
-                        <view class="areaCode">
+                        <!--<view class="areaCode">
                             ({{item.AreaCode}})
-                        </view>
+                        </view>-->
                     </view>
                 </view>
             </view>
