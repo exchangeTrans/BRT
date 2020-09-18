@@ -7,6 +7,7 @@
         //"navigationBarTitleText": "uni-app"
       }
     },
+
     {
       "path": "pages/miningEarnings/index",
       "style": {
@@ -15,36 +16,160 @@
     },
 
     {
-      "path": "pages/index/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },  {
-      "path": "blackPages/earnings/index",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    }, {
-      "path":"blackPages/changePhone/index"
-      //"style":
-    },{
-      "path": "blackPages/set/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    }, {
       "path": "pages/aboutUs/index",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
     {
-      "path": "blackPages/sub/index",
+      "path": "pages/sub/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
-    },{
-      "path": "pages/sub/index",
+    },
+    {
+      "path": "pages/chooseCountry/chooseCountry",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+
+    {
+      "path": "pages/changePhone/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/changeEmail/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/earnings/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/withdrawal/withdrawal",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/promotion/promotion",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/trade/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/receipt/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/quotes/quotes",
+      "style": {
+        "navigationBarTitleText": "行情"
+      }
+    },
+    {
+      "path": "pages/user/user",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/regs/regs",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/directPush/directPush",
+      "style": {
+        //"navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "pages/login/forgetPassword",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/myteam/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/noticedetails/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/noticelist/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/property/property",
+      "style": {
+        "navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "pages/record/record",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/set/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/trades/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "pages/welcome/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+
+
+
+
+   {
+      "path":"blackPages/changePhone/index"
+      //"style":
+    },
+    {
+      "path": "blackPages/sub/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
@@ -125,87 +250,9 @@
         //"navigationBarTitleText": "uni-app"
       }
     },
-    {
-      "path": "pages/chooseCountry/chooseCountry",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
 
     {
-      "path": "pages/changePhone/index",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/earnings/index",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/withdrawal/withdrawal",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
       "path": "blackPages/withdrawal/withdrawal",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/promotion/promotion",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/sub/index",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/trade/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-    {
-      "path": "pages/receipt/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-    {
-      "path": "pages/aboutUs/index",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/quotes/quotes",
-      "style": {
-        "navigationBarTitleText": "行情"
-      }
-    },
-    {
-      "path": "pages/user/user",
-      "style": {
-        "navigationBarTitleText": "我的"
-      }
-    },
-    {
-      "path": "pages/regs/regs",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/login/login",
       "style": {
         //"navigationBarTitleText": ""
       }
@@ -222,42 +269,21 @@
         //"navigationBarTitleText": ""
       }
     },
-    {
-      "path": "pages/property/property",
-      "style": {
-        "navigationBarTitleText": "资产"
-      }
-    },
+
     {
       "path": "blackPages/property/property",
       "style": {
         "navigationBarTitleText": "资产"
       }
     },
-    {
-      "path": "pages/directPush/directPush",
-      "style": {
-        //"navigationBarTitleText": "资产"
-      }
-    },
-    {
-      "path": "pages/login/forgetPassword",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
+
     {
       "path": "blackPages/login/forgetPassword",
       "style": {
         //"navigationBarTitleText": ""
       }
-    },
-    {
-      "path": "pages/trade/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
     }
+
   ],
   "tabBar": {
     // "color":"#8a8a8a",
@@ -268,26 +294,32 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "static/home_normal.png",
-        "selectedIconPath": "static/home.png"
+        "iconPath": "static/images/tabIcon/home_normal.png",
+        "selectedIconPath": "static/images/tabIcon/home.png"
       },
       {
         "pagePath": "pages/quotes/quotes",
         "text": "行情",
-        "iconPath": "static/search_normal.png",
-        "selectedIconPath": "static/search.png"
+        "iconPath": "static/images/tabIcon/market_normal.png",
+        "selectedIconPath": "static/images/tabIcon/market.png"
+      },
+      {
+        "pagePath": "pages/trades/index",
+        "text": "交易",
+        "iconPath": "static/images/tabIcon/deal_normal.png",
+        "selectedIconPath": "static/images/tabIcon/deal.png"
       },
       {
         "pagePath": "pages/property/property",
         "text": "资产",
-        "iconPath": "static/alert_normal.png",
-        "selectedIconPath": "static/alert.png"
+        "iconPath": "static/images/tabIcon/property_normal.png",
+        "selectedIconPath": "static/images/tabIcon/property.png"
       },
       {
         "pagePath": "pages/user/user",
         "text": "我的",
-        "iconPath": "static/search_normal.png",
-        "selectedIconPath": "static/search.png"
+        "iconPath": "static/images/tabIcon/user_normal.png",
+        "selectedIconPath": "static/images/tabIcon/user.png"
       }
       // {
       // 	"pagePath":"pages/rankingList/rankingList",

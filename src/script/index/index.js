@@ -19,12 +19,12 @@ export default {
                 {
                     text: '量化理财',
                     img: `${require('@/static/images/home/deal.png')}`,
-                    url:'earning/index'
+                    url:'earnings/index'
                 },
                 {
                     text: '公告列表',
                     img: `${require('@/static/images/home/notice.png')}`,
-                    url:'sub/index'
+                    url:'noticelist/index'
                 },
                 {
                     text: '推广链接',
@@ -34,7 +34,7 @@ export default {
                 {
                     text: '团队详情',
                     img: `${require('@/static/images/home/team.png')}`,
-                    url:'sub/index'
+                    url:'myteam/index'
                 },
                 {
                     text: '推广收益',
@@ -64,7 +64,6 @@ export default {
     },
     methods: {
         toInfo(item){
-            console.log(item)
             this.$jumpPage.jump({
                 type:'navigateTo',
                 url:item.url
