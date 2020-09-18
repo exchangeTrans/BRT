@@ -1,13 +1,13 @@
 <template>
     <view class="earningsRecordList" id="earningsRecordList">
-        <view class="earningsRecordItem" v-for="(item,index) in earningsRecordData" :key="index">
+        <view :class="isBlack?'earningsRecordItem black':'earningsRecordItem'" v-for="(item,index) in earningsRecordData" :key="index">
             <view class="itemTop">
-                <view class="earningsType">{{item.type}}</view>
+                <view :class="isBlack?'earningsType blackFont':'earningsType'">{{item.type}}</view>
                 <view class="earningsNum">{{item.num}} BRT</view>
                 <view class="clearfix"></view>
             </view>
 
-            <view class="itemBottom">
+            <view :class="isBlack?'itemBottom blackFont':'itemBottom'">
                 {{item.time}}
             </view>
         </view>
@@ -24,7 +24,10 @@
                 type:Array,
                 default:()=>[]
             },
-
+            isBlack: {
+                type: Boolean,
+                default: false,
+            }
         },
         data() {
             return {}
@@ -51,6 +54,7 @@
             background: #FFFFFF;
             border-radius: 10rpx;
             font-family: PingFangSC-Regular, PingFang SC;
+            
             .itemTop{
                 font-size: 32rpx;
 
@@ -58,6 +62,9 @@
                     float: left;
                     font-weight: 400;
                     color: #000000;
+                }
+                .blackFont {
+                    color: #D9DADB !important;
                 }
                 .earningsNum{
                     float: right;
@@ -74,6 +81,12 @@
                 font-weight: 400;
                 color: #000000;
             }
+            .blackFont {
+                color: rgba(217, 218, 219, 0.5) !important;
+            }
+        }
+        .black {
+            background: #272A2E;
         }
     }
 </style>
