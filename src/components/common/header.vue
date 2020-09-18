@@ -68,7 +68,13 @@
                     </div> -->
                 </div>
 
-                <div class="haveTip" v-if="headerOptions.rightItem.haveTip">ID: {{headerOptions.rightItem.tipText}}</div>
+                <div class="haveTip"
+                     v-if="headerOptions.rightItem.haveTip" :style="{
+                         'color':headerOptions.rightItem.tipTextStyle&&headerOptions.rightItem.tipTextStyle.color?headerOptions.rightItem.tipTextStyle.color:'',
+                         'opacity': headerOptions.rightItem.tipTextStyle&&headerOptions.rightItem.tipTextStyle.opacity?headerOptions.rightItem.tipTextStyle.opacity: 1,
+                     }">
+                    ID: {{headerOptions.rightItem.tipText}}
+                </div>
                 
             </div>
         </view>
@@ -295,7 +301,7 @@
 
                 }
                 .haveTip {
-                    text-align:right;
+                    /*text-align:right;*/
                     font-size: 24rpx;
                     font-family: PingFangSC-Regular, PingFang SC;
                     font-weight: 400;
@@ -303,6 +309,7 @@
                     display:block;
                     position: absolute;
                     margin-top: 60rpx;
+                    width: 100%;
                 }
                 .imgBox {
                     float:right;

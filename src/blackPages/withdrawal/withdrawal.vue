@@ -31,11 +31,14 @@
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-btn">
-                    <Btn :btnText="btnText"
+                    <!--<Btn :btnText="btnText"
                          fontColor="#FFFFFF"
                          :backgroundColor="BtnackgroundColor"
                          width="690rpx"
-                         borderRadius="50rpx"></Btn>
+                         borderRadius="50rpx"></Btn>-->
+                    <view class="btn-wrap">
+                        <span>提币</span>
+                    </view>
                 </view>
             </view>
         </scroll-view>
@@ -259,6 +262,24 @@
                 .withdrawal-wrap-container-btn {
                     margin-top: 40rpx;
                     margin-bottom: 80rpx;
+                    width: 100%;
+                    .btn-wrap {
+                        width: 710rpx;
+                        height: 100rpx;
+                        background: linear-gradient(135deg, #8C939B 0%, #B4BBC0 50%, #C5C5C5 100%);
+                        border-radius: 50rpx;
+                        opacity: 0.4;
+                        margin: 0 auto;
+                        span {
+                            display: block;
+                            line-height: 100rpx;
+                            text-align: center;
+                            font-size: 32rpx;
+                            font-family: PingFangSC-Regular, PingFang SC;
+                            font-weight: 400;
+                            color: #FFFFFF;
+                        }
+                    }
                 }
             }
         }

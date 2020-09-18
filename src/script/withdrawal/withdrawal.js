@@ -1,4 +1,4 @@
-import appHeader from "@/components/common/header.vue"
+import appHeader from "@/components/common/header.vue";
 import WithdrawalInput from "../../components/withdrawal/withdrawalInput";
 import Btn from "../../components/btn/index";
 
@@ -89,7 +89,7 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
-                    tipText:"AVV491",
+                    tipText:"AVV49111",
                     haveTip:true,
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
@@ -112,6 +112,10 @@ export default {
                     },
                     tipText:"AVV491",
                     haveTip:true,
+                    tipTextStyle: {
+                        color: "#D9DADB",
+                        opacity: 0.5,
+                    }
                 },
                 style: {
                     'color': '#D9DADB'
