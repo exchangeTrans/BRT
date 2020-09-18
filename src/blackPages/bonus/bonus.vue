@@ -54,66 +54,14 @@
                 </view>
             </view>
             <earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="isBlack"></earningsRecordList>
+            <view class="noDataBox" v-if="earningsRecordData.length===0">
+                <noData></noData>
+            </view>
         </view>
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue";
-    import earningsRecordList from "@/components/earningsRecordList/index.vue";
-
-    export default {
-        components: {
-            appHeader,
-            earningsRecordList
-        },
-        name: "bonus",
-        data() {
-            return {
-                time: `${require("@/static/images/set/time.png")}`,
-                headerOptions: {
-                    show: true,
-                    isAllowReturn: true,
-                    isWhiteIcon: true,
-                    text: "矿池分红",
-
-                    rightItem: {
-                        type: "text",
-                        text: "",
-                        style: {
-                            fontSize: "28rpx",
-                            color: "#098FE0",
-                        },
-                    },
-                    style: {
-                        'color': '#D9DADB'
-                    },
-                    background: '#00001A',
-                    bodyPadding: {"padding": '0,0,0,0'},
-                    headerIsNoBoder: true,
-                },
-                earningsRecordData: [
-                    {
-                        type: 'V1收益',
-                        num: '+190.32 BRT',
-                        time: '2020/09/28'
-                    },
-                    {
-                        type: 'V1收益',
-                        num: '+190.32 BRT',
-                        time: '2020/09/28'
-                    },
-                ],
-                isBlack: true,
-            }
-        },
-        mounted() {
-
-        },
-        methods: {},
-
-    }
-</script>
+<script src="@/script/bonus/bonus.js"></script>
 
 <style scoped lang="less">
     #bonus {
@@ -238,7 +186,7 @@
                 margin-left: 30rpx;
                 display: flex;
                 align-items: center;
-                
+
                 .list-title-icon {
                     width: 8rpx;
                     height: 28rpx;
@@ -252,9 +200,14 @@
                     font-family: PingFangSC-Medium, PingFang SC;
                     font-weight: 500;
                     /*color: #333333;*/
+
                     .text {
                         color: #D9DADB !important;
                     }
+                }
+
+                .noDataBox {
+                    position: relative;
                 }
             }
         }

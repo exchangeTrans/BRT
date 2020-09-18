@@ -160,6 +160,12 @@
         //"navigationBarTitleText": "uni-app"
       }
     },
+    {
+      "path": "pages/bonus/bonus",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
 
 
 
@@ -279,6 +285,13 @@
 
     {
       "path": "blackPages/login/forgetPassword",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+
+    {
+      "path": "blackPages/bonus/bonus",
       "style": {
         //"navigationBarTitleText": ""
       }

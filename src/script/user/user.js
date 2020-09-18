@@ -7,17 +7,17 @@ export default {
             listItemData: [
                 {
                     name:"修改绑定手机邮箱",
-                    path:"",
+                    path:"changeEmail/index",
                     img:`${require('@/static/images/user/alter.png')}`,
                 },
                 {
                     name:"修改密码",
-                    path:"",
+                    path:"login/forgetPassword",
                     img:`${require('@/static/images/user/password.png')}`,
                 },
                 {
                     name:"分享链接",
-                    path:"",
+                    path:"aboutUs/index",
                     img:`${require('@/static/images/user/link.png')}`,
                 },
                 {
@@ -27,7 +27,7 @@ export default {
                 },
                 {
                     name:"设置",
-                    path:"",
+                    path:"set/index",
                     img:`${require('@/static/images/user/set.png')}`,
                 },
             ],
@@ -99,6 +99,12 @@ export default {
         }*/
     },
     methods: {
-
+        toPage (path) {
+            debugger;
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: path,
+            })
+        }
     }
 }

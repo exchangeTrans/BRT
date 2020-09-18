@@ -154,12 +154,12 @@ export default {
                 isAllowReturn:false,
                 text:"行情",
                 rightItem:{
-                    type:"icon",
-                    path: `${require('@/static/images/quotes/search.png')}`,
+                    type:"text",
+                    /*path: `${require('@/static/images/quotes/search.png')}`,
                     style:{
                         'width':'48rpx',
                         'height':'48rpx',
-                    }
+                    }*/
                 },
                 headerIsNoBoder: false,
             },
@@ -174,12 +174,12 @@ export default {
                 isAllowReturn:false,
                 text:"行情",
                 rightItem:{
-                    type:"icon",
-                    path: `${require('@/static/images/quotes/search.png')}`,
+                    type:"text",
+                    /*path: `${require('@/static/images/quotes/search.png')}`,
                     style:{
                         'width':'48rpx',
                         'height':'48rpx',
-                    }
+                    }*/
                 },
                 headerIsNoBoder: false,
             };

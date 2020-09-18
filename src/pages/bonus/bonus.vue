@@ -53,56 +53,18 @@
                     <span class="">矿池分红收益</span>
                 </view>
             </view>
-            <earningsRecordList :earningsRecordData="earningsRecordData"></earningsRecordList>
+            
+            <view class="noDataBox" v-if="earningsRecordData.length===0">
+                <noData></noData>
+            </view>
+            <earningsRecordList v-else
+                                :earningsRecordData="earningsRecordData">
+            </earningsRecordList>
         </view>
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue";
-    import earningsRecordList from "@/components/earningsRecordList/index.vue";
-
-    export default {
-        components: {
-            appHeader,
-            earningsRecordList
-        },
-        name: "bonus",
-        data() {
-            return {
-                time: `${require("@/static/images/set/time.png")}`,
-                headerOptions: {
-                    show: true,
-                    isAllowReturn: true,
-                    text: "矿池分红",
-                    rightItem: {
-                        type: "text",
-                        text: "",
-                    },
-                    bodyPadding: {"padding": '0,0,0,0'},
-                    headerIsNoBoder: true,
-                },
-                earningsRecordData: [
-                    {
-                        type: 'V1收益',
-                        num: '+190.32 BRT',
-                        time: '2020/09/28'
-                    },
-                    {
-                        type: 'V1收益',
-                        num: '+190.32 BRT',
-                        time: '2020/09/28'
-                    },
-                ]
-            }
-        },
-        mounted() {
-
-        },
-        methods: {},
-
-    }
-</script>
+<script src="@/script/bonus/bonus.js"></script>
 
 <style scoped lang="less">
     #bonus {
@@ -227,7 +189,7 @@
                 margin-left: 30rpx;
                 display: flex;
                 align-items: center;
-                
+
                 .list-title-icon {
                     width: 8rpx;
                     height: 28rpx;
@@ -242,6 +204,10 @@
                     font-weight: 500;
                     color: #333333;
                 }
+            }
+
+            .noDataBox {
+                position: relative;
             }
         }
     }
