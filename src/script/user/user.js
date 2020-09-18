@@ -1,4 +1,5 @@
 import Btn from "../../components/btn/index";
+
 export default {
     name: "user",
     components: {Btn},
@@ -99,8 +100,7 @@ export default {
         }*/
     },
     methods: {
-        toPage (path) {
-            debugger;
+        toPage(path){
             this.$jumpPage.jump({
                 type: 'navigateTo',
                 url: path,

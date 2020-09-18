@@ -58,7 +58,9 @@
                     <view class="user-wrap-list">
                         <view class="set">
                             <view class="user-wrap-list-item"
-                                  v-for="(item, index) in listItemData" :key="index">
+                                  v-for="(item, index) in listItemData"
+                                  :key="index"
+                                  @tap="toPage(item.path)">
                                 <view class="icon">
                                     <image :src="item.img"></image>
                                 </view>
