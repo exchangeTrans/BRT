@@ -233,6 +233,18 @@
       }
     },
     {
+      "path": "pages/bonus/bonus",
+      "style": {
+        //"navigationBarTitleText": "行情"
+      }
+    },
+    {
+      "path": "blackPages/bonus/bonus",
+      "style": {
+        //"navigationBarTitleText": "行情"
+      }
+    },
+    {
       "path": "pages/quotes/quotes",
       "style": {
         "navigationBarTitleText": "行情"
