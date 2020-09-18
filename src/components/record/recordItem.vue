@@ -1,17 +1,17 @@
 <template>
-    <view id="recordItem">
+    <view id="recordItem" :class="isBlack?'blackBg':''">
         <view class="recordItem-wrap">
             <view class="recordItem-wrap-container">
-                <view class="recordItem-wrap-container-title">
+                <view :class="isBlack?'recordItem-wrap-container-title black':'recordItem-wrap-container-title'">
                     <span>{{recordData.titleName}}</span>
                 </view>
                 <view class="recordItem-wrap-container-content">
-                    <view class="recordItem-wrap-container-content-title">
+                    <view :class="isBlack ? 'recordItem-wrap-container-content-title black' : 'recordItem-wrap-container-content-title'">
                         <view class="text">数量</view>
                         <view class="text">状态</view>
                         <view class="text end">时间</view>
                     </view>
-                    <view class="recordItem-wrap-container-content-text">
+                    <view :class="isBlack?'recordItem-wrap-container-content-text blackText':'recordItem-wrap-container-content-text'">
                         <view class="text">{{recordData.number}}</view>
                         <view class="text blue" v-if="recordData.status === 'inTheReview'">审核中</view>
                         <view class="text red" v-else-if="recordData.status === 'fail'">审核失败</view>
@@ -36,7 +36,11 @@
             recordData: {
                 type: Object,
                 default: () => {}
-            }
+            },
+            isBlack: {
+                type: Boolean,
+                default: false,
+            },
         },
         methods: {
             
@@ -107,8 +111,28 @@
                     .blue {
                         color: #098FE0 !important;
                     }
+                    .black {
+                        .text {
+                            color: rgba(217, 218, 219, 0.6);
+                        }
+                    }
+                    .blackText {
+                        .text {
+                            color: rgba(217, 218, 219, 1);
+                        }
+                    }
+                }
+
+                .black {
+                    span {
+                        color: #D9DADB;
+                    }
                 }
             }
         }
+    }
+    .blackBg {
+        background: #272A2E !important;
+        border-bottom: 1rpx solid rgba(255, 255, 255, 0.1) !important;
     }
 </style>

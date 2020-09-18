@@ -5,7 +5,8 @@
             <view class="record-wrap-list">
                 <view class="record-wrap-item" v-for="(item, index) in recordDataList"
                       :key="index">
-                    <RecordItem :recordData="item"></RecordItem>
+                    <RecordItem :recordData="item"
+                                :isBlack="isBlack"></RecordItem>
                 </view>
 
             </view>
@@ -17,15 +18,17 @@
 <script>
     import appHeader from "@/components/common/header.vue";
     import RecordItem from "../../components/record/recordItem";
-
+    
     export default {
         components: {RecordItem,appHeader},
         name: "record",
         data() {
             return {
+                isBlack: true,
                 headerOptions: {
                     show: true,
                     isAllowReturn: true,
+                    isWhiteIcon: true,
                     text: "USDT提币记录",
                     rightItem: {
                         type: "text",
@@ -34,9 +37,17 @@
                             fontSize: "28rpx",
                             color: "#098FE0",
                         },
-                        tipText:"AVV49111",
+                        tipText:"AVV491",
                         haveTip:true,
+                        tipTextStyle: {
+                            color: "#D9DADB",
+                            opacity: 0.5,
+                        }
                     },
+                    style: {
+                        'color': '#D9DADB'
+                    },
+                    background: '#00001A',
                     bodyPadding: {"padding": '0,0,0,0'},
                     headerIsNoBoder: true,
                 },
@@ -77,6 +88,7 @@
         padding-top: calc(100rpx + var(--status-bar-height));
 
         .record-wrap {
+            background: #22252A;
             box-sizing: border-box;
             width: 100%;
             height: calc(100vh - var(--status-bar-height) - 100rpx);

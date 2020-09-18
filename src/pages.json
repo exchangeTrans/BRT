@@ -246,6 +246,12 @@
       }
     },
     {
+      "path": "blackPages/record/record",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
       "path": "pages/quotes/quotes",
       "style": {
         "navigationBarTitleText": "行情"
