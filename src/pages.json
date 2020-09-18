@@ -1,6 +1,25 @@
 {
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	{
+	  "path": "pages/addrecord_details/index",
+	  "style": {
+	    //"navigationBarTitleText": "uni-app"
+	  }
+	},
+	{
+	  "path": "pages/record_details/index",
+	  "style": {
+	    //"navigationBarTitleText": "uni-app"
+	  }
+	},
+	
+	{
+	  "path": "pages/addrecord/index",
+	  "style": {
+	    //"navigationBarTitleText": "uni-app"
+	  }
+	},
     {
       "path": "blackPages/myteam/index",
       "style": {
