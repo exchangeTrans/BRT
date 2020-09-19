@@ -1,16 +1,24 @@
 import appHeader from "@/components/common/header.vue";
-import RecordItem from "../../components/record/recordItem";
+import earningsRecordList from "@/components/earningsRecordList/index.vue";
+import noData from "@/components/noData/index.vue";
 
 export default {
-    components: {RecordItem,appHeader},
-    name: "record",
+    components: {
+        appHeader,
+        earningsRecordList,
+        noData
+    },
+    name: "bonus",
     data() {
         return {
-            isBlack: true,
+            time: `${require("@/static/images/set/time.png")}`,
+            noDataImg: `${require("@/static/images/set/noData.png")}`,
             headerOptions: {
                 /*show: true,
                 isAllowReturn: true,
-                text: "USDT提币记录",
+                isWhiteIcon: true,
+                text: "矿池分红",
+
                 rightItem: {
                     type: "text",
                     text: "",
@@ -18,32 +26,27 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
-                    tipText:"AVV49111",
-                    haveTip:true,
                 },
+                style: {
+                    'color': '#D9DADB'
+                },
+                background: '#00001A',
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,*/
             },
-            recordDataList: [
-                {
-                    titleName: "提币",
-                    number: 1798.8876987,
-                    status: "success",
-                    date: "19:28 08/16",
+            earningsRecordData: [
+                /*{
+                    type: 'V1收益',
+                    num: '+190.32 BRT',
+                    time: '2020/09/28'
                 },
                 {
-                    titleName: "提币",
-                    number: 1798.8876987,
-                    status: "inTheReview",
-                    date: "19:28 08/16",
-                },
-                {
-                    titleName: "提币",
-                    number: 1798.8876987,
-                    status: "fail",
-                    date: "19:28 08/16",
-                },
+                    type: 'V1收益',
+                    num: '+190.32 BRT',
+                    time: '2020/09/28'
+                },*/
             ],
+            isBlack: true,
         }
     },
     mounted() {
@@ -52,28 +55,23 @@ export default {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "USDT提币记录",
+                text: "矿池分红",
                 rightItem: {
                     type: "text",
                     text: "",
-                    style: {
-                        fontSize: "28rpx",
-                        color: "#098FE0",
-                    },
-                    tipText:"AVV49111",
-                    haveTip:true,
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             };
             this.isBlack = false;
-            // this.BtnackgroundColor = "#B4BBC0";
+            this.BtnackgroundColor = "#B4BBC0";
         } else {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "USDT提币记录",
+                text: "矿池分红",
+
                 rightItem: {
                     type: "text",
                     text: "",
@@ -81,12 +79,6 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
-                    tipText:"AVV491",
-                    haveTip:true,
-                    tipTextStyle: {
-                        color: "#D9DADB",
-                        opacity: 0.5,
-                    }
                 },
                 style: {
                     'color': '#D9DADB'
@@ -96,12 +88,9 @@ export default {
                 headerIsNoBoder: true,
             };
             this.isBlack = true;
-            // this.BtnackgroundColor = "#8C939B";
+            this.BtnackgroundColor = "#8C939B";
         }
     },
-    methods: {
-        headertap() {
+    methods: {},
 
-        }
-    },
 }

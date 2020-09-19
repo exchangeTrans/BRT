@@ -1,10 +1,12 @@
 
 import appHeader from "@/components/common/header.vue";
 import earningsRecordList from "@/components/earningsRecordList/index.vue";
+import noData from "@/components/noData/index.vue";
 export default {
     components:{
         appHeader,
-        earningsRecordList
+        earningsRecordList,
+        noData
     },
     mounted(){
         let theme = this.$storage.getSync({key:'theme'});

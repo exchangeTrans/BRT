@@ -5,7 +5,8 @@
             <view class="record-wrap-list">
                 <view class="record-wrap-item" v-for="(item, index) in recordDataList"
                       :key="index">
-                    <RecordItem :recordData="item"></RecordItem>
+                    <RecordItem :recordData="item"
+                                :isBlack="isBlack"></RecordItem>
                 </view>
 
             </view>
@@ -23,6 +24,7 @@
         padding-top: calc(100rpx + var(--status-bar-height));
 
         .record-wrap {
+            background: #22252A;
             box-sizing: border-box;
             width: 100%;
             height: calc(100vh - var(--status-bar-height) - 100rpx);

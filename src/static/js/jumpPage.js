@@ -4,8 +4,8 @@ import datastorage from "@/static/js/datastorage.js";
 
 let jumpPage={
     jump:function (options,success,fail) {
-        
-        
+
+
         // let option={
         //     url:"",
         //     type:""

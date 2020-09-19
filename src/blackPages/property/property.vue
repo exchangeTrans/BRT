@@ -7,7 +7,7 @@
                     <view class="property-wrap-content-asset-container">
                         <view class="totalAsset">
                             <view class="totalAsset-text">
-                                <span>总资产(BRT)</span>
+                                <span>总资产(USDT)</span>
                             </view>
                             <view class="totalAsset-money">
                                 <span>0</span>

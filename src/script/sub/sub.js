@@ -1,12 +1,17 @@
 
 import appHeader from "@/components/common/header.vue";
 import transferInAmount from "@/components/popup/transferInAmount/index.vue";
+import subRuler from "@/components/popup/subRuler/index.vue";
+import noData from "@/components/noData/index.vue";
 export default {
     components:{
         appHeader,
-        transferInAmount
+        subRuler,
+        transferInAmount,
+        noData
     },
     mounted(){
+
         let theme = this.$storage.getSync({key:'theme'});
         if(theme === 'white') {
             this.headerOptions={
@@ -40,6 +45,7 @@ export default {
     },
     data() {
         return {
+            positionTop:'60rpx',
             headerOptions:{},
 
             subBg:`${require('@/static/images/sub/subBg.png')}`,
@@ -56,6 +62,9 @@ export default {
     methods: {
         transferInAmount(){
             this.$refs.transferInAmount.open();
+        },
+        showNotice(){
+            this.$refs.subRuler.open();
         }
     }
 }
