@@ -13,45 +13,13 @@
 			// eslint-disable-next-line no-undef
 			plus.screen.lockOrientation('portrait-primary'); //锁定
 			// #endif
+			this.initPhoneMsg();
+			this.initLoginMsg();
+			this.initLangMsg();
 
-			//获取设备信息
-			let phoneMsg = uni.getSystemInfoSync();
-			console.log(phoneMsg)
-			let deviceNo = "defult";
-			// #ifdef APP-PLUS
-			deviceNo = plus.device.uuid;
-			// #endif
-			let defultMsg = {
-				devicePlatform:phoneMsg.platform,
-				devicePlatformLanguage:phoneMsg.language,
-				deviceNo:deviceNo
-			}
-			this.$storage.setSync({
-				key: "mobileMsg",
-				data: defultMsg
-			});
-			let loginMsg = {
-				isLogin:false,
-				userLoginId:'',
-				userLoginToken:''
-			}
-			let storageLoginMsg = this.$storage.getSync({key:'loginMsg'});
-			loginMsg = storageLoginMsg?storageLoginMsg:loginMsg;
-			this.$storage.setSync({
-				key: "loginMsg",
-				data: loginMsg
-			});
-			let storageLangMsg = this.$storage.getSync({key:'loginMsg'});
-			let langMsg = {
-				name:'zh-CN',
-				text:'中文',
-				code:1
-			};
-			langMsg = storageLangMsg?storageLangMsg:langMsg;
-			this.$storage.setSync({
-				key: "loginMsg",
-				data: loginMsg
-			});
+			
+			
+			
 
 
 
@@ -62,9 +30,51 @@
 		onHide: function() {
 			// console.log('App Hide')
 		},
-		// methods: {
-		// 	initM
-		// }
+		methods: {
+			initPhoneMsg(){
+				//获取设备信息
+				let phoneMsg = uni.getSystemInfoSync();
+				let deviceNo = "defult";
+				// #ifdef APP-PLUS
+				deviceNo = plus.device.uuid;
+				// #endif
+				let defultMsg = {
+					devicePlatform:phoneMsg.platform,
+					devicePlatformLanguage:phoneMsg.language,
+					deviceNo:deviceNo
+				}
+				this.$storage.setSync({
+					key: "mobileMsg",
+					data: defultMsg
+				});
+			},
+			initLoginMsg(){
+				let loginMsg = {
+					isLogin:false,
+					userLoginId:'',
+					userLoginToken:''
+				}
+				let storageLoginMsg = this.$storage.getSync({key:'loginMsg'});
+				loginMsg = storageLoginMsg?storageLoginMsg:loginMsg;
+				this.$storage.setSync({
+					key: "loginMsg",
+					data: loginMsg
+				});
+			},
+			initLangMsg(){
+				let storageLangMsg = this.$storage.getSync({key:'loginMsg'});
+				let langMsg = {
+					name:'zh-CN',
+					text:'中文',
+					code:1
+				};
+				langMsg = storageLangMsg?storageLangMsg:langMsg;
+				this.$storage.setSync({
+					key: "langMsg",
+					data: langMsg
+				});
+			},
+		}
 	}
 </script>
 
