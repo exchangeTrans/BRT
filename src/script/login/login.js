@@ -140,20 +140,20 @@ export default {
             // console.log("登录")
             // debugger
             let postData = this.getPostData()
-            debugger
+            // debugger
             if(postData){
-                console.log(111);
-                console.log(this.$request);
+                // console.log(111);
+                // console.log(this.$request);
                 this.$request({
                     url: "common/login",
                     method: "post",
                     params: postData,
                 }).then((res) => {
-                    debugger
+                    // debugger
                     console.log(res);
                 })
             } else {
-                console.log(222);
+                // console.log(222);
             }
         },
         getPostData() {
