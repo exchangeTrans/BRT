@@ -75,20 +75,21 @@ export default {
             },
 
             postData: {
-                phone:"",
-                password:"",
-                email:"",
+                phone:"15282148708",
+                password:"111111",
+                email:"1191125750@qq.com",
             },
 
             checkPhoneArray: [
                 {
                     name: "手机号",
-                    checkKey: "phone",
+                    checkKey: "tel",
                     checkType:["isPhone"],
                 },
                 {
                     name: "密码",
                     checkKey: "password",
+                    checkType:["length"],
                     minLenght:8,
                     maxLenght:16,
                 },
@@ -102,7 +103,10 @@ export default {
                 },
                 {
                     name: "密码",
-                    checkKey: "password"
+                    checkKey: "password",
+                    checkType:["length"],
+                    minLenght:8,
+                    maxLenght:16,
                 },
             ],
         }
@@ -134,28 +138,32 @@ export default {
         },
         loginClick() {
             // console.log("登录")
+            // debugger
             let postData = this.getPostData()
+            debugger
             if(postData){
-                this.$http({
-                    url: "/common/login",
+                console.log(111);
+                console.log(this.$request);
+                this.$request({
+                    url: "common/login",
                     method: "post",
-                    params: JSON.stringify(postData),
+                    params: postData,
                 }).then((res) => {
+                    debugger
                     console.log(res);
                 })
             } else {
-
+                console.log(222);
             }
         },
         getPostData() {
-            debugger
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
             let dialingCode = this.countryNumber.slice(1);
             let tel = this.postData.phone;
             let email = this.postData.email;
             let password = this.postData.password;
             let checkArray = accountType === 0 ? this.checkPhoneArray : this.checkEmailArray;
-            console.log(checkArray);
+            // console.log(checkArray);
 
             let postData = {
                 accountType,
@@ -165,7 +173,7 @@ export default {
                 password,
             };
 
-            if (checkDataFunc.checkBasics(this, postData, checkArray)) {
+            if (checkDataFunc.checkBasics(postData, checkArray)) {
                 return postData
             } else {
                 return false

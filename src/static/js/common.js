@@ -1,5 +1,5 @@
-import City from './idCardCity'
-import {toast} from './dialog'
+import City from './idCardCity.js'
+import toast from './dialog.js'
 
 //阻止事件冒泡
 export const stopEventBubble = (e) => {
@@ -393,16 +393,16 @@ export const checkDataFunc = {
             birthday, home, sex
         };
     },
-    //基础检查数据   长度lenght  数字isNumber  是否为空isNull
+    //基础检查数据   长度length  数字isNumber  是否为空isNull
     //检查的均为object类型 data Obj
     //检查来源为数组 checkArray  Array
     //checkArray中对象格式
     // obj ={
     // 	name:"用户名",
     //	checkKey:"username"
-    // 	checkType:["isNumber"],//默认检查是否为空  长度lenght  数字isNumber  是否为空isNull  手机号isPhone  手机号isEmail  身份证号isIdcard
-    //   minLenght:6
-    //   maxLenght:6
+    // 	checkType:["isNumber"],//默认检查是否为空  长度length  数字isNumber  是否为空isNull  手机号isPhone  手机号isEmail  身份证号isIdcard
+    //   minLength:6
+    //   maxLength:6
     // }
     checkBasics: function (data, checkArray) {
         let __that = this;
@@ -420,7 +420,9 @@ export const checkDataFunc = {
             //先判断空
             isReturn = true;
             if (!checkVal || checkVal === null || checkVal === undefined || checkVal.trim() === "") {
-                toast.show({title: element.name + "不能为空"});
+                toast.show({
+                    title: element.name + "不能为空"
+                });
                 // that.$bus.$emit('tip', {text: element.name + "不能为空", type: 'error'});
                 isReturn = false
             } else {
@@ -431,19 +433,19 @@ export const checkDataFunc = {
                             // that.$bus.$emit('tip', {text: element.name + "不正确", type: 'error'});
                             isReturn = false
                         }
-                    } else if (item === "lenght") {
-                        let minLenght = element.minLenght ? element.minLenght : 6;
-                        let maxLenght = element.maxLenght ? element.maxLenght : 20;
+                    } else if (item === "length") {
+                        let minLength = element.minLength ? element.minLength : 6;
+                        let maxLength = element.maxLength ? element.maxLength : 20;
 
-                        if (minLenght && checkVal.length < minLenght) {
+                        if (minLength && checkVal.length < minLength) {
 
-                            toast.show({title: element.name + "长度不能小于" + minLenght});
-                            // that.$bus.$emit('tip', {text: element.name + "长度不能小于" + minLenght, type: 'error'});
+                            toast.show({title: element.name + "长度不能小于" + minLength});
+                            // that.$bus.$emit('tip', {text: element.name + "长度不能小于" + minLength, type: 'error'});
                             isReturn = false
                         }
-                        if (maxLenght && checkVal.length > maxLenght) {
-                            toast.show({title: element.name + "长度不能大于" + maxLenght});
-                            // that.$bus.$emit('tip', {text: element.name + "长度不能大于" + maxLenght, type: 'error'});
+                        if (maxLength && checkVal.length > maxLength) {
+                            toast.show({title: element.name + "长度不能大于" + maxLength});
+                            // that.$bus.$emit('tip', {text: element.name + "长度不能大于" + maxLength, type: 'error'});
                             isReturn = false
                         }
                     } else if (item === "isPhone") {

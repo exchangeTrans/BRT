@@ -9,8 +9,7 @@ import jumpPage from './static/js/jumpPage.js';
 import mySocket from './static/js/webSocket/index.js';
 import VueI18n from 'vue-i18n' 
 import lang from './static/lang/index.js';
-import request from '@/request/index';
-import http from './request/index';
+import request from './request/index.js';
 
 Vue.use(VueI18n);
 Vue.config.productionTip = false;
@@ -19,7 +18,6 @@ App.mpType = 'app'
 Vue.prototype.$toast = toast;
 Vue.prototype.$request = request;
 Vue.prototype.$monitor = monitorFunc;
-Vue.prototype.$http = http;
 Vue.prototype.$storage = datastorage;
 Vue.prototype.$jumpPage = jumpPage;
 Vue.prototype.$mySocket = mySocket;
