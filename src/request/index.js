@@ -1,5 +1,5 @@
 import api from './api.js';
-import datastorage from "../static/js/datastorage";
+import datastorage from './static/js/datastorage.js';
 // import monitorFunc from '@/static/js/monitorFunc.js';
 // import {gloabeData} from '@/static/common.js';
 // import toast from "../static/dialog";
@@ -13,6 +13,7 @@ const formatHeaders = (acHeaders) => {
     // headers['exchange-client'] = 'pc';
     // headers['exchange-language'] = getCookie('lan') || 'zh_CN';
     // headers['Content-type'] = 'application/x-www-form-urlencoded';
+    
     headers['Content-type'] = "application/x-www-form-urlencoded";
     // eslint-disable-next-line no-undef
     // headers["__token"] = uni.getStorageSync("tooken");
@@ -44,13 +45,22 @@ const getParams = (params) => {
     // eslint-disable-next-line no-undef
     // let postData = uni.getStorageSync("mobileMsg");
     let postData = datastorage.getSync({key:"mobileMsg"});
-    // let showMsg={title:JSON.stringify(postData)};
-    // toast.show(showMsg);
-    //// console.log(postData);
-    // let isGuest = datastorage.getSync({key:"islogin"})?false:true;
-    // isGuest = true;
+    let appKey = 'f86e1df48f4d825aaeb689eea124190b';
+    let loginMsg = datastorage.getSync({key:"loginMsg"});
+    let langMsg = datastorage.getSync({key:"langMsg"});
+    //
+    let userLoginId=loginMsg?loginMsg.userLoginId:'';
+    let userLoginToken=loginMsg?loginMsg.userLoginToken:'';
+    let devicePlatformLanguage = langMsg?langMsg.code:1;
     if (params) {
-        postData = {...postData, ...params};
+        postData = {
+            userLoginId,
+            userLoginToken,
+            appKey,
+            devicePlatformLanguage,
+            ...postData, 
+            ...params
+        };
     }
     // // console.log(postData);
     // let phoneMsg = uni.getSystemInfoSync();
@@ -64,7 +74,7 @@ const getParams = (params) => {
     return postData;
 };
 const http = ({
-        url, headers, params, method,dataType, hostType, responseType
+        url, headers, params, method,dataType, responseType
     }) => {
     let timestamp = (new Date()).valueOf();
     let prefix = '';
