@@ -53,5 +53,22 @@ export default {
         inputEmailSurePassword: "请确认新登录密码",
         forgetBtn: "重置密码",
         regsJump: "没有账号？立即注册",
+    },
+    loginOrRegs: {
+        loginBtn: "登录",
+        regsBtn: "创建账户",
+    },
+    personInfo: {
+        title: "个人资料",
+        avatarText: "头像",
+        nicknameText: "昵称",
+        saveBtn: "保存",
+    },
+    promoteBonus: {
+        title: "推广收益",
+        bonusTotal: "团队总质押",
+        bonusNow: "当前推广算力",
+        bonusLastDay: "昨日推广收益",
+        inviteBonusRecords: "推广收益记录",
     }
 }
