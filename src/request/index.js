@@ -30,7 +30,6 @@ const formatHeaders = (acHeaders) => {
     if (acHeaders) {
         headers = {...headers, ...acHeaders};
     }
-    console.log(headers);
     return headers;
 };
 const getParams = (params) => {
@@ -114,9 +113,12 @@ const http = ({
             //     //     monitorFunc.emit('devicesNotificationOffLine');
             //     // }
             // }
-            // else {
+            if(res[1].statusCode.toString()!==200){
+
+            }
+            else {
                 resolve(res[1]);
-            // }
+            }
         }
         ).catch((response) => {
                 reject(response)
