@@ -1,5 +1,5 @@
 import api from './api.js';
-import datastorage from './static/js/datastorage.js';
+import datastorage from '@/static/js/datastorage.js';
 // import monitorFunc from '@/static/js/monitorFunc.js';
 // import {gloabeData} from '@/static/common.js';
 // import toast from "../static/dialog";
@@ -30,7 +30,7 @@ const formatHeaders = (acHeaders) => {
     if (acHeaders) {
         headers = {...headers, ...acHeaders};
     }
-    // // console.log(headers);
+    console.log(headers);
     return headers;
 };
 const getParams = (params) => {
@@ -52,12 +52,16 @@ const getParams = (params) => {
     let userLoginId=loginMsg?loginMsg.userLoginId:'';
     let userLoginToken=loginMsg?loginMsg.userLoginToken:'';
     let devicePlatformLanguage = langMsg?langMsg.code:1;
+    postData = {
+        // userLoginId,
+        // userLoginToken,
+        appKey,
+        devicePlatformLanguage,
+        ...postData, 
+        ...params,
+    };
     if (params) {
         postData = {
-            userLoginId,
-            userLoginToken,
-            appKey,
-            devicePlatformLanguage,
             ...postData, 
             ...params
         };
@@ -78,11 +82,11 @@ const http = ({
     }) => {
     let timestamp = (new Date()).valueOf();
     let prefix = '';
-    if(hostType){
-       prefix = api[hostType];
-    }else{
+    // if(hostType){
+    //    prefix = api[hostType];
+    // }else{
        prefix = api.commApi;
-    }
+    // }
     return new Promise((resolve, reject) => {
         // eslint-disable-next-line no-undef
         uni.request({

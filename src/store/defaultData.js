@@ -1,6 +1,7 @@
 
-
+import request from '@/request/index';
 const GETBASICSET = 'GETBASICSET'; // 基本设置
+const GETCOUNTRYLIST = 'USERINFO'; // userinfo数据
 export default {
   state: {
     langArray:{
@@ -56,20 +57,36 @@ export default {
         },
       ]
     },
+    contury:[]
+
   },
   actions: {
    
     //基本设置
-    getBasicSet() {
-        // commit
+    getCountryList() {
+        request({
+            url: 'common/getCountry',
+            method: 'post',
+        }).then(res => {
+          console.log(res)
+            // if (res.data.errorCode.toString() === '0') {
+            //     // let userMsgData = datastorage.getSync({key: "userMsg"});
+            //     // let userMsg = {...userMsgData, ...res.data.results};
+            //     // datastorage.setSync({key: "userMsg", data: userMsg})
+                
+            // } else {
+            //     let showMsg = {title: res.data.errorStr}
+            //     toast.show(showMsg)
+            // }
+        })   
     },
     
   
    
   },
   mutations: {
-    [GETBASICSET](state,result) {
-      state.basicSet = result;
+    [GETCOUNTRYLIST](state,result) {
+      state.contury = result;
     },
     setDefaultSync(state,param) {
       state[param.key] = param.val;

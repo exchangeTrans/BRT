@@ -16,6 +16,7 @@
 			this.initPhoneMsg();
 			this.initLoginMsg();
 			this.initLangMsg();
+			this.$store.dispatch('getCountryList');
 
 			
 			
@@ -34,13 +35,12 @@
 			initPhoneMsg(){
 				//获取设备信息
 				let phoneMsg = uni.getSystemInfoSync();
-				let deviceNo = "defult";
+				let deviceNo = "1111";
 				// #ifdef APP-PLUS
 				deviceNo = plus.device.uuid;
 				// #endif
 				let defultMsg = {
-					devicePlatform:phoneMsg.platform,
-					devicePlatformLanguage:phoneMsg.language,
+					devicePlatform:phoneMsg.platform==='ios'?'iOS':phoneMsg.platform,
 					deviceNo:deviceNo
 				}
 				this.$storage.setSync({
@@ -62,7 +62,7 @@
 				});
 			},
 			initLangMsg(){
-				let storageLangMsg = this.$storage.getSync({key:'loginMsg'});
+				let storageLangMsg = this.$storage.getSync({key:'langMsg'});
 				let langMsg = {
 					name:'zh-CN',
 					text:'中文',
