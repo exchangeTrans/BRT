@@ -1,7 +1,11 @@
-import appHeader from '@/components/common/header.vue'
-import loginHead from '@/components/login/loginHead.vue'
-import loginInput from '@/components/input/loginInput.vue'
-import loginBtn from '@/components/login/btn.vue'
+import appHeader from '@/components/common/header.vue';
+import loginHead from '@/components/login/loginHead.vue';
+import loginInput from '@/components/input/loginInput.vue';
+import loginBtn from '@/components/login/btn.vue';
+
+import {
+    checkDataFunc,
+} from "../../static/js/common.js";
 
 export default {
     name: "login",
@@ -69,6 +73,38 @@ export default {
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             },
+
+            postData: {
+                phone:"",
+                password:"",
+                email:"",
+            },
+
+            checkPhoneArray: [
+                {
+                    name: "手机号",
+                    checkKey: "phone",
+                    checkType:["isPhone"],
+                },
+                {
+                    name: "密码",
+                    checkKey: "password",
+                    minLenght:8,
+                    maxLenght:16,
+                },
+            ],
+
+            checkEmailArray: [
+                {
+                    name: "邮箱",
+                    checkKey: "email",
+                    checkType:["isEmail"],
+                },
+                {
+                    name: "密码",
+                    checkKey: "password"
+                },
+            ],
         }
     },
     mounted() {
@@ -79,8 +115,10 @@ export default {
             this.type = type
         },
         inputChange(key, value) {
-            console.log(key)
-            console.log(value)
+            /*console.log(key)
+            console.log(value)*/
+            this.postData[key] = value;
+            console.log(this.postData);
         },
         jumpForgetPassword() {
             this.$jumpPage.jump({
@@ -95,7 +133,43 @@ export default {
             })
         },
         loginClick() {
-            console.log("登录")
+            // console.log("登录")
+            let postData = this.getPostData()
+            if(postData){
+                this.$http({
+                    url: "/common/login",
+                    method: "post",
+                    params: JSON.stringify(postData),
+                }).then((res) => {
+                    console.log(res);
+                })
+            } else {
+
+            }
+        },
+        getPostData() {
+            debugger
+            let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
+            let dialingCode = this.countryNumber.slice(1);
+            let tel = this.postData.phone;
+            let email = this.postData.email;
+            let password = this.postData.password;
+            let checkArray = accountType === 0 ? this.checkPhoneArray : this.checkEmailArray;
+            console.log(checkArray);
+
+            let postData = {
+                accountType,
+                dialingCode,
+                tel,
+                email,
+                password,
+            };
+
+            if (checkDataFunc.checkBasics(this, postData, checkArray)) {
+                return postData
+            } else {
+                return false
+            }
         }
     },
 }

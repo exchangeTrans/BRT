@@ -51,12 +51,14 @@ const getParams = (params) => {
     let userLoginId=loginMsg?loginMsg.userLoginId:'';
     let userLoginToken=loginMsg?loginMsg.userLoginToken:'';
     let devicePlatformLanguage = langMsg?langMsg.code:1;
+    let pageRepeatCode = (new Date()).valueOf();
     postData = {
         // userLoginId,
         // userLoginToken,
         appKey,
         devicePlatformLanguage,
-        ...postData, 
+        pageRepeatCode,
+        ...postData,
         ...params,
     };
     if (params) {

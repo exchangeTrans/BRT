@@ -44,7 +44,7 @@ export default {
                 {
                     text: '矿池分红',
                     img: `${require('@/static/images/home/detail.png')}`,
-                    url:'sub/index'
+                    url:'bonus/bonus'
                 }
             ],
             logo: `${require('@/static/images/home/logo.png')}`,//logo

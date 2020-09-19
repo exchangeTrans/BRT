@@ -10,16 +10,20 @@ import mySocket from './static/js/webSocket/index.js';
 import VueI18n from 'vue-i18n' 
 import lang from './static/lang/index.js';
 import request from '@/request/index';
-Vue.use(VueI18n)
-Vue.config.productionTip = false
+import http from './request/index';
+
+Vue.use(VueI18n);
+Vue.config.productionTip = false;
 
 App.mpType = 'app'
 Vue.prototype.$toast = toast;
 Vue.prototype.$request = request;
 Vue.prototype.$monitor = monitorFunc;
+Vue.prototype.$http = http;
 Vue.prototype.$storage = datastorage;
 Vue.prototype.$jumpPage = jumpPage;
 Vue.prototype.$mySocket = mySocket;
+
 const i18n = new VueI18n({  
   locale: datastorage.getSync({key:'lang'}) ? datastorage.getSync({key:'lang'}) : 'zh-CN',  
   messages: {  
