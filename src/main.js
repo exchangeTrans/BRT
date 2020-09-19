@@ -10,6 +10,7 @@ import mySocket from './static/js/webSocket/index.js';
 import VueI18n from 'vue-i18n' 
 import lang from './static/lang/index.js';
 import request from './request/index.js';
+import md5 from 'js-md5';
 
 Vue.use(VueI18n);
 Vue.config.productionTip = false;
@@ -17,6 +18,7 @@ Vue.config.productionTip = false;
 App.mpType = 'app'
 Vue.prototype.$toast = toast;
 Vue.prototype.$request = request;
+Vue.prototype.$md5 = md5;
 Vue.prototype.$monitor = monitorFunc;
 Vue.prototype.$storage = datastorage;
 Vue.prototype.$jumpPage = jumpPage;

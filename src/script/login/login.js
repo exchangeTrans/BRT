@@ -89,9 +89,6 @@ export default {
                 {
                     name: "密码",
                     checkKey: "password",
-                    checkType:["length"],
-                    minLenght:8,
-                    maxLenght:16,
                 },
             ],
 
@@ -104,9 +101,6 @@ export default {
                 {
                     name: "密码",
                     checkKey: "password",
-                    checkType:["length"],
-                    minLenght:8,
-                    maxLenght:16,
                 },
             ],
         }
@@ -161,7 +155,7 @@ export default {
             let dialingCode = this.countryNumber.slice(1);
             let tel = this.postData.phone;
             let email = this.postData.email;
-            let password = this.postData.password;
+            let password = this.$md5(this.postData.password);
             let checkArray = accountType === 0 ? this.checkPhoneArray : this.checkEmailArray;
             // console.log(checkArray);
 
