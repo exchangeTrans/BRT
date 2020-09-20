@@ -63,21 +63,17 @@ export default {
   actions: {
    
     //基本设置
-    getCountryList() {
+    getCountryList({commit}) {
         request({
             url: 'common/getCountry',
             method: 'post',
         }).then(res => {
-          console.log(res)
-            // if (res.data.errorCode.toString() === '0') {
-            //     // let userMsgData = datastorage.getSync({key: "userMsg"});
-            //     // let userMsg = {...userMsgData, ...res.data.results};
-            //     // datastorage.setSync({key: "userMsg", data: userMsg})
-                
-            // } else {
-            //     let showMsg = {title: res.data.errorStr}
-            //     toast.show(showMsg)
-            // }
+          // console.log(res)
+
+            if (res.result.returnCode.toString() === '0') {
+              let data = res.data.list;
+              commit('GETCOUNTRYLIST', data);               
+            }
         })   
     },
     
