@@ -1,7 +1,7 @@
 
 import request from '@/request/index';
-const GETBASICSET = 'GETBASICSET'; // 基本设置
-const GETCOUNTRYLIST = 'USERINFO'; // userinfo数据
+const GETCOUNTRYLIST = 'GETCOUNTRYLIST';
+const COUNTRY = 'COUNTRY';
 export default {
   state: {
     langArray:{
@@ -57,22 +57,22 @@ export default {
         },
       ]
     },
-    contury:[]
+    conturyList:[],
+    contury:{}
 
   },
   actions: {
    
-    //基本设置
+    //获取国家
     getCountryList({commit}) {
         request({
             url: 'common/getCountry',
             method: 'post',
         }).then(res => {
-          // console.log(res)
-
             if (res.result.returnCode.toString() === '0') {
               let data = res.data.list;
               commit('GETCOUNTRYLIST', data);               
+              commit('contury', data[0]);
             }
         })   
     },
@@ -82,6 +82,9 @@ export default {
   },
   mutations: {
     [GETCOUNTRYLIST](state,result) {
+      state.conturyList = result;
+    },
+    [COUNTRY](state,result) {
       state.contury = result;
     },
     setDefaultSync(state,param) {
