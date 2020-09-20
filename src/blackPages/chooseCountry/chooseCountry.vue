@@ -6,12 +6,16 @@
             <view class="chooseCountry-wrap-content">
                 <view class="chooseCountry-wrap-list">
                     <view class="chooseCountry-wrap-item"
-                         v-for="(item,index) in countryData"
-                         :key="index"
-                         @click="chooseItem(item)">
+                          v-for="(item,index) in countryData"
+                          :key="index"
+                          @click="chooseItem(item)">
                         <image :src=item.icon alt=""/>
                         <view class="name">
                             {{item.name}}
+                        </view>
+                        <view class="selected"
+                              :style="{'background-image':'url('+selectedIcon+')'}"
+                              v-if="selectedItem.countryCode === item.countryCode">
                         </view>
                         <!--<view class="areaCode">
                             ({{item.AreaCode}})
@@ -119,12 +123,13 @@
     #chooseCountry {
         width: 100vw;
         height: 100vh;
-        padding-top:calc(100rpx + var(--status-bar-height));
+        padding-top: calc(100rpx + var(--status-bar-height));
 
         .chooseCountry-wrap {
             width: 100%;
             height: 100%;
             background: #22252A;
+
             .chooseCountry-wrap-content {
                 /*margin: 0 1.5rpx;*/
 
@@ -147,12 +152,20 @@
                         }
 
                         .name, .areaCode {
-                            margin-left:30rpx;
+                            margin-left: 30rpx;
                             font-size: 28rpx;
                             font-family: "PingFang";
                             font-weight: 400;
 
                             color: #D9DADB;
+                        }
+
+                        .selected {
+                            width: 38rpx;
+                            height: 32rpx;
+                            background-size: cover;
+                            position: absolute;
+                            right: 30rpx;
                         }
                     }
                 }

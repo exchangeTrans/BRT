@@ -7,7 +7,9 @@
             <view class="firstText" v-show="firstTextShow"
                   :style="[firstTextStyle, {'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}]">{{firstText}}
             </view>
-            <input :placeholder="placeHolder" class="inputClass"
+            <input :placeholder="placeHolder"
+                   class="inputClass"
+                   :type="inputType"
                    :style="[inputStyle, {'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}]"
                    @input="inputChange($event)"/>
             <view class="lastText" v-show="lastTextShow"
@@ -35,7 +37,11 @@
             inputStyle: {},
             lastText: "",
             lastTextShow: false,
-            lastTextStyle: {}
+            lastTextStyle: {},
+            inputType:{
+                type: String,
+                default: "text"
+            }
 
         },
         data() {

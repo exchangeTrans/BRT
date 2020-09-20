@@ -2,20 +2,26 @@
     <view class="login" id="login">
         <app-header :headerOptions="headerOptions"></app-header>
         <view class="wrap">
-            <loginHead :defaultChoice="defaultType" :leftText="leftText" :rightText="rightText"
+            <loginHead :defaultChoice="defaultType"
+                       :leftText="leftText"
+                       :rightText="rightText"
                        @typeChange="typeChange"/>
-            <view class="phoneLoginFlag" v-show="type === 'PHONE'">
+            <view class="phoneLoginFlag"
+                  v-show="type === 'PHONE'">
                 <view class="lastInput">
-                    <view class="icon" :style="{'background-image': cityChoiceIcon}"></view>
+                    <view class="icon"
+                          :style="{'background-image': cityChoiceIcon}"></view>
                     <view class="cityChoice">{{country}}</view>
-                    <view class="lastIcon" :style="{'background-image': cityChoiceLastIcon}"></view>
+                    <view class="lastIcon"
+                          :style="{'background-image': cityChoiceLastIcon}"></view>
                 </view>
                 <loginInput :wrapStyle="wrapStyle"
                             :iconShow="true"
                             :iconSrc="phoneIcon"
                             :firstTextShow="true"
                             :firstText="countryNumber"
-                            :firstTextStyle="phoneFirstText" :placeHolder="$t('login').inputPhone"
+                            :firstTextStyle="phoneFirstText"
+                            :placeHolder="$t('login').inputPhone"
                             :inputStyle="inputPhoneStyle"
                             @inputChange="inputChange('phone', $event)"></loginInput>
                 <loginInput :wrapStyle="lastWrapStyle"
@@ -26,21 +32,27 @@
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
             <view class="emailLoginFlag" v-show="type === 'EMAIL'">
-                <loginInput :wrapStyle="emailStyle" :iconShow="true" :iconSrc="emailChoice"
+                <loginInput :wrapStyle="emailStyle" :iconShow="true"
+                            :iconSrc="emailChoice"
                             :placeHolder="$t('login').inputEmail"
                             :inputStyle="passwordStyle"
                             @inputChange="inputChange('email', $event)"></loginInput>
-                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true" :iconSrc="passwordIcon"
+                <loginInput :wrapStyle="lastWrapStyle" :iconShow="true"
+                            :iconSrc="passwordIcon"
                             :placeHolder="$t('login').inputEmailPassword"
                             :inputStyle="passwordStyle"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
-            <loginBtn :btnStyle="btnStyle" :btnText="$t('login').loginBtn" @btnClick="loginClick"></loginBtn>
+            <loginBtn :btnStyle="btnStyle"
+                      :btnText="$t('login').loginBtn"
+                      @btnClick="loginClick"></loginBtn>
             <view class="touchFunc">
-                <view class="forgetPasswordTouch" @tap="jumpForgetPassword">
+                <view class="forgetPasswordTouch" 
+                      @tap="jumpForgetPassword">
                     {{$t('login').forgetPasswordJump}}
                 </view>
-                <view class="regsTouch" @tap="jumpRegs">
+                <view class="regsTouch"
+                      @tap="jumpRegs">
                     {{$t('login').regsJump}}
                 </view>
             </view>

@@ -75,9 +75,9 @@ export default {
             },
 
             postData: {
-                phone:"15282148708",
-                password:"111111",
-                email:"1191125750@qq.com",
+                phone:"",
+                password:"",
+                email:"",
             },
 
             checkPhoneArray: [
@@ -89,6 +89,9 @@ export default {
                 {
                     name: "密码",
                     checkKey: "password",
+                    checkType:["length"],
+                    minLength:6,
+                    maxLength:20,
                 },
             ],
 
@@ -101,6 +104,9 @@ export default {
                 {
                     name: "密码",
                     checkKey: "password",
+                    checkType:["length"],
+                    minLength:6,
+                    maxLength:20,
                 },
             ],
         }
@@ -116,7 +122,7 @@ export default {
             /*console.log(key)
             console.log(value)*/
             this.postData[key] = value;
-            console.log(this.postData);
+            // console.log(this.postData);
         },
         jumpForgetPassword() {
             this.$jumpPage.jump({
@@ -146,8 +152,6 @@ export default {
                     // debugger
                     console.log(res);
                 })
-            } else {
-                // console.log(222);
             }
         },
         getPostData() {
@@ -155,7 +159,7 @@ export default {
             let dialingCode = this.countryNumber.slice(1);
             let tel = this.postData.phone;
             let email = this.postData.email;
-            let password = this.$md5(this.postData.password);
+            let password = this.postData.password;
             let checkArray = accountType === 0 ? this.checkPhoneArray : this.checkEmailArray;
             // console.log(checkArray);
 
@@ -168,7 +172,10 @@ export default {
             };
 
             if (checkDataFunc.checkBasics(postData, checkArray)) {
-                return postData
+                return postData = {
+                    ...postData,
+                    password: this.$md5(postData.password),
+                }
             } else {
                 return false
             }
