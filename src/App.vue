@@ -16,14 +16,7 @@
 			this.initPhoneMsg();
 			this.initLoginMsg();
 			this.initLangMsg();
-			this.$store.dispatch('getCountryList');
-
-			
-			
-			
-
-
-
+			this.initStoreData();
 		},
 		onShow: function() {
 			// console.log('App Show')
@@ -32,6 +25,9 @@
 			// console.log('App Hide')
 		},
 		methods: {
+			initStoreData(){
+				this.$store.dispatch('getCountryList');
+			},
 			initPhoneMsg(){
 				//获取设备信息
 				let phoneMsg = uni.getSystemInfoSync();
