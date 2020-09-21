@@ -1,10 +1,7 @@
 <template>
 	<view>
 		<view class="headbg">
-			<view class="head">
-				<image src="../../static/images/myteam/left.png" mode="" class="headleft"></image>
-				<view class="headname">我的团队</view>
-			</view>
+			<pageHeader :headerOptions="headerOptions" class="headname"></pageHeader>
 			<view class="usermsgcon">
 				<view class="headphoto">
 					<image src="../../static/images/myteam/headphoto.png" mode="" style="width:118rpx; height: 118rpx;"></image>
@@ -29,29 +26,31 @@
 					<view class="num">69</view>
 				</view>
 			</view>
-			<view class="invitelog">
-				<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
-				<view class="log">邀请记录</view>
-			</view>
-			<view class="datalisthead">
-				<view class="time">邀请号码</view>
-				<view class="memberid">会员ID</view>
-				<view class="grade">业绩</view>
-			</view>
-			<scroll-view scroll-y="true" class="scrollh">
-				<view class="datalist" v-for="(item,id) in datalist" :key="item.id">
-					<image :src=item.flag mode="" class="flag"></image>
-					<view class="time">{{item.phonenumber}}</view>
-					<view class="memberid">{{item.memberid}}</view>
-					<view class="grade">{{item.grade}}</view>
-				</view>
-			</scroll-view>
 		</view>
+		<view class="invitelog">
+			<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
+			<view class="log">邀请记录</view>
+		</view>
+		<view class="datalisthead">
+			<view class="time">邀请账户</view>
+			<view class="memberid">会员ID</view>
+			<view class="grade">业绩</view>
+		</view>
+		<scroll-view scroll-y="true" class="scrollh">
+			<view class="datalist" v-for="(item,id) in datalist" :key="item.id">
+				<image :src=item.flag mode="" class="flag"></image>
+				<view class="time">{{item.phonenumber}}</view>
+				<view class="memberid">{{item.memberid}}</view>
+				<view class="grade">{{item.grade}}</view>
+			</view>
+		</scroll-view>
 	</view>
 </template>
 
 <script>
+	import pageHeader from '@/components/common/header.vue'
 	export default{
+		components:{pageHeader},
 			data(){
 				return{
 					datalist:[
@@ -97,7 +96,27 @@
 							memberid:"19034532",
 							grade:'1000BRT'
 						}
-					]
+					],
+					headerOptions: {
+					    show: true,
+					    isAllowReturn: true,
+					    text: "团队详情",
+					    rightItem: {
+					        // type: "text",
+					        // text: "须知&反馈",
+					        // style: {
+					        //     "fontSize": '28rpx',
+					        //     "fontFamily": 'Source Han Sans CN',
+					        //     "fontWeight": '400',
+					        //     "color": 'rgba(68,68,68,1)'
+					        // }
+					    },
+						style:{
+							color:"#ffffff"
+						},
+						isWhiteIcon:true,
+					    headerIsNoBoder: false,
+					},
 				}
 			}
 	}
@@ -112,25 +131,10 @@
 		border-bottom-left-radius: 50rpx;
 		border-bottom-right-radius: 50rpx;
 	}
-	.head{
-		height: 100rpx;
-		width: 100%;
-		border-bottom: 1rpx #CCCCCC solid;
-		position: absolute;
-		.headleft{
-			width: 50rpx;
-			height: 50rpx;
-			float: left;
-			margin-left: 30rpx;
-			margin-top: 25rpx;
-		}
-		.headname{
-			margin-left: 300rpx;
-			line-height: 100rpx;
-			font-size: 32rpx;
-			color: #FFFFFF;
-			font-family: PingFangSC-Semibold, PingFang SC;
-		}
+	.headname{
+		font-size: 36rpx;
+		color: #FFFFFF;
+		font-family: PingFangSC-Semibold, PingFang SC;
 	}
 	.usermsgcon{
 		position: absolute;
@@ -211,31 +215,35 @@
 			text-align: center;
 		}
 		.descrip{
-			font-size: 30rpx;
+			font-size: 28rpx;
 			margin-bottom: 18rpx;
 		}
 		.num{
-			font-size: 34rpx;
-			font-weight: bolder;
+			font-size: 32rpx;
+			font-family: PingFangSC-Semibold, PingFang SC;
 		}
 	}
 	.invitelog{
-		position: static;
-		margin-top: 450rpx;
+		margin-top: ;
+		padding-bottom: 30rpx;
+		clear: both;
+		width: 100%;
+		height: 160rpx;
+		margin-top: -45rpx;
 		.img{
 			width: 32rpx;
 			height: 32rpx;
 			float: left;
 			margin-left: 20rpx;
 			margin-right: 10rpx;
+			margin-top: 110rpx;
 		}
 		.log{
-			line-height: 32rpx;
 			font-weight: bold;
 			font-size: 36rpx;
-			margin-bottom: 30rpx;
+			color: #262626;
 			font-family: PingFangSC-Medium, PingFang SC;
-			font-size: #262626;
+			line-height: 250rpx;
 		}
 	}
 	.datalisthead{
@@ -244,22 +252,24 @@
 		background-color: #F9FAFA;
 		font-size: 32rpx;
 		line-height: 100rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		color: #1A1A1A;
 		.time{
 			margin-left: 20rpx;
 			float: left;
-			font-size: 28rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
+			color: #1A1A1A;
 		}
 		.memberid{
-			margin-left: 200rpx;
+			margin-left: 205rpx;
 			float: left;
-			font-size: 28rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
+			color: #1A1A1A;
 		}
 		.grade{
 			margin-left: 600rpx;
-			font-size: 28rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
+			color: #1A1A1A;
 		}
 	}
 	.datalist{
@@ -267,6 +277,15 @@
 		width: 100%;
 		height: 100rpx;
 		line-height: 100rpx;
+		font-family: PingFangSC-Regular, PingFang SC;
+		color: #1A1A1A;
+		.flag{
+			width: 50rpx; 
+			height: 34rpx;
+			float: left; 
+			margin-top: 30rpx;
+			margin-left: 20rpx;
+		}
 		.time{
 			margin-left: 20rpx;
 			float: left;
@@ -275,7 +294,7 @@
 			margin-top: -5rpx;
 		}
 		.memberid{
-			margin-left: 50rpx;
+			margin-left: 80rpx;
 			float: left;
 			font-size: 28rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
@@ -292,7 +311,4 @@
 		width: 100%;
 		height: calc(100vh - 762rpx);
 	}
-	
-	
-	
 </style>

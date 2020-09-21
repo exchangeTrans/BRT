@@ -1,21 +1,9 @@
 <template>
 	<view>
 		<view class="datalist">
-			<view class="item" :style="{'backgroundColor':bgstyle.background_color,'color':bgstyle.color}">
-				<view class="money">0.0653</view>
-				<view class="num">500</view>
-			</view>
-			<view class="item" :style="{'backgroundColor':bgstyle.background_color,'color':bgstyle.color}">
-				<view class="money">0.0653</view>
-				<view class="num">500</view>
-			</view>
-			<view class="item" :style="{'backgroundColor':bgstyle.background_color,'color':bgstyle.color}">
-				<view class="money">0.0653</view>
-				<view class="num">500</view>
-			</view>
-			<view class="item" :style="{'backgroundColor':bgstyle.background_color,'color':bgstyle.color}">
-				<view class="money">0.0653</view>
-				<view class="num">500</view>
+			<view class="item" :style="{'background':bgstyle.background_color,'color':bgstyle.color}">
+				<view class="money">{{tradesOptions.money}}</view>
+				<view class="num">{{tradesOptions.num}}</view>
 			</view>
 		</view>
 	</view>
@@ -29,6 +17,11 @@
                 default: () => {
                 },
             },
+			tradesOptions:{
+				type: Object,
+				default: () => {
+				},
+			}
 		},
 		data(){
 			return{
@@ -57,7 +50,6 @@
 	}
 	.datalist{
 		width: 100%;
-		margin-bottom: 10rpx;
 	}
 	.item{
 		display: inline-block;

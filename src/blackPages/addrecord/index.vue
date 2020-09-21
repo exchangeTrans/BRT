@@ -6,7 +6,8 @@
 		<view 
 			v-for="(item,index) in recordData_list" 
 			:key="index">
-			<record :recordData="item"></record>
+			<record :recordData="item"
+					:isBlack="isBlack"></record>
 		</view>
 		</scroll-view>
 	</view>
@@ -29,37 +30,21 @@
 					fontfamily:"PingFangSC-Regular, PingFang SC",
 					fontSize:'34',
 					style:{
-						color:"#333333",
+						color:'#D9DADB',
 						
 					},
+					background: '#00001A',
 					isColor:true,
 					rightItem:{
 						type:"text",
 						text:"ID:AVV491",
 						style:{
-							color:"#000000"
+							color:"#D9DADB"
 						}
 					},
 				},
+				isBlack:true,
 				recordData_list:[
-					{
-						titleName:"充币",
-						number:"1798.1561657",
-						status:"fail",
-						date:"19:28 08/16"
-					},
-					{
-						titleName:"提币",
-						number:"1798.1561657",
-						status:"success",
-						date:"19:28 08/16"
-					},
-					{
-						titleName:"提币",
-						number:"1798.1561657",
-						status:"inTheReview",
-						date:"19:28 08/16"
-					},
 					{
 						titleName:"充币",
 						number:"1798.1561657",
@@ -88,10 +73,11 @@
 	.item{
 		height: 30rpx;
 		width: 100%;
-		background: #F8F8F8;
+		background: #22252A;
 		margin-top: 90rpx;
 	}
 	.record-wrap{
+		background: #22252A;
 		height: calc(100vh - var(--status-bar-height) - 100rpx);
 	}
 </style>
