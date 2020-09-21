@@ -98,7 +98,11 @@ export default {
                 headerIsNoBoder: true,
             };
         }*/
+        this.getUserMsg();
     },
+    /*onShow(){
+        this.getUserMsg();
+    },*/
     methods: {
         toPage(path) {
             this.$jumpPage.jump({
@@ -115,5 +119,13 @@ export default {
                 console.log(res)
             })
         },
+        getUserMsg() {
+            this.$request({
+                url: "me/getHome",
+                method: "post",
+            }).then((res) => {
+                console.log(res)
+            })
+        }
     }
 }

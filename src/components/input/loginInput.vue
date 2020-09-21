@@ -10,6 +10,7 @@
             <input :placeholder="placeHolder"
                    class="inputClass"
                    :type="inputType"
+                   :value="inputData"
                    :style="[inputStyle, {'color': mode !== 'DARK' ? '#1A1A1A' : '#D9DADB'}]"
                    @input="inputChange($event)"/>
             <view class="lastText" v-show="lastTextShow"
@@ -38,10 +39,14 @@
             lastText: "",
             lastTextShow: false,
             lastTextStyle: {},
-            inputType:{
+            inputType: {
                 type: String,
                 default: "text"
-            }
+            },
+            inputData: {
+                type: String,
+                default: "",
+            },
 
         },
         data() {
@@ -56,6 +61,7 @@
             },
             inputChange(e) {
                 let value = e.detail.value;
+                this.inputData = e.detail.value;
                 this.$emit('inputChange', value)
             }
         },
@@ -82,12 +88,13 @@
             .inputClass {
                 float: left;
                 margin-left: 20rpx;
-
+                box-sizing: border-box;
                 box-sizing: border-box;
                 height: 100%;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
+                border: 0;
                 line-height: 120rpx;
 
             }

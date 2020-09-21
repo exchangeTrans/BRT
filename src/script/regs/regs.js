@@ -19,7 +19,6 @@ export default {
             leftText: this.$t('regs').phoneRegs,
             rightText: this.$t('regs').emailRegs,
             btnText: this.$t('regs').regsBtn,
-            countryNumber: "+1",
             countryIcon: `url(${require('@/static/images/login/phoneHead.png')})`,
             lastCountryIcon: `url(${require('@/static/images/login/cityChoice.png')})`,
             phoneIcon: `url(${require('@/static/images/login/phoneNumber.png')})`,
@@ -79,13 +78,13 @@ export default {
             spanName: '发送验证码',
             time: 60,
             postData: {
-                tel: "",
-                email: "",
-                password: "",
-                passwordConfirm: "",
-                verifyCode: "",
+                tel: "15282148708",
+                email: "1191125750@qq.com",
+                password: "111111",
+                passwordConfirm: "111111",
+                verifyCode: "123456",
                 verifyKey: "",
-                inviteCode: "",
+                inviteCode: "EXT681",
             },
 
             checkPhoneArray: [
@@ -152,11 +151,15 @@ export default {
             },
         }
     },
-    mounted() {
-        console.log(this.$store.state.defaultData.contury)
-    },
-    computed:{
 
+    onShow() {
+        this.setCountry();
+    },
+    watch: {
+        contury(val, oldVal) {
+            // console.log(val);
+            // console.log(oldVal);
+        }
     },
     methods: {
         typeChange(type) {
@@ -165,11 +168,20 @@ export default {
         inputChange(key, value) {
             this.postData[key] = value;
         },
-        toChooseCountry(){
+        toChooseCountry() {
             this.$jumpPage.jump({
                 type: 'navigateTo',
                 url: "chooseCountry/chooseCountry",
             })
+        },
+        setCountry() {
+            let contury = this.$store.state.defaultData.contury;
+            if (!contury.titleCN) {
+
+            } else {
+                this.chooseCountry = contury;
+            }
+
         },
         btnClick() {
             // console.log("下一步")
@@ -180,13 +192,34 @@ export default {
                     method: "post",
                     params: postData,
                 }).then((res) => {
-                    console.log(res)
+                    // data: {userLoginId: "1307899918186184706", userLoginToken: "ab7036f39d831f807980b701ce0f8371"}
+                        // userLoginId: "1307899918186184706"
+                        // userLoginToken: "ab7036f39d831f807980b701ce0f8371"
+                    // result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
+                        // returnCode: "0"
+                        // returnMessage: "成功"
+                        // returnUserMessage: "成功"
+                    if(res.result.returnCode.toString() === "0"){
+                        this.$storage.setSync({
+                            key: "userLoginId",
+                            data: res.data.userLoginId,
+                        });
+                        this.$storage.setSync({
+                            key: "userLoginToken",
+                            data: res.data.userLoginToken,
+                        });
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
                 })
             }
         },
         getPostData() {
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
-            let dialingCode = this.countryNumber.slice(1);
+            let dialingCode = this.chooseCountry.dialingCode;
+            let countryCode = this.chooseCountry.countryCode;
             let tel = this.postData.tel;
             let email = this.postData.email;
             let password = this.postData.password;
@@ -206,6 +239,7 @@ export default {
                 inviteCode,
                 verifyKey,
                 verifyCode,
+                countryCode,
             };
             if (checkDataFunc.checkBasics(postData, checkArray)) {
                 if (postData.verifyKey === "") {
@@ -254,7 +288,7 @@ export default {
         getSendCodeData() {
             let type = 1;//1注册 2忘记密码  3转账 4更换账号 5更换新账号
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
-            let dialingCode = this.countryNumber.slice(1);
+            let dialingCode = this.chooseCountry.dialingCode;
             let tel = this.postData.tel;
             let email = this.postData.email;
 

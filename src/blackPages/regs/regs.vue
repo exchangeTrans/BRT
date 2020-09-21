@@ -16,10 +16,11 @@
                             :iconShow="true"
                             :iconSrc="phoneIcon"
                             :firstTextShow="true"
-                            :firstText="countryNumber"
+                            :firstText="chooseCountry.dialingCode"
                             :firstTextStyle="phoneFirstTextStyle"
                             :placeHolder="$t('regs').inputPhone"
                             :inputStyle="inputPhoneStyle"
+                            :inputData="postData.tel"
                             @inputChange="inputChange('tel', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
@@ -30,23 +31,27 @@
                             :lastText="spanName"
                             :lastTextStyle="phoneLastTextStyle"
                             @lastTextClick="sendSmsVerify"
+                            :inputData="postData.verifyCode"
                             @inputChange="inputChange('verifyCode', $event)"></loginInput>
                 <loginInput :mode="'DARK'" :iconShow="true"
                             :iconSrc="passwordIcon"
                             :placeHolder="$t('regs').inputPhonePassword"
                             :inputStyle="passwordStyle"
                             inputType="password"
+                            :inputData="postData.password"
                             @inputChange="inputChange('password', $event)"></loginInput>
                 <loginInput :mode="'DARK'" :iconShow="true"
                             :iconSrc="passwordIcon"
                             :placeHolder="$t('regs').inputPhoneSurePassword"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.passwordConfirm"
                             inputType="password"
                             @inputChange="inputChange('passwordConfirm', $event)"></loginInput>
                 <loginInput :mode="'DARK'" :wrapStyle="inviteWrapStyle"
                             :iconShow="true" :iconSrc="inviteCode"
                             :placeHolder="$t('regs').inputInviteCode"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.inviteCode"
                             @inputChange="inputChange('inviteCode', $event)"></loginInput>
             </view>
             <view v-show="type === 'EMAIL'" class="emailRegsFlag">
@@ -55,6 +60,7 @@
                             :iconShow="true" :iconSrc="emailIcon"
                             :placeHolder="$t('regs').inputEmail"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.email"
                             @inputChange="inputChange('email', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
@@ -63,12 +69,14 @@
                             :lastText="$t('regs').sendVerifyEmailCode"
                             :placeHolder="$t('regs').inputEmail"
                             :inputStyle="inputVerifyCodeStyle"
+                            :inputData="postData.verifyCode"
                             @inputChange="inputChange('verifyCode', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
                             :iconSrc="passwordIcon"
                             :placeHolder="$t('regs').inputEmailPassword"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.password"
                             inputType="password"
                             @inputChange="inputChange('password', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
@@ -76,6 +84,7 @@
                             :iconSrc="passwordIcon"
                             :placeHolder="$t('regs').inputEmailSurePassword"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.passwordConfirm"
                             inputType="password"
                             @inputChange="inputChange('passwordConfirm', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
@@ -84,6 +93,7 @@
                             :iconSrc="inviteCode"
                             :placeHolder="$t('regs').inputEmailInviteCode"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.inviteCode"
                             @inputChange="inputChange('inviteCode', $event)"></loginInput>
             </view>
             <loginBtn :btnText="btnText"
