@@ -6,15 +6,15 @@
             </view>
             <view class="user-wrap-content">
                 <view class="user-wrap-container">
-                    <view class="user-wrap-userMassage">
+                    <view class="user-wrap-userMassage" @tap="toPage('user/personalInfo')">
                         <view class="user-wrap-headerImg">
                             <view class="img">
                                 <image :src="headerImg"></image>
                             </view>
                         </view>
                         <view class="userMassage">
-                            <span class="name">西瓜</span>
-                            <span class="id">ID:31133545</span>
+                            <span class="name">{{homeMsgData.nickname}}</span>
+                            <span class="id">ID:{{homeMsgData.account}}</span>
                             <!--<span class="signature">
                                 个性签名：Ta很懒，什么也没说
                             </span>-->
@@ -38,7 +38,7 @@
                                     </view>-->
                                     <!--<span>总资产估值</span>-->
                                     <view class="balance">
-                                        <span>2000.00 USDT≈14000 RMB</span>
+                                        <span>{{homeMsgData.asset}} USDT≈{{}} RMB</span>
                                     </view>
                                 </view>
 
