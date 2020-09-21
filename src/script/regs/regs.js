@@ -286,8 +286,6 @@ export default {
 
                 })
             }
-
-
         },
         getSendCodeData() {
             let type = 1;//1注册 2忘记密码  3转账 4更换账号 5更换新账号

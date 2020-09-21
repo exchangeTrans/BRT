@@ -44,8 +44,6 @@ export default {
             verifyCodeIcon: `url(${require('@/static/images/login/smsVerifyCode.png')})`,
             passwordIcon: `url(${require('@/static/images/login/passwordIcon.png')})`,
             emailIcon: `url(${require('@/static/images/login/emailChoice.png')})`,
-            country: "中国",
-            countryNumber: "+86",
             btnStyle: {
                 "margin-top": "60rpx"
             },
@@ -90,7 +88,7 @@ export default {
                 email: "",
                 password: "",
                 passwordConfirm: "",
-                verifyCode: "",
+                verifyCode: "123456",
                 verifyKey: "",
             },
             checkPhoneArray: [
@@ -144,7 +142,21 @@ export default {
                     maxLength: 20,
                 },
             ],
+
+            chooseCountry: {
+                countryCode: "CN",
+                countryId: "37",
+                dialingCode: "86",
+                imagePath: "",
+                titleCN: "中国",
+                titleEN: "CHINA",
+                titleJP: "CHINA",
+                titleKO: "CHINA",
+            },
         }
+    },
+    onShow() {
+        this.setCountry();
     },
     mounted() {
 
@@ -162,6 +174,20 @@ export default {
                 url: "regs/regs",
             })
         },
+        toChooseCountry() {
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: "chooseCountry/chooseCountry",
+            })
+        },
+        setCountry() {
+            let contury = this.$store.state.defaultData.contury;
+            if (!contury.titleCN) {
+
+            } else {
+                this.chooseCountry = contury;
+            }
+        },
         btnClick() {
             let postData = this.getPostData();
             if (postData) {
@@ -170,13 +196,40 @@ export default {
                     method: "post",
                     params: postData,
                 }).then((res) => {
-                    console.log(res)
+                    // data: {userLoginId: "1307916833663221762", userLoginToken: "399354412b4201206d057d48d7216623"}
+                        // userLoginId: "1307916833663221762"
+                        // userLoginToken: "399354412b4201206d057d48d7216623"
+                    // result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
+                        // returnCode: "0"
+                        // returnMessage: "成功"
+                        // returnUserMessage: "成功"
+                    // console.log(res)
+                    if (res.result.returnCode.toString() === "0") {
+                        let loginMsg = {
+                            isLogin: true,
+                            userLoginId: res.data.userLoginId,
+                            userLoginToken: res.data.userLoginToken,
+                        }
+                        this.$storage.setSync({
+                            key: "loginMsg",
+                            data: loginMsg,
+                        });
+                        this.$jumpPage.jump({
+                            type: 'switchTab',
+                            url: 'index/index'
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
                 })
             }
         },
         getPostData() {
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
-            let dialingCode = this.countryNumber.slice(1);
+            let dialingCode = this.chooseCountry.dialingCode;
+            let countryCode = this.chooseCountry.countryCode;
             let tel = this.postData.tel;
             let email = this.postData.email;
             let password = this.postData.password;
@@ -188,6 +241,7 @@ export default {
             let postData = {
                 accountType,
                 dialingCode,
+                countryCode,
                 tel,
                 email,
                 password,
@@ -235,13 +289,11 @@ export default {
 
                 })
             }
-
-
         },
         getSendCodeData() {
             let type = 2;//1注册 2忘记密码  3转账 4更换账号 5更换新账号
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
-            let dialingCode = this.countryNumber.slice(1);
+            let dialingCode = this.chooseCountry.dialingCode;
             let tel = this.postData.tel;
             let email = this.postData.email;
 

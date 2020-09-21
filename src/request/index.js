@@ -53,8 +53,8 @@ const getParams = (params) => {
     let devicePlatformLanguage = langMsg ? langMsg.code : 1;
     let pageRepeatCode = (new Date()).valueOf();
     postData = {
-        // userLoginId,
-        // userLoginToken,
+        userLoginId,
+        userLoginToken,
         appKey,
         devicePlatformLanguage,
         pageRepeatCode,

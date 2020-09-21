@@ -100,9 +100,9 @@ export default {
         }*/
         this.getUserMsg();
     },
-    /*onShow(){
+    onShow(){
         this.getUserMsg();
-    },*/
+    },
     methods: {
         toPage(path) {
             this.$jumpPage.jump({
@@ -116,10 +116,36 @@ export default {
                 url: "common/logout",
                 method: "post",
             }).then((res) => {
-                console.log(res)
+                // data: null
+                // result: {returnCode: "0", returnUserMessage: "注销成功", returnMessage: "注销成功"}
+                // returnCode: "0"
+                // returnMessage: "注销成功"
+                // returnUserMessage: "注销成功"
+                this.$toast.show({
+                    title: res.result.returnMessage,
+                })
             })
         },
         getUserMsg() {
+            // data: {website: "_", vipType: 0, avatar: "", dialingCode: "86", inviteCode: "MTB163", browser: "_",…}
+            // account: "8615282148708"
+            // asset: "0"
+            // avatar: ""
+            // browser: "_"
+            // dialingCode: "86"
+            // email: "1191125750@qq.com"
+            // inviteCode: "MTB163"
+            // nickname: "User"
+            // open: "_"
+            // shareUrl: "http://brt.io?inviteCode=MTB163"
+            // tel: "15282148708"
+            // userAccountType: 1
+            // vipType: 0
+            // website: "_"
+            // result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
+            // returnCode: "0"
+            // returnMessage: "成功"
+            // returnUserMessage: "成功"
             this.$request({
                 url: "me/getHome",
                 method: "post",

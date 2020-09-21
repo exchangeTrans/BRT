@@ -75,9 +75,9 @@ export default {
             },
 
             postData: {
-                phone: "",
-                password: "",
-                email: "",
+                phone: "15282148708",
+                password: "111111",
+                email: "1191125750@qq.com",
             },
 
             checkPhoneArray: [
@@ -212,7 +212,8 @@ export default {
         },
         getPostData() {
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
-            let dialingCode = this.countryNumber.slice(1);
+            let dialingCode = this.chooseCountry.dialingCode;
+            let countryCode = this.chooseCountry.countryCode;
             let tel = this.postData.phone;
             let email = this.postData.email;
             let password = this.postData.password;
@@ -222,6 +223,7 @@ export default {
             let postData = {
                 accountType,
                 dialingCode,
+                countryCode,
                 tel,
                 email,
                 password,

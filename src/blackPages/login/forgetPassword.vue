@@ -8,10 +8,10 @@
                        :rightText="rightText"
                        @typeChange="typeChange"></loginHead>
             <view class="phoneForgetFlag" v-show="type === 'PHONE'">
-                <view class="countryChoice">
+                <view class="countryChoice" @tap="toChooseCountry">
                     <view class="countryChoiceIcon"
                           :style="{'background-image': countryChoiceIcon}"></view>
-                    <view class="countryText">{{country}}</view>
+                    <view class="countryText">{{chooseCountry.titleCN}}</view>
                     <view class="lastCountryIcon"
                           :style="{'background-image': countryChoiceLastIcon}"></view>
                 </view>
@@ -19,10 +19,11 @@
                             :iconShow="true"
                             :iconSrc="phoneIcon"
                             :firstTextShow="true"
-                            :firstText="countryNumber"
+                            :firstText="chooseCountry.dialingCode"
                             :firstTextStyle="phoneFirstStyle"
                             :placeHolder="$t('forgetPassword').inputPhone"
                             :inputStyle="inputPhoneStyle"
+                            :inputData="postData.tel"
                             @inputChange="inputChange('tel', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
@@ -32,6 +33,7 @@
                             :placeHolder="$t('forgetPassword').inputVerifyCode"
                             :inputStyle="inputVerifyCodeStyle"
                             @lastTextClick="sendSmsVerify"
+                            :inputData="postData.verifyCode"
                             @inputChange="inputChange('verifyCode', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
@@ -39,6 +41,7 @@
                             :placeHolder="$t('forgetPassword').inputPassword"
                             :inputStyle="passwordStyle"
                             inputType="password"
+                            :inputData="postData.password"
                             @inputChange="inputChange('password', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :wrapStyle="lastWrapStyle"
@@ -47,6 +50,7 @@
                             :placeHolder="$t('forgetPassword').inputSurePassword"
                             :inputStyle="passwordStyle"
                             inputType="password"
+                            :inputData="postData.passwordConfirm"
                             @inputChange="inputChange('passwordConfirm', $event)"></loginInput>
             </view>
             <view class="emailForgetFlag" v-show="type === 'EMAIL'">
@@ -57,6 +61,7 @@
                             :wrapStyle="emailWrapStyle"
                             :placeHolder="$t('forgetPassword').inputEmail"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.email"
                             @inputChange="inputChange('email', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
@@ -66,6 +71,7 @@
                             :placeHolder="$t('forgetPassword').inputEmailVerifyCode"
                             :inputStyle="inputVerifyCodeStyle"
                             @lastTextClick="sendSmsVerify"
+                            :inputData="postData.verifyCode"
                             @inputChange="inputChange('verifyCode', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
@@ -73,6 +79,7 @@
                             :placeHolder="$t('forgetPassword').inputEmailPassword"
                             :inputStyle="passwordStyle"
                             inputType="password"
+                            :inputData="postData.password"
                             @inputChange="inputChange('password', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :wrapStyle="lastWrapStyle"
@@ -81,6 +88,7 @@
                             :placeHolder="$t('forgetPassword').inputEmailSurePassword"
                             :inputStyle="passwordStyle"
                             inputType="password"
+                            :inputData="postData.passwordConfirm"
                             @inputChange="inputChange('passwordConfirm', $event)"></loginInput>
             </view>
             <loginBtn :btnText="$t('forgetPassword').forgetBtn"

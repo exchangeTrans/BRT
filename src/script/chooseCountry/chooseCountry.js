@@ -106,6 +106,9 @@ export default {
 
         this.assembleCountryData()
     },
+    onShow() {
+        this.getChooseCountry();
+    },
     methods: {
         chooseItem(item) {
             this.selectedItem = item;
@@ -129,6 +132,10 @@ export default {
                 tempArray.push(obj);
             })
             this.countryData = tempArray;
+        },
+        getChooseCountry() {
+            let contury = this.$store.state.defaultData.contury;
+            this.selectedItem = contury;
         }
     }
 }
