@@ -181,7 +181,6 @@ export default {
             } else {
                 this.chooseCountry = contury;
             }
-
         },
         btnClick() {
             // console.log("下一步")
@@ -193,21 +192,26 @@ export default {
                     params: postData,
                 }).then((res) => {
                     // data: {userLoginId: "1307899918186184706", userLoginToken: "ab7036f39d831f807980b701ce0f8371"}
-                        // userLoginId: "1307899918186184706"
-                        // userLoginToken: "ab7036f39d831f807980b701ce0f8371"
+                    // userLoginId: "1307899918186184706"
+                    // userLoginToken: "ab7036f39d831f807980b701ce0f8371"
                     // result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
-                        // returnCode: "0"
-                        // returnMessage: "成功"
-                        // returnUserMessage: "成功"
-                    if(res.result.returnCode.toString() === "0"){
+                    // returnCode: "0"
+                    // returnMessage: "成功"
+                    // returnUserMessage: "成功"
+                    if (res.result.returnCode.toString() === "0") {
+                        let loginMsg = {
+                            isLogin: true,
+                            userLoginId: res.data.userLoginId,
+                            userLoginToken: res.data.userLoginToken,
+                        }
                         this.$storage.setSync({
-                            key: "userLoginId",
-                            data: res.data.userLoginId,
+                            key: "loginMsg",
+                            data: loginMsg,
                         });
-                        this.$storage.setSync({
-                            key: "userLoginToken",
-                            data: res.data.userLoginToken,
-                        });
+                        this.$jumpPage.jump({
+                            type: 'switchTab',
+                            url: 'index/index'
+                        })
                     } else {
                         this.$toast.show({
                             title: res.result.returnMessage,

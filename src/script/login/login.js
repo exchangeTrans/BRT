@@ -48,7 +48,7 @@ export default {
                 'margin': 'auto 0rpx auto 20rpx',
             },
             inputPhoneStyle: {
-              width: "444rpx",
+                width: "444rpx",
             },
             passwordStyle: {
                 width: '562rpx',
@@ -75,23 +75,23 @@ export default {
             },
 
             postData: {
-                phone:"",
-                password:"",
-                email:"",
+                phone: "15282148708",
+                password: "111111",
+                email: "1191125750@qq.com",
             },
 
             checkPhoneArray: [
                 {
                     name: "手机号",
                     checkKey: "tel",
-                    checkType:["isPhone"],
+                    checkType: ["isPhone"],
                 },
                 {
                     name: "密码",
                     checkKey: "password",
-                    checkType:["length"],
-                    minLength:6,
-                    maxLength:20,
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
                 },
             ],
 
@@ -99,17 +99,31 @@ export default {
                 {
                     name: "邮箱",
                     checkKey: "email",
-                    checkType:["isEmail"],
+                    checkType: ["isEmail"],
                 },
                 {
                     name: "密码",
                     checkKey: "password",
-                    checkType:["length"],
-                    minLength:6,
-                    maxLength:20,
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
                 },
             ],
+
+            chooseCountry: {
+                countryCode: "CN",
+                countryId: "37",
+                dialingCode: "86",
+                imagePath: "",
+                titleCN: "中国",
+                titleEN: "CHINA",
+                titleJP: "CHINA",
+                titleKO: "CHINA",
+            },
         }
+    },
+    onShow() {
+        this.setCountry();
     },
     mounted() {
 
@@ -130,6 +144,20 @@ export default {
                 url: 'login/forgetPassword'
             })
         },
+        setCountry() {
+            let contury = this.$store.state.defaultData.contury;
+            if (!contury.titleCN) {
+
+            } else {
+                this.chooseCountry = contury;
+            }
+        },
+        toChooseCountry() {
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: "chooseCountry/chooseCountry",
+            })
+        },
         jumpRegs() {
             this.$jumpPage.jump({
                 type: 'navigateTo',
@@ -141,16 +169,44 @@ export default {
             // debugger
             let postData = this.getPostData()
             // debugger
-            if(postData){
-                // console.log(111);
-                // console.log(this.$request);
+            if (postData) {
                 this.$request({
                     url: "common/login",
                     method: "post",
                     params: postData,
                 }).then((res) => {
                     // debugger
-                    console.log(res);
+                    // console.log(res);
+                    // data: {userLoginId: "1307906608826679298", userLoginToken: "bf1c35263cb4c36d1ad4dafdd04efa85"}
+                    // userLoginId: "1307906608826679298"
+                    // userLoginToken: "bf1c35263cb4c36d1ad4dafdd04efa85"
+                    // result: {returnCode: "0", returnUserMessage: "登录成功", returnMessage: "登录成功"}
+                    // returnCode: "0"
+                    // returnMessage: "登录成功"
+                    // returnUserMessage: "登录成功"
+                    if (res.result.returnCode.toString() === "0") {
+                        let loginMsg = {
+                            isLogin: true,
+                            userLoginId: res.data.userLoginId,
+                            userLoginToken: res.data.userLoginToken,
+                        }
+                        this.$storage.setSync({
+                            key: "loginMsg",
+                            data: loginMsg,
+                        });
+                        // switchTab
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                        this.$jumpPage.jump({
+                            type: 'switchTab',
+                            url: 'index/index'
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
                 })
             }
         },

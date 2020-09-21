@@ -8,10 +8,10 @@
                        @typeChange="typeChange"/>
             <view class="phoneLoginFlag"
                   v-show="type === 'PHONE'">
-                <view class="lastInput">
+                <view class="lastInput" @tap="toChooseCountry">
                     <view class="icon" 
                           :style="{'background-image': cityChoiceIcon}"></view>
-                    <view class="cityChoice">{{country}}</view>
+                    <view class="cityChoice">{{chooseCountry.titleCN}}</view>
                     <view class="lastIcon"
                           :style="{'background-image': cityChoiceLastIcon}"></view>
                 </view>
@@ -19,10 +19,11 @@
                             :wrapStyle="wrapStyle"
                             :iconShow="true" :iconSrc="phoneIcon"
                             :firstTextShow="true"
-                            :firstText="countryNumber"
+                            :firstText="chooseCountry.dialingCode"
                             :firstTextStyle="phoneFirstText"
                             :placeHolder="$t('login').inputPhone"
                             :inputStyle="inputPhoneStyle"
+                            :inputData="postData.phone"
                             @inputChange="inputChange('phone', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :wrapStyle="lastWrapStyle"
@@ -30,6 +31,8 @@
                             :iconSrc="passwordIcon"
                             :placeHolder="$t('login').inputPassword"
                             :inputStyle="passwordStyle"
+                            inputType="password"
+                            :inputData="postData.password"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
             <view class="emailLoginFlag"
@@ -40,6 +43,7 @@
                             :iconSrc="emailChoice"
                             :placeHolder="$t('login').inputEmail"
                             :inputStyle="passwordStyle"
+                            :inputData="postData.email"
                             @inputChange="inputChange('email', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :wrapStyle="lastWrapStyle"
@@ -47,6 +51,8 @@
                             :iconSrc="passwordIcon"
                             :placeHolder="$t('login').inputEmailPassword"
                             :inputStyle="passwordStyle"
+                            inputType="password"
+                            :inputData="postData.password"
                             @inputChange="inputChange('password', $event)"></loginInput>
             </view>
             <loginBtn :btnStyle="btnStyle"
