@@ -6,11 +6,11 @@
                 <view class="bonus-wrap-content-card">
                     <view class="bonus-wrap-content-card-msg">
                         <view class="left">
-                            <view class="grade">V1</view>
+                            <view class="grade">V{{vipType}}</view>
                             <view class="grade-text">您的VIP等级</view>
                         </view>
                         <view class="right">
-                            <view class="number">105900</view>
+                            <view class="number">{{total}}</view>
                             <view class="number-text">矿池积累数量（BRT）</view>
                         </view>
                     </view>
@@ -53,7 +53,7 @@
                     <span class="">矿池分红收益</span>
                 </view>
             </view>
-            
+
             <view class="noDataBox" v-if="earningsRecordData.length===0">
                 <noData></noData>
             </view>

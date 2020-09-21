@@ -4,15 +4,15 @@
         <view class="promoteBonusWrap">
             <view class="contentWrap">
                 <view class="userInfo">
-                    <view class="avatar" :style="{'background-image': avatarUrl}">
+                    <view class="avatar" :style="{'background-image': promoteBonusData.avatar}">
 
                     </view>
                     <view class="nicknameInfo">
                         <view class="nickname">
-                            {{nickname}}
+                            {{promoteBonusData.nickname}}
                         </view>
                         <view class="nicknameId">
-                            ID:{{id}}
+                            ID:{{promoteBonusData.inviteCode}}
                         </view>
 
                     </view>
@@ -25,7 +25,7 @@
 
                             </view>
                             <view class="vipLevel">
-                                {{vipLevel}}
+                                {{promoteBonusData.vipType}}
                             </view>
                         </view>
                     </view>
@@ -36,7 +36,7 @@
                             {{$t('promoteBonus').bonusTotal}}
                         </view>
                         <view class="bonusTotalNums">
-                            {{bonusTotalNums}}
+                            {{promoteBonusData.teamMining}}
                         </view>
                     </view>
                     <view class="bonusNow">
@@ -44,7 +44,7 @@
                             {{$t('promoteBonus').bonusNow}}
                         </view>
                         <view class="bonusNowNums">
-                            {{bonusNowNums}}
+                            {{promoteBonusData.teamHashrate}}
                         </view>
                     </view>
                     <view class="bonusLastDay">
@@ -52,7 +52,7 @@
                             {{$t('promoteBonus').bonusLastDay}}
                         </view>
                         <view class="bonusLastDayNums">
-                            {{bonusLastDayNums}}
+                            {{promoteBonusData.interestShareDay}}
                         </view>
                     </view>
                 </view>

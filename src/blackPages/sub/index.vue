@@ -4,50 +4,59 @@
 		<scroll-view class="content" :scroll-y="true">
 			<view class="contentPadding">
 				<view class="subTop" :style="{'background-image':'url('+subBg+')'}">
-				<view class="available">可用余额：1200 BRT</view>
-				<view class="notice" :style="{'background-image':'url('+notice+')'}" @tap="showNotice"></view>
-				<view class="dataGroup">
-					<view class="dataGroupItem">
-						<view class="dataGroupItemTitle">累计收益</view>
-						<view class="dataGroupItemText">1298.87</view>
-					</view>
-					<view class="dataGroupItem">
-						<view class="dataGroupItemTitle">昨日收益</view>
-						<view class="dataGroupItemText">123</view>
-					</view>
-					<view class="dataGroupItem">
-						<view class="dataGroupItemTitle">昨日最佳持币</view>
-						<view class="dataGroupItemText">3</view>
+					<view class="available">{{$t('sub').availableBalance}}：{{subData.brtBalance}} BRT</view>
+					<view class="notice" :style="{'background-image':'url('+notice+')'}" @tap="showNotice"></view>
+					<view class="dataGroup">
+						<view class="dataGroupItem">
+							<view class="dataGroupItemTitle">{{$t('sub').accumulatedIncome}}</view>
+							<view class="dataGroupItemText">{{subData.interest}}</view>
+						</view>
+						<view class="dataGroupItem">
+							<view class="dataGroupItemTitle">{{$t('sub').interestDay}}</view>
+							<view class="dataGroupItemText">{{subData.interestDay}}</view>
+						</view>
+						<view class="dataGroupItem">
+							<view class="dataGroupItemTitle">{{$t('sub').bestHold}}</view>
+							<view class="dataGroupItemText">{{subData.bestHold}}</view>
+						</view>
 					</view>
 				</view>
-			</view>
-				<view class="circle" :style="{'background-image':'url('+circleBg+')'}">
-				<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}" @tap="transferInAmount">
-					开始挖矿
+				<view class="circle" :style="{'background-image':'url('+circleBg+')'}" v-if="subData.holdStateType===0">
+					<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}" @tap="transferInAmount">
+						{{$t('sub').BeganToDig}}
+					</view>
+					<view class="circleText">{{$t('sub').minLimit}}：{{subData.minLimit}} BRT</view>
 				</view>
-				<view class="circleText">最小持币：1000 BRT</view>
-			</view>
-				<view class="earningsList" v-for="item in 3">
-				<view class="earningsText">
+
+				<view class="circle pledge" :style="{'background-image':'url('+circleBg+')'}" v-if="subData.holdStateType===1">
+					<view class="circleBtn" :style="{'background-image':'url('+circleBg3+')'}" @tap="transferInAmount">
+						<view class="pledgeTitle">{{$t('sub').pledgeNow}} BRT</view>
+						<view class="pledgeText">{{subData.holdAmount}}</view>
+					</view>
+					<view class="circleText  releasePledge">{{$t('sub').will}} {{subData.holdExpiresIn}} {{$t('sub').releasePledge}}</view>
+					<view class="closePledge" @tap="cancelMining">{{$t('sub').closePledge}}</view>
+				</view>
+
+				<view class="earningsText" :style="{'transform':subData.holdStateType===0?'translateY(-160rpx)':'translateY(-120rpx)'}">
 					<view class="line" ></view>
-					质押挖矿记录
+					{{$t('sub').pledgeRecord}}
 				</view>
 
-				<view class="earningsItem">
-					<view class="accruedIncome">
-						累计收益：<span>30  BRt</span>
-					</view>
-					<view class="nums">
-						质押数量：1000 BRT
-					</view>
-					<view class="times">
-						<view class="timeItem startTime">起始时间：09/28 12:43</view>
-						<view class="timeItem endTime">结束时间：09/30 14:56</view>
+				<view class="earningsList" v-if="!isNoDataFlag" :style="{'transform':subData.holdStateType===0?'translateY(-120rpx)':'translateY(-80rpx)'}">
+					<view class="earningsItem" v-for="(item,index) in subData.list" :key="index">
+						<view class="accruedIncome">
+							{{$t('sub').accumulatedIncome}}：<span>{{item.bounsAmount}}  BRt</span>
+						</view>
+						<view class="nums">
+							{{$t('sub').pledgeNumber}}：{{item.holdAmount}} BRT
+						</view>
+						<view class="times">
+							<view class="timeItem startTime">{{$t('sub').createTime}}：{{item.createTime}}</view>
+							<view class="timeItem endTime">{{$t('sub').expiresIn}}：{{item.expiresIn}}</view>
+						</view>
 					</view>
 				</view>
-			</view>
-
-				<view class="noDataBox" >
+				<view class="noDataBox" v-if="isNoDataFlag">
 					<noData :positionTop="positionTop"></noData>
 				</view>
 			</view>
@@ -195,25 +204,62 @@
 						text-align: center;
 					}
 				}
-				.earningsList{
-					transform: translateY(-160rpx);
-					font-family: PingFangSC-Medium, PingFang SC;
-					.earningsText{
-						font-weight: 500;
-						color: #D9DADB;
-						font-size: 32rpx;
-						.line{
-							display: inline-block;
-							width: 8rpx;
-							height: 28rpx;
-							background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
-							border-radius: 4px;
-							margin-right: 12rpx;
-							transform: translateY(15%);
+
+				.pledge{
+					position: relative;
+					.circleBtn{
+						line-height: 120rpx;
+						.pledgeTitle{
+							margin-top: 50rpx;
+							font-size: 24rpx;
 						}
-
-
+						.pledgeText{
+							width: 100%;
+							text-align: center;
+							position: absolute;
+							left: 0;
+							top: 100rpx;
+						}
 					}
+					.releasePledge{
+						color: #8D989E;
+					}
+					.closePledge{
+						position: absolute;
+						bottom: 80rpx;
+						left: 50%;
+						transform: translateX(-50%);
+						margin: 16rpx auto 0;
+						width: 160rpx;
+						height: 56rpx;
+						border-radius: 30rpx;
+						border: 2rpx solid #098FE0;
+						font-size: 28rpx;
+						font-family: PingFangSC-Regular, PingFang SC;
+						font-weight: 400;
+						color: #098FE0;
+						line-height: 56rpx;
+						text-align: center;
+					}
+				}
+				.earningsText{
+					transform: translateY(-160rpx);
+					font-weight: 500;
+					color: #D9DADB;
+					font-size: 32rpx;
+					.line{
+						display: inline-block;
+						width: 8rpx;
+						height: 28rpx;
+						background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
+						border-radius: 4px;
+						margin-right: 12rpx;
+						transform: translateY(15%);
+					}
+				}
+				.earningsList{
+					transform: translateY(-120rpx);
+					font-family: PingFangSC-Medium, PingFang SC;
 					.earningsItem{
 						margin-top: 20rpx;
 						background: #272A2E;

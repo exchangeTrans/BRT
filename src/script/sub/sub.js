@@ -17,7 +17,7 @@ export default {
             this.headerOptions={
                 show:true,
                     isAllowReturn:true,
-                    text:"质押挖矿",
+                    text:this.$t('sub').title,
                     rightItem:{
                     type:"text",
                         text:"",
@@ -45,7 +45,7 @@ export default {
     },
     data() {
         return {
-            positionTop:'60rpx',
+            positionTop:'-80rpx',
             headerOptions:{},
 
             subBg:`${require('@/static/images/sub/subBg.png')}`,
@@ -53,11 +53,17 @@ export default {
             circleBg2:`${require('@/static/images/sub/circleBg2.png')}`,
             circleBg3:`${require('@/static/images/sub/circleBg3.png')}`,
             notice:`${require('@/static/images/sub/notice.png')}`,
+            subData:{},
+            subRecord:[],
+            isNoDataFlag:false,
 
         }
     },
     onLoad() {
 
+    },
+    onShow(){
+        this.getMining();
     },
     methods: {
         transferInAmount(){
@@ -65,6 +71,48 @@ export default {
         },
         showNotice(){
             this.$refs.subRuler.open();
-        }
+        },
+
+        //获取用户矿池信息
+        getMining(){
+            let that =this;
+            this.$request({
+                url: "mining/getMining",
+                method: "post",
+            }).then((res)=>{
+                if (res.result.returnCode.toString() === "0") {
+                    that.subData= res.data;
+                    that.subRecord= res.data.list;
+                    if (res.data.list.length===0){
+                        that.isNoDataFlag=true;
+                    }else {
+                        that.isNoDataFlag=false;
+                    }
+                }else{
+                    this.$toast.show({
+                        title: res.result.returnMessage,
+                    })
+                }
+            })
+        },
+        //取消质押
+            cancelMining(){
+            let that = this;
+                this.$request({
+                    url: "/mining/cancelMining",
+                    method: "post",
+                }).then((res)=>{
+                    if (res.result.returnCode.toString() === "0") {
+                        that.getMining();
+
+                    }else{
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+                })
+            }
+
+
     }
 }

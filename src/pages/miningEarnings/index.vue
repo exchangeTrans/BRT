@@ -4,25 +4,25 @@
 		<scroll-view class="content" :scroll-y="true">
 			<view class="contentPadding">
 				<view class="subTop" :style="{'background-image':'url('+subBg+')'}">
-					<view class="available">可用余额：1200 BRT</view>
+					<view class="available">{{$t('miningEarnings').availableBalance}}：{{miningEarningsData.holdAmount}} BRT</view>
 					<!--<view class="notice" :style="{'background-image':'url('+notice+')'}"></view>-->
 					<view class="dataGroup">
 						<view class="dataGroupItem">
-							<view class="dataGroupItemTitle">累计收益</view>
-							<view class="dataGroupItemText">1298.87</view>
+							<view class="dataGroupItemTitle">{{$t('miningEarnings').accumulatedIncome}}</view>
+							<view class="dataGroupItemText">{{miningEarningsData.interest}}</view>
 						</view>
 						<view class="dataGroupItem">
-							<view class="dataGroupItemTitle">昨日收益</view>
-							<view class="dataGroupItemText">123</view>
+							<view class="dataGroupItemTitle">{{$t('miningEarnings').interestDay}}</view>
+							<view class="dataGroupItemText">{{miningEarningsData.interestDay}}</view>
 						</view>
 						<view class="dataGroupItem">
-							<view class="dataGroupItemTitle">昨日最佳持币</view>
-							<view class="dataGroupItemText">3</view>
+							<view class="dataGroupItemTitle">{{$t('miningEarnings').bestHold}}</view>
+							<view class="dataGroupItemText">{{miningEarningsData.bestHold}}</view>
 						</view>
 					</view>
 				</view>
 
-				<view class="miningEarningsTitle"><view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>质押收益纪录</view>
+				<view class="miningEarningsTitle"><view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>{{$t('miningEarnings').pledgeEarningRecord}}</view>
 				<earningsRecordList :earningsRecordData="earningsRecordData"></earningsRecordList>
 
 				<view class="noDataBox" v-if="earningsRecordData.length===0">

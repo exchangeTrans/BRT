@@ -5,19 +5,19 @@
                   :style="{'background':mode==='night'?'#22252A':'#ffffff',
             'color':mode==='night'?'#D9DADB':'#1A1A1A'}">
                 <view class="transferTop">
-                    <view class="transferTitle">参与挖矿</view>
-                    <view class="close" @tap="close">取消</view>
+                    <view class="transferTitle">{{$t('transferInAmount').inMining}}</view>
+                    <view class="close" @tap="close">{{$t('transferInAmount').close}}</view>
                     <view class="clearfix"></view>
                 </view>
-                <view class="beUsedNum">可用数量：40.24 BRT</view>
+                <view class="beUsedNum">{{$t('transferInAmount').availableCount}}：{{availableCount}} BRT</view>
 
                 <view class="transferInput"   :style="{'background':mode==='night'?'#272A2E':'#ffffff'}">
-                    <input type="text" class="input" placeholder="请输入转入数量">
-                    <view class="allTransfer"  @tap="allTransfer">全部转入</view>
+                    <input type="number" class="input" :placeholder="$t('transferInAmount').inputHolderText" v-model="counts">
+                    <view class="allTransfer"  @tap="allTransfer">{{$t('transferInAmount').allInto}}</view>
                 </view>
-                <view class="intro">质押週期为15日，到期后会自动解锁。</view>
+                <view class="intro">{{$t('transferInAmount').intoIntro}}</view>
 
-                <view class="transferBtn" @tap="transfer">转入</view>
+                <view class="transferBtn" @tap="transfer">{{$t('transferInAmount').into}}</view>
             </view>
         </uni-popup>
     </view>
@@ -34,6 +34,7 @@
 			return {
                 title: 'dialog',
                 type:'',
+                counts:'',
                 isMustUpDate:false,
                 updateIcon:`${require('@/static/images/home/updateIcon.png')}`,
                 closeIcon:`${require('@/static/images/home/close.png')}`,
@@ -43,7 +44,8 @@
 
         },
 		props: {
-		    mode:{type:String,default:'day'}
+		    mode:{type:String,default:'day'},
+            availableCount:{type:Number,default:0},
         },
 		mounted(){
 
@@ -60,10 +62,26 @@
                 })
             },
             allTransfer(){
-
+                let {availableCount} = this.$props;
+                this.counts=availableCount;
             },
             transfer(){
-
+                let postData={
+                    amount: this.counts
+                };
+                this.$request({
+                    url:'mining/inMining',
+                    method:'post',
+                    params:postData
+                }).then((res)=>{
+                    if (res.result.returnCode.toString() === "0") {
+                        this.close();
+                    }else{
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+                })
             }
 
 		}
@@ -106,7 +124,7 @@
             .input{
                 float: left;
 
-                width: 500rpx;
+                width: 480rpx;
             }
             .allTransfer{
                 float: right;

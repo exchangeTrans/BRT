@@ -47,6 +47,8 @@ export default {
                 },*/
             ],
             isBlack: true,
+            total: "",
+            vipType: 0,
         }
     },
     mounted() {
@@ -90,7 +92,35 @@ export default {
             this.isBlack = true;
             this.BtnackgroundColor = "#8C939B";
         }
+        this.getVIPInterest();
     },
-    methods: {},
+    methods: {
+
+
+        //获取矿池分红（VIP收益）
+        getVIPInterest(){
+            let that =this;
+            let postData={
+                start:0,
+                index:5,
+            };
+            this.$request({
+                url: "mining/getVIPInterest",
+                method: "post",
+                params:postData
+            }).then((res)=>{
+                if (res.result.returnCode.toString() === "0") {
+                    that.total= res.data.total;
+                    that.vipType= res.data.vipType;
+                    that.earningsRecordData=res.data.list;
+
+                }else{
+                    this.$toast.show({
+                        title: res.result.returnMessage,
+                    })
+                }
+            })
+        },
+    },
 
 }

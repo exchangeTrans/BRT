@@ -29,7 +29,7 @@ export default {
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             },
-            earningsRecordData: [{
+            earningsRecordData: [/*{
                 type: "推广算力收益",
                 num: "190.32",
                 time: "2020/09/28"
@@ -53,19 +53,50 @@ export default {
                 type: "推广算力收益",
                 num: "190.32",
                 time: "2020/09/28"
-            }],
-            avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
+            }*/],
+
+            promoteBonusData:{},
+
+
+            // avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
             inviteBonusRecordIcon: `url(${require('@/static/images/earning/promteBonusRecordIcon.png')})`,
-            nickname: "CSIji7833",
-            id: "893432",
-            vipLevel: 1,
-            bonusTotalNums: "1343.32万",
-            bonusNowNums: "643.32万",
-            bonusLastDayNums: "423万",
+            // nickname: "CSIji7833",
+            // id: "893432",
+            // vipLevel: 1,
+            // bonusTotalNums: "1343.32万",
+            // bonusNowNums: "643.32万",
+            // bonusLastDayNums: "423万",
         }
     },
     mounted() {
+        this.getShareInterest();
+    },
+    methods: {
+
+        //获取推广收益
+        getShareInterest(){
+            let that =this;
+            let postData={
+                start:0,
+                index:5,
+            };
+            this.$request({
+                url: "mining/getShareInterest",
+                method: "post",
+                params:postData
+            }).then((res)=>{
+                if (res.result.returnCode.toString() === "0") {
+                    that.promoteBonusData=res.data;
+                    that.earningsRecordData=res.data.list;
+                }else{
+                    this.$toast.show({
+                        title: res.result.returnMessage,
+                    })
+                }
+            })
+        },
+
+
 
     },
-    methods: {},
 }
