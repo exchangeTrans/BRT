@@ -1,7 +1,7 @@
 import appHead from '@/components/common/header.vue'
 import earningsRecordList from "@/components/earningsRecordList/index.vue"
 import noData from "@/components/noData/index.vue"
-
+import recordAmount  from '@/static/js/recordNum.js'
 export default {
     name: "promoteBonus",
     components: {
@@ -66,6 +66,7 @@ export default {
             // bonusTotalNums: "1343.32万",
             // bonusNowNums: "643.32万",
             // bonusLastDayNums: "423万",
+            haveNext:true,
         }
     },
     mounted() {
@@ -74,27 +75,44 @@ export default {
     methods: {
 
         //获取推广收益
-        getShareInterest(){
+        getShareInterest(isMore){
+            if (this.haveNext){
+                let postData={
+                    start:0,
+                    index:recordAmount.num,
+                };
+                this.request(postData,isMore);
+            }
+
+        },
+
+        request(postData,isMore){
             let that =this;
-            let postData={
-                start:0,
-                index:5,
-            };
             this.$request({
                 url: "mining/getShareInterest",
                 method: "post",
                 params:postData
             }).then((res)=>{
                 if (res.result.returnCode.toString() === "0") {
-                    that.promoteBonusData=res.data;
-                    that.earningsRecordData=res.data.list;
+                    //判断是否还有数据
+                    if (res.data.list.length<recordAmount.num){
+                        this.haveNext=true;
+                    }
+                    //判断是第一次加载还是加载更多
+                    if (isMore){
+                        that.earningsRecordData.concat(res.data.list);
+                    }else {
+                        that.promoteBonusData=res.data;
+                        that.earningsRecordData=res.data.list;
+                    }
+
                 }else{
                     this.$toast.show({
                         title: res.result.returnMessage,
                     })
                 }
             })
-        },
+        }
 
 
 

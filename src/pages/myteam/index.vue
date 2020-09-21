@@ -7,23 +7,23 @@
 					<image src="../../static/images/myteam/headphoto.png" mode="" style="width:118rpx; height: 118rpx;"></image>
 				</view>
 				<view class="usermsg">
-					<view class="username">CSIji7833</view>
-					<view class="userid">ID:893632</view>
+					<view class="username">{{teamData.nickname}}</view>
+					<view class="userid">ID:{{teamData.inviteCode}}</view>
 				</view>
 				<view class="incomelog">推广收益记录</view>
 			</view>
 			<view class="teammsg">
 				<view class="teamablity">
 					<view class="descrip">团队总质押</view>
-					<view class="num">1343.32万</view>
+					<view class="num">{{teamData.teamMining}}</view>
 				</view>
 				<view class="teamtoday">
 					<view class="descrip">今日新增质押</view>
-					<view class="num">1343.32万</view>
+					<view class="num">{{teamData.teamMiningDay}}</view>
 				</view>
 				<view class="teamyestoday">
 					<view class="descrip">团队总人数</view>
-					<view class="num">69</view>
+					<view class="num">{{teamData.teamQty}}</view>
 				</view>
 			</view>
 		</view>
@@ -37,89 +37,89 @@
 			<view class="grade">业绩</view>
 		</view>
 		<scroll-view scroll-y="true" class="scrollh">
-			<view class="datalist" v-for="(item,id) in datalist" :key="item.id">
-				<image :src=item.flag mode="" class="flag"></image>
-				<view class="time">{{item.phonenumber}}</view>
-				<view class="memberid">{{item.memberid}}</view>
-				<view class="grade">{{item.grade}}</view>
+			<view class="datalist" v-for="(item,id) in inviteRecord" :key="id">
+				<image :src=countryFlagArr[item.countryCode] mode="" class="flag"></image>
+				<view class="time">{{item.account}}</view>
+				<view class="memberid">{{item.inviteCode}}</view>
+				<view class="grade">{{item.teamMining}}</view>
 			</view>
 		</scroll-view>
 	</view>
 </template>
 
-<script>
-	import pageHeader from '@/components/common/header.vue'
-	export default{
-		components:{pageHeader},
-			data(){
-				return{
-					datalist:[
-						{
-							flag : require("../../static/images/myteam/chinese.png"),
-							phonenumber:"13541511711",
-							memberid:"19034532",
-							grade:'1000BRT'
-						},
-						{
-							flag:require("../../static/images/myteam/taiwan.png"),
-							phonenumber:"13541511711",
-							memberid:"19034532",
-							grade:'1000BRT'
-						},
-						{
-							flag:require("../../static/images/myteam/hongkong.png"),
-							phonenumber:"13541511711",
-							memberid:"19034532",
-							grade:'1000BRT'
-						},
-						{
-							flag:require("../../static/images/myteam/korea.png"),
-							phonenumber:"13541511711",
-							memberid:"19034532",
-							grade:'1000BRT'
-						},
-						{
-							flag:require("../../static/images/myteam/korea.png"),
-							phonenumber:"13541511711",
-							memberid:"19034532",
-							grade:'1000BRT'
-						},
-						{
-							flag:require("../../static/images/myteam/hongkong.png"),
-							phonenumber:"13541511711",
-							memberid:"19034532",
-							grade:'1000BRT'
-						},
-						{
-							flag:require("../../static/images/myteam/taiwan.png"),
-							phonenumber:"15884864417",
-							memberid:"19034532",
-							grade:'1000BRT'
-						}
-					],
-					headerOptions: {
-					    show: true,
-					    isAllowReturn: true,
-					    text: "团队详情",
-					    rightItem: {
-					        // type: "text",
-					        // text: "须知&反馈",
-					        // style: {
-					        //     "fontSize": '28rpx',
-					        //     "fontFamily": 'Source Han Sans CN',
-					        //     "fontWeight": '400',
-					        //     "color": 'rgba(68,68,68,1)'
-					        // }
-					    },
-						style:{
-							color:"#ffffff"
-						},
-						isWhiteIcon:true,
-					    headerIsNoBoder: false,
-					},
-				}
-			}
-	}
+<script src="@/script/myTeam/myTeam.js">
+	// import pageHeader from '@/components/common/header.vue'
+	// export default{
+	// 	components:{pageHeader},
+	// 		data(){
+	// 			return{
+	// 				datalist:[
+	// 					{
+	// 						flag : require("../../static/images/myteam/chinese.png"),
+	// 						phonenumber:"13541511711",
+	// 						memberid:"19034532",
+	// 						grade:'1000BRT'
+	// 					},
+	// 					{
+	// 						flag:require("../../static/images/myteam/taiwan.png"),
+	// 						phonenumber:"13541511711",
+	// 						memberid:"19034532",
+	// 						grade:'1000BRT'
+	// 					},
+	// 					{
+	// 						flag:require("../../static/images/myteam/hongkong.png"),
+	// 						phonenumber:"13541511711",
+	// 						memberid:"19034532",
+	// 						grade:'1000BRT'
+	// 					},
+	// 					{
+	// 						flag:require("../../static/images/myteam/korea.png"),
+	// 						phonenumber:"13541511711",
+	// 						memberid:"19034532",
+	// 						grade:'1000BRT'
+	// 					},
+	// 					{
+	// 						flag:require("../../static/images/myteam/korea.png"),
+	// 						phonenumber:"13541511711",
+	// 						memberid:"19034532",
+	// 						grade:'1000BRT'
+	// 					},
+	// 					{
+	// 						flag:require("../../static/images/myteam/hongkong.png"),
+	// 						phonenumber:"13541511711",
+	// 						memberid:"19034532",
+	// 						grade:'1000BRT'
+	// 					},
+	// 					{
+	// 						flag:require("../../static/images/myteam/taiwan.png"),
+	// 						phonenumber:"15884864417",
+	// 						memberid:"19034532",
+	// 						grade:'1000BRT'
+	// 					}
+	// 				],
+	// 				headerOptions: {
+	// 				    show: true,
+	// 				    isAllowReturn: true,
+	// 				    text: "团队详情",
+	// 				    rightItem: {
+	// 				        // type: "text",
+	// 				        // text: "须知&反馈",
+	// 				        // style: {
+	// 				        //     "fontSize": '28rpx',
+	// 				        //     "fontFamily": 'Source Han Sans CN',
+	// 				        //     "fontWeight": '400',
+	// 				        //     "color": 'rgba(68,68,68,1)'
+	// 				        // }
+	// 				    },
+	// 					style:{
+	// 						color:"#ffffff"
+	// 					},
+	// 					isWhiteIcon:true,
+	// 				    headerIsNoBoder: false,
+	// 				},
+	// 			}
+	// 		}
+	// }
 </script>
 
 <style lang="less">
@@ -280,9 +280,9 @@
 		font-family: PingFangSC-Regular, PingFang SC;
 		color: #1A1A1A;
 		.flag{
-			width: 50rpx; 
+			width: 50rpx;
 			height: 34rpx;
-			float: left; 
+			float: left;
 			margin-top: 30rpx;
 			margin-left: 20rpx;
 		}

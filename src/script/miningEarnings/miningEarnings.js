@@ -69,7 +69,7 @@ export default {
                 //     time:'2020/09/28'
                 // }
             ],
-            isMore:true,
+            haveNext:true,
 
 
         }
@@ -80,60 +80,45 @@ export default {
 
     methods: {
 
-
         //获取挖矿收益
-        getMiningInterest(){
-            let that =this;
-            let postData={
-                start:0,
-                index:recordAmount.num,
-            };
-            this.$request({
-                url: "mining/getMiningInterest",
-                method: "post",
-                params:postData
-            }).then((res)=>{
-                if (res.result.returnCode.toString() === "0") {
-                    that.miningEarningsData=res.data;
-                    that.earningsRecordData=res.data.list;
-                    if (res.data.list.length<recordAmount.num){
-                        that.isMore=false;
-                    }
-                }else{
-                    this.$toast.show({
-                        title: res.result.returnMessage,
-                    })
-                }
-            })
-        },
-
-
-       //获取更多挖矿收益
-        getMoreMiningInterest(){
-            let that =this;
-            if (!this.isMore){
-                return;
+        getMiningInterest(isMore){
+            if (this.haveNext){
+                let postData={
+                    start:0,
+                    index:recordAmount.num,
+                };
+                this.request(postData,isMore);
             }
-            let postData={
-                start:0,
-                index:recordAmount.num,
-            };
+
+        },
+
+        request(postData,isMore){
+            let that =this;
             this.$request({
                 url: "mining/getMiningInterest",
                 method: "post",
                 params:postData
             }).then((res)=>{
                 if (res.result.returnCode.toString() === "0") {
-                    that.earningsRecordData.concat(res.data.list);
+                    //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
-                        that.isMore=false;
+                        this.haveNext=true;
                     }
+                    //判断是第一次加载还是加载更多
+                    if (isMore){
+                        that.earningsRecordData.concat(res.data.list);
+                    }else {
+                        that.miningEarningsData=res.data;
+                        that.earningsRecordData=res.data.list;
+                    }
+
                 }else{
                     this.$toast.show({
                         title: res.result.returnMessage,
                     })
                 }
             })
-        },
+        }
+
     }
 }
