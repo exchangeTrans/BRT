@@ -72,7 +72,7 @@ export default {
             if (res.result.returnCode.toString() === '0') {
               let data = res.data.list;
               commit('GETCOUNTRYLIST', data);               
-              commit('contury', data[0]);
+              commit('COUNTRY', data[0]);
             }
         })   
     },
