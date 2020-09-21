@@ -14,7 +14,7 @@
 
 				<view class="qrImg"></view>
 				<view class="rechargeTitle">充币地址</view>
-				<view class="rechargeTitle">usdtwe34895345793520304820384023574753</view>
+				<view class="rechargeTitle">{{data.userWalletAddress}}</view>
 				<view class="btnGroup">
 					<view class="btnItem"> 保存二维码</view>
 					<view class="btnItem  copy">复制地址</view>

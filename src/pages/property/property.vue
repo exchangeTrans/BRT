@@ -10,18 +10,18 @@
                                 <span>总资产(USDT)</span>
                             </view>
                             <view class="totalAsset-money">
-                                <span>0</span>
-                                <span class="about">≈￥0</span>
+                                <span>{{amountTotal}}</span>
+                                <span class="about">≈{{amountTotalRMB}} RMB</span>
                             </view>
                         </view>
                         <view class="balance">
                             <view class="balance-container">
                                 <view class="balance-content">
-                                    <span>400</span>
+                                    <span>{{balanceTotal}}</span>
                                     <span class="balance-content-text">可用馀额</span>
                                 </view>
                                 <view class="balance-content">
-                                    <span>800</span>
+                                    <span>{{freezeTotal}}</span>
                                     <span class="balance-content-text">锁仓馀额</span>
                                 </view>
                             </view>
@@ -96,7 +96,7 @@
         width: 100vw;
         height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
-        
+
         .property-wrap {
             width: 100%;
             box-sizing: border-box;

@@ -39,7 +39,7 @@ export default {
                         'fontSize':'28rpx',
                         'color':'#098FE0'
                     },
-                    tipText:'ID:AVV491',
+                    tipText:'AVV491',
                     haveTip:true
                 },
                 style:{
@@ -50,12 +50,26 @@ export default {
                 headerIsNoBoder: true,
             }
         }
+        let postParam = {
+            "symbolType": 6
+        }
+        this.$request({
+            url: "wallet/getUserWalletAddress",
+            method: "post",
+            params: postParam,
+        }).then((res) => {
+            if (res.result.returnCode === "0") {
+                let that = this
+                that.data = res.data
+
+            }
+        })
     },
     data() {
         return {
             headerOptions:{},
-            rightIcon:`${require('@/static/images/receipt/rightIcon.png')}`
-
+            rightIcon:`${require('@/static/images/receipt/rightIcon.png')}`,
+            data: {}
         }
     },
     onLoad() {

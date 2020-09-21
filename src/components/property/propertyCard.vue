@@ -30,13 +30,13 @@
                         </view>
                     </view>
                     <view class="property-wrap-content-asset-option">
-                        <view :class="isBlack? 'text black' : 'text'">
+                        <view :class="isBlack? 'text black' : 'text'" @tap="receiptClick">
                             <span>收款</span>
                         </view>
-                        <view :class="isBlack? 'text black haveBorder' : 'text haveBorder'">
+                        <view :class="isBlack? 'text black haveBorder' : 'text haveBorder'" @tap="transferClick">
                             <span>转账</span>
                         </view>
-                        <view :class="isBlack? 'text black' : 'text'">
+                        <view :class="isBlack? 'text black' : 'text'" @tap="detailClick">
                             <span>帐本明细</span>
                         </view>
                     </view>
@@ -65,13 +65,27 @@
             nameIcon() {
                 let {propertyCardData} = this.$props
                 return `${require('@/static/images/property/' + propertyCardData.name + '.png')}`
-
             }
         },
         data() {
             return {}
         },
-        methods: {}
+        methods: {
+            receiptClick() {
+                this.propertyCardData.symbolType
+                this.$jumpPage.jump({
+                    url: "receipt/index",
+                    type: "navigateTo"
+                })
+
+            },
+            transferClick() {
+                this.propertyCardData.symbolType
+            },
+            detailClick() {
+                this.propertyCardData.symbolType
+            }
+        }
     }
 </script>
 
