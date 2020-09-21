@@ -7,7 +7,7 @@
             <view class="avatarText">
                 {{$t('personInfo').avatarText}}
             </view>
-            <view class="avatar" :style="{'background-image': avatarUrl}">
+            <view class="avatar" :style="{'background-image': userMsgData.avatar}">
 
             </view>
             <view class="modify" :style="{'background-image': modifyUrl}">
@@ -18,12 +18,11 @@
             <view class="nicknameText">
                 {{$t('personInfo').nicknameText}}
             </view>
-            <view class="nickname">
-                {{nickname}}
-            </view>
-            <view class="modify" :style="{'background-image': modifyUrl}">
+            <input class="nickname" :value="userMsgData.nickname" v-model="userMsgData.nickname"/>
 
-            </view>
+            <!--<view class="modify" :style="{'background-image': modifyUrl}">
+
+            </view>-->
         </view>
         <view class="personalInfoBtn" @tap="saveBtnClick">
             {{$t('personInfo').saveBtn}}
@@ -32,42 +31,7 @@
 
 </template>
 
-<script src="@/script/user/personalInfo.js">
-    // import appHeader from '@/components/common/header.vue'
-    // export default {
-    //     name: "personalInfo",
-    //     components: {
-    //         appHeader
-    //     },
-    //     data() {
-    //         return {
-    //             headerOptions: {
-    //                 show: true,
-    //                 isAllowReturn: true,
-    //                 text: this.$t('personInfo').title,
-    //                 isWhiteIcon: false,
-    //                 rightItem: {
-    //                     type: "text",
-    //                     text: "",
-    //                 },
-    //                 bodyPadding: {"padding": '0,0,0,0'},
-    //                 headerIsNoBoder: true,
-    //             },
-    //             nickname: "CS1997",
-    //             avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
-    //             modifyUrl: `url(${require('@/static/images/user/modifyIcon.png')})`,
-    //         }
-    //     },
-    //     mounted() {
-    //
-    //     },
-    //     methods: {
-    //         saveBtnClick() {
-    //
-    //         }
-    //     },
-    // }
-</script>
+<script src="@/script/user/personalInfo.js"></script>
 
 <style lang="less">
     .personalInfo {
@@ -75,7 +39,7 @@
         height: 100%;
         background: #F8F8F8;
 
-        .avatarBar{
+        .avatarBar {
             width: 750rpx;
             height: 160rpx;
             background: #FFFFFF;
@@ -83,7 +47,8 @@
             margin-top: 176rpx;
             position: relative;
             display: flex;
-            .avatarText{
+
+            .avatarText {
                 margin: auto 0 auto 30rpx;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
@@ -91,7 +56,8 @@
                 color: #333333;
                 line-height: 44rpx;
             }
-            .avatar{
+
+            .avatar {
                 width: 120rpx;
                 height: 120rpx;
                 background-size: 100% 100%;
@@ -101,7 +67,8 @@
                 right: 98rpx;
                 border-radius: 50%;
             }
-            .modify{
+
+            .modify {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -112,14 +79,16 @@
             }
 
         }
-        .nicknameBar{
+
+        .nicknameBar {
             width: 750rpx;
             height: 100rpx;
             background: #FFFFFF;
             box-shadow: 0rpx 2rpx 0rpx 0rpx #EDEDED;
             position: relative;
             display: flex;
-            .nicknameText{
+
+            .nicknameText {
                 margin: auto 0 auto 30rpx;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
@@ -127,19 +96,17 @@
                 color: #333333;
                 line-height: 100rpx;
             }
-            .nickname{
-                position: absolute;
-                right: 98rpx;
-                top: 50%;
-                transform: translateY(-50%);
 
+            .nickname {
                 font-size: 32rpx;
+                height: 100rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
                 color: #333333;
-                line-height: 100rpx;
+                margin-left:30rpx;
             }
-            .modify{
+
+            /*.modify {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -147,8 +114,9 @@
                 width: 28rpx;
                 height: 28rpx;
                 background-size: 100% 100%;
-            }
+            }*/
         }
+
         .personalInfoBtn {
             margin: 60rpx auto 0 auto;
             width: 710rpx;

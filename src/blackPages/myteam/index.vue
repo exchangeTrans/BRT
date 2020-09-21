@@ -26,24 +26,24 @@
 					<view class="num">69</view>
 				</view>
 			</view>
-			<view class="invitelog">
-				<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
-				<view class="log">邀请记录</view>
-			</view>
-			<view class="datalisthead">
-				<view class="time">邀请号码</view>
-				<view class="memberid">会员ID</view>
-				<view class="grade">业绩</view>
-			</view>
-			<scroll-view scroll-y="true" class="scrollh">
-				<view class="datalist" v-for="(item,id) in datalist" :key="item.id">
-					<image :src=item.flag mode="" class="flag"></image>
-					<view class="time">{{item.phonenumber}}</view>
-					<view class="memberid">{{item.memberid}}</view>
-					<view class="grade">{{item.grade}}</view>
-				</view>
-			</scroll-view>
 		</view>
+		<view class="invitelog">
+			<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
+			<view class="log">邀请记录</view>
+		</view>
+		<view class="datalisthead">
+			<view class="time">邀请号码</view>
+			<view class="memberid">会员ID</view>
+			<view class="grade">业绩</view>
+		</view>
+		<scroll-view scroll-y="true" class="scrollh">
+			<view class="datalist" v-for="(item,id) in datalist" :key="item.id">
+				<image :src=item.flag mode="" class="flag"></image>
+				<view class="time">{{item.phonenumber}}</view>
+				<view class="memberid">{{item.memberid}}</view>
+				<view class="grade">{{item.grade}}</view>
+			</view>
+		</scroll-view>
 	</view>
 </template>
 
@@ -115,7 +115,7 @@
 							color:"#ffffff"
 						},
 						isWhiteIcon:true,
-					    headerIsNoBoder: false,
+					    headerIsNoBoder: true,
 					},
 				}
 			}
@@ -238,24 +238,27 @@
 		}
 	}
 	.invitelog{
-		padding-top: 100rpx;
-		margin-top: 370rpx;
+		margin-top: ;
 		background: #272A2E;
 		padding-bottom: 30rpx;
 		clear: both;
+		width: 100%;
+		height: 160rpx;
+		margin-top: -45rpx;
 		.img{
 			width: 32rpx;
 			height: 32rpx;
 			float: left;
 			margin-left: 20rpx;
 			margin-right: 10rpx;
+			margin-top: 110rpx;
 		}
 		.log{
-			line-height: 32rpx;
 			font-weight: bold;
 			font-size: 36rpx;
 			color: #D9DADB;
 			font-family: PingFangSC-Medium, PingFang SC;
+			line-height: 250rpx;
 		}
 	}
 	.datalisthead{
@@ -324,6 +327,7 @@
 	.scrollh{
 		width: 100%;
 		height: calc(100vh - 762rpx);
+		background:#272A2E;
 	}
 	
 	

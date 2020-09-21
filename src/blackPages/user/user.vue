@@ -6,7 +6,7 @@
             </view>
             <view class="user-wrap-content">
                 <view class="user-wrap-container">
-                    <view class="user-wrap-userMassage">
+                    <view class="user-wrap-userMassage" @tap="toPage('user/personalInfo')">
                         <view class="user-wrap-headerImg">
                             <view class="img">
                                 <image :src="headerImg"></image>

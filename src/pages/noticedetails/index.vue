@@ -1,9 +1,6 @@
 <template>
 	<view>
-		<view class="head">
-			<image src="../../static/images/noticelist/left.png" mode="" class="headleft"></image>
-			<view class="headname">公告详情</view>
-		</view>
+		<ndheader :headerOptions="headerOptions"></ndheader>
 		<view class="notice_list">
 			<view class="item">
 				<view class="notice_content">BRT关于调整USDT提币手续公告</view>
@@ -28,30 +25,39 @@
 </template>
 
 <script>
+	import ndheader from '../../components/common/header'
+	export default{
+		components:{ndheader},
+		data(){
+			return{
+				headerOptions:{
+					show:true,
+					text:"公告详情",
+					isAllowReturn:true,
+					fontfamily:"PingFangSC-Regular, PingFang SC",
+					fontSize:'34',
+					style:{
+						color:"#333333",
+						
+					},
+					isColor:true,
+					rightItem:{
+						type:"text",
+						text:"ID:AVV491",
+						style:{
+							color:"#000000"
+						}
+					}
+				}
+			}
+		}
+	}
 </script>
 
 <style lang="less">
 	*{
 		margin: 0;
 		padding: 0;
-	}
-	.head{
-		height: 100rpx;
-		width: 100%;
-		border-bottom: 1rpx #CCCCCC solid;
-		.headleft{
-			width: 50rpx;
-			height: 50rpx;
-			float: left;
-			margin-left: 30rpx;
-			margin-top: 25rpx;
-		}
-		.headname{
-			margin-left: 300rpx;
-			line-height: 100rpx;
-			font-weight: bolder;
-			font-size: 32rpx;
-		}
 	}
 	.item{
 		height: 150rpx;
@@ -69,6 +75,9 @@
 			font-size: 34rpx;
 			color: #CCCCCC;
 		}
+	}
+	.notice_list{
+		margin-top: 120rpx;
 	}
 	.article{
 		text-indent: 2em;

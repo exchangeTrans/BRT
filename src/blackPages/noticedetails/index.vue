@@ -1,9 +1,6 @@
 <template>
 	<view>
-		<view class="head">
-			<image src="../../static/images/noticelist/blackleft.png" mode="" class="headleft"></image>
-			<view class="headname">公告详情</view>
-		</view>
+		<noticedheader :headerOptions="headerOptions"></noticedheader>
 		<view class="setbg">
 		<view class="notice_list">
 			<view class="item">
@@ -30,6 +27,35 @@
 </template>
 
 <script>
+	import noticedheader from '../../components/common/header';
+	export default{
+		components:{noticedheader},
+		data(){
+			return{
+				headerOptions:{
+					show: true,
+					isAllowReturn: true,
+					text: "公告详情",
+					background:"#00001A",
+					rightItem: {
+					    type: "text",
+					    text: "ID:AVV941",
+					    style: {
+					        "fontSize": '24rpx',
+					        "fontFamily": 'PingFangSC-Regular, PingFang SC;',
+					        "fontWeight": '400',
+					        "color": '#D9DADB'
+					    }
+					},
+					style:{
+						color:"#D9DADB"
+					},
+					isWhiteIcon:true,
+					headerIsNoBoder: true,
+				},
+			}
+		}
+	}
 </script>
 
 <style lang="less">
@@ -37,27 +63,7 @@
 		margin: 0;
 		padding: 0;
 	}
-	.head{
-		height: 100rpx;
-		width: 100%;
-		border-bottom: 1rpx #CCCCCC solid;
-		background: #00001A;
-		color: #FFFFFF;
-		font-size: 0rpx;
-		.headleft{
-			width: 50rpx;
-			height: 50rpx;
-			float: left;
-			margin-left: 30rpx;
-			margin-top: 25rpx;
-		}
-		.headname{
-			margin-left: 300rpx;
-			line-height: 100rpx;
-			font-weight: bolder;
-			font-size: 36rpx;
-		}
-	}
+	
 	.notice_list{
 		width: 100%;
 		height: 180rpx;

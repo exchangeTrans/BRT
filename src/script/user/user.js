@@ -66,6 +66,9 @@ export default {
             wallet: `${require('@/static/images/user/wallet.png')}`,
             headerImgRight: `${require('@/static/images/user/headerRight.png')}`,
             eyesIcon: `${require('@/static/images/user/eyes.png')}`,
+
+            homeMsgData: {},
+            userMsgData: {},
         }
     },
     mounted() {
@@ -98,10 +101,10 @@ export default {
                 headerIsNoBoder: true,
             };
         }*/
-        this.getUserMsg();
+        // this.getHomeMsg();
     },
     onShow(){
-        this.getUserMsg();
+        this.getHomeMsg();
     },
     methods: {
         toPage(path) {
@@ -126,7 +129,8 @@ export default {
                 })
             })
         },
-        getUserMsg() {
+        getHomeMsg() {
+            let that = this
             // data: {website: "_", vipType: 0, avatar: "", dialingCode: "86", inviteCode: "MTB163", browser: "_",…}
             // account: "8615282148708"
             // asset: "0"
@@ -150,8 +154,55 @@ export default {
                 url: "me/getHome",
                 method: "post",
             }).then((res) => {
-                console.log(res)
+                // console.log(res)
+                if (res.result.returnCode.toString() === "0") {
+                    that.homeMsgData = {
+                        ...res.data,
+                    }
+                } else {
+                    if (res.result.returnCode.toString() === "10032") {
+                        this.$toast.show({
+                            title: res.result.returnUserMessage,
+                        })
+                        this.$jumpPage.jump({
+                            type: 'redirectTo',
+                            url: 'login/login',
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+                }
+                that.getUserMsg()
             })
+        },
+        getUserMsg() {
+            this.$request({
+                url: "me/getUserInfo",
+                method: "post",
+            }).then((res) => {
+                if (res.result.returnCode.toString() === "0") {
+                    that.userMsgData = {
+                        ...res.data,
+                    }
+                } else {
+                    if (res.result.returnCode.toString() === "10032") {
+                        this.$toast.show({
+                            title: res.result.returnUserMessage,
+                        })
+                        this.$jumpPage.jump({
+                            type: 'redirectTo',
+                            url: 'login/login',
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+                }
+            });
         }
+
     }
 }
