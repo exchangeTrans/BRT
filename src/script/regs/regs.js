@@ -2,6 +2,7 @@ import appHeader from "@/components/common/header.vue"
 import loginHead from '@/components/login/loginHead.vue'
 import loginBtn from '@/components/login/btn.vue'
 import loginInput from '@/components/input/loginInput.vue'
+import {checkDataFunc} from "@/static/js/common";
 
 export default {
     name: "regs",
@@ -15,11 +16,9 @@ export default {
         return {
             mode: "",
             defaultChoice: "PHONE",
-            leftText: "手机号注册",
-            rightText: "邮箱注册",
-            btnText: "下一步",
-            country: "中国",
-            countryNumber: "+86",
+            leftText: this.$t('regs').phoneRegs,
+            rightText: this.$t('regs').emailRegs,
+            btnText: this.$t('regs').regsBtn,
             countryIcon: `url(${require('@/static/images/login/phoneHead.png')})`,
             lastCountryIcon: `url(${require('@/static/images/login/cityChoice.png')})`,
             phoneIcon: `url(${require('@/static/images/login/phoneNumber.png')})`,
@@ -38,7 +37,8 @@ export default {
                 'font-weight': '400',
                 'color': '#1A1A1A',
                 'line-height': '120rpx',
-                'margin': 'auto 60rpx auto 20rpx',
+                'width': "98rpx",
+                'margin': 'auto 0rpx auto 20rpx',
             },
             inviteWrapStyle: {
                 'background': '#FFFFFF',
@@ -46,6 +46,15 @@ export default {
                 'border-radius': '0rpx 0rpx 16rpx 16rpx',
             },
             phoneLastTextStyle: {},
+            inputPhoneStyle: {
+                width: "444rpx",
+            },
+            passwordStyle: {
+                width: '562rpx',
+            },
+            inputVerifyCodeStyle: {
+                width: '390rpx'
+            },
             emailStyle: {
                 'background': '#FFFFFF',
                 'box-shadow': '0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1)',
@@ -64,30 +73,277 @@ export default {
                 headerIsNoBoder: true,
             },
             type: "PHONE",
+
+            getCodeStatus: false,
+            spanName: '发送验证码',
+            time: 60,
+            postData: {
+                tel: "",
+                email: "",
+                password: "",
+                passwordConfirm: "",
+                verifyCode: "123456",
+                verifyKey: "",
+                inviteCode: "EXT681",
+            },
+
+            checkPhoneArray: [
+                {
+                    name: "手机号",
+                    checkKey: "tel",
+                    checkType: ["isPhone"],
+                },
+                {
+                    name: "验证码",
+                    checkKey: "verifyCode",
+                },
+                {
+                    name: "密码",
+                    checkKey: "password",
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
+                },
+                {
+                    name: "确认密码",
+                    checkKey: "passwordConfirm",
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
+                },
+            ],
+
+            checkEmailArray: [
+                {
+                    name: "邮箱",
+                    checkKey: "email",
+                    checkType: ["isEmail"],
+                },
+                {
+                    name: "验证码",
+                    checkKey: "verifyCode",
+                },
+                {
+                    name: "密码",
+                    checkKey: "password",
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
+                },
+                {
+                    name: "确认密码",
+                    checkKey: "passwordConfirm",
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
+                },
+            ],
+
+            chooseCountry: {
+                countryCode: "CN",
+                countryId: "37",
+                dialingCode: "86",
+                imagePath: "",
+                titleCN: "中国",
+                titleEN: "CHINA",
+                titleJP: "CHINA",
+                titleKO: "CHINA",
+            },
         }
     },
-    mounted() {
 
+    onShow() {
+        this.setCountry();
+    },
+    watch: {
+        contury(val, oldVal) {
+            // console.log(val);
+            // console.log(oldVal);
+        }
     },
     methods: {
         typeChange(type) {
             this.type = type
         },
-        btnClick() {
-            console.log("下一步")
-        },
         inputChange(key, value) {
-            console.log(key)
-            console.log(value)
+            this.postData[key] = value;
         },
+        toChooseCountry() {
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: "chooseCountry/chooseCountry",
+            })
+        },
+        setCountry() {
+            let contury = this.$store.state.defaultData.contury;
+            if (!contury.titleCN) {
+
+            } else {
+                this.chooseCountry = contury;
+            }
+        },
+        btnClick() {
+            // console.log("下一步")
+            let postData = this.getPostData();
+            if (postData) {
+                this.$request({
+                    url: "common/register",
+                    method: "post",
+                    params: postData,
+                }).then((res) => {
+                    // data: {userLoginId: "1307899918186184706", userLoginToken: "ab7036f39d831f807980b701ce0f8371"}
+                    // userLoginId: "1307899918186184706"
+                    // userLoginToken: "ab7036f39d831f807980b701ce0f8371"
+                    // result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
+                    // returnCode: "0"
+                    // returnMessage: "成功"
+                    // returnUserMessage: "成功"
+                    if (res.result.returnCode.toString() === "0") {
+                        let loginMsg = {
+                            isLogin: true,
+                            userLoginId: res.data.userLoginId,
+                            userLoginToken: res.data.userLoginToken,
+                        }
+                        this.$storage.setSync({
+                            key: "loginMsg",
+                            data: loginMsg,
+                        });
+                        this.$jumpPage.jump({
+                            type: 'switchTab',
+                            url: 'index/index'
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+                })
+            }
+        },
+        getPostData() {
+            let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
+            let dialingCode = this.chooseCountry.dialingCode;
+            let countryCode = this.chooseCountry.countryCode;
+            let tel = this.postData.tel;
+            let email = this.postData.email;
+            let password = this.postData.password;
+            let passwordConfirm = this.postData.passwordConfirm;
+            let inviteCode = this.postData.inviteCode;
+            let verifyKey = this.postData.verifyKey;
+            let verifyCode = this.postData.verifyCode;
+            let checkArray = accountType === 0 ? this.checkPhoneArray : this.checkEmailArray;
+
+            let postData = {
+                accountType,
+                dialingCode,
+                tel,
+                email,
+                password,
+                passwordConfirm,
+                inviteCode,
+                verifyKey,
+                verifyCode,
+                countryCode,
+            };
+            if (checkDataFunc.checkBasics(postData, checkArray)) {
+                if (postData.verifyKey === "") {
+                    this.$toast.show({
+                        title: "请先获取验证码",
+                    })
+                } else if (postData.password !== postData.passwordConfirm) {
+                    this.$toast.show({
+                        title: "两次密码不一致，请重新输入",
+                    })
+                } else {
+                    return postData = {
+                        ...postData,
+                        password: this.$md5(postData.password),
+                        passwordConfirm: this.$md5(postData.passwordConfirm),
+                    }
+                }
+            } else {
+                return false
+            }
+        },
+
         sendSmsVerify() {
-            console.log("发送验证码")
+            let that = this;
+            let sendCodeData = this.getSendCodeData();
+            if (sendCodeData) {
+                this.$request({
+                    url: "common/sendCode",
+                    method: "post",
+                    params: sendCodeData,
+                }).then((res) => {
+                    if (res.result.returnCode.toString() === "0") {
+                        that.postData.verifyKey = res.data.verifyKey;
+                        that.setIntervalFun()
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+
+                })
+            }
+        },
+        getSendCodeData() {
+            let type = 1;//1注册 2忘记密码  3转账 4更换账号 5更换新账号
+            let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
+            let dialingCode = this.chooseCountry.dialingCode;
+            let tel = this.postData.tel;
+            let email = this.postData.email;
+
+            let checkPhoneArray = [
+                {
+                    name: "手机号",
+                    checkKey: "tel",
+                    checkType: ["isPhone"],
+                },
+            ];
+            let checkEmailArray = [
+                {
+                    name: "邮箱",
+                    checkKey: "email",
+                    checkType: ["isEmail"],
+                },
+            ];
+
+            let checkArray = accountType === 0 ? checkPhoneArray : checkEmailArray;
+
+            let sendCodeData = {
+                type,
+                accountType,
+                dialingCode,
+                tel,
+                email,
+            }
+            if (checkDataFunc.checkBasics(sendCodeData, checkArray)) {
+                return sendCodeData
+            } else {
+                return false
+            }
         },
         loginTouch() {
             this.$jumpPage.jump({
                 type: 'navigateTo',
                 url: 'login/login'
             })
-        }
+        },
+        setIntervalFun() {
+            let that = this
+            let interval = window.setInterval(function () {
+                // eslint-disable-next-line no-debugger
+                // debugger
+                that.spanName = that.time + '秒后重新发送';
+                --that.time;
+                if (that.time < 0) {
+                    that.spanName = "重新发送";
+                    that.time = 60;
+                    that.getCodeStatus = false
+                    window.clearInterval(interval);
+                }
+            }, 1000);
+        },
     },
 }

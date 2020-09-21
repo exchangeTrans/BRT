@@ -1,7 +1,11 @@
-import appHeader from '@/components/common/header.vue'
-import loginHead from '@/components/login/loginHead.vue'
-import loginInput from '@/components/input/loginInput.vue'
-import loginBtn from '@/components/login/btn.vue'
+import appHeader from '@/components/common/header.vue';
+import loginHead from '@/components/login/loginHead.vue';
+import loginInput from '@/components/input/loginInput.vue';
+import loginBtn from '@/components/login/btn.vue';
+
+import {
+    checkDataFunc,
+} from "../../static/js/common.js";
 
 export default {
     name: "login",
@@ -20,10 +24,11 @@ export default {
             emailChoice: `url(${require('@/static/images/login/emailChoice.png')})`,
             phoneIcon: `url(${require('@/static/images/login/phoneNumber.png')})`,
             passwordIcon: `url(${require('@/static/images/login/passwordIcon.png')})`,
-            leftText: "手机登录",
-            rightText: "邮箱登录",
+            leftText: this.$t('login').phoneLogin,
+            rightText: this.$t('login').emailLogin,
             defaultType: "PHONE",
             country: "中国",
+            countryNumber: "+86",
             wrapStyle: {
                 'background': '#FFFFFF',
                 'box-shadow': ' 0px 1px 0px 0px rgba(0, 0, 0, 0.1)',
@@ -39,8 +44,14 @@ export default {
                 'font-weight': '400',
                 'color': '#1A1A1A',
                 'line-height': '120rpx',
-
-                'margin': 'auto 60rpx auto 20rpx',
+                'width': "98rpx",
+                'margin': 'auto 0rpx auto 20rpx',
+            },
+            inputPhoneStyle: {
+                width: "444rpx",
+            },
+            passwordStyle: {
+                width: '562rpx',
             },
             emailStyle: {
                 'background': '#FFFFFF',
@@ -62,8 +73,57 @@ export default {
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             },
-            countryNumber: "+86",
+
+            postData: {
+                phone: "15282148708",
+                password: "111111",
+                email: "1191125750@qq.com",
+            },
+
+            checkPhoneArray: [
+                {
+                    name: "手机号",
+                    checkKey: "tel",
+                    checkType: ["isPhone"],
+                },
+                {
+                    name: "密码",
+                    checkKey: "password",
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
+                },
+            ],
+
+            checkEmailArray: [
+                {
+                    name: "邮箱",
+                    checkKey: "email",
+                    checkType: ["isEmail"],
+                },
+                {
+                    name: "密码",
+                    checkKey: "password",
+                    checkType: ["length"],
+                    minLength: 6,
+                    maxLength: 20,
+                },
+            ],
+
+            chooseCountry: {
+                countryCode: "CN",
+                countryId: "37",
+                dialingCode: "86",
+                imagePath: "",
+                titleCN: "中国",
+                titleEN: "CHINA",
+                titleJP: "CHINA",
+                titleKO: "CHINA",
+            },
         }
+    },
+    onShow() {
+        this.setCountry();
     },
     mounted() {
 
@@ -73,13 +133,29 @@ export default {
             this.type = type
         },
         inputChange(key, value) {
-            console.log(key)
-            console.log(value)
+            /*console.log(key)
+            console.log(value)*/
+            this.postData[key] = value;
+            // console.log(this.postData);
         },
         jumpForgetPassword() {
             this.$jumpPage.jump({
                 type: 'navigateTo',
                 url: 'login/forgetPassword'
+            })
+        },
+        setCountry() {
+            let contury = this.$store.state.defaultData.contury;
+            if (!contury.titleCN) {
+
+            } else {
+                this.chooseCountry = contury;
+            }
+        },
+        toChooseCountry() {
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: "chooseCountry/chooseCountry",
             })
         },
         jumpRegs() {
@@ -89,7 +165,78 @@ export default {
             })
         },
         loginClick() {
-            console.log("登录")
+            // console.log("登录")
+            // debugger
+            let postData = this.getPostData()
+            // debugger
+            if (postData) {
+                this.$request({
+                    url: "common/login",
+                    method: "post",
+                    params: postData,
+                }).then((res) => {
+                    // debugger
+                    // console.log(res);
+                    // data: {userLoginId: "1307906608826679298", userLoginToken: "bf1c35263cb4c36d1ad4dafdd04efa85"}
+                    // userLoginId: "1307906608826679298"
+                    // userLoginToken: "bf1c35263cb4c36d1ad4dafdd04efa85"
+                    // result: {returnCode: "0", returnUserMessage: "登录成功", returnMessage: "登录成功"}
+                    // returnCode: "0"
+                    // returnMessage: "登录成功"
+                    // returnUserMessage: "登录成功"
+                    if (res.result.returnCode.toString() === "0") {
+                        let loginMsg = {
+                            isLogin: true,
+                            userLoginId: res.data.userLoginId,
+                            userLoginToken: res.data.userLoginToken,
+                        }
+                        this.$storage.setSync({
+                            key: "loginMsg",
+                            data: loginMsg,
+                        });
+                        // switchTab
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                        this.$jumpPage.jump({
+                            type: 'switchTab',
+                            url: 'index/index'
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+                })
+            }
+        },
+        getPostData() {
+            let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
+            let dialingCode = this.chooseCountry.dialingCode;
+            let countryCode = this.chooseCountry.countryCode;
+            let tel = this.postData.phone;
+            let email = this.postData.email;
+            let password = this.postData.password;
+            let checkArray = accountType === 0 ? this.checkPhoneArray : this.checkEmailArray;
+            // console.log(checkArray);
+
+            let postData = {
+                accountType,
+                dialingCode,
+                countryCode,
+                tel,
+                email,
+                password,
+            };
+
+            if (checkDataFunc.checkBasics(postData, checkArray)) {
+                return postData = {
+                    ...postData,
+                    password: this.$md5(postData.password),
+                }
+            } else {
+                return false
+            }
         }
     },
 }

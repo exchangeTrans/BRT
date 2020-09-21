@@ -95,6 +95,7 @@
                              fontColor="rgba(217, 218, 219, 0.5)"
                              backgroundColor="#272A2E"
                              width="690rpx"
+                             @btnClick="btnClick"
                              borderRadius="20rpx"></Btn>
                     </view>
                 </view>

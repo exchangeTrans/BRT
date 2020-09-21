@@ -89,6 +89,12 @@
       }
     },
     {
+      "path": "pages/user/personalInfo",
+      "style": {
+
+      }
+    },
+    {
       "path": "pages/regs/regs",
       "style": {
         //"navigationBarTitleText": ""
@@ -98,6 +104,12 @@
       "path": "pages/login/login",
       "style": {
         //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/login/loginOrRegs",
+      "style": {
+
       }
     },
     {
@@ -166,7 +178,12 @@
         //"navigationBarTitleText": "uni-app"
       }
     },
+    {
+      "path":"pages/bonus/promoteBonus",
+      "style": {
 
+      }
+    },
 
 
 
@@ -212,6 +229,12 @@
       "path": "blackPages/user/user",
       "style": {
         "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "blackPages/user/personalInfo",
+      "style": {
+
       }
     },
     {
@@ -275,7 +298,12 @@
         //"navigationBarTitleText": ""
       }
     },
+    {
+      "path": "blackPages/login/loginOrRegs",
+      "style": {
 
+      }
+    },
     {
       "path": "blackPages/property/property",
       "style": {
