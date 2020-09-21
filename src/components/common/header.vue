@@ -75,7 +75,7 @@
                      }">
                     ID: {{headerOptions.rightItem.tipText}}
                 </div>
-                
+
             </div>
         </view>
     </view>
@@ -170,7 +170,7 @@
         methods: {
             toReturn() {
                 //eslint-disable-next-line no-undef
-               this.jumpPage.jump({
+               this.$jumpPage.jump({
                    type:'navigateBack',
 
                })
@@ -180,7 +180,7 @@
                 // uni.navigateBack({
                 //     type:'navigateBack',
                 // });
-                this.jumpPage.jump({
+                this.$jumpPage.jump({
                    type:'navigateBack',
                 })
             },

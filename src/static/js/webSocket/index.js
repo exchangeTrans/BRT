@@ -1,10 +1,12 @@
 import pako from 'pako'
+import toast from "@/static/js/dialog.js";
 // import store from '@/store'
-import Socket from 'plus-websocket'
+// import Socket from 'plus-websocket'
 // let pako=""
-// let Socket = false;
+let Socket = false;
 let setIntervalWesocketPush = null;
 let socketUrl = 'wss://api-aws.huobi.pro/ws';
+// let socketUrl = "wss://stream.binance.com:9443"
 let ping = 1492420473027;
 
 let socketArray=[];
@@ -29,76 +31,78 @@ export const mySocket={
      */
     createSocket:function(url){
         url = url?url:socketUrl;
-        Socket.connectSocket({
-            url: url,
-            success: function (e) {
-                console.log(e)
-                Socket.onSocketOpen(function (res) {
-                    console.log('WebSocket连接已打开！')
-                    mySocket.onopen()
-                    // setTimeout(function () {
-                    //     socket.sendSocketMessage({
-                    //         // data: 'test'
-                    //         data: buffer
-                    //     })
-                    // }, 2000)
-                })
-                Socket.onSocketError(function (res) {
-                    console.log('WebSocket连接打开失败，请检查！')
-                })
-                Socket.onSocketMessage(function (res) {
-                    mySocket.onmessageWS(res);
-                    // console.log(res.data)
-                    // console.log(new DataView(res.data))
+        // Socket.connectSocket({
+        //     url: url,
+        //     success: function (e) {
+        //         console.log(e)
+        //         Socket.onSocketOpen(function (res) {
+        //             console.log('WebSocket连接已打开！')
+        //             mySocket.onopen()
+        //             // setTimeout(function () {
+        //             //     socket.sendSocketMessage({
+        //             //         // data: 'test'
+        //             //         data: buffer
+        //             //     })
+        //             // }, 2000)
+        //         })
+        //         Socket.onSocketError(function (res) {
+        //             console.log('WebSocket连接打开失败，请检查！')
+        //         })
+        //         Socket.onSocketMessage(function (res) {
+        //             mySocket.onmessageWS(res);
+        //             // console.log(res.data)
+        //             // console.log(new DataView(res.data))
 
-                    // getUint8Value(res.data,function(r){
-                    //     console.log(r)
-                    // })
-                    // const base64 = uni.arrayBufferToBase64(res.data)
-                    // var uint8_msg = new Uint8Array(res.data);
-                    // // 解码成字符串
-                    // var decodedString = String.fromCharCode.apply(null, res.data);
-                    // console.log(decodedString); 
-                    // // parse,转成json数据
-                    // var data = JSON.parse(decodedString);
-                    // console.log(data);
-                    // console.log(JSON.parse(res.data))
+        //             // getUint8Value(res.data,function(r){
+        //             //     console.log(r)
+        //             // })
+        //             // const base64 = uni.arrayBufferToBase64(res.data)
+        //             // var uint8_msg = new Uint8Array(res.data);
+        //             // // 解码成字符串
+        //             // var decodedString = String.fromCharCode.apply(null, res.data);
+        //             // console.log(decodedString); 
+        //             // // parse,转成json数据
+        //             // var data = JSON.parse(decodedString);
+        //             // console.log(data);
+        //             // console.log(JSON.parse(res.data))
                     
-                    // console.log(base64)
-                })
-                Socket.onSocketClose(function (res) {
-                    console.log('WebSocket 已关闭！')
-                })
-            },
-            file: function (e) {
-                console.error(e)
-            }
-        })
+        //             // console.log(base64)
+        //         })
+        //         Socket.onSocketClose(function (res) {
+        //             console.log('WebSocket 已关闭！')
+        //         })
+        //     },
+        //     file: function (e) {
+        //         console.error(e)
+        //     }
+        // })
         // Socket && Socket.close();
 
         // if(!Socket){
-        //     Socket=uni.connectSocket({
-        //         url: socketUrl,
-        //         header: {
-        //             'content-type': 'application/json'
-        //         },
-        //         method: 'CONNECT',
-        //         complete: (e)=> {
-        //             console.log(e)
-        //             setTimeout(function () {
-        //                 Socket.onOpen = mySocket.onopen;
-        //             }, 2000)
+            Socket=uni.connectSocket({
+                url: socketUrl,
+                header: {
+                    'content-type': 'application/json'
+                },
+                method: 'CONNECT',
+                complete: (e)=> {
+                    console.log(e)
+                    setTimeout(function () {
+                        Socket.onOpen = mySocket.onopen;
+                    }, 2000)
                     
-        //         },
-        //     });
-            // uni.onSocketOpen(function (res) {
-            //     mySocket.onopen();
-            //     console.log('WebSocket连接已打开！');
-            // });
-            // uni.onSocketMessage(function (res) {
-            //     console.log(res.data)
-            //     console.log('收到服务器内容：' + res.data);
-            //   });
+                },
+            });
+            uni.onSocketOpen(function (res) {
+                mySocket.onopen();
+                toast.show({title:"WebSocket连接已打开！"});
+                console.log('WebSocket连接已打开！');
+            });
+            uni.onSocketMessage(function (res) {
+                console.log(res.data)
+                toast.show({title:"收到消息"});
+                console.log('收到服务器内容：' + res.data);
+              });
             // Socket.onOpen = mySocket.onopen;
             // Socket.onMessage = mySocket.onmessageWS;
             // Socket.onMessage = mySocket.onmessageWS;
@@ -133,6 +137,7 @@ export const mySocket={
     onopen:function(){
         console.log('open')
         mySocket.sendPing();
+        toast.show({title:"发送心跳"});
         
         // window.dispatchEvent(new CustomEvent('onOpenWS'))
         // mySocket.subscribe();
@@ -278,12 +283,17 @@ export const mySocket={
     },
     //发送消息
     send:function(message){
-        cons
-        if (!Socket) {
-            mySocket.createSocket()
-          } else{
-            Socket.sendSocketMessage(JSON.stringify(message))
-          }
+        // if (!Socket) {
+        //     mySocket.createSocket()
+        //   } else{
+            // Socket.sendSocketMessage(JSON.stringify(message))
+            uni.sendSocketMessage({
+                data:JSON.stringify(message),
+                complete:function(e){
+                    console.log(e)
+                }
+            })
+        //   }
     },
     //发送数据但连接未建立时进行处理等待重发
     connecting:function(message){

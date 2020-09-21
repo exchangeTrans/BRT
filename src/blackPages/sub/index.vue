@@ -3,9 +3,9 @@
 		<app-header :headerOptions="headerOptions"></app-header>
 		<scroll-view class="content" :scroll-y="true">
 			<view class="contentPadding">
-			<view class="subTop" :style="{'background-image':'url('+subBg+')'}">
+				<view class="subTop" :style="{'background-image':'url('+subBg+')'}">
 				<view class="available">可用余额：1200 BRT</view>
-				<view class="notice" :style="{'background-image':'url('+notice+')'}"></view>
+				<view class="notice" :style="{'background-image':'url('+notice+')'}" @tap="showNotice"></view>
 				<view class="dataGroup">
 					<view class="dataGroupItem">
 						<view class="dataGroupItemTitle">累计收益</view>
@@ -21,13 +21,13 @@
 					</view>
 				</view>
 			</view>
-			<view class="circle" :style="{'background-image':'url('+circleBg+')'}">
+				<view class="circle" :style="{'background-image':'url('+circleBg+')'}">
 				<view class="circleBtn" :style="{'background-image':'url('+circleBg2+')'}" @tap="transferInAmount">
 					开始挖矿
 				</view>
 				<view class="circleText">最小持币：1000 BRT</view>
 			</view>
-			<view class="earningsList" v-for="item in 3">
+				<view class="earningsList" v-for="item in 3">
 				<view class="earningsText">
 					<view class="line" ></view>
 					质押挖矿记录
@@ -46,11 +46,16 @@
 					</view>
 				</view>
 			</view>
+
+				<view class="noDataBox" >
+					<noData :positionTop="positionTop"></noData>
+				</view>
 			</view>
 		</scroll-view>
 
 
 		<transferInAmount ref="transferInAmount" :mode="'night'"></transferInAmount>
+		<subRuler ref="subRuler"></subRuler>
 
 	</view>
 </template>
@@ -244,6 +249,9 @@
 							}
 						}
 					}
+				}
+				.noDataBox{
+					position: relative;
 				}
 
 			}

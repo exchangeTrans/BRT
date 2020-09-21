@@ -15,71 +15,7 @@
     </view>
 </template>
 
-<script>
-    import appHeader from "@/components/common/header.vue";
-    import RecordItem from "../../components/record/recordItem";
-    
-    export default {
-        components: {RecordItem,appHeader},
-        name: "record",
-        data() {
-            return {
-                isBlack: true,
-                headerOptions: {
-                    show: true,
-                    isAllowReturn: true,
-                    isWhiteIcon: true,
-                    text: "USDT提币记录",
-                    rightItem: {
-                        type: "text",
-                        text: "",
-                        style: {
-                            fontSize: "28rpx",
-                            color: "#098FE0",
-                        },
-                        tipText:"AVV491",
-                        haveTip:true,
-                        tipTextStyle: {
-                            color: "#D9DADB",
-                            opacity: 0.5,
-                        }
-                    },
-                    style: {
-                        'color': '#D9DADB'
-                    },
-                    background: '#00001A',
-                    bodyPadding: {"padding": '0,0,0,0'},
-                    headerIsNoBoder: true,
-                },
-                recordDataList: [
-                    {
-                        titleName: "提币",
-                        number: 1798.8876987,
-                        status: "success",
-                        date: "19:28 08/16",
-                    },
-                    {
-                        titleName: "提币",
-                        number: 1798.8876987,
-                        status: "inTheReview",
-                        date: "19:28 08/16",
-                    },
-                    {
-                        titleName: "提币",
-                        number: 1798.8876987,
-                        status: "fail",
-                        date: "19:28 08/16",
-                    },
-                ],
-            }
-        },
-        methods: {
-            headertap() {
-
-            }
-        },
-    }
-</script>
+<script src="@/script/record/record.js"></script>
 
 <style scoped lang="less">
     #record {

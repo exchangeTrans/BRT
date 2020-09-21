@@ -5,7 +5,7 @@
 			<view class="contentPadding">
 			<view class="subTop" :style="{'background-image':'url('+subBg+')'}">
 				<view class="available">可用余额：1200 BRT</view>
-				<view class="notice" :style="{'background-image':'url('+notice+')'}"></view>
+				<view class="notice" :style="{'background-image':'url('+notice+')'}" @tap="showNotice"></view>
 				<view class="dataGroup">
 					<view class="dataGroupItem">
 						<view class="dataGroupItemTitle">累计收益</view>
@@ -27,7 +27,6 @@
 				<!--</view>-->
 				<!--<view class="circleText">最小持币：1000 BRT</view>-->
 			<!--</view>-->
-
 				<view class="circle pledge" :style="{'background-image':'url('+circleBg+')'}">
 					<view class="circleBtn" :style="{'background-image':'url('+circleBg3+')'}" @tap="transferInAmount">
 						<view class="pledgeTitle">目前质押 BRT</view>
@@ -35,10 +34,7 @@
 					</view>
 					<view class="circleText">将于 2020/09/12 12:30 释放质押</view>
 				</view>
-
-
-
-			<view class="earningsList" v-for="(item,index) in 3" :key="index">
+				<view class="earningsList" v-for="(item,index) in 3" :key="index">
 				<view class="earningsText">
 					<view class="line" ></view>
 					质押挖矿记录
@@ -57,11 +53,15 @@
 					</view>
 				</view>
 			</view>
+				<view class="noDataBox" >
+					<noData :positionTop="positionTop"></noData>
+				</view>
 			</view>
 		</scroll-view>
 
 
 		<transferInAmount ref="transferInAmount"></transferInAmount>
+		<subRuler ref="subRuler"></subRuler>
 
 	</view>
 </template>
@@ -271,7 +271,9 @@
 						}
 					}
 				}
-
+				.noDataBox{
+					position: relative;
+				}
 			}
 
 

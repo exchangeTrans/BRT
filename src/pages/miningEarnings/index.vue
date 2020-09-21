@@ -5,7 +5,7 @@
 			<view class="contentPadding">
 				<view class="subTop" :style="{'background-image':'url('+subBg+')'}">
 					<view class="available">可用余额：1200 BRT</view>
-					<view class="notice" :style="{'background-image':'url('+notice+')'}"></view>
+					<!--<view class="notice" :style="{'background-image':'url('+notice+')'}"></view>-->
 					<view class="dataGroup">
 						<view class="dataGroupItem">
 							<view class="dataGroupItemTitle">累计收益</view>
@@ -24,6 +24,11 @@
 
 				<view class="miningEarningsTitle"><view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>质押收益纪录</view>
 				<earningsRecordList :earningsRecordData="earningsRecordData"></earningsRecordList>
+
+				<view class="noDataBox" v-if="earningsRecordData.length===0">
+					<noData></noData>
+				</view>
+
 
 			</view>
 
@@ -105,6 +110,9 @@
 						margin-right: 12rpx;
 						transform: translateY(15%);
 					}
+				}
+				.noDataBox{
+					position: relative;
 				}
 
 			}

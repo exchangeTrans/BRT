@@ -1,5 +1,5 @@
 import api from './api.js';
-import datastorage from "../static/js/datastorage";
+import datastorage from '@/static/js/datastorage.js';
 // import monitorFunc from '@/static/js/monitorFunc.js';
 // import {gloabeData} from '@/static/common.js';
 // import toast from "../static/dialog";
@@ -13,6 +13,7 @@ const formatHeaders = (acHeaders) => {
     // headers['exchange-client'] = 'pc';
     // headers['exchange-language'] = getCookie('lan') || 'zh_CN';
     // headers['Content-type'] = 'application/x-www-form-urlencoded';
+
     headers['Content-type'] = "application/x-www-form-urlencoded";
     // eslint-disable-next-line no-undef
     // headers["__token"] = uni.getStorageSync("tooken");
@@ -29,7 +30,6 @@ const formatHeaders = (acHeaders) => {
     if (acHeaders) {
         headers = {...headers, ...acHeaders};
     }
-    // // console.log(headers);
     return headers;
 };
 const getParams = (params) => {
@@ -43,19 +43,34 @@ const getParams = (params) => {
     // }
     // eslint-disable-next-line no-undef
     // let postData = uni.getStorageSync("mobileMsg");
-    let postData = datastorage.getSync({key:"mobileMsg"});
-    // let showMsg={title:JSON.stringify(postData)};
-    // toast.show(showMsg);
-    //// console.log(postData);
-    // let isGuest = datastorage.getSync({key:"islogin"})?false:true;
-    // isGuest = true;
+    let postData = datastorage.getSync({key: "mobileMsg"});
+    let appKey = 'f86e1df48f4d825aaeb689eea124190b';
+    let loginMsg = datastorage.getSync({key: "loginMsg"});
+    let langMsg = datastorage.getSync({key: "langMsg"});
+    //
+    let userLoginId = loginMsg ? loginMsg.userLoginId : '';
+    let userLoginToken = loginMsg ? loginMsg.userLoginToken : '';
+    let devicePlatformLanguage = langMsg ? langMsg.code : 1;
+    let pageRepeatCode = (new Date()).valueOf();
+    postData = {
+        userLoginId,
+        userLoginToken,
+        appKey,
+        devicePlatformLanguage,
+        pageRepeatCode,
+        ...postData,
+        ...params,
+    };
     if (params) {
-        postData = {...postData, ...params};
+        postData = {
+            ...postData,
+            ...params
+        };
     }
     // // console.log(postData);
     // let phoneMsg = uni.getSystemInfoSync();
-	// 		// console.log(JSON.parse(plus))
-            // // console.log(phoneMsg);
+    // 		// console.log(JSON.parse(plus))
+    // // console.log(phoneMsg);
 
     // // console.log(plus.device.uuid)
     // // console.log(plus.push.getClientInfo())
@@ -64,15 +79,15 @@ const getParams = (params) => {
     return postData;
 };
 const http = ({
-        url, headers, params, method,dataType, hostType, responseType
-    }) => {
+                  url, headers, params, method, dataType, responseType
+              }) => {
     let timestamp = (new Date()).valueOf();
     let prefix = '';
-    if(hostType){
-       prefix = api[hostType];
-    }else{
-       prefix = api.commApi;
-    }
+    // if(hostType){
+    //    prefix = api[hostType];
+    // }else{
+    prefix = api.commApi;
+    // }
     return new Promise((resolve, reject) => {
         // eslint-disable-next-line no-undef
         uni.request({
@@ -81,29 +96,32 @@ const http = ({
             method: method || 'post',
             header: formatHeaders(headers),
             responseType: responseType || '',
-            dataType: dataType||'json',
+            dataType: dataType || 'json',
         }).then((res) => {
-            // eslint-disable-next-line no-undef
-            // uni.showToast({
-            //     title: '标题',
-            //     duration: 2000,
-            //     position:"center"
-            // });
-            // if (url.indexOf('login') !== -1) {
-            //     gloabeData.set({otherLoginFlag: 0});
-            // }
-            // let otherLoginFlag = gloabeData.get( 'otherLoginFlag');
+                // debugger
+                // eslint-disable-next-line no-undef
+                // uni.showToast({
+                //     title: '标题',
+                //     duration: 2000,
+                //     position:"center"
+                // });
+                // if (url.indexOf('login') !== -1) {
+                //     gloabeData.set({otherLoginFlag: 0});
+                // }
+                // let otherLoginFlag = gloabeData.get( 'otherLoginFlag');
 
-            // if (res[1].data.errorCode.toString() === '1001010'||res[1].data.errorCode.toString() === '1001001') {
-            //     // if (otherLoginFlag === 0) {
-            //     //     gloabeData.set({otherLoginFlag:1});
-            //     //     monitorFunc.emit('devicesNotificationOffLine');
-            //     // }
-            // }
-            // else {
-                resolve(res[1]);
-            // }
-        }
+                // if (res[1].data.errorCode.toString() === '1001010'||res[1].data.errorCode.toString() === '1001001') {
+                //     // if (otherLoginFlag === 0) {
+                //     //     gloabeData.set({otherLoginFlag:1});
+                //     //     monitorFunc.emit('devicesNotificationOffLine');
+                //     // }
+                // }
+                if (res[1].statusCode.toString() !== "200") {
+
+                } else {
+                    resolve(res[1].data);
+                }
+            }
         ).catch((response) => {
                 reject(response)
             }

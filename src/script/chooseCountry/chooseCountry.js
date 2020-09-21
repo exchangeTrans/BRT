@@ -8,48 +8,52 @@ export default {
     data() {
         return {
             headerText: "选择国家",
-            Korea: `${require('@/static/images/user/Korea.png')}`,
-            Chinese: `${require('@/static/images/user/Chinese.png')}`,
-            Japan: `${require('@/static/images/user/Japan.png')}`,
-            Germany: `${require('@/static/images/user/Germany.png')}`,
-            UK: `${require('@/static/images/user/UK.png')}`,
-            France: `${require('@/static/images/user/France.png')}`,
-            Russia: `${require('@/static/images/user/Russia.png')}`,
-            USA: `${require('@/static/images/user/USA.png')}`,
+            KR: `${require('@/static/images/user/Korea.png')}`,
+            CN: `${require('@/static/images/user/Chinese.png')}`,
+            JP: `${require('@/static/images/user/Japan.png')}`,
+            // Germany: `${require('@/static/images/user/Germany.png')}`,
+            GB: `${require('@/static/images/user/UK.png')}`,
+            TW: `${require('@/static/images/user/TW.png')}`,
+            HK: `${require('@/static/images/user/HK.png')}`,
+            FR: `${require('@/static/images/user/France.png')}`,
+            // Russia: `${require('@/static/images/user/Russia.png')}`,
+            US: `${require('@/static/images/user/USA.png')}`,
+
+            selectedIcon:`${require('@/static/images/user/select.png')}`,
             countryData: [
-                {
-                    name: "美国",
+                /*{
+                    name: "USA",
                     AreaCode: "+1",
                     icon: `${require('@/static/images/user/USA.png')}`,
                 }, {
-                    name: "俄罗斯",
+                    name: "Russia",
                     AreaCode: "+7",
                     icon: `${require('@/static/images/user/Russia.png')}`,
                 }, {
-                    name: "法国",
+                    name: "France",
                     AreaCode: "+33",
                     icon: `${require('@/static/images/user/France.png')}`,
                 }, {
-                    name: "英国",
+                    name: "UK",
                     AreaCode: "+44",
                     icon: `${require('@/static/images/user/UK.png')}`,
                 }, {
-                    name: "德国",
+                    name: "Germany",
                     AreaCode: "+49",
                     icon: `${require('@/static/images/user/Germany.png')}`,
                 }, {
-                    name: "韩国",
+                    name: "Korea",
                     AreaCode: "+81",
                     icon: `${require('@/static/images/user/Korea.png')}`,
                 }, {
-                    name: "日本",
+                    name: "Japan",
                     AreaCode: "+82",
                     icon: `${require('@/static/images/user/Japan.png')}`,
                 }, {
-                    name: "中国",
+                    name: "Chinese",
                     AreaCode: "+86",
                     icon: `${require('@/static/images/user/Chinese.png')}`,
-                },
+                },*/
             ],
             headerOptions: {
                 show: true,
@@ -62,6 +66,8 @@ export default {
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             },
+
+            selectedItem:{},
         }
     },
     mounted() {
@@ -97,22 +103,39 @@ export default {
                 headerIsNoBoder: true,
             }
         }
+
+        this.assembleCountryData()
+    },
+    onShow() {
+        this.getChooseCountry();
     },
     methods: {
         chooseItem(item) {
-            // eslint-disable-next-line no-debugger
-            // debugger
-            // this.$bus.$emit('chooseItem', item)
-            let name = this.$route.params.oldName
-            this.$router.push({
-                name: name,
-                params: {
-                    item: item,
-                }
+            this.selectedItem = item;
+            this.$store.commit("setDefaultSync",{key:"contury", val: item,})
+            this.$jumpPage.jump({
+                type:'navigateBack',
             })
         },
         headertap(type) {
             console.log(type)
+        },
+        assembleCountryData() {
+            let tempArray = [];
+            let conturyList = this.$store.state.defaultData.conturyList;
+            conturyList.forEach((el)=>{
+                // debugger
+                let obj = {
+                    ...el,
+                    icon: this[el.countryCode]
+                }
+                tempArray.push(obj);
+            })
+            this.countryData = tempArray;
+        },
+        getChooseCountry() {
+            let contury = this.$store.state.defaultData.contury;
+            this.selectedItem = contury;
         }
     }
 }

@@ -113,14 +113,12 @@
 				display: inline-block;
 				width: 256rpx;
 				height: 76rpx;
-
+				opacity: 0.5;
 				font-size: 32rpx;
 				font-family: PingFangSC-Medium, PingFang SC;
 				font-weight: 500;
 				color: #FFFFFF;
 				line-height: 76rpx;
-
-
 			}
 		}
 	}

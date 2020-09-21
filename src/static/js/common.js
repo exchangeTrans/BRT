@@ -1,5 +1,5 @@
-import City from './idCardCity'
-import {toast} from './dialog'
+import City from './idCardCity.js'
+import toast from './dialog.js'
 
 //阻止事件冒泡
 export const stopEventBubble = (e) => {
@@ -104,30 +104,29 @@ export const DateFunc = {
     },
 
     //将秒数转换为时分秒格式
-    formatSeconds(value){
+    formatSeconds(value) {
         let theTime = parseInt(value);// 秒
-        let middle= 0;// 分
-        let hour= 0;// 小时
+        let middle = 0;// 分
+        let hour = 0;// 小时
         let result = "";
-        if(theTime > 60) {
-            middle= parseInt(theTime/60);
-            theTime = parseInt(theTime%60);
-            if(middle> 60) {
-                hour= parseInt(middle/60);
-                middle= parseInt(middle%60);
+        if (theTime > 60) {
+            middle = parseInt(theTime / 60);
+            theTime = parseInt(theTime % 60);
+            if (middle > 60) {
+                hour = parseInt(middle / 60);
+                middle = parseInt(middle % 60);
             }
         }
-        theTime= theTime<10?"0"+theTime:theTime
-        if(middle > 0) {
-            middle= middle<10?"0"+middle:middle
-        }
-        else{
+        theTime = theTime < 10 ? "0" + theTime : theTime
+        if (middle > 0) {
+            middle = middle < 10 ? "0" + middle : middle
+        } else {
             middle = "00"
         }
-        result = middle+":"+theTime;
-        if(hour> 0) {
-            hour= hour<10?"0"+hour:hour
-            result = hour+":"+result;
+        result = middle + ":" + theTime;
+        if (hour > 0) {
+            hour = hour < 10 ? "0" + hour : hour
+            result = hour + ":" + result;
         }
         return result;
     },
@@ -169,7 +168,7 @@ export const DateFunc = {
         return time;
     },
     //处理时间
-    resetTime(time,isDay){
+    resetTime(time, isDay) {
         let d = new Date(time);
         //年
         let year = d.getFullYear();
@@ -184,21 +183,19 @@ export const DateFunc = {
         //秒
         let ss = d.getSeconds();
         let times = '';
-        if (isDay==='day'){
-            times= year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
-        }else if (isDay==='mdhm'){
-            times = (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day)+" " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
+        if (isDay === 'day') {
+            times = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
+        } else if (isDay === 'mdhm') {
+            times = (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
+        } else if (isDay === 'hms') {
+            times = (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm) + ":" + (ss < 10 ? "0" + ss : ss);
+        } else {
+            times = year + "年" + (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         }
-        else if(isDay==='hms'){
-            times = (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm)+ ":" + (ss < 10 ? "0" + ss : ss);
-        }
-        else {
-            times = year + "年" + (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day)+" " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
-        }
-    return times;
+        return times;
     },
     //处理时间
-    resetTime_getObj(time,isDay){
+    resetTime_getObj(time, isDay) {
         let d = new Date(time);
         //年
         let year = d.getFullYear();
@@ -213,19 +210,17 @@ export const DateFunc = {
         //秒
         let ss = d.getSeconds();
         let times = '';
-        if (isDay==='day'){
-            times= year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
-        }else if (isDay==='mdhm'){
-            times = (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day)+" " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
+        if (isDay === 'day') {
+            times = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
+        } else if (isDay === 'mdhm') {
+            times = (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
+        } else if (isDay === 'hms') {
+            times = (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm) + ":" + (ss < 10 ? "0" + ss : ss);
+        } else {
+            times = year + "年" + (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         }
-        else if(isDay==='hms'){
-            times = (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm)+ ":" + (ss < 10 ? "0" + ss : ss);
-        }
-        else {
-            times = year + "年" + (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day)+" " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
-        }
-        let result={
-            viewTime:times,
+        let result = {
+            viewTime: times,
             year,
             month,
             day,
@@ -236,7 +231,7 @@ export const DateFunc = {
         return result;
     },
     // 发布时间
-    releaseTime(recordTime){
+    releaseTime(recordTime) {
         const duration = (+new Date() - recordTime) / 1000;
         let displayTime = '';
         // if (duration < 60) {
@@ -246,12 +241,12 @@ export const DateFunc = {
         // }else if (duration < 60*60*24) {
         // displayTime = `${Math.round(duration / 60 / 60)}小时前`;
         // }else {
-        if (duration < 60*60*24) {
-            let hh=DateFunc.resetTime_getObj(recordTime).hh;
-            let mm=DateFunc.resetTime_getObj(recordTime).mm;
-            displayTime = (hh < 10 ? "0" + hh : hh)+":"+(mm < 10 ? "0" + mm : mm);
-        }else {
-            displayTime = DateFunc.dateTime(recordTime,true);
+        if (duration < 60 * 60 * 24) {
+            let hh = DateFunc.resetTime_getObj(recordTime).hh;
+            let mm = DateFunc.resetTime_getObj(recordTime).mm;
+            displayTime = (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
+        } else {
+            displayTime = DateFunc.dateTime(recordTime, true);
         }
         return displayTime;
     },
@@ -260,31 +255,31 @@ export const DateFunc = {
         let minuteTime = 0;// 分
         let hourTime = 0;// 小时
         if (secondTime > 60) { // 如果秒数大于60，将秒数转换成整数
-          // 获取分钟，除以60取整数，得到整数分钟
-          minuteTime = parseInt(secondTime / 60);
-          // 获取秒数，秒数取佘，得到整数秒数
-          secondTime = parseInt(secondTime % 60);
-          // 如果分钟大于60，将分钟转换成小时
-          if (minuteTime > 60) {
-            // 获取小时，获取分钟除以60，得到整数小时
-            hourTime = parseInt(minuteTime / 60);
-            // 获取小时后取佘的分，获取分钟除以60取佘的分
-            minuteTime = parseInt(minuteTime % 60);
-          }
+            // 获取分钟，除以60取整数，得到整数分钟
+            minuteTime = parseInt(secondTime / 60);
+            // 获取秒数，秒数取佘，得到整数秒数
+            secondTime = parseInt(secondTime % 60);
+            // 如果分钟大于60，将分钟转换成小时
+            if (minuteTime > 60) {
+                // 获取小时，获取分钟除以60，得到整数小时
+                hourTime = parseInt(minuteTime / 60);
+                // 获取小时后取佘的分，获取分钟除以60取佘的分
+                minuteTime = parseInt(minuteTime % 60);
+            }
         }
-        let result=""
-        if(secondTime>0){
-            result = (secondTime > 9 ? secondTime : ('0' + secondTime)) +"秒";
+        let result = ""
+        if (secondTime > 0) {
+            result = (secondTime > 9 ? secondTime : ('0' + secondTime)) + "秒";
         }
         if (minuteTime > 0) {
-          result = (minuteTime > 9 ? minuteTime : ('0' + minuteTime)) + "分钟" + result;
+            result = (minuteTime > 9 ? minuteTime : ('0' + minuteTime)) + "分钟" + result;
         }
         if (hourTime > 0) {
-          result = (hourTime > 9 ? hourTime : ('0' + hourTime)) + "小时" + result;
+            result = (hourTime > 9 ? hourTime : ('0' + hourTime)) + "小时" + result;
         }
         return result;
-      },
-    dateTime(time,isUnit){
+    },
+    dateTime(time, isUnit) {
         const times = new Date(time);
         const Y = times.getFullYear();
         let M = times.getMonth() + 1;
@@ -292,7 +287,7 @@ export const DateFunc = {
         let D = times.getDate();
         D = D < 10 ? '0' + D : D;
         let res = `${Y}年${M}月${D}日`;
-        if(isUnit){
+        if (isUnit) {
             res = `${Y}/${M}/${D}`;
         }
         return res;
@@ -301,8 +296,8 @@ export const DateFunc = {
 
     //秒转化为小时
 
-    secondToHour(num){
-        let hour = (num/3600).toFixed(2);
+    secondToHour(num) {
+        let hour = (num / 3600).toFixed(2);
         return hour
     }
 
@@ -311,14 +306,14 @@ export const DateFunc = {
 //模糊判断数据属于与否
 export const findObjByKey = (dataArray, key, value, isBelong) => {
     let result = false;
-    if(dataArray.length>0){
+    if (dataArray.length > 0) {
         dataArray.some(element => {
             let isReturn = false;
             isReturn = (String(element[key]).toLowerCase() === String(value).toLowerCase());
             if (isBelong) {
                 isReturn = (element[key].indexOf(value) != -1);
             }
-            if(isReturn){
+            if (isReturn) {
                 result = element;
             }
             return isReturn
@@ -328,6 +323,18 @@ export const findObjByKey = (dataArray, key, value, isBelong) => {
     return result;
 };
 
+/*//验证是否为手机号
+export const isPoneAvailable = (pone) => {
+    // eslint-disable-next-line no-useless-escape
+    let myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    return myreg.test(pone);
+};*/
+/*//验证是否为邮箱
+export const isEmailAvailable = (emailInput) => {
+    // eslint-disable-next-line no-useless-escape
+    let myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    return myreg.test(emailInput);
+};*/
 
 //检查数据
 export const checkDataFunc = {
@@ -386,21 +393,23 @@ export const checkDataFunc = {
             birthday, home, sex
         };
     },
-    //基础检查数据   长度lenght  数字isNumber  是否为空isNull
+    //基础检查数据   长度length  数字isNumber  是否为空isNull
     //检查的均为object类型 data Obj
     //检查来源为数组 checkArray  Array
     //checkArray中对象格式
     // obj ={
     // 	name:"用户名",
     //	checkKey:"username"
-    // 	checkType:["isNumber"],//默认检查是否为空  长度lenght  数字isNumber  是否为空isNull  手机号isPhone  身份证号isIdcard
-    //   minLenght:6
-    //   maxLenght:6
+    // 	checkType:["isNumber"],//默认检查是否为空  长度length  数字isNumber  是否为空isNull  手机号isPhone  手机号isEmail  身份证号isIdcard
+    //   minLength:6
+    //   maxLength:6
     // }
     checkBasics: function (data, checkArray) {
         let __that = this;
         //电话
-        let regPhone = /^1[0-9]{10}$/;
+        let regPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
+        //邮箱
+        let regEmail = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
         //身份证
         // let regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
         // let reg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/;
@@ -411,42 +420,50 @@ export const checkDataFunc = {
             //先判断空
             isReturn = true;
             if (!checkVal || checkVal === null || checkVal === undefined || checkVal.trim() === "") {
-                toast.show({title:element.name + "不能为空"});
+                toast.show({
+                    title: element.name + "不能为空"
+                });
                 // that.$bus.$emit('tip', {text: element.name + "不能为空", type: 'error'});
                 isReturn = false
             } else {
                 checkType.some(item => {
                     if (item === "isNumber") {
                         if (parseFloat(checkVal).toString() === "NaN") {
-                            toast.show({title:element.name + "不正确"});
+                            toast.show({title: element.name + "不正确"});
                             // that.$bus.$emit('tip', {text: element.name + "不正确", type: 'error'});
                             isReturn = false
                         }
-                    } else if (item === "lenght") {
-                        let minLenght = element.minLenght ? element.minLenght : 6;
-                        let maxLenght = element.maxLenght ? element.maxLenght : 20;
+                    } else if (item === "length") {
+                        let minLength = element.minLength ? element.minLength : 6;
+                        let maxLength = element.maxLength ? element.maxLength : 20;
 
-                        if (minLenght && checkVal.length < minLenght) {
+                        if (minLength && checkVal.length < minLength) {
 
-                            toast.show({title:element.name + "长度不能小于"+minLenght});
-                            // that.$bus.$emit('tip', {text: element.name + "长度不能小于" + minLenght, type: 'error'});
+                            toast.show({title: element.name + "长度不能小于" + minLength});
+                            // that.$bus.$emit('tip', {text: element.name + "长度不能小于" + minLength, type: 'error'});
                             isReturn = false
                         }
-                        if (maxLenght && checkVal.length > maxLenght) {
-                            toast.show({title:element.name + "长度不能大于"+maxLenght});
-                            // that.$bus.$emit('tip', {text: element.name + "长度不能大于" + maxLenght, type: 'error'});
+                        if (maxLength && checkVal.length > maxLength) {
+                            toast.show({title: element.name + "长度不能大于" + maxLength});
+                            // that.$bus.$emit('tip', {text: element.name + "长度不能大于" + maxLength, type: 'error'});
                             isReturn = false
                         }
                     } else if (item === "isPhone") {
                         if (!regPhone.test(checkVal)) {
-                            toast.show({title:element.name + "格式不正确"});
+                            toast.show({title: element.name + "格式不正确"});
+                            // that.$bus.$emit('tip', {text: element.name + "格式不正确", type: 'error'});
+                            isReturn = false
+                        }
+                    } else if (item === "isEmail") {
+                        if (!regEmail.test(checkVal)) {
+                            toast.show({title: element.name + "格式不正确"});
                             // that.$bus.$emit('tip', {text: element.name + "格式不正确", type: 'error'});
                             isReturn = false
                         }
                     } else if (item === "isIdcard") {
                         let pass = __that.idcard(checkVal);
                         if (!pass) {
-                            toast.show({title:element.name + "格式不正确"});
+                            toast.show({title: element.name + "格式不正确"});
                             // that.$bus.$emit('tip', {text: element.name + "格式不正确", type: 'error'});
                             isReturn = false
                         }
@@ -463,12 +480,12 @@ export const checkDataFunc = {
     checkArrayData: function (data, checkArray) {
         let isReturn = false;
         if (!data || data === null || data.length === 0) {
-            toast.show({title:"未选择或填写任何数据"});
+            toast.show({title: "未选择或填写任何数据"});
             // that.$bus.$emit('tip', {text: "未选择或填写任何数据", type: 'error'});
             return isReturn;
         }
         data.some(element => {
-            isReturn = this.checkBasics( element, checkArray);
+            isReturn = this.checkBasics(element, checkArray);
             return !isReturn
         });
         return isReturn;
@@ -486,13 +503,13 @@ export const moneyConversion = {
     },
     Yuan2Fen(num) {
         if (typeof num !== "number" || isNaN(num)) return null;
-        return (num*100);
+        return (num * 100);
     }
 }
 //nvue vue共享数据处理
 export const gloabeData = {
-    set(obj){
-        for(let key in obj){
+    set(obj) {
+        for (let key in obj) {
             try {
                 // eslint-disable-next-line no-undef
                 getApp().globalData[key] = obj[key];
@@ -505,18 +522,18 @@ export const gloabeData = {
     get(key) {
         // eslint-disable-next-line no-undef
         let result = getApp().globalData;
-        if(key){
+        if (key) {
             // eslint-disable-next-line no-undef
             result = getApp().globalData[key]
         }
         // let result = getApp().globalData[key]
-        if(result&&result!==undefined){
+        if (result && result !== undefined) {
             return result;
         }
         return false;
     },
-    remove(key){
-        if(key){
+    remove(key) {
+        if (key) {
             try {
                 // eslint-disable-next-line no-undef
                 getApp().globalData[key] = null;
@@ -529,9 +546,9 @@ export const gloabeData = {
 };
 
 //提示信息再封装
-export  const showMsg={
-    hint(msg){
-        let showMsg = {title:msg};
+export const showMsg = {
+    hint(msg) {
+        let showMsg = {title: msg};
         toast.show(showMsg);
     }
 };

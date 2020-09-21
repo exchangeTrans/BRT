@@ -6,7 +6,7 @@
             </view>
             <view class="user-wrap-content">
                 <view class="user-wrap-container">
-                    <view class="user-wrap-userMassage">
+                    <view class="user-wrap-userMassage" @tap="toPage('user/personalInfo')">
                         <view class="user-wrap-headerImg">
                             <view class="img">
                                 <image :src="headerImg"></image>
@@ -58,7 +58,9 @@
                     <view class="user-wrap-list">
                         <view class="set">
                             <view class="user-wrap-list-item"
-                                  v-for="(item, index) in listItemData" :key="index">
+                                  v-for="(item, index) in listItemData"
+                                  :key="index"
+                                  @tap="toPage(item.path)">
                                 <view class="icon">
                                     <image :src="item.img"></image>
                                 </view>
@@ -71,7 +73,9 @@
                         </view>
                         <view class="about">
                             <view class="user-wrap-list-item"
-                                  v-for="(item, index) in aboutItemData" :key="index">
+                                  v-for="(item, index) in aboutItemData"
+                                  :key="index"
+                                  @tap="toPage(item.path)">
                                 <view class="icon">
                                     <image :src="item.img"></image>
                                 </view>
@@ -91,6 +95,7 @@
                              fontColor="rgba(217, 218, 219, 0.5)"
                              backgroundColor="#272A2E"
                              width="690rpx"
+                             @btnClick="btnClick"
                              borderRadius="20rpx"></Btn>
                     </view>
                 </view>
@@ -100,67 +105,7 @@
     </view>
 </template>
 
-<script src="@/script/user/user.js">
-    /*import Btn from "../../components/btn/index";
-    export default {
-        name: "user",
-        components: {Btn},
-        data() {
-            return {
-                listItemData: [
-                    {
-                        name:"修改绑定手机邮箱",
-                        path:"",
-                        img:`${require('@/static/images/user/alter.png')}`,
-                    },{
-                        name:"修改密码",
-                        path:"",
-                        img:`${require('@/static/images/user/password.png')}`,
-                    },{
-                        name:"分享链接",
-                        path:"",
-                        img:`${require('@/static/images/user/link.png')}`,
-                    },{
-                        name:"联系客服",
-                        path:"",
-                        img:`${require('@/static/images/user/service.png')}`,
-                    },{
-                        name:"设置",
-                        path:"",
-                        img:`${require('@/static/images/user/set.png')}`,
-                    },
-                ],
-                aboutItemData:[
-                    {
-                        name:"官网",
-                        path:"",
-                        img:`${require('@/static/images/user/official.png')}`,
-                    },{
-                        name:"区块链浏览器",
-                        path:"",
-                        img:`${require('@/static/images/user/blockchain.png')}`,
-                    },{
-                        name:"开发者支持",
-                        path:"",
-                        img:`${require('@/static/images/user/dev.png')}`,
-                    },{
-                        name:"版本",
-                        path:"",
-                        img:`${require('@/static/images/user/version.png')}`,
-                    },
-                ],
-                btnText: "退出登录",
-                backgroundImage: `${require('@/static/images/user/background.png')}`,
-                assetBackgroundImage: `url(${require('@/static/images/user/assetBg.png')})`,
-                headerImg: `${require('@/static/images/user/head.png')}`,
-                rightIcon: `${require('@/static/images/user/blackRight.png')}`,
-                wallet: `${require('@/static/images/user/wallet.png')}`,
-                headerImgRight: `${require('@/static/images/user/headerRight.png')}`,
-                eyesIcon: `${require('@/static/images/user/eyes.png')}`,
-            }
-        }
-    }*/
-</script>
+<script src="@/script/user/user.js"></script>
 
 <style scoped lang="less">
     #user {

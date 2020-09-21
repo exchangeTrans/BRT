@@ -121,29 +121,55 @@
     {
       "path": "pages/login/forgetPassword",
       "style": {
-        //"navigationBarTitleText": ""
+        //"navigationBarTitleText": "资产"
       }
     },
     {
-      "path": "pages/myteam/index",
+      "path": "pages/login/forgetPassword"
+	},
+    {"path": "pages/myteam/index",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
     {
+      "path": "pages/myteam/index"
+	},
+	{
       "path": "pages/noticedetails/index",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
     {
+      "path": "pages/noticedetails/index"
+	},
+	{
       "path": "pages/noticelist/index",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
     {
+      "path": "pages/noticelist/index"
+	},
+	{
       "path": "pages/property/property",
+      "style": {
+        "navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "pages/record/record",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/property/property"
+	},
+	{
+      "path": "pages/set/index",
       "style": {
         "navigationBarTitleText": "资产"
       }
@@ -161,7 +187,10 @@
 	  }
 	},
     {
-      "path": "pages/set/index",
+      "path": "pages/set/index"
+	},
+	{
+      "path": "pages/trades/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
@@ -173,6 +202,9 @@
       }
     },
     {
+      "path": "pages/welcome/index"
+	},
+	{
       "path": "pages/welcome/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
@@ -183,6 +215,25 @@
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
+    },
+    {
+      "path": "pages/bonus/bonus",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+		}
+	},
+	{
+      "path":"pages/bonus/promoteBonus",
+      "style": {
+		  
+      }
+    },
+
+
+
+   {
+      "path":"blackPages/changePhone/index"
+      //"style":
     },
     {
       "path":"pages/bonus/promoteBonus",
@@ -211,6 +262,9 @@
       //"style":
     },
     {
+      "path": "blackPages/sub/index"
+	},
+	{
       "path": "blackPages/sub/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
@@ -223,24 +277,49 @@
         //"navigationBarTitleText": "uni-app"
       }
     },
+
     {
+      "path": "blackPages/receipt/index"
+	},
+	{
       "path": "blackPages/changeEmail/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
     },
     {
+
+      "path": "blackPages/changeEmail/index"
+	},
+	{
       "path": "blackPages/sub/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
     },
     {
+      "path": "blackPages/sub/index"
+	},
+	{
       "path": "blackPages/set/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
-    },{
+    },
+	{
+      "path":"blackPages/changePhone/index"
+      //"style":
+    },
+	{
+      "path": "blackPages/set/index"
+	},
+	{
+      "path": "blackPages/user/user",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+	{
       "path":"blackPages/changePhone/index"
       //"style":
     },
@@ -251,6 +330,9 @@
       }
     },
     {
+      "path": "blackPages/user/personalInfo"
+	},
+	{
       "path": "blackPages/user/personalInfo",
       "style": {
 
@@ -259,39 +341,64 @@
     {
       "path": "blackPages/chooseCountry/chooseCountry",
       "style": {
-        //"navigationBarTitleText": ""
+
       }
     },
-    {
+	{
+      "path": "blackPages/chooseCountry/chooseCountry"
+	},
+	{
       "path": "blackPages/directPush/directPush",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
     {
+      "path": "blackPages/directPush/directPush"
+	},
+	{
       "path": "blackPages/promotion/promotion",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
-    {
+	{
+      "path": "blackPages/promotion/promotion"
+	},
+	{
       "path": "blackPages/quotes/quotes",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
     {
+      "path": "blackPages/quotes/quotes"
+	},
+	{
       "path": "components/success/success",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
     {
+      "path": "components/success/success"
+	},
+	{
       "path": "blackPages/index/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
     },
+    {
+      "path": "blackPages/index/index"
+	},
+	{
+      "path": "blackPages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+
     {
       "path": "blackPages/sub/index",
       "style": {
@@ -385,8 +492,6 @@
 	    //"navigationBarTitleText": ""
 	  }
 	}
-	
-
   ],
   "tabBar": {
     // "color":"#8a8a8a",
