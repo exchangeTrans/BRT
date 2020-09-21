@@ -1,5 +1,5 @@
-export default {  
-    trade: {  
+export default {
+    trade: {
       buy:"买入",
       sell:"卖出",
       tableHeadTr1:["买盘","数量","价格","数量","卖盘"],
@@ -9,4 +9,8 @@ export default {
       high:"高",
       low:'低',
     },
+
+    index:{
+
+    }
 }
