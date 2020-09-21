@@ -1,86 +1,122 @@
 import appHeader from '@/components/common/header.vue'
+import QRCode from 'qrcodejs2'
+import qrcodeComponents from '@/components/qrcode/qrcode'
+
 export default {
-    components:{
-        appHeader
+    components: {
+        appHeader,
+        qrcodeComponents
     },
-    mounted(){
-        let theme = this.$storage.getSync({key:'theme'});
-        if(theme === 'white') {
-            this.headerOptions={
-                show:true,
-                isAllowReturn:true,
-                text:"USTD收款",
-                rightItem:{
-                    type:"text",
-                    text:"充币记录",
-                    path:`${require('@/static/images/receipt/detail.png')}`,
-                    style:{
-                        'fontSize':'28rpx',
-                        'color':'#098FE0'
+    mounted() {
+        let theme = this.$storage.getSync({key: 'theme'});
+        if (theme === 'white') {
+            this.headerOptions = {
+                show: true,
+                isAllowReturn: true,
+                text: "USTD收款",
+                rightItem: {
+                    type: "text",
+                    text: "充币记录",
+                    path: `${require('@/static/images/receipt/detail.png')}`,
+                    style: {
+                        'fontSize': '28rpx',
+                        'color': '#098FE0'
                     },
-                    tipText:'ID:AVV491',
-                    haveTip:true
+                    tipText: 'AVV491',
+                    haveTip: true
                 },
-                background:'#ffffff',
+                background: '#ffffff',
 
                 headerIsNoBoder: true,
             }
-        }else{
-            this.headerOptions={
-                show:true,
-                isAllowReturn:true,
-                isWhiteIcon:true,
-                text:"USTD收款",
-                rightItem:{
-                    type:"text",
-                    text:"充币记录",
-                    path:`${require('@/static/images/receipt/detail.png')}`,
-                    style:{
-                        'fontSize':'28rpx',
-                        'color':'#098FE0'
+        } else {
+            this.headerOptions = {
+                show: true,
+                isAllowReturn: true,
+                isWhiteIcon: true,
+                text: "USTD收款",
+                rightItem: {
+                    type: "text",
+                    text: "充币记录",
+                    path: `${require('@/static/images/receipt/detail.png')}`,
+                    style: {
+                        'fontSize': '28rpx',
+                        'color': '#098FE0'
                     },
-                    tipText:'AVV491',
-                    haveTip:true
+                    tipText: 'AVV491',
+                    haveTip: true
                 },
-                style:{
-                    'color':'#D9DADB'
+                style: {
+                    'color': '#D9DADB'
                 },
-                background:'#00001A',
+                background: '#00001A',
 
                 headerIsNoBoder: true,
             }
         }
-        let postParam = {
-            "symbolType": 6
-        }
-        this.$request({
-            url: "wallet/getUserWalletAddress",
-            method: "post",
-            params: postParam,
-        }).then((res) => {
-            if (res.result.returnCode === "0") {
-                let that = this
-                that.data = res.data
-
-            }
-        })
+        this.getUserWalletAddress();
+        this.setQrcodeStyle()
     },
     data() {
         return {
-            headerOptions:{},
-            rightIcon:`${require('@/static/images/receipt/rightIcon.png')}`,
-            data: {}
+            headerOptions: {},
+            rightIcon: `${require('@/static/images/receipt/rightIcon.png')}`,
+            data: {},
+            qrCodeStyle:{},
         }
+    },
+    watch:{
+        data(v){
+            // console.log(v)
+            if(v.userWalletAddress){
+                this.$refs.qrcodeComponents.qrcodeScan(v.userWalletAddress);
+            }
+        }
+
+    },
+    computed: {
+        /*qrCodeStyle() {
+            let width = 203;
+            let height = 203;
+
+            return {
+                width,
+                height,
+            }
+        }*/
     },
     onLoad() {
 
     },
     methods: {
-        createAddress(){
+        createAddress() {
 
         },
-        importAddress(){
+        importAddress() {
 
+        },
+        setQrcodeStyle(){
+            let width = this.$refs.qrImg.$el.offsetWidth;
+            let height = this.$refs.qrImg.$el.offsetHeight;
+            this.qrCodeStyle = {
+                width,
+                height,
+            }
+        },
+        getUserWalletAddress() {
+            let that = this;
+            let postParam = {
+                "symbolType": 6
+            }
+            this.$request({
+                url: "wallet/getUserWalletAddress",
+                method: "post",
+                params: postParam,
+            }).then((res) => {
+                if (res.result.returnCode === "0") {
+                    that.data = res.data
+                }
+            })
         }
     }
 }
