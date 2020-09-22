@@ -29,16 +29,19 @@
                             </view>
                         </view>
                     </view>
-                    <view class="property-wrap-content-asset-option">
-                        <view :class="isBlack? 'text black' : 'text'" @tap="receiptClick">
-                            <span>收款</span>
+                    <view class="property-wrap-content-asset-option" :style="propertyStyle">
+                        <view :class="isBlack? 'text black haveBorder' : 'text haveBorder'"
+                              v-for="(item,index) in propertyOption"
+                              :key="index"
+                              @tap="click(propertyCardData.symbolType,item.url)">
+                            <span>{{item.text}}</span>
                         </view>
-                        <view :class="isBlack? 'text black haveBorder' : 'text haveBorder'" @tap="transferClick">
+                        <!--<view :class="isBlack? 'text black' : 'text'" @tap="transferClick">
                             <span>转账</span>
-                        </view>
-                        <view :class="isBlack? 'text black' : 'text'" @tap="detailClick">
+                        </view>-->
+                        <!--<view :class="isBlack? 'text black' : 'text'" @tap="detailClick">
                             <span>帐本明细</span>
-                        </view>
+                        </view>-->
                     </view>
                 </view>
 
@@ -59,32 +62,59 @@
             isBlack: {
                 type: Boolean,
                 default: false,
+            },
+            propertyCardStyle: {
+                type: Object,
+                default: () => {
+                },
+            },
+            column: {
+                type: Number,
+                default: 2
+            },
+            propertyOption: {
+                type: Array,
+                default: () => [],
             }
         },
         computed: {
             nameIcon() {
                 let {propertyCardData} = this.$props
                 return `${require('@/static/images/property/' + propertyCardData.name + '.png')}`
+            },
+            propertyStyle() {
+                let {
+                    propertyCardStyle,
+                    column
+                } = this.$props;
+                let rate = (1/column)*100 + "%"
+                console.log(column,rate);
+                return {
+                    gridTemplateColumns: 'repeat(' + column + ', ' +rate + ')',
+                    ...propertyCardStyle,
+                }
+
             }
         },
         data() {
             return {}
         },
         methods: {
-            receiptClick() {
+            click(symbolType,url) {
                 this.propertyCardData.symbolType
-                this.$jumpPage.jump({
-                    url: "receipt/index",
-                    type: "navigateTo"
-                })
-
+                if(url !== ''){
+                    this.$jumpPage.jump({
+                        url: url,
+                        type: "navigateTo"
+                    })
+                }
             },
-            transferClick() {
-                this.propertyCardData.symbolType
-            },
-            detailClick() {
-                this.propertyCardData.symbolType
-            }
+            // transferClick() {
+            //     this.propertyCardData.symbolType
+            // },
+            // detailClick() {
+            //     this.propertyCardData.symbolType
+            // }
         }
     }
 </script>
@@ -227,21 +257,25 @@
                         width: 100%;
                         border-top: 1rpx solid #E6E6E6;
                         height: 88rpx;
-                        display: flex;
+                        display: grid;
                         box-sizing: border-box;
 
                         .text {
-                            width: 230rpx;
-                            height: 88rpx;
+                            /*width: auto;*/
+                            height: 84rpx;
                             text-align: center;
+                            box-sizing: border-box;
 
                             span {
-                                line-height: 88rpx;
+                                line-height: 84rpx;
                                 font-size: 28rpx;
                                 font-family: PingFangSC-Regular, PingFang SC;
                                 font-weight: 400;
                                 color: #1A1A1A;
                             }
+                        }
+                        .text:last-child {
+                            border-right: 0 !important;
                         }
 
                         .black {
@@ -252,7 +286,7 @@
                         }
 
                         .haveBorder {
-                            border-left: 1rpx solid #E6E6E6;
+                            /*border-left: 1rpx solid #E6E6E6;*/
                             border-right: 1rpx solid #E6E6E6;
                         }
                     }

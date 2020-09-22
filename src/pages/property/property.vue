@@ -33,7 +33,9 @@
                     <view class="property-wrap-content-item"
                           v-for="(item, index) in propertyCardData"
                           :key="index">
-                        <PropertyCard :propertyCardData="item"></PropertyCard>
+                        <PropertyCard :propertyCardData="item"
+                                      :column="2"
+                                      :propertyOption="propertyOption"></PropertyCard>
                     </view>
                 </view>
             </view>
