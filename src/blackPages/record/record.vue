@@ -8,9 +8,7 @@
                     <RecordItem :recordData="item"
                                 :isBlack="isBlack"></RecordItem>
                 </view>
-
             </view>
-
         </scroll-view>
     </view>
 </template>
@@ -24,10 +22,14 @@
         padding-top: calc(100rpx + var(--status-bar-height));
 
         .record-wrap {
-            background: #22252A;
             box-sizing: border-box;
             width: 100%;
             height: calc(100vh - var(--status-bar-height) - 100rpx);
+            /*background-color: #F8F8F8;*/
+
+            .record-wrap-list {
+                margin-top: 30rpx;
+            }
         }
     }
 </style>
