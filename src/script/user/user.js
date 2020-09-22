@@ -188,6 +188,7 @@ export default {
                         ...res.data,
                     }
                     let userAccountType = res.data.userAccountType//0 是手机， 1就是邮件
+                    // that.listItemData[0].path = 'changeEmail/index'
                     that.listItemData[0].path = userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index'
                     // console.log(userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index')
                     this.$store.commit("setDefaultSync",{

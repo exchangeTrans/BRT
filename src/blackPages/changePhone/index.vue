@@ -16,10 +16,11 @@
                                 :iconSrc="smsVerifyCode"
                                 :placeHolder="'请输入当前手机验证码'"
                                 :lastTextShow="true"
-                                :lastText="'发送验证码'"
+                                :lastText="spanNameOld"
+                                :inputData="postData.verifyCode"
                                 :lastTextStyle="phoneLastTextStyle"
                                 @lastTextClick="sendSmsVerify(4)"
-                                @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
+                                @inputChange="inputChange('verifyCode', $event)"></loginInput>
 
                 </view>
 
@@ -29,35 +30,41 @@
                     <view class="line"></view>
                     新绑定手机号码
                 </view>
-                <view class="countryChoice">
-                    <view class="chountryChoiceIcon" :style="{'background-image': countryIcon}"></view>
-                    <view class="countryText">{{country}}</view>
-                    <view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
+                <view class="countryChoice" @tap="toChooseCountry">
+                    <view class="chountryChoiceIcon"
+                          :style="{'background-image': countryIcon}"></view>
+                    <view class="countryText">{{chooseCountry.titleCN}}</view>
+                    <view class="lastCountryIcon"
+                          :style="{'background-image': lastCountryIcon}"></view>
                 </view>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
                             :iconSrc="phoneIcon"
                             :firstTextShow="true"
-                            :firstText="countryNumber"
+                            :firstText="chooseCountry.dialingCode"
                             :firstTextStyle="phoneFirstTextStyle"
                             :placeHolder="'请输入新绑定手机号码'"
-                            @inputChange="inputChange('phone', $event)"></loginInput>
+                            :inputData="postData.tel"
+                            @inputChange="inputChange('tel', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
                             :iconSrc="smsVerifyCode"
                             :placeHolder="'请输入新手机验证码'"
                             :lastTextShow="true"
-                            :lastText="spanName"
+                            :lastText="spanNameNew"
+                            :inputData="postData.verifyCodeNew"
                             :lastTextStyle="phoneLastTextStyle"
                             @lastTextClick="sendSmsVerify(5)"
-                            @inputChange="inputChange('smsVerifyCode', $event)"></loginInput>
+                            @inputChange="inputChange('verifyCodeNew', $event)"></loginInput>
                 <!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请输入6-20位登录密码'" @inputChange="inputChange('passsword', $event)"></loginInput>-->
                 <!--<loginInput :iconShow="true" :iconSrc="passwordIcon" :placeHolder="'请再次输入6-20位登录密码'" @inputChange="inputChange('surePassword', $event)"></loginInput>-->
                 <!--<loginInput :wrapStyle="inviteWrapStyle" :iconShow="true" :iconSrc="inviteCode" :placeHolder="'请填写邀请码（选填）'"-->
                 <!--@inputChange="inputChange('inviteCode', $event)"></loginInput>-->
             </view>
 
-            <loginBtn :btnText="btnText" :btnStyle="btnStyle" @btnClick="btnClick"></loginBtn>
+            <loginBtn :btnText="btnText"
+                      :btnStyle="btnStyle"
+                      @btnClick="btnClick"></loginBtn>
             <!--<view class="loginTouch" @tap="loginTouch">已有账号，立即登录</view>-->
         </view>
     </view>

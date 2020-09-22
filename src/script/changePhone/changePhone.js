@@ -148,7 +148,7 @@ export default {
             this.type = type
         },
         btnClick() {
-            let that = this;
+            // let that = this;
             let postData = this.getPostData();
             if (postData) {
                 this.$request({
