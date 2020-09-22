@@ -88,6 +88,6 @@ export default {
         },
         setDefaultSync(state, param) {
             state[param.key] = param.val;
-        },
+        }
     }
 }
