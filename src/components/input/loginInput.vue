@@ -61,7 +61,7 @@
             },
             inputChange(e) {
                 let value = e.detail.value;
-                this.inputData = e.detail.value;
+                // this.inputData = e.detail.value;
                 this.$emit('inputChange', value)
             }
         },
