@@ -15,6 +15,7 @@
 </template>
 
 <script>
+	// import http from '../../request/index.js';
 	import noticehead from '../../components/common/header';
 	import noticeitem from '../../components/notice_item/index';
 	import jumpPage from '../../static/js/jumpPage.js'
@@ -23,18 +24,71 @@
 			noticehead,
 			noticeitem
 		},
+		mounted(){
+			this.getdata();
+			this.getusermsg();
+			this.useriverst();
+			this.setRate();
+		},
 		methods:{
-			// gonoticedetails(){
-			// 	console.log("666")
-			// 	this.$jumpPage.jump({
-			// 		type:"navigateTo",
-			// 		url:'/noticedetails/index'
-			// 	})
-			// }
 			gonoticedetails(){
 					this.$jumpPage.jump({
 					type:"navigateTo",
 					url:'noticedetails/index'
+				})
+			},
+			getdata(){
+				this.$request({
+					url:"discovery/getInfo",
+					method:"post",
+					params:{
+						infoType:'1',
+						start:'0',
+						index:'10'
+					},
+				}).then((res)=>{
+					console.log(res)
+				}).catch((err)=>{	
+					console.log(err)
+				})
+			},
+			getusermsg(){
+				this.$request({
+					url:"finance/getFinance",
+					method:"post",
+					params:''
+				}).then((res)=>{
+					console.log(res)
+				}).catch((err)=>{
+					console.log(err)
+				})
+			},
+			useriverst(){
+				this.$request({
+					url:"finance/inFinance",
+					method:"post",
+					params:{
+						amount:'1000',
+						pageRepeatCode:'ybh'
+					}
+				}).then((res)=>{
+					console.log(res)
+				}).catch((err)=>{
+					console.log(err)
+				})
+			},
+			setRate(){
+				this.$request({
+					url:"finance/setRate",
+					method:"post",
+					params:{
+						rateType:'1',
+						rateValue:'0.6'
+					}
+				}).then((res)=>{
+					console.log(res)
+				}).catch((err)=>{
+					console.log(err)
 				})
 			}
 		},
@@ -75,8 +129,7 @@
 						date:"2020-9-16 16:38",
 						isBlack:false
 					},
-				]
-				
+				],
 			}
 		}
 	}

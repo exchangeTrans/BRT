@@ -10,7 +10,10 @@
 					<view class="username">CSIji7833</view>
 					<view class="userid">ID:893632</view>
 				</view>
-				<view class="incomelog">推广收益记录</view>
+				<view class="incomelog">
+					<image src="../../static/images/myteam/crown.png" class="crown" mode=""></image>
+					<text class="grade">1</text>
+				</view>
 			</view>
 			<view class="teammsg">
 				<view class="teamablity">
@@ -32,14 +35,14 @@
 			<view class="log">邀请记录</view>
 		</view>
 		<view class="datalisthead">
-			<view class="time">邀请账户</view>
-			<view class="memberid">会员ID</view>
-			<view class="grade">业绩</view>
+			<view class="count">邀请账户</view>
+			<view class="memberid">ID</view>
+			<view class="grade">团队质押业绩</view>
 		</view>
 		<scroll-view scroll-y="true" class="scrollh">
 			<view class="datalist" v-for="(item,id) in datalist" :key="item.id">
 				<image :src=item.flag mode="" class="flag"></image>
-				<view class="time">{{item.phonenumber}}</view>
+				<view class="count">{{item.phonenumber}}</view>
 				<view class="memberid">{{item.memberid}}</view>
 				<view class="grade">{{item.grade}}</view>
 			</view>
@@ -115,7 +118,7 @@
 							color:"#ffffff"
 						},
 						isWhiteIcon:true,
-					    headerIsNoBoder: false,
+					    headerIsNoBoder: true,
 					},
 				}
 			}
@@ -161,25 +164,39 @@
 				margin-top: 140rpx;
 				font-size: 36rpx;
 				font-family: PingFangSC-Semibold, PingFang SC;
+				font-weight: 600;
 			}
 			.userid{
 				color: #C0C0C0;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
+				opacity: 0.6;
+				font-weight: 400;
 			}
 		}
 		.incomelog{
-			width: 200rpx;
-			height: 40rpx;
+			width: 116rpx;
+			height: 48rpx;
 			font-size: 30rpx;
 			line-height: 40rpx;
-			text-align: center;
-			background-color: #4BB1E3;
-			color: #FFFFFF;
-			border-radius: 40rpx;
+			background: #FFFFFF;
+			border-radius: 24rpx;
 			float: right;
 			margin-top: 154rpx;
 			margin-right: 60rpx;
+			.crown{
+				width: 40rpx;
+				height: 32rpx;
+				margin-top: 8rpx;
+				margin-left: 25rpx;
+				margin-right: 15rpx;
+			}
+			.grade{
+				font-size: 28rpx;
+				font-family: PingFangSC-Medium, PingFang SC;
+				font-weight: 500;
+				color: #098FE0;
+			}
 		}
 	}
 	.teammsg{
@@ -217,10 +234,16 @@
 		.descrip{
 			font-size: 28rpx;
 			margin-bottom: 18rpx;
+			opacity: 0.8;
+			font-family: PingFangSC-Regular, PingFang SC;
+			font-weight: 400;
+			color: #FFFFFF;
 		}
 		.num{
 			font-size: 32rpx;
 			font-family: PingFangSC-Semibold, PingFang SC;
+			font-weight: 600;
+			color: #FFFFFF;
 		}
 	}
 	.invitelog{
@@ -250,12 +273,12 @@
 		width: 100%;
 		height: 100rpx;
 		background-color: #F9FAFA;
-		font-size: 32rpx;
+		font-size: 28rpx;
 		line-height: 100rpx;
 		font-family: PingFangSC-Regular, PingFang SC;
 		color: #1A1A1A;
-		.time{
-			margin-left: 20rpx;
+		.count{
+			margin-left: 40rpx;
 			float: left;
 			font-family: PingFangSC-Regular, PingFang SC;
 			color: #1A1A1A;
@@ -267,13 +290,13 @@
 			color: #1A1A1A;
 		}
 		.grade{
-			margin-left: 600rpx;
+			margin-left: 530rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
 			color: #1A1A1A;
 		}
 	}
 	.datalist{
-		font-size: 32rpx;
+		font-size: 28rpx;
 		width: 100%;
 		height: 100rpx;
 		line-height: 100rpx;
@@ -286,7 +309,7 @@
 			margin-top: 30rpx;
 			margin-left: 20rpx;
 		}
-		.time{
+		.count{
 			margin-left: 20rpx;
 			float: left;
 			font-size: 28rpx;
@@ -301,7 +324,7 @@
 			margin-top: -5rpx;
 		}
 		.grade{
-			margin-left: 600rpx;
+			margin-left: 560rpx;
 			font-size: 28rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
 			margin-top: -5rpx;

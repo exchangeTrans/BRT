@@ -127,7 +127,8 @@
     {
       "path": "pages/login/forgetPassword"
 	},
-    {"path": "pages/myteam/index",
+    {
+	  "path": "pages/myteam/index",
       "style": {
         //"navigationBarTitleText": ""
       }
