@@ -141,7 +141,7 @@ export default {
         jumpForgetPassword() {
             this.$jumpPage.jump({
                 type: 'navigateTo',
-                url: 'login/forgetPassword'
+                url: 'login/forgetPassword',
             })
         },
         setCountry() {

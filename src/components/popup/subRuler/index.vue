@@ -8,10 +8,10 @@
                   :style="{'background':mode==='night'?'#272A2E':'#ffffff'}">
 
                 <view class="rulerTitle">
-                    质押挖矿说明
+                    {{$t('subRuler').intro}}
                 </view>
                 <scroll-view  scroll-y="true" class="rulerList">
-                    <view class="rulerTextItem" v-for="(item,index) in rulerData" :key="index">
+                    <view class="rulerTextItem" v-for="(item,index) in $t('subRuler').rulerData" :key="index">
                         <view class="textNo">{{index+1}}</view>
                         <view class="text">{{item.text}}</view>
                         <view class="clearfix"></view>

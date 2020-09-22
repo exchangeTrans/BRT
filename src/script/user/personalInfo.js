@@ -50,7 +50,19 @@ export default {
                     method: "post",
                     params: postData,
                 }).then((res) => {
-                    console.log(res)
+                    if (res.result.returnCode.toString() === "0") {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                        this.$jumpPage.jump({
+                            type: 'navigateBack',
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
+
                 })
             }
         },
@@ -78,7 +90,7 @@ export default {
                         ...res.data,
                     }
                 } else {
-                    if(res.result.returnCode.toString() === "10032"){
+                    if (res.result.returnCode.toString() === "10032") {
                         this.$toast.show({
                             title: res.result.returnUserMessage,
                         })
@@ -86,7 +98,7 @@ export default {
                             type: 'redirectTo',
                             url: 'login/login',
                         })
-                    }else{
+                    } else {
                         this.$toast.show({
                             title: res.result.returnMessage,
                         })

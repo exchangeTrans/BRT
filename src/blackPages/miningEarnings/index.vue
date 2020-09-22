@@ -23,7 +23,7 @@
 				</view>
 
 				<view class="miningEarningsTitle"><view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>{{$t('miningEarnings').pledgeEarningRecord}}</view>
-				<earningsRecordList :earningsRecordData="earningsRecordData"></earningsRecordList>
+				<earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="true"></earningsRecordList>
 
 				<view class="noDataBox" v-if="earningsRecordData.length===0">
 					<noData></noData>
@@ -44,7 +44,7 @@
 	.miningEarnings{
 		width: 100%;
 		height: 100%;
-		background: #F9FAFA;
+		background: #22252A;
 		.content {
 			width: 100%;
 			height: 100%;
@@ -101,7 +101,7 @@
 					font-size: 32rpx;
 					font-family: PingFangSC-Medium, PingFang SC;
 					font-weight: 500;
-					color: #333333;
+					color: #D9DADB;
 					.line{
 						display: inline-block;
 						width: 4rpx;

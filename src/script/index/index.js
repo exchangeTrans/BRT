@@ -39,7 +39,7 @@ export default {
                 {
                     text: '推广收益',
                     img: `${require('@/static/images/home/list.png')}`,
-                    url:'sub/index'
+                    url:'bonus/promoteBonus'
                 },
                 {
                     text: '矿池分红',
