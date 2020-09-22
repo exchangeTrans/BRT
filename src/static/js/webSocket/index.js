@@ -1,12 +1,17 @@
 import pako from 'pako'
 import toast from "@/static/js/dialog.js";
+import store from '@/store/index.js';
+// let tradePairData = store.state.tradeData.tradePairData;
 // import store from '@/store'
 // import Socket from 'plus-websocket'
 // let pako=""
 let Socket = false;
 let setIntervalWesocketPush = null;
-let socketUrl = 'wss://api-aws.huobi.pro/ws';
+// let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
+
+let socketUrl = "ws://52.78.213.185:8188/ws/market"
+
 let ping = 1492420473027;
 
 let socketArray=[];
@@ -31,54 +36,6 @@ export const mySocket={
      */
     createSocket:function(url){
         url = url?url:socketUrl;
-        // Socket.connectSocket({
-        //     url: url,
-        //     success: function (e) {
-        //         console.log(e)
-        //         Socket.onSocketOpen(function (res) {
-        //             console.log('WebSocket连接已打开！')
-        //             mySocket.onopen()
-        //             // setTimeout(function () {
-        //             //     socket.sendSocketMessage({
-        //             //         // data: 'test'
-        //             //         data: buffer
-        //             //     })
-        //             // }, 2000)
-        //         })
-        //         Socket.onSocketError(function (res) {
-        //             console.log('WebSocket连接打开失败，请检查！')
-        //         })
-        //         Socket.onSocketMessage(function (res) {
-        //             mySocket.onmessageWS(res);
-        //             // console.log(res.data)
-        //             // console.log(new DataView(res.data))
-
-        //             // getUint8Value(res.data,function(r){
-        //             //     console.log(r)
-        //             // })
-        //             // const base64 = uni.arrayBufferToBase64(res.data)
-        //             // var uint8_msg = new Uint8Array(res.data);
-        //             // // 解码成字符串
-        //             // var decodedString = String.fromCharCode.apply(null, res.data);
-        //             // console.log(decodedString); 
-        //             // // parse,转成json数据
-        //             // var data = JSON.parse(decodedString);
-        //             // console.log(data);
-        //             // console.log(JSON.parse(res.data))
-                    
-        //             // console.log(base64)
-        //         })
-        //         Socket.onSocketClose(function (res) {
-        //             console.log('WebSocket 已关闭！')
-        //         })
-        //     },
-        //     file: function (e) {
-        //         console.error(e)
-        //     }
-        // })
-        // Socket && Socket.close();
-
-        // if(!Socket){
             Socket=uni.connectSocket({
                 url: socketUrl,
                 header: {
@@ -86,23 +43,30 @@ export const mySocket={
                 },
                 method: 'CONNECT',
                 complete: (e)=> {
-                    console.log(e)
-                    setTimeout(function () {
-                        Socket.onOpen = mySocket.onopen;
-                    }, 2000)
+                    // setTimeout(function () {
+                    //     Socket.onOpen = mySocket.onopen;
+                    // }, 2000)
                     
                 },
             });
             uni.onSocketOpen(function (res) {
+                // console.log(res)
                 mySocket.onopen();
-                toast.show({title:"WebSocket连接已打开！"});
-                console.log('WebSocket连接已打开！');
+                // console.log(store.state)
+                // toast.show({title:"WebSocket连接已打开！"});
+                // console.log('WebSocket连接已打开！');
             });
             uni.onSocketMessage(function (res) {
                 console.log(res.data)
                 toast.show({title:"收到消息"});
                 console.log('收到服务器内容：' + res.data);
               });
+              uni.onSocketError(function (res) {
+                console.log(res)
+                // mySocket.onopen();
+                toast.show({title:"WebSocket失败！"});
+                console.log('WebSocket失败！');
+            });
             // Socket.onOpen = mySocket.onopen;
             // Socket.onMessage = mySocket.onmessageWS;
             // Socket.onMessage = mySocket.onmessageWS;
@@ -134,10 +98,24 @@ export const mySocket={
     //     }
     //     return Socket;
     // },
+    //socket 走后端不需要发送心跳
     onopen:function(){
-        console.log('open')
-        mySocket.sendPing();
-        toast.show({title:"发送心跳"});
+        let tradePairData = store.state.tradeData.tradePairData;
+        tradePairData.forEach(element => {           
+            let str = element.name + element.type;
+            str = str.toLowerCase();
+            let data = {
+                sub:"market."+str+".kline.1min",
+                period:"1min",
+                id: 'notice'+str,
+                isLocal:element.isLocal
+                
+            }
+            mySocket.subscribe(data);                       
+        });
+        // console.log('open')
+        // mySocket.sendPing();
+        // toast.show({title:"发送心跳"});
         
         // window.dispatchEvent(new CustomEvent('onOpenWS'))
         // mySocket.subscribe();

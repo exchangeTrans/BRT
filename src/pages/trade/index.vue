@@ -38,8 +38,12 @@
                     </view>
 
                 </view>
-                <view class="chart1" id="chart1"></view>
-                <view class="chart2" id="chart2"></view>
+                <view class="chart1" id="chart1">
+                    <tradeChart1/>
+                </view>
+                <view class="chart2" id="chart2">
+                    <tradeChart2/>
+                </view>
             </view>
 
             <view class="tableBox">
@@ -62,20 +66,24 @@
             </view>
         </scroll-view>
         <view class="tradeBtnBox">
-            <view class="tradeBtn buy">买入</view>
-            <view class="tradeBtn">卖出</view>
+            <view class="tradeBtn buy">{{$t('trade').buy}}</view>
+            <view class="tradeBtn">{{$t('trade').sell}}</view>
         </view>
 	</view>
 </template>
 
 <script>
     import pageHeader from '@/components/common/header.vue'
+    import tradeChart1 from '@/components/trade/tradeChart1.vue'
+    import tradeChart2 from '@/components/trade/tradeChart2.vue'
     import tradeTable1 from '@/components/trade/tradeTable1.vue'
     import tradeTable2 from '@/components/trade/tradeTable2.vue'
     import tradeTable3 from '@/components/trade/tradeTable3.vue'
     export default {
 	    components:{
             pageHeader,
+            tradeChart1,
+            tradeChart2,
             tradeTable1,
             tradeTable2,
             tradeTable3
@@ -85,7 +93,7 @@
                 headerOptions: {
                     show: true,
                     isAllowReturn: true,
-                    text: "LED/HDU",
+                    text: '',
                     rightItem: {
                         // type: "text",
                         // text: "须知&反馈",
@@ -118,9 +126,22 @@
 
             }
         },
-        onLoad() {
+        // onLoad() {
 
+        // },
+        mounted(){
+            this.headerOptions.text=`${this.KLineTradingPair.name}/${this.KLineTradingPair.type}`
         },
+        computed:{
+			KLineTradingPair(){
+				return this.$store.state.tradeData.KLineTradingPair;
+            },
+            langMsg(){
+                let langMsg = this.$storage.getSync({key:'langMsg'});
+                console.log(langMsg)
+                return langMsg.name
+            }
+		},
         methods: {
             selectChartTab(item){
                 this.chartTabSelect = item;
