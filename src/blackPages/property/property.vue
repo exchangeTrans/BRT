@@ -34,7 +34,8 @@
                           v-for="(item, index) in propertyCardData"
                           :key="index">
                         <PropertyCard :propertyCardData="item"
-                                      :isBlack="isBlack"></PropertyCard>
+                                      :column="2"
+                                      :propertyOption="propertyOption"></PropertyCard>
                     </view>
                 </view>
             </view>

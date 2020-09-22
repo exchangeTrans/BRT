@@ -8,7 +8,7 @@ export default {
             listItemData: [
                 {
                     name: "修改绑定手机邮箱",
-                    path: "changeEmail/index",
+                    path: "",
                     img: `${require('@/static/images/user/alter.png')}`,
                 },
                 {
@@ -178,6 +178,7 @@ export default {
             })
         },
         getUserMsg() {
+            let that = this
             this.$request({
                 url: "me/getUserInfo",
                 method: "post",
@@ -186,6 +187,14 @@ export default {
                     that.userMsgData = {
                         ...res.data,
                     }
+                    let userAccountType = res.data.userAccountType//0 是手机， 1就是邮件
+                    that.listItemData[0].path = userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index'
+                    // console.log(userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index')
+                    this.$store.commit("setDefaultSync",{
+                        key:"userInfo",
+                        val: res.data,
+                    })
+                    // console.log(that.$store.state.defaultData.userInfo);
                 } else {
                     if (res.result.returnCode.toString() === "10032") {
                         this.$toast.show({

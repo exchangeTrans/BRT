@@ -39,31 +39,7 @@ export default {
             };
             this.isBlack = true;
         }
-        this.$request({
-            url: "wallet/getHome",
-            method: "post"
-        }).then((res) => {
-            if (res.result.returnCode === "0") {
-                let data = res.data
-                var that = this
-                data.list.forEach(i => {
-                    let a = {
-                        name: i.symbolTitle.toUpperCase(),
-                        money: i.asset,
-                        aboutMoney: i.asset / i.usdt,
-                        availableBalance: i.balance,
-                        lockBalance: i.frozen,
-                        symbolType: i.symbolType,
-                    }
-                    that.propertyCardData.push(a)
-                })
-            } else {
-                this.$toast.show({
-                    title: res.result.returnUserMessage,
-                })
-            }
-            }
-        )
+        this.getHome()
     },
     data() {
         return {
@@ -71,8 +47,7 @@ export default {
             freezeTotal: 0,
             amountTotal: 0,
             amountTotalRMB: 0,
-            propertyCardData: [
-            ],
+            propertyCardData: [],
             headerOptions: {
                 show: true,
                 isAllowReturn: false,
@@ -87,8 +62,46 @@ export default {
                 background: '#00001A',
                 headerIsNoBoder: true,
             },
+            propertyOption: [
+                {
+                    url:"receipt/index",
+                    text:"收款",
+                },
+                {
+                    url:"",
+                    text:"转账",
+                },
+            ],
             isBlack: false,
         }
     },
-    methods: {}
+    methods: {
+        getHome() {
+            let that = this
+            this.$request({
+                url: "wallet/getHome",
+                method: "post"
+            }).then((res) => {
+                    if (res.result.returnCode === "0") {
+                        let data = res.data
+                        data.list.forEach(i => {
+                            let obj = {
+                                name: i.symbolTitle.toUpperCase(),
+                                money: i.asset,
+                                aboutMoney: i.asset / i.usdt,
+                                availableBalance: i.balance,
+                                lockBalance: i.frozen,
+                                symbolType: i.symbolType,
+                            }
+                            that.propertyCardData.push(obj)
+                        })
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnUserMessage,
+                        })
+                    }
+                }
+            )
+        }
+    }
 }
