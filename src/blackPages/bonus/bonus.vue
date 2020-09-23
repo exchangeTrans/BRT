@@ -66,10 +66,12 @@
 
 <style scoped lang="less">
     #bonus {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
-
+        .appHeader {
+            top:var(--status-bar-height);
+        }
         .bonus-wrap {
             box-sizing: border-box;
             width: 100%;

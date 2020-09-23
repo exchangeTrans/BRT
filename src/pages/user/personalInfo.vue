@@ -7,10 +7,13 @@
             <view class="avatarText">
                 {{$t('personInfo').avatarText}}
             </view>
-            <view class="avatar" :style="{'background-image': userMsgData.avatar}">
+            <view class="avatar"
+                  :style="{'background-image': userMsgData.avatar}">
 
             </view>
-            <view class="modify" :style="{'background-image': modifyUrl}">
+            <view class="modify"
+                  @tap="ChooseImage"
+                  :style="{'background-image': modifyUrl}">
 
             </view>
         </view>
@@ -18,13 +21,16 @@
             <view class="nicknameText">
                 {{$t('personInfo').nicknameText}}
             </view>
-            <input class="nickname" :value="userMsgData.nickname" v-model="userMsgData.nickname"/>
+            <input class="nickname"
+                   :value="userMsgData.nickname"
+                   v-model="userMsgData.nickname"/>
 
             <!--<view class="modify" :style="{'background-image': modifyUrl}">
 
             </view>-->
         </view>
-        <view class="personalInfoBtn" @tap="saveBtnClick">
+        <view class="personalInfoBtn"
+              @tap="saveBtnClick">
             {{$t('personInfo').saveBtn}}
         </view>
     </view>
@@ -103,7 +109,7 @@
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
                 color: #333333;
-                margin-left:30rpx;
+                margin-left: 30rpx;
             }
 
             /*.modify {

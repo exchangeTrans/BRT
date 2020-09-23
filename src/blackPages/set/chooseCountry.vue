@@ -104,7 +104,7 @@
                 })
             },
             headertap(type) {
-                console.log(type)
+                // console.log(type)
             }
         }
     }

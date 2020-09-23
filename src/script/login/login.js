@@ -169,6 +169,7 @@ export default {
             // debugger
             let postData = this.getPostData()
             // debugger
+            // console.log(postData);
             if (postData) {
                 this.$request({
                     url: "common/login",
@@ -185,6 +186,7 @@ export default {
                     // returnMessage: "登录成功"
                     // returnUserMessage: "登录成功"
                     if (res.result.returnCode.toString() === "0") {
+                        // console.log(res);
                         let loginMsg = {
                             isLogin: true,
                             userLoginId: res.data.userLoginId,

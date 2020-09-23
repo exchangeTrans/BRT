@@ -26,9 +26,9 @@
 		margin: 0;
 		padding: 0;
 	}
-	.headstyle{
-		padding-top:calc(100rpx + var(--status-bar-height));
-	}
+	// .headstyle{
+	// 	padding-top:calc(100rpx + var(--status-bar-height));
+	// }
 	.item{
 		height: 150rpx;
 		width: 100%;
@@ -47,7 +47,7 @@
 		}
 	}
 	.notice_list{
-		margin-top: 120rpx;
+		// margin-top: 120rpx;
 		padding-top:calc(100rpx + var(--status-bar-height));
 	}
 	.article{
@@ -62,6 +62,5 @@
 		margin-left: 20rpx;
 		width: 96%;
 		height: calc(100vh - 300rpx);
-		padding-top:calc(100rpx + var(--status-bar-height));
 	}
 </style>

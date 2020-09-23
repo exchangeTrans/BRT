@@ -220,6 +220,7 @@
         height:auto;
         width:750rpx;
         position:fixed;
+        /*top:calc(0rpx + var(--status-bar-height));*/
         top:0;
         left: 0;
         box-sizing: border-box;

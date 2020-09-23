@@ -55,7 +55,7 @@ export default {
     },
     mounted() {
         let theme = this.$storage.getSync({key:'theme'});
-        console.log(theme);
+        // console.log(theme);
         if(theme === 'white'){
             this.headerOptions = {
                 show: true,
@@ -89,7 +89,7 @@ export default {
     },
     methods: {
         headertap(type) {
-            console.log(type)
+            // console.log(type)
         }
     }
 }
