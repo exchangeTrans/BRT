@@ -66,6 +66,7 @@ const getParams = (params) => {
             ...postData,
             ...params
         };
+        // console.log(postData);
     }
     // // console.log(postData);
     // let phoneMsg = uni.getSystemInfoSync();
@@ -74,7 +75,6 @@ const getParams = (params) => {
 
     // // console.log(plus.device.uuid)
     // // console.log(plus.push.getClientInfo())
-
 
     return postData;
 };

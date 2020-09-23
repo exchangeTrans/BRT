@@ -1,7 +1,7 @@
 <template>
     <view id="quotes">
         <pageHeader :headerOptions="headerOptions"/>
-        <scroll-view class="quotes-content" :scroll-y="true">
+        <view class="quotes-content">
             <view class="quotes-content-wrap">
                 <view class="quotes-content-wrap-title">
                     <view class="quotes-content-wrap-title-container">
@@ -23,15 +23,15 @@
                         </view>
                     </view>
                 </view>
-                <view class="quotes-content-wrap-container">
-                    <view class=""
+                <scroll-view class="quotes-content-wrap-container" :scroll-y="true">
+                    <view class="quotes-content-wrap-container-list"
                           v-for="(item, index) in quotesData"
                           :key="index">
                         <QuotesItem :quotesData="item"></QuotesItem>
                     </view>
-                </view>
+                </scroll-view>
             </view>
-        </scroll-view>
+        </view>
     </view>
 </template>
 
@@ -46,10 +46,12 @@
         .quotes-content {
             height: calc(100vh - var(--status-bar-height) - 100rpx);
             .quotes-content-wrap {
-                margin: 0 30rpx;
+                /*margin: 0 30rpx;*/
                 padding-top: 30rpx;
 
                 .quotes-content-wrap-title {
+                    margin: 0 30rpx;
+
                     .quotes-content-wrap-title-container {
                         display: flex;
                         justify-content: space-between;
@@ -111,7 +113,10 @@
                 }
 
                 .quotes-content-wrap-container {
-
+                    height: calc(100vh - var(--status-bar-height) - 128rpx);
+                    .quotes-content-wrap-container-list {
+                        margin: 0 30rpx;
+                    }
                 }
             }
         }

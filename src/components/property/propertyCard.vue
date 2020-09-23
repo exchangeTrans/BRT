@@ -88,7 +88,7 @@
                     column
                 } = this.$props;
                 let rate = (1/column)*100 + "%"
-                console.log(column,rate);
+                // console.log(column,rate);
                 return {
                     gridTemplateColumns: 'repeat(' + column + ', ' +rate + ')',
                     ...propertyCardStyle,

@@ -1,6 +1,8 @@
 <template>
     <view id="bonus">
-        <app-header :headerOptions="headerOptions" @headertap=headertap></app-header>
+        <app-header class="appHeader"
+                    :headerOptions="headerOptions"
+                    @headertap=headertap></app-header>
         <view class="bonus-wrap">
             <view class="bonus-wrap-content">
                 <view class="bonus-wrap-content-card">
@@ -65,10 +67,12 @@
 
 <style scoped lang="less">
     #bonus {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
-
+        .appHeader {
+            top:var(--status-bar-height);
+        }
         .bonus-wrap {
             box-sizing: border-box;
             width: 100%;
