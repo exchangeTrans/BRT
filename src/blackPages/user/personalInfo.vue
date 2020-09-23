@@ -7,10 +7,12 @@
             <view class="avatarText">
                 {{$t('personInfo').avatarText}}
             </view>
-            <view class="avatar" :style="{'background-image': avatarUrl}">
+            <view class="avatar"
+                  :style="{'background-image': avatarUrl}">
 
             </view>
-            <view class="modify" :style="{'background-image': modifyUrl}">
+            <view class="modify"
+                  :style="{'background-image': modifyUrl}">
 
             </view>
         </view>
@@ -21,53 +23,21 @@
             <view class="nickname">
                 {{nickname}}
             </view>
-            <view class="modify" :style="{'background-image': modifyUrl}">
+            <view class="modify"
+                  @tap="ChooseImage"
+                  :style="{'background-image': modifyUrl}">
 
             </view>
         </view>
-        <view class="personalInfoBtn" @tap="saveBtnClick">
+        <view class="personalInfoBtn"
+              @tap="saveBtnClick">
             {{$t('personInfo').saveBtn}}
         </view>
     </view>
 
 </template>
 
-<script scr="@/script/user/personalInfo.js">
-    // import appHeader from '@/components/common/header.vue'
-    // export default {
-    //     name: "personalInfo",
-    //     components: {
-    //         appHeader
-    //     },
-    //     data() {
-    //         return {
-    //             headerOptions: {
-    //                 show: true,
-    //                 isAllowReturn: true,
-    //                 text: this.$t('personInfo').title,
-    //                 isWhiteIcon: false,
-    //                 rightItem: {
-    //                     type: "text",
-    //                     text: "",
-    //                 },
-    //                 bodyPadding: {"padding": '0,0,0,0'},
-    //                 headerIsNoBoder: true,
-    //             },
-    //             nickname: "CS1997",
-    //             avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
-    //             modifyUrl: `url(${require('@/static/images/user/modifyIcon.png')})`,
-    //         }
-    //     },
-    //     mounted() {
-    //
-    //     },
-    //     methods: {
-    //         saveBtnClick() {
-    //
-    //         }
-    //     },
-    // }
-</script>
+<script scr="@/script/user/personalInfo.js"></script>
 
 <style lang="less">
     .personalInfo {
@@ -75,7 +45,7 @@
         height: 100%;
         background: #F8F8F8;
 
-        .avatarBar{
+        .avatarBar {
             width: 750rpx;
             height: 160rpx;
             background: #FFFFFF;
@@ -83,7 +53,8 @@
             margin-top: 176rpx;
             position: relative;
             display: flex;
-            .avatarText{
+
+            .avatarText {
                 margin: auto 0 auto 30rpx;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
@@ -91,7 +62,8 @@
                 color: #333333;
                 line-height: 44rpx;
             }
-            .avatar{
+
+            .avatar {
                 width: 120rpx;
                 height: 120rpx;
                 background-size: 100% 100%;
@@ -101,7 +73,8 @@
                 right: 98rpx;
                 border-radius: 50%;
             }
-            .modify{
+
+            .modify {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -112,14 +85,16 @@
             }
 
         }
-        .nicknameBar{
+
+        .nicknameBar {
             width: 750rpx;
             height: 100rpx;
             background: #FFFFFF;
             box-shadow: 0rpx 2rpx 0rpx 0rpx #EDEDED;
             position: relative;
             display: flex;
-            .nicknameText{
+
+            .nicknameText {
                 margin: auto 0 auto 30rpx;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
@@ -127,7 +102,8 @@
                 color: #333333;
                 line-height: 100rpx;
             }
-            .nickname{
+
+            .nickname {
                 position: absolute;
                 right: 98rpx;
                 top: 50%;
@@ -139,7 +115,8 @@
                 color: #333333;
                 line-height: 100rpx;
             }
-            .modify{
+
+            .modify {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -149,6 +126,7 @@
                 background-size: 100% 100%;
             }
         }
+
         .personalInfoBtn {
             margin: 60rpx auto 0 auto;
             width: 710rpx;

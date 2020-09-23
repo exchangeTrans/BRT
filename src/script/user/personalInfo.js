@@ -1,5 +1,6 @@
-import appHeader from '@/components/common/header.vue'
+import appHeader from '@/components/common/header.vue';
 import {checkDataFunc} from "../../static/js/common";
+import {uploadImage} from "../../static/js/uploadImage";
 
 export default {
     name: "personalInfo",
@@ -31,12 +32,16 @@ export default {
                     checkKey: "nickname",
                 },
             ],
+            imgList: [],
         }
     },
     mounted() {
         this.getUserMsg();
     },
     methods: {
+        ChooseImage() {
+            uploadImage(1);
+        },
         saveBtnClick() {
             /*data: null
             result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}

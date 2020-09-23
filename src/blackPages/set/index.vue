@@ -109,7 +109,7 @@
 	.setIndex{
 		width: 100%;
 		height: 100%;
-
+		/*margin-top: calc(100rpx + var(--status-bar-height));*/
 		background: #22252A;
 		.content{
 			margin-top: calc(100rpx + var(--status-bar-height));

@@ -14,7 +14,7 @@
             </view>
         </view>-->
         <pageHeader :headerOptions="headerOptions"/>
-        <scroll-view class="quotes-content" :scroll-y="true">
+        <view class="quotes-content">
             <view class="quotes-content-wrap">
                 <view class="quotes-content-wrap-title">
                     <view class="quotes-content-wrap-title-container">
@@ -36,16 +36,16 @@
                         </view>
                     </view>
                 </view>
-                <view class="quotes-content-wrap-container">
-                    <view class=""
+                <scroll-view class="quotes-content-wrap-container" :scroll-y="true">
+                    <view class="quotes-content-wrap-container-list"
                           v-for="(item, index) in quotesData"
                           :key="index">
                         <QuotesItem :quotesData="item"
                                     :isBlack="true"></QuotesItem>
                     </view>
-                </view>
+                </scroll-view>
             </view>
-        </scroll-view>
+        </view>
     </view>
 </template>
 
@@ -53,62 +53,26 @@
 
 <style scoped lang="less">
     #quotes {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
-        /*padding-bottom: calc(var(--window-bottom));*/
-        /*box-sizing: border-box;*/
-
-        /*.quotes-nav {*/
-        /*    width: 100%;*/
-        /*    height: 100%;*/
-        /*    background: #eeefef;*/
-
-        /*    .quotes-nav-wrap {*/
-        /*        height: 100%;*/
-        /*        margin: 0 30rpx;*/
-        /*        display: flex;*/
-        /*        justify-content: flex-start;*/
-        /*        align-items: center;*/
-
-        /*        .quotes-nav-wrap-content {*/
-        /*            margin-left: 56rpx;*/
-        /*            height: 50rpx;*/
-
-        /*            .span {*/
-        /*                font-size: 28rpx;*/
-        /*                font-family: PingFangSC-Regular, PingFang SC;*/
-        /*                font-weight: 400;*/
-        /*                color: #1a1a1a;*/
-        /*                line-height: 50rpx;*/
-        /*            }*/
-
-        /*            .active {*/
-        /*                font-size: 36rpx;*/
-        /*                font-family: PingFangSC-Semibold, PingFang SC;*/
-        /*                font-weight: 600;*/
-        /*                color: #835dff;*/
-        /*            }*/
-        /*        }*/
-
-        /*        .quotes-nav-wrap-content:first-child {*/
-        /*            margin-left: 0;*/
-        /*        }*/
-        /*    }*/
-        /*}*/
 
         .quotes-content {
-            height: calc(100vh - var(--status-bar-height) - 100rpx);
+            /*height: calc(100vh - var(--status-bar-height) - 100rpx);*/
             background: #22252A;
+
             .quotes-content-wrap {
-                margin: 0 30rpx;
+                /*margin: 0 30rpx;*/
                 padding-top: 30rpx;
 
                 .quotes-content-wrap-title {
+                    margin: 0 30rpx;
+
                     .quotes-content-wrap-title-container {
                         display: flex;
                         justify-content: space-between;
                         text-align: center;
+
                         .icon {
                             width: 28rpx;
                             height: 28rpx;
@@ -127,6 +91,7 @@
                         .currency, .upsAndDowns, .price {
                             display: flex;
                             align-items: center;
+
                             .icon {
                                 image {
                                     width: 100%;
@@ -135,22 +100,23 @@
                                 }
                             }
                         }
-                       /* .upsAndDowns {
-                            .icon {
-                                image {
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                            }
-                        }
-                        .currency {
-                            .icon {
-                                image {
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                            }
-                        }*/
+
+                        /* .upsAndDowns {
+                             .icon {
+                                 image {
+                                     width: 100%;
+                                     height: 100%;
+                                 }
+                             }
+                         }
+                         .currency {
+                             .icon {
+                                 image {
+                                     width: 100%;
+                                     height: 100%;
+                                 }
+                             }
+                         }*/
 
                         .price {
                             box-sizing: border-box;
@@ -166,7 +132,11 @@
                 }
 
                 .quotes-content-wrap-container {
+                    height: calc(100vh - var(--status-bar-height) - 128rpx);
 
+                    .quotes-content-wrap-container-list {
+                        margin: 0 30rpx;
+                    }
                 }
             }
         }
