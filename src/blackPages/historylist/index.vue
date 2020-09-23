@@ -1,11 +1,15 @@
 <template>
 	<view class="">
-		<historyhead :headerOptions="headerOptions"></historyhead>
-		<scroll-view scroll-y="true" class="list">
+		<historyhead :headerOptions="headerOptions" class="headstyle"></historyhead>
+		<scroll-view scroll-y="true" class="list" v-if="showdata">
 			<view v-for="(item,id) in listOptions" :key="item.id">
 				<historylist :listOptions="item"></historylist>
 			</view>
 		</scroll-view>
+		<view class="nologimg" v-if="nodata">
+			<image src="../../static/images/nohistorylog/nohistorylog.png" mode="" class="img"></image>
+			<view class="nologfont">暂无数据</view>
+		</view>
 	</view>
 </template>
 
@@ -16,6 +20,8 @@
 		components:{historyhead,historylist},
 		data(){
 			return{
+				nodata:true,
+				showdata:false,
 				headerOptions:{
 					show: true,
 					isAllowReturn: true,
@@ -157,11 +163,33 @@
 </script>
 
 <style lang="less">
+	.headstyle{
+		padding-top: calc(100rpx + var(--status-bar-height));
+	}
 	.list{
 		width: 100%;
 		height: calc(100vh - var(--status-bar-height) - 100rpx); 
 		background: #F8F8F8;
 		padding-top: 135rpx;
 		background: #22252A;
+		padding-top: calc(100rpx + var(--status-bar-height));
+	}
+	.nologimg{
+		// margin-top: 500rpx;
+		text-align: center;
+		background: #22252A;
+		height: calc(100vh - 100rpx);
+		.img{
+			width: 530rpx;
+			height: 400rpx;
+			margin-top: 500rpx;
+		}
+		.nologfont{
+			font-size: 28rpx;
+			font-family: PingFangSC-Regular, PingFang SC;
+			font-weight: 400;
+			color: #D9DADB;
+			margin-top: 30rpx;
+		}
 	}
 </style>

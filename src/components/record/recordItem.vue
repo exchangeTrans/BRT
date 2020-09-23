@@ -50,6 +50,7 @@
 
 <style scoped lang="less">
     #recordItem {
+        background: #fff;
         width: 100%;
         height: 240rpx;
         box-sizing: border-box;

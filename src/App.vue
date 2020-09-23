@@ -6,7 +6,7 @@
 			if(!theme){
 				this.$storage.setSync({key: "theme", data: "white"});
 			}
-			// this.$mySocket.createSocket();
+			this.$mySocket.createSocket();
 
 			// #ifdef APP-PLUS
 			// 锁定屏幕方向
@@ -17,12 +17,41 @@
 			this.initLoginMsg();
 			this.initLangMsg();
 			this.initStoreData();
+			let that = this;
+			// uni.onSocketOpen(function (res) {
+			// 	console.log(res)
+			// 	that.$toast.show({title:"WebSocket连接已打开！"});
+			// 	console.log('WebSocket连接已打开！');
+			// });
+			// uni.onSocketMessage(function (res) {
+			// 	console.log(res.data)
+			// 	that.$toast.show({title:"收到消息"});
+			// 	console.log('收到服务器内容：' + res.data);
+			// });
+			// uni.onSocketError(function (res) {
+			// 	console.log(res)
+			// 	// mySocket.onopen();
+			// 	that.$toast.show({title:"WebSocket失败！"});
+			// 	console.log('WebSocket失败！');
+			// });
 		},
 		onShow: function() {
 			// console.log('App Show')
 		},
 		onHide: function() {
 			// console.log('App Hide')
+		},
+		computed:{
+			tradePairData(){
+				return this.$store.state.tradeData.tradePairData;
+			},
+			// tradeNoticeData(){
+			// 	return this.$store.state.tradeData.tradeNoticeData;
+			// },
+			// tradeRangeData(){
+			// 	return this.$store.state.tradeData.tradeRangeData;
+			// }
+
 		},
 		methods: {
 			initStoreData(){

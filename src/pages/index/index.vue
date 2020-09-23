@@ -42,17 +42,19 @@
 					<view class="upAndDown">24H涨跌</view>
 				</view>
 
-				<view class="performerItem" v-for="(item,index) in 8" :key="index">
+				<view class="performerItem" v-for="(item,index) in tradePairData" :key="index">
 					<view class="currency">
-						<view class="currencyTitle"> <span>BRT</span>/USDT</view>
-						<view class="currencyData">24H量85661.9866</view>
+						<view class="currencyTitle"> <span>{{item.name}}</span>/{{item.type}}</view>
+						<view class="currencyData">24H量{{item.nowData===null?'0.00':item.nowData.amount.toFixed(2)}}</view>
 					</view>
 					<view class="newest">
-						<view class="newestPercentage">0.0544</view>
+						<view class="newestPercentage">{{item.nowData===null?'0.00':item.nowData.close.toFixed(2)}}</view>
 						<view class="newestMoney">￥6.75</view>
 					</view>
 					<view class="upAndDown">
-						<view class="upAndDownItem">+2.00%</view>
+						<view v-if="item.range>0" class="upAndDownItem up">+{{item.range.toFixed(2)}}%</view>
+						<view v-else-if="item.range<0" class="upAndDownItem down">-{{item.range.toFixed(2)}}%</view>
+						<view v-else class="upAndDownItem">{{item.range.toFixed(2)}}%</view>
 					</view>
 				</view>
 			</view>
@@ -64,6 +66,7 @@
 </template>
 
 <script src="@/script/index/index.js">
+
 	// import forcedUpdating from "@/components/popup/forcedUpdating/index.vue"
     // export default {
 	//     components:{
@@ -355,12 +358,15 @@
 							width: 136rpx;
 							height: 48rpx;
 							line-height: 48rpx;
-							background: #FC3C5A;
 							border-radius: 4rpx;
 							text-align: center;
-							color: #FFFFFF;
+							color: #FFFFFF;									
+							background: #CBCCCD;
 						}
-						.upAndDownItem.active{
+						.upAndDownItem.up{
+							background: #FC3C5A;
+						}
+						.upAndDownItem.down{
 							background: #5BC788;
 						}
 					}

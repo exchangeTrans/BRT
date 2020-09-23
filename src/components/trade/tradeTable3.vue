@@ -2,16 +2,27 @@
 	<view class="tradeTable3" id="tradeTable3">
 		
         <view class="tableTr tableTr1">
-            <view class="tableLi tableLi1">LED</view>
+            <view class="tableLi tableLi1">{{KLineTradingPair.name}}</view>
         </view>
         <view class="tableTr tableTr2">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[0]}}</view>
-            <view class="tableLi tableLi2">2020-09-12</view>
+            <view class="tableLi tableLi2">{{KLineTradingPair.introduction[langMsg].issueDate}}</view>
         </view>
         <view class="tableTr tableTr3">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[1]}}</view>
-            <view class="tableLi tableLi2">1000{{$t('trade').unit}}</view>
+            <view class="tableLi tableLi2">{{KLineTradingPair.introduction[langMsg].issueNum}}</view>
         </view>
+        <view class="tableTr tableTr3">
+            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[2]}}</view>
+            <view class="tableLi tableLi2">{{KLineTradingPair.introduction[langMsg].webSite}}</view>
+        </view>
+        <view class="intorduceTitle">{{$t('trade').tableHeadTr3[3]}}</view>
+        <view class="intorduceText">{{KLineTradingPair.introduction[langMsg].text}}</view>
+        
+        <!-- <view class="tableTr tableTr3">
+            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[3]}}</view>
+            <view class="tableLi tableLi2">1000{{$t('trade').unit}}</view>
+        </view> -->
 	</view>
 </template>
 
@@ -21,38 +32,6 @@
 		},
         data() {
             return {
-                headerOptions: {
-                    show: true,
-                    isAllowReturn: true,
-                    text: "LED/HDU",
-                    rightItem: {
-                        // type: "text",
-                        // text: "须知&反馈",
-                        // style: {
-                        //     "fontSize": '28rpx',
-                        //     "fontFamily": 'Source Han Sans CN',
-                        //     "fontWeight": '400',
-                        //     "color": 'rgba(68,68,68,1)'
-                        // }
-                    },
-                    headerIsNoBoder: false,
-                },
-                chartTabArray:[
-                    {code:'1',name:"1分",id:''},
-                    {code:'2',name:"15分",id:''},
-                    {code:'3',name:"1小时",id:''},
-                    {code:'4',name:"4小时",id:''},
-                    {code:'5',name:"日线",id:''},
-                    {code:'6',name:"周线",id:''},
-                    {code:'7',name:"指标",id:''},
-                ],
-                chartTabSelect:{code:'2',name:"15分",id:''},
-                tableTabArray:[
-                    {code:'1',name:"买单/卖单",id:''},
-                    {code:'2',name:"最新成交",id:''},
-                    {code:'3',name:"币种简介",id:''},
-                ],
-                tableTabSelect:{code:'2',name:"最新成交",id:''},
                 
 
             }
@@ -60,13 +39,16 @@
         onLoad() {
 
         },
+        computed:{
+			KLineTradingPair(){
+				return this.$store.state.tradeData.KLineTradingPair;
+            },
+            langMsg(){
+                let langMsg = this.$storage.getSync({key:'langMsg'});
+                return langMsg.name
+            }
+		},
         methods: {
-            selectChartTab(item){
-                this.chartTabSelect = item;
-            },
-            selectTableTab(item){
-                this.tableTabSelect = item;
-            },
         }
     }
 </script>
@@ -106,6 +88,31 @@
             font-family: PingFangSC-Medium, PingFang SC;
             font-weight: 500;
            } 
+        }
+        .intorduceTitle{
+            width: 100%;
+            height: 44rpx;
+            font-size: 32rpx;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #1A1A1A;
+            line-height: 44rpx;
+            margin: 30rpx 0 10rpx;
+            box-sizing: border-box;
+            padding: 0 20rpx;
+        }
+        .intorduceText{
+            width: 100%;
+            height: auto;
+            font-size: 26rpx;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #1A1A1A;
+            line-height: 44rpx;
+            opacity: 0.5;
+            box-sizing: border-box;
+            padding: 0 20rpx;
+            margin-bottom: 22rpx;
         }
 		
 

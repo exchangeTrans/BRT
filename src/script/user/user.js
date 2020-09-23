@@ -103,8 +103,8 @@ export default {
         }*/
         // this.getHomeMsg();
     },
-    onShow(){
-        this.getHomeMsg();
+    onShow() {
+        this.getLoginStatus();
     },
     methods: {
         toPage(path) {
@@ -124,10 +124,30 @@ export default {
                 // returnCode: "0"
                 // returnMessage: "注销成功"
                 // returnUserMessage: "注销成功"
+                if (res.result.returnCode.toString() === "0") {
+                    this.$jumpPage.jump({
+                        type: 'redirectTo',
+                        url: 'login/login',
+                    })
+                }
                 this.$toast.show({
                     title: res.result.returnMessage,
                 })
+
+
             })
+        },
+        getLoginStatus() {
+            let loginMsg = this.$storage.getSync({key: 'loginMsg'});
+            // console.log(loginMsg);
+            if (!loginMsg.isLogin) {
+                this.$jumpPage.jump({
+                    type: 'redirectTo',
+                    url: 'login/login',
+                })
+            } else {
+                this.getHomeMsg();
+            }
         },
         getHomeMsg() {
             let that = this
@@ -160,7 +180,7 @@ export default {
                         ...res.data,
                     }
                 } else {
-                    if (res.result.returnCode.toString() === "10032") {
+                    /*if (res.result.returnCode.toString() === "10032") {
                         this.$toast.show({
                             title: res.result.returnUserMessage,
                         })
@@ -168,11 +188,11 @@ export default {
                             type: 'redirectTo',
                             url: 'login/login',
                         })
-                    } else {
-                        this.$toast.show({
-                            title: res.result.returnMessage,
-                        })
-                    }
+                    } else {*/
+                    this.$toast.show({
+                        title: res.result.returnMessage,
+                    })
+                    // }
                 }
                 that.getUserMsg()
             })
@@ -191,8 +211,8 @@ export default {
                     // that.listItemData[0].path = 'changeEmail/index'
                     that.listItemData[0].path = userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index'
                     // console.log(userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index')
-                    this.$store.commit("setDefaultSync",{
-                        key:"userInfo",
+                    this.$store.commit("setDefaultSync", {
+                        key: "userInfo",
                         val: res.data,
                     })
                     // console.log(that.$store.state.defaultData.userInfo);

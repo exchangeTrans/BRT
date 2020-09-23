@@ -135,6 +135,7 @@
 		font-size: 36rpx;
 		color: #FFFFFF;
 		font-family: PingFangSC-Semibold, PingFang SC;
+		padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	// .head{
 	// 	height: 100rpx;
@@ -157,6 +158,7 @@
 		margin-top: 10rpx;
 		line-height: 120rpx;
 		margin-left: 40rpx;
+		padding-top: calc(100rpx + var(--status-bar-height));
 		.headphoto{
 			width: 118rpx;
 			height: 118rpx;
@@ -199,6 +201,7 @@
 	.teammsg{
 		width: 100%;
 		height: 100rpx;
+		padding-top: calc(100rpx + var(--status-bar-height));
 		.teamablity{
 			height: 100rpx;
 			width: 200rpx;

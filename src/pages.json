@@ -149,6 +149,7 @@
       "path": "pages/noticelist/index",
       "style": {
         //"navigationBarTitleText": ""
+		 "enablePullDownRefresh": true
       }
     },
     {
@@ -181,12 +182,6 @@
         //"navigationBarTitleText": ""
       }
     },
-	{
-	  "path":"pages/record_details/index",
-	  "style": {
-	
-	  }
-	},
     {
       "path": "pages/set/index"
 	},
@@ -244,12 +239,6 @@
     },
 	{
 	  "path":"pages/historylist/index",
-	  "style": {
-	
-	  }
-	},
-	{
-	  "path":"pages/nohistorylog/index",
 	  "style": {
 	
 	  }
@@ -470,12 +459,6 @@
 	  }
 	},
 	{
-	  "path": "blackPages/nohistorylog/index",
-	  "style": {
-	    //"navigationBarTitleText": ""
-	  }
-	},
-	{
 	  "path": "blackPages/noticedetails/index",
 	  "style": {
 	    //"navigationBarTitleText": ""
@@ -483,12 +466,6 @@
 	},
 	{
 	  "path": "blackPages/noticelist/index",
-	  "style": {
-	    //"navigationBarTitleText": ""
-	  }
-	},
-	{
-	  "path": "blackPages/record_details/index",
 	  "style": {
 	    //"navigationBarTitleText": ""
 	  }
