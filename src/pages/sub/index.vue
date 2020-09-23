@@ -34,7 +34,7 @@
 						<view class="pledgeTitle">{{$t('sub').pledgeNow}} BRT</view>
 							<view class="pledgeText">{{subData.holdAmount}}</view>
 					</view>
-					<view class="circleText">{{$t('sub').will}} {{subData.holdExpiresIn}} {{$t('sub').releasePledge}}</view>
+					<view class="circleText">{{$t('sub').will}} {{DateFunc.resetTime(subData.holdExpiresIn,'ymdhm')}} {{$t('sub').releasePledge}}</view>
 					<view class="closePledge" @tap="cancelMining">{{$t('sub').closePledge}}</view>
 				</view>
 
@@ -53,8 +53,8 @@
 						{{$t('sub').pledgeNumber}}：{{item.holdAmount}} BRT
 					</view>
 					<view class="times">
-						<view class="timeItem startTime">{{$t('sub').createTime}}：{{item.createTime}}</view>
-						<view class="timeItem endTime">{{$t('sub').expiresIn}}：{{item.expiresIn}}</view>
+						<view class="timeItem startTime">{{$t('sub').createTime}}：{{DateFunc.resetTime(item.createTime,'mdhm')}}</view>
+						<view class="timeItem endTime">{{$t('sub').expiresIn}}：{{DateFunc.resetTime(item.expiresIn,'mdhm')}}</view>
 					</view>
 				</view>
 			</view>
@@ -65,7 +65,7 @@
 		</scroll-view>
 
 
-		<transferInAmount ref="transferInAmount"  :availableCount="100"></transferInAmount>
+		<transferInAmount ref="transferInAmount"  :availableCount="subData.brtBalance" @transferInAmountSuccess="transferInAmountSuccess"></transferInAmount>
 		<subRuler ref="subRuler"></subRuler>
 
 	</view>

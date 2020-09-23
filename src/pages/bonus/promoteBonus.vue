@@ -64,9 +64,10 @@
             <view class="noDataBox" v-if="earningsRecordData.length===0">
                 <noData></noData>
             </view>
-            <earningsRecordList v-else
+            <earningsRecordList v-if="earningsRecordData.length>0"
                                 :earningsRecordData="earningsRecordData">
             </earningsRecordList>
+            <uni-load-more  @clickLoadMore="getShareInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
         </view>
     </view>
 

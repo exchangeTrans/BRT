@@ -65,6 +65,7 @@
     "plus-websocket": "^1.0.5",
     "qrcodejs2": "0.0.2",
     "regenerator-runtime": "^0.12.1",
+    "sass": "^1.26.11",
     "vue": "^2.6.11",
     "vue-i18n": "^8.21.1",
     "vuex": "^3.2.0"
@@ -87,7 +88,11 @@
     "jest": "^25.4.0",
     "mini-types": "*",
     "miniprogram-api-typings": "*",
+    "node-sass": "^4.14.1",
     "postcss-comment": "^2.0.0",
+    "sass-loader": "^10.0.2",
+    "sass-resources-loader": "^2.1.1",
+    "style-loader": "^1.2.1",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [

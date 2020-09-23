@@ -3,6 +3,8 @@ import appHeader from "@/components/common/header.vue";
 import transferInAmount from "@/components/popup/transferInAmount/index.vue";
 import subRuler from "@/components/popup/subRuler/index.vue";
 import noData from "@/components/noData/index.vue";
+import {DateFunc} from "../../static/js/common";
+
 export default {
     components:{
         appHeader,
@@ -111,8 +113,11 @@ export default {
                         })
                     }
                 })
-            }
+            },
 
 
+        transferInAmountSuccess(){
+            this.getMining();
+        }
     }
 }

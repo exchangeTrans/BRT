@@ -63,7 +63,7 @@
 		</scroll-view>
 
 
-		<transferInAmount ref="transferInAmount" :mode="'night'"></transferInAmount>
+		<transferInAmount ref="transferInAmount" :mode="'night'" :availableCount="subData.brtBalance" @transferInAmountSuccess="transferInAmountSuccess" ></transferInAmount>
 		<subRuler ref="subRuler"></subRuler>
 
 	</view>

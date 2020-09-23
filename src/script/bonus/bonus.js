@@ -50,6 +50,10 @@ export default {
             total: "",
             vipType: 0,
             haveNext:true,
+            dayNum:0,
+            hourNum:0,
+            minuteNum:0,
+            status:'more'
         }
     },
     mounted() {
@@ -94,6 +98,7 @@ export default {
             this.BtnackgroundColor = "#8C939B";
         }
         this.getVIPInterest();
+
     },
     methods: {
 
@@ -106,6 +111,11 @@ export default {
                     index:recordAmount.num,
                 };
                 this.request(postData,isMore);
+                if (isMore){
+                    this.status='loading'
+                }
+            }else {
+                this.status='noMore'
             }
 
         },
@@ -121,6 +131,9 @@ export default {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
                         this.haveNext=true;
+                        this.status='noMore'
+                    }else {
+                        that.status='more'
                     }
                     //判断是第一次加载还是加载更多
                     if (isMore){
@@ -128,15 +141,27 @@ export default {
                     }else {
                         that.total= res.data.total;
                         that.vipType= res.data.vipType;
+                        that.dayNum=res.data.periodDay;
                         that.earningsRecordData=res.data.list;
+                        this.getTime();
                     }
-
                 }else{
                     this.$toast.show({
                         title: res.result.returnMessage,
                     })
                 }
             })
+        },
+
+
+        //获取当前时间距离23时59分的时间
+        getTime(){
+            let nightTime = new Date(new Date().toLocaleDateString()).getTime() +24 * 60 * 60 * 1000 -1;
+            let newTime = new Date().getTime();
+            let leftTime = parseInt((nightTime- newTime) / 1000);
+
+            this.hourNum= parseInt(leftTime / (60 * 60) % 24);
+            this.minuteNum = parseInt(leftTime / 60 % 60);
         }
 
     },

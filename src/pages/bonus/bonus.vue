@@ -21,27 +21,35 @@
                         <span class="text">下次分红时间</span>
                     </view>
                     <view class="bonus-wrap-content-card-date">
-                        <view class="date-number">
-                            <span>1</span>
-                        </view>
-                        <view class="date-number">
-                            <span>2</span>
-                        </view>
-                        <view class="date-text">天</view>
-                        <view class="date-number">
-                            <span>0</span>
-                        </view>
-                        <view class="date-number">
-                            <span>6</span>
-                        </view>
-                        <view class="date-text">时</view>
-                        <view class="date-number">
-                            <span>1</span>
-                        </view>
-                        <view class="date-number">
-                            <span>4</span>
-                        </view>
-                        <view class="date-text">分</view>
+                        <uni-countdown
+                                :showColon="false"
+                                :color="'#098FE0'"
+                                :splitorColor="'#ffffff'"
+                                :day="dayNum"
+                                :hour="hourNum"
+                                :minute="minuteNum"
+                        ></uni-countdown>
+                        <!--<view class="date-number">-->
+                            <!--<span>1</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>2</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-text">天</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>0</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>6</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-text">时</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>1</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>4</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-text">分</view>-->
                     </view>
                 </view>
             </view>
@@ -57,14 +65,23 @@
             <view class="noDataBox" v-if="earningsRecordData.length===0">
                 <noData></noData>
             </view>
-            <earningsRecordList v-else
-                                :earningsRecordData="earningsRecordData">
+            <earningsRecordList
+                    v-else
+                    :earningsRecordData="earningsRecordData">
             </earningsRecordList>
+            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-else></uni-load-more>
+
         </view>
     </view>
 </template>
 
-<script src="@/script/bonus/bonus.js"></script>
+<script src="@/script/bonus/bonus.js">
+    import UniCountdown from "@/components/uni-countdown/uni-countdown";
+    import UniLoadMore from "@/components/uni-load-more/uni-load-more";
+    export default {
+        components: {UniLoadMore, UniCountdown}
+    }
+</script>
 
 <style scoped lang="less">
     #bonus {

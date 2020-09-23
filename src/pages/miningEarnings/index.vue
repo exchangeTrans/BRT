@@ -24,6 +24,7 @@
 
 				<view class="miningEarningsTitle"><view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>{{$t('miningEarnings').pledgeEarningRecord}}</view>
 				<earningsRecordList :earningsRecordData="earningsRecordData"></earningsRecordList>
+				<uni-load-more  @clickLoadMore="getMiningInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
 
 				<view class="noDataBox" v-if="earningsRecordData.length===0">
 					<noData></noData>

@@ -76,6 +76,7 @@
                 }).then((res)=>{
                     if (res.result.returnCode.toString() === "0") {
                         this.close();
+                        this.$emit('transferInAmountSuccess')
                     }else{
                         this.$toast.show({
                             title: res.result.returnMessage,

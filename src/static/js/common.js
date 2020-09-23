@@ -185,6 +185,8 @@ export const DateFunc = {
         let times = '';
         if (isDay === 'day') {
             times = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
+        } else if (isDay === 'ymdhm') {
+            times = year + "/" +(month < 10 ? "0" + month : month) + "/" + (day < 10 ? "0" + day : day) + "  " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         } else if (isDay === 'mdhm') {
             times = (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         } else if (isDay === 'hms') {

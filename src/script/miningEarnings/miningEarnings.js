@@ -3,11 +3,13 @@ import appHeader from "@/components/common/header.vue";
 import recordAmount  from '@/static/js/recordNum.js'
 import earningsRecordList from "@/components/earningsRecordList/index.vue";
 import noData from "@/components/noData/index.vue";
+import UniLoadMore from "@/components/uni-load-more/uni-load-more";
 export default {
     components:{
         appHeader,
         earningsRecordList,
-        noData
+        noData,
+        UniLoadMore
     },
     mounted(){
         let theme = this.$storage.getSync({key:'theme'});
@@ -70,7 +72,7 @@ export default {
                 // }
             ],
             haveNext:true,
-
+            status:'more'
 
         }
     },
@@ -88,6 +90,11 @@ export default {
                     index:recordAmount.num,
                 };
                 this.request(postData,isMore);
+                if (isMore){
+                    this.status='loading'
+                }
+            }else {
+                this.status='noMore'
             }
 
         },
@@ -103,10 +110,14 @@ export default {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
                         this.haveNext=true;
+                        this.status='noMore'
+                    }else {
+                        that.status='more'
                     }
                     //判断是第一次加载还是加载更多
                     if (isMore){
                         that.earningsRecordData.concat(res.data.list);
+
                     }else {
                         that.miningEarningsData=res.data;
                         that.earningsRecordData=res.data.list;

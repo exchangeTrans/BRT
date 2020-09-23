@@ -8,7 +8,7 @@
             </view>
 
             <view :class="isBlack?'itemBottom blackFont':'itemBottom'">
-                {{item.time}}
+                {{DateFunc.resetTime(item.time, 'day')}}
             </view>
         </view>
 
@@ -54,7 +54,7 @@
             background: #FFFFFF;
             border-radius: 10rpx;
             font-family: PingFangSC-Regular, PingFang SC;
-            
+
             .itemTop{
                 font-size: 32rpx;
 

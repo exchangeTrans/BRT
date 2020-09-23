@@ -2,12 +2,14 @@ import appHead from '@/components/common/header.vue'
 import earningsRecordList from "@/components/earningsRecordList/index.vue"
 import noData from "@/components/noData/index.vue"
 import recordAmount  from '@/static/js/recordNum.js'
+import UniLoadMore from "@/components/uni-load-more/uni-load-more";
 export default {
     name: "promoteBonus",
     components: {
         appHead,
         earningsRecordList,
-        noData
+        noData,
+        UniLoadMore
     },
     data() {
         return {
@@ -67,6 +69,7 @@ export default {
             // bonusNowNums: "643.32万",
             // bonusLastDayNums: "423万",
             haveNext:true,
+            status:'more'
         }
     },
     mounted() {
@@ -82,6 +85,11 @@ export default {
                     index:recordAmount.num,
                 };
                 this.request(postData,isMore);
+                if (isMore){
+                    this.status='loading'
+                }
+            }else {
+                this.status='noMore'
             }
 
         },
@@ -97,6 +105,9 @@ export default {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
                         this.haveNext=true;
+                        this.status='noMore'
+                    }else {
+                        that.status='more'
                     }
                     //判断是第一次加载还是加载更多
                     if (isMore){
