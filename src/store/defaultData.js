@@ -60,6 +60,51 @@ export default {
         conturyList: [],
         contury: {},
         userInfo: {},
+        footerArray: [
+            {
+                code:'index',
+                pagePath: "index/index",
+                text: "首页",
+                iconPath: "static/images/tabIcon/home_normal.png",
+                selectedIconPath: "static/images/tabIcon/home.png"
+            },
+            {
+                code:'quotes',
+                pagePath: "quotes/quotes",
+                text: "行情",
+                iconPath: "static/images/tabIcon/market_normal.png",
+                selectedIconPath: "static/images/tabIcon/market.png"
+            },
+            {
+                code:'trades',
+                pagePath: "trades/index",
+                text: "交易",
+                iconPath: "static/images/tabIcon/deal_normal.png",
+                selectedIconPath: "static/images/tabIcon/deal.png"
+            },
+            {
+                code:'property',
+                pagePath: "property/property",
+                text: "资产",
+                iconPath: "static/images/tabIcon/property_normal.png",
+                selectedIconPath: "static/images/tabIcon/property.png"
+            },
+            {
+                code:'user',
+                pagePath: "user/user",
+                text: "我的",
+                iconPath: "static/images/tabIcon/user_normal.png",
+                selectedIconPath: "static/images/tabIcon/user.png"
+            }
+        ],
+        footerSelected:{
+            code:'index',
+            pagePath: "index/index",
+            text: "首页",
+            iconPath: "static/images/tabIcon/home_normal.png",
+            selectedIconPath: "static/images/tabIcon/home.png"
+        },
+        
     },
     actions: {
 

@@ -11,6 +11,11 @@
 
 <script>
 	export default{
+		data(){
+			return{
+
+			}
+		},
 		props:{
 			colorOptions: {
                 type: Object,
@@ -31,8 +36,8 @@
 		computed: {
 			bgstyle(){
 				let {colorOptions} = this.$props;
-				let background_color = colorOptions.bgc;
-				let color = colorOptions.fonts_color
+				let background_color = colorOptions.bgc?colorOptions.bgc:'';
+				let color = colorOptions.fonts_color?colorOptions.fonts_color:''
 				return {
 					background_color,
 					color

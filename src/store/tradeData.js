@@ -197,7 +197,7 @@ export default {
       console.log(data)
       request({
           url: 'kline/list',
-          method: 'post',
+          method: 'get',
           hostType:"klineApi",
           params:data
       }).then(res => {

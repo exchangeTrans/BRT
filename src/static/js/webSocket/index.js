@@ -107,8 +107,8 @@ export const mySocket={
             str = str.toLowerCase();
             if(index===1){
                 let data = {
-                    // sub:"market."+str+".kline.15min",
-                    sub:"market.all.detail",
+                    sub:"market."+str+".kline.15min",
+                    // sub:"market.all.detail",
                     // period:"1min",
                     id: 'notice'+str,
                     isLocal:element.isLocal

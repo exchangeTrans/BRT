@@ -1,14 +1,14 @@
 <template>
 	<view class="logitem" :style="historylogdata.isBlack ? 'background:#272A2E':''">
 		<view class="oneline">
-			<view class="buyitem" :style="{'color':historylogdata.style.color}"><text class="buyitin">买入</text>BRT/USDT</view>
+			<view class="buyitem" ><text class="buyitin">买入</text>BRT/USDT</view>
 			<view class="cancelitem">撤单</view>
 		</view>
-		<view class="twoline" :style="{'color':historylogdata.style.color}">
+		<view class="twoline" >
 			<view class="item-tr-left">委托价格（USTD）</view>
 			<view class="item-tr-right">委托数量（BRT）</view>
 		</view>
-		<view class="threeline" :style="{'color':historylogdata.style.color}">
+		<view class="threeline">
 			<view class="itemcharge">{{historylogdata.charge}}</view>
 			<view class="itemnum">{{historylogdata.num}}</view>
 		</view>
@@ -16,18 +16,19 @@
 </template>
 
 <script>
-	export default{
+	export default {
+		components: {},
+		data(){
+			return{
+				
+			}
+		},
 		props:{
 			historylogdata:{
 				type:Object,
 				default:()=>{},
 			}
 		},
-		data(){
-			return{
-				
-			}
-		}
 	}
 </script>
 

@@ -19,6 +19,7 @@ let jumpPage={
         // "blackPages/index/index"
         //只需要传递后边那部分
         let pageUrl=options.url;
+        // if(type===switchTab)
         pageUrl = theme==='black'?('/blackPages/'+pageUrl):('/pages/'+pageUrl);
         options.url = pageUrl;
 
@@ -89,16 +90,18 @@ let jumpPage={
                     // animationType:"pop-in",
                     url:pageUrl,
                     success:function(){
+                        console.log(pageUrl)
                         if(success){
                             success();
                         }
                     },
                     fail:function(){
+                        console.log(pageUrl)
                         if(fail){
                             fail();
                         }
                     },
-                    ...options,
+                    // ...options,
                 });
                 break;
             case "navigateBack"://关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages() 获取当前的页面栈，决定需要返回几层。

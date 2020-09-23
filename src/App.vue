@@ -55,12 +55,12 @@
 		},
 		methods: {
 			initStoreData(){
-				// this.$store.dispatch('getCountryList');
-				// this.$store.dispatch('getKline',{
-				// 	symbol:'XRP',
-				// 	period:'1min',
-				// 	size:'200'
-				// });
+				this.$store.dispatch('getCountryList');
+				this.$store.dispatch('getKline',{
+					symbol:'XRP',
+					period:'1min',
+					size:'200'
+				});
 				
 			},
 			initPhoneMsg(){

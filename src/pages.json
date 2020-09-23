@@ -471,44 +471,44 @@
 	  }
 	}
   ],
-  "tabBar": {
-    // "color":"#8a8a8a",
-    // "selectedColor":"#d4237a",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "static/images/tabIcon/home_normal.png",
-        "selectedIconPath": "static/images/tabIcon/home.png"
-      },
-      {
-        "pagePath": "pages/quotes/quotes",
-        "text": "行情",
-        "iconPath": "static/images/tabIcon/market_normal.png",
-        "selectedIconPath": "static/images/tabIcon/market.png"
-      },
-      {
-        "pagePath": "pages/trades/index",
-        "text": "交易",
-        "iconPath": "static/images/tabIcon/deal_normal.png",
-        "selectedIconPath": "static/images/tabIcon/deal.png"
-      },
-      {
-        "pagePath": "pages/property/property",
-        "text": "资产",
-        "iconPath": "static/images/tabIcon/property_normal.png",
-        "selectedIconPath": "static/images/tabIcon/property.png"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "我的",
-        "iconPath": "static/images/tabIcon/user_normal.png",
-        "selectedIconPath": "static/images/tabIcon/user.png"
-      }
-    ]
-  },
+  // "tabBar": {
+  //   // "color":"#8a8a8a",
+  //   // "selectedColor":"#d4237a",
+  //   "borderStyle": "black",
+  //   "backgroundColor": "#ffffff",
+  //   "list": [
+  //     {
+  //       "pagePath": "pages/index/index",
+  //       "text": "首页",
+  //       "iconPath": "static/images/tabIcon/home_normal.png",
+  //       "selectedIconPath": "static/images/tabIcon/home.png"
+  //     },
+  //     {
+  //       "pagePath": "pages/quotes/quotes",
+  //       "text": "行情",
+  //       "iconPath": "static/images/tabIcon/market_normal.png",
+  //       "selectedIconPath": "static/images/tabIcon/market.png"
+  //     },
+  //     {
+  //       "pagePath": "pages/trades/index",
+  //       "text": "交易",
+  //       "iconPath": "static/images/tabIcon/deal_normal.png",
+  //       "selectedIconPath": "static/images/tabIcon/deal.png"
+  //     },
+  //     {
+  //       "pagePath": "pages/property/property",
+  //       "text": "资产",
+  //       "iconPath": "static/images/tabIcon/property_normal.png",
+  //       "selectedIconPath": "static/images/tabIcon/property.png"
+  //     },
+  //     {
+  //       "pagePath": "pages/user/user",
+  //       "text": "我的",
+  //       "iconPath": "static/images/tabIcon/user_normal.png",
+  //       "selectedIconPath": "static/images/tabIcon/user.png"
+  //     }
+  //   ]
+  // },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",

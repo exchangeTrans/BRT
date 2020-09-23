@@ -1,7 +1,9 @@
 import forcedUpdating from "@/components/popup/forcedUpdating/index.vue"
+import pageFooter from '@/components/common/footer.vue'
 export default {
     components: {
-        forcedUpdating
+        forcedUpdating,
+        pageFooter
     },
     data() {
         return {

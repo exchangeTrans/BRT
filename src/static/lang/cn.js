@@ -1,4 +1,5 @@
 export default {
+    footer:['首页','行情','交易','资产','我的'],
     trade: {
       buy:"买入",
       sell:"卖出",
