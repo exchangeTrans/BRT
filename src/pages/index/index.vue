@@ -131,8 +131,8 @@
 
 <style lang="less">
 	.index{
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		background: #EEEFEF;
 		.content{
 			width: 100%;
@@ -141,7 +141,7 @@
 			.indexTop{
 				width: 100%;
 				height: 420rpx;
-				padding-top:80rpx;
+				padding-top:calc(80rpx + var(--status-bar-height));
 				box-sizing: border-box;
 				//background: #1A1A1A;
 				background-size: cover;
@@ -272,7 +272,7 @@
 				margin-top: 20rpx;
 				width: 100%;
 				height: auto;
-				padding: 20rpx 30rpx 0 30rpx;
+				padding: 20rpx 30rpx 100rpx 30rpx;
 				box-sizing: border-box;
 				background-color: #ffffff;
 				.performerTitle{
@@ -360,7 +360,7 @@
 							line-height: 48rpx;
 							border-radius: 4rpx;
 							text-align: center;
-							color: #FFFFFF;									
+							color: #FFFFFF;
 							background: #CBCCCD;
 						}
 						.upAndDownItem.up{

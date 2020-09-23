@@ -129,8 +129,8 @@
 
 <style lang="less">
 	.index{
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		background: #22252A;
 		.content{
 			width: 100%;
@@ -272,7 +272,7 @@
 				margin-top: 20rpx;
 				width: 100%;
 				height: auto;
-				padding: 20rpx 30rpx 0 30rpx;
+				padding: 20rpx 30rpx 100rpx 30rpx;
 				box-sizing: border-box;
 				background: #272A2E;
 				.performerTitle{
@@ -362,7 +362,7 @@
 							line-height: 48rpx;
 							border-radius: 4rpx;
 							text-align: center;
-							color: #FFFFFF;									
+							color: #FFFFFF;
 							background: #CBCCCD;
 						}
 						.upAndDownItem.up{
