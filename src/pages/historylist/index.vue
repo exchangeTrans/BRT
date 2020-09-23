@@ -18,9 +18,9 @@
 </script>
 
 <style lang="less">
-	.headstyle{
-		padding-top: calc(100rpx + var(--status-bar-height));
-	}
+	// .headstyle{
+	// 	padding-top: calc(100rpx + var(--status-bar-height));
+	// }
 	
 	.list{
 		width: 100%;

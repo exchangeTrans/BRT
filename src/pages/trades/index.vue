@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="trades">
 		<view class="head">
 			<view class="headleft">币币交易</view>
 			<view class="headright">合约交易</view>
@@ -256,6 +256,9 @@
 </script>
 
 <style lang="less">
+	.trades{
+		padding-top: calc(100rpx + var(--status-bar-height));
+	}
 	.head{
 		width: 100%;
 		height: 100rpx;
@@ -265,7 +268,6 @@
 		border-bottom: 2rpx #CCCCCC solid;
 		color: #1A1A1A;
 		font-family: PingFangSC-Semibold, PingFang SC;
-		padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	.headleft{
 		width: 172rpx;
@@ -369,7 +371,6 @@
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
-					color: #FFFFFF;
 				}
 			}
 			.sale{

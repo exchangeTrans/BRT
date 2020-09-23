@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="myteam">
 		<view class="headbg">
 			<pageHeader :headerOptions="headerOptions" class="headname"></pageHeader>
 			<view class="usermsgcon">
@@ -58,10 +58,13 @@
 <script src="@/script/myTeam/myTeam.js"></script>
 
 <style lang="less">
+	.myteam{
+		// padding-top: calc(100rpx + var(--status-bar-height));
+	}
 	.headbg{
 		position: relative;
 		width: 100%;
-		height: 606rpx;
+		height: 506rpx;
 		background: linear-gradient(to right,#004FA8,#007CD3,#25D4ED);
 		border-bottom-left-radius: 50rpx;
 		border-bottom-right-radius: 50rpx;
@@ -70,7 +73,6 @@
 		font-size: 36rpx;
 		color: #FFFFFF;
 		font-family: PingFangSC-Semibold, PingFang SC;
-		padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	.usermsgcon{
 		position: absolute;
@@ -79,7 +81,7 @@
 		margin-top: 10rpx;
 		line-height: 120rpx;
 		margin-left: 40rpx;
-		padding-top: calc(100rpx + var(--status-bar-height));
+		// padding-top: calc(100rpx + var(--status-bar-height));
 		.headphoto{
 			width: 118rpx;
 			height: 118rpx;
@@ -136,7 +138,7 @@
 	.teammsg{
 		width: 100%;
 		height: 100rpx;
-		padding-top: calc(100rpx + var(--status-bar-height));
+		// padding-top: calc(100rpx + var(--status-bar-height));
 		.teamablity{
 			height: 100rpx;
 			width: 200rpx;
@@ -267,6 +269,6 @@
 	}
 	.scrollh{
 		width: 100%;
-		height: calc(100vh - 762rpx);
+		height: calc(100vh - 762rpx - var(--status-bar-height));
 	}
 </style>
