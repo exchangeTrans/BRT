@@ -107,7 +107,7 @@ export default {
         getVIPInterest(isMore){
             if (this.haveNext){
                 let postData={
-                    start:0,
+                    start:this.earningsRecordData.length,
                     index:recordAmount.num,
                 };
                 this.request(postData,isMore);
@@ -137,7 +137,7 @@ export default {
                     }
                     //判断是第一次加载还是加载更多
                     if (isMore){
-                        that.earningsRecordData.concat(res.data.list);
+                        that.earningsRecordData=that.earningsRecordData.concat(res.data.list);
                     }else {
                         that.total= res.data.total;
                         that.vipType= res.data.vipType;

@@ -66,6 +66,7 @@ export default {
     },
     onShow(){
         this.getMining();
+      //  this.asset();
     },
     methods: {
         transferInAmount(){
@@ -84,7 +85,8 @@ export default {
             }).then((res)=>{
                 if (res.result.returnCode.toString() === "0") {
                     that.subData= res.data;
-                    that.subRecord= res.data.list;
+                    that.subData.holdExpiresIn=DateFunc.resetTime(that.subData.holdExpiresIn,'ymdhm');
+                    that.processTime(res.data.list);
                     if (res.data.list.length===0){
                         that.isNoDataFlag=true;
                     }else {
@@ -97,11 +99,22 @@ export default {
                 }
             })
         },
+
+        //处理时间
+        processTime(data){
+           data.forEach(item=>{
+                item.createTime=DateFunc.resetTime(item.createTime,'mdhm')
+                item.expiresIn=DateFunc.resetTime(item.expiresIn,'mdhm')
+            })
+            this.subRecord=data;
+        },
+
+
         //取消质押
             cancelMining(){
             let that = this;
                 this.$request({
-                    url: "/mining/cancelMining",
+                    url: "mining/cancelMining",
                     method: "post",
                 }).then((res)=>{
                     if (res.result.returnCode.toString() === "0") {
@@ -118,6 +131,25 @@ export default {
 
         transferInAmountSuccess(){
             this.getMining();
-        }
+        },
+
+
+        // //空投
+        // asset(){
+        //     let that = this;
+        //     let postData={
+        //         inviteCode:'HHP652',
+        //         symbolType:9,
+        //         amount:10000
+        //     };
+        //     this.$request({
+        //         url: "wallet/asset",
+        //         method: "post",
+        //         params:postData
+        //     }).then((res)=>{
+        //
+        //     })
+        // },
+
     }
 }

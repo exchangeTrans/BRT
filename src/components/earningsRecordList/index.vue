@@ -2,13 +2,13 @@
     <view class="earningsRecordList" id="earningsRecordList">
         <view :class="isBlack?'earningsRecordItem black':'earningsRecordItem'" v-for="(item,index) in earningsRecordData" :key="index">
             <view class="itemTop">
-                <view :class="isBlack?'earningsType blackFont':'earningsType'">{{item.type}}</view>
-                <view class="earningsNum">{{item.num}} BRT</view>
+                <view :class="isBlack?'earningsType blackFont':'earningsType'">{{item.operationTypeText}}</view>
+                <view class="earningsNum">{{item.amount}} BRT</view>
                 <view class="clearfix"></view>
             </view>
 
             <view :class="isBlack?'itemBottom blackFont':'itemBottom'">
-                {{DateFunc.resetTime(item.time, 'day')}}
+                {{item.createTime}}
             </view>
         </view>
 
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+    import {DateFunc} from "../../static/js/common";
+
     export default {
         name: "earningsRecordList",
         components: {},
@@ -29,14 +31,27 @@
                 default: false,
             }
         },
+        watch:{
+            earningsRecordData(val){
+                this.processTime(val);
+            }
+        },
         data() {
-            return {}
+            return {
+                recordData: [],
+            }
         },
         mounted() {
+            let {earningsRecordData}=this.$props;
+            this.processTime(earningsRecordData);
 
         },
         methods: {
-
+            processTime(data){
+                this.recordData = data.forEach(element=>{
+                    element.createTime=DateFunc.resetTime(element.createTime, 'day')
+                })
+            }
         },
     }
 </script>
@@ -44,7 +59,7 @@
 <style lang="less">
     .earningsRecordList {
         width: 100%;
-        height: 100%;
+        height: auto;
         .earningsRecordItem{
             margin: 20rpx auto;
             padding:34rpx 30rpx;

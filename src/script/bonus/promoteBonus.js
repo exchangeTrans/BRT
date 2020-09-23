@@ -62,6 +62,7 @@ export default {
 
             // avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
             inviteBonusRecordIcon: `url(${require('@/static/images/earning/promteBonusRecordIcon.png')})`,
+            vipLogo: `url(${require('@/static/images/earning/vipLogo.png')})`,
             // nickname: "CSIji7833",
             // id: "893432",
             // vipLevel: 1,
@@ -81,7 +82,7 @@ export default {
         getShareInterest(isMore){
             if (this.haveNext){
                 let postData={
-                    start:0,
+                    start:this.earningsRecordData.length,
                     index:recordAmount.num,
                 };
                 this.request(postData,isMore);
@@ -111,7 +112,7 @@ export default {
                     }
                     //判断是第一次加载还是加载更多
                     if (isMore){
-                        that.earningsRecordData.concat(res.data.list);
+                        that.earningsRecordData=that.earningsRecordData.concat(res.data.list);
                     }else {
                         that.promoteBonusData=res.data;
                         that.earningsRecordData=res.data.list;

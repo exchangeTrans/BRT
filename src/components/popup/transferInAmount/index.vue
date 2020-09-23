@@ -13,7 +13,7 @@
 
                 <view class="transferInput"   :style="{'background':mode==='night'?'#272A2E':'#ffffff'}">
                     <input type="number" class="input" :placeholder="$t('transferInAmount').inputHolderText" v-model="counts">
-                    <view class="allTransfer"  @tap="allTransfer">{{$t('transferInAmount').allInto}}</view>
+                    <view class="allTransfer"  @tap="allTransfer(availableCount)">{{$t('transferInAmount').allInto}}</view>
                 </view>
                 <view class="intro">{{$t('transferInAmount').intoIntro}}</view>
 
@@ -34,7 +34,7 @@
 			return {
                 title: 'dialog',
                 type:'',
-                counts:'',
+                counts:null,
                 isMustUpDate:false,
                 updateIcon:`${require('@/static/images/home/updateIcon.png')}`,
                 closeIcon:`${require('@/static/images/home/close.png')}`,
@@ -45,7 +45,7 @@
         },
 		props: {
 		    mode:{type:String,default:'day'},
-            availableCount:{type:Number,default:0},
+            availableCount:{type:String,default:''},
         },
 		mounted(){
 
@@ -61,9 +61,10 @@
                     this.$refs['transferInAmount'].close();
                 })
             },
-            allTransfer(){
-                let {availableCount} = this.$props;
-                this.counts=availableCount;
+            allTransfer(item){
+               let res = item.split(',').join('');
+                this.counts=parseInt(res);
+
             },
             transfer(){
                 let postData={

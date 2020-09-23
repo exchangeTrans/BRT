@@ -8,7 +8,7 @@ export default {
             girdData: [
                 {
                     text: '质押挖矿',
-                    img: `${require('@/static/images/home/pool.png')}`,
+                    img: `${require('@/static/images/home/detail.png')}`,
                     url:'sub/index'
                 },
                 {
@@ -27,10 +27,11 @@ export default {
                     url:'noticelist/index'
                 },
                 {
-                    text: '推广链接',
-                    img: `${require('@/static/images/home/link.png')}`,
-                    url:'sub/index'
+                    text: '节点矿池',
+                    img: `${require('@/static/images/home/pool.png')}`,
+                    url:'bonus/bonus'
                 },
+
                 {
                     text: '团队详情',
                     img: `${require('@/static/images/home/team.png')}`,
@@ -42,10 +43,11 @@ export default {
                     url:'bonus/promoteBonus'
                 },
                 {
-                    text: '矿池分红',
-                    img: `${require('@/static/images/home/detail.png')}`,
-                    url:'bonus/bonus'
-                }
+                    text: '上币申请',
+                    img: `${require('@/static/images/home/apply.png')}`,
+                    url:'sub/index'
+                },
+
             ],
             logo: `${require('@/static/images/home/logo.png')}`,//logo
             qr: `${require('@/static/images/home/qr.png')}`,//二维码

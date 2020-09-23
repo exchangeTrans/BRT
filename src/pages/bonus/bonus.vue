@@ -1,7 +1,7 @@
 <template>
     <view id="bonus">
         <app-header :headerOptions="headerOptions" @headertap=headertap></app-header>
-        <view class="bonus-wrap">
+        <scroll-view class="bonus-wrap" scroll-y="true">
             <view class="bonus-wrap-content">
                 <view class="bonus-wrap-content-card">
                     <view class="bonus-wrap-content-card-msg">
@@ -69,9 +69,9 @@
                     v-else
                     :earningsRecordData="earningsRecordData">
             </earningsRecordList>
-            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-else></uni-load-more>
+            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
 
-        </view>
+        </scroll-view>
     </view>
 </template>
 

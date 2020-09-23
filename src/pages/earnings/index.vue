@@ -61,13 +61,32 @@
 						规则
 					</view>
 					<view class="rulerInfo">{{rulerText}}</view>
-					<view class="btnGroup">
-						<view class="btnItem">转入</view>
-						<view class="btnItem export">转出</view>
+					<!--<view class="btnGroup">-->
+						<!--&lt;!&ndash;<view class="btnItem">转入</view>&ndash;&gt;-->
+						<!--&lt;!&ndash;<view class="btnItem export">转出</view>&ndash;&gt;-->
 
-					</view>
+
+					<!--</view>-->
+
 				</view>
 
+
+			</view>
+			<view class="btnGroup">
+				<earningBtn :background="background"
+							:borderRadius="borderRadius"
+							:btnText="'转入加仓'"
+							v-if="selectedTab==='earningInfo'"
+							@btnClick="addStorehouse"
+				></earningBtn>
+				<earningBtn
+						:background="background"
+						:borderRadius="borderRadius"
+						:btnText="'下载韩亚量化App'"
+						v-if="selectedTab==='data'"
+						@btnClick="downloadAPP"
+
+				></earningBtn>
 			</view>
 		</scroll-view>
 
@@ -79,45 +98,6 @@
 
 <script src="@/script/earnings/earning.js">
 
-    // import appHeader from "@/components/common/header.vue";
-    // export default {
-	//     components:{
-    //         appHeader,
-	//
-	// 	},
-    //     data() {
-    //         return {
-    //             headerOptions:{
-    //                 show:true,
-    //                 isAllowReturn:true,
-    //                 text:"收益",
-    //                 rightItem:{
-    //                     type:"text",
-    //                     text:"",
-    //                 },
-    //                background:'#ffffff',
-    //                 headerIsNoBoder: true,
-    //             },
-	//
-    //             topBg:`${require('@/static/images/earning/topBg.png')}`,
-    //             moneyIcon:`${require('@/static/images/earning/moneyIcon.png')}`,
-    //             logoIcon:`${require('@/static/images/earning/logoIcon.png')}`,
-	// 			sliderValue:50,
-	// 			rulerText:'囤币数量100-200000枚，随进随出，无锁仓！基础收益比例为1%。7天内未转出，包括一枚，那么收益增0.1%，币未转出的情况下，每周增加0.1%最高收益增加到2%封顶，若中途有转出（包含1枚），直接掉回1%。'
-    //         }
-    //     },
-    //     onLoad() {
-	//
-    //     },
-    //     methods: {
-    //         transferInAmount(){
-    //             this.$refs.transferInAmount.open();
-	// 		},
-    //         sliderChange(e) {
-    //            this.sliderValue= e.detail.value;
-    //         }
-    //     }
-    // }
 </script>
 
 <style lang="less">
@@ -261,7 +241,7 @@
 				}
 			}
 			.info{
-				margin: 30rpx 0;
+				margin: 30rpx 0 0;
 				width: 690rpx;
 				background: #FFFFFF;
 				border-radius: 10rpx;
@@ -342,6 +322,9 @@
 					}
 				}
 
+			}
+			.btnGroup{
+				padding-bottom: 30rpx;
 			}
 
 

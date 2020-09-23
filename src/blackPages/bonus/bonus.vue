@@ -1,7 +1,7 @@
 <template>
     <view id="bonus">
         <app-header :headerOptions="headerOptions" @headertap=headertap></app-header>
-        <view class="bonus-wrap">
+        <scroll-view class="bonus-wrap" scroll-y="true">
             <view class="bonus-wrap-content">
                 <view class="bonus-wrap-content-card">
                     <view class="bonus-wrap-content-card-msg">
@@ -53,11 +53,12 @@
                     <span class="text">矿池分红收益</span>
                 </view>
             </view>
-            <earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="isBlack"></earningsRecordList>
+            <earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="isBlack" v-if="earningsRecordData.length>0"></earningsRecordList>
+            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
             <view class="noDataBox" v-if="earningsRecordData.length===0">
                 <noData></noData>
             </view>
-        </view>
+        </scroll-view>
     </view>
 </template>
 

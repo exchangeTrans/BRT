@@ -1,10 +1,10 @@
 <template>
     <view class="promoteBonus" id="promoteBonus">
         <appHead :headerOptions="headerOptions"></appHead>
-        <view class="promoteBonusWrap">
+        <scroll-view  class="promoteBonusWrap" scroll-y="true">
             <view class="contentWrap">
                 <view class="userInfo">
-                    <view class="avatar" :style="{'background-image': promoteBonusData.avatar}">
+                    <view class="avatar" :style="{'background-image': 'url('+promoteBonusData.avatar+')'}">
 
                     </view>
                     <view class="nicknameInfo">
@@ -21,8 +21,7 @@
 
                         </view>
                         <view class="vipPre">
-                            <view class="vipIcon">
-
+                            <view class="vipIcon" :style="{'background-image':vipLogo}">
                             </view>
                             <view class="vipLevel">
                                 {{promoteBonusData.vipType}}
@@ -68,7 +67,7 @@
                                 :earningsRecordData="earningsRecordData">
             </earningsRecordList>
             <uni-load-more  @clickLoadMore="getShareInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
-        </view>
+        </scroll-view>
     </view>
 
 </template>
@@ -79,6 +78,8 @@
 
 <style lang="less">
     .promoteBonus {
+        width: 100%;
+        height: 100%;
         .promoteBonusWrap {
             width: 100%;
             height: 100%;
@@ -161,7 +162,8 @@
 
                                 width: 40rpx;
                                 height: 32rpx;
-                                background: linear-gradient(136deg, #004FA8 0%, #007CD3 50%, #25D4ED 100%);
+                                background-size: cover;
+                              //  background: linear-gradient(136deg, #004FA8 0%, #007CD3 50%, #25D4ED 100%);
                             }
 
                             .vipLevel {

@@ -62,14 +62,31 @@
 						规则
 					</view>
 					<view class="rulerInfo">{{rulerText}}</view>
-					<view class="btnGroup">
-						<view class="btnItem">转入</view>
-						<view class="btnItem export">转出</view>
+					<!--<view class="btnGroup">-->
+						<!--<view class="btnItem">转入</view>-->
+						<!--<view class="btnItem export">转出</view>-->
 
-					</view>
+					<!--</view>-->
 				</view>
 
 			</view>
+			<view class="btnGroup">
+				<earningBtn
+						:background="background"
+						:borderRadius="borderRadius"
+						:btnText="'转入加仓'"
+						v-if="selectedTab==='earningInfo'"
+						@btnClick="addStorehouse"
+				></earningBtn>
+				<earningBtn
+						:background="background"
+						:borderRadius="borderRadius"
+						:btnText="'下载韩亚量化App'"
+						v-if="selectedTab==='data'"
+						@btnClick="downloadAPP"
+				></earningBtn>
+			</view>
+
 		</scroll-view>
 
 
@@ -278,7 +295,7 @@
 				}
 			}
 			.info{
-				margin: 30rpx 0;
+				margin: 30rpx 0 0;
 				width: 690rpx;
 				border-radius: 10rpx;
 				padding: 42rpx 30rpx;
@@ -360,7 +377,9 @@
 				}
 
 			}
-
+			.btnGroup{
+				padding-bottom: 30rpx;
+			}
 
 		}
 

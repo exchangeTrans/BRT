@@ -169,7 +169,7 @@ export const DateFunc = {
     },
     //处理时间
     resetTime(time, isDay) {
-        let d = new Date(time);
+        let d = new Date(parseInt(time));
         //年
         let year = d.getFullYear();
         //月

@@ -1,7 +1,9 @@
 import appHeader from "@/components/common/header.vue";
+import earningBtn from "@/components/btn/index.vue";
 export default {
     components:{
         appHeader,
+        earningBtn
     },
 
     mounted(){
@@ -10,7 +12,7 @@ export default {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "量化收益",
+                text: "量化理财",
                 rightItem: {
                     type: "text",
                     text: "",
@@ -24,7 +26,7 @@ export default {
                 show:true,
                 isAllowReturn:true,
                 isWhiteIcon:true,
-                text:"量化收益",
+                text:"量化理财",
                 rightItem:{
                     type:"text",
                     text:"",
@@ -45,7 +47,8 @@ export default {
             headerOptions:{
 
             },
-
+            background:'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
+            borderRadius:'50rpx',
             topBg:`${require('@/static/images/earning/topBg.png')}`,
             moneyIcon:`${require('@/static/images/earning/moneyIcon.png')}`,
             logoIcon:`${require('@/static/images/earning/logoIcon.png')}`,
@@ -108,6 +111,15 @@ export default {
 			}).catch((err)=>{
 				console.log(err)
 			})
-		}
+		},
+
+        //转入加仓
+        addStorehouse(){
+
+        },
+        //下载app
+        downloadAPP(){
+
+        }
     }
 }

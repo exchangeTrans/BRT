@@ -1,5 +1,5 @@
 let recordAmount={
-    num:10
+    num:5
 };
 
 export default  recordAmount;
