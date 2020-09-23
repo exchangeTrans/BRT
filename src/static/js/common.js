@@ -185,11 +185,15 @@ export const DateFunc = {
         let times = '';
         if (isDay === 'day') {
             times = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
+        } else if (isDay === 'ymdhm') {
+            times = year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day) + ' ' + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         } else if (isDay === 'mdhm') {
             times = (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         } else if (isDay === 'hms') {
             times = (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm) + ":" + (ss < 10 ? "0" + ss : ss);
-        } else {
+        } else if (isDay === 'ymd') {
+			times = year + "年" + (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day) + "日 "
+		} else {
             times = year + "年" + (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         }
         return times;

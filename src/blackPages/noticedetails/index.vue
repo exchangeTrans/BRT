@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<noticedheader :headerOptions="headerOptions"></noticedheader>
+		<noticedheader :headerOptions="headerOptions" class="headstyle"></noticedheader>
 		<view class="setbg">
 		<view class="notice_list">
 			<view class="item">
@@ -26,36 +26,36 @@
 	</view>
 </template>
 
-<script>
-	import noticedheader from '../../components/common/header';
-	export default{
-		components:{noticedheader},
-		data(){
-			return{
-				headerOptions:{
-					show: true,
-					isAllowReturn: true,
-					text: "公告详情",
-					background:"#00001A",
-					rightItem: {
-					    type: "text",
-					    text: "ID:AVV941",
-					    style: {
-					        "fontSize": '24rpx',
-					        "fontFamily": 'PingFangSC-Regular, PingFang SC;',
-					        "fontWeight": '400',
-					        "color": '#D9DADB'
-					    }
-					},
-					style:{
-						color:"#D9DADB"
-					},
-					isWhiteIcon:true,
-					headerIsNoBoder: true,
-				},
-			}
-		}
-	}
+<script src="@/script/noticedetails/noticedetails.js">
+	// import noticedheader from '../../components/common/header';
+	// export default{
+	// 	components:{noticedheader},
+	// 	data(){
+	// 		return{
+	// 			headerOptions:{
+	// 				show: true,
+	// 				isAllowReturn: true,
+	// 				text: "公告详情",
+	// 				background:"#00001A",
+	// 				rightItem: {
+	// 				    type: "text",
+	// 				    text: "ID:AVV941",
+	// 				    style: {
+	// 				        "fontSize": '24rpx',
+	// 				        "fontFamily": 'PingFangSC-Regular, PingFang SC;',
+	// 				        "fontWeight": '400',
+	// 				        "color": '#D9DADB'
+	// 				    }
+	// 				},
+	// 				style:{
+	// 					color:"#D9DADB"
+	// 				},
+	// 				isWhiteIcon:true,
+	// 				headerIsNoBoder: true,
+	// 			},
+	// 		}
+	// 	}
+	// }
 </script>
 
 <style lang="less">
@@ -63,10 +63,13 @@
 		margin: 0;
 		padding: 0;
 	}
-	
+	.headstyle{
+		padding-top: calc(100rpx + var(--status-bar-height));
+	}
 	.notice_list{
 		width: 100%;
 		height: 180rpx;
+		padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	
 	.setbg{

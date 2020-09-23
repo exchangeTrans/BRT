@@ -2,14 +2,12 @@ import appHeader from "@/components/common/header.vue";
 export default {
     components:{
         appHeader,
-
     },
 
     mounted(){
         let theme = this.$storage.getSync({key:'theme'});
         if(theme === 'white') {
             this.headerOptions = {
-
                 show: true,
                 isAllowReturn: true,
                 text: "量化收益",
@@ -38,6 +36,9 @@ export default {
                 headerIsNoBoder: true
             }
         }
+		this.getusermsg();
+		this.useriverst();
+		this.setRate();
     },
     data() {
         return {
@@ -66,6 +67,47 @@ export default {
         chooseTab(item){
             this.selectedTab=item;
         },
-
+		//数据请求
+		getusermsg(){
+			this.$request({
+				url:"finance/getFinance",
+				method:"post",
+				params:'',
+			}).then((res)=>{
+				console.log(res)
+			}).catch((err)=>{
+				console.log(err)
+			})
+		},
+		//无数据
+		useriverst(){
+			this.$request({
+				url:"finance/inFinance",
+				method:"post",
+				params:{
+					amount:'1000',
+					pageRepeatCode:'ybh'
+				}
+			}).then((res)=>{
+				console.log(res)
+			}).catch((err)=>{
+				console.log(err)
+			})
+		},
+		//无数据
+		setRate(){
+			this.$request({
+				url:"finance/setRate",
+				method:"post",
+				params:{
+					rateType:'1',
+					rateValue:'0.6'
+				}
+			}).then((res)=>{
+				console.log(res);
+			}).catch((err)=>{
+				console.log(err)
+			})
+		}
     }
 }

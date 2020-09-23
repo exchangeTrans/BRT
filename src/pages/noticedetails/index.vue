@@ -1,63 +1,33 @@
 <template>
 	<view>
-		<ndheader :headerOptions="headerOptions"></ndheader>
+		<ndheader :headerOptions="headerOptions" class="headstyle"></ndheader>
 		<view class="notice_list">
 			<view class="item">
-				<view class="notice_content">BRT关于调整USDT提币手续公告</view>
+				<view class="notice_content">{{details_msg_list[id].title}}</view>
 				<view class="notice_time">2020-9-16 16:38</view>
 			</view>
 		</view>
 		<scroll-view scroll-y class="notice_content_details">
 			<view>尊敬的BRT用户</view>
 			<view class="article">
-				11月22日，有接近国家互联网金融风险专项整治小组办公室（下称整治办）人士表示，
-			区块链的内涵很丰富，并不等于虚拟货币。目前所有打着区块链旗号关于虚拟货币的推广宣传
-			活动都是违法违规的。监管部门对于虚拟货币炒作和虚拟货币交易场所的打击态度没有丝毫改变。
+				{{details_msg_list[id].details}}
 			</view>
-			<view class="article">
-				据了解，目前监管部门已经通盘部署，要求全国各地全面排查属地借助区块链开展虚拟货
-			币炒作活动的最新情况，出现问题及时打早打小。在下一阶段的工作中，监管部门将加大清理整顿
-			虚拟货币及交易场所的力度，发现一起、处置一起。</view>
-			<view>BRT实验室</view>
-			<view>2020年9月8日</view>
+			<view>{{details_msg_list[id].date}}</view>
 		</scroll-view>
 	</view>
 </template>
 
-<script>
-	import ndheader from '../../components/common/header'
-	export default{
-		components:{ndheader},
-		data(){
-			return{
-				headerOptions:{
-					show:true,
-					text:"公告详情",
-					isAllowReturn:true,
-					fontfamily:"PingFangSC-Regular, PingFang SC",
-					fontSize:'34',
-					style:{
-						color:"#333333",
-						
-					},
-					isColor:true,
-					rightItem:{
-						type:"text",
-						text:"ID:AVV491",
-						style:{
-							color:"#000000"
-						}
-					}
-				}
-			}
-		}
-	}
+<script src="@/script/noticedetails/noticedetails.js">
+	
 </script>
 
 <style lang="less">
 	*{
 		margin: 0;
 		padding: 0;
+	}
+	.headstyle{
+		padding-top:calc(100rpx + var(--status-bar-height));
 	}
 	.item{
 		height: 150rpx;
@@ -78,6 +48,7 @@
 	}
 	.notice_list{
 		margin-top: 120rpx;
+		padding-top:calc(100rpx + var(--status-bar-height));
 	}
 	.article{
 		text-indent: 2em;
@@ -91,5 +62,6 @@
 		margin-left: 20rpx;
 		width: 96%;
 		height: calc(100vh - 300rpx);
+		padding-top:calc(100rpx + var(--status-bar-height));
 	}
 </style>

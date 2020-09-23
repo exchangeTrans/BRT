@@ -265,6 +265,7 @@
 		border-bottom: 2rpx #CCCCCC solid;
 		color: #1A1A1A;
 		font-family: PingFangSC-Semibold, PingFang SC;
+		padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	.headleft{
 		width: 172rpx;

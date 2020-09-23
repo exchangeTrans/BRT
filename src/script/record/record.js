@@ -6,6 +6,8 @@ export default {
     name: "record",
     data() {
         return {
+			showdata:false,
+			nodata:true,
             isBlack: true,
             headerOptions: {
                 /*show: true,

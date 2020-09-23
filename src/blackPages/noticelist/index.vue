@@ -1,85 +1,29 @@
 <template>
 	<view>
-		<view class="head">
-			<image src="../../static/images/noticelist/blackleft.png" mode="" class="headleft"></image>
-			<view class="headname">公告列表</view>
-		</view>
+		<noticedheader :headerOptions="headerOptions" class="headstyle"></noticedheader>
 		<scroll-view class="notice_list" scroll-y>
-			<view class="item">
-				<view class="notice_content">BRT关于调整USDT提币手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
-			</view>
-			<view class="item">
-				<view class="notice_content">BRT关于调整USDT提币手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
-			</view>
-			<view class="item">
-				<view class="notice_content">BRT关于手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
-			</view>
-			<view class="item">
-				<view class="notice_content">BRT提币手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
-			</view>
-			<view class="item">
-				<view class="notice_content">BRT2222222关于手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
-			</view>
-			<view class="item">
-				<view class="notice_content">BRT1111提币手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
-			</view>
-			<view class="item">
-				<view class="notice_content">BRT444关于手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
-			</view>
-			<view class="item">
-				<view class="notice_content">BRT3333提币手续公告</view>
-				<view class="notice_time">2020-9-16 16:38</view>
-				<image src="../../static/images/noticelist/right.png" mode="" class="item_right"></image>
+			<view v-for="(item,id) in notice_list" :key="id" @click="gonoticedetails">
+				<noticeitem :noticeOptions="item"></noticeitem>
 			</view>
 		</scroll-view>
 	</view>
 </template>
 
-<script>
+<script src="@/script/noticelist/noticelist.js">
+	
 </script>
 
 <style lang="less">
 	*{
 		background: #272A2E;
 	}
-	.head{
-		height: 100rpx;
-		width: 100%;
-		border-bottom: 1rpx #CCCCCC solid;
-		.headleft{
-			width: 50rpx;
-			height: 50rpx;
-			float: left;
-			margin-left: 30rpx;
-			margin-top: 25rpx;
-		}
-		.headname{
-			// text-align: center;
-			padding-left: 300rpx;
-			line-height: 100rpx;
-			font-weight: bolder;
-			font-size: 36rpx;
-			background: #00001A;
-			font-family: PingFangSC-Semibold, PingFang SC;
-			color: #D9DADB;
-		}
+	.headstyle{
+		padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	.notice_list{
-		height: 1220rpx;
+		margin-top: 100rpx;
+		height: calc(100vh - 100rpx - var(--status-bar-height));
+		padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	.item{
 		height: 150rpx;
