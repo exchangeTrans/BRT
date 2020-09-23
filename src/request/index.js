@@ -79,15 +79,15 @@ const getParams = (params) => {
     return postData;
 };
 const http = ({
-                  url, headers, params, method, dataType, responseType
+                  url, headers, params, method, dataType, responseType,hostType
               }) => {
     let timestamp = (new Date()).valueOf();
     let prefix = '';
-    // if(hostType){
-    //    prefix = api[hostType];
-    // }else{
-    prefix = api.commApi;
-    // }
+    if(hostType){
+        prefix = api[hostType];
+    }else{
+        prefix = api.commApi;
+    }
     return new Promise((resolve, reject) => {
         // eslint-disable-next-line no-undef
         uni.request({

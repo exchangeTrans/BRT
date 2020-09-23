@@ -1,5 +1,5 @@
 
-
+import request from '@/request/index';
 const GETBASICSET = 'GETBASICSET'; // 基本设置
 export default {
   state: {
@@ -192,9 +192,23 @@ export default {
   },
   actions: {
    
-    //基本设置
-    getBasicSet() {
-        // commit
+    //获取k线
+    getKline({commit},data) {
+      console.log(data)
+      request({
+          url: 'kline/list',
+          method: 'post',
+          hostType:"klineApi",
+          params:data
+      }).then(res => {
+        console.log(res)
+          if (res.result.returnCode.toString() === '0') {
+            
+              // let data = res.data.list;
+              // commit('GETCOUNTRYLIST', data);
+              // commit('COUNTRY', data[0]);
+          }
+      })
     },
     
   
