@@ -55,7 +55,13 @@
 		},
 		methods: {
 			initStoreData(){
-				this.$store.dispatch('getCountryList');
+				// this.$store.dispatch('getCountryList');
+				// this.$store.dispatch('getKline',{
+				// 	symbol:'XRP',
+				// 	period:'1min',
+				// 	size:'200'
+				// });
+				
 			},
 			initPhoneMsg(){
 				//获取设备信息

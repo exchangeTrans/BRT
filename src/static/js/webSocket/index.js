@@ -9,7 +9,6 @@ let Socket = false;
 let setIntervalWesocketPush = null;
 // let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
-
 let socketUrl = "ws://52.78.213.185:8188/ws/market"
 
 let ping = 1492420473027;
@@ -45,16 +44,18 @@ export const mySocket={
                 complete: (e)=> {
                     // setTimeout(function () {
                     //     Socket.onOpen = mySocket.onopen;
-                    // }, 2000)
-                    
+                    // }, 2000)                   
                 },
             });
             uni.onSocketOpen(function (res) {
-                // console.log(res)
-                mySocket.onopen();
-                // console.log(store.state)
-                // toast.show({title:"WebSocket连接已打开！"});
-                // console.log('WebSocket连接已打开！');
+                console.log(res)
+                setTimeout(function () {
+                        mySocket.onopen();
+                    }, 2000)    
+                // mySocket.onopen();
+                console.log(store.state)
+                toast.show({title:"WebSocket连接已打开！"});
+                console.log('WebSocket连接已打开！');
             });
             uni.onSocketMessage(function (res) {
                 console.log(res.data)
@@ -70,8 +71,8 @@ export const mySocket={
             // Socket.onOpen = mySocket.onopen;
             // Socket.onMessage = mySocket.onmessageWS;
             // Socket.onMessage = mySocket.onmessageWS;
-            // // console.log('建立websocket连接');
-            // // Socket = new WebSocket(url)
+            // console.log('建立websocket连接');
+            // Socket = new WebSocket(url)
             // Socket.onOpen = mySocket.onopen;
             // Socket.onmessage = mySocket.onmessageWS;
             // Socket.onerror = mySocket.onerrorWS;
@@ -101,24 +102,24 @@ export const mySocket={
     //socket 走后端不需要发送心跳
     onopen:function(){
         let tradePairData = store.state.tradeData.tradePairData;
-        tradePairData.forEach(element => {           
+        tradePairData.forEach((element,index) => {           
             let str = element.name + element.type;
             str = str.toLowerCase();
-            let data = {
-                sub:"market."+str+".kline.1min",
-                period:"1min",
-                id: 'notice'+str,
-                isLocal:element.isLocal
-                
+            if(index===1){
+                let data = {
+                    // sub:"market."+str+".kline.15min",
+                    sub:"market.all.detail",
+                    // period:"1min",
+                    id: 'notice'+str,
+                    isLocal:element.isLocal
+                    
+                }
+                // console.log()
+                // mySocket.subscribe(data);   
+                mySocket.subscribe(data); 
             }
-            mySocket.subscribe(data);                       
+                                
         });
-        // console.log('open')
-        // mySocket.sendPing();
-        // toast.show({title:"发送心跳"});
-        
-        // window.dispatchEvent(new CustomEvent('onOpenWS'))
-        // mySocket.subscribe();
         
     },
     /**打开WS之后发送心跳 */
