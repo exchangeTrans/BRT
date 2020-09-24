@@ -201,9 +201,9 @@ export default {
                             title: res.result.returnMessage,
                         })
                         this.$jumpPage.jump({
-                            type: 'switchTab',
+                            type:'reLaunch',
                             url: 'index/index'
-                        })
+                        });
                     } else {
                         this.$toast.show({
                             title: res.result.returnMessage,
@@ -213,6 +213,7 @@ export default {
             }
         },
         getPostData() {
+            debugger
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
             let dialingCode = this.chooseCountry.dialingCode;
             let countryCode = this.chooseCountry.countryCode;

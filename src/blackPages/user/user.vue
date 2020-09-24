@@ -102,6 +102,7 @@
 
             </view>
         </scroll-view>
+        <pageFooter/>
     </view>
 </template>
 
@@ -116,7 +117,7 @@
 
         .user-wrap {
             width: 100%;
-            height: 100%;
+            height: calc(100vh - var(--status-bar-height) - 120rpx);
             background: #22252A;
             position: relative;
 

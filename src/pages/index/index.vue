@@ -53,7 +53,7 @@
 					</view>
 					<view class="upAndDown">
 						<view v-if="item.range>0" class="upAndDownItem up">+{{item.range.toFixed(2)}}%</view>
-						<view v-else-if="item.range<0" class="upAndDownItem down">-{{item.range.toFixed(2)}}%</view>
+						<view v-else-if="item.range<0" class="upAndDownItem down">{{item.range.toFixed(2)}}%</view>
 						<view v-else class="upAndDownItem">{{item.range.toFixed(2)}}%</view>
 					</view>
 				</view>

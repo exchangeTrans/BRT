@@ -1,8 +1,12 @@
 import Btn from "../../components/btn/index";
+import pageFooter from '@/components/common/footer.vue'
 
 export default {
     name: "user",
-    components: {Btn},
+    components: {
+        Btn,
+        pageFooter,
+    },
     data() {
         return {
             listItemData: [

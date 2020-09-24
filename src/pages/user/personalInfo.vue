@@ -9,7 +9,6 @@
             </view>
             <view class="avatar">
                 <image :src="avatar"></image>
-
             </view>
             <view class="modify"
                   @tap="ChooseImage"
@@ -25,7 +24,8 @@
                    :value="userMsgData.nickname"
                    v-model="userMsgData.nickname"/>
 
-            <!--<view class="modify" :style="{'background-image': modifyUrl}">
+            <!--<view class="modify"
+                      :style="{'background-image': modifyUrl}">
 
             </view>-->
         </view>
@@ -71,7 +71,12 @@
                 top: 50%;
                 transform: translateY(-50%);
                 right: 98rpx;
-                border-radius: 50%;
+
+                image {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
             }
 
             .modify {

@@ -2,6 +2,7 @@ import request from '@/request/index';
 
 const GETCOUNTRYLIST = 'GETCOUNTRYLIST';
 const COUNTRY = 'COUNTRY';
+const GETRANGEDATA="GETRANGEDATA"
 export default {
     state: {
         langArray: {
@@ -104,10 +105,69 @@ export default {
             iconPath: "static/images/tabIcon/home_normal.png",
             selectedIconPath: "static/images/tabIcon/home.png"
         },
+        currency:{
+            'zh-CN': [
+                {
+                    name: '人民币',
+                    code: "RMB",
+                    unit:'¥'
+                },
+                {
+                    name: '美元',
+                    code: "USD",
+                    unit:'$'
+                },
+                {
+                    name: '韩元',
+                    code: "KRW",
+                    unit:'₩'
+                },
+            ],
+            'en-US': [
+                {
+                    name: '人民币',
+                    code: "RMB",
+                    unit:'¥'
+                },
+                {
+                    name: '美元',
+                    code: "USD",
+                    unit:'$'
+                },
+                {
+                    name: '韩元',
+                    code: "KRW",
+                    unit:'₩'
+                },
+            ],
+            'ko-KR': [
+                {
+                    name: '人民币',
+                    code: "RMB",
+                    unit:'¥'
+                },
+                {
+                    name: '美元',
+                    code: "USD",
+                    unit:'$'
+                },
+                {
+                    name: '韩元',
+                    code: "KRW",
+                    unit:'₩'
+                },
+            ]
+        },
+        //当前选择币种
+        selectedCurrency:{
+            name: '人民币',
+            code: "RMB",
+            unit:'¥'
+        },
+        rangeData:{}
         
     },
     actions: {
-
         //获取国家
         getCountryList({commit}) {
             request({
@@ -121,6 +181,18 @@ export default {
                 }
             })
         },
+         //获取汇率
+        getRange({commit}) {
+            request({
+                url: 'wallet/getRate',
+                method: 'post',
+            }).then(res => {
+                if (res.result.returnCode.toString() === '0') {              
+                    let data = res.data;
+                    commit('GETRANGEDATA', data);
+                }
+            })
+        },
 
 
     },
@@ -130,6 +202,9 @@ export default {
         },
         [COUNTRY](state, result) {
             state.contury = result;
+        },
+        [GETRANGEDATA](state, result) {
+            state.rangeData = result;
         },
         setDefaultSync(state, param) {
             state[param.key] = param.val;
