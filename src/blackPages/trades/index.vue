@@ -4,6 +4,7 @@
 			<view class="headleft">币币交易</view>
 			<view class="headright">合约交易</view>
 		</view>
+		<scroll-view class="tradesContent" scroll-y>
 		<view class="msg">
 			<view class="msgleft">
 				<image @click="showmask=true" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
@@ -28,13 +29,13 @@
 
 				<view class="charge">
 					<image src="../../static/images/trades/blacksub.png" mode="" class="sub"></image>
-					<text class="charge_name">价格(HDU)</text>
+					<input placeholder="价格(HDU)" class="charge_name" type="number" min="0">
 					<image src="../../static/images/trades/blackadd.png" mode="" class="add"></image>
 				</view>
 
 				<view class="num">
 					<image src="../../static/images/trades/blacksub.png" mode="" class="sub"></image>
-					<text class="charge_num">数量(LED)</text>
+					<input placeholder="数量(LED)" class="charge_num" type="number" min="0">
 					<image src="../../static/images/trades/blackadd.png" mode="" class="add"></image>
 				</view>
 
@@ -53,7 +54,7 @@
 					<view class="money">价格</view>
 					<view class="lednum">数量</view><br>
 					<view v-for="(item,id) in tradesOptions_list" :key="id">
-						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
+						<data-list :colorOptions="green" type='1' :tradesOptions="item"></data-list>
 					</view>
 
 				</view>
@@ -85,11 +86,11 @@
 				<image src="../../static/images/trades/footer.png" mode="" class="img"></image>
 				<view class="footer_data">暂无数据</view>
 			</view>
-			<scroll-view scroll-y="true" class="historyloglist" v-if="showdata">
+			<!-- <scroll-view scroll-y="true" class="historyloglist" v-if="showdata"> -->
 				<view v-for="(item,id) in historylogdata_list" :key="id">
 					<historylog :historylogdata="item"></historylog>
 				</view>
-			</scroll-view>
+			<!-- </scroll-view>/ -->
 
 		</view>
 		<view class="blackindex" v-if="showmask">
@@ -104,175 +105,12 @@
 			</view>
 			<view class="rightmsg" @click="showmask=false"></view>
 		</view>
+		</scroll-view>
+		<pageFooter/>
 	</view>
 </template>
 
-<script>
-	import dataList from '../../components/trades/datalist.vue'
-	import historylog from '../../components/historylog/index.vue'
-	import tradelist from '../../components/tradeitem/index.vue'
-	export default {
-		components: {
-			dataList,
-			historylog,
-			tradelist
-		},
-		methods: {
-			judgedata() {
-				if (this.showdata) {
-					this.showdata = true,
-					this.shownodata = false
-				}
-			}
-		},
-		created() {
-			this.judgedata();
-		},
-		data() {
-			return {
-				green: {
-					bgc: "#2D453C",
-					fonts_color: "#5BC788"
-				},
-				red: {
-					bgc: "#37272E",
-					fonts_color: "#FC3C5A"
-				},
-				tradesOptions_list: [{
-						money: "0.0653",
-						num: "500"
-					},
-					{
-						money: "0.0653",
-						num: "500"
-					},
-					{
-						money: "0.0653",
-						num: "500"
-					},
-					{
-						money: "0.0653",
-						num: "500"
-					},
-				],
-				historylogdata_list: [{
-						charge: 10,
-						num: 0.98,
-						isBlack:true,
-						style:{
-							color:'#D9DADB'
-						}
-					},
-					{
-						charge: 20,
-						num: 1.98,
-						isBlack:true,
-						style:{
-							color:'#D9DADB'
-						}
-					},
-					{
-						charge: 30,
-						num: 2.98,
-						isBlack:true,
-						style:{
-							color:'#D9DADB'
-						}
-					},
-				],
-				tradelistOptions: [{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+3.0%",
-						status: 0,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+4.0%",
-						status: 1,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+3.0%",
-						status: 0,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+4.0%",
-						status: 1,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+3.0%",
-						status: 0,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+4.0%",
-						status: 1,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+3.0%",
-						status: 0,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+4.0%",
-						status: 1,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+3.0%",
-						status: 0,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+4.0%",
-						status: 1,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+3.0%",
-						status: 0,
-						isBlack:true
-					},
-					{
-						type: "USDT/BRT",
-						number: "14.5689",
-						per: "+4.0%",
-						status: 1,
-						isBlack:true
-					},
-				],
-				showmask: false,
-				shownodata: false,
-				showdata: true
-			}
-		}
-	};
-</script>
-
+<script src="@/script/trades/index.js"/>
 <style lang="less">
 	.head {
 		width: 100%;
@@ -280,7 +118,7 @@
 		text-align: center;
 		line-height: 100rpx;
 		font-size: 40rpx;
-		border-bottom: 2rpx #CCCCCC solid;
+		// border-bottom: 2rpx #E3E5E6 solid;
 		color: #1A1A1A;
 		font-family: PingFangSC-Semibold, PingFang SC;
 		background: #00001A;
@@ -309,6 +147,10 @@
 		line-height: 60rpx;
 		float: left;
 		margin-top: 20rpx;
+	}
+	.tradesContent{
+		width: 100vw;
+		height: calc(100vh - 100rpx - 116rpx - var(--status-bar-height));
 	}
 
 	.msg {
@@ -376,6 +218,7 @@
 		height: 654rpx;
 		background: #272A2E;
 		margin-top: -2rpx;
+		background: #22252A;
 		.left {
 			width: 50%;
 			height: 704rpx;
@@ -455,8 +298,9 @@
 					height: 40rpx;
 					position: absolute;
 					z-index: 1;
-					margin-left: 30rpx;
-					margin-top: 20rpx;
+					top: 50%;
+					transform: translateY(-50%);
+					left: 30rpx;
 				}
 
 				.add {
@@ -464,17 +308,23 @@
 					height: 40rpx;
 					position: absolute;
 					z-index: 1;
-					margin-top: 20rpx;
-					margin-left: 270rpx;
+					top: 50%;
+					transform: translateY(-50%);
+					right: 30rpx;
 					line-height: 76rpx;
 				}
 				.charge_name {
 					font-size: 28rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
 					color: #E3E5E6;
-					margin-left: 100rpx;
 					position: absolute;
 					z-index: 2;
+					width: 150rpx;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					text-align: center;
+					transform: translateX(-50%) translateY(-50%);
 				}
 
 			}
@@ -499,8 +349,9 @@
 					height: 40rpx;
 					position: absolute;
 					z-index: 1;
-					margin-left: 30rpx;
-					margin-top: 20rpx;
+					top: 50%;
+					transform: translateY(-50%);
+					left: 30rpx;
 				}
 
 				.add {
@@ -508,8 +359,9 @@
 					height: 40rpx;
 					position: absolute;
 					z-index: 1;
-					margin-top: 20rpx;
-					margin-left: 40rpx;
+					top: 50%;
+					transform: translateY(-50%);
+					right: 30rpx;
 					line-height: 76rpx;
 				}
 
@@ -521,7 +373,13 @@
 					font-size: 28rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
 					color: #D9DADB;
-					margin-left: 100rpx;
+					// margin-left: 100rpx;
+					width: 150rpx;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					text-align: center;
+					transform: translateX(-50%) translateY(-50%);
 				}
 			}
 
@@ -533,6 +391,7 @@
 				font-family: PingFangSC-Regular, PingFang SC;
 				color: #D9DADB;
 				margin-top: 320rpx;
+				opacity: 0.5;
 			}
 
 			.hdupercent {
@@ -555,6 +414,7 @@
 					font-size: 24rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
 					color: #D9DADB;
+					opacity: 0.5;
 				}
 			}
 
@@ -565,6 +425,10 @@
 				color: #D9DADB;
 				margin-left: 20rpx;
 				float: left;
+				opacity: 0.5;
+				text{
+					opacity: 1;
+				}
 			}
 
 			.number {
@@ -599,6 +463,7 @@
 				margin-left: 10rpx;
 
 				.money {
+					opacity: 0.5;
 					float: left;
 					font-size: 30rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
@@ -608,6 +473,7 @@
 				}
 
 				.lednum {
+					opacity: 0.5;
 					float: right;
 					font-size: 30rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
@@ -620,8 +486,10 @@
 			.charge_exchange {
 				width: 100%;
 				height: 100rpx;
-				border-top: 2rpx solid #ccc;
-				border-bottom: 2rpx solid #ccc;
+				// border-top: 2rpx solid #E3E5E6;
+				// border-bottom: 2rpx solid #E3E5E6;
+				
+				box-shadow: 0px 1rpx 0px 0px rgba(255, 255, 255, 0.1), 0px -1rpx 0px 0px rgba(255, 255, 255, 0.1);
 				line-height: 50rpx;
 				margin-left: 20rpx;
 				margin-bottom: 10rpx;
@@ -631,12 +499,14 @@
 					font-size: 30rpx;
 					color: #FC3C5A;
 					font-weight: bold;
+					
 				}
 
 				.exchange_rate2 {
 					font-size: 24rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
 					color: #D9DADB;
+					opacity: 0.5;
 				}
 			}
 
@@ -658,7 +528,8 @@
 	.line {
 		width: 100%;
 		height: 20rpx;
-		background: #272A2E;
+		
+		background: #22252A;
 		margin-top: -2rpx;
 	}
 
@@ -667,7 +538,7 @@
 		padding-top: 20rpx;
 		background: #F9FAFA;
 		width: 100%;
-		height: calc(100vh - 638rpx);
+		// height: calc(100vh - 638rpx);
 		background: #22252A;
 		.descript {
 			font-size: 32rpx;
@@ -712,10 +583,11 @@
 				height: 40rpx;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				font-weight: 400;
-				color: #1A1A1A;
+				font-weight: 400;		
+				color: #D9DADB;
 				line-height: 30rpx;
 				float: left;
+				opacity: 0.5;
 			}
 		}
 

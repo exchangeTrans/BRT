@@ -1,14 +1,18 @@
 import pako from 'pako'
 import toast from "@/static/js/dialog.js";
 import store from '@/store/index.js';
+// let tradePairData = store.state.tradeData.tradePairData;
+// import store from '@/store'
+// import Socket from 'plus-websocket'
+// let pako=""
 let Socket = false;
-let socketStatus = false;
 let setIntervalWesocketPush = null;
 // let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
 let socketUrl = "ws://13.125.88.118:8188/ws/market"
 
 let ping = 1492420473027;
+
 let socketArray=[];
 let getUint8Value=function(e, t) {
     let n="";
@@ -29,176 +33,123 @@ export const mySocket={
      * 建立websocket连接
      * @param {string} url ws地址
      */
-    createSocket:function(url,cb){
+    createSocket:function(url){
         url = url?url:socketUrl;
-        if(socketStatus) return;
-        Socket=uni.connectSocket({
-            url: socketUrl,
-            header: {
-                'content-type': 'application/json'
-            },
-            method: 'CONNECT',
-            complete: (e)=> {                   
-            },
-        });
-        uni.onSocketOpen(function (res) {
-            socketStatus = true;
-            if(cb){
-                cb()
-            }else{
-                mySocket.onopen();
-            }
-            // // console.log(res)
-            // // setTimeout(function () {
+            Socket=uni.connectSocket({
+                url: socketUrl,
+                header: {
+                    'content-type': 'application/json'
+                },
+                method: 'CONNECT',
+                complete: (e)=> {
+                    // setTimeout(function () {
+                    //     Socket.onOpen = mySocket.onopen;
+                    // }, 2000)                   
+                },
+            });
+            uni.onSocketOpen(function (res) {
+                console.log(res)
+                setTimeout(function () {
+                        mySocket.onopen();
+                    }, 2000)    
+                // mySocket.onopen();
+                console.log(store.state)
+                toast.show({title:"WebSocket连接已打开！"});
+                console.log('WebSocket连接已打开！');
+            });
+            uni.onSocketMessage(function (res) {
+                console.log(res.data)
+                toast.show({title:"收到消息"});
+                console.log('收到服务器内容：' + res.data);
+              });
+              uni.onSocketError(function (res) {
+                console.log(res)
+                // mySocket.onopen();
+                toast.show({title:"WebSocket失败！"});
+                console.log('WebSocket失败！');
+            });
+            // Socket.onOpen = mySocket.onopen;
+            // Socket.onMessage = mySocket.onmessageWS;
+            // Socket.onMessage = mySocket.onmessageWS;
+            // console.log('建立websocket连接');
+            // Socket = new WebSocket(url)
+            // Socket.onOpen = mySocket.onopen;
+            // Socket.onmessage = mySocket.onmessageWS;
+            // Socket.onerror = mySocket.onerrorWS;
+            // Socket.onclose = mySocket.oncloseWS;
             
-            //     // }, 2000)    
-            // // console.log(store.state)
-            // toast.show({title:"WebSocket连接已打开！"});
-            // console.log('WebSocket连接已打开！');
-        });
-        uni.onSocketMessage(function (res) {
-            let data = JSON.parse(res.data);
-            mySocket.upData(data);
-            // console.log(JSON.parse(res.data))
-            //             ch: "market.ethusdt.detail"
-            // symbol: "ethusdt"
-            // tick:
-            // amount: 797466.8367888945
-            // close: 335.3
-            // count: 418752
-            // high: 343.45
-            // id: 219018751981
-            // low: 313.41
-            // open: 341.68
-            // ts: 0
-            // version: 219018751981
-            // vol: 262151886.003173
-            // __proto__: Object
-            // ts: 1600953565024
-            // toast.show({title:"收到消息"});
-            // console.log('收到服务器内容：' + res.data);
-        });
-        uni.onSocketError(function (res) {
-            mySocket.createSocket();
-        });
+        // }else{
+        //     console.log('websocket已连接')
+        // }
+        // return Socket;
     },
-    upData(data){
-        let ch = data.ch;
-        if(ch.indexOf('detail')>-1&&data.tick){
-            mySocket.upDataRangeData(data)
-        }
-    },
-    upDataRangeData(data){
-        let tradePairData = store.state.tradeData.tradePairData;
-        let symbol = data.symbol;
-        let tick = data.tick;
-        let newData = tradePairData.map(function (item) {
-          
-            if(item.id===symbol){
-                let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
-              return {
-                ...item,
-                // dataArray:data,
-                range:range,
-                nowData:data.tick
-              }
-            }else{
-              return item
-            }
-              
-          });
-          store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
-    },
-    //socket 订阅行情
+    // createSocket:function(url){
+    //     url = url?url:socketUrl;
+    //     Socket && Socket.close();
+    //     if(!Socket){
+    //         // console.log('建立websocket连接');
+    //         Socket = new WebSocket(url)
+    //         Socket.onopen = mySocket.onopen;
+    //         Socket.onmessage = mySocket.onmessageWS;
+    //         Socket.onerror = mySocket.onerrorWS;
+    //         Socket.onclose = mySocket.oncloseWS;
+            
+    //     }else{
+    //         console.log('websocket已连接')
+    //     }
+    //     return Socket;
+    // },
+    //socket 走后端不需要发送心跳
     onopen:function(){
         let tradePairData = store.state.tradeData.tradePairData;
-         
-                // let data = {
-                //     sub:"market.all.detail",
-                //     // sub:"market.all.detail",
-                //     // period:"1min",
-                //     id: 'notice'+1,
-                //     isLocal:false
-                    
-                // }
-                // console.log()
-                // mySocket.subscribe(data);   
-                // mySocket.subscribe(data); 
-        let subArray = [];
         tradePairData.forEach((element,index) => {           
             let str = element.name + element.type;
             str = str.toLowerCase();
-            let sub="market."+str+".detail"
-            if(element.isLocal){
+            if(index===1){
                 let data = {
-                    sub:sub,
+                    sub:"market."+str+".kline.15min",
                     // sub:"market.all.detail",
                     // period:"1min",
-                    id: 'marketDetail_local',
+                    id: 'notice'+str,
                     isLocal:element.isLocal
                     
-                } 
-                mySocket.subscribe(data); 
-
-            }else{
-                subArray.push(sub)
-                if(index===tradePairData.length-1){
-                    let data = {
-                        sub:subArray.join(','),
-                        // sub:"market.all.detail",
-                        // period:"1min",
-                        id: 'marketDetail',
-                        isLocal:element.isLocal
-                        
-                    } 
-                    mySocket.subscribe(data); 
                 }
+                // console.log()
+                // mySocket.subscribe(data);   
+                mySocket.subscribe(data); 
             }
-            
                                 
         });
         
     },
+    /**打开WS之后发送心跳 */
+    sendPing:function(){
+        // clearInterval(setIntervalWesocketPush)
+        mySocket.send({ping:ping});
+        // setIntervalWesocketPush = setInterval(() => {
+        //     mySocket.send(ping)
+        //   }, 5000)
+    },
+    //获取数据
     //订阅主题
     subscribe:function(data){
-        if(socketStatus){
-            let subK = { // 订阅数据
-                sub: "market.btcusdt.kline.1min",
-                id: "btcusdt",
-                period:"3min"
-            };
-            subK = data?data:subK;
-            // subK = { // 请求对应信息的数据
-            //     req: "market.btcusdt.kline.5min",
-            //     // sub: "market.btcusdt.kline.1min",
-            //     id: "btcusdt",
-            //     period:"5min",
-            //     // type:'step1'
-            //     // from: Math.round(new Date().getTime()/1000) - 60,
-            //     // to: Math.round(new Date().getTime()/1000)
-            // };
-            mySocket.send(subK);
-        }else{
-            mySocket.createSocket(socketUrl,function(){
-                let subK = { // 订阅数据
-                    sub: "market.btcusdt.kline.1min",
-                    id: "btcusdt",
-                    period:"3min"
-                };
-                subK = data?data:subK;
-                // subK = { // 请求对应信息的数据
-                //     req: "market.btcusdt.kline.5min",
-                //     // sub: "market.btcusdt.kline.1min",
-                //     id: "btcusdt",
-                //     period:"5min",
-                //     // type:'step1'
-                //     // from: Math.round(new Date().getTime()/1000) - 60,
-                //     // to: Math.round(new Date().getTime()/1000)
-                // };
-                mySocket.send(subK);
-            });
-        }
-        
+        // console.log(store)
+        let subK = { // 订阅数据
+            sub: "market.btcusdt.kline.1min",
+            id: "btcusdt",
+            period:"3min"
+        };
+        subK = data?data:subK;
+        // subK = { // 请求对应信息的数据
+        //     req: "market.btcusdt.kline.5min",
+        //     // sub: "market.btcusdt.kline.1min",
+        //     id: "btcusdt",
+        //     period:"5min",
+        //     // type:'step1'
+        //     // from: Math.round(new Date().getTime()/1000) - 60,
+        //     // to: Math.round(new Date().getTime()/1000)
+        // };
+        mySocket.send(subK);
     },
     getData:function(){
 

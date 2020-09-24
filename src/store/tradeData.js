@@ -120,7 +120,7 @@ export default {
       {
         type:'USDT',
         name:'LTC',
-        id:'Ltcusdt',
+        id:'ltcusdt',
         range:0,
         nowData:null,
         dataArray:[],
