@@ -48,25 +48,25 @@ export const mySocket={
                 },
             });
             uni.onSocketOpen(function (res) {
-                console.log(res)
+                // console.log(res)
                 setTimeout(function () {
                         mySocket.onopen();
                     }, 2000)    
                 // mySocket.onopen();
-                console.log(store.state)
-                toast.show({title:"WebSocket连接已打开！"});
-                console.log('WebSocket连接已打开！');
+                // console.log(store.state)
+                // toast.show({title:"WebSocket连接已打开！"});
+                // console.log('WebSocket连接已打开！');
             });
             uni.onSocketMessage(function (res) {
-                console.log(res.data)
-                toast.show({title:"收到消息"});
-                console.log('收到服务器内容：' + res.data);
+                // console.log(res.data)
+                // toast.show({title:"收到消息"});
+                // console.log('收到服务器内容：' + res.data);
               });
               uni.onSocketError(function (res) {
-                console.log(res)
+                // console.log(res)
                 // mySocket.onopen();
-                toast.show({title:"WebSocket失败！"});
-                console.log('WebSocket失败！');
+                // toast.show({title:"WebSocket失败！"});
+                // console.log('WebSocket失败！');
             });
             // Socket.onOpen = mySocket.onopen;
             // Socket.onMessage = mySocket.onmessageWS;

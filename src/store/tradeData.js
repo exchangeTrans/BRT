@@ -202,12 +202,12 @@ export default {
           params:data
       }).then(res => {
         console.log(res)
-          if (res.result.returnCode.toString() === '0') {
+          // if (res.result.returnCode.toString() === '0') {
             
               // let data = res.data.list;
               // commit('GETCOUNTRYLIST', data);
               // commit('COUNTRY', data[0]);
-          }
+          // }
       })
     },
     

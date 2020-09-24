@@ -96,14 +96,14 @@ export const mySocket={
                 },
             });
             uni.onSocketOpen(function (res) {
-                console.log(res)
+                // console.log(res)
                 mySocket.onopen();
-                toast.show({title:"WebSocket连接已打开！"});
-                console.log('WebSocket连接已打开！');
+                // toast.show({title:"WebSocket连接已打开！"});
+                // console.log('WebSocket连接已打开！');
             });
             uni.onSocketMessage(function (res) {
-                console.log(res.data)
-                toast.show({title:"收到消息"});
+                // console.log(res.data)
+                // toast.show({title:"收到消息"});
                 console.log('收到服务器内容：' + res.data);
               });
               uni.onSocketError(function (res) {

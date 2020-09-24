@@ -1,17 +1,20 @@
 import request from '../../request/index.js';
 import api from "../../request/api";
+import datastorage from '../../static/js/datastorage.js';
 
 export const uploadImage = (num, callback) => {
+    let key = datastorage.getSync({key: 'loginMsg'}).userLoginId + (new Date()).valueOf();
+    // console.log(key);
     uni.chooseImage({
         count: num,
         success: (res) => {
             let tempFilePaths = res.tempFilePaths
-            console.log(tempFilePaths);
+            // console.log(tempFilePaths);
             request({
                 url: "upload/getUploadToken",
                 method: "post",
             }).then((res) => {
-                console.log(res);
+                // console.log(res);
                 if (res.result.returnCode.toString() === "0") {
                     for (let i = 0; i < tempFilePaths.length; i++) {
                         uni.uploadFile({
@@ -26,13 +29,21 @@ export const uploadImage = (num, callback) => {
                             filePath: tempFilePaths[i],
                             name: 'file',
                             formData: {
-                                'key': res.result.key,
+                                'key': key,//域名加文件名 key是文件名
                                 'token': res.data.uptoken,
                             },
                             success: (uploadFileRes) => {
                                 console.log(uploadFileRes)
                                 //qiniuUrl是自己七牛的前缀
-                                callback(api.qiniuApi + JSON.parse(uploadFileRes.data).key);
+                                if(uploadFileRes.statusCode === 200){
+                                    // console.log(JSON.parse(uploadFileRes.data));
+                                    callback(api.qiniuApi+JSON.parse(uploadFileRes.data).key);
+                                }else{
+                                    this.$toast.show({
+                                        title: uploadFileRes.errMsg,
+                                    })
+                                }
+
                             },
                             fail: (error) => {
                                 if (error && error.response) {

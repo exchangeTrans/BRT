@@ -22,7 +22,8 @@ export default {
                 headerIsNoBoder: true,
             },
             nickname: "CS1997",
-            avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
+            avatar: "",
+            // avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
             modifyUrl: `url(${require('@/static/images/user/modifyIcon.png')})`,
 
             userMsgData: {},
@@ -33,6 +34,7 @@ export default {
                 },
             ],
             imgList: [],
+
         }
     },
     mounted() {
@@ -40,7 +42,11 @@ export default {
     },
     methods: {
         ChooseImage() {
-            uploadImage(1);
+            let that = this;
+            uploadImage(1,function (res) {
+                console.log(res);
+                that.avatar = res;
+            });
         },
         saveBtnClick() {
             /*data: null
@@ -72,8 +78,9 @@ export default {
             }
         },
         getPostData() {
+            debugger
             let nickname = this.userMsgData.nickname;
-            let avatar;
+            let avatar = this.avatar;
             let postData = {
                 nickname,
                 avatar,
@@ -94,6 +101,7 @@ export default {
                     that.userMsgData = {
                         ...res.data,
                     }
+                    that.avatar = res.data.avatar;
                 } else {
                     if (res.result.returnCode.toString() === "10032") {
                         this.$toast.show({

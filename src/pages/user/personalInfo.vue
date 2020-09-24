@@ -7,8 +7,8 @@
             <view class="avatarText">
                 {{$t('personInfo').avatarText}}
             </view>
-            <view class="avatar"
-                  :style="{'background-image': userMsgData.avatar}">
+            <view class="avatar">
+                <image :src="avatar"></image>
 
             </view>
             <view class="modify"

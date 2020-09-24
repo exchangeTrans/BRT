@@ -15,7 +15,6 @@ export default {
 				isAllowReturn: true,
 				text: "历史记录",
 				background: "#FFFFFF",
-				isAllowReturn: true,
 				rightItem: {
 					type: "text",
 					text: "ID:AVV941",
@@ -38,7 +37,7 @@ export default {
 				isAllowReturn: true,
 				text: "历史记录",
 				background: "#FFFFFF",
-				isAllowReturn: true,
+				// isAllowReturn: true,
 				rightItem: {
 					type: "text",
 					text: "ID:AVV941",
