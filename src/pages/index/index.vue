@@ -49,7 +49,7 @@
 					</view>
 					<view class="newest">
 						<view class="newestPercentage">{{item.nowData===null?'0.00':item.nowData.close.toFixed(2)}}</view>
-						<view class="newestMoney">￥6.75</view>
+						<view class="newestMoney">{{selectedCurrency.unit}}{{item.price}}</view>
 					</view>
 					<view class="upAndDown">
 						<view v-if="item.range>0" class="upAndDownItem up">+{{item.range.toFixed(2)}}%</view>

@@ -109,7 +109,7 @@ export default {
             'zh-CN': [
                 {
                     name: '人民币',
-                    code: "RMB",
+                    code: "CNY",
                     unit:'¥'
                 },
                 {
@@ -126,7 +126,7 @@ export default {
             'en-US': [
                 {
                     name: '人民币',
-                    code: "RMB",
+                    code: "CNY",
                     unit:'¥'
                 },
                 {
@@ -161,7 +161,7 @@ export default {
         //当前选择币种
         selectedCurrency:{
             name: '人民币',
-            code: "RMB",
+            code: "CNY",
             unit:'¥'
         },
         rangeData:{}

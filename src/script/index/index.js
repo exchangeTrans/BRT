@@ -75,6 +75,17 @@ export default {
 // high	float	最高价
 // vol	float	成交额, 即 sum(每一笔成交价 * 该笔的成交量)
         },
+        selectedCurrency(){
+            return this.$store.state.defaultData.selectedCurrency;
+//             id	integer	unix时间，同时作为K线ID
+// amount	float	成交量
+// count	integer	成交笔数
+// open	float	开盘价
+// close	float	收盘价（当K线为最晚的一根时，是最新成交价）
+// low	float	最低价
+// high	float	最高价
+// vol	float	成交额, 即 sum(每一笔成交价 * 该笔的成交量)
+        },
         langMsg(){
             let langMsg = this.$storage.getSync({key:'langMsg'});
             return langMsg.name

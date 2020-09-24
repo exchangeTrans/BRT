@@ -92,15 +92,22 @@ export const mySocket={
         let tradePairData = store.state.tradeData.tradePairData;
         let symbol = data.symbol;
         let tick = data.tick;
+        let rangeList = store.state.defaultData.rangeData;
+        let selectedCurrency = store.state.defaultData.selectedCurrency.code;
         let newData = tradePairData.map(function (item) {
-          
+            
             if(item.id===symbol){
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
+                let code = item.type+selectedCurrency
+                let price = Number(rangeList[code])*tick.close
+                console.log(price)
+                // console.log(item.type+selectedCurrency)
               return {
                 ...item,
                 // dataArray:data,
                 range:range,
-                nowData:data.tick
+                nowData:data.tick,
+                price:price.toFixed(6)
               }
             }else{
               return item
