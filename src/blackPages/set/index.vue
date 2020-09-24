@@ -31,10 +31,10 @@
                   @tap="chooseCurrencyData(item)">
                 <view class="currencyIcon"
                       :style="{'background-image':'url('+item.img+')'}"></view>
-                <view class="currencyText">{{item.name}}</view>
+                <view class="currencyText">{{item.name}}（{{item.code}}）</view>
                 <view class="selected"
                       :style="{'background-image':'url('+selectedIcon+')'}"
-                      v-if="selectedObj.name===item.name">
+                      v-if="selectedObj.code===item.code">
                 </view>
             </view>
 
@@ -50,7 +50,9 @@
                             @chooseItem="chooseLanguage"></chooseLanguage>
 
             <view class="confirmBtn">
-                <btn :background="background" :borderRadius="borderRadius"></btn>
+                <btn :background="background"
+                     :borderRadius="borderRadius"
+                     @btnClick="btnClick"></btn>
             </view>
         </view>
     </view>
