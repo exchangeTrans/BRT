@@ -5,6 +5,7 @@ import datastorage from './static/js/datastorage.js';
 import toast from "./static/js/dialog.js";
 import store from './store/index.js'
 import './static/style/common.css';
+// import '@/assets/style/common.css';
 import jumpPage from './static/js/jumpPage.js';
 import mySocket from './static/js/webSocket/index.js';
 import VueI18n from 'vue-i18n' 

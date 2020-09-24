@@ -494,8 +494,10 @@
   // "tabBar": {
   //   // "color":"#8a8a8a",
   //   // "selectedColor":"#d4237a",
-  //   "borderStyle": "black",
+  //   "borderStyle": "white",
   //   "backgroundColor": "#ffffff",
+  //   "height":"75px",
+  //   "iconWidth":"35px",
   //   "list": [
   //     {
   //       "pagePath": "pages/index/index",

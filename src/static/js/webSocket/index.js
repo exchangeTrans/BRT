@@ -99,8 +99,7 @@ export const mySocket={
             if(item.id===symbol){
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
                 let code = item.type+selectedCurrency
-                let price = Number(rangeList[code])*tick.close
-                console.log(price)
+                let price = Number(rangeList[code])*tick.close;
                 // console.log(item.type+selectedCurrency)
               return {
                 ...item,
@@ -114,6 +113,7 @@ export const mySocket={
             }
               
           });
+          console.log(newData)
           store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
     },
     //socket 订阅行情

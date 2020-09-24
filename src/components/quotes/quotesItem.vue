@@ -8,8 +8,8 @@
                             <image :src="quotesData.img"></image>
                         </view>
                         <view :class="isBlack ? 'currency-name-content black' : 'currency-name-content'">
-                            <span class="name">{{quotesData.name}}币</span>
-                            <span class="number">{{quotesData.number}}{{quotesData.name}}</span>
+                            <span class="name">{{quotesData.name}}</span>
+                            <span class="number">1{{quotesData.type}}</span>
                         </view>
                     </view>
                     <view :class="isBlack ? 'price black' : 'price'">
@@ -84,6 +84,8 @@
                     height: 100%;
                     display: flex;
                     align-items: center;
+                    // flex-grow:space-between;
+                    justify-content: space-between;
 
                     .currency-name {
                         display: flex;
@@ -106,6 +108,8 @@
                                 font-family: PingFangSC-Semibold, PingFang SC;
                                 font-weight: 600;
                                 color: #1A1A1A;
+                                width: 100rpx;
+                                opacity: 1;
                             }
 
                             .number {
@@ -113,11 +117,13 @@
                                 font-family: PingFangSC-Regular, PingFang SC;
                                 font-weight: 400;
                                 color: #1A1A1A;
+                                opacity: 0.5;
                             }
 
                             span {
                                 display: block;
                                 margin-left: 10rpx;
+                                
                             }
                         }
                         .black {
