@@ -321,7 +321,7 @@ export default {
             } else if (type === 5) {
                 tempType = "timeNew";
             }
-            let interval = window.setInterval(function () {
+            let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
                 that[name] = that[tempType] + '秒后重新发送';
@@ -330,7 +330,7 @@ export default {
                     that[name] = "重新发送";
                     that[tempType] = 60;
                     that.getCodeStatus = false
-                    window.clearInterval(interval);
+                    clearInterval(interval);
                 }
             }, 1000);
         },

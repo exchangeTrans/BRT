@@ -329,7 +329,7 @@ export default {
         },
         setIntervalFun() {
             let that = this
-            let interval = window.setInterval(function () {
+            let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
                 that.spanName = that.time + '秒后重新发送';
@@ -338,7 +338,7 @@ export default {
                     that.spanName = "重新发送";
                     that.time = 60;
                     that.getCodeStatus = false
-                    window.clearInterval(interval);
+                    clearInterval(interval);
                 }
             }, 1000);
         },

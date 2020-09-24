@@ -65,6 +65,7 @@ export default {
             headerOptions: {
                 show: true,
                 isAllowReturn: true,
+                isWhiteIcon:true,
                 text: "",
                 rightItem: {
                     type: "text",
