@@ -8,12 +8,14 @@ export default {
         qrcodeComponents
     },
     mounted() {
-        let theme = this.$storage.getSync({key: 'theme'});
+        let theme = this.$storage.getSync({key: 'theme'})
+        let that = this
+        that.choiceType = this.$store.state.wallet.symbolType
         if (theme === 'white') {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "USTD收款",
+                text: that.choiceType.name + "收款",
                 rightItem: {
                     type: "text",
                     text: "充币记录",
@@ -34,7 +36,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "USTD收款",
+                text: that.choiceType.name + "收款",
                 rightItem: {
                     type: "text",
                     text: "充币记录",
@@ -62,13 +64,14 @@ export default {
             headerOptions: {},
             rightIcon: `${require('@/static/images/receipt/rightIcon.png')}`,
             data: {},
-            qrCodeStyle:{},
+            qrCodeStyle: {},
+            choiceType: {},
         }
     },
-    watch:{
-        data(v){
+    watch: {
+        data(v) {
             // console.log(v)
-            if(v.userWalletAddress){
+            if (v.userWalletAddress) {
                 this.$refs.qrcodeComponents.qrcodeScan(v.userWalletAddress);
             }
         }
@@ -95,7 +98,7 @@ export default {
         importAddress() {
 
         },
-        setQrcodeStyle(){
+        setQrcodeStyle() {
             let width = this.$refs.qrImg.$el.offsetWidth;
             let height = this.$refs.qrImg.$el.offsetHeight;
             this.qrCodeStyle = {
@@ -106,7 +109,7 @@ export default {
         getUserWalletAddress() {
             let that = this;
             let postParam = {
-                "symbolType": 6
+                "symbolType": that.choiceType.symbolType
             }
             this.$request({
                 url: "wallet/getUserWalletAddress",
@@ -115,7 +118,17 @@ export default {
             }).then((res) => {
                 if (res.result.returnCode === "0") {
                     that.data = res.data
+                } else {
+                    this.$toast.show({
+                        title: res.result.returnUserMessage
+                    })
                 }
+            })
+        },
+        rechargeRecord() {
+            this.$jumpPage.jump({
+                url: "addrecord/index",
+                type: "navigateTo"
             })
         }
     }

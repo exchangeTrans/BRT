@@ -61,7 +61,8 @@
 					period:'1min',
 					size:'200'
 				});
-				
+                this.$store.dispatch('getRate');
+
 			},
 			initPhoneMsg(){
 				//获取设备信息

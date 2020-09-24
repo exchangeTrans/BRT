@@ -1,20 +1,24 @@
 <template>
 	<view class="receipt" id="receipt" >
 
-		<appHeader :headerOptions="headerOptions"></appHeader>
+		<appHeader :headerOptions="headerOptions" @headertap="rechargeRecord"></appHeader>
 		<view class="content">
 
 			<view class="qrCode">
 				<view class="nameItem">
-					<view class="name">USDT</view>
+					<view class="name">{{choiceType.name}}</view>
 					<view class="intro">币种名称</view>
 					<view class="rightIcon" :style="{'background-image':'url('+rightIcon+')'}"></view>
 					<view class="clearfix"></view>
 				</view>
 
-				<view class="qrImg"></view>
+				<view class="qrImg" ref="qrImg">
+					<qrcodeComponents :url="data.userWalletAddress"
+									  :qrCodeStyle="qrCodeStyle"
+									  ref="qrcodeComponents"></qrcodeComponents>
+				</view>
 				<view class="rechargeTitle">充币地址</view>
-				<view class="rechargeTitle">usdtwe34895345793520304820384023574753</view>
+				<view class="rechargeTitle">{{data.userWalletAddress}}</view>
 				<view class="btnGroup">
 					<view class="btnItem"> 保存二维码</view>
 					<view class="btnItem  copy">复制地址</view>
@@ -164,7 +168,7 @@
 				}
 				.rechargeTitle{
 					margin-top: 20rpx;
-					padding:0 30rpx;
+					padding:0 10rpx;
 					box-sizing: border-box;
 					font-size: 28rpx;
 					font-family: PingFangSC-Regular, PingFang SC;

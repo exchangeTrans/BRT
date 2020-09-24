@@ -101,7 +101,9 @@
         },
         methods: {
             click(symbolType,url) {
-                this.propertyCardData.symbolType
+                let symbolName = this.propertyCardData.name
+                this.$store.commit("setSymbolType", {"symbolType": symbolType, "name": symbolName})
+
                 if(url !== ''){
                     this.$jumpPage.jump({
                         url: url,

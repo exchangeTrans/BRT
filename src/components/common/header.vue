@@ -56,6 +56,7 @@
                         'color':headerOptions.rightItem.style&&headerOptions.rightItem.style.color?headerOptions.rightItem.style.color:'',
                         'fontSize':headerOptions.rightItem.style&&headerOptions.rightItem.style.fontSize?headerOptions.rightItem.style.fontSize:'',
                         'fontFamily':headerOptions.rightItem.style&&headerOptions.rightItem.style.fontFamily?headerOptions.rightItem.style.fontFamily:'',
+                        'opacity':headerOptions.rightItem.style&&headerOptions.rightItem.style.opacity?headerOptions.rightItem.style.opacity:'',
                         'fontWeight':headerOptions.rightItem.style&&headerOptions.rightItem.style.fontWeight?headerOptions.rightItem.style.fontWeight:'',}">
                     {{headerOptions.rightItem.text}}
                 </div>

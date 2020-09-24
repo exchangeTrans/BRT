@@ -75,6 +75,18 @@ export default {
             isBlack: false,
         }
     },
+    watch: {
+        balanceTotal(val) {
+            this.amountTotal = this.freezeTotal + val
+        },
+        freezeTotal(val) {
+            this.amountTotal = this.balanceTotal + val
+        },
+        amountTotal(val) {
+            let rate = this.$store.state.wallet.rate.USDCNY
+            this.amountTotalRMB = val.replace(",", "") * rate
+        },
+    },
     methods: {
         getHome() {
             let that = this
@@ -84,16 +96,20 @@ export default {
             }).then((res) => {
                     if (res.result.returnCode === "0") {
                         let data = res.data
+                        var that = this
+                        that.freezeTotal = data.totalUsdtFrozen
+                        that.balanceTotal = data.totalUsdtBalance
                         data.list.forEach(i => {
-                            let obj = {
+                            i.asset = i.asset.replace(",", "")
+                            let a = {
                                 name: i.symbolTitle.toUpperCase(),
                                 money: i.asset,
-                                aboutMoney: i.asset / i.usdt,
+                                aboutMoney: i.asset * i.usdt,
                                 availableBalance: i.balance,
                                 lockBalance: i.frozen,
                                 symbolType: i.symbolType,
                             }
-                            that.propertyCardData.push(obj)
+                            that.propertyCardData.push(a)
                         })
                     } else {
                         this.$toast.show({

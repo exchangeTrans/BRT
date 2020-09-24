@@ -183,6 +183,12 @@
       }
     },
     {
+      "path": "pages/addrecord/index",
+      "style": {
+
+      }
+    },
+    {
       "path": "pages/set/index"
 	},
 	{
@@ -221,7 +227,7 @@
 	{
       "path":"pages/bonus/promoteBonus",
       "style": {
-		  
+
       }
     },
 
@@ -240,13 +246,13 @@
 	{
 	  "path":"pages/historylist/index",
 	  "style": {
-	
+
 	  }
 	},
-	
-	
-	
-	
+
+
+
+
    {
       "path":"blackPages/changePhone/index"
       //"style":
@@ -267,7 +273,12 @@
         //"navigationBarTitleText": "uni-app"
       }
     },
+    {
+      "path": "blackPages/addrecord/index",
+      "style": {
 
+      }
+    },
     {
       "path": "blackPages/receipt/index"
 	},

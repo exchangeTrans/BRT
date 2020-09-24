@@ -1,11 +1,11 @@
 <template>
     <view class="receipt" id="receipt">
 
-        <appHeader :headerOptions="headerOptions"></appHeader>
+        <appHeader :headerOptions="headerOptions" @headertap="rechargeRecord"></appHeader>
         <view class="content">
             <view class="qrCode">
                 <view class="nameItem">
-                    <view class="name">USDT</view>
+                    <view class="name">{{choiceType.name}}</view>
                     <view class="intro">币种名称</view>
                     <view class="rightIcon" :style="{'background-image':'url('+rightIcon+')'}"></view>
                     <view class="clearfix"></view>
@@ -118,7 +118,7 @@
 
                 .rechargeTitle {
                     margin-top: 20rpx;
-                    padding: 0 30rpx;
+                    padding: 0 10rpx;
                     box-sizing: border-box;
                     font-size: 28rpx;
                     font-family: PingFangSC-Regular, PingFang SC;
