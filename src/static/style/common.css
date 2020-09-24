@@ -461,6 +461,7 @@ uni-slider{
 uni-slider .uni-slider-handle{
     background:  linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 }
+
 /* .listenStatus uni-switch{
     height: 48rpx!important;
 }

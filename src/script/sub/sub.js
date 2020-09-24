@@ -32,7 +32,7 @@ export default {
                 show:true,
                 isAllowReturn:true,
                 isWhiteIcon:true,
-                text:"质押挖矿",
+                text:this.$t('sub').title,
                 rightItem:{
                     type:"text",
                     text:"",
