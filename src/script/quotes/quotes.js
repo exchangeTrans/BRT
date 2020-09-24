@@ -1,11 +1,15 @@
 import QuotesItem from "../../components/quotes/quotesItem";
-import pageHeader from '@/components/common/header.vue'
+import pageHeader from '@/components/common/header.vue';
+import pageFooter from '@/components/common/footer.vue';
+
 export default {
 
     name: "quotes",
     components: {
         QuotesItem,
         pageHeader,
+        pageFooter,
+
     },
     data() {
         return {

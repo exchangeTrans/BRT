@@ -46,6 +46,7 @@
                 </scroll-view>
             </view>
         </view>
+        <pageFooter/>
     </view>
 </template>
 
@@ -132,7 +133,7 @@
                 }
 
                 .quotes-content-wrap-container {
-                    height: calc(100vh - var(--status-bar-height) - 128rpx);
+                    height: calc(100vh - var(--status-bar-height) - 280rpx);
 
                     .quotes-content-wrap-container-list {
                         margin: 0 30rpx;

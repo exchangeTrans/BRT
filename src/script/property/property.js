@@ -1,11 +1,13 @@
 import pageHeader from '@/components/common/header.vue'
 import PropertyCard from "../../components/property/propertyCard";
+import pageFooter from '@/components/common/footer.vue';
 
 export default {
     name: "property",
     components: {
         PropertyCard,
-        pageHeader
+        pageHeader,
+        pageFooter,
     },
     mounted() {
         let theme = this.$storage.getSync({key: 'theme'});

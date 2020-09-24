@@ -7,11 +7,11 @@
             <view class="avatarText">
                 {{$t('personInfo').avatarText}}
             </view>
-            <view class="avatar"
-                  :style="{'background-image': avatarUrl}">
-
+            <view class="avatar">
+                <image :src="avatar"></image>
             </view>
             <view class="modify"
+                  @tap="ChooseImage"
                   :style="{'background-image': modifyUrl}">
 
             </view>
@@ -23,11 +23,11 @@
             <view class="nickname">
                 {{nickname}}
             </view>
-            <view class="modify"
+            <!--<view class="modify"
                   @tap="ChooseImage"
                   :style="{'background-image': modifyUrl}">
 
-            </view>
+            </view>-->
         </view>
         <view class="personalInfoBtn"
               @tap="saveBtnClick">
@@ -71,7 +71,12 @@
                 top: 50%;
                 transform: translateY(-50%);
                 right: 98rpx;
-                border-radius: 50%;
+                /*border-radius: 50%;*/
+                image {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
             }
 
             .modify {

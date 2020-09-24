@@ -215,9 +215,9 @@ export default {
                             data: loginMsg,
                         });
                         this.$jumpPage.jump({
-                            type: 'switchTab',
+                            type:'reLaunch',
                             url: 'index/index'
-                        })
+                        });
                     } else {
                         this.$toast.show({
                             title: res.result.returnMessage,
