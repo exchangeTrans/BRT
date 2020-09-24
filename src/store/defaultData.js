@@ -10,16 +10,19 @@ export default {
                 {
                     name: 'zh-CN',
                     text: '中文',
+                    icon: `${require('@/static/images/user/Chinese.png')}`,
                     code: 1
                 },
                 {
                     name: 'en-US',
                     text: '英文',
+                    icon: `${require('@/static/images/user/UK.png')}`,
                     code: 2
                 },
                 {
                     name: 'ko-KR',
                     text: '韩文',
+                    icon: `${require('@/static/images/user/Korea.png')}`,
                     code: 3
                 },
             ],
@@ -27,6 +30,7 @@ export default {
                 {
                     name: 'zh-CN',
                     text: 'Chinese',
+                    icon: `${require('@/static/images/user/Chinese.png')}`,
                     code: 1
                 },
                 {
@@ -66,36 +70,36 @@ export default {
                 code:'index',
                 pagePath: "index/index",
                 text: "首页",
-                iconPath: "static/images/tabIcon/home_normal.png",
-                selectedIconPath: "static/images/tabIcon/home.png"
+                iconPath: `url(${require('@/static/images/tabIcon/home_normal.png')})`,
+                selectedIconPath: `url(${require('@/static/images/tabIcon/home.png')})`
             },
             {
                 code:'quotes',
                 pagePath: "quotes/quotes",
                 text: "行情",
-                iconPath: "static/images/tabIcon/market_normal.png",
-                selectedIconPath: "static/images/tabIcon/market.png"
+                iconPath: `url(${require('@/static/images/tabIcon/market_normal.png')})`,
+                selectedIconPath: `url(${require('@/static/images/tabIcon/market.png')})`
             },
             {
                 code:'trades',
                 pagePath: "trades/index",
                 text: "交易",
-                iconPath: "static/images/tabIcon/deal_normal.png",
-                selectedIconPath: "static/images/tabIcon/deal.png"
+                iconPath: `url(${require('@/static/images/tabIcon/deal_normal.png')})`,
+                selectedIconPath: `url(${require('@/static/images/tabIcon/deal.png')})`
             },
             {
                 code:'property',
                 pagePath: "property/property",
                 text: "资产",
-                iconPath: "static/images/tabIcon/property_normal.png",
-                selectedIconPath: "static/images/tabIcon/property.png"
+                iconPath: `url(${require('@/static/images/tabIcon/property_normal.png')})`,
+                selectedIconPath: `url(${require('@/static/images/tabIcon/property.png')})`
             },
             {
                 code:'user',
                 pagePath: "user/user",
                 text: "我的",
-                iconPath: "static/images/tabIcon/user_normal.png",
-                selectedIconPath: "static/images/tabIcon/user.png"
+                iconPath: `url(${require('@/static/images/tabIcon/user_normal.png')})`,
+                selectedIconPath: `url(${require('@/static/images/tabIcon/user.png')})`
             }
         ],
         footerSelected:{
@@ -109,17 +113,21 @@ export default {
             'zh-CN': [
                 {
                     name: '人民币',
+                    code: "RMB",
+                    img: `${require('@/static/images/set/rmb.png')}`,
                     code: "CNY",
                     unit:'¥'
                 },
                 {
                     name: '美元',
                     code: "USD",
+                    img: `${require('@/static/images/set/dollar.png')}`,
                     unit:'$'
                 },
                 {
                     name: '韩元',
                     code: "KRW",
+                    img: `${require('@/static/images/set/yen.png')}`,
                     unit:'₩'
                 },
             ],
@@ -127,16 +135,20 @@ export default {
                 {
                     name: '人民币',
                     code: "CNY",
+                    code: "RMB",
+                    img: `${require('@/static/images/set/rmb.png')}`,
                     unit:'¥'
                 },
                 {
                     name: '美元',
                     code: "USD",
+                    img: `${require('@/static/images/set/dollar.png')}`,
                     unit:'$'
                 },
                 {
                     name: '韩元',
                     code: "KRW",
+                    img: `${require('@/static/images/set/yen.png')}`,
                     unit:'₩'
                 },
             ],
@@ -144,16 +156,19 @@ export default {
                 {
                     name: '人民币',
                     code: "RMB",
+                    img: `${require('@/static/images/set/rmb.png')}`,
                     unit:'¥'
                 },
                 {
                     name: '美元',
                     code: "USD",
+                    img: `${require('@/static/images/set/dollar.png')}`,
                     unit:'$'
                 },
                 {
                     name: '韩元',
                     code: "KRW",
+                    img: `${require('@/static/images/set/yen.png')}`,
                     unit:'₩'
                 },
             ]

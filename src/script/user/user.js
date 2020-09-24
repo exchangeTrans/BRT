@@ -11,24 +11,35 @@ export default {
         return {
             listItemData: [
                 {
-                    name: "修改绑定手机邮箱",
-                    path: "",
-                    img: `${require('@/static/images/user/alter.png')}`,
-                },
-                {
                     name: "修改密码",
                     path: "login/forgetPassword",
                     img: `${require('@/static/images/user/password.png')}`,
                 },
                 {
-                    name: "分享链接",
+                    name: "实名认证",
+                    path: "",
+                    img: `${require('@/static/images/user/auth.png')}`,
+                },
+                {
+                    name: "推广链接",
                     path: "aboutUs/index",
                     img: `${require('@/static/images/user/link.png')}`,
+                },
+
+                {
+                    name: "公告列表",
+                    path: "",
+                    img: `${require('@/static/images/user/announcement.png')}`,
                 },
                 {
                     name: "联系客服",
                     path: "",
                     img: `${require('@/static/images/user/service.png')}`,
+                },
+                {
+                    name: "修改绑定手机邮箱",
+                    path: "",
+                    img: `${require('@/static/images/user/alter.png')}`,
                 },
                 {
                     name: "设置",
@@ -59,7 +70,7 @@ export default {
                     name: "版本",
                     path: "",
                     img: `${require('@/static/images/user/version.png')}`,
-                    url: "https://drrfffs.brt.com/",
+                    url: "v1.15",
                 },
             ],
             btnText: "退出登录",

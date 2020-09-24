@@ -12,7 +12,7 @@
                 >
                     <image :src=item.icon alt=""/>
                     <view class="name">
-                        {{item.name}}
+                        {{item.text}}
                     </view>
                     <view class="selected" :style="{'background-image':'url('+selectedIcon+')'}" v-if="selectedObj.name===item.name">
 
@@ -36,6 +36,13 @@
         },
         computed: {
 
+        },
+        mounted() {
+            let langMsg = this.$storage.getSync({key:'langMsg'});
+            let langArray = this.$store.state.defaultData.langArray;
+            this.selectedObj = langMsg;
+            this.countryData = langArray[langMsg.name];
+            
         },
         data() {
             return {
@@ -63,29 +70,31 @@
                     //     AreaCode: "+49",
                     //     icon: `${require('@/static/images/user/Germany.png')}`,
                     // },
-                     {
-                        name: "简体中文",
-
-                        icon: `${require('@/static/images/user/Chinese.png')}`,
-                    },
-                    {
-                        name: "English",
-
-                        icon: `${require('@/static/images/user/UK.png')}`,
-                    },
-                    {
-                        name: "한국어",
-
-                        icon: `${require('@/static/images/user/Korea.png')}`,
-                    }, /*{
-                        name: "日本",
-                        AreaCode: "+82",
-                        icon: `${require('@/static/images/user/Japan.png')}`,
-                    }*/
+                    //  {
+                    //     name: "简体中文",
+                    //     nameCode:"zh-CN",
+                    //     icon: `${require('@/static/images/user/Chinese.png')}`,
+                    // },
+                    // {
+                    //     name: "English",
+                    //     nameCode:"en-US",
+                    //     icon: `${require('@/static/images/user/UK.png')}`,
+                    // },
+                    // {
+                    //     name: "한국어",
+                    //     nameCode:"ko-KR",
+                    //     icon: `${require('@/static/images/user/Korea.png')}`,
+                    //}, /*{
+                    //     name: "日本",
+                    //     AreaCode: "+82",
+                    //     icon: `${require('@/static/images/user/Japan.png')}`,
+                    //}*/
                 ],
                 selectedObj:{
-                    name: "简体中文",
+                    name: 'zh-CN',
+                    text: '中文',
                     icon: `${require('@/static/images/user/Chinese.png')}`,
+                    code: 1
                 },
                 selectedIcon:`${require('@/static/images/user/select.png')}`,
             }
@@ -93,6 +102,7 @@
         methods: {
             chooseItem(item) {
                 this.selectedObj=item;
+                this.$emit('chooseItem',item);
             },
         }
     }

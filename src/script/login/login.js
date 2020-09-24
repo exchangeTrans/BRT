@@ -213,7 +213,7 @@ export default {
             }
         },
         getPostData() {
-            debugger
+            // debugger
             let accountType = this.type === 'PHONE' ? 0 : 1;//0手机 1邮箱
             let dialingCode = this.chooseCountry.dialingCode;
             let countryCode = this.chooseCountry.countryCode;

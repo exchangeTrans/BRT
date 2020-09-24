@@ -16,6 +16,7 @@
 			this.initPhoneMsg();
 			this.initLoginMsg();
 			this.initLangMsg();
+			// this.initCurrencyMsg();
 			this.initStoreData();
 			let that = this;
 			// uni.onSocketOpen(function (res) {
@@ -108,6 +109,19 @@
 					data: langMsg
 				});
 			},
+            /*initCurrencyMsg(){
+			    let storeCurrencyMsg = this.$storage.getSync({key:'selectedCurrency'});
+			    let currencyMsg = {
+                    name: '人民币',
+                    code: "RMB",
+                    unit:'¥'
+                }
+                currencyMsg = storeCurrencyMsg?storeCurrencyMsg:currencyMsg;
+                this.$storage.setSync({
+                    key: "langMsg",
+                    data: currencyMsg
+                });
+            }*/
 		}
 	}
 </script>
