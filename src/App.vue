@@ -56,6 +56,8 @@
 		methods: {
 			initStoreData(){
 				this.$store.dispatch('getCountryList');
+				this.$store.dispatch('getRange');
+				
 				this.$store.dispatch('getKline',{
 					symbol:'XRP',
 					period:'1min',
