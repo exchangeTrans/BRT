@@ -24,9 +24,9 @@ export default {
                     url:'earnings/index'
                 },
                 {
-                    text: '公告列表',
-                    img: `${require('@/static/images/home/notice.png')}`,
-                    url:'noticelist/index'
+                    text: '智能合约',
+                    img: `${require('@/static/images/home/agreement.png')}`,
+                    url:'#'
                 },
                 {
                     text: '节点矿池',
@@ -47,7 +47,7 @@ export default {
                 {
                     text: '上币申请',
                     img: `${require('@/static/images/home/apply.png')}`,
-                    url:'sub/index'
+                    url:'#'
                 },
 
             ],
