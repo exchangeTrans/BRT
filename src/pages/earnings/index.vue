@@ -90,7 +90,7 @@
 			</view>
 			<view class="btnGroup">
 				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'转入加仓'" v-if="selectedTab==='earningInfo'"
-				 @btnClick="addStorehouse"></earningBtn>
+				 @btnClick="transferInAmount"></earningBtn>
 				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'下载韩亚量化App'" v-if="selectedTab==='data'"
 				 @btnClick="downloadAPP"></earningBtn>
 			</view>
