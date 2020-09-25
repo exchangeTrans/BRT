@@ -133,7 +133,7 @@
                 }
 
                 .quotes-content-wrap-container {
-                    height: calc(100vh - var(--status-bar-height) - 280rpx);
+                    height: calc(100vh - var(--status-bar-height) - 278rpx);
 
                     .quotes-content-wrap-container-list {
                         margin: 0 30rpx;

@@ -40,7 +40,13 @@ export default {
                 background: '#00001A',
                 headerIsNoBoder: true,
             }
-        };
+        }
+
+        if(theme === 'white'){
+            this.modelFlag = 'day'//day 白天模式；night 黑夜模式
+        }else if(theme === 'black') {
+            this.modelFlag = 'night'
+        }
 
         //获取语言信息
         let langMsg = this.$storage.getSync({key:'langMsg'});
@@ -118,7 +124,14 @@ export default {
         },
 
         btnClick(){
+            let modelFlag = this.modelFlag
+            if(modelFlag === 'night'){
+                this.$storage.setSync({key: "theme", data: "black"});
+            }else if(modelFlag === 'day') {
+                this.$storage.setSync({key: "theme", data: "white"});
+            }
             //币种
+
             this.$store.commit("setDefaultSync", {
                 key: "selectedCurrency",//币种
                 val: this.selectedObj,
@@ -128,6 +141,11 @@ export default {
             //语言
             // let langData = langArray[langMsg]
             this.$storage.setSync({key: "langMsg", data: this.languageItem});
+
+            this.$jumpPage.jump({
+                type: 'reLaunch',
+                url: 'user/user',
+            })
 
         },
     }

@@ -181,6 +181,7 @@ export default {
         //当前选择币种
         selectedCurrency: {
             name: '人民币',
+            img: `${require('@/static/images/set/rmb.png')}`,
             code: "CNY",
             unit: '¥'
         },

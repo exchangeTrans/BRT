@@ -18,6 +18,7 @@
                 <view class="clearfix"></view>
             </view>
 
+            <!--显示币种-->
             <view class="currency">
                 <view class="currencyTitle">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
@@ -34,14 +35,15 @@
                 <view class="currencyText">{{item.name}}（{{item.code}}）</view>
                 <view class="selected"
                       :style="{'background-image':'url('+selectedIcon+')'}"
-                      v-if="selectedObj.code===item.code">
+                      v-if="selectedObj.name===item.name">
                 </view>
             </view>
-
+            
+            <!--显示语言-->
             <view class="currency">
                 <view class="currencyTitle">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
-                    显示币种
+                    显示语言
                 </view>
 
             </view>
@@ -153,6 +155,7 @@
                 height: 100rpx;
                 line-height: 100rpx;
                 border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+                position: relative;
 
                 .currencyIcon {
                     display: inline-block;

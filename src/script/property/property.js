@@ -26,6 +26,19 @@ export default {
             this.isBlack = false;
         } else {
             this.headerOptions = {
+                /*show: true,
+                isAllowReturn: false,
+                text: "资产",
+                rightItem: {
+                    type: "text",
+                    text: "",
+                },
+                style:{
+                    'color':'#D9DADB'
+                },
+                background: '#00001A',
+                headerIsNoBoder: true,*/
+
                 show: true,
                 isAllowReturn: false,
                 text: "资产",
@@ -36,7 +49,7 @@ export default {
                 style: {
                     'color': '#D9DADB'
                 },
-                background: '#00001A',
+                background: '#00001A !important',
                 headerIsNoBoder: true,
             };
             this.isBlack = true;

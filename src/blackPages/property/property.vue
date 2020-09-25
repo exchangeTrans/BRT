@@ -35,7 +35,7 @@
                           :key="index">
                         <PropertyCard :propertyCardData="item"
                                       :column="2"
-                                      :propertyOption="propertyOption"></PropertyCard>
+                                      :propertyOption="propertyOption" :isBlack="isBlack"></PropertyCard>
                     </view>
                 </view>
             </view>
@@ -57,7 +57,7 @@
         .property-wrap {
             width: 100%;
             box-sizing: border-box;
-            height: calc(100vh - var(--status-bar-height) - 220rpx);
+            height: calc(100vh - var(--status-bar-height) - 216rpx);
             background: #22252A;
             .property-wrap-content {
                 width: 690rpx;

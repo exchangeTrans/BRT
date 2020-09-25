@@ -10,7 +10,8 @@
                     日夜模式
                 </view>
                 <view class="chooseModel">
-                    <view :class="modelFlag==='day'?'chooseItem active':'chooseItem'" @tap="chooseModel('day')">日间模式
+                    <view :class="modelFlag==='day'?'chooseItem active':'chooseItem'"
+                          @tap="chooseModel('day')">日间模式
                     </view>
                     <view :class="modelFlag==='night'?'chooseItem active night':'chooseItem night'"
                           @tap="chooseModel('night')">夜晚模式
@@ -35,7 +36,7 @@
                 <view class="currencyText">{{item.name}}（{{item.code}}）</view>
                 <view class="selected"
 					  :style="{'background-image':'url('+selectedIcon+')'}"
-                      v-if="selectedObj.code===item.code">
+                      v-if="selectedObj.name===item.name">
                 </view>
             </view>
 
