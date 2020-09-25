@@ -87,6 +87,8 @@ export const mySocket={
         let ch = data.ch;
         if(ch.indexOf('detail')>-1&&data.tick){
             mySocket.upDataRangeData(data)
+        }else if(ch.indexOf('depth')>-1){
+            mySocket.upDataDepthData(data)
         }
     },
     upDataRangeData(data){
@@ -127,9 +129,21 @@ export const mySocket={
           store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
         //   store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
     },
+    upDataDepthData(data){
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let symbol = data.symbol;
+        if(tradePairData.id===symbol){
+            let KLineTradingPairObj = {
+                ...KLineTradingPair,
+                depth:data.tick
+            }
+            store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+        }
+    },
     //socket 订阅行情
     onopen:function(){
         let tradePairData = store.state.tradeData.tradePairData;
+        
 
          
                 // let data = {
@@ -144,39 +158,56 @@ export const mySocket={
                 // mySocket.subscribe(data);   
                 // mySocket.subscribe(data); 
         let subArray = [];
-        tradePairData.forEach((element,index) => {           
-            let str = element.name + element.type;
-            str = str.toLowerCase();
-            let sub="market."+str+".detail"
-            if(element.isLocal){
-                let data = {
-                    sub:sub,
-                    // sub:"market.all.detail",
-                    // period:"1min",
-                    id: 'marketDetail_local',
-                    isLocal:element.isLocal
+        // tradePairData.forEach((element,index) => {           
+        //     let str = element.name + element.type;
+        //     str = str.toLowerCase();
+        //     let sub="market."+str+".detail"
+        //     if(element.isLocal){
+        //         let data = {
+        //             sub:sub,
+        //             // sub:"market.all.detail",
+        //             // period:"1min",
+        //             id: 'marketDetail_local',
+        //             isLocal:element.isLocal
                     
-                } 
-                mySocket.subscribe(data); 
+        //         } 
+        //         mySocket.subscribe(data); 
 
-            }else{
-                subArray.push(sub)
-                if(index===tradePairData.length-1){
-                    let data = {
-                        sub:subArray.join(','),
-                        // sub:"market.all.detail",
-                        // period:"1min",
-                        id: 'marketDetail',
-                        isLocal:element.isLocal
+        //     }else{
+        //         subArray.push(sub)
+        //         if(index===tradePairData.length-1){
+        //             let data = {
+        //                 sub:subArray.join(','),
+        //                 // sub:"market.all.detail",
+        //                 // period:"1min",
+        //                 id: 'marketDetail',
+        //                 isLocal:element.isLocal
                         
-                    } 
-                    mySocket.subscribe(data); 
-                }
-            }
+        //             } 
+        //             mySocket.subscribe(data); 
+        //         }
+        //     }
             
                                 
-        });
+        // });
+        mySocket.subscribeDepth()
         
+    },
+    subscribeDepth(){
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".depth.step1"
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            // period:"1min",
+            id: 'marketdepth',
+            isLocal:KLineTradingPair.isLocal
+            
+        } 
+        mySocket.subscribe(data); 
+    
     },
     //订阅主题
     subscribe:function(data){

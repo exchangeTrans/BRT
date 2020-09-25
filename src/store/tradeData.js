@@ -4,6 +4,18 @@ const INITQUOTATIONDATA = 'INITQUOTATIONDATA'; // 基本设置
 
 export default {
   state: {
+  symbolDefaultData:{
+    BTC:1,
+    ETH:2,
+    BCH:3,
+    LTC:4,
+    XMR:5,
+    USDT:6,
+    XRP:7,
+    BRT:9,
+    EOS:10,
+    DASH:11,
+  },
     tradingPairIntroduction:{
       BRT:{
         'zh-CN':{
@@ -90,13 +102,14 @@ export default {
     },
     KLineTradingPair:{
       type:'USDT',
-      name:'BRT',
-      id:'brtusdt',
+        name:'BTC',
+        id:'btcusdt',
       range:0,
       price:0.00,
       nowData:null,
+      depth:null,
       dataArray:[],
-      isLocal:true,
+      isLocal:false,
     },
     tradingSymol: [
         {name:'BRT',isLocal:true},
