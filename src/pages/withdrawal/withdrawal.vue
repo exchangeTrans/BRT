@@ -7,7 +7,7 @@
                     <view class="withdrawal-wrap-container-item"
                           v-for="(item, index) in inputDatas"
                           :key="index">
-                        <WithdrawalInput :inputData="item"></WithdrawalInput>
+                        <WithdrawalInput :inputData="item" @inputChange="inputChange(item.name, $event)"></WithdrawalInput>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-text">
@@ -34,7 +34,7 @@
                          :backgroundColor="BtnackgroundColor"
                          width="690rpx"
                          borderRadius="50rpx"></Btn>-->
-                    <view class="btn-wrap">
+                    <view class="btn-wrap" :class="{'canClick': btnCanClick, 'cannotClick': !btnCanClick}">
                         <span>提币</span>
                     </view>
                 </view>
@@ -126,7 +126,6 @@
                     .btn-wrap {
                         width: 710rpx;
                         height: 100rpx;
-                        background: linear-gradient(136deg, #8C939B 0%, #B4BBC0 50%, #C5C5C5 100%);
                         border-radius: 50rpx;
                         opacity: 0.4;
                         margin: 0 auto;
@@ -139,6 +138,12 @@
                             font-weight: 400;
                             color: #FFFFFF;
                         }
+                    }
+                    .canClick {
+                        background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
+                    }
+                    .cannotClick {
+                        background: linear-gradient(136deg, #8C939B 0%, #B4BBC0 50%, #C5C5C5 100%);
                     }
                 }
             }

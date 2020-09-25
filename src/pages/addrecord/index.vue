@@ -30,7 +30,7 @@
         height: 30rpx;
         width: 100%;
         background: #F8F8F8;
-        margin-top: 90rpx;
+        margin-top: 42rpx;
     }
     .record-wrap {
         height: calc(100vh - var(--status-bar-height) - 100rpx);
@@ -53,5 +53,6 @@
 		color: #000000;
 		line-height: 40rpx;
 		text-align: center;
-	}
+        opacity: 0.5;
+    }
 </style>

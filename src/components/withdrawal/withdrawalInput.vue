@@ -7,7 +7,7 @@
                         <span>{{inputData.textTitle}}</span>
                     </view>
                     <view class="withdrawalInput-item-content">
-                        <input type="text" :placeholder="inputData.placeholder">
+                        <input type="text" :placeholder="inputData.placeholder" @input="inputChange($event)">
                         <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
                                 <span>{{inputData.rightItem.text}}</span>
@@ -49,6 +49,12 @@
                 scan: `${require('@/static/images/withdrawal/scan.png')}`,
             }
         },
+        methods: {
+            inputChange(e) {
+                let value = e.detail.value;
+                this.$emit('inputChange', value)
+            }
+        }
     }
 </script>
 

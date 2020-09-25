@@ -68,6 +68,12 @@
       }
     },
     {
+      "path": "pages/withdrawal/success",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
       "path": "pages/promotion/promotion",
       "style": {
         //"navigationBarTitleText": ""

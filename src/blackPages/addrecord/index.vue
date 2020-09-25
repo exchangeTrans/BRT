@@ -30,7 +30,7 @@
 		height: 30rpx;
 		width: 100%;
 		background: #22252A;
-		margin-top: 90rpx;
+		margin-top: 42rpx;
 	}
 	.record-wrap{
 		background: #22252A;
@@ -60,5 +60,6 @@
 		color:#D9DADB;
 		line-height: 40rpx;
 		text-align: center;
+		opacity: 0.5;
 	}
 </style>

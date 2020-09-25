@@ -83,7 +83,7 @@ export default {
                     text:"收款",
                 },
                 {
-                    url:"",
+                    url:"withdrawal/withdrawal",
                     text:"转账",
                 },
             ],

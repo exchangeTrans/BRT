@@ -15,7 +15,7 @@
 </template>
 
 <script src="@/script/noticelist/noticelist.js">
-	
+
 </script>
 
 <style lang="less">

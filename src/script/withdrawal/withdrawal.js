@@ -36,6 +36,10 @@ export default {
             },
             btnText: "提币",
             BtnackgroundColor: "#8C939B",
+            btnCanClick: false,
+            btnCorrectNum: 0,
+            postData: {},
+            symbolDetail: {},
 
             inputDatas: [
                 {
@@ -45,6 +49,7 @@ export default {
                         type: "isIcon",//isText isBtn isIcon
                         text: "BRT",
                     },
+                    name: "address",
                 },
                 {
                     textTitle: "数量",
@@ -53,7 +58,8 @@ export default {
                         type: "isText",//isText isBtn isIcon
                         text: "BRT",
                     },
-                    // haveTip: "余额：0.562 BRT"
+                    haveTip: "余额：0.562 BRT",
+                    name: "amount"
                 },
                 {
                     textTitle: "手续费",
@@ -62,7 +68,8 @@ export default {
                         type: "isText",//isText isBtn isIcon
                         text: "BRT",
                     },
-                    haveTip: "余额：0.562 BRT"
+                    // haveTip: "余额：0.562 BRT"
+                    name: "",
                 }
             ],
             phoneInput: {
@@ -77,11 +84,12 @@ export default {
     },
     mounted() {
         let theme = this.$storage.getSync({key:'theme'});
+        let symbolType = this.$store.state.wallet.symbolType
         if(theme === 'white'){
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "BRT 提币",
+                text: symbolType.symbolType + " 提币",
                 rightItem: {
                     type: "text",
                     text: "提现记录",
@@ -102,7 +110,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "BRT 提币",
+                text: symbolType.symbolType + " 提币",
                 rightItem: {
                     type: "text",
                     text: "提现记录",
@@ -127,10 +135,39 @@ export default {
             this.isBlack = true;
             this.BtnackgroundColor = "#8C939B";
         }
+        this.getSymbolDetail()
+    },
+    watch: {
+        postData(val) {
+            console.log(val)
+        }
     },
     methods: {
         headertap(type) {
             // console.log(type)
+        },
+        inputChange(name, e) {
+            console.log(name)
+            console.log(e)
+        },
+        getSymbolDetail() {
+            let symbolType = this.$store.state.wallet.symbolType
+            console.log(symbolType)
+            let param = {symbolType: symbolType.symbolType}
+
+            this.$request({
+                url: "wallet/getSymbolDetail",
+                method: "post",
+                params: param
+            }).then(res => {
+                let that = this
+                if (res.result.returnCode.toString() === "0") {
+                    that.symbolDetail = res.data
+                    console.log(that.inputDatas[1])
+                    that.inputDatas[1].placeholder = "最小提币数量" + res.data.withdrwaMin
+                    that.inputDatas[1].haveTip = "余额：" + res.data.symbolBalance + " " + res.data.symbolTitle
+                }
+            })
         }
     }
 }
