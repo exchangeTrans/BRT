@@ -211,7 +211,7 @@ export default {
     
     computed:{
         quotationData(){
-            return this.$store.state.tradeData.quotationData;
+            return this.$store.state.tradeData.tradePairData;
         },
         // tradeNoticeData(){
         // 	return this.$store.state.tradeData.tradeNoticeData;

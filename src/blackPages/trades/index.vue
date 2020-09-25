@@ -1,18 +1,19 @@
 <template>
 	<view>
 		<view class="head">
-			<view class="headleft">币币交易</view>
-			<view class="headright">合约交易</view>
+			<view @tap="selectTradeHeader(item)" :class="selectHeader.code===item.code?'headItem active headItem'+index:'headItem headItem'+index" v-for="(item,index) in headerData" :key="item.code">{{item.name}}</view>
 		</view>
 		<scroll-view class="tradesContent" scroll-y>
 		<view class="msg">
 			<view class="msgleft">
-				<image @click="showmask=true" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
-				<text class="tradetype">LED/HDU</text>
+				<image @click="showDrawer" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
+				<text class="tradetype">{{KLineTradingPair.name}}/{{KLineTradingPair.type}}</text>
 			</view>
 			<view class="msgright">
-				<image src="../../static/images/trades/headright.png" mode="" class="righticon"></image>
-				<view class="change">+1.46%</view>
+				<image src="../../static/images/trades/headright.png" mode=""  class="righticon"></image>
+				<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>						
+				<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
+				<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
 			</view>
 		</view>
 		<view class="main">
@@ -21,24 +22,25 @@
 					<image src="../../static/images/trades/bluebg.png" mode=""></image>
 					<view class="income">买入</view>
 				</view>
-
+				
 				<view class="sale">
-					<image src="../../static/images/trades/blackbg.png" mode=""></image>
+					<image src="../../static/images/trades/whitebg.png" mode=""></image>
 					<view class="fonts">卖出</view>
 				</view>
-
+				
 				<view class="charge">
-					<image src="../../static/images/trades/blacksub.png" mode="" class="sub"></image>
+					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
 					<input placeholder="价格(HDU)" class="charge_name" type="number" min="0">
-					<image src="../../static/images/trades/blackadd.png" mode="" class="add"></image>
+					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
 				</view>
-
+				
 				<view class="num">
-					<image src="../../static/images/trades/blacksub.png" mode="" class="sub"></image>
+					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
+					<!-- <text class="charge_num">数量(LED)</text> -->
 					<input placeholder="数量(LED)" class="charge_num" type="number" min="0">
-					<image src="../../static/images/trades/blackadd.png" mode="" class="add"></image>
+					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
 				</view>
-
+				
 				<view class="hdunum">可用：0 HDU</view>
 				<view class="hdupercent">
 					<view class="precent">25%</view>
@@ -54,14 +56,14 @@
 					<view class="money">价格</view>
 					<view class="lednum">数量</view><br>
 					<view v-for="(item,id) in tradesOptions_list" :key="id">
-						<data-list :colorOptions="green" type='1' :tradesOptions="item"></data-list>
+						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
 					</view>
-
+					
 				</view>
-
+				
 				<view class="charge_exchange">
-					<view class="exchange_rate1">0.0653</view>
-					<view class="exchange_rate2">≈6.66CNY</view>
+					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
+					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
 				<view class="charge_and_num">
 					<view v-for="(item,id) in tradesOptions_list" :key="id">
@@ -78,7 +80,7 @@
 		<view class="line"></view>
 		<view class="footer">
 			<view class="descript">当前委托</view>
-			<view class="historylog">
+			<view class="historylog" @click="gohistorylog">
 				<image src="../../static/images/trades/historylog.png" mode="" class="clock"></image>
 				<view class="fontlog">历史记录</view>
 			</view>
@@ -90,22 +92,25 @@
 				<view v-for="(item,id) in historylogdata_list" :key="id">
 					<historylog :historylogdata="item"></historylog>
 				</view>
-			<!-- </scroll-view>/ -->
-
+			<!-- </scroll-view> -->
+			
 		</view>
-		<view class="blackindex" v-if="showmask">
+		
+		<!-- <view class="blackindex" v-if="showmask">
 			<view class="whiteindex">
-				<view class="time">9:41</view>
 				<view class="whitefont">币币交易</view>
 				<scroll-view scroll-y="true" class="listh">
-					<view v-for="(item,id) in tradelistOptions" :key="item.id">
+					<view v-for="(item,index) in tradelistOptions" :key="index">
 						<tradelist :tradelistOptions="item"></tradelist>
 					</view>
 				</scroll-view>
 			</view>
 			<view class="rightmsg" @click="showmask=false"></view>
-		</view>
+		</view> -->
 		</scroll-view>
+		<uniDrawer ref="showLeft" mode="left" :width="280" @change="change($event,'showLeft')">
+			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair"></tradelist>
+		</uniDrawer>
 		<pageFooter/>
 	</view>
 </template>
@@ -118,35 +123,40 @@
 		text-align: center;
 		line-height: 100rpx;
 		font-size: 40rpx;
+		height: calc(100rpx + var(--status-bar-height));
 		// border-bottom: 2rpx #E3E5E6 solid;
-		color: #1A1A1A;
 		font-family: PingFangSC-Semibold, PingFang SC;
-		background: #00001A;
+		padding-top: calc(20rpx + var(--status-bar-height));
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
+		box-sizing: border-box;
 	}
 
-	.headleft {
-		width: 172rpx;
-		height: 60rpx;
-		background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
-		border-radius: 16rpx 0px 0px 16rpx;
-		color: #EFF3F9;
-		font-size: 24rpx;
-		line-height: 60rpx;
-		float: left;
-		margin-left: 200rpx;
-		margin-top: 20rpx;
-	}
-
-	.headright {
+	.headItem{
 		width: 172rpx;
 		height: 60rpx;
 		background: #EFF3F9;
-		border-radius: 0px 16rpx 16rpx 0px;
 		color: #098FE0;
 		font-size: 24rpx;
 		line-height: 60rpx;
-		float: left;
-		margin-top: 20rpx;
+		// border-radius: 16rpx 0px 0px 16rpx;
+		// float: left;
+	}
+	.headItem.active{
+		width: 172rpx;
+		height: 60rpx;
+		background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
+		color: #EFF3F9;
+		font-size: 24rpx;
+		line-height: 60rpx;
+		
+	}
+	.headItem0{
+		border-radius: 16rpx 0px 0px 16rpx;
+	}
+	.headItem1{
+		border-radius: 0px 16rpx 16rpx 0px;
 	}
 	.tradesContent{
 		width: 100vw;
@@ -195,18 +205,23 @@
 
 			}
 
-			.change {
+			.change{
 				width: 116rpx;
 				height: 40rpx;
 				line-height: 40rpx;
-				background-color: #FC3C5A;
+				background-color: #8D989E;
 				float: right;
 				font-size: 24rpx;
 				color: #FFFFFF;
 				text-align: center;
 				margin-right: 20rpx;
 				border-radius: 5rpx;
-				color: #FFFFFF;
+			}
+			.change.up{
+				background-color: #FC3C5A;
+			}
+			.change.down{
+				background-color: #5BC788;
 			}
 		}
 	}

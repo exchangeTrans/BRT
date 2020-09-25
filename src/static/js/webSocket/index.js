@@ -6,7 +6,8 @@ let socketStatus = false;
 let setIntervalWesocketPush = null;
 // let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
-let socketUrl = "ws://13.125.88.118:8188/ws/market"
+// let socketUrl = "ws://13.125.88.118:8188/ws/market"
+let socketUrl = "ws://52.78.213.185:8188/ws/market"
 
 let ping = 1492420473027;
 let socketArray=[];
@@ -94,12 +95,22 @@ export const mySocket={
         let tick = data.tick;
         let rangeList = store.state.defaultData.rangeData;
         let selectedCurrency = store.state.defaultData.selectedCurrency.code;
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let newData = tradePairData.map(function (item) {
             
             if(item.id===symbol){
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
                 let code = item.type+selectedCurrency
-                let price = Number(rangeList[code])*tick.close;
+                let price = Number(rangeList[code])*tick.close; 
+                if(KLineTradingPair.id === item.id){
+                    let KLineTradingPairObj = {
+                        ...KLineTradingPair,
+                        range:range,
+                        nowData:data.tick,
+                        price:price.toFixed(6)
+                    }
+                    store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+                }
                 // console.log(item.type+selectedCurrency)
               return {
                 ...item,
@@ -113,12 +124,13 @@ export const mySocket={
             }
               
           });
-          console.log(newData)
           store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
+        //   store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
     },
     //socket 订阅行情
     onopen:function(){
         let tradePairData = store.state.tradeData.tradePairData;
+
          
                 // let data = {
                 //     sub:"market.all.detail",

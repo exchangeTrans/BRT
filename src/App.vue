@@ -70,18 +70,18 @@
 				return this.$store.state.defaultData.selectedCurrency;
 			}
 			
-	// 		tradingSymol: [
-    //     {name:'BRT',isLocal:true},
-    //     {name:'USDT',isLocal:true},
-    //     {name:'BTC',isLocal:false},
-    //     {name:'ETH',isLocal:false},
-    //     {name:'XRP',isLocal:false},
-    //     {name:'BCH',isLocal:false},
-    //     {name:'LTC',isLocal:false},
-    //     {name:'XMR',isLocal:false},      
-    // ],
-    // selectSymbol:{name:'USDT',isLocal:false},
-    // quotationData:{},
+			// 		tradingSymol: [
+			//     {name:'BRT',isLocal:true},
+			//     {name:'USDT',isLocal:true},
+			//     {name:'BTC',isLocal:false},
+			//     {name:'ETH',isLocal:false},
+			//     {name:'XRP',isLocal:false},
+			//     {name:'BCH',isLocal:false},
+			//     {name:'LTC',isLocal:false},
+			//     {name:'XMR',isLocal:false},      
+			// ],
+			// selectSymbol:{name:'USDT',isLocal:false},
+			// quotationData:{},
 
 		},
 		methods: {
@@ -95,7 +95,7 @@
 					size:'200'
 				});
 				this.$store.dispatch('getRate');
-				this.$store.dispatch('initQuotationData')
+				// this.$store.dispatch('initQuotationData')
 
 			},
 			//初始化行情数据

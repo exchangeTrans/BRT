@@ -21,9 +21,9 @@
                         <view class="currency">
                             <span>计价货币：</span>
                             <span>USTD</span>
-                            <view class="icon">
+                            <!-- <view class="icon">
                                 <image :src="currencyIcon"></image>
-                            </view>
+                            </view> -->
                         </view>
                         <view class="price">
                             <span>价格</span>
@@ -121,7 +121,7 @@
 
                         .price {
                             box-sizing: border-box;
-                            margin-left: 80rpx;
+                            margin-left: 112rpx;
                             flex-grow: 2;
                             /*margin-left: 110rpx;*/
                         }

@@ -5,7 +5,7 @@
                 <view class="quotesItem-item">
                     <view class="currency-name">
                         <view class="currency-name-img">
-                            <image :src="quotesData.img"></image>
+                            <image :src="quotesData.iconPath"></image>
                         </view>
                         <view :class="isBlack ? 'currency-name-content black' : 'currency-name-content'">
                             <span class="name">{{quotesData.name}}</span>
@@ -13,12 +13,19 @@
                         </view>
                     </view>
                     <view :class="isBlack ? 'price black' : 'price'">
-                        <span>{{quotesData.price}}</span>
+                        <span>{{quotesData.nowData===null?'0.00':quotesData.nowData.close.toFixed(2)}}</span>
                     </view>
                     <view class="upsAndDowns">
-                        <view :class="quotesDataStatus"><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
-                            <span>{{quotesData.rate}}</span>
+                        <view class="upsAndDowns-bg unchanging up" v-if="quotesData.range>0"><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
+                            <span>+{{quotesData.range.toFixed(2)}}%</span>
                         </view>
+                        <view class="upsAndDowns-bg unchanging down" v-else-if="quotesData.range<0"><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
+                            <span>{{quotesData.range.toFixed(2)}}%</span>
+                        </view>
+                        <view class="upsAndDowns-bg unchanging" v-else><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
+                            <span>{{quotesData.range.toFixed(2)}}%</span>
+                        </view>
+
                     </view>
                 </view>
             </view>

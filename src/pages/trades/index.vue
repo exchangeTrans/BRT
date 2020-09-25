@@ -1,18 +1,19 @@
 <template>
 	<view>
 		<view class="head">
-			<view class="headleft">币币交易</view>
-			<view class="headright">合约交易</view>
+			<view @tap="selectTradeHeader(item)" :class="selectHeader.code===item.code?'headItem active headItem'+index:'headItem headItem'+index" v-for="(item,index) in headerData" :key="item.code">{{item.name}}</view>
 		</view>
 		<scroll-view class="tradesContent" scroll-y>
 		<view class="msg">
 			<view class="msgleft">
-				<image @click="showmask=true" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
-				<text class="tradetype">LED/HDU</text>
+				<image @click="showDrawer" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
+				<text class="tradetype">{{KLineTradingPair.name}}/{{KLineTradingPair.type}}</text>
 			</view>
 			<view class="msgright">
 				<image src="../../static/images/trades/headright.png" mode=""  class="righticon"></image>
-				<view class="change">+1.46%</view>
+				<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>						
+				<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
+				<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
 			</view>
 		</view>
 		<view class="main">
@@ -40,7 +41,7 @@
 					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
 				</view>
 				
-				<view class="hdunum">可用：0 HDU</view>
+				<view class="hdunum">可用：0 USDT</view>
 				<view class="hdupercent">
 					<view class="precent">25%</view>
 					<view class="precent">50%</view>
@@ -61,8 +62,8 @@
 				</view>
 				
 				<view class="charge_exchange">
-					<view class="exchange_rate1">0.0653</view>
-					<view class="exchange_rate2">≈6.66CNY</view>
+					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
+					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
 				<view class="charge_and_num">
 					<view v-for="(item,id) in tradesOptions_list" :key="id">
@@ -83,7 +84,7 @@
 				<image src="../../static/images/trades/historylog.png" mode="" class="clock"></image>
 				<view class="fontlog">历史记录</view>
 			</view>
-			<view class="imgcon" v-if="shownodata">
+			<view class="imgcon">
 				<image src="../../static/images/trades/footer.png" mode="" class="img"></image>
 				<view class="footer_data">暂无数据</view>
 			</view>
@@ -94,7 +95,8 @@
 			<!-- </scroll-view> -->
 			
 		</view>
-		<view class="blackindex" v-if="showmask">
+		
+		<!-- <view class="blackindex" v-if="showmask">
 			<view class="whiteindex">
 				<view class="whitefont">币币交易</view>
 				<scroll-view scroll-y="true" class="listh">
@@ -104,8 +106,11 @@
 				</scroll-view>
 			</view>
 			<view class="rightmsg" @click="showmask=false"></view>
-		</view>
+		</view> -->
 		</scroll-view>
+		<uniDrawer ref="showLeft" mode="left" :width="280" @change="change($event,'showLeft')">
+			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair"></tradelist>
+		</uniDrawer>
 		<pageFooter/>
 	</view>
 </template>
@@ -114,38 +119,59 @@
 <style lang="less">
 	.head{
 		width: 100%;
-		height: 100rpx;
+		height: calc(100rpx + var(--status-bar-height));
 		text-align: center;
 		line-height: 100rpx;
 		font-size: 40rpx;
 		border-bottom: 1rpx #F9FAFA solid;
 		color: #1A1A1A;
 		font-family: PingFangSC-Semibold, PingFang SC;
-		padding-top: calc(var(--status-bar-height));
+		padding-top: calc(20rpx + var(--status-bar-height));
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
+		box-sizing: border-box;
+
 	}
-	.headleft{
-		width: 172rpx;
-		height: 60rpx;
-		background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
-		border-radius: 16rpx 0px 0px 16rpx;
-		color: #EFF3F9;
-		font-size: 24rpx;
-		line-height: 60rpx;
-		float: left;
-		margin-left: 200rpx;
-		margin-top: 20rpx;
-	}
-	.headright{
+	.headItem{
 		width: 172rpx;
 		height: 60rpx;
 		background: #EFF3F9;
-		border-radius: 0px 16rpx 16rpx 0px;
 		color: #098FE0;
 		font-size: 24rpx;
 		line-height: 60rpx;
-		float: left;
-		margin-top: 20rpx;
+		// border-radius: 16rpx 0px 0px 16rpx;
+		// float: left;
 	}
+	.headItem.active{
+		width: 172rpx;
+		height: 60rpx;
+		background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
+		color: #EFF3F9;
+		font-size: 24rpx;
+		line-height: 60rpx;
+		
+	}
+	.headItem0{
+		border-radius: 16rpx 0px 0px 16rpx;
+	}
+	.headItem1{
+		border-radius: 0px 16rpx 16rpx 0px;
+	}
+	// .headleft{
+		
+	// }
+	// .headright{
+	// 	width: 172rpx;
+	// 	height: 60rpx;
+	// 	background: #EFF3F9;
+	// 	border-radius: 0px 16rpx 16rpx 0px;
+	// 	color: #098FE0;
+	// 	font-size: 24rpx;
+	// 	line-height: 60rpx;
+	// 	float: left;
+	// 	margin-top: 20rpx;
+	// }
 	.tradesContent{
 		width: 100vw;
 		height: calc(100vh - 100rpx - 116rpx - var(--status-bar-height));
@@ -187,14 +213,19 @@
 				width: 116rpx;
 				height: 40rpx;
 				line-height: 40rpx;
-				background-color: #FC3C5A;
+				background-color: #8D989E;
 				float: right;
 				font-size: 24rpx;
 				color: #FFFFFF;
 				text-align: center;
 				margin-right: 20rpx;
 				border-radius: 5rpx;
-				color: #1A1A1A;
+			}
+			.change.up{
+				background-color: #FC3C5A;
+			}
+			.change.down{
+				background-color: #5BC788;
 			}
 		}
 	}
