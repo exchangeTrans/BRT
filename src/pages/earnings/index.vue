@@ -8,13 +8,13 @@
 						<view class="balance">可用余额</view>
 						<view class="balanceNum"><span>897367.90</span>BRT</view>
 					</view>
-					<view class="right">
+					<!-- <view class="right">
 						<view class="idCode">ID 19029008</view>
 						<view class="appraisement">
 							<view class="img" :style="{'background-image':'url('+moneyIcon+')'}"></view>
 							≈32.0$
 						</view>
-					</view>
+					</view> -->
 				</view>
 
 				<view class="yield">
@@ -23,11 +23,11 @@
 						<view class="addUp">累计收益率</view>
 					</view>
 					<!--<view class="slider">-->
-						<!--<slider :value="sliderValue"-->
-								<!--@changing="sliderChange"-->
-								<!--min="0"-->
-								<!--max="100"-->
-								 <!--/>-->
+					<!--<slider :value="sliderValue"-->
+					<!--@changing="sliderChange"-->
+					<!--min="0"-->
+					<!--max="100"-->
+					<!--/>-->
 					<!--</view>-->
 					<!--<view class="percent">≈ {{sliderValue}}%</view>-->
 				</view>
@@ -40,7 +40,7 @@
 				<view class="info">
 					<view class="dataInfo">
 						<view class="logoIcon" :style="{'background-image':'url('+logoIcon+')'}"></view>
-						<view class="dataList">
+						<view class="dataList" v-if="showincome_earing" >
 							<view class="dataItem">
 								<view class="itemTitle">投资金额</view>
 								<view class="itemText">1000.00 USDT</view>
@@ -54,16 +54,32 @@
 								<view class="itemText">2.68%</view>
 							</view>
 						</view>
+						<view class="dataList" v-if="showdata_earing" >
+							<view class="dataItem">
+								<view class="itemTitle">止盈率</view>
+								<view class="itemText">{{userdata.stopWinRate}}</view>
+								<view class="itemSet">设置</view>
+							</view>
+							<view class="dataItem">
+								<view class="itemTitle">止损率</view>
+								<view class="itemText">{{userdata.stopLoseRate}}</view>
+								<view class="itemSet">设置</view>
+							</view>
+							<view class="dataItem">
+								<view class="itemTitle">最大撤回</view>
+								<view class="itemText">{{userdata.maxDawndown}}</view>
+							</view>
+						</view>
 						<view class="clearfix"></view>
 					</view>
 					<view class="ruler">
-						<view class="line" ></view>
+						<view class="line"></view>
 						规则
 					</view>
 					<view class="rulerInfo">{{rulerText}}</view>
 					<!--<view class="btnGroup">-->
-						<!--&lt;!&ndash;<view class="btnItem">转入</view>&ndash;&gt;-->
-						<!--&lt;!&ndash;<view class="btnItem export">转出</view>&ndash;&gt;-->
+					<!--&lt;!&ndash;<view class="btnItem">转入</view>&ndash;&gt;-->
+					<!--&lt;!&ndash;<view class="btnItem export">转出</view>&ndash;&gt;-->
 
 
 					<!--</view>-->
@@ -73,23 +89,14 @@
 
 			</view>
 			<view class="btnGroup">
-				<earningBtn :background="background"
-							:borderRadius="borderRadius"
-							:btnText="'转入加仓'"
-							v-if="selectedTab==='earningInfo'"
-							@btnClick="addStorehouse"
-				></earningBtn>
-				<earningBtn
-						:background="background"
-						:borderRadius="borderRadius"
-						:btnText="'下载韩亚量化App'"
-						v-if="selectedTab==='data'"
-						@btnClick="downloadAPP"
-
-				></earningBtn>
+				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'转入加仓'" v-if="selectedTab==='earningInfo'"
+				 @btnClick="addStorehouse"></earningBtn>
+				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'下载韩亚量化App'" v-if="selectedTab==='data'"
+				 @btnClick="downloadAPP"></earningBtn>
 			</view>
 		</scroll-view>
-
+		<transferInAmount ref="transferInAmount" @transferInAmountSuccess="transferInAmountSuccess"></transferInAmount>
+		<subRuler ref="subRuler"></subRuler>
 
 
 
@@ -101,19 +108,22 @@
 </script>
 
 <style lang="less">
-	.earnings{
+	.earnings {
 		width: 100%;
 		height: 100%;
 		background: #F9FAFA;
-		.content{
+
+		.content {
 			width: 100%;
 			height: 100%;
-			padding-top:calc(100rpx + var(--status-bar-height));
+			padding-top: calc(100rpx + var(--status-bar-height));
 			box-sizing: border-box;
-			.contentPadding{
+
+			.contentPadding {
 				padding: 0 30rpx;
 				box-sizing: border-box;
-				.earningsTop{
+
+				.earningsTop {
 					margin-top: 30rpx;
 					width: 690rpx;
 					height: 224rpx;
@@ -124,31 +134,35 @@
 					font-weight: 400;
 					color: #FFFFFF;
 
-					.left{
+					.left {
 						float: left;
 						width: 70%;
 						font-size: 32rpx;
 
-						.balanceNum{
+						.balanceNum {
 							margin-top: 40rpx;
-							span{
+
+							span {
 								margin-right: 10rpx;
 								font-size: 60rpx;
 								font-weight: normal;
 							}
 						}
 					}
-					.right{
+
+					.right {
 						width: 30%;
 						float: left;
 						font-size: 28rpx;
-						.idCode{
+
+						.idCode {
 							margin-top: 5rpx;
 						}
 
-						.appraisement{
+						.appraisement {
 							margin-top: 60rpx;
-							.img{
+
+							.img {
 								margin-right: 10rpx;
 								display: inline-block;
 								width: 48rpx;
@@ -159,7 +173,7 @@
 					}
 				}
 
-				.yield{
+				.yield {
 					margin: 40rpx auto;
 					width: 220rpx;
 					height: 220rpx;
@@ -175,9 +189,10 @@
 					/*box-sizing: border-box;*/
 					/*font-size: 28rpx;*/
 					font-family: PingFangSC-Regular, PingFang SC;
+
 					/*font-weight: 400;*/
 					/*color: #1A1A1A;*/
-					.yieldText{
+					.yieldText {
 						width: 188rpx;
 						height: 188rpx;
 						border-radius: 50%;
@@ -185,19 +200,22 @@
 						position: absolute;
 						left: 50%;
 						top: 50%;
-						transform: translate(-50%,-50%);
+						transform: translate(-50%, -50%);
 						text-align: center;
-						.yieldPercent{
+
+						.yieldPercent {
 							margin-top: 30rpx;
 							font-size: 56rpx;
 							font-weight: 600;
 							color: #098FE0;
-							span{
+
+							span {
 								font-size: 36rpx;
 							}
 
 						}
-						.addUp{
+
+						.addUp {
 							font-size: 24rpx;
 							font-weight: 400;
 							color: #000000;
@@ -208,15 +226,16 @@
 				}
 
 				/*.slider{*/
-					/*margin: 38rpx 0 24rpx;*/
+				/*margin: 38rpx 0 24rpx;*/
 				/*}*/
 				/*.percent{*/
-					/*text-align: center;*/
-					/*color: #098FE0;*/
+				/*text-align: center;*/
+				/*color: #098FE0;*/
 				/*}*/
 			}
-			.tab{
-				.tabItem{
+
+			.tab {
+				.tabItem {
 					display: inline-block;
 					text-align: center;
 					width: 345rpx;
@@ -228,19 +247,23 @@
 					font-weight: 400;
 					color: #098FE0;
 				}
-				.tabItem.active{
+
+				.tabItem.active {
 
 					color: #FFFFFF;
 					background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 				}
-				.earningInfo{
+
+				.earningInfo {
 					border-radius: 40rpx 0rpx 0rpx 40rpx;
 				}
-				.data{
+
+				.data {
 					border-radius: 0rpx 40rpx 40rpx 0rpx;
 				}
 			}
-			.info{
+
+			.info {
 				margin: 30rpx 0 0;
 				width: 690rpx;
 				background: #FFFFFF;
@@ -249,42 +272,61 @@
 				font-family: PingFangSC-Regular, PingFang SC;
 				font-weight: 400;
 				color: #1A1A1A;
-				.dataInfo{
+
+				.dataInfo {
 					border-bottom: 2rpx solid #EDEDED;
 					padding-bottom: 40rpx;
 					box-sizing: border-box;
-					.logoIcon{
+
+					.logoIcon {
 						float: left;
 						margin: 0 24rpx;
 						width: 80rpx;
 						height: 80rpx;
-						border-radius:50%;
+						border-radius: 50%;
 						background-size: cover;
 					}
-					.dataList{
+
+					.dataList {
 						float: left;
 						font-size: 28rpx;
 
-						.dataItem{
+						.dataItem {
 							height: 80rpx;
 							line-height: 80rpx;
-							.itemTitle{
+
+							.itemTitle {
 								width: 196rpx;
 								display: inline-block;
 							}
-							.itemText{
+
+							.itemText {
 								display: inline-block;
 
 								color: #098FE0;
+							}
+							.itemSet{
+								// width: 64rpx;
+								// height: 40rpx;
+								font-size: 28rpx;
+								font-family: PingFangSC-Regular, PingFang SC;
+								font-weight: 400;
+								color: #098FE0;
+								line-height: 40rpx;
+								float: right;
+								padding-left: 100rpx;
+								margin-top: 20rpx;
 							}
 						}
 					}
 
 				}
-				.ruler{
+
+				.ruler {
 					margin-top: 28rpx;
 					font-size: 36rpx;
-					.line{
+
+					.line {
 						display: inline-block;
 						width: 8rpx;
 						height: 28rpx;
@@ -294,16 +336,19 @@
 						transform: translateY(15%);
 					}
 				}
-				.rulerInfo{
+
+				.rulerInfo {
 					margin-top: 24rpx;
 					font-size: 24rpx;
 					line-height: 40rpx;
 				}
-				.btnGroup{
+
+				.btnGroup {
 					width: 100%;
 					text-align: center;
 					margin-top: 30rpx;
-					.btnItem{
+
+					.btnItem {
 						display: inline-block;
 						width: 290rpx;
 						height: 88rpx;
@@ -315,7 +360,8 @@
 						font-size: 34rpx;
 						color: #FFFFFF;
 					}
-					.export{
+
+					.export {
 						margin-left: 22rpx;
 						background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
 
@@ -323,7 +369,8 @@
 				}
 
 			}
-			.btnGroup{
+
+			.btnGroup {
 				padding-bottom: 30rpx;
 			}
 
@@ -332,5 +379,4 @@
 
 
 	}
-
 </style>

@@ -25,15 +25,14 @@ export default {
                     path: "aboutUs/index",
                     img: `${require('@/static/images/user/link.png')}`,
                 },
-
                 {
                     name: "公告列表",
-                    path: "",
+                    path: "noticelist/index",
                     img: `${require('@/static/images/user/announcement.png')}`,
                 },
                 {
                     name: "联系客服",
-                    path: "",
+                    path: "connectus/index",
                     img: `${require('@/static/images/user/service.png')}`,
                 },
                 {
@@ -224,7 +223,7 @@ export default {
                     }
                     let userAccountType = res.data.userAccountType//0 是手机， 1就是邮件
                     // that.listItemData[0].path = 'changeEmail/index'
-                    that.listItemData[0].path = userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index'
+                    that.listItemData[5].path = userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index'
                     // console.log(userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index')
                     this.$store.commit("setDefaultSync", {
                         key: "userInfo",

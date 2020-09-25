@@ -68,7 +68,11 @@
 			},
 			selectedCurrency(){
 				return this.$store.state.defaultData.selectedCurrency;
-			}
+			},
+			KLineTradingPair(){
+				return this.$store.state.tradeData.KLineTradingPair;
+			},
+			
 			
 			// 		tradingSymol: [
 			//     {name:'BRT',isLocal:true},
@@ -98,6 +102,7 @@
 				// this.$store.dispatch('initQuotationData')
 
 			},
+			
 			//初始化行情数据
 			initAuotationData(){
 				// let newData = tradePairData.map(function (item) {
