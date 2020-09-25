@@ -17,7 +17,7 @@ export default {
                 },
                 {
                     name: "实名认证",
-                    path: "",
+                    path: "auth/auth",
                     img: `${require('@/static/images/user/auth.png')}`,
                 },
                 {

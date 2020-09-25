@@ -239,6 +239,12 @@
 
       }
     },
+    {
+      "path":"pages/auth/auth",
+      "style": {
+
+      }
+    },
 
 
 
@@ -489,7 +495,12 @@
 	  "style": {
 	    //"navigationBarTitleText": ""
 	  }
-	}
+	},{
+      "path":"blackPages/auth/auth",
+      "style": {
+
+      }
+    }
   ],
   // "tabBar": {
   //   // "color":"#8a8a8a",
