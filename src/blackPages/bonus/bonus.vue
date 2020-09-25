@@ -55,9 +55,9 @@
                     <span class="text">矿池分红收益</span>
                 </view>
             </view>
-            <earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="isBlack" v-if="earningsRecordData.length>0"></earningsRecordList>
-            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
-            <view class="noDataBox" v-if="earningsRecordData.length===0">
+            <earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="isBlack"  v-if="!isNoDataFlag"></earningsRecordList>
+            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"     v-if="!isNoDataFlag"></uni-load-more>
+            <view class="noDataBox"  v-if="isNoDataFlag">
                 <noData></noData>
             </view>
         </scroll-view>

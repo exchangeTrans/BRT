@@ -67,6 +67,12 @@
 
             },
             transfer(){
+                if (!this.counts){
+                    this.$toast.show({
+                        title: '金额不能为空',
+                    })
+                    return;
+                }
                 let postData={
                     amount: this.counts
                 };

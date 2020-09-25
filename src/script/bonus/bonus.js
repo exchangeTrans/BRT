@@ -53,7 +53,9 @@ export default {
             dayNum:0,
             hourNum:0,
             minuteNum:0,
-            status:'more'
+            status:'more',
+            isNoDataFlag:false,
+
         }
     },
     mounted() {
@@ -130,7 +132,7 @@ export default {
                 if (res.result.returnCode.toString() === "0") {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
-                        this.haveNext=true;
+                        this.haveNext=false;
                         this.status='noMore'
                     }else {
                         that.status='more'
@@ -144,6 +146,13 @@ export default {
                         that.dayNum=res.data.periodDay;
                         that.earningsRecordData=res.data.list;
                         this.getTime();
+
+                        //判断是否有数据
+                        if (res.data.list.length===0){
+                            that.isNoDataFlag=true;
+                        }else {
+                            that.isNoDataFlag=false;
+                        }
                     }
                 }else{
                     this.$toast.show({

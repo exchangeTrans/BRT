@@ -1,7 +1,7 @@
 <template>
 	<view class="myteam">
+		<pageHeader :headerOptions="headerOptions" class="headname"></pageHeader>
 		<view class="headbg">
-			<pageHeader :headerOptions="headerOptions" class="headname"></pageHeader>
 			<view class="usermsgcon">
 				<view class="headphoto">
 					<image src="../../static/images/myteam/headphoto.png" mode="" style="width:118rpx; height: 118rpx;"></image>
@@ -14,6 +14,7 @@
 					<image src="../../static/images/myteam/crown.png" class="crown" mode=""></image>
 					<text class="grade">1</text>
 				</view>
+				<view class="clearfix"></view>
 			</view>
 			<view class="teammsg">
 				<view class="teamablity">
@@ -29,6 +30,7 @@
 					<view class="num">{{teamData.teamQty}}</view>
 				</view>
 			</view>
+
 		</view>
 		<view class="invitelog">
 			<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
@@ -51,6 +53,13 @@
 				<view class="memberid">{{item.inviteCode}}</view>
 				<view class="grade">{{item.teamMining}}</view>
 			</view>
+
+
+			<uni-load-more  @clickLoadMore="getMiningInterest(true)" :status="status"    v-if="!isNoDataFlag"></uni-load-more>
+
+			<view class="noDataBox"  v-if="isNoDataFlag">
+				<noData></noData>
+			</view>
 		</scroll-view>
 	</view>
 </template>
@@ -59,6 +68,8 @@
 
 <style lang="less">
 	.myteam{
+		width: 100%;
+		height: 100%;
 		// padding-top: calc(100rpx + var(--status-bar-height));
 	}
 	.headbg{
@@ -77,10 +88,12 @@
 	.usermsgcon{
 		position: absolute;
 		width: 100%;
-		height: 120rpx;
-		margin-top: 10rpx;
+		//height: 120rpx;
+		padding-left:40rpx;
+		box-sizing: border-box;
+		/*margin-top: 10rpx;*/
 		line-height: 120rpx;
-		margin-left: 40rpx;
+		/*margin-left: 40rpx;*/
 		// padding-top: calc(100rpx + var(--status-bar-height));
 		.headphoto{
 			width: 118rpx;
@@ -270,5 +283,8 @@
 	.scrollh{
 		width: 100%;
 		height: calc(100vh - 762rpx - var(--status-bar-height));
+		.noDataBox {
+			position: relative;
+		}
 	}
 </style>

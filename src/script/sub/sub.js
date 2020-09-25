@@ -18,11 +18,11 @@ export default {
         if(theme === 'white') {
             this.headerOptions={
                 show:true,
-                    isAllowReturn:true,
-                    text:this.$t('sub').title,
-                    rightItem:{
+                isAllowReturn:true,
+                text:this.$t('sub').title,
+                rightItem:{
                     type:"text",
-                        text:"",
+                    text:"",
                 },
                 bodyPadding:{"padding":'0,0,0,0'},
                 headerIsNoBoder: true,

@@ -70,7 +70,9 @@ export default {
             // bonusNowNums: "643.32万",
             // bonusLastDayNums: "423万",
             haveNext:true,
-            status:'more'
+            status:'more',
+            isNoDataFlag:false,
+
         }
     },
     mounted() {
@@ -105,8 +107,8 @@ export default {
                 if (res.result.returnCode.toString() === "0") {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
-                        this.haveNext=true;
-                        this.status='noMore'
+                        that.haveNext=false;
+                        that.status='noMore'
                     }else {
                         that.status='more'
                     }
@@ -116,6 +118,12 @@ export default {
                     }else {
                         that.promoteBonusData=res.data;
                         that.earningsRecordData=res.data.list;
+                        //判断是否有数据
+                        if (res.data.list.length===0){
+                            that.isNoDataFlag=true;
+                        }else {
+                            that.isNoDataFlag=false;
+                        }
                     }
 
                 }else{

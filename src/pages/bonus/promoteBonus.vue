@@ -60,13 +60,13 @@
                 <view class="inviteBonusRecordIcon" :style="{'background-image': inviteBonusRecordIcon}"></view>
                 <view class="inviteBonusRecordText">{{$t('promoteBonus').inviteBonusRecords}}</view>
             </view>
-            <view class="noDataBox" v-if="earningsRecordData.length===0">
+            <view class="noDataBox" v-if="isNoDataFlag">
                 <noData></noData>
             </view>
-            <earningsRecordList v-if="earningsRecordData.length>0"
+            <earningsRecordList v-if="!isNoDataFlag"
                                 :earningsRecordData="earningsRecordData">
             </earningsRecordList>
-            <uni-load-more  @clickLoadMore="getShareInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
+            <uni-load-more  @clickLoadMore="getShareInterest(true)" :status="status"    v-if="!isNoDataFlag"></uni-load-more>
         </scroll-view>
     </view>
 
