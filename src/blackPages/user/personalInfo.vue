@@ -20,12 +20,12 @@
             <view class="nicknameText">
                 {{$t('personInfo').nicknameText}}
             </view>
-            <view class="nickname">
-                {{nickname}}
-            </view>
+            <input class="nickname"
+                   :value="userMsgData.nickname"
+                   v-model="userMsgData.nickname"/>
+
             <!--<view class="modify"
-                  @tap="ChooseImage"
-                  :style="{'background-image': modifyUrl}">
+                      :style="{'background-image': modifyUrl}">
 
             </view>-->
         </view>
@@ -37,7 +37,7 @@
 
 </template>
 
-<script scr="@/script/user/personalInfo.js"></script>
+<script src="@/script/user/personalInfo.js"></script>
 
 <style lang="less">
     .personalInfo {
@@ -109,19 +109,15 @@
             }
 
             .nickname {
-                position: absolute;
-                right: 98rpx;
-                top: 50%;
-                transform: translateY(-50%);
-
                 font-size: 32rpx;
+                height: 100rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
                 color: #333333;
-                line-height: 100rpx;
+                margin-left: 30rpx;
             }
 
-            .modify {
+            /*.modify {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
@@ -129,7 +125,7 @@
                 width: 28rpx;
                 height: 28rpx;
                 background-size: 100% 100%;
-            }
+            }*/
         }
 
         .personalInfoBtn {

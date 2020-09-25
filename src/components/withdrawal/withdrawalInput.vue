@@ -10,6 +10,7 @@
                         <input type="text"
                                :placeholder="inputData.placeholder"
                                :disabled="inputData.disabled"
+                               :value="inputValue"
                                @input="inputChange($event)">
                         <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
@@ -18,7 +19,7 @@
                             <view class="isIcon" v-if="inputData.rightItem.type === 'isIcon'">
                                 <image :src="scan"></image>
                             </view>
-                            <view class="isBtn" v-if="inputData.rightItem.type === 'isBtn'">
+                            <view class="isBtn" v-if="inputData.rightItem.type === 'isBtn'" @tap="btnClick">
                                 <span>{{inputData.rightItem.text}}</span>
                             </view>
                         </view>
@@ -45,7 +46,11 @@
             isBlack: {
                 type: Boolean,
                 default: false,
-            }
+            },
+            inputValue: {
+                type: String,
+                default: "",
+            },
         },
         data() {
             return {
@@ -56,6 +61,9 @@
             inputChange(e) {
                 let value = e.detail.value;
                 this.$emit('inputChange', value)
+            },
+            btnClick() {
+                this.$emit("btnClick")
             }
         }
     }

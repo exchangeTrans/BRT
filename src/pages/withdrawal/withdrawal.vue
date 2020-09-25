@@ -8,10 +8,10 @@
                         <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)"></WithdrawalInput>
+                        <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="commission" @inputChange="inputChange(commission.name, $event)"></WithdrawalInput>
+                        <WithdrawalInput :inputData="commission" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-text">
@@ -19,15 +19,15 @@
                         <span>到账数量</span>
                     </view>
                     <view class="text">
-                        <span class="blue">0 BRT</span>
+                        <span class="blue">{{receiveAmount}}</span>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-phoneInput">
-                    <WithdrawalInput :inputData="phoneInput" @inputChange="inputChange(phoneInput.name, $event)"></WithdrawalInput>
+                    <WithdrawalInput :inputData="phoneInput" @inputChange="inputChange(phoneInput.name, $event)" @btnClick="sendVerifyCode"></WithdrawalInput>
                 </view>
                 <view class="withdrawal-wrap-container-tip">
                     <view class="withdrawal-wrap-container-tip-content">
-                        <span class="tipTitle">最小提币数量：10.0（BRT）</span>
+                        <span class="tipTitle">最小提币数量：{{minDrawTip}}</span>
                         <span class="tipContent">为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。</span>
                         <span class="tipContent mgt">请务必确认电脑及浏览器安全，防止信息被篡改或泄露</span>
                     </view>
@@ -38,7 +38,7 @@
                          :backgroundColor="BtnackgroundColor"
                          width="690rpx"
                          borderRadius="50rpx"></Btn>-->
-                    <view class="btn-wrap" :class="{'canClick': btnCanClick, 'cannotClick': !btnCanClick}">
+                    <view class="btn-wrap" :class="{'canClick': btnCanClick, 'cannotClick': !btnCanClick}" @tap="transfer">
                         <span>提币</span>
                     </view>
                 </view>
@@ -130,9 +130,7 @@
                     .btn-wrap {
                         width: 710rpx;
                         height: 100rpx;
-                        background: linear-gradient(136deg, #8C939B 0%, #B4BBC0 50%, #C5C5C5 100%);
                         border-radius: 50rpx;
-                        opacity: 0.4;
                         margin: 0 auto;
                         span {
                             display: block;
@@ -143,6 +141,15 @@
                             font-weight: 400;
                             color: #FFFFFF;
                         }
+                    }
+                    .canClick {
+                        background: linear-gradient(136deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
+                        opacity: 1;
+                    }
+                    .cannotClick {
+                        background: linear-gradient(136deg, #8C939B 0%, #B4BBC0 50%, #C5C5C5 100%);
+                        opacity: 0.4;
+
                     }
                 }
             }
