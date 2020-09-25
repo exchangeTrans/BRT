@@ -20,6 +20,9 @@
 				bgc:"#FEEBEE",
 				fonts_color:"#FC3C5A"
 			},
+
+			tradePrice:'',
+			tradeNum:'',
 			headerData:[
 				{
 					code:'1',
@@ -34,16 +37,20 @@
 				code:'1',
 				name:'币币交易'
 			},
-			// headerData:[
-			// 	{
-			// 		code:'buy',
-			// 		name:'买'
-			// 	},
-			// 	{
-			// 		code:'sell',
-			// 		name:'卖'
-			// 	}
-			// ],
+			tradeNameData:[
+				{
+					code:'buy',
+					name:'买入'
+				},
+				{
+					code:'sale',
+					name:'卖出'
+				}
+			],
+			selectedTradeName:{
+				code:'buy',
+				name:'买入'
+			},
 			tradesOptions_list:[
 				{
 					money:"0.0653",
@@ -156,7 +163,8 @@
 			],
 			showmask:false,
 			shownodata:true,
-			showdata:true
+			showdata:true,
+			tradeInfo:{}
 		}
 	  },
 	  
@@ -181,6 +189,9 @@
 		// }
 
 	  },
+	  watch:{
+
+	  },
 	  mounted(){
 		let symbolType = this.KLineTradingPair.name;
 		let symbolCode = String(this.symbolDefaultData[symbolType])
@@ -202,13 +213,22 @@
 			let postData={
 				symbolType: symbolType
 			};
+			let that = this;
 			this.$request({
 				url:'trade/getTradeInfo',
 				method:'post',
 				params:postData
 			}).then((res)=>{
 				if (res.result.returnCode.toString() === "0") {
+					that.tradeInfo = res.data;
 					// this.close();
+					let usdtBalance = res.data.usdtBalance.replace(",","")
+					let data = {
+						...res.data,
+						usdtBalanceNum:Number(usdtBalance),
+						symbolBalanceNum:Number(symbolBalance),
+					}
+					// console.log(Number(usdtBalance)) 
 					// this.$emit('transferInAmountSuccess')
 				}else{
 					// this.$toast.show({
@@ -216,6 +236,9 @@
 					// })
 				}
 			})
+		},
+		inputChange(){
+
 		},
 		// /trade/getTradeInfo
 		judgedata(){
