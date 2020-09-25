@@ -61,6 +61,10 @@
 					money:"0.0653",
 					num:"500"
 				},
+				{
+					money:"0.0653",
+					num:"500"
+				},
 			],
 			historylogdata_list:[
 				{
@@ -165,7 +169,10 @@
 		},
 		selectedCurrency(){
             return this.$store.state.defaultData.selectedCurrency;
-        },
+		},
+		symbolDefaultData(){
+			return this.$store.state.tradeData.symbolDefaultData
+		}
 		// tradeNoticeData(){
 		// 	return this.$store.state.tradeData.tradeNoticeData;
 		// },
@@ -173,6 +180,11 @@
 		// 	return this.$store.state.tradeData.tradeRangeData;
 		// }
 
+	  },
+	  mounted(){
+		let symbolType = this.KLineTradingPair.name;
+		let symbolCode = String(this.symbolDefaultData[symbolType])
+		this.getTradeInfo(symbolCode);
 	  },
 	  methods:{
 		chooseTradePair(item){
@@ -186,6 +198,26 @@
 				})
 			}
 		},
+		getTradeInfo(symbolType){
+			let postData={
+				symbolType: symbolType
+			};
+			this.$request({
+				url:'trade/getTradeInfo',
+				method:'post',
+				params:postData
+			}).then((res)=>{
+				if (res.result.returnCode.toString() === "0") {
+					// this.close();
+					// this.$emit('transferInAmountSuccess')
+				}else{
+					// this.$toast.show({
+					// 	title: res.result.returnMessage,
+					// })
+				}
+			})
+		},
+		// /trade/getTradeInfo
 		judgedata(){
 					if(this.showdata){
 						this.showdata=true,

@@ -60,12 +60,12 @@
 		display: inline-block;
 		font-size: 0;
 		width: 89%;
-		height: 52rpx;
+		height: 40rpx;
 		// text-align: center;
-		line-height: 52rpx;
+		line-height: 40rpx;
 		margin-left: 20rpx;
 		display: block;
-		vertical-align:middle;
+		// vertical-align:middle;
 		.money{
 			float: left;
 			font-size: 24rpx;
