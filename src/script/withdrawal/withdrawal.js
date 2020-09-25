@@ -292,6 +292,7 @@ export default {
             if (!this.btnCanClick) {
                 return
             }
+            let symbolType = this.$store.state.wallet.symbolType
 
             // 校验数据
             if (parseInt(this.symbolDetail.symbolBalance) < parseInt(this.postData['amount'])) {
@@ -305,24 +306,40 @@ export default {
                 })
                 return;
             }
-
             this.$request({
-                url: "wallet/transfer",
+                url: "wallet/validateAddress",
                 method: "post",
-                params: this.postData,
-            }).then((res) => {
-                if (res.result.returnCode.toString() === "0") {
-                    that.postData.verifyKey = res.data.verifyKey;
-                    this.$jumpPage.jump({
-                        url: "index/index",
-                        type: "navigateTo"
+                params: {
+                    symbolType: symbolType.symbolType,
+                    address: this.postData.address
+                }
+            }).then(res => {
+                if (res.resul.returnCode.toString() === "0" && res.data.validate.toString() === "0") {
+                    this.$request({
+                        url: "wallet/transfer",
+                        method: "post",
+                        params: this.postData,
+                    }).then((res) => {
+                        if (res.result.returnCode.toString() === "0") {
+                            that.postData.verifyKey = res.data.verifyKey;
+                            this.$jumpPage.jump({
+                                url: "index/index",
+                                type: "navigateTo"
+                            })
+                        } else {
+                            this.$toast.show({
+                                title: res.result.returnMessage,
+                            })
+                        }
                     })
                 } else {
                     this.$toast.show({
-                        title: res.result.returnMessage,
+                        title: "请先输入正确的提币地址"
                     })
                 }
             })
+
+
 
         }
     }
