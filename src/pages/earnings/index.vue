@@ -57,13 +57,13 @@
 						<view class="dataList" v-if="showdata_earing" >
 							<view class="dataItem">
 								<view class="itemTitle">止盈率</view>
-								<view class="itemText">{{userdata.stopWinRate}}</view>
-								<view class="itemSet">设置</view>
+								<input class="itemInput" v-model="userdata.stopWinRate"></input>
+								<view class="itemSet" @tap="setincomerate">设置</view>
 							</view>
 							<view class="dataItem">
 								<view class="itemTitle">止损率</view>
-								<view class="itemText">{{userdata.stopLoseRate}}</view>
-								<view class="itemSet">设置</view>
+								<input class="itemInput" v-model="userdata.stopLoseRate"></input>
+								<view class="itemSet" @tap="setlossrate">设置</view>
 							</view>
 							<view class="dataItem">
 								<view class="itemTitle">最大撤回</view>
@@ -302,8 +302,16 @@
 
 							.itemText {
 								display: inline-block;
-
 								color: #098FE0;
+							}
+							.itemInput{
+								display: inline-block;
+								color: #098FE0;
+								width: 60rpx;
+								height: 40rpx;
+								font-size: 28rpx;
+								box-sizing: border-box;
+								padding-top: 18rpx;
 							}
 							.itemSet{
 								// width: 64rpx;
