@@ -158,38 +158,38 @@ export const mySocket={
                 // mySocket.subscribe(data);   
                 // mySocket.subscribe(data); 
         let subArray = [];
-        // tradePairData.forEach((element,index) => {           
-        //     let str = element.name + element.type;
-        //     str = str.toLowerCase();
-        //     let sub="market."+str+".detail"
-        //     if(element.isLocal){
-        //         let data = {
-        //             sub:sub,
-        //             // sub:"market.all.detail",
-        //             // period:"1min",
-        //             id: 'marketDetail_local',
-        //             isLocal:element.isLocal
+        tradePairData.forEach((element,index) => {           
+            let str = element.name + element.type;
+            str = str.toLowerCase();
+            let sub="market."+str+".detail"
+            if(element.isLocal){
+                let data = {
+                    sub:sub,
+                    // sub:"market.all.detail",
+                    // period:"1min",
+                    id: 'marketDetail_local',
+                    isLocal:element.isLocal
                     
-        //         } 
-        //         mySocket.subscribe(data); 
+                } 
+                mySocket.subscribe(data); 
 
-        //     }else{
-        //         subArray.push(sub)
-        //         if(index===tradePairData.length-1){
-        //             let data = {
-        //                 sub:subArray.join(','),
-        //                 // sub:"market.all.detail",
-        //                 // period:"1min",
-        //                 id: 'marketDetail',
-        //                 isLocal:element.isLocal
+            }else{
+                subArray.push(sub)
+                if(index===tradePairData.length-1){
+                    let data = {
+                        sub:subArray.join(','),
+                        // sub:"market.all.detail",
+                        // period:"1min",
+                        id: 'marketDetail',
+                        isLocal:element.isLocal
                         
-        //             } 
-        //             mySocket.subscribe(data); 
-        //         }
-        //     }
+                    } 
+                    mySocket.subscribe(data); 
+                }
+            }
             
                                 
-        // });
+        });
         mySocket.subscribeDepth()
         
     },
