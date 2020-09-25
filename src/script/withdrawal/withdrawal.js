@@ -41,37 +41,35 @@ export default {
             postData: {},
             symbolDetail: {},
 
-            inputDatas: [
-                {
-                    textTitle: "提币地址",
-                    placeholder: "输入或长按粘贴地址",
-                    rightItem: {
-                        type: "isIcon",//isText isBtn isIcon
-                        text: "BRT",
-                    },
-                    name: "address",
+            address: {
+                textTitle: "提币地址",
+                placeholder: "输入或长按粘贴地址",
+                rightItem: {
+                    type: "isIcon",//isText isBtn isIcon
+                    text: "BRT",
                 },
-                {
-                    textTitle: "数量",
-                    placeholder: "最小提币数量10.00000000",
-                    rightItem: {
-                        type: "isText",//isText isBtn isIcon
-                        text: "BRT",
-                    },
-                    haveTip: "余额：0.562 BRT",
-                    name: "amount"
+                name: "address",
+            },
+            amount: {
+                textTitle: "数量",
+                placeholder: "最小提币数量10.00000000",
+                rightItem: {
+                    type: "isText",//isText isBtn isIcon
+                    text: "BRT",
                 },
-                {
-                    textTitle: "手续费",
-                    placeholder: "1.00000000",
-                    rightItem: {
-                        type: "isText",//isText isBtn isIcon
-                        text: "BRT",
-                    },
-                    // haveTip: "余额：0.562 BRT"
-                    name: "",
-                }
-            ],
+                haveTip: "余额：0.562 BRT",
+                name: "amount"
+            },
+            commission: {
+                textTitle: "手续费",
+                placeholder: "1.00000000",
+                rightItem: {
+                    type: "isText",//isText isBtn isIcon
+                    text: "BRT",
+                },
+                // haveTip: "余额：0.562 BRT"
+                name: "commission",
+            },
             phoneInput: {
                 textTitle: "手机验证码",
                 placeholder: "输入手机验证码",
@@ -79,13 +77,14 @@ export default {
                     type: "isBtn",//isText isBtn isIcon
                     text: "获取验证码",
                 },
+                name: "phoneInput",
             }
         }
     },
     mounted() {
-        let theme = this.$storage.getSync({key:'theme'});
+        let theme = this.$storage.getSync({key: 'theme'});
         let symbolType = this.$store.state.wallet.symbolType
-        if(theme === 'white'){
+        if (theme === 'white') {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
@@ -97,8 +96,8 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
-                    tipText:"AVV49111",
-                    haveTip:true,
+                    tipText: "AVV49111",
+                    haveTip: true,
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
@@ -118,8 +117,8 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
-                    tipText:"AVV491",
-                    haveTip:true,
+                    tipText: "AVV491",
+                    haveTip: true,
                     tipTextStyle: {
                         color: "#D9DADB",
                         opacity: 0.5,
@@ -168,6 +167,6 @@ export default {
                     that.inputDatas[1].haveTip = "余额：" + res.data.symbolBalance + " " + res.data.symbolTitle
                 }
             })
-        }
+        },
     }
 }

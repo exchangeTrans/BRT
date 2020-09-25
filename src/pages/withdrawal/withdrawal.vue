@@ -4,10 +4,14 @@
         <scroll-view class="withdrawal-wrap" :scroll-y="true">
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
-                    <view class="withdrawal-wrap-container-item"
-                          v-for="(item, index) in inputDatas"
-                          :key="index">
-                        <WithdrawalInput :inputData="item" @inputChange="inputChange(item.name, $event)"></WithdrawalInput>
+                    <view class="withdrawal-wrap-container-item">
+                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)"></WithdrawalInput>
+                    </view>
+                    <view class="withdrawal-wrap-container-item">
+                        <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)"></WithdrawalInput>
+                    </view>
+                    <view class="withdrawal-wrap-container-item">
+                        <WithdrawalInput :inputData="commission" @inputChange="inputChange(commission.name, $event)"></WithdrawalInput>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-text">
@@ -19,7 +23,7 @@
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-phoneInput">
-                    <WithdrawalInput :inputData="phoneInput"></WithdrawalInput>
+                    <WithdrawalInput :inputData="phoneInput" @inputChange="inputChange(phoneInput.name, $event)"></WithdrawalInput>
                 </view>
                 <view class="withdrawal-wrap-container-tip">
                     <view class="withdrawal-wrap-container-tip-content">
@@ -126,6 +130,7 @@
                     .btn-wrap {
                         width: 710rpx;
                         height: 100rpx;
+                        background: linear-gradient(136deg, #8C939B 0%, #B4BBC0 50%, #C5C5C5 100%);
                         border-radius: 50rpx;
                         opacity: 0.4;
                         margin: 0 auto;
@@ -138,12 +143,6 @@
                             font-weight: 400;
                             color: #FFFFFF;
                         }
-                    }
-                    .canClick {
-                        background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
-                    }
-                    .cannotClick {
-                        background: linear-gradient(136deg, #8C939B 0%, #B4BBC0 50%, #C5C5C5 100%);
                     }
                 }
             }

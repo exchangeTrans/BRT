@@ -8,18 +8,28 @@
                         <span>实名状态</span>
                     </view>
                     <view class="auth-status-text">
-                        <image :src="authStatusAwaitImg"></image>
-                        <span class="blue ">待实名</span>
+                        <view class="check">
+                            <image :src="authStatusCheckImg"></image>
+                            <span class="red">待审核</span>
+                        </view>
+                        <!--<view class="await">
+                            <image :src="authStatusAwaitImg"></image>
+                            <span class="blue">待实名</span>
+                        </view>-->
                     </view>
                 </view>
                 <view class="user-message">
                     <view class="user-name">
                         <span>真实姓名</span>
-                        <input type="text" placeholder="和身份证上的姓名保持一致">
+                        <input type="text"
+                               placeholder="和身份证上的姓名保持一致"
+                               v-model="postData.name">
                     </view>
                     <view class="user-cardNumber">
                         <span>证件号</span>
-                        <input type="number" placeholder="请输入身份证号">
+                        <input type="number"
+                               placeholder="请输入身份证号"
+                               v-model="postData.idCard">
                     </view>
                 </view>
                 <view class="upload-img">
@@ -29,16 +39,20 @@
                                 请上传手持法定证件和手写纸条的照片，手写纸条上面写（BRT；日期；日期请用认证当日日期）
                             </span>
                         </view>
-                        <view class="upload-img-btn">
+                        <view class="upload-img-btn"
+                              @tap="uplaodaImg">
                             <span>上传照片</span>
                         </view>
                     </view>
                     <view class="upload-img-content">
-                        <image :src="example"></image>
+                        <image v-if="filePath === ''"
+                               :src="example"></image>
+                        <image v-else :src="filePath"></image>
                     </view>
 
                 </view>
-                <view class="button">
+                <view class="button"
+                      @tap="commitAuth">
                     <span>提交认证审核</span>
                 </view>
             </view>
@@ -75,8 +89,8 @@
 
                     .auth-status-text {
                         height: 100%;
-                        display: flex;
-                        align-items: center;
+                        /*display: flex;
+                        align-items: center;*/
 
                         span {
                             font-size: 28rpx;
@@ -86,16 +100,32 @@
                             line-height: 120rpx;
                         }
 
-                        image {
-                            width: 30rpx;
-                            height: 36rpx;
-                            margin-right: 16rpx;
+                        .check, .await {
+                            display: flex;
+                            align-items: center;
 
-                        }
+                            span {
+                                font-size: 28rpx;
+                                font-family: PingFangSC-Regular, PingFang SC;
+                                font-weight: 400;
+                                color: #1A1A1A;
+                                line-height: 120rpx;
+                            }
 
-                        .blue {
+                            image {
+                                width: 30rpx;
+                                height: 36rpx;
+                                margin-right: 16rpx;
 
-                            color: #098FE0 !important;
+                            }
+
+                            .blue {
+                                color: #098FE0 !important;
+                            }
+
+                            .red {
+                                color: #FC3C5A !important;
+                            }
                         }
                     }
                 }
@@ -162,9 +192,9 @@
                     padding: 42rpx 30rpx;
 
                     .upload-img-title {
-                        
+
                         .upload-img-text {
-                            
+
                             span {
                                 font-size: 28rpx;
                                 font-family: PingFangSC-Regular, PingFang SC;
@@ -178,8 +208,9 @@
                             height: 72rpx;
                             background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
                             border-radius: 36rpx;
-                            margin:  20rpx auto 0;
+                            margin: 20rpx auto 0;
                             text-align: center;
+
                             span {
                                 font-size: 28rpx;
                                 font-family: PingFangSC-, PingFang SC;
@@ -194,9 +225,11 @@
                     .upload-img-content {
                         margin-top: 30rpx;
                         border-radius: 10rpx;
+
                         image {
                             width: 628rpx;
                             height: 400rpx;
+                            border-radius: 10rpx;
                         }
                     }
                 }
@@ -210,8 +243,8 @@
                     background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
                     border-radius: 50px;
                     text-align: center;
-                    
-                    span{
+
+                    span {
                         font-size: 32rpx;
                         font-family: PingFangSC-Regular, PingFang SC;
                         font-weight: 400;

@@ -7,7 +7,10 @@
                         <span>{{inputData.textTitle}}</span>
                     </view>
                     <view class="withdrawalInput-item-content">
-                        <input type="text" :placeholder="inputData.placeholder" @input="inputChange($event)">
+                        <input type="text"
+                               :placeholder="inputData.placeholder"
+                               :disabled="inputData.disabled"
+                               @input="inputChange($event)">
                         <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
                                 <span>{{inputData.rightItem.text}}</span>
@@ -93,7 +96,7 @@
                             font-size: 32rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #D9DADB;
+                            /*color: #D9DADB;*/
 
                             .uni-input-input {
                                 text-indent: 0;
