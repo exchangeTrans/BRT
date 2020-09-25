@@ -19,12 +19,7 @@
 
 				<view class="yield">
 					<view class="yieldText">
-						<view class="yieldPercent">
-							<span>32</span>
-							<span>.</span>
-							<span>68</span>
-							<span>%</span>
-						</view>
+						<view class="yieldPercent">32.<span>68%</span></view>
 						<view class="addUp">累计收益率</view>
 					</view>
 					<!--<view class="slider">-->
