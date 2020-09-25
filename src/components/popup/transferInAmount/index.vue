@@ -66,7 +66,14 @@
                 this.counts=parseInt(res);
 
             },
-            transfer(){
+            transfer(type){
+                if(type === ""){
+                    // this.miningTransfer 这里写你的函数
+                }else{
+                    this.miningTransfer()
+                }
+            },
+            miningTransfer() {
                 if (!this.counts){
                     this.$toast.show({
                         title: '金额不能为空',
@@ -90,7 +97,7 @@
                         })
                     }
                 })
-            }
+            },
 
 		}
 	}
