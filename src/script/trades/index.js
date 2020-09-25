@@ -4,6 +4,9 @@
 	import tradelist from '@/components/trades/tradeList.vue'
 	import pageFooter from '@/components/common/footer.vue'
 	import uniDrawer from '@/components/uniComponents/uni-drawer/uni-drawer.vue'
+	import {
+		checkDataFunc,
+	} from "../../static/js/common.js";
 	export default {
 	  components: {dataList,historylog,tradelist,pageFooter,uniDrawer},
 	  
@@ -23,6 +26,7 @@
 
 			tradePrice:'',
 			tradeNum:'',
+			tradeAll:0,
 			headerData:[
 				{
 					code:'1',
@@ -40,17 +44,26 @@
 			tradeNameData:[
 				{
 					code:'buy',
-					name:'买入'
+					name:'买入',
+					id:'1'
 				},
 				{
 					code:'sale',
-					name:'卖出'
+					name:'卖出',
+					id:'2'
 				}
 			],
 			selectedTradeName:{
 				code:'buy',
-				name:'买入'
+				name:'买入',
+				id:'1'
 			},
+			precentList:[
+				{val:0.25,text:'25%'},
+				{val:0.50,text:'50%'},
+				{val:0.75,text:'75%'},
+				{val:1,text:'100%'},
+			],
 			tradesOptions_list:[
 				{
 					money:"0.0653",
@@ -164,7 +177,17 @@
 			showmask:false,
 			shownodata:true,
 			showdata:true,
-			tradeInfo:{}
+			tradeInfo:{},
+			checkArray: [
+                {
+                    name: "价格",
+                    checkKey: "price",
+                },
+                {
+                    name: "数量",
+                    checkKey: "amount",
+                },
+            ],
 		}
 	  },
 	  
@@ -190,6 +213,20 @@
 
 	  },
 	  watch:{
+		tradePrice(res){
+			let {tradePrice,tradeNum} = this;
+			if(tradePrice!==''&&tradePrice!==null&&tradeNum!==''&&tradeNum!==null){
+				this.tradeAll = Number(tradePrice)*Number(tradeNum)
+			}
+		},
+		tradeNum(res){
+			let {tradePrice,tradeNum} = this;
+			if(tradePrice!==''&&tradePrice!==null&&tradeNum!==''&&tradeNum!==null){
+				this.tradeAll = Number(tradePrice)*Number(tradeNum)
+			}else{
+				this.tradeAll = 0;
+			}
+		},
 
 	  },
 	  mounted(){
@@ -198,6 +235,21 @@
 		this.getTradeInfo(symbolCode);
 	  },
 	  methods:{
+		choosePrecent(item){
+			// debugger
+			let num = this.selectedTradeName.code==='buy'?(this.tradeInfo.usdtBalanceNum?this.tradeInfo.usdtBalanceNum:0):(this.tradeInfo.symbolBalanceNum?this.tradeInfo.symbolBalanceNum:0)
+			this.tradeNum = Number(num)*item.val
+		},
+		reduce(code){
+			let data = this[code];
+			data = (data===''||data===null||data===0||data==='0')?0:(Number(data)-1)
+			this[code]  =data;
+		},
+		add(code){
+			let data = this[code];
+			data = (data===''||data===null)?1:(Number(data)+1);
+			this[code]  =data;
+		},
 		chooseTradePair(item){
 			this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
 			this.closeDrawer()
@@ -220,14 +272,16 @@
 				params:postData
 			}).then((res)=>{
 				if (res.result.returnCode.toString() === "0") {
-					that.tradeInfo = res.data;
+					
 					// this.close();
 					let usdtBalance = res.data.usdtBalance.replace(",","")
+					let symbolBalance = res.data.symbolBalance.replace(",","")
 					let data = {
 						...res.data,
 						usdtBalanceNum:Number(usdtBalance),
 						symbolBalanceNum:Number(symbolBalance),
 					}
+					that.tradeInfo = data;
 					// console.log(Number(usdtBalance)) 
 					// this.$emit('transferInAmountSuccess')
 				}else{
@@ -237,9 +291,65 @@
 				}
 			})
 		},
-		inputChange(){
-
+		tradeFunc(){
+			let postData = this.getPostData();
+			if(postData){
+				let that = this;
+				this.$request({
+					url:'trade/trade',
+					method:'post',
+					params:postData
+				}).then((res)=>{
+					if (res.result.returnCode.toString() === "0") {
+						
+						// // this.close();
+						// let usdtBalance = res.data.usdtBalance.replace(",","")
+						// let symbolBalance = res.data.symbolBalance.replace(",","")
+						// let data = {
+						// 	...res.data,
+						// 	usdtBalanceNum:Number(usdtBalance),
+						// 	symbolBalanceNum:Number(symbolBalance),
+						// }
+						// that.tradeInfo = data;
+						// console.log(Number(usdtBalance)) 
+						// this.$emit('transferInAmountSuccess')
+					}else{
+						this.$toast.show({
+							title: res.result.returnMessage,
+						})
+					}
+				})
+			}
 		},
+		
+		inputChange(e,type){
+			let value = e.detail.value;
+            this[type] = e.detail.value;
+		},
+		getPostData() {
+            // debugger
+            let orderType = this.selectedTradeName.id;
+            let amount = this.tradeNum;
+            let price = this.tradePrice;
+            let symbolType = String(this.symbolDefaultData[this.KLineTradingPair.name])
+            let checkArray= this.checkArray;
+            // console.log(checkArray);
+
+            let postData = {
+                orderType,
+                amount,
+                price,
+                symbolType,
+            };
+
+            if (checkDataFunc.checkBasics(postData, checkArray)) {
+                return postData = {
+                    ...postData,
+                }
+            } else {
+                return false
+            }
+        },
 		// /trade/getTradeInfo
 		judgedata(){
 					if(this.showdata){

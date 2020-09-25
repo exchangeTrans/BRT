@@ -31,27 +31,24 @@
 				</view> -->
 				
 				<view class="charge">
-					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
+					<image src="../../static/images/trades/sub.png" mode="" class="sub" @tap="reduce('tradePrice')"></image>
 					<input :placeholder="'价格('+KLineTradingPair.type+')'" class="charge_name" type="number" min="0" :value="tradePrice" @input="inputChange($event,'tradePrice')">
-					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
+					<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradePrice')"></image>
 				</view>
 				
 				<view class="num">
-					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
+					<image src="../../static/images/trades/sub.png" mode="" class="sub"  @tap="reduce('tradeNum')"></image>
 					<!-- <text class="charge_num">数量(LED)</text> -->
 					<input :placeholder="'数量('+KLineTradingPair.name+')'" class="charge_num" type="number" min="0" :value="tradeNum" @input="inputChange($event,'tradeNum')">
-					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
+					<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradeNum')"></image>
 				</view>
 				
 				<view class="hdunum">可用：{{selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.usdtBalance:0):(tradeInfo.symbolBalance?tradeInfo.symbolBalance:0)}} {{selectedTradeName.code==='buy'?KLineTradingPair.type:KLineTradingPair.name}}</view>
 				<view class="hdupercent">
-					<view class="precent">25%</view>
-					<view class="precent">50%</view>
-					<view class="precent">75%</view>
-					<view class="precent">100%</view>
+					<view class="precent" hover-class="hoverClass" @tap="choosePrecent(item)" v-for="item in precentList" :key="item.val">{{item.text}}</view>
 				</view>
-				<text class="tradenum">交易额:</text><text class="number">1290</text>
-				<view class="buyit">{{selectedTradeName.name}}{{KLineTradingPair.name}}</view>
+				<text class="tradenum">交易额:</text><text class="number">{{tradeAll}}</text>
+				<view class="buyit" @tap="tradeFunc" hover-class="hoverClass">{{selectedTradeName.name}}{{KLineTradingPair.name}}</view>
 			</view>
 			<view class="right">
 				<view class="charge_and_num">
@@ -318,7 +315,7 @@
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 					top: 50%;
 					transform: translateY(-50%);
 					left: 30rpx;
@@ -329,7 +326,7 @@
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 					// margin-top: 20rpx; 
 					// margin-left: 30rpx;
 					top: 50%;
@@ -376,7 +373,7 @@
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 					top: 50%;
 					transform: translateY(-50%);
 					left: 30rpx;
@@ -385,7 +382,7 @@
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 					top: 50%;
 					transform: translateY(-50%);
 					right: 30rpx;
