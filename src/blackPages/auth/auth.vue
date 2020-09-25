@@ -8,18 +8,28 @@
                         <span>实名状态</span>
                     </view>
                     <view class="auth-status-text">
-                        <image :src="authStatusAwaitImg"></image>
-                        <span class="blue ">待实名</span>
+                        <view class="check">
+                            <image :src="authStatusCheckImg"></image>
+                            <span class="red">待审核</span>
+                        </view>
+                        <!--<view class="await">
+                            <image :src="authStatusAwaitImg"></image>
+                            <span class="blue">待实名</span>
+                        </view>-->
                     </view>
                 </view>
                 <view class="user-message">
                     <view class="user-name">
                         <span>真实姓名</span>
-                        <input type="text" placeholder="和身份证上的姓名保持一致">
+                        <input type="text"
+                               placeholder="和身份证上的姓名保持一致"
+                               v-model="postData.name">
                     </view>
                     <view class="user-cardNumber">
                         <span>证件号</span>
-                        <input type="number" placeholder="请输入身份证号">
+                        <input type="number"
+                               placeholder="请输入身份证号"
+                               v-model="postData.idCard">
                     </view>
                 </view>
                 <view class="upload-img">

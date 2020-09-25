@@ -38,7 +38,9 @@ export default {
                 background: '#00001A',
                 headerIsNoBoder: true,
             }
-        }
+        };
+
+        this.getAuthStatus();
     },
     data() {
         return {
@@ -84,6 +86,25 @@ export default {
         }
     },
     methods: {
+        getAuthStatus(){
+            // kyc/getKycState
+
+            this.$request({
+                url: "kyc/getKycState",
+                method: "post",
+            }).then((res) => {
+                // debugger
+                console.log(res);
+                /*if (res.result.returnCode.toString() === "0") {
+                    console.log(res);
+                } else {
+                    this.$toast.show({
+                        title: res.result.returnMessage,
+                    })
+                }*/
+            })
+        },
+
         uplaodaImg() {
             let that = this;
             let num = 1;
@@ -109,6 +130,7 @@ export default {
         },
 
         getAuth(cardImage){
+            debugger
             let postData = this.getAuthPostData(cardImage);
             if (postData) {
                 this.$request({
@@ -116,7 +138,13 @@ export default {
                     method: "post",
                     params: postData,
                 }).then((res) => {
-                    console.log(res);
+                    if (res.result.returnCode.toString() === "0") {
+                        console.log(res);
+                    } else {
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                    }
                 })
             }
 
