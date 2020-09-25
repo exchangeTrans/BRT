@@ -7,7 +7,11 @@
                         <span>{{inputData.textTitle}}</span>
                     </view>
                     <view class="withdrawalInput-item-content">
-                        <input type="text" :placeholder="inputData.placeholder">
+                        <input type="text"
+                               :placeholder="inputData.placeholder"
+                               :disabled="inputData.disabled"
+                               :value="inputValue"
+                               @input="inputChange($event)">
                         <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
                                 <span>{{inputData.rightItem.text}}</span>
@@ -15,7 +19,7 @@
                             <view class="isIcon" v-if="inputData.rightItem.type === 'isIcon'">
                                 <image :src="scan"></image>
                             </view>
-                            <view class="isBtn" v-if="inputData.rightItem.type === 'isBtn'">
+                            <view class="isBtn" v-if="inputData.rightItem.type === 'isBtn'" @tap="btnClick">
                                 <span>{{inputData.rightItem.text}}</span>
                             </view>
                         </view>
@@ -42,13 +46,26 @@
             isBlack: {
                 type: Boolean,
                 default: false,
-            }
+            },
+            inputValue: {
+                type: String,
+                default: "",
+            },
         },
         data() {
             return {
                 scan: `${require('@/static/images/withdrawal/scan.png')}`,
             }
         },
+        methods: {
+            inputChange(e) {
+                let value = e.detail.value;
+                this.$emit('inputChange', value)
+            },
+            btnClick() {
+                this.$emit("btnClick")
+            }
+        }
     }
 </script>
 
@@ -87,7 +104,7 @@
                             font-size: 32rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #D9DADB;
+                            /*color: #D9DADB;*/
 
                             .uni-input-input {
                                 text-indent: 0;

@@ -208,6 +208,27 @@ export default {
             };
         }
     },
+    
+    computed:{
+        quotationData(){
+            return this.$store.state.tradeData.tradePairData;
+        },
+        // tradeNoticeData(){
+        // 	return this.$store.state.tradeData.tradeNoticeData;
+        // // },
+        // // tradeRangeData(){
+        // // 	return this.$store.state.tradeData.tradeRangeData;
+        // // }
+        // tradingSymol(){
+        //     return this.$store.state.tradeData.tradingSymol;
+        // },
+        // selectSymbol(){
+        //     return this.$store.state.tradeData.selectSymbol;
+        // },
+        // selectedCurrency(){
+        //     return this.$store.state.defaultData.selectedCurrency;
+        // }
+    },
     methods: {
         switchTab(index) {
             this.active = index;

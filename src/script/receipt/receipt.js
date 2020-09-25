@@ -52,7 +52,6 @@ export default {
                     'color': '#D9DADB'
                 },
                 background: '#00001A',
-
                 headerIsNoBoder: true,
             }
         }

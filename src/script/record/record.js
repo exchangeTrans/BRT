@@ -1,13 +1,13 @@
 import appHeader from "@/components/common/header.vue";
 import RecordItem from "../../components/record/recordItem";
+import {DateFunc} from '@/static/js/common.js';
+import recordAmount from '@/static/js/recordNum.js';
 
 export default {
     components: {RecordItem,appHeader},
     name: "record",
     data() {
         return {
-			showdata:false,
-			nodata:true,
             isBlack: true,
             headerOptions: {
                 /*show: true,
@@ -27,43 +27,29 @@ export default {
                 headerIsNoBoder: true,*/
             },
             recordDataList: [
-                {
-                    titleName: "提币",
-                    number: 1798.8876987,
-                    status: "success",
-                    date: "19:28 08/16",
-                },
-                {
-                    titleName: "提币",
-                    number: 1798.8876987,
-                    status: "inTheReview",
-                    date: "19:28 08/16",
-                },
-                {
-                    titleName: "提币",
-                    number: 1798.8876987,
-                    status: "fail",
-                    date: "19:28 08/16",
-                },
             ],
+            hasNext: true,
+            currentIndex: 0,
         }
     },
     mounted() {
         let theme = this.$storage.getSync({key:'theme'});
+        let symbolType = this.$store.state.wallet.symbolType
         if(theme === 'white'){
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "USDT提币记录",
+                text: symbolType.name + "提币记录",
                 rightItem: {
                     type: "text",
-                    text: "",
+                    text: "ID:AVV491",
                     style: {
-                        fontSize: "28rpx",
-                        color: "#098FE0",
-                    },
-                    tipText:"AVV49111",
-                    haveTip:true,
+                        'fontSize': '24rpx',
+                        'fontFamily': 'PingFangSC-Regular, PingFang SC',
+                        'fontWeight': '400',
+                        'color': '#000000',
+                        'opacity': 0.5
+                    }
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
@@ -75,19 +61,16 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "USDT提币记录",
+                text: symbolType.name + "提币记录",
                 rightItem: {
                     type: "text",
-                    text: "",
+                    text: "ID:AVV491",
                     style: {
-                        fontSize: "28rpx",
-                        color: "#098FE0",
-                    },
-                    tipText:"AVV491",
-                    haveTip:true,
-                    tipTextStyle: {
-                        color: "#D9DADB",
-                        opacity: 0.5,
+                        'fontSize': '24rpx',
+                        'fontFamily': 'PingFangSC-Regular, PingFang SC',
+                        'fontWeight': '400',
+                        'color': '#000000',
+                        'opacity': 0.5
                     }
                 },
                 style: {
@@ -100,10 +83,52 @@ export default {
             this.isBlack = true;
             // this.BtnackgroundColor = "#8C939B";
         }
+        this.getRecordList(this.currentIndex , recordAmount.num)
     },
     methods: {
         headertap() {
 
+        },
+        getRecordList(index, size) {
+            if (!this.hasNext) {
+                // 没有数据了
+                return
+            }
+            let symbolType = this.$store.state.wallet.symbolType
+            let param = {
+                symbolType: symbolType.symbolType,
+                start: index,
+                index: size,
+                operationType: 20
+            }
+            this.$request({
+                url: "wallet/getSymbolTransaction",
+                method: "post",
+                params: param
+            }).then(res => {
+                let that = this
+                if (res.result.returnCode.toString() === "0") {
+                    if (res.data.list.length < size) {
+                        that.hasNext = false;
+                    } else {
+                        that.hasNext = true;
+                    }
+                    that.currentIndex++
+                    res.data.list.forEach(item => {
+                        let obj = {
+                            "titleName": item.operationTypeText,
+                            "status": 'success',
+                            "number": item.amount,
+                            "date": DateFunc.dateFormat(item.createTime, "hh:mm MM/dd"),
+                        }
+                        that.recordDataList.push(obj)
+                    })
+                } else {
+                    this.$toast.show({
+                        title: res.result.returnMessage,
+                    })
+                }
+            })
         }
     },
 }

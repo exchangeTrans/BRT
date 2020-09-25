@@ -5,20 +5,27 @@
                 <view class="quotesItem-item">
                     <view class="currency-name">
                         <view class="currency-name-img">
-                            <image :src="quotesData.img"></image>
+                            <image :src="quotesData.iconPath"></image>
                         </view>
                         <view :class="isBlack ? 'currency-name-content black' : 'currency-name-content'">
-                            <span class="name">{{quotesData.name}}币</span>
-                            <span class="number">{{quotesData.number}}{{quotesData.name}}</span>
+                            <span class="name">{{quotesData.name}}</span>
+                            <span class="number">1{{quotesData.type}}</span>
                         </view>
                     </view>
                     <view :class="isBlack ? 'price black' : 'price'">
-                        <span>{{quotesData.price}}</span>
+                        <span>{{quotesData.nowData===null?'0.00':quotesData.nowData.close.toFixed(2)}}</span>
                     </view>
                     <view class="upsAndDowns">
-                        <view :class="quotesDataStatus"><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
-                            <span>{{quotesData.rate}}</span>
+                        <view class="upsAndDowns-bg unchanging up" v-if="quotesData.range>0"><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
+                            <span>+{{quotesData.range.toFixed(2)}}%</span>
                         </view>
+                        <view class="upsAndDowns-bg unchanging down" v-else-if="quotesData.range<0"><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
+                            <span>{{quotesData.range.toFixed(2)}}%</span>
+                        </view>
+                        <view class="upsAndDowns-bg unchanging" v-else><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
+                            <span>{{quotesData.range.toFixed(2)}}%</span>
+                        </view>
+
                     </view>
                 </view>
             </view>
@@ -84,6 +91,8 @@
                     height: 100%;
                     display: flex;
                     align-items: center;
+                    // flex-grow:space-between;
+                    justify-content: space-between;
 
                     .currency-name {
                         display: flex;
@@ -106,6 +115,8 @@
                                 font-family: PingFangSC-Semibold, PingFang SC;
                                 font-weight: 600;
                                 color: #1A1A1A;
+                                width: 100rpx;
+                                opacity: 1;
                             }
 
                             .number {
@@ -113,11 +124,13 @@
                                 font-family: PingFangSC-Regular, PingFang SC;
                                 font-weight: 400;
                                 color: #1A1A1A;
+                                opacity: 0.5;
                             }
 
                             span {
                                 display: block;
                                 margin-left: 10rpx;
+                                
                             }
                         }
                         .black {

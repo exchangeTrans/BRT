@@ -294,6 +294,31 @@ export const DateFunc = {
         }
         return res;
     },
+    /**
+     *
+     * @param time 时间错
+     * @param pattern 转换格式
+     * @returns {string}
+     */
+    dateFormat(time, pattern) {
+        var now = new Date(parseInt(time));
+        var o = {
+            "M+" : now.getMonth()+1,                 //月份
+            "d+" : now.getDate(),                    //日
+            "h+" : now.getHours(),                   //小时
+            "m+" : now.getMinutes(),                 //分
+            "s+" : now.getSeconds(),                 //秒
+            "q+" : Math.floor((now.getMonth()+3)/3), //季度
+            "S"  : now.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(pattern))
+            pattern=pattern.replace(RegExp.$1, (now.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(pattern))
+                pattern = pattern.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return pattern;
+
+    },
 
 
     //秒转化为小时

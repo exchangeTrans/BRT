@@ -9,7 +9,7 @@
                     <view class="user-wrap-userMassage" @tap="toPage('user/personalInfo')">
                         <view class="user-wrap-headerImg">
                             <view class="img">
-                                <image :src="headerImg"></image>
+                                <image :src="homeMsgData.avatar"></image>
                             </view>
                         </view>
                         <view class="userMassage">
@@ -117,7 +117,7 @@
 
         .user-wrap {
             width: 100%;
-            height: calc(100vh - var(--status-bar-height) - 120rpx);
+            height: calc(100vh - var(--status-bar-height));
             background: #22252A;
             position: relative;
 

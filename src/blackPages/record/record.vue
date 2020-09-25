@@ -1,7 +1,7 @@
 <template>
     <view id="record">
         <app-header :headerOptions="headerOptions" @headertap=headertap class="headstyle"></app-header>
-        <scroll-view class="record-wrap" :scroll-y="true" v-if="showdata">
+        <scroll-view class="record-wrap" :scroll-y="true" v-if="recordDataList.length > 0">
             <view class="record-wrap-list">
                 <view class="record-wrap-item" v-for="(item, index) in recordDataList"
                       :key="index">
@@ -10,7 +10,7 @@
                 </view>
             </view>
         </scroll-view>
-		<view class="datacontent" v-if="nodata">
+		<view class="datacontent" v-else>
 			<image src="../../static/images/addrecord/addlog.png" mode="" class="img"></image>
 			<view class="item">暂无数据</view>
 		</view>

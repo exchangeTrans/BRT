@@ -6,6 +6,14 @@
 			if(!theme){
 				this.$storage.setSync({key: "theme", data: "white"});
 			}
+			let selectedCurrency = this.selectedCurrency;
+			let currency = this.$storage.getSync({key:'currency'});
+			if(!currency){
+				currency = selectedCurrency;
+				this.$storage.setSync({key: "currency", data: currency});
+			}
+			this.$store.commit("setDefaultSync",{key:"selectedCurrency", val: currency,})
+			// selectedCurrency
 			this.$mySocket.createSocket();
 
 			// #ifdef APP-PLUS
@@ -17,6 +25,7 @@
 			this.initLoginMsg();
 			this.initLangMsg();
 			this.initStoreData();
+			// this.initAuotationData();
 			let that = this;
 			// uni.onSocketOpen(function (res) {
 			// 	console.log(res)
@@ -51,6 +60,32 @@
 			// tradeRangeData(){
 			// 	return this.$store.state.tradeData.tradeRangeData;
 			// }
+			tradingSymol(){
+				return this.$store.state.tradeData.tradingSymol;
+			},
+			selectSymbol(){
+				return this.$store.state.tradeData.selectSymbol;
+			},
+			selectedCurrency(){
+				return this.$store.state.defaultData.selectedCurrency;
+			},
+			KLineTradingPair(){
+				return this.$store.state.tradeData.KLineTradingPair;
+			},
+			
+			
+			// 		tradingSymol: [
+			//     {name:'BRT',isLocal:true},
+			//     {name:'USDT',isLocal:true},
+			//     {name:'BTC',isLocal:false},
+			//     {name:'ETH',isLocal:false},
+			//     {name:'XRP',isLocal:false},
+			//     {name:'BCH',isLocal:false},
+			//     {name:'LTC',isLocal:false},
+			//     {name:'XMR',isLocal:false},      
+			// ],
+			// selectSymbol:{name:'USDT',isLocal:false},
+			// quotationData:{},
 
 		},
 		methods: {
@@ -63,8 +98,25 @@
 					period:'1min',
 					size:'200'
 				});
-                this.$store.dispatch('getRate');
+				this.$store.dispatch('getRate');
+				// this.$store.dispatch('initQuotationData')
 
+			},
+			
+			//初始化行情数据
+			initAuotationData(){
+				// let newData = tradePairData.map(function (item) {
+				// 	// let item =    
+				// 	let selectSymbol = this.selectSymbol;              
+				// 	return {
+				// 		...item,
+				// 		// dataArray:data,
+				// 		range:range,
+				// 		nowData:data.tick,
+				// 		price:price.toFixed(6)
+				// 	}
+					
+				// });
 			},
 			initPhoneMsg(){
 				//获取设备信息
@@ -112,7 +164,3 @@
 	}
 </script>
 
-<style>
-	/*每个页面公共css */
-    @import "./static/style/common.css";
-</style>

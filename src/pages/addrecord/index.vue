@@ -1,7 +1,6 @@
 <template>
     <view class="index">
         <appHeader :headerOptions="headerOptions"></appHeader>
-<!--        <view class="item"></view>-->
         <scroll-view class="record-wrap" :scroll-y="true" v-if="recordData_list.length > 0">
             <view
                     v-for="(item,index) in recordData_list"
@@ -26,12 +25,6 @@
         height: 100%;
         background: #F8F8F8;
     }
-    .item {
-        height: 30rpx;
-        width: 100%;
-        background: #F8F8F8;
-        margin-top: 90rpx;
-    }
     .record-wrap {
         height: calc(100vh - var(--status-bar-height) - 100rpx);
 		padding-top: calc(100rpx + var(--status-bar-height));
@@ -53,5 +46,6 @@
 		color: #000000;
 		line-height: 40rpx;
 		text-align: center;
-	}
+        opacity: 0.5;
+    }
 </style>

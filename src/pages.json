@@ -68,6 +68,12 @@
       }
     },
     {
+      "path": "pages/withdrawal/success",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
       "path": "pages/promotion/promotion",
       "style": {
         //"navigationBarTitleText": ""
@@ -239,6 +245,12 @@
 
       }
     },
+    {
+      "path":"pages/auth/auth",
+      "style": {
+
+      }
+    },
 
 
 
@@ -258,8 +270,9 @@
 
 	  }
 	},
-
-
+	{
+		"path":"pages/connectus/index"
+	},
 
 
    {
@@ -489,13 +502,20 @@
 	  "style": {
 	    //"navigationBarTitleText": ""
 	  }
-	}
+	},{
+      "path":"blackPages/auth/auth",
+      "style": {
+
+      }
+    }
   ],
   // "tabBar": {
   //   // "color":"#8a8a8a",
   //   // "selectedColor":"#d4237a",
-  //   "borderStyle": "black",
+  //   "borderStyle": "white",
   //   "backgroundColor": "#ffffff",
+  //   "height":"75px",
+  //   "iconWidth":"35px",
   //   "list": [
   //     {
   //       "pagePath": "pages/index/index",

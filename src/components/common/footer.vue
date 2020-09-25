@@ -1,22 +1,23 @@
 <template>
     <view>
-        <view :class="'footer '+theme" id="footer" :style="{top:footerStyle.top}">
+        <view :class="'footer '+theme"
+              id="footer"
+              :style="{top:footerStyle.top}">
             <view class="footerContent">
                 <view v-for="(item,key) in footerArray"
-                    :key="key"
-                    :class="item.code===footerSelected.code?'footerTabLi active':'footerTabLi'"
-                    @tap="changePage(item)">
+                      :key="key"
+                      :class="item.code===footerSelected.code?'footerTabLi active':'footerTabLi'"
+                      @tap="changePage(item)">
                     <block>
                         <view class="imgBox"
-                            :style="{'backgroundImage':'url('+(item.code===footerSelected.code?item.selectedIconPath:item.iconPath)+')'}"></view>
-
+                              :style="{'backgroundImage':item.code===footerSelected.code?item.selectedIconPath:item.iconPath}"></view>
                         <span class="title">{{item.text}}</span>
                     </block>
                 </view>
             </view>
         </view>
     </view>
-    
+
 </template>
 
 <script>
@@ -26,9 +27,9 @@
         data() {
             return {
                 title: 'footer',
-                windowHeight:"100%",
-                footerHeight:'0',
-                footerStyle:{top:'calc(100vh - 116rpx)'}
+                windowHeight: "100%",
+                footerHeight: '0',
+                footerStyle: {top: 'calc(100vh - 116rpx)'}
 
             }
         },
@@ -39,16 +40,16 @@
                 },
             },
         },
-        computed:{
-            footerArray(){
-				return this.$store.state.defaultData.footerArray;
+        computed: {
+            footerArray() {
+                return this.$store.state.defaultData.footerArray;
             },
-            footerSelected(){
+            footerSelected() {
                 return this.$store.state.defaultData.footerSelected;
             },
-            theme(){
+            theme() {
                 // return 'black'
-                return this.$storage.getSync({key:'theme'});
+                return this.$storage.getSync({key: 'theme'});
             }
 
         },
@@ -58,33 +59,33 @@
             query.select('#footer').boundingClientRect(data => {
                 that.footerHeight = data.height;
                 let windowHeight = that.height;
-                if(windowHeight==="100%"){
+                if (windowHeight === "100%") {
                     that.getWindowHeight();
-                }else{
+                } else {
                     that.windowHeight = windowHeight;
                 }
             }).exec();
         },
-        watch:{
-            footerHeight(){
+        watch: {
+            footerHeight() {
                 let top = "100%";
-                if(this.windowHeight!=="100%"){
-                    top=this.windowHeight-this.footerHeight;
+                if (this.windowHeight !== "100%") {
+                    top = this.windowHeight - this.footerHeight;
                 }
-                this.footerStyle= {top:top+"px",}
+                this.footerStyle = {top: top + "px",}
             },
-            windowHeight(){
+            windowHeight() {
                 let top = "100%";
-                if(this.windowHeight!=="100%"){
-                    top=this.windowHeight-this.footerHeight;
+                if (this.windowHeight !== "100%") {
+                    top = this.windowHeight - this.footerHeight;
                 }
-                this.footerStyle= {
-                    top:top+"px",
+                this.footerStyle = {
+                    top: top + "px",
                 }
             },
         },
         methods: {
-            getWindowHeight(){
+            getWindowHeight() {
                 let that = this;
                 uni.getSystemInfo({
                     success(res) {
@@ -95,11 +96,11 @@
             changePage(item) {
                 let {footerSelected} = this;
                 if (footerSelected.code !== item.code) {
-                     this.$store.commit("setDefaultSync",{key:"footerSelected", val: item,})
+                    this.$store.commit("setDefaultSync", {key: "footerSelected", val: item,})
                     let jumpType = 'reLaunch';
                     this.$jumpPage.jump({
-                        type:jumpType,
-                        url:item.pagePath
+                        type: jumpType,
+                        url: item.pagePath
                     })
                 }
 
@@ -140,7 +141,7 @@
             justify-content: space-between;
 
             .footerTabLi {
-                 width: 100rpx;
+                width: 100rpx;
                 float: left;
 
                 .imgBox {
@@ -166,7 +167,8 @@
                     opacity: 0.5;
                 }
             }
-            .footerTabLi.active{
+
+            .footerTabLi.active {
                 span {
                     color: #098FE0;
                     opacity: 1;
@@ -175,18 +177,21 @@
         }
 
     }
-    .footer.black{
+
+    .footer.black {
         background: #22252A;
-         .footerContent {
-            
+
+        .footerContent {
+
             .footerTabLi {
-             
+
                 span {
                     color: #D9DADB;
                     opacity: 0.5;
                 }
             }
-            .footerTabLi.active{
+
+            .footerTabLi.active {
                 span {
                     color: #0A87D3;
                     opacity: 1;

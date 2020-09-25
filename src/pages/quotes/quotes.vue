@@ -8,9 +8,9 @@
                         <view class="currency">
                             <span>计价货币：</span>
                             <span>USTD</span>
-                            <view class="icon">
+                            <!-- <view class="icon">
                                 <image :src="currencyIcon"></image>
-                            </view>
+                            </view> -->
                         </view>
                         <view class="price">
                             <span>价格</span>
@@ -25,7 +25,7 @@
                 </view>
                 <scroll-view class="quotes-content-wrap-container" :scroll-y="true">
                     <view class="quotes-content-wrap-container-list"
-                          v-for="(item, index) in quotesData"
+                          v-for="(item, index) in quotationData"
                           :key="index">
                         <QuotesItem :quotesData="item"></QuotesItem>
                     </view>
@@ -102,7 +102,7 @@
 
                         .price {
                             box-sizing: border-box;
-                            margin-left: 80rpx;
+                            margin-left: 112rpx;
                             flex-grow: 2;
                             /*margin-left: 110rpx;*/
                         }

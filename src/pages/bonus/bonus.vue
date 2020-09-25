@@ -1,6 +1,8 @@
 <template>
     <view id="bonus">
-        <app-header :headerOptions="headerOptions" @headertap=headertap></app-header>
+        <app-header :headerOptions="headerOptions"
+                    @headertap=headertap
+                    class="appHeader"></app-header>
         <scroll-view class="bonus-wrap" scroll-y="true">
             <view class="bonus-wrap-content">
                 <view class="bonus-wrap-content-card">

@@ -6,7 +6,8 @@ let socketStatus = false;
 let setIntervalWesocketPush = null;
 // let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
-let socketUrl = "ws://13.125.88.118:8188/ws/market"
+// let socketUrl = "ws://13.125.88.118:8188/ws/market"
+let socketUrl = "ws://52.78.213.185:8188/ws/market"
 
 let ping = 1492420473027;
 let socketArray=[];
@@ -86,21 +87,39 @@ export const mySocket={
         let ch = data.ch;
         if(ch.indexOf('detail')>-1&&data.tick){
             mySocket.upDataRangeData(data)
+        }else if(ch.indexOf('depth')>-1){
+            mySocket.upDataDepthData(data)
         }
     },
     upDataRangeData(data){
         let tradePairData = store.state.tradeData.tradePairData;
         let symbol = data.symbol;
         let tick = data.tick;
+        let rangeList = store.state.defaultData.rangeData;
+        let selectedCurrency = store.state.defaultData.selectedCurrency.code;
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let newData = tradePairData.map(function (item) {
-          
+            
             if(item.id===symbol){
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
+                let code = item.type+selectedCurrency
+                let price = Number(rangeList[code])*tick.close; 
+                if(KLineTradingPair.id === item.id){
+                    let KLineTradingPairObj = {
+                        ...KLineTradingPair,
+                        range:range,
+                        nowData:data.tick,
+                        price:price.toFixed(6)
+                    }
+                    store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+                }
+                // console.log(item.type+selectedCurrency)
               return {
                 ...item,
                 // dataArray:data,
                 range:range,
-                nowData:data.tick
+                nowData:data.tick,
+                price:price.toFixed(6)
               }
             }else{
               return item
@@ -108,10 +127,24 @@ export const mySocket={
               
           });
           store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
+        //   store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
+    },
+    upDataDepthData(data){
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let symbol = data.symbol;
+        if(tradePairData.id===symbol){
+            let KLineTradingPairObj = {
+                ...KLineTradingPair,
+                depth:data.tick
+            }
+            store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+        }
     },
     //socket 订阅行情
     onopen:function(){
         let tradePairData = store.state.tradeData.tradePairData;
+        
+
          
                 // let data = {
                 //     sub:"market.all.detail",
@@ -157,7 +190,24 @@ export const mySocket={
             
                                 
         });
+        mySocket.subscribeDepth()
         
+    },
+    subscribeDepth(){
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".depth.step1"
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            // period:"1min",
+            id: 'marketdepth',
+            isLocal:KLineTradingPair.isLocal
+            
+        } 
+        mySocket.subscribe(data); 
+    
     },
     //订阅主题
     subscribe:function(data){

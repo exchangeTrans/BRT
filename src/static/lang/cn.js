@@ -121,6 +121,9 @@ export default {
         interestDay:'昨日收益',
         bestHold:'昨日最佳持币',
         pledgeEarningRecord:'质押收益记录',
+    },
+    property: {
+
     }
 
 }
