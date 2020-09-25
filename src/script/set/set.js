@@ -42,11 +42,17 @@ export default {
             }
         };
 
+        //获取语言信息
         let langMsg = this.$storage.getSync({key:'langMsg'});
+        this.languageItem = langMsg;
+        //获取币种信息
+        let currency = this.$storage.getSync({key:'currency'})
+        this.selectedObj = currency;
         // this.languageItem = langMsg;
-        let currency = this.$store.state.defaultData.currency;
+        //获取store里面的currency列表
+        let currencyList = this.$store.state.defaultData.currency;
         // let langArray = this.$store.state.defaultData.langArray;
-        this.currencyData = currency[langMsg.name];
+        this.currencyData = currencyList[langMsg.name];
 
 
         this.selectedCurrency = this.$store.state.defaultData.selectedCurrency;
@@ -83,10 +89,11 @@ export default {
                 // nameCode:"zh-CN",
                 // icon: `${require('@/static/images/user/Chinese.png')}`,
             },//语言
+
             selectedObj:{
                 name: '人民币',
-                code: "RMB",
                 img: `${require('@/static/images/set/rmb.png')}`,
+                code: "CNY",
                 unit:'¥'
             },//币种类
 
@@ -101,16 +108,17 @@ export default {
         },
 
         chooseLanguage(languageItem) {
-            console.log(languageItem)
+            // console.log(languageItem)
             this.languageItem = languageItem;
         },
 
         chooseCurrencyData(item) {
-            console.log(item);
+            // console.log(item);
             this.selectedObj = item;
         },
 
         btnClick(){
+            //币种
             this.$store.commit("setDefaultSync", {
                 key: "selectedCurrency",//币种
                 val: this.selectedObj,

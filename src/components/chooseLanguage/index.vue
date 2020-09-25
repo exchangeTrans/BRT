@@ -8,8 +8,7 @@
                       @click="chooseItem(item)"
                       :style="{'color':mode==='night'?'#D9DADB':'rgba(51, 51, 51, 1)',
                         'border-bottom':mode==='night'?'1rpx solid rgba(255,255,255,0.1)':'1rpx solid #F2F2F2'
-                      }"
-                >
+                      }">
                     <image :src=item.icon alt=""/>
                     <view class="name">
                         {{item.text}}

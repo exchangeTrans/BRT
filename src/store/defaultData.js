@@ -2,7 +2,7 @@ import request from '@/request/index';
 
 const GETCOUNTRYLIST = 'GETCOUNTRYLIST';
 const COUNTRY = 'COUNTRY';
-const GETRANGEDATA="GETRANGEDATA"
+const GETRANGEDATA = "GETRANGEDATA"
 export default {
     state: {
         langArray: {
@@ -36,11 +36,13 @@ export default {
                 {
                     name: 'en-US',
                     text: 'English',
+                    icon: `${require('@/static/images/user/UK.png')}`,
                     code: 2
                 },
                 {
                     name: 'ko-KR',
                     text: 'Korean',
+                    icon: `${require('@/static/images/user/Korea.png')}`,
                     code: 3
                 },
             ],
@@ -48,16 +50,19 @@ export default {
                 {
                     name: 'zh-CN',
                     text: '중국말',
+                    icon: `${require('@/static/images/user/Chinese.png')}`,
                     code: 1
                 },
                 {
                     name: 'en-US',
                     text: '영어',
+                    icon: `${require('@/static/images/user/UK.png')}`,
                     code: 2
                 },
                 {
                     name: 'ko-KR',
                     text: '한국어',
+                    icon: `${require('@/static/images/user/Korea.png')}`,
                     code: 3
                 },
             ]
@@ -67,89 +72,89 @@ export default {
         userInfo: {},
         footerArray: [
             {
-                code:'index',
+                code: 'index',
                 pagePath: "index/index",
                 text: "首页",
                 iconPath: `url(${require('@/static/images/tabIcon/home_normal.png')})`,
                 selectedIconPath: `url(${require('@/static/images/tabIcon/home.png')})`
             },
             {
-                code:'quotes',
+                code: 'quotes',
                 pagePath: "quotes/quotes",
                 text: "行情",
                 iconPath: `url(${require('@/static/images/tabIcon/market_normal.png')})`,
                 selectedIconPath: `url(${require('@/static/images/tabIcon/market.png')})`
             },
             {
-                code:'trades',
+                code: 'trades',
                 pagePath: "trades/index",
                 text: "交易",
                 iconPath: `url(${require('@/static/images/tabIcon/deal_normal.png')})`,
                 selectedIconPath: `url(${require('@/static/images/tabIcon/deal.png')})`
             },
             {
-                code:'property',
+                code: 'property',
                 pagePath: "property/property",
                 text: "资产",
                 iconPath: `url(${require('@/static/images/tabIcon/property_normal.png')})`,
                 selectedIconPath: `url(${require('@/static/images/tabIcon/property.png')})`
             },
             {
-                code:'user',
+                code: 'user',
                 pagePath: "user/user",
                 text: "我的",
                 iconPath: `url(${require('@/static/images/tabIcon/user_normal.png')})`,
                 selectedIconPath: `url(${require('@/static/images/tabIcon/user.png')})`
             }
         ],
-        footerSelected:{
-            code:'index',
+        footerSelected: {
+            code: 'index',
             pagePath: "index/index",
             text: "首页",
             iconPath: "static/images/tabIcon/home_normal.png",
             selectedIconPath: "static/images/tabIcon/home.png"
         },
-        currency:{
+        currency: {
             'zh-CN': [
                 {
                     name: '人民币',
-                    code: "RMB",
+                    // code: "RMB",
                     img: `${require('@/static/images/set/rmb.png')}`,
                     code: "CNY",
-                    unit:'¥'
+                    unit: '¥'
                 },
                 {
                     name: '美元',
                     code: "USD",
                     img: `${require('@/static/images/set/dollar.png')}`,
-                    unit:'$'
+                    unit: '$'
                 },
                 {
                     name: '韩元',
                     code: "KRW",
                     img: `${require('@/static/images/set/yen.png')}`,
-                    unit:'₩'
+                    unit: '₩'
                 },
             ],
             'en-US': [
                 {
                     name: '人民币',
                     code: "CNY",
-                    code: "RMB",
+                    // code: "RMB",
                     img: `${require('@/static/images/set/rmb.png')}`,
-                    unit:'¥'
+                    unit: '¥'
                 },
                 {
                     name: '美元',
                     code: "USD",
                     img: `${require('@/static/images/set/dollar.png')}`,
-                    unit:'$'
+                    unit: '$'
                 },
                 {
                     name: '韩元',
                     code: "KRW",
                     img: `${require('@/static/images/set/yen.png')}`,
-                    unit:'₩'
+                    unit: '₩'
                 },
             ],
             'ko-KR': [
@@ -157,30 +162,30 @@ export default {
                     name: '人民币',
                     code: "RMB",
                     img: `${require('@/static/images/set/rmb.png')}`,
-                    unit:'¥'
+                    unit: '¥'
                 },
                 {
                     name: '美元',
                     code: "USD",
                     img: `${require('@/static/images/set/dollar.png')}`,
-                    unit:'$'
+                    unit: '$'
                 },
                 {
                     name: '韩元',
                     code: "KRW",
                     img: `${require('@/static/images/set/yen.png')}`,
-                    unit:'₩'
+                    unit: '₩'
                 },
             ]
         },
         //当前选择币种
-        selectedCurrency:{
+        selectedCurrency: {
             name: '人民币',
             code: "CNY",
-            unit:'¥'
+            unit: '¥'
         },
-        rangeData:{}
-        
+        rangeData: {}
+
     },
     actions: {
         //获取国家
@@ -196,13 +201,13 @@ export default {
                 }
             })
         },
-         //获取汇率
+        //获取汇率
         getRange({commit}) {
             request({
                 url: 'wallet/getRate',
                 method: 'post',
             }).then(res => {
-                if (res.result.returnCode.toString() === '0') {              
+                if (res.result.returnCode.toString() === '0') {
                     let data = res.data;
                     commit('GETRANGEDATA', data);
                 }
