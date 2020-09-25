@@ -68,12 +68,12 @@ export default {
         }
     },
     watch: {
-        // data(v) {
-        //     // console.log(v)
-        //     if (v.userWalletAddress) {
-        //         this.$refs.qrcodeComponents.qrcodeScan(v.userWalletAddress);
-        //     }
-        // }
+        data(v) {
+            // console.log(v)
+            if (v.userWalletAddress) {
+                this.$refs.qrcodeComponents.qrcodeScan(v.userWalletAddress);
+            }
+        }
 
     },
     computed: {
