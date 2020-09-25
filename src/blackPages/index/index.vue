@@ -139,7 +139,7 @@
 			.indexTop{
 				width: 100%;
 				height: 420rpx;
-				padding-top:80rpx;
+				padding-top:70rpx;
 				box-sizing: border-box;
 				//background: #1A1A1A;
 				background-size: cover;

@@ -106,8 +106,8 @@
 
                 if(url !== ''){
                     this.$jumpPage.jump({
-                        url: url,
-                        type: "navigateTo"
+                        type:'navigateTo',
+                        url:url
                     })
                 }
             },

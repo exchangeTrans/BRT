@@ -1,5 +1,5 @@
 <template>
-    <view class="receipt" id="receipt">
+    <view class="receiptIndex" id="receiptIndex">
 
         <appHeader :headerOptions="headerOptions" @headertap="rechargeRecord"></appHeader>
         <view class="content">
@@ -37,7 +37,7 @@
 <script src="@/script/receipt/receipt.js"></script>
 
 <style lang="less">
-    .receipt {
+    .receiptIndex{
         width: 100%;
         height: 100%;
 

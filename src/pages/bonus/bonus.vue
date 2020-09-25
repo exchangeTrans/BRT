@@ -62,14 +62,14 @@
                 </view>
             </view>
 
-            <view class="noDataBox" v-if="earningsRecordData.length===0">
+            <view class="noDataBox" v-if="isNoDataFlag">
                 <noData></noData>
             </view>
             <earningsRecordList
-                    v-else
+                    v-if="!isNoDataFlag"
                     :earningsRecordData="earningsRecordData">
             </earningsRecordList>
-            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-if="earningsRecordData.length>0"></uni-load-more>
+            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-if="!isNoDataFlag"></uni-load-more>
 
         </scroll-view>
     </view>
