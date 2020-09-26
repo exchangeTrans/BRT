@@ -72,7 +72,8 @@ export default {
                 // }
             ],
             haveNext:true,
-            status:'more'
+            status:'more',
+            isNoDataFlag:false,
 
         }
     },
@@ -109,7 +110,7 @@ export default {
                 if (res.result.returnCode.toString() === "0") {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
-                        that.haveNext=true;
+                        that.haveNext=false;
                         that.status='noMore'
                     }else {
                         that.status='more'
@@ -120,6 +121,13 @@ export default {
                     }else {
                         that.miningEarningsData=res.data;
                         that.earningsRecordData=res.data.list;
+
+                        if (res.data.list.length===0){
+                            that.isNoDataFlag=true;
+                        }else {
+                            that.isNoDataFlag=false;
+                        }
+
                     }
 
                 }else{

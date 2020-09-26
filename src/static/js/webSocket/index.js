@@ -132,7 +132,7 @@ export const mySocket={
     upDataDepthData(data){
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
-        if(tradePairData.id===symbol){
+        if(KLineTradingPair.id===symbol){
             let KLineTradingPairObj = {
                 ...KLineTradingPair,
                 depth:data.tick

@@ -67,6 +67,7 @@
                 this.counts=parseInt(res);
 
             },
+<<<<<<< HEAD
 			transfer(transferDate){
 				if(transferDate.type==="finance/inFinance"){
 					if(!this.counts){
@@ -104,6 +105,22 @@
 					})
 					return;
 				}
+=======
+            transfer(type){
+                if(type === ""){
+                    // this.miningTransfer 这里写你的函数
+                }else{
+                    this.miningTransfer()
+                }
+            },
+            miningTransfer() {
+                if (!this.counts){
+                    this.$toast.show({
+                        title: '金额不能为空',
+                    })
+                    return;
+                }
+>>>>>>> 68422690126d3fa71d36b1b31a85a4d04f4b8224
                 let postData={
                     amount: this.counts
                 };
@@ -121,7 +138,7 @@
                         })
                     }
                 })
-            }
+            },
 
 		}
 	}

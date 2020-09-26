@@ -1,7 +1,9 @@
 import pageHeader from '@/components/common/header.vue'
 import recordAmount  from '@/static/js/recordNum.js'
+import UniLoadMore from "@/components/uni-load-more/uni-load-more";
+import noData from "@/components/noData/index.vue";
 export default{
-    components:{pageHeader},
+    components:{pageHeader,UniLoadMore,noData},
     data(){
         return{
             datalist:[
@@ -84,6 +86,9 @@ export default{
             teamData:{},
             inviteRecord:[],
             haveNext:true,
+            isNoDataFlag:false,
+            status:'more',
+
         }
     },
     mounted(){
@@ -99,6 +104,11 @@ export default{
                     index:recordAmount.num,
                 };
                 this.request(postData,isMore);
+                if (isMore){
+                    this.status='loading'
+                }
+            }else {
+                this.status='noMore'
             }
 
         },
@@ -113,7 +123,10 @@ export default{
                 if (res.result.returnCode.toString() === "0") {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
-                        this.haveNext=true;
+                        that.haveNext=false;
+                        that.status='noMore'
+                    }else {
+                        that.status='more'
                     }
                     //判断是第一次加载还是加载更多
                     if (isMore){
@@ -121,6 +134,13 @@ export default{
                     }else {
                         that.teamData=res.data;
                         that.inviteRecord=res.data.list;
+
+                        //判断是否有数据
+                        if (res.data.list.length===0){
+                            that.isNoDataFlag=true;
+                        }else {
+                            that.isNoDataFlag=false;
+                        }
                     }
 
                 }else{

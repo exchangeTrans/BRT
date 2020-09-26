@@ -18,14 +18,11 @@
 		</view>
 		<view class="main">
 			<view class="left">
-				<view class="buy">
-					<image src="../../static/images/trades/bluebg.png" mode=""></image>
-					<view class="income">买入</view>
-				</view>
-				
-				<view class="sale">
-					<image src="../../static/images/trades/whitebg.png" mode=""></image>
-					<view class="fonts">卖出</view>
+				<view :class="item.code" v-for="item in tradeNameData" :key="item.code">
+					<image class="bluebg" v-if="item.code===selectedTradeName.code" src="../../static/images/trades/bluebg.png" mode=""></image>
+					<image class="whitebg" v-else src="../../static/images/trades/whitebg.png" mode=""></image>
+					<view class="income active" v-if="item.code===selectedTradeName.code">{{item.name}}</view>
+					<view class="income" v-else>{{item.name}}</view>
 				</view>
 				
 				<view class="charge">
@@ -241,7 +238,7 @@
 			overflow: hidden;
 			position: relative;
 
-			.buy {
+			.buy{
 				width: 173.7rpx;
 				height: 76rpx;
 				float: left;
@@ -251,46 +248,53 @@
 				position: absolute;
 				overflow: hidden;
 				font-family: PingFangSC-Regular, PingFang SC;
-
-				image {
+				color: #1A1A1A;
+				image{
 					width: 174rpx;
 					height: 76rpx;
 					position: absolute;
-					z-index: 1;
+					z-index: -999;
 				}
-
-				.income {
-					margin-left: 60rpx;
+				.income{
+					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
-					position: absolute;
-					z-index: 2;
-
+					color: #1A1A1A;
+				}
+				.income.active{
+					color: #FFFFFF;
+				}
+				.whitebg{
+					transform: rotate(180deg);
 				}
 			}
-
-			.sale {
+			.sale{
 				width: 173.7rpx;
 				height: 76rpx;
 				float: left;
 				line-height: 76rpx;
-				color: #E3E5E6;
+				color: #000000;
 				position: absolute;
 				overflow: hidden;
 				margin-left: 178.7rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-
-				image {
+				image{
 					width: 174rpx;
 					height: 76rpx;
 					position: absolute;
-					z-index: 1;
+					z-index: -999;
 				}
-
-				.fonts {
+				.income{
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
+					color: #1A1A1A;
+				}
+				.income.active{
+					color: #FFFFFF;
+				}
+				.bluebg{
+					transform: rotate(180deg);
 				}
 			}
 
@@ -334,7 +338,7 @@
 					color: #E3E5E6;
 					position: absolute;
 					z-index: 2;
-					width: 150rpx;
+					width: 170rpx;
 					position: absolute;
 					top: 50%;
 					left: 50%;
@@ -389,7 +393,7 @@
 					font-family: PingFangSC-Regular, PingFang SC;
 					color: #D9DADB;
 					// margin-left: 100rpx;
-					width: 150rpx;
+					width: 170rpx;
 					position: absolute;
 					top: 50%;
 					left: 50%;
@@ -399,7 +403,7 @@
 			}
 
 			.hdunum {
-				width: 50%;
+				// width: 50%;
 				height: 34rpx;
 				font-size: 24rpx;
 				margin-left: 20rpx;

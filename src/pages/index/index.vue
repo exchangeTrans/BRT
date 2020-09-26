@@ -141,7 +141,7 @@
 			.indexTop{
 				width: 100%;
 				height: 420rpx;
-				padding-top:calc(80rpx + var(--status-bar-height));
+				padding-top:70rpx;
 				box-sizing: border-box;
 				//background: #1A1A1A;
 				background-size: cover;
