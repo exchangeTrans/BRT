@@ -198,7 +198,6 @@
 			return this.$store.state.tradeData.tradePairData;
 		},
 		KLineTradingPair(){
-			console.log(this.$store.state.tradeData.KLineTradingPair)
 			return this.$store.state.tradeData.KLineTradingPair;
 		},
 		selectedCurrency(){
@@ -269,7 +268,8 @@
 			this.closeDrawer();
 			let symbolType = item.name;
 			let symbolCode = String(this.symbolDefaultData[symbolType])
-			this.getTradeInfo(symbolCode)
+			this.getTradeInfo(symbolCode);
+			this.$mySocket.subscribeDepth(item);
 		},
 		selectTradeHeader(item){
 			if(item.code==='2'){

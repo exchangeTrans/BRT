@@ -1,11 +1,11 @@
 import appHeader from '@/components/common/header.vue'
 import QRCode from 'qrcodejs2'
-import qrcodeComponents from '@/components/qrcode/qrcode'
+// import qrcodeComponents from '@/components/qrcode/qrcode'
 
 export default {
     components: {
         appHeader,
-        qrcodeComponents
+        // qrcodeComponents
     },
     mounted() {
         let theme = this.$storage.getSync({key: 'theme'})
@@ -71,7 +71,7 @@ export default {
         data(v) {
             // console.log(v)
             if (v.userWalletAddress) {
-                this.$refs.qrcodeComponents.qrcodeScan(v.userWalletAddress);
+                // this.$refs.qrcodeComponents.qrcodeScan(v.userWalletAddress);
             }
         }
 
@@ -98,12 +98,12 @@ export default {
 
         },
         setQrcodeStyle() {
-            let width = this.$refs.qrImg.$el.offsetWidth;
-            let height = this.$refs.qrImg.$el.offsetHeight;
-            this.qrCodeStyle = {
-                width,
-                height,
-            }
+        //     let width = this.$refs.qrImg.$el.offsetWidth;
+        //     let height = this.$refs.qrImg.$el.offsetHeight;
+        //     this.qrCodeStyle = {
+        //         width,
+        //         height,
+        //     }
         },
         getUserWalletAddress() {
             let that = this;

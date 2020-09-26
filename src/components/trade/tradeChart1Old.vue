@@ -12,14 +12,14 @@
             :cHeight="cHeight" 
             :opts="item.opts" 
             ref="tradeChart1"/> -->
-        <!-- <canvas id="tradeChart1" 
+        <canvas id="tradeChart1" 
             canvasId="tradeChart1" 
             :style="{'width':cWidth*pixelRatio+'px','height':cHeight*pixelRatio+'px', 'transform': 'scale('+(1/pixelRatio)+')','margin-left':-cWidth*(pixelRatio-1)/2+'px','margin-top':-cHeight*(pixelRatio-1)/2+'px'}"
             @touchstart="touchStart" 
             @touchmove="touchMove" 
             @touchend="touchEnd" 
             @error="error">
-        </canvas> -->
+        </canvas>
 	</view>
 </template>
 

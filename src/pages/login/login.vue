@@ -1,6 +1,6 @@
 <template>
     <view class="login" id="login">
-        <app-header :headerOptions="headerOptions"></app-header>
+        <app-header :headerOptions="headerOptions" class="addHeader"></app-header>
         <scroll-view class="scrollWrap" :scroll-y="true">
             <view class="wrap">
                 <loginHead :defaultChoice="defaultType"
@@ -51,7 +51,7 @@
                                 @inputChange="inputChange('password', $event)"></loginInput>
                 </view>
                 <loginBtn :btnStyle="btnStyle"
-                          :btnText="$t('login').loginBtn"
+                          :btnText="btnText"
                           @btnClick="loginClick"></loginBtn>
                 <view class="touchFunc">
                     <view class="forgetPasswordTouch"
@@ -76,6 +76,10 @@
         width: 100%;
         height: 100%;
         background: #F9FAFA;
+
+        .addHeader {
+            top: var(--status-bar-height);
+        }
         .scrollWrap {
             width: 100%;
             box-sizing: border-box;

@@ -5,22 +5,24 @@
         <scroll-view class="tradeContent" scroll-y>
             <!-- <view @tap="changeTest">tatsadd</view> -->
             <view class="tradeTopView">
-                <view class="priceView add">0.0641</view>
+                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
                 <view class="moneyView">
-                    <view class="money">≈6.68 CNY</view>
-                    <view class="range add">+1.00%</view>
+                    <view class="money">≈{{KLineTradingPair.price}} {{selectedCurrency.code}}</view>
+                    <view v-if="KLineTradingPair.range>0" class="range add">+{{KLineTradingPair.range.toFixed(2)}}%</view>
+                    <view v-else-if="KLineTradingPair.range<0" class="range down">{{KLineTradingPair.range.toFixed(2)}}%</view>
+                    <view v-else class="range">{{KLineTradingPair.range.toFixed(2)}}%</view>
                 </view>
                 <view class="rightView">
                     <view class="rightLi">
-                        <view class="text">0.062</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.high.toFixed(2)}}</view>
                         <view class="title">{{$t('trade').high}}</view>
                     </view>
                     <view class="rightLi">
-                        <view class="text">0.062</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.low.toFixed(2)}}</view>
                         <view class="title">{{$t('trade').low}}</view>
                     </view>
                     <view class="rightLi">
-                        <view class="text">49833</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.amount.toFixed(2)}}</view>
                         <view class="title">24H</view>
 
                     </view>
@@ -41,9 +43,9 @@
                 <view class="chart1" id="chart1">
                     <tradeChart1/>
                 </view>
-                <view class="chart2" id="chart2">
+                <!-- <view class="chart2" id="chart2">
                     <tradeChart2/>
-                </view>
+                </view> -->
             </view>
 
             <view class="tableBox">
@@ -107,15 +109,16 @@
                     headerIsNoBoder: false,
                 },
                 chartTabArray:[
-                    {code:'1',name:"1分",id:''},
-                    {code:'2',name:"15分",id:''},
-                    {code:'3',name:"1小时",id:''},
-                    {code:'4',name:"4小时",id:''},
-                    {code:'5',name:"日线",id:''},
-                    {code:'6',name:"周线",id:''},
-                    {code:'7',name:"指标",id:''},
+                    {code:'1min',name:"1分",id:''},
+                    {code:'15min',name:"15分",id:''},
+                    {code:'60min',name:"1小时",id:''},
+                    {code:'4hour',name:"4小时",id:''},
+                    {code:'1day',name:"日线",id:''},
+                    {code:'1week',name:"周线",id:''},
+                    // {code:'7',name:"指标",id:''},
+                    // 1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
                 ],
-                chartTabSelect:{code:'2',name:"15分",id:''},
+                chartTabSelect:{code:'1min',name:"1分",id:''},
                 tableTabArray:[
                     {code:'table1',name:"买单/卖单",id:''},
                     {code:'table2',name:"最新成交",id:''},
@@ -138,10 +141,20 @@
             },
             langMsg(){
                 let langMsg = this.$storage.getSync({key:'langMsg'});
-                console.log(langMsg)
                 return langMsg.name
+            },
+            selectedCurrency(){
+                return this.$store.state.defaultData.selectedCurrency;
             }
-		},
+        },
+        watch:{
+            chartTabSelect(res){
+                this.$store.dispatch('getKline',{
+					period:res.code,
+                });
+                this.$mySocket.subscribeKline(res.code)
+            }
+        },
         methods: {
             selectChartTab(item){
                 this.chartTabSelect = item;
@@ -209,15 +222,18 @@
                     display: inline-block;
                 }
                 .range{
-                    color: #5BC788;
+                    color: #CBCCCD;
                     margin-left: 20rpx;
                 }
                 .range.add{
                     color: #FC3C5A;
                 }
+                .range.down{
+                    color: #5BC788;
+                }
             }
             .rightView{
-                width: 300rpx;
+                width: 400rpx;
                 height: 100%;
                 float: left;
                 box-sizing: border-box;
@@ -246,7 +262,7 @@
                         font-weight: 400;
                         color: #1A1A1A;
                         line-height: 36rpx;
-                        width: 120rpx;
+                        width: 200rpx;
                     }
                     
                 }
@@ -254,7 +270,7 @@
         }
         .chartBox{
             width: 750rpx;
-            height: 800rpx;
+            height: 600rpx;
             background: #FFFFFF; 
             border-bottom: 20rpx solid #F9FAFA;
             position: relative;

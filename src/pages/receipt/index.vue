@@ -16,9 +16,9 @@
                     <!--<div class="QRcode-content">
                         <div id="qrcode" ref="qrcode"></div>
                     </div>-->
-                    <qrcodeComponents :url="data.userWalletAddress"
-                                      :qrCodeStyle="qrCodeStyle"
-                                      ref="qrcodeComponents"></qrcodeComponents>
+<!--                    <qrcodeComponents :url="data.userWalletAddress"-->
+<!--                                      :qrCodeStyle="qrCodeStyle"-->
+<!--                                      ref="qrcodeComponents"></qrcodeComponents>-->
                 </view>
                 <view class="rechargeTitle">充币地址</view>
                 <view class="rechargeTitle">{{data.userWalletAddress}}</view>

@@ -95,9 +95,7 @@
 				this.$store.dispatch('getRange');
 
 				this.$store.dispatch('getKline',{
-					symbol:'XRP',
 					period:'1min',
-					size:'200'
 				});
 				this.$store.dispatch('getRate');
 				this.$store.dispatch('getUserMsg');

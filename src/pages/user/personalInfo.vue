@@ -1,6 +1,6 @@
 <template>
     <view class="personalInfo" id="personalInfo">
-        <app-header :headerOptions="headerOptions"></app-header>
+        <app-header :headerOptions="headerOptions" class="addHeader"></app-header>
         <view class="headerOption">
         </view>
         <view class="avatarBar">
@@ -21,7 +21,7 @@
                 {{$t('personInfo').nicknameText}}
             </view>
             <input class="nickname"
-                   :value="userMsgData.nickname"
+                   :name="userMsgData.nickname"
                    v-model="userMsgData.nickname"/>
 
             <!--<view class="modify"
@@ -44,7 +44,9 @@
         width: 100%;
         height: 100%;
         background: #F8F8F8;
-
+        .addHeader {
+            top: var(--status-bar-height);
+        }
         .avatarBar {
             width: 750rpx;
             height: 160rpx;
