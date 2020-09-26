@@ -12,19 +12,23 @@
                     <view class="clearfix"></view>
                 </view>
 
-                <view class="qrImg" ref="qrImg">
-                    <!--<div class="QRcode-content">
+                <!-- <view class="qrImg" ref="qrImg">
+                    <div class="QRcode-content">
                         <div id="qrcode" ref="qrcode"></div>
                     </div>-->
 <!--                    <qrcodeComponents :url="data.userWalletAddress"-->
 <!--                                      :qrCodeStyle="qrCodeStyle"-->
 <!--                                      ref="qrcodeComponents"></qrcodeComponents>-->
+                <!-- </view> --> 
+                <view class="qrcodeBox">
+                    <uni-qrcode cid="qrcode2243" @makeComplete="makeComplete" ref="qrcode2233" :text="data.userWalletAddress" :size="size" backgroundColor="rgba(255,255,255,0)" />
                 </view>
+                
                 <view class="rechargeTitle">充币地址</view>
                 <view class="rechargeTitle">{{data.userWalletAddress}}</view>
                 <view class="btnGroup">
-                    <view class="btnItem"> 保存二维码</view>
-                    <view class="btnItem  copy">复制地址</view>
+                    <view class="btnItem" @tap='saveImage'> 保存二维码</view>
+                    <view class="btnItem  copy" @tap='copy'>复制地址</view>
 
                 </view>
             </view>
@@ -56,6 +60,15 @@
                 box-sizing: border-box;
                 margin: 20rpx auto 40rpx;
                 background-color: #ffffff;
+                .qrcodeBox{
+                    width: 406rpx;
+                    height: 406rpx;
+                    margin: 60rpx auto 0;
+                    display: flex;
+                    justify-content: center;
+                    border: 6rpx solid #EFFBFE;
+                    align-items: center;
+                }
 
                 .nameItem {
                     margin: 0 auto;

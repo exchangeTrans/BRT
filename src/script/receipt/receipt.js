@@ -1,10 +1,12 @@
 import appHeader from '@/components/common/header.vue'
-import QRCode from 'qrcodejs2'
+// import QRCode from 'qrcodejs2'
 // import qrcodeComponents from '@/components/qrcode/qrcode'
+import uniQrcode from '@/components/uqrcode/index.vue'
 
 export default {
     components: {
         appHeader,
+        uniQrcode
         // qrcodeComponents
     },
     mounted() {
@@ -62,9 +64,13 @@ export default {
         return {
             headerOptions: {},
             rightIcon: `${require('@/static/images/receipt/rightIcon.png')}`,
-            data: {},
+            data: {
+                userWalletAddress:''
+            },
             qrCodeStyle: {},
             choiceType: {},
+            size:uni.upx2px(366),
+            filePath:""
         }
     },
     watch: {
@@ -117,12 +123,68 @@ export default {
             }).then((res) => {
                 if (res.result.returnCode === "0") {
                     that.data = res.data
+                    setTimeout(() => {
+                        that.$refs.qrcode2233.make()
+                    }, 1000);
+                    
+                
                 } else {
                     this.$toast.show({
                         title: res.result.returnUserMessage
                     })
                 }
             })
+        },
+        makeComplete(res){
+            console.log(res)
+            this.filePath = res;
+        },
+        saveImage(){
+            let filePath = this.filePath;
+            // uni.chooseImage({
+            //     count: 1,
+            //     sourceType: ['album '],
+            //     success: function (res) {
+                    // uni.saveImageToPhotosAlbum({
+                    //     filePath: filePath,
+                    //     success: function () {
+                    //         console.log('save success');
+                    //     }
+                    // });
+                // }
+            // })
+            uni.getImageInfo({
+				src: filePath,
+				success: function(image) {
+					console.log('图片信息：', JSON.stringify(image));
+					uni.saveImageToPhotosAlbum({
+						filePath: image.path,
+						success: function() {
+							console.log('save success');
+							uni.showToast({
+								title: '图片保存成功',
+								icon: 'none',
+								duration: 2200
+							});
+						},fail:function(e){
+                            uni.showToast({
+								title: '图片保存失败',
+								icon: 'none',
+								duration: 2200
+							});
+                        }
+					});
+				}
+			});
+            
+        },
+        copy(){
+            let text = this.data.userWalletAddress;
+            uni.setClipboardData({
+                data: text,
+                success: function () {
+                }
+            });
         },
         rechargeRecord() {
             this.$jumpPage.jump({

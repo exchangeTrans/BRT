@@ -1,43 +1,42 @@
 <template>
-	<view class="receipt" id="receipt" >
+    <view class="receiptIndex" id="receiptIndex">
 
-		<appHeader :headerOptions="headerOptions" @headertap="rechargeRecord"></appHeader>
-		<view class="content">
+        <appHeader :headerOptions="headerOptions" @headertap="rechargeRecord"></appHeader>
 
-			<view class="qrCode">
-				<view class="nameItem">
-					<view class="name">{{choiceType.name}}</view>
-					<view class="intro">币种名称</view>
-					<view class="rightIcon" :style="{'background-image':'url('+rightIcon+')'}"></view>
-					<view class="clearfix"></view>
-				</view>
+        <view class="content">
+            <view class="qrCode">
+                <view class="nameItem">
+                    <view class="name">{{choiceType.name}}</view>
+                    <view class="intro">币种名称</view>
+                    <view class="rightIcon" :style="{'background-image':'url('+rightIcon+')'}"></view>
+                    <view class="clearfix"></view>
+                </view>
 
-				<view class="qrImg" ref="qrImg">
-					<qrcodeComponents :url="data.userWalletAddress"
-									  :qrCodeStyle="qrCodeStyle"
-									  ref="qrcodeComponents"></qrcodeComponents>
-				</view>
-				<view class="rechargeTitle">充币地址</view>
-				<view class="rechargeTitle">{{data.userWalletAddress}}</view>
-				<view class="btnGroup">
-					<view class="btnItem"> 保存二维码</view>
-					<view class="btnItem  copy">复制地址</view>
+                <!-- <view class="qrImg" ref="qrImg">
+                    <div class="QRcode-content">
+                        <div id="qrcode" ref="qrcode"></div>
+                    </div>-->
+<!--                    <qrcodeComponents :url="data.userWalletAddress"-->
+<!--                                      :qrCodeStyle="qrCodeStyle"-->
+<!--                                      ref="qrcodeComponents"></qrcodeComponents>-->
+                <!-- </view> --> 
+                <view class="qrcodeBox">
+                    <uni-qrcode cid="qrcode2243" @makeComplete="makeComplete" ref="qrcode2233" :text="data.userWalletAddress" :size="size" backgroundColor="rgba(255,255,255,0)" />
+                </view>
+                
+                <view class="rechargeTitle">充币地址</view>
+                <view class="rechargeTitle">{{data.userWalletAddress}}</view>
+                <view class="btnGroup">
+                    <view class="btnItem" @tap='saveImage'> 保存二维码</view>
+                    <view class="btnItem  copy" @tap='copy'>复制地址</view>
 
-				</view>
-			</view>
-			<view class="remark">
-				请勿向上述地址充值任何非USDT资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。
-			</view>
-
-
-
-		</view>
-
-
-
-
-
-	</view>
+                </view>
+            </view>
+            <view class="remark">
+                请勿向上述地址充值任何非USDT资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。
+            </view>
+        </view>
+    </view>
 </template>
 
 <script src="@/script/receipt/receipt.js">
@@ -108,6 +107,16 @@
 				box-sizing: border-box;
 				margin: 20rpx auto 40rpx;
 				background-color: #272A2E;
+				.qrcodeBox{
+                    width: 406rpx;
+                    height: 406rpx;
+                    margin: 60rpx auto 0;
+                    display: flex;
+                    justify-content: center;
+                    border: 6rpx solid #EFFBFE;
+                    align-items: center;
+                }
+
 
 				.nameItem{
 					margin: 0 auto;
