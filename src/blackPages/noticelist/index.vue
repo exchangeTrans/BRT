@@ -1,6 +1,6 @@
 <template>
 	<view class="noticelist">
-		<noticehead :headerOptions="headerOptions" class="headstyle"></noticehead>
+		<noticehead :headerOptions="headerOptions" ></noticehead>
 		<scroll-view class="notice_list" scroll-y v-if="notice_list.length>0">
 			<view v-for="(item,id) in notice_list" :key="item.id" @click="gonoticedetails(id)">
 				<noticeitem :noticeOptions="item" class="noticeitem" :isBlack="true"></noticeitem>

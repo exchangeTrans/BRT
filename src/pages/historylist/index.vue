@@ -1,8 +1,8 @@
 <template>
 	<view class="" id="historylist">
-		<historyhead :headerOptions="headerOptions" class="headstyle"></historyhead>
+		<historyhead :headerOptions="headerOptions"></historyhead>
 		<scroll-view scroll-y="true" class="list" v-if="listOptions.length>0">
-			<view v-for="(item,id) in listOptions" :key="item.id" class="historylist">
+			<view v-for="(item,index) in listOptions" :key="index" class="historylist">
 				<historylist :listOptions="item" class="historylist-item"></historylist>
 			</view>
 		</scroll-view>

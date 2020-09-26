@@ -1,9 +1,11 @@
 <template>
-    <view class="header" id="header" :style="{'borderBottom':headerStyle.borderBottom,
+    <view class="header" id="header"
+    v-if="headerOptions.show"
+     :style="{'borderBottom':headerStyle.borderBottom,
     'backgroundColor':headerStyle.backgroundColor,
     'background':headerStyle.background,
     'top':headerStyle.top?headerStyle.top:0
-
+    
     }">
         <uni-status-bar/>
         <view class="headerContent" :style="{'opacity':hearderOpacity}">
