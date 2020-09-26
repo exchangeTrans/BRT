@@ -1,36 +1,53 @@
 <template>
-	<view class="item" :style="listOptions.isBlack ? 'background:#272A2E':''">
-		<view class="oneline" :style="{'color':listOptions.style.color}">
+	<view :class="'item '+theme" :style="theme==='black' ? 'background:#272A2E':''">
+		<view class="oneline">
 			<view class="oneline-left">
-				<text :class="listOptions.buytype.status == 0 ? 'red':'green'">{{listOptions.buytype.type}}</text>
-				BRT/USDT
+				<text class="red" v-if="String(listOptions.orderType)==='1'">买入</text>
+				<text class="green" v-if="String(listOptions.orderType)==='2'">卖出</text>
+				{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
-			<view class="oneline-right">2020/09/20 12:00</view>
+			<view class="oneline-right">{{listOptions.createTime}}</view>
 		</view>
-		
-		<view class="twoline" :style="{'color':listOptions.style.color}">
+		<!-- :style="{'color':listOptions.style.color}" -->
+		<view class="twoline" >
 			<view class="twoline_1">委托数量</view>
 			<view class="twoline_2">委托价格</view>
 			<view class="twoline_3">成交总额</view>
 			<view class="twoline_4">成交量</view>
 		</view>
 	
-		<view class="threeline" :style="{'color':listOptions.style.color}">
-			<view class="threeline_1">{{listOptions.num}}</view>
-			<view class="threeline_2">{{listOptions.charge}}</view>
-			<view class="threeline_3">{{listOptions.money}}</view>
-			<view class="threeline_4">{{listOptions.all}}</view>
+		<view class="threeline">
+			<view class="threeline_1">{{listOptions.amountSum}}</view>
+			<view class="threeline_2">{{listOptions.price}}</view>
+			<view class="threeline_3">{{Number(listOptions.amountExecuted)*Number(listOptions.price)}}</view>
+			<view class="threeline_4">{{listOptions.amountExecuted}}</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	export default{
+	export default {
 		props:{
 			listOptions:{
 				type:Object,
 				default:()=>{},
 			}
+// 			amountExecuted: "5"
+// amountSum: "5"
+// createTime: "2020-09-26 11:19:24"
+// orderType: 2
+// price: "46.93"
+// symbolType: 1
+// tradeOrderId: "1309694029788610560"
+		},
+		computed:{
+            theme(){
+                return this.$storage.getSync({key:'theme'});
+			},
+			KLineTradingPair(){
+				return this.$store.state.tradeData.KLineTradingPair;
+			},
+
 		},
 		data(){
 			return{
@@ -54,6 +71,7 @@
 	.oneline{
 		margin-left: 20rpx;
 		margin-right: 20rpx;
+		// padding-top: 28rpx;
 		.oneline-left{
 			font-size: 32rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
@@ -144,4 +162,19 @@
 			margin-right: -10rpx;
 		}
 	}
+	.item.black{
+		background: #272A2E;
+		.oneline{
+			
+		color: #D9DADB
+		}
+		.twoline{
+			color: #D9DADB;
+			opacity: 0.5;
+		}
+		.threeline{
+			color: #D9DADB
+		}
+	}
+	
 </style>

@@ -1,17 +1,21 @@
 <template>
 	<view :class="'logitem '+theme">
 		<view class="oneline">
-			<view class="buyitem" >
-                <text class="buyitin">买入</text>BRT/USDT</view>
-			<view class="cancelitem">撤单</view>
+			<view class="buyitem" v-if="String(historylogdata.orderType)==='1'">
+                <text class="buyitin" >买单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
+			</view>
+			<view class="buyitem" v-if="String(historylogdata.orderType)==='2'">          
+				<text class="buyitin"  >卖单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
+			</view>
+			<view class="cancelitem" @tap='cancelTrade(historylogdata)'>撤单</view>
 		</view>
 		<view class="twoline" >
-			<view class="item-tr-left">委托价格(USTD)</view>
-			<view class="item-tr-right">委托数量(BRT)</view>
+			<view class="item-tr-left">委托价格({{KLineTradingPair.name}})</view>
+			<view class="item-tr-right">委托数量({{KLineTradingPair.type}})</view>
 		</view>
 		<view class="threeline">
-			<view class="itemcharge">{{historylogdata.charge}}</view>
-			<view class="itemnum">{{historylogdata.num}}</view>
+			<view class="itemcharge">{{historylogdata.price}}</view>
+			<view class="itemnum">{{historylogdata.amountSum}}</view>
 		</view>
 	</view>
 </template>
@@ -29,6 +33,13 @@
 				type:Object,
 				default:()=>{},
 			}
+// 			amountExecuted: "0"
+// amountSum: "44"
+// createTime: "2020-09-26 11:53:10"
+// orderType: 1
+// price: "1"
+// symbolType: 1
+// tradeOrderId: "1309702526571905024"
         },
         computed:{
             footerArray(){
@@ -39,9 +50,17 @@
             },
             theme(){
                 return this.$storage.getSync({key:'theme'});
-            }
+			},
+			KLineTradingPair(){
+				return this.$store.state.tradeData.KLineTradingPair;
+			},
 
-        },
+		},
+		methods:{
+			cancelTrade(item){
+				this.$emit('cancelTrade',item)
+			}
+		}
 	}
 </script>
 

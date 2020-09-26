@@ -582,6 +582,7 @@
 			text-align: center;
 			font-size: 24rpx;
 			color: #BEBEBE;
+			padding-bottom: 50rpx;
 		}
 
 		.historylog {

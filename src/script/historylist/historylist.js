@@ -5,10 +5,43 @@ export default {
 		historyhead,
 		historylist 
 	},
+	
+	data() {
+		return {
+			showdata: false,
+			nodata: true,
+			headerOptions: {
+
+			},
+			listOptions: []
+		}
+	},
+	computed:{
+		tradeListData(){
+			return this.$store.state.tradeData.tradePairData;
+		},
+		KLineTradingPair(){
+			return this.$store.state.tradeData.KLineTradingPair;
+		},
+		selectedCurrency(){
+            return this.$store.state.defaultData.selectedCurrency;
+		},
+		symbolDefaultData(){
+			return this.$store.state.tradeData.symbolDefaultData
+		}
+		// tradeNoticeData(){
+		// 	return this.$store.state.tradeData.tradeNoticeData;
+		// },
+		// tradeRangeData(){
+		// 	return this.$store.state.tradeData.tradeRangeData;
+		// }
+
+	},
 	mounted() {
 		let theme = this.$storage.getSync({
 			key: 'theme'
 		});
+		
 		if (theme === 'white') {
 			this.headerOptions = {
 				show: true,
@@ -55,7 +88,9 @@ export default {
 				headerIsNoBoder: false,
 			}
 		}
+		this.getList()
 	},
+<<<<<<< HEAD
 	data() {
 		return {
 			showdata: true,
@@ -116,6 +151,41 @@ export default {
 					}
 				},
 			]
+=======
+	methods:{
+		getList(){
+			let symbolType = this.KLineTradingPair.name;
+			let symbolCode = String(this.symbolDefaultData[symbolType])
+			let postData={
+				symbolType: symbolCode
+			};
+			let that = this;
+			this.$request({
+				url:'trade/getLogTradeInfo',
+				method:'post',
+				params:postData
+			}).then((res)=>{
+				if (res.result.returnCode.toString() === "0") {
+					that.listOptions = res.data.orderList;
+					// this.close();
+					// let usdtBalance = res.data.usdtBalance.replace(",","")
+					// let symbolBalance = res.data.symbolBalance.replace(",","")
+					// let data = {
+					// 	...res.data,
+					// 	usdtBalanceNum:Number(usdtBalance),
+					// 	symbolBalanceNum:Number(symbolBalance),
+					// }
+					// that.tradeInfo = data;
+					// console.log(Number(usdtBalance)) 
+					// this.$emit('transferInAmountSuccess')
+				}else{
+					// this.$toast.show({
+					// 	title: res.result.returnMessage,
+					// })
+				}
+			})
+>>>>>>> c3f378f190cb029cd2c923d7673b6d75edac5128
 		}
 	}
+	
 }

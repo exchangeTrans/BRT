@@ -86,20 +86,7 @@
 					num:"500"
 				},
 			],
-			historylogdata_list:[
-				{
-					charge:10,
-					num:0.98
-				},
-				{
-					charge:20,
-					num:1.98
-				},
-				{
-					charge:30,
-					num:2.98
-				},
-			],
+			historylogdata_list:[],
 			tradelistOptions:[
 				{
 					type:"USDT/BRT",
@@ -227,6 +214,9 @@
 				this.tradeAll = 0;
 			}
 		},
+		tradeInfo(res){
+			this.historylogdata_list = res&&res.orderList?res.orderList:[];
+		}
 
 	  },
 	  mounted(){
@@ -235,6 +225,9 @@
 		this.getTradeInfo(symbolCode);
 	  },
 	  methods:{
+		changeTradeType(item){
+			this.selectedTradeName = item;
+		},
 		choosePrecent(item){
 			// debugger
 			let num = this.selectedTradeName.code==='buy'?(this.tradeInfo.usdtBalanceNum?this.tradeInfo.usdtBalanceNum:0):(this.tradeInfo.symbolBalanceNum?this.tradeInfo.symbolBalanceNum:0)
@@ -252,7 +245,10 @@
 		},
 		chooseTradePair(item){
 			this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
-			this.closeDrawer()
+			this.closeDrawer();
+			let symbolType = item.name;
+			let symbolCode = String(this.symbolDefaultData[symbolType])
+			this.getTradeInfo(symbolCode)
 		},
 		selectTradeHeader(item){
 			if(item.code==='2'){
@@ -262,6 +258,11 @@
 			}
 		},
 		getTradeInfo(symbolType){
+			if(!symbolType){
+				symbolType = this.KLineTradingPair.name;
+				symbolType = String(this.symbolDefaultData[symbolType])
+			}
+			
 			let postData={
 				symbolType: symbolType
 			};
@@ -301,7 +302,10 @@
 					params:postData
 				}).then((res)=>{
 					if (res.result.returnCode.toString() === "0") {
-						
+						this.getTradeInfo();
+						this.$toast.show({
+							title: res.result.returnUserMessage,
+						})
 						// // this.close();
 						// let usdtBalance = res.data.usdtBalance.replace(",","")
 						// let symbolBalance = res.data.symbolBalance.replace(",","")
@@ -320,6 +324,33 @@
 					}
 				})
 			}
+		},
+		cancelTrade(item){
+			let that = this;
+			let symbolType = this.KLineTradingPair.name;
+			let symbolCode = String(this.symbolDefaultData[symbolType])
+			// this.getTradeInfo(symbolCode);
+			let postData={
+				orderId: item.tradeOrderId,
+				symbolType:item.symbolType
+			};
+			this.$request({
+				url:'trade/cancel',
+				method:'post',
+				params:postData
+			}).then((res)=>{
+				if (res.result.returnCode.toString() === "0") {
+					
+					this.$toast.show({
+						title: res.result.returnUserMessage,
+					})
+					this.getTradeInfo();
+				}else{
+					this.$toast.show({
+						title: res.result.returnMessage,
+					})
+				}
+			})
 		},
 		
 		inputChange(e,type){
