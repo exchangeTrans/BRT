@@ -13,7 +13,7 @@
                 </view>
             </view>
         </view>-->
-        <pageHeader :headerOptions="headerOptions"/>
+        <pageHeader :headerOptions="headerOptions" class="appHeader"/>
         <view class="quotes-content">
             <view class="quotes-content-wrap">
                 <view class="quotes-content-wrap-title">
@@ -57,6 +57,10 @@
         width: 100vw;
         height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
+        .appHeader {
+            top: 0;
+            background: #00001A;
+        }
 
         .quotes-content {
             /*height: calc(100vh - var(--status-bar-height) - 100rpx);*/

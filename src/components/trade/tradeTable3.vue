@@ -6,18 +6,18 @@
         </view>
         <view class="tableTr tableTr2">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[0]}}</view>
-            <view class="tableLi tableLi2">{{KLineTradingPair.introduction[langMsg].issueDate}}</view>
+            <view class="tableLi tableLi2">{{tradingPairIntroduction[KLineTradingPair.name][langMsg].issueDate}}</view>
         </view>
         <view class="tableTr tableTr3">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[1]}}</view>
-            <view class="tableLi tableLi2">{{KLineTradingPair.introduction[langMsg].issueNum}}</view>
+            <view class="tableLi tableLi2">{{tradingPairIntroduction[KLineTradingPair.name][langMsg].issueNum}}</view>
         </view>
         <view class="tableTr tableTr3">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[2]}}</view>
-            <view class="tableLi tableLi2">{{KLineTradingPair.introduction[langMsg].webSite}}</view>
+            <view class="tableLi tableLi2">{{tradingPairIntroduction[KLineTradingPair.name][langMsg].webSite}}</view>
         </view>
         <view class="intorduceTitle">{{$t('trade').tableHeadTr3[3]}}</view>
-        <view class="intorduceText">{{KLineTradingPair.introduction[langMsg].text}}</view>
+        <view class="intorduceText">{{tradingPairIntroduction[KLineTradingPair.name][langMsg].text}}</view>
         
         <!-- <view class="tableTr tableTr3">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr3[3]}}</view>
@@ -42,6 +42,9 @@
         computed:{
 			KLineTradingPair(){
 				return this.$store.state.tradeData.KLineTradingPair;
+            },
+            tradingPairIntroduction(){
+                return this.$store.state.tradeData.tradingPairIntroduction;
             },
             langMsg(){
                 let langMsg = this.$storage.getSync({key:'langMsg'});

@@ -5,22 +5,24 @@
         <scroll-view class="tradeContent" scroll-y>
             <!-- <view @tap="changeTest">tatsadd</view> -->
             <view class="tradeTopView">
-                <view class="priceView add">0.0641</view>
+                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
                 <view class="moneyView">
-                    <view class="money">≈6.68 CNY</view>
-                    <view class="range add">+1.00%</view>
+                    <view class="money">≈{{KLineTradingPair.price}} {{selectedCurrency.code}}</view>
+                    <view v-if="KLineTradingPair.range>0" class="range add">+{{KLineTradingPair.range.toFixed(2)}}%</view>
+                    <view v-else-if="KLineTradingPair.range<0" class="range down">{{KLineTradingPair.range.toFixed(2)}}%</view>
+                    <view v-else class="range">{{KLineTradingPair.range.toFixed(2)}}%</view>
                 </view>
                 <view class="rightView">
                     <view class="rightLi">
-                        <view class="text">0.062</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.high.toFixed(2)}}</view>
                         <view class="title">{{$t('trade').high}}</view>
                     </view>
                     <view class="rightLi">
-                        <view class="text">0.062</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.low.toFixed(2)}}</view>
                         <view class="title">{{$t('trade').low}}</view>
                     </view>
                     <view class="rightLi">
-                        <view class="text">49833</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.amount.toFixed(2)}}</view>
                         <view class="title">24H</view>
 
                     </view>
@@ -138,8 +140,10 @@
             },
             langMsg(){
                 let langMsg = this.$storage.getSync({key:'langMsg'});
-                console.log(langMsg)
                 return langMsg.name
+            },
+            selectedCurrency(){
+                return this.$store.state.defaultData.selectedCurrency;
             }
 		},
         methods: {
@@ -209,15 +213,18 @@
                     display: inline-block;
                 }
                 .range{
-                    color: #5BC788;
+                    color: #CBCCCD;
                     margin-left: 20rpx;
                 }
                 .range.add{
                     color: #FC3C5A;
                 }
+                .range.down{
+                    color: #5BC788;
+                }
             }
             .rightView{
-                width: 300rpx;
+                width: 400rpx;
                 height: 100%;
                 float: left;
                 box-sizing: border-box;
@@ -246,7 +253,7 @@
                         font-weight: 400;
                         color: #1A1A1A;
                         line-height: 36rpx;
-                        width: 120rpx;
+                        width: 200rpx;
                     }
                     
                 }

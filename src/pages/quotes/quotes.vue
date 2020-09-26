@@ -1,6 +1,7 @@
 <template>
     <view id="quotes">
-        <pageHeader :headerOptions="headerOptions"/>
+        <pageHeader :headerOptions="headerOptions" class="appHeader"/>
+        
         <view class="quotes-content">
             <view class="quotes-content-wrap">
                 <view class="quotes-content-wrap-title">
@@ -43,12 +44,16 @@
         width: 100%;
         height: 100%;
         padding-top: calc(100rpx + var(--status-bar-height));
-        
+        background: #fff;
+        .appHeader {
+            top: 0;
+            background: #fff;
+        }
         .quotes-content {
-            height: calc(100vh - var(--status-bar-height) - 100rpx);
+            /*height: calc(100vh - var(--status-bar-height) - 100rpx);*/
             .quotes-content-wrap {
                 /*margin: 0 30rpx;*/
-                padding-top: 30rpx;
+                /*padding-top: 30rpx;*/
 
                 .quotes-content-wrap-title {
                     margin: 0 30rpx;

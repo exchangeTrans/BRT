@@ -64,7 +64,7 @@ export default {
             headerOptions: {
                 show: true,
                 isAllowReturn: true,
-                isWhiteIcon:true,
+                isWhiteIcon: true,
                 text: "",
                 rightItem: {
                     type: "text",
@@ -83,9 +83,9 @@ export default {
                 email: "",
                 password: "",
                 passwordConfirm: "",
-                verifyCode: "123456",
+                verifyCode: "",
                 verifyKey: "",
-                inviteCode: "EXT681",
+                inviteCode: "",
             },
 
             checkPhoneArray: [
@@ -112,6 +112,10 @@ export default {
                     minLength: 6,
                     maxLength: 20,
                 },
+                {
+                    name: "邀请码",
+                    checkKey: "inviteCode",
+                },
             ],
 
             checkEmailArray: [
@@ -137,6 +141,10 @@ export default {
                     checkType: ["length"],
                     minLength: 6,
                     maxLength: 20,
+                },
+                {
+                    name: "邀请码",
+                    checkKey: "inviteCode",
                 },
             ],
 
@@ -165,6 +173,16 @@ export default {
     methods: {
         typeChange(type) {
             this.type = type
+            //切换注册方式重置数据
+            this.postData = {
+                tel: "",
+                email: "",
+                password: "",
+                passwordConfirm: "",
+                verifyCode: "",
+                verifyKey: "",
+                inviteCode: "",
+            };
         },
         inputChange(key, value) {
             this.postData[key] = value;

@@ -152,12 +152,12 @@ export default {
 		},
 
 		getuserInfo(){
-			// debugger
+			debugger
 			let userMsg = this.$store.state.defaultData.userMsg;
 			// console.log(userMsg)
 			let changeObj = this.getChangeObj(userMsg.asset)
 			// debugger
-			console.log(changeMoney(changeObj))
+			// console.log(changeMoney(changeObj))
 			this.changeMoneyData = {
 				...changeMoney(changeObj),
 			};

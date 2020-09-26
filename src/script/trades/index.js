@@ -269,7 +269,8 @@
 			this.closeDrawer();
 			let symbolType = item.name;
 			let symbolCode = String(this.symbolDefaultData[symbolType])
-			this.getTradeInfo(symbolCode)
+			this.getTradeInfo(symbolCode);
+			this.$mySocket.subscribeDepth(item);
 		},
 		selectTradeHeader(item){
 			if(item.code==='2'){
