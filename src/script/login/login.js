@@ -59,8 +59,11 @@ export default {
                 'border-radius': '16rpx 16rpx 0rpx 0rpx',
                 'margin-top': '40rpx',
             },
+            btnText: this.$t('login').loginBtn,
             btnStyle: {
-                'margin-top': '60rpx'
+                'background': 'linear-gradient(136deg, #004FA8 0%, #007CD3 50%, #25D4ED 100%)',
+                'border-radius': '50rpx',
+                'margin-top': '60rpx',
             },
             headerOptions: {
                 show: true,
