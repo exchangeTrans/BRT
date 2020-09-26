@@ -1,7 +1,7 @@
 <template>
     <view class="noData" :style="{'top':noDataStyle.top}">
         <view class="noDataImg" :style="{'background-image':'url('+noData+')'}"></view>
-        <view class="noDataText">暂无数据</view>
+        <view class="noDataText" :class="{'isBlack': isBlack, 'isNotBlack': !isBlack}">暂无数据</view>
     </view>
 </template>
 
@@ -12,7 +12,11 @@
           positionTop:{
               type:String,
               default:'',
-          }
+          },
+            isBlack: {
+              type: Boolean,
+                default: false
+            }
         },
         data(){
             return{
@@ -51,10 +55,16 @@
             font-size: 28rpx;
             font-family: PingFangSC-Regular, PingFang SC;
             font-weight: 400;
-            color: #000000;
             opacity: 0.5;
             line-height: 40rpx;
+        }
 
+        .isBlack {
+            color: #D9DADB;
+        }
+
+        .isNotBlack {
+            color: #000000;
         }
     }
 
