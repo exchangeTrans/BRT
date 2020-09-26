@@ -13,7 +13,58 @@ export default {
 			headerOptions: {
 
 			},
-			listOptions: []
+			listOptions: [{
+					num: "0.3567",
+					charge: "46.76",
+					money: "9.4658",
+					all: "39.54",
+					buytype: {
+						type: "买",
+						status: "1",
+					},
+					style: {
+						color: ''
+					}
+				},
+				{
+					num: '0.3567',
+					charge: "46.76",
+					money: "9.4658",
+					all: "39.54",
+					buytype: {
+						type: "买",
+						status: "1",
+					},
+					style: {
+						color: ''
+					}
+				},
+				{
+					num: '0.3567',
+					charge: "46.76",
+					money: "9.4658",
+					all: "39.54",
+					buytype: {
+						type: "卖",
+						status: "0",
+					},
+					style: {
+						color: ''
+					}
+				},
+				{
+					num: '0.3567',
+					charge: "46.76",
+					money: "9.4658",
+					all: "39.54",
+					buytype: {
+						type: "卖",
+						status: "0",
+					},
+					style: {
+						color: ''
+					}
+				}]
 		}
 	},
 	computed:{
@@ -90,68 +141,6 @@ export default {
 		}
 		this.getList()
 	},
-<<<<<<< HEAD
-	data() {
-		return {
-			showdata: true,
-			nodata: false,
-			headerOptions: {
-
-			},
-			listOptions: [{
-					num: "0.3567",
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "买",
-						status: "1",
-					},
-					style: {
-						color: ''
-					}
-				},
-				{
-					num: '0.3567',
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "买",
-						status: "1",
-					},
-					style: {
-						color: ''
-					}
-				},
-				{
-					num: '0.3567',
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "卖",
-						status: "0",
-					},
-					style: {
-						color: ''
-					}
-				},
-				{
-					num: '0.3567',
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "卖",
-						status: "0",
-					},
-					style: {
-						color: ''
-					}
-				},
-			]
-=======
 	methods:{
 		getList(){
 			let symbolType = this.KLineTradingPair.name;
@@ -184,7 +173,6 @@ export default {
 					// })
 				}
 			})
->>>>>>> c3f378f190cb029cd2c923d7673b6d75edac5128
 		}
 	}
 	
