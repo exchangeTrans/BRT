@@ -198,7 +198,6 @@
 			return this.$store.state.tradeData.tradePairData;
 		},
 		KLineTradingPair(){
-			console.log(this.$store.state.tradeData.KLineTradingPair)
 			return this.$store.state.tradeData.KLineTradingPair;
 		},
 		selectedCurrency(){

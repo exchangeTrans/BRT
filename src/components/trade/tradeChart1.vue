@@ -48,18 +48,18 @@
 				cWidth:'',
                 cHeight:'',
                 option: {
-                    notMerge: true, // 自定义变量：true代表不合并数据，比如从折线图变为柱形图则需设置为true；false或不写代表合并
-                    tooltip: {
-                        trigger: 'axis',
-                        positionStatus: true,
-                        formatterStatus: true, // 自定义变量：是否格式化tooltip，设置为false时下面三项均不起作用
-                        formatterUnit: '元', // 自定义变量：数值后面的单位
-                        formatFloat2: true, // 自定义变量：是否格式化为两位小数
-                        formatThousands: true // 自定义变量：是否添加千分位
-                    },
+                    // notMerge: true, // 自定义变量：true代表不合并数据，比如从折线图变为柱形图则需设置为true；false或不写代表合并
+                    // tooltip: {
+                    //     trigger: 'axis',
+                    //     positionStatus: true,
+                    //     formatterStatus: true, // 自定义变量：是否格式化tooltip，设置为false时下面三项均不起作用
+                    //     formatterUnit: '元', // 自定义变量：数值后面的单位
+                    //     formatFloat2: true, // 自定义变量：是否格式化为两位小数
+                    //     formatThousands: true // 自定义变量：是否添加千分位
+                    // },
                     legend: {
                         show:false,
-                        data: ['日K'],
+                        data: ['K'],
                         inactiveColor: '#909AA4',
                         textStyle: {
                             color: '#909AA4'
@@ -81,7 +81,7 @@
                         top:10,
                         bottom: 60,
                         right:60,
-                        // left:30
+                        left:10
                     },
                     // xAxis: [
                     //     {
@@ -90,6 +90,7 @@
                     //     }
                     // ],
                     xAxis: {
+                        show:false,
                         type: 'category',
                         data: ['周一', '周二', '周三', '周四', '周五'],
                         axisTick: {
@@ -159,9 +160,43 @@
                             ]]
                         }
                     ]
-                },                        
+                },
+                KLindeData:null,
+                xData:null,
            
               }
+        },
+        computed:{
+            tradeListData(){
+                return this.$store.state.tradeData.tradePairData;
+            },
+            KLineTradingPair(){
+                return this.$store.state.tradeData.KLineTradingPair;
+            },
+            selectedCurrency(){
+                return this.$store.state.defaultData.selectedCurrency;
+            },
+            symbolDefaultData(){
+                return this.$store.state.tradeData.symbolDefaultData
+            },
+            // depthData(){
+            //     let res = this.$store.state.tradeData.KLineTradingPair.depth;
+            //     let tradesOptions_list = this.tradesOptions_list;
+            //     let defult = {
+            //         asks:tradesOptions_list,
+            //         bids:tradesOptions_list
+            //     }
+            //     res = res&&res!==null?res:defult
+            //     return res
+
+            // }
+
+        },
+        watch:{
+            KLineTradingPair(res){
+                // console.log(res)
+                this.createKLineData()
+            }
         },
         mounted(){
             this.cWidth=uni.upx2px(750);
@@ -199,7 +234,8 @@
 				cHeight:'',
                 arr: [],
                 chart: null,
-				clickData: null, // echarts点击事件的值
+                clickData: null, // echarts点击事件的值
+                
                 
            }
         },
@@ -212,8 +248,7 @@
 			// 	this.initEcharts()
 			// } else {
 				// 动态引入较大类库避免影响页面展示
-				const script = document.createElement('script')
-				// view 层的页面运行在 www 根目录，其相对路径相对于 www 计算
+				const script = document.createElement('script');
 				script.src = './static/js/echart/echarts.min.js'
 				script.onload = this.initEcharts.bind(this)
 				document.head.appendChild(script)
@@ -229,14 +264,90 @@
         methods: {
 			initEcharts() {
 				myChart = echarts.init(document.getElementById('echarts'))
-				// 观测更新的数据在 view 层可以直接访问到
-				myChart.setOption(this.option)
-			},
+                // 观测更新的数据在 view 层可以直接访问到
+                this.createKLineData();
+				
+            },
+             createKLineData(){
+                let KLineTradingPair = this.KLineTradingPair
+                // let that = this;
+                if(KLineTradingPair.dataArray&&KLineTradingPair.dataArray.length>0){
+                    // let data = that.KLindeData =  res.data.map(function (item,index) {
+                    //     if(index>180){
+                    //         return [item.open, item.close, item.low,item.high];
+                    //     }
+                    //     // return [item.open, item.close, item.low,item.high];
+                        
+                    // });
+                    let data = [];
+                    let xData = [];
+                    KLineTradingPair.dataArray.forEach((item,index) => {
+                        if(index>150){
+                            data.push([item.open, item.close, item.low,item.high])
+                            xData.push(new Date(parseInt(item.id) * 1000).toLocaleString().replace(/:\d{1,2}$/,' '));
+                        }
+                    });
+                    // this.nowTradePrice = res.data[res.data.length-1].close;
+                    this.KLindeData = data;
+                    this.xData = xData;
+                    // let xData = that.xData = res.data.map(function (item,index) {
+                    //     if(index>180){
+                    //         return new Date(parseInt(item.id) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+                    //     }
+                    //     // return new Date(parseInt(item.id) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+                    // });
+                    // console.log(data)
+                    if(xData!==null)
+                    this.setEchart(data,xData);
+                    // that.refreshEChartData(data,xData)
+                    // that.refreshEChartXData(xData)
+                }
+            },
+            setEchart(data,xData) {
+                // let $element = document.getElementById("myChart");
+                // let that = this;
+                let chartOpts = this.option;
+                let xAxis = this.option.xAxis;
+                let tooltip = this.option.tooltip;
+                let opts = {
+                    ...chartOpts,
+                    xAxis: {
+                        ...xAxis,
+                        data: xData
+                    },
+                    tooltip:{
+                        ...tooltip,
+                        formatter:function name(params) {
+                        //     let data  = '开盘:'+'{c0} <br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>';
+                        //     console.log(params)
+                        //     return data
+                        }
+                        // formatter: '{b0}: {c0}<br />{b1}: {c1}'
+                    },
+                    
+                    series: [
+                        {
+                            type: 'candlestick',
+                            name: '日K',
+                            data: data,
+                            itemStyle: {
+                                color: '#F44E33',
+                                color0: '#01AF90',
+                                borderColor: '#F44E33',
+                                borderColor0: '#01AF90'
+                            }
+                        }
+                    ]
+                }
+                myChart.setOption(opts)
+            },
 			updateEcharts(newValue, oldValue, ownerInstance, instance) {
 				// 监听 service 层数据变更
-				myChart.setOption(newValue)
+				// myChart.setOption(newValue)
 			},
 			onClick(event, ownerInstance) {
+                console.log(event)
+                console.log(ownerInstance)
 				// 调用 service 层的方法
 				ownerInstance.callMethod('onViewClick', {
 					test: 'test'

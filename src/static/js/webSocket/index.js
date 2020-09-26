@@ -89,6 +89,43 @@ export const mySocket={
             mySocket.upDataRangeData(data)
         }else if(ch.indexOf('depth')>-1){
             mySocket.upDataDepthData(data)
+        }else if(ch.indexOf('kline')>-1){
+            mySocket.upDataKlineData(data)
+        }
+        
+    },
+    upDataKlineData(data){
+        console.log(data)
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let symbol = data.symbol;
+        let tick = data.tick;
+        if(KLineTradingPair.id===symbol){
+            // asks = mySocket.handleDeepData(asks);
+            let dataArray = KLineTradingPair.dataArray;
+            if(dataArray.length>0){
+                let newData = dataArray;
+                let lastItem = dataArray[dataArray.length-1];
+                if(lastItem.id===tick.id){
+                    newData[newData.length-1] = tick;
+                }else{
+                    newData.push(tick)
+                }
+                let KLineTradingPairObj = {
+                    ...KLineTradingPair,
+                    dataArray:dataArray
+                }
+                console.log(dataArray)
+                store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+            }
+            // let KLineTradingPairObj = {
+            //     ...KLineTradingPair,
+            //     depth:{
+            //         asks, 
+            //         bids
+            //     }
+            // }
+            // console.log(asks)
+            // store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
         }
     },
     upDataRangeData(data){
@@ -177,17 +214,16 @@ export const mySocket={
         
 
          
-                // let data = {
-                //     sub:"market.all.detail",
-                //     // sub:"market.all.detail",
-                //     // period:"1min",
-                //     id: 'notice'+1,
-                //     isLocal:false
-                    
-                // }
-                // console.log()
-                // mySocket.subscribe(data);   
-                // mySocket.subscribe(data); 
+        // let data = {
+        //     sub:"market.all.detail",
+        //     // sub:"market.all.detail",
+        //     // period:"1min",
+        //     id: 'notice'+1,
+        //     isLocal:false
+            
+        // }
+        // mySocket.subscribe(data);   
+        // mySocket.subscribe(data); 
         let subArray = [];
         tradePairData.forEach((element,index) => {           
             let str = element.name + element.type;
@@ -221,7 +257,8 @@ export const mySocket={
             
                                 
         });
-        mySocket.subscribeDepth()
+        mySocket.subscribeDepth();
+        mySocket.subscribeKline('1min')
         
     },
     subscribeDepth(item){
@@ -235,6 +272,23 @@ export const mySocket={
             // sub:"market.all.detail",
             // period:"1min",
             id: 'marketdepth',
+            isLocal:KLineTradingPair.isLocal
+            
+        } 
+        mySocket.subscribe(data); 
+    
+    },
+    subscribeKline(period){
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".kline."+period;
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            period:period,
+            id: 'marketKLine',
             isLocal:KLineTradingPair.isLocal
             
         } 

@@ -1,6 +1,8 @@
 
 import request from '@/request/index';
 const INITQUOTATIONDATA = 'INITQUOTATIONDATA'; // 基本设置
+const UPKLINEDATA = 'UPKLINEDATA'; 
+
 
 export default {
   state: {
@@ -241,19 +243,30 @@ export default {
    
     //获取k线
     getKline({commit},data) {
+      let KLineTradingPair = this.state.tradeData.KLineTradingPair;
+      let str = KLineTradingPair.name + KLineTradingPair.type;
+      str = str.toLowerCase();
+      let postData = {
+					symbol:str,
+					period:data.period,
+          size:'200',
+          isLocal:KLineTradingPair.isLocal
+      }
       request({
           url: 'kline/list',
           method: 'get',
           hostType:"klineApi",
-          params:data
+          params:postData
       }).then(res => {
-        console.log(res)
-          // if (res.result.returnCode.toString() === '0') {
+          if (res.errorCode.toString() === '0') {
             
-              // let data = res.data.list;
-              // commit('GETCOUNTRYLIST', data);
-              // commit('COUNTRY', data[0]);
-          // }
+              // let data = res.results;
+              let data={
+                ...KLineTradingPair,
+                dataArray:res.results.reverse()
+              }
+              commit('UPKLINEDATA', data);
+          }
       })
     },
     initQuotationData({commit},cb){
@@ -289,6 +302,9 @@ export default {
   mutations: {
     [INITQUOTATIONDATA](state,result) {
       state.quotationData = result;
+    },
+    [UPKLINEDATA](state,result){
+      state.KLineTradingPair = result;
     },
     setTredDataSync(state,param,cb) {//param:{key:*,val:*}
       state[param.key] = param.val;
