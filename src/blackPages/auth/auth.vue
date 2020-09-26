@@ -179,7 +179,7 @@
                             font-size: 28rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #D9DADB;
+                            color: #d9dadb;
                         }
 
                         input {
@@ -234,7 +234,7 @@
 
                     .upload-img-content {
                         margin-top: 30rpx;
-                        border-radius: 10rpx;
+                        border-radius: 10 rpx;
 
                         image {
                             width: 628rpx;

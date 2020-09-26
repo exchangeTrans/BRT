@@ -23,7 +23,6 @@ export default {
                         text:"",
                 },
                 style:{
-                    'top': 'var(--status-bar-height)'
                 },
                 bodyPadding:{"padding":'0,0,0,0'},
                 headerIsNoBoder: true,
@@ -37,11 +36,9 @@ export default {
                 rightItem:{
                     type:"text",
                     text:"",
-                    style: {}
                 },
                 style:{
                     'color': '#D9DADB',
-                    'top': 'var(--status-bar-height)'
                 },
                 bodyPadding:{"padding":'0,0,0,0'},
                 headerIsNoBoder: true,
@@ -52,7 +49,19 @@ export default {
     },
     data() {
         return {
-            headerOptions:{},
+            headerOptions:{
+                show:true,
+                isAllowReturn:true,
+                text:this.$t('miningEarnings').title,
+                rightItem:{
+                    type:"text",
+                    text:"",
+                },
+                style:{
+                },
+                bodyPadding:{"padding":'0,0,0,0'},
+                headerIsNoBoder: true,
+            },
 
             titleLine:`${require('@/static/images/set/titleLine.png')}`,
             subBg:`${require('@/static/images/sub/subBg.png')}`,

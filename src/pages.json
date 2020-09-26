@@ -172,7 +172,10 @@
       }
     },
     {
-      "path": "pages/noticelist/index"
+      "path": "pages/noticelist/index",
+      "style": {
+        "onReachBottomDistance":50
+      }
 	},
 	{
       "path": "pages/property/property",
@@ -517,10 +520,10 @@
       "style": {
 
       }
+    },
+    {
+      "path":"blackPages/connectus/index"
     }
-//    {
-//      "path":"blackPages/connectus/index"
-//    }
 
 
 
@@ -816,6 +819,14 @@
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8",
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "softinputNavBar": "none",
+    "softinputMode": "adjustResize",
+    "disableScroll": true,
+    // 禁止滚动, 解决scroll-view在Android小程序卡顿的问题
+    "app-plus": {
+      "bounce": "none"
+      // 取消iOS回弹,避免和下拉刷新冲突 (小程序无法取消, 点此查看H5端的取消方法... )
+    }
   }
 }

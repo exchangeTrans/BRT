@@ -28,7 +28,7 @@
 		// margin-top: 500rpx;
 		text-align: center;
 		background: #22252A;
-		height: calc(100vh - 100rpx);
+		height: calc(100vh - var(--status-bar-height));
 		.img{
 			width: 530rpx;
 			height: 400rpx;
