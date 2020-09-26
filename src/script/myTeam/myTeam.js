@@ -55,14 +55,9 @@ export default{
                 isAllowReturn: true,
                 text: "团队详情",
                 rightItem: {
-                    // type: "text",
-                    // text: "须知&反馈",
-                    // style: {
-                    //     "fontSize": '28rpx',
-                    //     "fontFamily": 'Source Han Sans CN',
-                    //     "fontWeight": '400',
-                    //     "color": 'rgba(68,68,68,1)'
-                    // }
+                    type: "text",
+                    text: "",
+                    style: {}
                 },
                 style:{
                     color:"#ffffff"

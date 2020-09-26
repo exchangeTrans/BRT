@@ -1,8 +1,8 @@
 <template>
 	<view class="earnings" id="earnings">
 		<app-header :headerOptions="headerOptions"></app-header>
-		<scroll-view class="content" :scroll-y="true">
-			<view class="contentPadding">
+		<scroll-view class="contentEarnings" :scroll-y="true">
+			<view class="contentEarningsPadding">
 				<view class="earningsTop" :style="{'background-image':'url('+topBg+')'}">
 					<view class="left">
 						<view class="balance">可用余额</view>
@@ -59,15 +59,18 @@
 								<view class="itemTitle">止盈率</view>
 								<input class="itemInput" v-model="userdata.stopWinRate"></input>
 								<view class="itemSet" @tap="setincomerate">设置</view>
+								<view class="clearfix"></view>
 							</view>
 							<view class="dataItem">
 								<view class="itemTitle">止损率</view>
 								<input class="itemInput" v-model="userdata.stopLoseRate"></input>
 								<view class="itemSet" @tap="setlossrate">设置</view>
+								<view class="clearfix"></view>
 							</view>
 							<view class="dataItem">
 								<view class="itemTitle">最大撤回</view>
 								<view class="itemText">{{userdata.maxDawndown}}</view>
+								<view class="clearfix"></view>
 							</view>
 						</view>
 						<view class="clearfix"></view>
@@ -93,9 +96,9 @@
 				 @btnClick="downloadAPP"></earningBtn>
 			</view>
 		</scroll-view>
-		<transferInAmount ref="transferInAmount" 
-						  @transferInAmountSuccess="transferInAmountSuccess" 
-						  :transferDate="transferDate" 
+		<transferInAmount ref="transferInAmount"
+						  @transferInAmountSuccess="transferInAmountSuccess"
+						  :transferDate="transferDate"
 						  :availableCount="userdata.financeBalance"></transferInAmount>
 		<subRuler ref="subRuler"></subRuler>
 	</view>
@@ -107,17 +110,17 @@
 
 <style lang="less">
 	.earnings {
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		background: #F9FAFA;
 
-		.content {
+		.contentEarnings {
 			width: 100%;
 			height: 100%;
 			padding-top: calc(100rpx + var(--status-bar-height));
 			box-sizing: border-box;
 
-			.contentPadding {
+			.contentEarningsPadding {
 				padding: 0 30rpx;
 				box-sizing: border-box;
 
@@ -262,7 +265,7 @@
 			}
 
 			.info {
-				margin: 30rpx 0 0;
+				margin: 30rpx 0 30rpx;
 				width: 690rpx;
 				background: #FFFFFF;
 				border-radius: 10rpx;
@@ -270,6 +273,7 @@
 				font-family: PingFangSC-Regular, PingFang SC;
 				font-weight: 400;
 				color: #1A1A1A;
+				box-sizing: border-box;
 
 				.dataInfo {
 					border-bottom: 2rpx solid #EDEDED;

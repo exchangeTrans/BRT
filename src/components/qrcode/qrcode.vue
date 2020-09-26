@@ -30,7 +30,7 @@
         },
         data() {
             return {
-                
+
             }
         },
         methods: {
@@ -39,10 +39,10 @@
                     shareUrl,
                     qrCodeStyle,
                 } = this.$props;
-                
+
                 let width = qrCodeStyle.width;
                 let height = qrCodeStyle.height;
-                
+
                 let qrcode = new QRCode('qrcode', {
                     width: width,  // 二维码宽度
                     height: height, // 二维码高度
@@ -54,10 +54,10 @@
                 let {
                     qrCodeStyle,
                 } = this.$props;
-                
+
                 let width = qrCodeStyle.width;
                 let height = qrCodeStyle.height;
-                
+
                 let qrcode = new QRCode('qrcode', {
                     width: width,  // 二维码宽度
                     height: height, // 二维码高度

@@ -1,7 +1,6 @@
 <template>
     <view class="setIndex" id="setIndex">
-        <app-header :headerOptions="headerOptions"
-                    class="appHeader"></app-header>
+        <app-header :headerOptions="headerOptions"></app-header>
 
         <view class="content">
             <view class="model">
@@ -39,7 +38,7 @@
                       v-if="selectedObj.name===item.name">
                 </view>
             </view>
-            
+
             <!--显示语言-->
             <view class="currency">
                 <view class="currencyTitle">
@@ -69,10 +68,6 @@
         height: 100%;
         /*margin-top: calc(100rpx + var(--status-bar-height));*/
         background: #22252A;
-
-        .appHeader {
-            top: var(--status-bar-height);
-        }
         .content {
             margin-top: calc(100rpx + var(--status-bar-height));
             font-family: PingFangSC-Semibold, PingFang SC;

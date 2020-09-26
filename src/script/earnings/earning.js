@@ -24,6 +24,9 @@ export default {
 					type: "text",
 					text: "",
 				},
+                style: {
+                    'top': 'var(--status-bar-height)'
+                },
 				background: '#ffffff',
 				headerIsNoBoder: true,
 
@@ -39,7 +42,8 @@ export default {
 					text: "",
 				},
 				style: {
-					'color': '#D9DADB'
+					'color': '#D9DADB',
+					'top': 'var(--status-bar-height)'
 				},
 				//background:'#ffffff',
 				headerIsNoBoder: true
@@ -173,7 +177,7 @@ export default {
 
 		//转入加仓
 		addStorehouse() {
-			
+
 		},
 		//下载app
 		downloadAPP() {

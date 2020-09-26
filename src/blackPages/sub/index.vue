@@ -1,5 +1,6 @@
 <template>
 	<view class="sub" id="sub">
+		<uni-status-bar/>
 		<app-header :headerOptions="headerOptions"></app-header>
 		<scroll-view class="content" :scroll-y="true">
 			<view class="contentPadding">

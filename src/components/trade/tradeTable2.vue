@@ -1,10 +1,10 @@
 <template>
 	<view class="tradeTable2" id="tradeTable2">
 		<view class="tableHeader">
-            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr1[0]}}</view>
-            <view class="tableLi tableLi2">{{$t('trade').tableHeadTr1[1]}}</view>
-            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr1[2]}}(HDU)</view>
-            <view class="tableLi tableLi4">{{$t('trade').tableHeadTr1[3]}}</view>
+            <view class="tableLi tableLi1">{{$t('trade').tableHeadTr2[0]}}</view>
+            <view class="tableLi tableLi2">{{$t('trade').tableHeadTr2[1]}}</view>
+            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr2[2]}}(HDU)</view>
+            <view class="tableLi tableLi4">{{$t('trade').tableHeadTr2[3]}}</view>
         </view>
         <view class="tableTr">
             <view class="tableLi tableLi1">14:34:43</view>

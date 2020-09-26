@@ -2,6 +2,7 @@
     <view class="receiptIndex" id="receiptIndex">
 
         <appHeader :headerOptions="headerOptions" @headertap="rechargeRecord"></appHeader>
+
         <view class="content">
             <view class="qrCode">
                 <view class="nameItem">

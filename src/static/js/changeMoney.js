@@ -8,6 +8,7 @@ export const changeMoney = (changeObj) => {
         asset,//用户的钱 USDT
     }
     */
+    // debugger
     // let selectedCurrency = store.state.defaultData.selectedCurrency;
     let code = changeObj.firstCode + changeObj.lastCode;
     let rangeList = store.state.defaultData.rangeData;//获取汇率
