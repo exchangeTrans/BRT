@@ -23,7 +23,7 @@
 				</view>
 				<view class="clearfix"></view>
 			</view>
-			<view class="notice">
+			<view class="notice" @click="gonoticelist_details">
 				<view class="noticeIcon" :style="{'background-image':'url('+notice2+')'}"></view>
 				<view class="noticeText">关于BRT上线的公告</view>
 				<view class="more" :style="{'background-image':'url('+more+')'}"></view>
@@ -37,7 +37,7 @@
 				<view class="performerTitle">24H <span>涨幅榜</span></view>
 
 				<view class="performerTab">
-					<view>币种</view>
+					<view class="cate">币种</view>
 					<view class="newest">最新价</view>
 					<view class="upAndDown">24H涨跌</view>
 				</view>
@@ -291,13 +291,15 @@
 					font-size: 24rpx;
 					color: #D9DADB;
 					opacity: 0.5;
-					view{
-						flex: 1;
+					.cate{
+						flex: 2;
 					}
 					.newest{
+						flex: 1.8;
 						text-align: center;
 					}
 					.upAndDown{
+						flex: 1.5;
 						text-align: right;
 					}
 				}
@@ -317,7 +319,7 @@
 						padding: 20rpx 0;
 						box-sizing: border-box;
 						font-size: 24rpx;
-
+						flex: 2;
 						color: #D9DADB;
 						font-weight: 400;
 						.currencyTitle{
@@ -337,7 +339,7 @@
 						box-sizing: border-box;
 						text-align: center;
 						font-size: 24rpx;
-
+						flex: 1.8;
 						color: #D9DADB;
 						.newestPercentage{
 							font-size: 28rpx;
@@ -352,6 +354,7 @@
 					.upAndDown{
 						text-align: right;
 						position: relative;
+						flex: 1.5;
 						.upAndDownItem{
 							position: absolute;
 							right: 0;

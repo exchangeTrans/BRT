@@ -23,7 +23,7 @@ import ndheader from '../../components/common/header'
 					fontSize: '34',
 					style: {
 						color: "#333333",
-	
+
 					},
 					isColor: true,
 					rightItem: {
@@ -39,12 +39,13 @@ import ndheader from '../../components/common/header'
 					show: true,
 					text: "公告详情",
 					isAllowReturn: true,
+					isWhiteIcon:true,
 					fontfamily: "PingFangSC-Regular, PingFang SC",
 					fontSize: '34',
 					background: "#00001A",
 					style: {
-						color: "#333333",
-	
+						color: "#D9DADB",
+
 					},
 					isColor: true,
 					rightItem: {
@@ -53,7 +54,8 @@ import ndheader from '../../components/common/header'
 						style: {
 							color: "#000000"
 						}
-					}
+					},
+					headerIsNoBoder:true
 				}
 			}
 		},
@@ -65,4 +67,3 @@ import ndheader from '../../components/common/header'
 			}
 		}
 	}
-	

@@ -66,24 +66,39 @@
 			],
 			tradesOptions_list:[
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:100,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:100,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:100,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:100,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:100,
+					depth:0,
 				},
 			],
 			historylogdata_list:[],
@@ -254,7 +269,8 @@
 			this.closeDrawer();
 			let symbolType = item.name;
 			let symbolCode = String(this.symbolDefaultData[symbolType])
-			this.getTradeInfo(symbolCode)
+			this.getTradeInfo(symbolCode);
+			this.$mySocket.subscribeDepth(item);
 		},
 		selectTradeHeader(item){
 			if(item.code==='2'){

@@ -144,7 +144,7 @@ export const mySocket={
                     bids
                 }
             }
-            console.log(asks)
+            // console.log(asks)
             store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
         }
     },
@@ -157,6 +157,8 @@ export const mySocket={
         let res = newData.map(function (item,index) {
             depth=depth+item[1];
             let percent=(depth/all)*2
+            percent = percent>1?1:percent;
+            percent = percent*100;
             let obj = {
                 size:item[1],
                 price:item[0],
@@ -222,8 +224,9 @@ export const mySocket={
         mySocket.subscribeDepth()
         
     },
-    subscribeDepth(){
-        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+    subscribeDepth(item){
+        let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
+
         let str = KLineTradingPair.name + KLineTradingPair.type;
         str = str.toLowerCase();
         let sub = "market."+str+".depth.step0"
