@@ -234,7 +234,7 @@
 
                     .upload-img-content {
                         margin-top: 30rpx;
-                        border-radius: 10 rpx;
+                        border-radius: 10rpx;
 
                         image {
                             width: 628rpx;
