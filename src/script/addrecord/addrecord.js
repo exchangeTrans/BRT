@@ -19,9 +19,6 @@ export default {
 				background: '#FFFFFF',
                 style: {
                     color: "#333333",
-					'fontSize': '34rpx',
-					'fontFamily':' PingFangSC-Regular, PingFang SC',
-					'fontWeight': '400',
                 },
                 isColor: true,
                 rightItem: {
@@ -44,9 +41,6 @@ export default {
 				background: '#FFFFFF',
                 style: {
 					color: "#333333",
-					'fontSize': '34rpx',
-					'fontFamily':' PingFangSC-Regular, PingFang SC',
-					'fontWeight': '400',
 
                 },
                 isColor: true,

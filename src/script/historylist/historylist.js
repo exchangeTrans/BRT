@@ -8,8 +8,6 @@ export default {
 	
 	data() {
 		return {
-			showdata: false,
-			nodata: true,
 			headerOptions: {
 
 			},
@@ -92,13 +90,14 @@ export default {
 		let theme = this.$storage.getSync({
 			key: 'theme'
 		});
-		
+
 		if (theme === 'white') {
 			this.headerOptions = {
 				show: true,
 				isAllowReturn: true,
 				text: "历史记录",
 				background: "#FFFFFF",
+
 				rightItem: {
 					type: "text",
 					text: "ID:AVV941",
@@ -120,8 +119,8 @@ export default {
 				show: true,
 				isAllowReturn: true,
 				text: "历史记录",
-				background: "#FFFFFF",
-				// isAllowReturn: true,
+				background: "#00001A",
+				isWhiteIcon: true,
 				rightItem: {
 					type: "text",
 					text: "ID:AVV941",
@@ -133,10 +132,9 @@ export default {
 					}
 				},
 				style: {
-					color: "#000000"
+					color: "#D9DADB"
 				},
-				isWhiteIcon: false,
-				headerIsNoBoder: false,
+				headerIsNoBoder: true,
 			}
 		}
 		this.getList()

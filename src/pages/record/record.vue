@@ -22,7 +22,7 @@
 
 <style scoped lang="less">
 	.headstyle{
-		padding-top: calc(100rpx + var(--status-bar-height));
+		padding-top: calc( var(--status-bar-height));
 	}
     #record {
         width: 100%;

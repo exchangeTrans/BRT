@@ -1,6 +1,6 @@
 <template>
-	<view>
-        <view class="listHeader">币币交易</view>
+	<view :class="blacktradelist==true?'blacktradelist':''">
+        <view class="listHeader" :class="isblack=true?'isblack':'iswhite'">币币交易</view>
 		<scroll-view class="datalist" scroll-y>
 			<view class="datalist_item" v-for="(item,index) in data" :key="index" @tap="chooseTradePair(item)">
                 <view class="itemName">{{item.name}}/{{item.type}}</view>
@@ -25,6 +25,10 @@
                 type: Array,
                 default: () => [],
             },
+            isBlack:{
+                type:Boolean,
+                default: () => {}
+            }
 		},
 		data(){
 			return{
@@ -54,6 +58,15 @@
 </script>
 
 <style lang="less">
+    .blacktradelist{
+        background: #272A2E;
+    }
+    .isblack{
+        color: #D9DADB;
+    }
+    iswhite{
+        color: #1A1A1A;
+    }
     .listHeader{
         height: 108rpx;
         width: 100%;
@@ -62,7 +75,6 @@
         font-size: 34rpx;
         font-family: PingFangSC-Medium, PingFang SC;
         font-weight: 500;
-        color: #1A1A1A;
         line-height: 108rpx;
     }
 	.datalist{

@@ -173,7 +173,10 @@
       }
     },
     {
-      "path": "pages/noticelist/index"
+      "path": "pages/noticelist/index",
+      "style": {
+        "onReachBottomDistance":50
+      }
 	},
 	{
       "path": "pages/property/property",
@@ -518,10 +521,10 @@
       "style": {
 
       }
+    },
+    {
+      "path":"blackPages/connectus/index"
     }
-//    {
-//      "path":"blackPages/connectus/index"
-//    }
 
 
 

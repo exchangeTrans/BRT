@@ -10,8 +10,33 @@ export default {
 		noticehead,
 		noticeitem
 	},
-	mounted() {
-		this.getmore();
+	// 下拉刷新
+	onPullDownRefresh() {
+		let that = this
+		console.log('refresh');
+		setTimeout(function() {
+			uni.stopPullDownRefresh();//停止当前页面下拉刷新
+			that.postData.start='0';
+			that.getdata();
+		}, 1000);
+	},
+// 上拉加载
+	onReachBottom() {
+		let that = this
+		uni.showNavigationBarLoading()
+		console.log('reach');
+		setTimeout(function () {
+			(parseInt(that.postData.start)+1).toString();
+			that.getdata();
+			uni.hideNavigationBarLoading()
+		}, 2000);
+	},
+		mounted() {
+		this.getdata();
+		setTimeout(function() {
+			console.log('start pulldown');
+		}, 1000);
+		uni.startPullDownRefresh();//开始下拉刷新
 		let theme = this.$storage.getSync({
 			key: 'theme'
 		});
@@ -39,20 +64,21 @@ export default {
 				show: true,
 				text: "公告列表",
 				isAllowReturn: true,
+				isWhiteIcon: true,
 				fontfamily: "PingFangSC-Regular, PingFang SC",
 				fontSize: '34',
 				background: "#00001A",
 				style: {
-					color: "#333333",
+					color: "#D9DADB",
 				},
-				isColor: true,
 				rightItem: {
 					type: "text",
 					// text: "ID:AVV491",
 					style: {
-						color: "#000000"
+						color: "#D9DADB"
 					}
 				},
+				headerIsNoBoder: true,
 			}
 		}
 	},
@@ -65,39 +91,23 @@ export default {
 				url: 'noticedetails/index?details_list=' + obj+'&id='+id
 			})
 		},
-		getmore(isMore) {
-			if (this.haveNext) {
-				let postData = {
-					infoType: '1',
-					start: '0',
-					index: recordAmount.num,
-				};
-				this.getdata(postData, isMore);
-			}
-		},
-
-		getdata(postData, isMore) {
+		getdata() {
 			this.$request({
 				url: "discovery/getInfo",
 				method: "post",
-				params: postData
+				params: this.postData
 			}).then((res) => {
 				var notice_list_item = {
 					text: '',
 					date: '',
-					isBlack: false
+					// isBlack:false
 				};
 				var notice_details = {
 					title: '',
 					date: '',
 					details: ''
 				}
-				if (res.result.returnCode.toString() === "0") {
-					//判断是否还有数据
-					if (res.data.list.length < recordAmount.num) {
-						this.haveNext = true;
-					}
-					if (isMore) {
+				for (var i = 0; i < res.data.list.length; i++){
 						notice_list_item.text = res.data.list[i].title;
 						var time = DateFunc.resetTime(parseInt(res.data.list[i].createTime), 'ymdhm');
 						notice_list_item.date = time;
@@ -105,9 +115,8 @@ export default {
 						notice_list_item = {
 							text: '',
 							date: '',
-							isBlack: false
+							// isBlack: false
 						};
-
 						notice_details.title = res.data.list[i].title;
 						var time = DateFunc.resetTime(parseInt(res.data.list[i].createTime), 'ymd');
 						notice_details.date = time;
@@ -118,32 +127,7 @@ export default {
 							date: '',
 							details: ''
 						}
-					} else {
-						for (var i = 0; i < res.data.list.length; i++) {
-							notice_list_item.text = res.data.list[i].title;
-							var time = DateFunc.resetTime(parseInt(res.data.list[i].createTime), 'ymdhm');
-							notice_list_item.date = time;
-							this.notice_list.unshift(notice_list_item);
-							notice_list_item = {
-								text: '',
-								date: '',
-								isBlack: false
-							};
-
-							notice_details.title = res.data.list[i].title;
-							var time = DateFunc.resetTime(parseInt(res.data.list[i].createTime), 'ymd');
-							notice_details.date = time;
-							notice_details.details = res.data.list[i].detail;
-							this.notice_deails_list.push(notice_details);
-							notice_details = {
-								title: '',
-								date: '',
-								details: ''
-							}
-						};
-					}
 				}
-				console.log(res)
 			}).catch((err) => {
 				console.log(err)
 			})
@@ -155,7 +139,11 @@ export default {
 			headerOptions: {},
 			notice_list: [],
 			notice_deails_list: [],
-			haveNext: true
+			postData:{
+				infoType:'1',
+				start:'0',
+				index:'10'
+			}
 		}
 	}
 }
