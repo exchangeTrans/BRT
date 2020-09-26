@@ -66,24 +66,39 @@
 			],
 			tradesOptions_list:[
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:0,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:0,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:0,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:0,
+					depth:0,
 				},
 				{
-					money:"0.00",
-					num:"0"
+					price:"0.00",
+					size:0,
+					all:0,
+					percent:0,
+					depth:0,
 				},
 			],
 			historylogdata_list:[],

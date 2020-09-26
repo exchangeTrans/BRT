@@ -157,6 +157,8 @@ export const mySocket={
         let res = newData.map(function (item,index) {
             depth=depth+item[1];
             let percent=(depth/all)*2
+            percent = percent>1?1:percent;
+            percent = percent*100;
             let obj = {
                 size:item[1],
                 price:item[0],
