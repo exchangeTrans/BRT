@@ -20,6 +20,9 @@ export default {
                     type: "text",
                     text: "",
                 },
+                style: {
+                    'top': 'var(--status-bar-height)'
+                },
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             }
@@ -34,7 +37,8 @@ export default {
                     text: "",
                 },
                 style: {
-                    'color': '#D9DADB'
+                    'color': '#D9DADB',
+                    'top': 'var(--status-bar-height)'
                 },
 
                 background: '#00001A',

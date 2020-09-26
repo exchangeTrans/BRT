@@ -53,7 +53,8 @@
             "sdkConfigs" : {
                 "ad" : {}
             }
-        }
+        },
+        "compilerVersion" : 2
     },
     /* SDK配置 */
     "quickapp" : {},

@@ -16,11 +16,14 @@ export default {
         if(theme === 'white') {
             this.headerOptions={
                 show:true,
-                    isAllowReturn:true,
-                    text:this.$t('miningEarnings').title,
-                    rightItem:{
+                isAllowReturn:true,
+                text:this.$t('miningEarnings').title,
+                rightItem:{
                     type:"text",
                         text:"",
+                },
+                style:{
+                    'top': 'var(--status-bar-height)'
                 },
                 bodyPadding:{"padding":'0,0,0,0'},
                 headerIsNoBoder: true,
@@ -37,7 +40,8 @@ export default {
                     style: {}
                 },
                 style:{
-                    'color': '#D9DADB'
+                    'color': '#D9DADB',
+                    'top': 'var(--status-bar-height)'
                 },
                 bodyPadding:{"padding":'0,0,0,0'},
                 headerIsNoBoder: true,

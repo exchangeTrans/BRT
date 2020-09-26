@@ -1,10 +1,10 @@
 <template>
 	<view class="myteam">
-		<pageHeader :headerOptions="headerOptions" class="headname"></pageHeader>
+		<pageHeader :headerOptions="headerOptions"></pageHeader>
 		<view class="headbg">
 			<view class="usermsgcon">
 				<view class="headphoto">
-					<image src="../../static/images/myteam/headphoto.png" mode="" style="width:118rpx; height: 118rpx;"></image>
+					<image :src="teamData.avatar" mode="" style="width:118rpx; height: 118rpx;"></image>
 				</view>
 				<view class="usermsg">
 					<view class="username">{{teamData.nickname}}</view>
@@ -12,7 +12,7 @@
 				</view>
 				<view class="incomelog">
 					<image src="../../static/images/myteam/crown.png" class="crown" mode=""></image>
-					<text class="grade">1</text>
+					<text class="grade">{{teamData.vipType}}</text>
 				</view>
 				<view class="clearfix"></view>
 			</view>
@@ -72,30 +72,24 @@
 		height: 100%;
 		background-color: #22252A;
 		// padding-top: calc(100rpx + var(--status-bar-height));
-	}
-	.headbg{
-		position: relative;
-		width: 100%;
-		height: 506rpx;
-		background: linear-gradient(to right,#004FA8,#007CD3,#25D4ED);
-		border-bottom-left-radius: 50rpx;
-		border-bottom-right-radius: 50rpx;
-	}
-	.headname{
-		font-size: 36rpx;
-		color: #FFFFFF;
-		font-family: PingFangSC-Semibold, PingFang SC;
-	}
-	.usermsgcon{
-		position: absolute;
-		width: 100%;
-		//height: 120rpx;
-		padding-left:40rpx;
-		box-sizing: border-box;
-		/*margin-top: 10rpx;*/
-		line-height: 120rpx;
-		/*margin-left: 40rpx;*/
-		// padding-top: calc(100rpx + var(--status-bar-height));
+		.headbg{
+			position: relative;
+			width: 100%;
+			height: 506rpx;
+			background: linear-gradient(to right,#004FA8,#007CD3,#25D4ED);
+			border-bottom-left-radius: 50rpx;
+			border-bottom-right-radius: 50rpx;
+		}
+		.usermsgcon{
+			position: absolute;
+			width: 100%;
+			//height: 120rpx;
+			padding-left:40rpx;
+			box-sizing: border-box;
+			/*margin-top: 10rpx;*/
+			line-height: 120rpx;
+			/*margin-left: 40rpx;*/
+			 padding-top: var(--status-bar-height);
 		.headphoto{
 			width: 118rpx;
 			height: 118rpx;
@@ -149,7 +143,7 @@
 			}
 		}
 	}
-	.teammsg{
+		.teammsg{
 		width: 100%;
 		height: 100rpx;
 		// padding-top: calc(100rpx + var(--status-bar-height));
@@ -197,13 +191,13 @@
 			color: #FFFFFF;
 		}
 	}
-	.invitelog{
-
-		padding-bottom: 30rpx;
-		clear: both;
-		width: 100%;
-		height: 160rpx;
-		margin-top: -45rpx;
+		.invitelog{
+			padding-bottom: 30rpx;
+			background-color: #272A2E;
+			clear: both;
+			width: 100%;
+			height: 160rpx;
+			margin-top: -45rpx;
 		.img{
 			width: 32rpx;
 			height: 32rpx;
@@ -220,7 +214,7 @@
 			line-height: 250rpx;
 		}
 	}
-	.datalisthead{
+		.datalisthead{
 		width: 100%;
 		height: 100rpx;
 		//background-color: #F9FAFA;
@@ -243,45 +237,42 @@
 
 		}
 	}
-	.datalist{
-		font-size: 28rpx;
-		width: 100%;
-		height: 100rpx;
-		line-height: 100rpx;
-		font-family: PingFangSC-Regular, PingFang SC;
-		background-color: #272A2E;
-		color: #D9DADB;
-		font-size: 28rpx;
-
-		.flag{
-			width: 50rpx;
-			height: 34rpx;
-			float: left;
-			margin-top: 30rpx;
-			margin-left: 20rpx;
+		.datalist{
+			font-size: 28rpx;
+			width: 100%;
+			height: 100rpx;
+			line-height: 100rpx;
+			font-family: PingFangSC-Regular, PingFang SC;
+			background-color: #272A2E;
+			color: #D9DADB;
+			.flag{
+				width: 50rpx;
+				height: 34rpx;
+				float: left;
+				margin-top: 30rpx;
+				margin-left: 20rpx;
+			}
+			.count{
+				margin-left: 20rpx;
+				float: left;
+				margin-top: -5rpx;
+			}
+			.memberid{
+				margin-left: 80rpx;
+				float: left;
+				margin-top: -5rpx;
+			}
+			.grade{
+				margin-left: 560rpx;
+				margin-top: -5rpx;
+			}
 		}
-		.count{
-			margin-left: 20rpx;
-			float: left;
-
-			margin-top: -5rpx;
-		}
-		.memberid{
-			margin-left: 80rpx;
-			float: left;
-			margin-top: -5rpx;
-		}
-		.grade{
-			margin-left: 560rpx;
-
-			margin-top: -5rpx;
-		}
-	}
-	.scrollh{
-		width: 100%;
-		height: calc(100vh - 762rpx - var(--status-bar-height));
+		.scrollh{
+			width: 100%;
+			height: calc(100vh - 710rpx - var(--status-bar-height));
 		.noDataBox {
 			position: relative;
 		}
+	}
 	}
 </style>

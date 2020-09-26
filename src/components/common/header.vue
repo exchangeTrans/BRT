@@ -1,5 +1,10 @@
 <template>
-    <view class="header" id="header" :style="{'borderBottom':headerStyle.borderBottom,'backgroundColor':headerStyle.backgroundColor,'background':headerStyle.background,}">
+    <view class="header" id="header" :style="{'borderBottom':headerStyle.borderBottom,
+    'backgroundColor':headerStyle.backgroundColor,
+    'background':headerStyle.background,
+    'top':headerStyle.top?headerStyle.top:0
+
+    }">
         <uni-status-bar/>
         <view class="headerContent" :style="{'opacity':hearderOpacity}">
 
@@ -221,8 +226,8 @@
         height:auto;
         width:750rpx;
         position:fixed;
-        top:calc(0rpx + var(--status-bar-height));
-        /*top:0;*/
+        /*top:calc(0rpx + var(--status-bar-height));*/
+        top:0;
         left: 0;
         box-sizing: border-box;
        // padding: 0 30rpx;

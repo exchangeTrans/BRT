@@ -73,8 +73,8 @@
 			KLineTradingPair(){
 				return this.$store.state.tradeData.KLineTradingPair;
 			},
-			
-			
+
+
 			// 		tradingSymol: [
 			//     {name:'BRT',isLocal:true},
 			//     {name:'USDT',isLocal:true},
@@ -83,7 +83,7 @@
 			//     {name:'XRP',isLocal:false},
 			//     {name:'BCH',isLocal:false},
 			//     {name:'LTC',isLocal:false},
-			//     {name:'XMR',isLocal:false},      
+			//     {name:'XMR',isLocal:false},
 			// ],
 			// selectSymbol:{name:'USDT',isLocal:false},
 			// quotationData:{},
@@ -93,7 +93,7 @@
 			initStoreData(){
 				this.$store.dispatch('getCountryList');
 				this.$store.dispatch('getRange');
-				
+
 				this.$store.dispatch('getKline',{
 					symbol:'XRP',
 					period:'1min',
@@ -104,12 +104,12 @@
 				// this.$store.dispatch('initQuotationData')
 
 			},
-			
+
 			//初始化行情数据
 			initAuotationData(){
 				// let newData = tradePairData.map(function (item) {
-				// 	// let item =    
-				// 	let selectSymbol = this.selectSymbol;              
+				// 	// let item =
+				// 	let selectSymbol = this.selectSymbol;
 				// 	return {
 				// 		...item,
 				// 		// dataArray:data,
@@ -117,7 +117,7 @@
 				// 		nowData:data.tick,
 				// 		price:price.toFixed(6)
 				// 	}
-					
+
 				// });
 			},
 			initPhoneMsg(){
@@ -169,4 +169,8 @@
 		}
 	}
 </script>
+
+<style>
+    @import url("./static/style/common.css");
+</style>
 

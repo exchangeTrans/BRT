@@ -1,6 +1,6 @@
 <template>
 	<view class="myteam">
-		<pageHeader :headerOptions="headerOptions" class="headname"></pageHeader>
+		<pageHeader :headerOptions="headerOptions"></pageHeader>
 		<view class="headbg">
 			<view class="usermsgcon">
 				<view class="headphoto">
@@ -94,7 +94,7 @@
 		/*margin-top: 10rpx;*/
 		line-height: 120rpx;
 		/*margin-left: 40rpx;*/
-		// padding-top: calc(100rpx + var(--status-bar-height));
+		padding-top: var(--status-bar-height);
 		.headphoto{
 			width: 118rpx;
 			height: 118rpx;
@@ -282,7 +282,7 @@
 	}
 	.scrollh{
 		width: 100%;
-		height: calc(100vh - 762rpx - var(--status-bar-height));
+		height: calc(100vh - 710rpx - var(--status-bar-height));
 		.noDataBox {
 			position: relative;
 		}
