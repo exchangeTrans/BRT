@@ -25,23 +25,7 @@
 	    components:{
 		},
         data() {
-            return {
-                headerOptions: {
-                    show: true,
-                    isAllowReturn: true,
-                    text: "LED/HDU",
-                    rightItem: {
-                        // type: "text",
-                        // text: "须知&反馈",
-                        // style: {
-                        //     "fontSize": '28rpx',
-                        //     "fontFamily": 'Source Han Sans CN',
-                        //     "fontWeight": '400',
-                        //     "color": 'rgba(68,68,68,1)'
-                        // }
-                    },
-                    headerIsNoBoder: false,
-                },
+            return {             
                 chartTabArray:[
                     {code:'1',name:"1分",id:''},
                     {code:'2',name:"15分",id:''},
