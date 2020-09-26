@@ -25,7 +25,7 @@ export default {
 					text: "",
 				},
                 style: {
-                    'top': 'var(--status-bar-height)'
+                    // 'top': 'var(--status-bar-height)'
                 },
 				background: '#ffffff',
 				headerIsNoBoder: true,
@@ -43,7 +43,7 @@ export default {
 				},
 				style: {
 					'color': '#D9DADB',
-					'top': 'var(--status-bar-height)'
+					// 'top': 'var(--status-bar-height)'
 				},
 				//background:'#ffffff',
 				headerIsNoBoder: true
