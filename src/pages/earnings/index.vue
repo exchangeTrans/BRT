@@ -6,7 +6,7 @@
 				<view class="earningsTop" :style="{'background-image':'url('+topBg+')'}">
 					<view class="left">
 						<view class="balance">可用余额</view>
-						<view class="balanceNum"><span>897367.90</span>BRT</view>
+						<view class="balanceNum"><span>{{userdata.usdtBalance}}</span>BRT</view>
 					</view>
 					<!-- <view class="right">
 						<view class="idCode">ID 19029008</view>
@@ -43,15 +43,15 @@
 						<view class="dataList" v-if="showincome_earing" >
 							<view class="dataItem">
 								<view class="itemTitle">投资金额</view>
-								<view class="itemText">1000.00 USDT</view>
+								<view class="itemText">{{userdata.loan}} USDT</view>
 							</view>
 							<view class="dataItem">
 								<view class="itemTitle">量化余额</view>
-								<view class="itemText">1321.68 USDT</view>
+								<view class="itemText">{{userdata.financeBalance}} USDT</view>
 							</view>
 							<view class="dataItem">
 								<view class="itemTitle">昨日收益率</view>
-								<view class="itemText">2.68%</view>
+								<view class="itemText">{{userdata.interestRateDay}}</view>
 							</view>
 						</view>
 						<view class="dataList" v-if="showdata_earing" >
@@ -95,7 +95,10 @@
 				 @btnClick="downloadAPP"></earningBtn>
 			</view>
 		</scroll-view>
-		<transferInAmount ref="transferInAmount" @transferInAmountSuccess="transferInAmountSuccess"></transferInAmount>
+		<transferInAmount ref="transferInAmount" 
+						  @transferInAmountSuccess="transferInAmountSuccess" 
+						  :transferDate="transferDate" 
+						  :availableCount="userdata.financeBalance"></transferInAmount>
 		<subRuler ref="subRuler"></subRuler>
 
 

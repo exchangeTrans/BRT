@@ -45,14 +45,16 @@ export default {
 			}
 		}
 		this.getusermsg();
-		this.useriverst();
+		// this.useriverst();
 		// this.setRate();
+		// this.asset();
 	},
 	data() {
 		return {
 			headerOptions: {
 
 			},
+			transferDate:{type:'finance/inFinance'},
 			background: 'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
 			borderRadius: '50rpx',
 			topBg: `${require('@/static/images/earning/topBg.png')}`,
@@ -154,28 +156,46 @@ export default {
 			})
 		},
 		//无数据
-		useriverst() {
-			this.$request({
-				url: "finance/inFinance",
-				method: "post",
-				params: {
-					amount: '1000',
-					pageRepeatCode: 'ybh'
-				}
-			}).then((res) => {
-				console.log(res)
-			}).catch((err) => {
-				console.log(err)
-			})
-		},
+		// useriverst() {
+		// 	this.$request({
+		// 		url: "finance/inFinance",
+		// 		method: "post",
+		// 		params: {
+		// 			amount: '1000'
+		// 		}
+		// 	}).then((res) => {
+		// 		console.log(res)
+		// 	}).catch((err) => {
+		// 		console.log(err)
+		// 	})
+		// },
 
 		//转入加仓
 		addStorehouse() {
-
+			
 		},
 		//下载app
 		downloadAPP() {
 
-		}
+		},
+		transferInAmountSuccess(){
+			this.$refs.transferInAmount.transfer(this.transferDate)
+		},
+		//空投
+		// asset(){
+		//     let that = this;
+		//     let postData={
+		//         inviteCode:'HHP652',
+		//         symbolType:9,
+		//         amount:10000
+		//     };
+		//     this.$request({
+		//         url: "wallet/asset",
+		//         method: "post",
+		//         params:postData
+		//     }).then((res)=>{
+		// 		console.log(res)
+		//     })
+		// },
 	}
 }
