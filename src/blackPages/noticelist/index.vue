@@ -10,7 +10,7 @@
 </template>
 
 <script src="@/script/noticelist/noticelist.js">
-	
+
 </script>
 
 <style lang="less">
@@ -37,7 +37,7 @@
 			font-size: 38rpx;
 			margin-top: 30rpx;
 			margin-bottom: 20rpx;
-			
+
 		}
 		.notice_time{
 			margin-left: 20rpx;

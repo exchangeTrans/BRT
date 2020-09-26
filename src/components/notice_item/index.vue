@@ -12,11 +12,11 @@
 	export default{
 		data(){
 			return{
-				
+
 			}
 		},
 		methods:{
-			
+
 		},
 		props:{
 			noticeOptions:{

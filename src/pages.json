@@ -16,7 +16,6 @@
 
       }
     },
-
     {
       "path": "pages/miningEarnings/index",
       "style": {
@@ -218,9 +217,6 @@
         "navigationBarTitleText": "交易"
       }
     },
-    {
-      "path": "pages/welcome/index"
-	},
 	{
       "path": "pages/welcome/index",
       "style": {
@@ -251,44 +247,103 @@
 
       }
     },
-
-
-
-   {
-      "path":"blackPages/changePhone/index"
-      //"style":
-    },
     {
-      "path":"pages/bonus/promoteBonus",
+      "path":"pages/historylist/index",
       "style": {
 
       }
     },
-	{
-	  "path":"pages/historylist/index",
-	  "style": {
-
-	  }
-	},
-	{
-		"path":"pages/connectus/index"
-	},
-
-
-   {
-      "path":"blackPages/changePhone/index"
-      //"style":
-    },
     {
-      "path": "blackPages/sub/index"
-	},
-	{
-      "path": "blackPages/sub/index",
+      "path":"pages/connectus/index"
+    },
+
+
+
+    //黑夜
+
+    {
+      "path": "blackPages/index/index",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }
     },
 
+    {
+      "path": "blackPages/externalLinks/index",
+      "style": {
+        "navigationBarTitleText": "网页",
+        "navigationStyle":"default"
+
+      }
+    },
+    {
+      "path": "blackPages/miningEarnings/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+
+//    {
+//      "path": "blackPages/aboutUs/index",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+    {
+      "path": "blackPages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/chooseCountry/chooseCountry",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+
+    {
+      "path": "blackPages/changePhone/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/changeEmail/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/earnings/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/withdrawal/withdrawal",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+//    {
+//      "path": "blackPages/withdrawal/success",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+    {
+      "path": "blackPages/promotion/promotion",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/trade/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
     {
       "path": "blackPages/receipt/index",
       "style": {
@@ -296,55 +351,10 @@
       }
     },
     {
-      "path": "blackPages/addrecord/index",
+      "path": "blackPages/quotes/quotes",
       "style": {
-
+        "navigationBarTitleText": "行情"
       }
-    },
-    {
-      "path": "blackPages/receipt/index"
-	},
-	{
-      "path": "blackPages/changeEmail/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-    {
-
-      "path": "blackPages/changeEmail/index"
-	},
-	{
-      "path": "blackPages/sub/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-    {
-      "path": "blackPages/sub/index"
-	},
-	{
-      "path": "blackPages/set/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-	{
-      "path":"blackPages/changePhone/index"
-      //"style":
-    },
-	{
-      "path": "blackPages/set/index"
-	},
-	{
-      "path": "blackPages/user/user",
-      "style": {
-        "navigationBarTitleText": "我的"
-      }
-    },
-	{
-      "path":"blackPages/changePhone/index"
-      //"style":
     },
     {
       "path": "blackPages/user/user",
@@ -353,86 +363,9 @@
       }
     },
     {
-      "path": "blackPages/user/personalInfo"
-	},
-	{
       "path": "blackPages/user/personalInfo",
       "style": {
 
-      }
-    },
-    {
-      "path": "blackPages/chooseCountry/chooseCountry",
-      "style": {
-
-      }
-    },
-	{
-      "path": "blackPages/chooseCountry/chooseCountry"
-	},
-	{
-      "path": "blackPages/directPush/directPush",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "blackPages/directPush/directPush"
-	},
-	{
-      "path": "blackPages/promotion/promotion",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-	{
-      "path": "blackPages/promotion/promotion"
-	},
-	{
-      "path": "blackPages/quotes/quotes",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "blackPages/quotes/quotes"
-	},
-	{
-      "path": "components/success/success",
-      "style": {
-        //"navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "components/success/success"
-	},
-	{
-      "path": "blackPages/index/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-    {
-      "path": "blackPages/index/index"
-	},
-	{
-      "path": "blackPages/sub/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-
-    {
-      "path": "blackPages/sub/index",
-      "style": {
-        //"navigationBarTitleText": "uni-app"
-      }
-    },
-
-    {
-      "path": "blackPages/withdrawal/withdrawal",
-      "style": {
-        //"navigationBarTitleText": ""
       }
     },
     {
@@ -454,60 +387,384 @@
       }
     },
     {
+      "path": "blackPages/directPush/directPush",
+      "style": {
+        //"navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "blackPages/login/forgetPassword",
+      "style": {
+        //"navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "blackPages/login/forgetPassword"
+    },
+    {
+      "path": "blackPages/myteam/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/myteam/index"
+    },
+    {
+      "path": "blackPages/noticedetails/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/noticedetails/index"
+    },
+    {
+      "path": "blackPages/noticelist/index",
+      "style": {
+        //"navigationBarTitleText": ""
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "blackPages/noticelist/index"
+    },
+    {
       "path": "blackPages/property/property",
       "style": {
         "navigationBarTitleText": "资产"
       }
     },
-
     {
-      "path": "blackPages/login/forgetPassword",
+      "path": "blackPages/record/record",
       "style": {
         //"navigationBarTitleText": ""
       }
     },
+    {
+      "path": "blackPages/property/property"
+    },
+    {
+      "path": "blackPages/set/index",
+      "style": {
+        "navigationBarTitleText": "资产"
+      }
+    },
+    {
+      "path": "blackPages/record/record",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/addrecord/index",
+      "style": {
 
+      }
+    },
+    {
+      "path": "blackPages/set/index"
+    },
+    {
+      "path": "blackPages/trades/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/trades/index",
+      "style": {
+        "navigationBarTitleText": "交易"
+      }
+    },
+//    {
+//      "path": "blackPages/welcome/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
     {
       "path": "blackPages/bonus/bonus",
       "style": {
-        //"navigationBarTitleText": ""
+        //"navigationBarTitleText": "uni-app"
       }
     },
-	{
-	  "path": "blackPages/trades/index",
-	  "style": {
-	    //"navigationBarTitleText": ""
-	  }
-	},
-	{
-	  "path": "blackPages/historylist/index",
-	  "style": {
-	    //"navigationBarTitleText": ""
-	  }
-	},
-	{
-	  "path": "blackPages/myteam/index",
-	  "style": {
-	    //"navigationBarTitleText": ""
-	  }
-	},
-	{
-	  "path": "blackPages/noticedetails/index",
-	  "style": {
-	    //"navigationBarTitleText": ""
-	  }
-	},
-	{
-	  "path": "blackPages/noticelist/index",
-	  "style": {
-	    //"navigationBarTitleText": ""
-	  }
-	},{
+    {
+      "path": "blackPages/bonus/bonus",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+//    {
+//      "path":"blackPages/bonus/promoteBonus",
+//      "style": {
+//
+//      }
+//    },
+    {
       "path":"blackPages/auth/auth",
       "style": {
 
       }
+    },
+    {
+      "path":"blackPages/historylist/index",
+      "style": {
+
+      }
     }
+//    {
+//      "path":"blackPages/connectus/index"
+//    }
+
+
+
+//   {
+//      "path":"blackPages/changePhone/index"
+//      //"style":
+//    },
+//    {
+//      "path":"pages/bonus/promoteBonus",
+//      "style": {
+//
+//      }
+//    },
+//
+//
+//
+//   {
+//      "path":"blackPages/changePhone/index"
+//      //"style":
+//    },
+//    {
+//      "path": "blackPages/sub/index"
+//	},
+//	{
+//      "path": "blackPages/sub/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//
+//    {
+//      "path": "blackPages/receipt/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//    {
+//      "path": "blackPages/addrecord/index",
+//      "style": {
+//
+//      }
+//    },
+//    {
+//      "path": "blackPages/receipt/index"
+//	},
+//	{
+//      "path": "blackPages/changeEmail/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//    {
+//
+//      "path": "blackPages/changeEmail/index"
+//	},
+//	{
+//      "path": "blackPages/sub/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//    {
+//      "path": "blackPages/sub/index"
+//	},
+//	{
+//      "path": "blackPages/set/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//	{
+//      "path":"blackPages/changePhone/index"
+//      //"style":
+//    },
+//	{
+//      "path": "blackPages/set/index"
+//	},
+//	{
+//      "path": "blackPages/user/user",
+//      "style": {
+//        "navigationBarTitleText": "我的"
+//      }
+//    },
+//	{
+//      "path":"blackPages/changePhone/index"
+//      //"style":
+//    },
+//    {
+//      "path": "blackPages/user/user",
+//      "style": {
+//        "navigationBarTitleText": "我的"
+//      }
+//    },
+//    {
+//      "path": "blackPages/user/personalInfo"
+//	},
+//	{
+//      "path": "blackPages/user/personalInfo",
+//      "style": {
+//
+//      }
+//    },
+//    {
+//      "path": "blackPages/chooseCountry/chooseCountry",
+//      "style": {
+//
+//      }
+//    },
+//	{
+//      "path": "blackPages/chooseCountry/chooseCountry"
+//	},
+//	{
+//      "path": "blackPages/directPush/directPush",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//    {
+//      "path": "blackPages/directPush/directPush"
+//	},
+//	{
+//      "path": "blackPages/promotion/promotion",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//	{
+//      "path": "blackPages/promotion/promotion"
+//	},
+//	{
+//      "path": "blackPages/quotes/quotes",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//    {
+//      "path": "blackPages/quotes/quotes"
+//	},
+//	{
+//      "path": "components/success/success",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//    {
+//      "path": "components/success/success"
+//	},
+//	{
+//      "path": "blackPages/index/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//    {
+//      "path": "blackPages/index/index"
+//	},
+//	{
+//      "path": "blackPages/sub/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//
+//    {
+//      "path": "blackPages/sub/index",
+//      "style": {
+//        //"navigationBarTitleText": "uni-app"
+//      }
+//    },
+//
+//    {
+//      "path": "blackPages/withdrawal/withdrawal",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//    {
+//      "path": "blackPages/regs/regs",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//    {
+//      "path": "blackPages/login/login",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//    {
+//      "path": "blackPages/login/loginOrRegs",
+//      "style": {
+//
+//      }
+//    },
+//    {
+//      "path": "blackPages/property/property",
+//      "style": {
+//        "navigationBarTitleText": "资产"
+//      }
+//    },
+//
+//    {
+//      "path": "blackPages/login/forgetPassword",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//
+//    {
+//      "path": "blackPages/bonus/bonus",
+//      "style": {
+//        //"navigationBarTitleText": ""
+//      }
+//    },
+//	{
+//	  "path": "blackPages/trades/index",
+//	  "style": {
+//	    //"navigationBarTitleText": ""
+//	  }
+//	},
+//	{
+//	  "path": "blackPages/historylist/index",
+//	  "style": {
+//	    //"navigationBarTitleText": ""
+//	  }
+//	},
+//	{
+//	  "path": "blackPages/myteam/index",
+//	  "style": {
+//	    //"navigationBarTitleText": ""
+//	  }
+//	},
+//	{
+//	  "path": "blackPages/noticedetails/index",
+//	  "style": {
+//	    //"navigationBarTitleText": ""
+//	  }
+//	},
+//	{
+//	  "path": "blackPages/noticelist/index",
+//	  "style": {
+//	    //"navigationBarTitleText": ""
+//	  }
+//	},{
+//      "path":"blackPages/auth/auth",
+//      "style": {
+//
+//      }
+//    }
   ],
   // "tabBar": {
   //   // "color":"#8a8a8a",
