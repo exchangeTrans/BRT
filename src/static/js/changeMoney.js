@@ -12,7 +12,7 @@ export const changeMoney = (changeObj) => {
     let code = changeObj.firstCode + changeObj.lastCode;
     let rangeList = store.state.defaultData.rangeData;//获取汇率
     let asset = Number(changeObj.asset).toFixed(2)
-    let price = (Number(rangeList[code]) * changeObj.asset).toFixed(2);
+    let price = (Number(rangeList[code]) * Number(changeObj.asset)).toFixed(2);
     // console.log(price);
 
     return {

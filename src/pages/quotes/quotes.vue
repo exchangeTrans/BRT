@@ -45,10 +45,10 @@
         padding-top: calc(100rpx + var(--status-bar-height));
         
         .quotes-content {
-            height: calc(100vh - var(--status-bar-height) - 100rpx);
+            /*height: calc(100vh - var(--status-bar-height) - 100rpx);*/
             .quotes-content-wrap {
                 /*margin: 0 30rpx;*/
-                padding-top: 30rpx;
+                /*padding-top: 30rpx;*/
 
                 .quotes-content-wrap-title {
                     margin: 0 30rpx;

@@ -76,9 +76,9 @@ export default {
             },
 
             postData: {
-                phone: "15282148708",
-                password: "111111",
-                email: "119@qq.com",
+                phone: "",
+                password: "",
+                email: "",
             },
 
             checkPhoneArray: [
