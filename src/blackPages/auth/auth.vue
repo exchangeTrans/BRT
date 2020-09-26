@@ -160,6 +160,7 @@
 
                         input {
                             height: 100%;
+                            line-height: 120rpx;
                             padding-left: 162rpx;
                             width: 100%;
                             box-sizing: border-box;
@@ -183,6 +184,7 @@
 
                         input {
                             height: 100%;
+                            line-height: 120rpx;
                             padding-left: 162rpx;
                             width: 100%;
                             box-sizing: border-box;
