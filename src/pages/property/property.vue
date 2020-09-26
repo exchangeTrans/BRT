@@ -1,6 +1,8 @@
 <template>
-    <view id="property">
-        <pageHeader :headerOptions="headerOptions"/>
+    <view id="property"
+          @touchmove.stop.prevent="stopPenetrate">
+        <pageHeader :headerOptions="headerOptions"
+                    class="appHeader"/>
         <scroll-view class="property-wrap" :scroll-y="true">
             <view class="property-wrap-content">
                 <view class="property-wrap-content-asset">
@@ -44,62 +46,18 @@
     </view>
 </template>
 
-<script src="@/script/property/property.js">
-    /*import pageHeader from '@/components/common/header.vue'
-    import PropertyCard from "../../components/property/propertyCard";
-    export default {
-        name: "property",
-        components: {
-            PropertyCard,
-            pageHeader
-        },
-        data() {
-            return {
-                propertyCardData: [
-                    {
-                        name: "BRT",
-                        money: "1200",
-                        aboutMoney: "9000",
-                        availableBalance: "400",
-                        lockBalance: "800",
-                    },
-                    {
-                        name: "USDT",
-                        money: "",
-                        aboutMoney: "",
-                        availableBalance: "",
-                        lockBalance: "",
-                    },
-                    {
-                        name: "BTC",
-                        money: "",
-                        aboutMoney: "",
-                        availableBalance: "",
-                        lockBalance: "",
-                    }
-                ],
-                headerOptions: {
-                    show: true,
-                    isAllowReturn: false,
-                    text: "资产",
-                    rightItem: {
-                        type: "text",
-                        text: "",
-                    },
-                    headerIsNoBoder: false,
-                },
-            }
-        },
-        methods: {}
-    }*/
-</script>
+<script src="@/script/property/property.js"></script>
 
 <style scoped lang="less">
     #property {
         width: 100vw;
         height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
-
+        
+        .appHeader {
+            top: 0;
+            background: #fff;
+        }
         .property-wrap {
             width: 100%;
             box-sizing: border-box;

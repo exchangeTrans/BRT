@@ -21,7 +21,7 @@ export default {
                     type: "text",
                     text: "",
                 },
-                headerIsNoBoder: false,
+                headerIsNoBoder: true,
             };
             this.isBlack = false;
         } else {
@@ -103,6 +103,9 @@ export default {
         },
     },
     methods: {
+        stopPenetrate(){
+            return;
+        },
         getHome() {
             let that = this
             this.$request({

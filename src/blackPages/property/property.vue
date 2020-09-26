@@ -1,6 +1,7 @@
 <template>
-    <view id="property">
-        <pageHeader :headerOptions="headerOptions"/>
+    <view id="property" @touchmove.stop.prevent="stopPenetrate">
+        <pageHeader :headerOptions="headerOptions"
+                    class="appHeader"/>
         <scroll-view class="property-wrap" :scroll-y="true">
             <view class="property-wrap-content">
                 <view class="property-wrap-content-asset">
@@ -44,16 +45,18 @@
     </view>
 </template>
 
-<script  src="@/script/property/property.js">
-    
-</script>
+<script  src="@/script/property/property.js"></script>
 
 <style scoped lang="less">
     #property {
         width: 100vw;
         height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
-        
+
+        .appHeader {
+            top: 0;
+            background: #00001A;
+        }
         .property-wrap {
             width: 100%;
             box-sizing: border-box;
