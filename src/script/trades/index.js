@@ -200,7 +200,18 @@
             ],
 		}
 	  },
-	  
+	  onLoad(options) {
+		  if(options.code){
+			  this.selectedTradeName={
+				  code:options.code
+			  }
+		  }
+		// this.details_msg_list = JSON.parse(options.details_list).reverse();
+		// console.log(details_msg_list);
+		// this.id = options.id
+		// console.log(this.details_msg_list);
+		// console.log(this.id)
+	},
 	  computed:{
 		tradeListData(){
 			return this.$store.state.tradeData.tradePairData;

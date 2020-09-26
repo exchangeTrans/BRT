@@ -10,8 +10,8 @@
 				<view class="earning">
 					<view class="earningTitle">资产总额</view>
 					<view class="earningNumber">
-						<span>420.24 USDT</span>
-						<span>≈￥10098 CNY</span>
+						<span>{{changeMoneyData.asset}} {{changeMoneyData.firstCode}}</span>
+						<span>≈ {{changeMoneyData.price==="NaN" ? 0.00 : changeMoneyData.price}} {{changeMoneyData.lastCode}}</span>
 					</view>
 				</view>
 
