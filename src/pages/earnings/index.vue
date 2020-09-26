@@ -93,16 +93,10 @@
 				 @btnClick="downloadAPP"></earningBtn>
 			</view>
 		</scroll-view>
-<<<<<<< HEAD
 		<transferInAmount ref="transferInAmount" 
 						  @transferInAmountSuccess="transferInAmountSuccess" 
 						  :transferDate="transferDate" 
 						  :availableCount="userdata.financeBalance"></transferInAmount>
-=======
-		<transferInAmount ref="transferInAmount"
-						  @transferInAmountSuccess="transferInAmountSuccess"
-						  :availableCount="availableCount"></transferInAmount>
->>>>>>> 68422690126d3fa71d36b1b31a85a4d04f4b8224
 		<subRuler ref="subRuler"></subRuler>
 	</view>
 </template>
