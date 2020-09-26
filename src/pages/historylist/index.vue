@@ -40,6 +40,14 @@
 			width: 530rpx;
 			height: 400rpx;
 		}
+		.historylist{
+			// height: 220rpx;
+			// width: 100%;
+			// padding-top: calc(100rpx + var(--status-bar-height));
+			.historylist-item{
+				// padding-top: calc(100rpx + var(--status-bar-height));
+			}
+		}
 		// .historylist{
 		// 	// height: 220rpx;
 		// 	// width: 100%;

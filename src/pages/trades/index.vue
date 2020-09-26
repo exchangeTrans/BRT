@@ -54,7 +54,7 @@
 				<view class="charge_and_num">
 					<view class="money">价格</view>
 					<view class="lednum">数量</view><br>
-					<view v-for="(item,id) in tradesOptions_list" :key="id">
+					<view v-for="(item,index) in depthData.asks" :key="index">
 						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
 					</view>
 					
@@ -65,7 +65,7 @@
 					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
 				<view class="charge_and_num">
-					<view v-for="(item,id) in tradesOptions_list" :key="id">
+					<view v-for="(item,index) in depthData.bids" :key="index">
 						<data-list :colorOptions="red" :tradesOptions="item"></data-list>
 					</view>
 				</view>
