@@ -117,7 +117,7 @@
 
         .user-wrap {
             width: 100%;
-            height: calc(100vh - var(--status-bar-height) - 116rpx);
+            height: calc(100vh - var(--status-bar-height));
             background: #22252A;
             position: relative;
 
@@ -428,7 +428,7 @@
                         width: 690rpx;
                         box-sizing: border-box;
                         margin-top: 40rpx;
-                        margin-bottom: 40rpx;
+                        margin-bottom:116rpx;
                     }
                 }
 
