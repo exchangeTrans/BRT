@@ -8,14 +8,22 @@
                         <span>实名状态</span>
                     </view>
                     <view class="auth-status-text">
-                        <view class="check">
-                            <image :src="authStatusCheckImg"></image>
-                            <span class="red">待审核</span>
-                        </view>
-                        <!--<view class="await">
+                        <view class="await" v-if="authStatusData.kyc1==0">
                             <image :src="authStatusAwaitImg"></image>
                             <span class="blue">待实名</span>
-                        </view>-->
+                        </view>
+                        <view class="await" v-if="authStatusData.kyc1==1">
+                            <image :src="authStatusAwaitImg"></image>
+                            <span class="blue">已实名</span>
+                        </view>
+                        <view class="check" v-else-if="authStatusData.kyc1==2">
+                            <image :src="authStatusCheckImg"></image>
+                            <span class="red">待审核（未审核）</span>
+                        </view>
+                        <view class="check" v-else-if="authStatusData.kyc1==3">
+                            <image :src="authStatusCheckImg"></image>
+                            <span class="red">待审核（审核失败）</span>
+                        </view>
                     </view>
                 </view>
                 <view class="user-message">

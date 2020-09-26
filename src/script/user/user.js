@@ -1,5 +1,6 @@
 import Btn from "../../components/btn/index";
 import pageFooter from '@/components/common/footer.vue'
+import {changeMoney} from "../../static/js/changeMoney";
 
 export default {
     name: "user",
@@ -83,6 +84,8 @@ export default {
 
             homeMsgData: {},
             userMsgData: {},
+
+            changeMoneyData: {},
         }
     },
     mounted() {
@@ -193,6 +196,13 @@ export default {
                     that.homeMsgData = {
                         ...res.data,
                     }
+                    let asset = res.data.asset.replace(/,/g, '');
+                    // debugger
+                    let changeObj = that.getChangeObj(asset)
+                    that.changeMoneyData = {
+                        ...changeMoney(changeObj)
+                    };
+                    // console.log(that.changeMoneyData);
                 } else {
                     /*if (res.result.returnCode.toString() === "10032") {
                         this.$toast.show({
@@ -210,6 +220,17 @@ export default {
                 }
                 that.getUserMsg()
             })
+        },
+        getChangeObj(asset) {
+            let firstCode = "USDT"//第一个单位
+            let lastCode = this.$store.state.defaultData.selectedCurrency.code//第二个单位
+            // asset//用户的钱 USDT
+            let changeObj = {
+                firstCode,//第一个单位
+                lastCode,//第二个单位
+                asset,//用户的钱 USDT
+            }
+            return changeObj
         },
         getUserMsg() {
             let that = this
