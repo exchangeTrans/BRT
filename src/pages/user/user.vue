@@ -117,7 +117,7 @@
 
         .user-wrap {
             width: 100%;
-            height: calc(100vh - var(--status-bar-height));
+            height: calc(100vh - var(--status-bar-height) - 116rpx);
             background: #F9FAFA;
             position: relative;
 

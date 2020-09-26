@@ -245,7 +245,7 @@
                 .button {
                     /*background: #fff;*/
                     width: 690rpx;
-                    margin: 40rpx auto 0;
+                    margin: 40rpx auto 156rpx;
                     height: 100rpx;
                     box-sizing: border-box;
                     background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);
