@@ -1,12 +1,12 @@
 <template>
 	<view class="">
 		<historyhead :headerOptions="headerOptions" class="headstyle"></historyhead>
-		<scroll-view scroll-y="true" class="list" v-if="showdata">
-			<view v-for="(item,id) in listOptions" :key="item.id">
+		<scroll-view scroll-y="true" class="list" v-if="listOptions.length>0">
+			<view v-for="(item,index) in listOptions" :key="index">
 				<historylist :listOptions="item" class="item"></historylist>
 			</view>
 		</scroll-view>
-		<view class="nologimg" v-if="nodata">
+		<view class="nologimg" v-if="listOptions.length===0">
 			<image src="../../static/images/nohistorylog/nohistorylog.png" mode="" class="img"></image>
 			<view class="nologfont">暂无数据</view>
 		</view> 
@@ -24,14 +24,14 @@
 	
 	.list{
 		width: 100%;
-		height: calc(100vh - var(--status-bar-height) - 100rpx); 
+		height: calc(100vh); 
 		background: #F8F8F8;
-		padding-top: 135rpx;
-		padding-top: calc(100rpx + var(--status-bar-height));
+		padding-top: calc(120rpx + var(--status-bar-height));
+		box-sizing: border-box;
 	}
-	.item{
-		padding-top: calc(100rpx + var(--status-bar-height));
-	}
+	// .item{
+	// 	padding-top: calc(100rpx + var(--status-bar-height));
+	// }
 	.nologimg{
 		padding-top: calc(100rpx + var(--status-bar-height));
 		margin-top: 500rpx;

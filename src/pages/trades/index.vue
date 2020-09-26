@@ -18,7 +18,7 @@
 		</view>
 		<view class="main">
 			<view class="left">
-				<view :class="item.code" v-for="item in tradeNameData" :key="item.code">
+				<view :class="item.code" v-for="item in tradeNameData" :key="item.code" @tap="changeTradeType(item)">
 					<image class="bluebg" v-if="item.code===selectedTradeName.code" src="../../static/images/trades/bluebg.png" mode=""></image>
 					<image class="whitebg" v-else src="../../static/images/trades/whitebg.png" mode=""></image>
 					<view class="income active" v-if="item.code===selectedTradeName.code">{{item.name}}</view>
@@ -83,14 +83,16 @@
 				<image src="../../static/images/trades/historylog.png" mode="" class="clock"></image>
 				<view class="fontlog">历史记录</view>
 			</view>
-			<view class="imgcon">
+			<view class="imgcon" v-if="historylogdata_list.length===0">
 				<image src="../../static/images/trades/footer.png" mode="" class="img"></image>
 				<view class="footer_data">暂无数据</view>
 			</view>
 			<!-- <scroll-view scroll-y="true" class="historyloglist" v-if="showdata"> -->
+			<block v-if="historylogdata_list.length>0">	
 				<view v-for="(item,id) in historylogdata_list" :key="id">
-					<historylog :historylogdata="item"></historylog>
+					<historylog :historylogdata="item" @cancelTrade="cancelTrade"></historylog>
 				</view>
+			</block>
 			<!-- </scroll-view> -->
 			
 		</view>
@@ -561,6 +563,7 @@
 			text-align: center;
 			font-size: 24rpx;
 			color:#BEBEBE ;
+			padding-bottom: 50rpx;
 		}
 		.historylog{
 			float: right;
