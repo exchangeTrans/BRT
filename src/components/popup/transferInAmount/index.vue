@@ -46,6 +46,7 @@
 		props: {
 		    mode:{type:String,default:'day'},
             availableCount:{type:String,default:''},
+			transferDate:{type:Object,default:()=>{}}
         },
 		mounted(){
 
@@ -66,7 +67,37 @@
                 this.counts=parseInt(res);
 
             },
-            transfer(){
+			transfer(transferDate){
+				if(transferDate.type==="finance/inFinance"){
+					if(!this.counts){
+						this.$toast.show({
+							title:'金额不能为空'
+						})
+						return;
+					}
+					let postData={
+					    amount: this.counts
+					};
+					this.$request({
+					    url:type,
+					    method:'post',
+					    params:postData
+					}).then((res)=>{
+						console.log("succeed");
+						if (res.result.returnCode.toString() === "0") {
+						    this.close();
+						    this.$emit('transferInAmountSuccess')
+						}else{
+						    this.$toast.show({
+						        title: res.result.returnMessage,
+						    })
+						}
+					})
+				}else{
+					this.miningTransfer();
+				}
+			},
+            miningTransfer() {
                 if (!this.counts){
                     this.$toast.show({
                         title: '金额不能为空',
@@ -90,7 +121,7 @@
                         })
                     }
                 })
-            }
+            },
 
 		}
 	}

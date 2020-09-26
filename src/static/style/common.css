@@ -102,6 +102,9 @@ b, em, h1, h2, h3, h4, h5, h6, strong, p, input, textarea, select, button {
     box-sizing: border-box;
     transition: all .6s cubic-bezier(.55, 0, .1, 1);
 }
+.hoverClass{
+    opacity: 0.8!important;
+}
 
 /* font-size */
 .fontS12 {

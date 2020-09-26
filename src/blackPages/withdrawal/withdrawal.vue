@@ -1,6 +1,8 @@
 <template>
     <view id="withdrawal">
-        <app-header :headerOptions="headerOptions" @headertap=headertap></app-header>
+        <app-header :headerOptions="headerOptions"
+                    @headertap=headertap
+                    class="appHeader"></app-header>
         <scroll-view class="withdrawal-wrap" :scroll-y="true">
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
@@ -52,6 +54,10 @@
         width: 100%;
         height: 100%;
         padding-top: calc(100rpx + var(--status-bar-height));
+
+        .appHeader {
+            top: var(--status-bar-height);
+        }
 
         .withdrawal-wrap {
             box-sizing: border-box;
