@@ -78,7 +78,7 @@ export default {
             postData: {
                 phone: "15282148708",
                 password: "111111",
-                email: "1191125750@qq.com",
+                email: "119@qq.com",
             },
 
             checkPhoneArray: [
