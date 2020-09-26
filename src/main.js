@@ -12,11 +12,14 @@ import VueI18n from 'vue-i18n'
 import lang from './static/lang/index.js';
 import request from './request/index.js';
 import md5 from 'js-md5';
+// import echarts from 'echarts'
+
 
 Vue.use(VueI18n);
 Vue.config.productionTip = false;
 
 App.mpType = 'app'
+// Vue.prototype.$echarts = echarts
 Vue.prototype.$toast = toast;
 Vue.prototype.$request = request;
 Vue.prototype.$md5 = md5;
