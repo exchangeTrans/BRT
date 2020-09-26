@@ -38,7 +38,7 @@
                                     </view>-->
                                     <!--<span>总资产估值</span>-->
                                     <view class="balance">
-                                        <span>{{homeMsgData.asset}} USDT≈{{}} RMB</span>
+                                        <span>{{changeMoneyData.asset}} {{changeMoneyData.firstCode}}≈{{changeMoneyData.price}} {{changeMoneyData.lastCode}}</span>
                                     </view>
                                 </view>
 
@@ -260,6 +260,7 @@
                                     display: flex;
                                     align-items: center;
                                     margin-top: 24rpx;
+                                    box-sizing: border-box;
 
                                     span {
                                         font-size: 24rpx;
