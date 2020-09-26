@@ -83,6 +83,13 @@ export default {
                 },
             ],
 
+            authStatusData: {
+                kyc1:"",
+                cardType:"",
+                cardName:"",
+                cardNo:"",
+            },
+
         }
     },
     methods: {
@@ -94,14 +101,29 @@ export default {
                 method: "post",
             }).then((res) => {
                 // debugger
-                console.log(res);
-                /*if (res.result.returnCode.toString() === "0") {
-                    console.log(res);
+                /*data: {cardType: 0, cardName: "", cardNo: "", kyc1: 0}
+                    cardName: ""
+                    cardNo: ""
+                    cardType: 0//1身份证 2护照
+                    kyc1: 0//0待实名 1已实名 2待审核（未审核） 3待审核（审核失败）
+                result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
+                    returnCode: "0"
+                    returnMessage: "成功"
+                    returnUserMessage: "成功"*/
+                // console.log(res);
+                if (res.result.returnCode.toString() === "0") {
+                    this.authStatusData = {
+                        kyc1: res.data.kyc1,//0待实名 1已实名 2待审核（未审核） 3待审核（审核失败）
+                        cardType: res.data.cardType,//1身份证 2护照
+                        cardName: res.data.cardName,
+                        cardNo: res.data.cardNo,
+                    }
+                    // console.log(res);
                 } else {
                     this.$toast.show({
                         title: res.result.returnMessage,
                     })
-                }*/
+                }
             })
         },
 
@@ -130,7 +152,7 @@ export default {
         },
 
         getAuth(cardImage){
-            debugger
+            // debugger
             let postData = this.getAuthPostData(cardImage);
             if (postData) {
                 this.$request({
@@ -139,7 +161,12 @@ export default {
                     params: postData,
                 }).then((res) => {
                     if (res.result.returnCode.toString() === "0") {
-                        console.log(res);
+                        this.$toast.show({
+                            title: res.result.returnMessage,
+                        })
+                        this.$jumpPage.jump({
+                            type: 'navigateBack',
+                        })
                     } else {
                         this.$toast.show({
                             title: res.result.returnMessage,
