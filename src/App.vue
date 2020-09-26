@@ -25,6 +25,7 @@
 			this.initLoginMsg();
 			this.initLangMsg();
 			this.initStoreData();
+
 			// this.initAuotationData();
 			let that = this;
 			// uni.onSocketOpen(function (res) {
@@ -99,6 +100,7 @@
 					size:'200'
 				});
 				this.$store.dispatch('getRate');
+				this.$store.dispatch('getUserMsg');
 				// this.$store.dispatch('initQuotationData')
 
 			},
@@ -160,6 +162,10 @@
 					data: langMsg
 				});
 			},
+
+            /*initUserMsg() {
+
+            },*/
 		}
 	}
 </script>

@@ -2,7 +2,9 @@ import request from '@/request/index';
 
 const GETCOUNTRYLIST = 'GETCOUNTRYLIST';
 const COUNTRY = 'COUNTRY';
-const GETRANGEDATA = "GETRANGEDATA"
+const GETRANGEDATA = "GETRANGEDATA";
+const GETUSERINFO = "GETUSERINFO";
+
 export default {
     state: {
         langArray: {
@@ -160,7 +162,7 @@ export default {
             'ko-KR': [
                 {
                     name: '人民币',
-                    code: "RMB",
+                    code: "CNY",
                     img: `${require('@/static/images/set/rmb.png')}`,
                     unit: '¥'
                 },
@@ -185,7 +187,10 @@ export default {
             code: "CNY",
             unit: '¥'
         },
-        rangeData: {}
+        rangeData: {},
+        userMsg: {
+            asset:0,
+        },
 
     },
     actions: {
@@ -214,6 +219,19 @@ export default {
                 }
             })
         },
+        //获取用户信息
+        getUserMsg({commit}) {
+            request({
+                url: 'me/getHome',
+                method: 'post',
+            }).then(res => {
+                if (res.result.returnCode.toString() === '0') {
+                    // debugger
+                    let data = res.data;
+                    commit('GETUSERINFO', data);
+                }
+            })
+        },
 
 
     },
@@ -226,6 +244,9 @@ export default {
         },
         [GETRANGEDATA](state, result) {
             state.rangeData = result;
+        },
+        [GETUSERINFO](state, result) {
+            state.userMsg = result;
         },
         setDefaultSync(state, param) {
             state[param.key] = param.val;

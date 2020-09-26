@@ -3,6 +3,7 @@ import pageFooter from '@/components/common/footer.vue'
 import {
 	DateFunc
 } from '../../static/js/common.js';
+import {changeMoney} from "../../static/js/changeMoney";
 export default {
 	components: {
 		forcedUpdating,
@@ -59,7 +60,10 @@ export default {
 			advertising: `${require('@/static/images/home/advertising.png')}`, //广告牌
 			notice2: `${require('@/static/images/home/notice2.png')}`, //公告
 			more: `${require('@/static/images/home/more.png')}`, //公告
-			notice_deails_list: []
+			notice_deails_list: [],
+
+            userMsg:{},
+			changeMoneyData:{}
 		}
 	},
 	onLoad() {
@@ -98,6 +102,7 @@ export default {
 	mounted() {
 		//   this.$refs.update.open();
 		// this.getfirst();
+		this.getuserInfo()
 	},
 	methods: {
 		toInfo(item) {
@@ -143,7 +148,30 @@ export default {
 				}).catch(err => {
 					console.log(err);
 				})
-			
-		}
+
+		},
+
+		getuserInfo(){
+			// debugger
+			let userMsg = this.$store.state.defaultData.userMsg;
+			// console.log(userMsg)
+			let changeObj = this.getChangeObj(userMsg.asset)
+			// debugger
+			console.log(changeMoney(changeObj))
+			this.changeMoneyData = {
+				...changeMoney(changeObj),
+			};
+		},
+		getChangeObj(asset){
+			let firstCode = "USDT"//第一个单位
+			let lastCode = this.$store.state.defaultData.selectedCurrency.code//第二个单位
+			// asset//用户的钱 USDT
+			let changeObj = {
+				firstCode,//第一个单位
+				lastCode,//第二个单位
+				asset,//用户的钱 USDT
+			}
+			return changeObj
+		},
 	}
 }
