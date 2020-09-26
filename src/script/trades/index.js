@@ -327,8 +327,12 @@
 		},
 		cancelTrade(item){
 			let that = this;
+			let symbolType = this.KLineTradingPair.name;
+			let symbolCode = String(this.symbolDefaultData[symbolType])
+			// this.getTradeInfo(symbolCode);
 			let postData={
-				orderId: item.tradeOrderId
+				orderId: item.tradeOrderId,
+				symbolType:item.symbolType
 			};
 			this.$request({
 				url:'trade/cancel',
@@ -336,10 +340,11 @@
 				params:postData
 			}).then((res)=>{
 				if (res.result.returnCode.toString() === "0") {
-					this.getTradeInfo();
+					
 					this.$toast.show({
 						title: res.result.returnUserMessage,
 					})
+					this.getTradeInfo();
 				}else{
 					this.$toast.show({
 						title: res.result.returnMessage,
