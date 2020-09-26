@@ -147,6 +147,8 @@
                         background-size: cover;
                         position: absolute;
                         right: 30rpx;
+                        top: 50%;
+                        transform: translateY(-50%);
                     }
                 }
             }

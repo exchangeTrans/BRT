@@ -29,7 +29,8 @@
             </view>
 
             <view class="currencyItem"
-				  v-for="item in currencyData"
+				  v-for="(item,index) in currencyData"
+                  :key="index"
                   @tap="chooseCurrencyData(item)">
                 <view class="currencyIcon"
 					  :style="{'background-image':'url('+item.img+')'}"></view>
