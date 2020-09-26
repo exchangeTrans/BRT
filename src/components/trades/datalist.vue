@@ -1,9 +1,10 @@
 <template>
 	<view>
 		<view class="datalist">
-			<view class="item" :style="{'background':bgstyle.background_color,'color':bgstyle.color}">
-				<view class="money">{{tradesOptions.money}}</view>
-				<view class="num">{{tradesOptions.num}}</view>
+			<view class="item"  :style="{'color':bgstyle.color}">
+				<view class="money">{{tradesOptions.price}}</view>
+				<view class="num">{{tradesOptions.size}}</view>
+				<view class="bg" :style="{'background':bgstyle.background_color,width:tradesOptions.percent+'%'}"></view>
 			</view>
 		</view>
 	</view>
@@ -48,11 +49,6 @@
 </script>
 
 <style lang="less">
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
 	.datalist{
 		width: 100%;
 	}
@@ -66,13 +62,26 @@
 		margin-left: 20rpx;
 		display: block;
 		// vertical-align:middle;
+		position: relative;
 		.money{
+			position: relative;
+			z-index: 2;
 			float: left;
 			font-size: 24rpx;
 		}
 		.num{
+			position: relative;
+			z-index: 2;
 			float: right;
 			font-size: 24rpx;
+		}
+		.bg{
+			position: absolute;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.5;
+			// background: darkblue;
 		}
 	}
 </style>
