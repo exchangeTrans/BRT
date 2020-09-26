@@ -2,40 +2,20 @@
 	<view class="tradeTable1" id="tradeTable1">
 		<view class="tableHeader">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr1[0]}}</view>
-            <view class="tableLi tableLi2">{{$t('trade').tableHeadTr1[1]}}(LED)</view>
-            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr1[2]}}(HDU)</view>
-            <view class="tableLi tableLi4">{{$t('trade').tableHeadTr1[3]}}(LED)</view>
+            <view class="tableLi tableLi2">{{$t('trade').tableHeadTr1[1]}}({{KLineTradingPair.name}})</view>
+            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr1[2]}}({{KLineTradingPair.type}})</view>
+            <view class="tableLi tableLi4">{{$t('trade').tableHeadTr1[3]}}({{KLineTradingPair.name}})</view>
             <view class="tableLi tableLi5">{{$t('trade').tableHeadTr1[4]}}</view>
         </view>
-        <view class="tableTr">
-            <view class="tableLi tableLi1">1</view>
-            <view class="tableLi tableLi2">1200.96</view>
+        <view class="tableTr" v-for="(item,index) in tableData" :key="index">
+            <view class="tableLi tableLi1">{{index+1}}</view>
+            <view class="tableLi tableLi2">{{item.bids.size}}</view>
             <view class="tableLi tableLi3">
-                <view class="price1">0.0639</view>
-                <view class="price2">0.0639</view>
+                <view class="price1">{{item.bids.price}}</view>
+                <view class="price2">{{item.asks.price}}</view>
             </view>
-            <view class="tableLi tableLi4">1200.96</view>
-            <view class="tableLi tableLi5">1</view>
-        </view>
-        <view class="tableTr">
-            <view class="tableLi tableLi1">1</view>
-            <view class="tableLi tableLi2">1200.96</view>
-            <view class="tableLi tableLi3">
-                <view class="price1">0.0639</view>
-                <view class="price2">0.0639</view>
-            </view>
-            <view class="tableLi tableLi4">1200.96</view>
-            <view class="tableLi tableLi5">1</view>
-        </view>
-        <view class="tableTr">
-            <view class="tableLi tableLi1">1</view>
-            <view class="tableLi tableLi2">1200.96</view>
-            <view class="tableLi tableLi3">
-                <view class="price1">0.0639</view>
-                <view class="price2">0.0639</view>
-            </view>
-            <view class="tableLi tableLi4">1200.96</view>
-            <view class="tableLi tableLi5">1</view>
+            <view class="tableLi tableLi4">{{item.asks.size}}</view>
+            <view class="tableLi tableLi5">{{index+1}}</view>
         </view>
 	</view>
 </template>
@@ -78,6 +58,7 @@
                     {code:'3',name:"币种简介",id:''},
                 ],
                 tableTabSelect:{code:'2',name:"最新成交",id:''},
+                tableData:[]
                 
 
             }
@@ -86,15 +67,41 @@
             
         },
         mounted(){
-            console.log(this.$t('trade'))
+            // console.log()
+            this.getDepthData()
         },
         computed: {  
             pageText () {  
                 // console.log(this.$t('trade'))
                 return this.$t('trade')  
-            }  
+            },
+            KLineTradingPair(){
+                return this.$store.state.tradeData.KLineTradingPair;
+            },
         },  
+        watch:{
+            KLineTradingPair(){
+                this.getDepthData();
+            }
+        },
         methods: {
+            getDepthData(){
+                let depth = this.KLineTradingPair.depth;
+                if(depth!==null){
+                    let asks = depth.asks;
+                    let bids = depth.bids;
+                    let newData = bids.map(function (item,index) {
+                        return {bids:item,asks:asks[index]}                   
+                    });
+                    console.log(newData)
+                    this.tableData = newData;
+                }
+                
+                
+                
+
+
+            },
             selectChartTab(item){
                 this.chartTabSelect = item;
             },

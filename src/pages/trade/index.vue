@@ -68,8 +68,8 @@
             </view>
         </scroll-view>
         <view class="tradeBtnBox">
-            <view class="tradeBtn buy">{{$t('trade').buy}}</view>
-            <view class="tradeBtn">{{$t('trade').sell}}</view>
+            <view class="tradeBtn buy" @tap="toPage('buy')">{{$t('trade').buy}}</view>
+            <view class="tradeBtn" @tap="toPage('sale')">{{$t('trade').sell}}</view>
         </view>
 	</view>
 </template>
@@ -162,8 +162,13 @@
             selectTableTab(item){
                 this.tableTabSelect = item;
             },
+            toPage(code){
+                this.$jumpPage.jump({
+					type: 'navigateTo',
+                    url: 'trades/index?code='+code,
+				})
+            },
             changeTest(){
-                console.log(1111)
                 this.$storage.setSync({key: "lang", data: "zh-CN"});
                 // let url = '/blackPages/login/forgetPassword'
                 // uni.navigateTo({
