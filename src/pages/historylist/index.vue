@@ -1,9 +1,9 @@
 <template>
 	<view class="" id="historylist">
 		<historyhead :headerOptions="headerOptions" class="headstyle"></historyhead>
-		<scroll-view scroll-y="true" class="list" v-if="listOptions.length>0">
-			<view v-for="(item,index) in listOptions" :key="index">
-				<historylist :listOptions="item" class="item"></historylist>
+		<scroll-view scroll-y="true" class="list" v-if="showdata">
+			<view v-for="(item,id) in listOptions" :key="item.id" class="historylist">
+				<historylist :listOptions="item" class="historylist-item"></historylist>
 			</view>
 		</scroll-view>
 		<view class="nologimg" v-if="listOptions.length===0">
@@ -18,10 +18,13 @@
 </script>
 
 <style lang="less" scoped>
-	// .headstyle{
-	// 	padding-top: calc(100rpx + var(--status-bar-height));
-	// }
-	
+	#historylist{
+		.list{
+			width: 100%;
+			height: calc(100vh - var(--status-bar-height) - 100rpx); 
+			background: #F8F8F8;
+			padding-top: 135rpx;
+			padding-top: calc(100rpx + var(--status-bar-height));
 	.list{
 		width: 100%;
 		height: calc(100vh); 
@@ -29,9 +32,6 @@
 		padding-top: calc(120rpx + var(--status-bar-height));
 		box-sizing: border-box;
 	}
-	// .item{
-	// 	padding-top: calc(100rpx + var(--status-bar-height));
-	// }
 	.nologimg{
 		padding-top: calc(100rpx + var(--status-bar-height));
 		margin-top: 500rpx;
@@ -48,6 +48,14 @@
 				// padding-top: calc(100rpx + var(--status-bar-height));
 			}
 		}
+		// .historylist{
+		// 	// height: 220rpx;
+		// 	// width: 100%;
+		// 	// padding-top: calc(100rpx + var(--status-bar-height));
+		// 	.historylist-item{
+		// 		// padding-top: calc(100rpx + var(--status-bar-height));
+		// 	}
+		// }
 		.nologimg{
 			padding-top: calc(100rpx + var(--status-bar-height));
 			margin-top: 500rpx;
@@ -62,8 +70,8 @@
 				font-weight: 400;
 				color: #000000;
 				margin-top: 30rpx;
+				text-align: center;
 			}
 		}
-	}
-	
+	}}}
 </style>
