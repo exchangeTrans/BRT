@@ -47,7 +47,8 @@
 		background: #FFFFFF;
 		border-radius: 10rpx;
 		margin-left: 30rpx;
-		margin-bottom: 20rpx;
+		// margin-bottom: 20rpx;
+		margin-top: 30rpx;
 		line-height: 70rpx;
 	}
 	.oneline{
@@ -73,6 +74,7 @@
 			font-weight: 400;
 			color: #8D989E;
 			float: right;
+			margin-right: 10rpx;
 		}
 	}
 	.twoline{
@@ -138,8 +140,8 @@
 		.threeline_4{
 			width: 112rpx;
 			height: 40rpx;
-			float: left;
-			margin-left: 12rpx;
+			float: right;
+			margin-right: -10rpx;
 		}
 	}
 </style>

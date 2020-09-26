@@ -3,7 +3,7 @@ import historylist from '../../components/history_list/history_list'
 export default {
 	components: {
 		historyhead,
-		historylist
+		historylist 
 	},
 	mounted() {
 		let theme = this.$storage.getSync({
@@ -58,8 +58,8 @@ export default {
 	},
 	data() {
 		return {
-			showdata: false,
-			nodata: true,
+			showdata: true,
+			nodata: false,
 			headerOptions: {
 
 			},

@@ -7,6 +7,8 @@ import ndheader from '../../components/common/header'
 			this.details_msg_list = JSON.parse(options.details_list).reverse();
 			// console.log(details_msg_list);
 			this.id = options.id
+			// console.log(this.details_msg_list);
+			// console.log(this.id)
 		},
 		mounted() {
 			let theme = this.$storage.getSync({
@@ -26,7 +28,7 @@ import ndheader from '../../components/common/header'
 					isColor: true,
 					rightItem: {
 						type: "text",
-						text: "ID:AVV491",
+						// text: "ID:AVV491",
 						style: {
 							color: "#000000"
 						}
@@ -47,7 +49,7 @@ import ndheader from '../../components/common/header'
 					isColor: true,
 					rightItem: {
 						type: "text",
-						text: "ID:AVV491",
+						// text: "ID:AVV491",
 						style: {
 							color: "#000000"
 						}
@@ -57,25 +59,7 @@ import ndheader from '../../components/common/header'
 		},
 		data() {
 			return {
-				headerOptions: {
-					show: true,
-					text: "公告详情",
-					isAllowReturn: true,
-					fontfamily: "PingFangSC-Regular, PingFang SC",
-					fontSize: '34',
-					style: {
-						color: "#333333",
-	
-					},
-					isColor: true,
-					rightItem: {
-						type: "text",
-						text: "ID:AVV491",
-						style: {
-							color: "#000000"
-						}
-					}
-				},
+				headerOptions: {},
 				details_msg_list: [],
 				id: ''
 			}

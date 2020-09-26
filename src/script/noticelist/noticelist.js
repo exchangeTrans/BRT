@@ -28,7 +28,7 @@ export default {
 				isColor: true,
 				rightItem: {
 					type: "text",
-					text: "ID:AVV491",
+					// text: "ID:AVV491",
 					style: {
 						color: "#000000"
 					}
@@ -48,7 +48,7 @@ export default {
 				isColor: true,
 				rightItem: {
 					type: "text",
-					text: "ID:AVV491",
+					// text: "ID:AVV491",
 					style: {
 						color: "#000000"
 					}
