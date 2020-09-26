@@ -66,24 +66,24 @@
 			],
 			tradesOptions_list:[
 				{
-					money:"0.0653",
-					num:"500"
+					money:"0.00",
+					num:"0"
 				},
 				{
-					money:"0.0653",
-					num:"500"
+					money:"0.00",
+					num:"0"
 				},
 				{
-					money:"0.0653",
-					num:"500"
+					money:"0.00",
+					num:"0"
 				},
 				{
-					money:"0.0653",
-					num:"500"
+					money:"0.00",
+					num:"0"
 				},
 				{
-					money:"0.0653",
-					num:"500"
+					money:"0.00",
+					num:"0"
 				},
 			],
 			historylogdata_list:[],
@@ -183,6 +183,7 @@
 			return this.$store.state.tradeData.tradePairData;
 		},
 		KLineTradingPair(){
+			console.log(this.$store.state.tradeData.KLineTradingPair)
 			return this.$store.state.tradeData.KLineTradingPair;
 		},
 		selectedCurrency(){
@@ -190,13 +191,18 @@
 		},
 		symbolDefaultData(){
 			return this.$store.state.tradeData.symbolDefaultData
+		},
+		depthData(){
+			let res = this.$store.state.tradeData.KLineTradingPair.depth;
+			let tradesOptions_list = this.tradesOptions_list;
+			let defult = {
+				asks:tradesOptions_list,
+				bids:tradesOptions_list
+			}
+			res = res&&res!==null?res:defult
+			return res
+
 		}
-		// tradeNoticeData(){
-		// 	return this.$store.state.tradeData.tradeNoticeData;
-		// },
-		// tradeRangeData(){
-		// 	return this.$store.state.tradeData.tradeRangeData;
-		// }
 
 	  },
 	  watch:{

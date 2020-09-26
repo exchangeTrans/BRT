@@ -133,12 +133,41 @@ export const mySocket={
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
         if(KLineTradingPair.id===symbol){
+            let asks = data.tick.asks;
+            let bids = data.tick.bids;
+            asks = mySocket.handleDeepData(asks);
+            bids = mySocket.handleDeepData(bids);
             let KLineTradingPairObj = {
                 ...KLineTradingPair,
-                depth:data.tick
+                depth:{
+                    asks, 
+                    bids
+                }
             }
+            console.log(asks)
             store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
         }
+    },
+    handleDeepData(data){
+        let all = data[0][1]+data[1][1]+data[2][1]+data[3][1]+data[4][1];
+        // console.log(data)
+        let newData = data.slice(0,5)
+        
+        let depth = 0;
+        let res = newData.map(function (item,index) {
+            depth=depth+item[1];
+            let percent=(depth/all)*2
+            let obj = {
+                size:item[1],
+                price:item[0],
+                all:all,
+                percent:percent,
+                depth:depth
+            }
+            return obj
+            
+        })
+        return res
     },
     //socket 订阅行情
     onopen:function(){
@@ -197,7 +226,7 @@ export const mySocket={
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let str = KLineTradingPair.name + KLineTradingPair.type;
         str = str.toLowerCase();
-        let sub = "market."+str+".depth.step1"
+        let sub = "market."+str+".depth.step0"
         let data = {
             sub:sub,
             // sub:"market.all.detail",
