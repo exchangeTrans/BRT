@@ -18,7 +18,6 @@
 		<pageFooter @changePage="changePage"/>
 	</view>
 </template>
-
 <script>
 	import pageFooter from '@/components/common/footer.vue';
 	import index from '@/pages/index/index.vue';

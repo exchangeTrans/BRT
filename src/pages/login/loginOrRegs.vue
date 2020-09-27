@@ -1,14 +1,14 @@
 <template>
     <view class="loginOrRegs" :style="{'background-image': indexBackgroundImg}" id="loginOrRegs">
         <view class="languageChoice">
-            <view class="languageBack">
-            </view>
-            <view class="languageWrap">
+            <!-- <view class="languageBack">
+            </view> -->
+            <!-- <view class="languageWrap">
                 <view class="languageIcon" :style="{'background-image': languageIcon}"></view>
                 <view class="languageText">
                     {{languageText}}
                 </view>
-            </view>
+            </view> -->
         </view>
         <view class="iconWrap">
             <view class="icon" :style="{'background-image': iconBackground}">
@@ -74,7 +74,7 @@
 
         .languageChoice {
             position: relative;
-            padding-top: 108rpx;
+            padding-top: calc(20rpx - var(--status-bar-height));
 
             .languageBack {
                 position: absolute;

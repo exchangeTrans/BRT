@@ -1,5 +1,6 @@
 import api from './api.js';
 import datastorage from '@/static/js/datastorage.js';
+import jumpPage from '@/static/js/jumpPage.js';
 // import monitorFunc from '@/static/js/monitorFunc.js';
 // import {gloabeData} from '@/static/common.js';
 // import toast from "../static/dialog";
@@ -116,10 +117,24 @@ const http = ({
                 //     //     monitorFunc.emit('devicesNotificationOffLine');
                 //     // }
                 // }
-                if (res[1].statusCode.toString() !== "200") {
-
-                } else {
-                    resolve(res[1].data);
+                if (res[1].statusCode&&res[1].statusCode.toString() === "200") {
+                    if(res[1].data.result.returnCode.toString()==='10032'){
+                        let loginMsg = {
+                            isLogin:false,
+                            userLoginId:'',
+                            userLoginToken:''
+                        }
+                        datastorage.getSync({key: "loginMsg",data: loginMsg});
+                        jumpPage.jump({
+                            type: 'reLaunch',
+                            url: 'login/login',
+                        })
+                    }else{
+                        resolve(res[1].data);
+                    }
+                    
+                } else{
+                    
                 }
             }
         ).catch((response) => {
