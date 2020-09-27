@@ -208,6 +208,7 @@
 				width: 40rpx;
 				height: 40rpx;
 				margin-right: 10rpx;
+				position: relative;
 				
 			}
 			.change{
@@ -255,13 +256,15 @@
 					width: 174rpx;
 					height: 76rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 				}
 				.income{
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
 					color: #1A1A1A;
+					position: relative;
+					z-index: 1;
 				}
 				.income.active{
 					color: #FFFFFF;
@@ -271,7 +274,7 @@
 				}
 			}
 			.sale{
-				width: 173.7rpx;
+				width: 174rpx;
 				height: 76rpx;
 				float: left;
 				line-height: 76rpx;
@@ -284,13 +287,15 @@
 					width: 174rpx;
 					height: 76rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 				}
 				.income{
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
 					color: #1A1A1A;
+					position: relative;
+					z-index: 1;
 				}
 				.income.active{
 					color: #FFFFFF;

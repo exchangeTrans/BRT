@@ -118,7 +118,7 @@ const http = ({
                 //     // }
                 // }
                 if (res[1].statusCode&&res[1].statusCode.toString() === "200") {
-                    if(res[1].data.result.returnCode.toString()==='10032'){
+                    if(res[1].data.result.returnCode.toString()===('10032'||"10032")){
                         let loginMsg = {
                             isLogin:false,
                             userLoginId:'',

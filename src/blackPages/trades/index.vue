@@ -264,18 +264,19 @@
 				overflow: hidden;
 				font-family: PingFangSC-Regular, PingFang SC;
 				color: #1A1A1A;
-				color:#D9DADB;
 				image{
 					width: 174rpx;
 					height: 76rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 				}
 				.income{
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
 					color:#D9DADB;
+					position: relative;
+					z-index: 1;
 
 				}
 				.income.active{
@@ -299,13 +300,15 @@
 					width: 174rpx;
 					height: 76rpx;
 					position: absolute;
-					z-index: -999;
+					// z-index: -999;
 				}
 				.income{
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
 					color: #FFFFFF;
+					position: relative;
+					z-index: 1;
 				}
 				.income.active{
 					color: #FFFFFF;
