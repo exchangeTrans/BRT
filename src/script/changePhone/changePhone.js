@@ -79,13 +79,13 @@ export default {
             timeOld: 60,
 
             postData: {
-                tel: "17381578708",
+                tel: "",
                 dialingCode: "",
                 // email: "",
                 verifyKey: "",
-                verifyCode: "123456",
+                verifyCode: "",
                 verifyKeyNew: "",
-                verifyCodeNew: "123456",
+                verifyCodeNew: "",
             },
 
             chooseCountry: {

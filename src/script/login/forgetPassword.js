@@ -88,7 +88,7 @@ export default {
                 email: "",
                 password: "",
                 passwordConfirm: "",
-                verifyCode: "123456",
+                verifyCode: "",
                 verifyKey: "",
             },
             checkPhoneArray: [
