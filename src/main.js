@@ -12,7 +12,7 @@ import VueI18n from 'vue-i18n'
 import lang from './static/lang/index.js';
 import request from './request/index.js';
 import md5 from 'js-md5';
-import Clipboard from 'clipboard';
+// import Clipboard from 'clipboard';
 // import echarts from 'echarts'
 
 
@@ -28,7 +28,7 @@ Vue.prototype.$monitor = monitorFunc;
 Vue.prototype.$storage = datastorage;
 Vue.prototype.$jumpPage = jumpPage;
 Vue.prototype.$mySocket = mySocket;
-Vue.prototype.Clipboard=Clipboard;
+// Vue.prototype.Clipboard=Clipboard;
 
 const i18n = new VueI18n({
   locale: datastorage.getSync({key:'lang'}) ? datastorage.getSync({key:'lang'}) : 'zh-CN',

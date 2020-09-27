@@ -18,7 +18,13 @@ let jumpPage={
         let theme = datastorage.getSync({key:'theme'});
         // "blackPages/index/index"
         //只需要传递后边那部分
-        let pageUrl=options.url;
+        let pageUrl=options.url?options.url:'';
+        if(pageUrl.indexOf('index/index')>-1||pageUrl.indexOf('quotes/quotes')>-1||pageUrl.indexOf('trades/index')>-1||pageUrl.indexOf('property/property')>-1||pageUrl.indexOf('user/user')>-1){
+            datastorage.setSync({key:'pagePath',data: pageUrl});
+            pageUrl='pageIndex/index';
+        }
+
+
         // if(type===switchTab)
         pageUrl = theme==='black'?('/blackPages/'+pageUrl):('/pages/'+pageUrl);
         options.url = pageUrl;
