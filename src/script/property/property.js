@@ -92,10 +92,10 @@ export default {
     },
     watch: {
         balanceTotal(val) {
-            this.amountTotal = this.freezeTotal + val
+            this.amountTotal = parseInt(this.freezeTotal) + parseInt(val)
         },
         freezeTotal(val) {
-            this.amountTotal = this.balanceTotal + val
+            this.amountTotal = parseInt(this.balanceTotal) + parseInt(val)
         },
         amountTotal(val) {
             let rate = this.$store.state.wallet.rate.USDCNY
