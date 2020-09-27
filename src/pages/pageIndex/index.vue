@@ -1,20 +1,20 @@
 <template>
 	<view class="pageIndex" id="pageIndex">
-		<black v-if="currentPage.pagePath==='index/index'">
+		<block v-if="currentPage.pagePath==='index/index'">
 			<index/>
-		</black>
-		<black v-if="currentPage.pagePath==='quotes/quotes'">
+		</block>
+		<block v-if="currentPage.pagePath==='quotes/quotes'">
 			<quotes/>
-		</black>
-		<black v-if="currentPage.pagePath==='trades/index'">
+		</block>
+		<block v-if="currentPage.pagePath==='trades/index'">
 			<trades/>
-		</black>
-		<black v-if="currentPage.pagePath==='property/property'">
+		</block>
+		<block v-if="currentPage.pagePath==='property/property'">
 			<property/>
-		</black>
-		<black v-if="currentPage.pagePath==='user/user'">
+		</block>
+		<block v-if="currentPage.pagePath==='user/user'">
 			<user/>
-		</black>	
+		</block>	
 		<pageFooter @changePage="changePage"/>
 	</view>
 </template>
