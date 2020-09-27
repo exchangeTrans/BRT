@@ -80,7 +80,12 @@ export default {
 				stopLoseRate: '',
 				stopWinRate: '',
 				usdtBalance: '',
-				interestRateDay: ''
+				interestRateDay: '',
+				interestRate:''
+			},
+			interestrate:{
+				leftnum:'',
+				rightnum:''
 			}
 		}
 	},
@@ -118,7 +123,9 @@ export default {
 						rateValue: this.userdata.stopWinRate
 					}
 				}).then((res) => {
-					console.log(res);
+					this.$toast.show({
+						title: '设置成功',
+					})
 				}).catch((err) => {
 					console.log(err)
 				})
@@ -130,10 +137,12 @@ export default {
 					method: "post",
 					params: {
 						rateType: '2',
-						rateValue: this.userdata.stopLoesRate
+						rateValue: this.userdata.stopLoseRate
 					}
 				}).then((res) => {
-					console.log(res);
+					this.$toast.show({
+						title: '设置成功',
+					})
 				}).catch((err) => {
 					console.log(err)
 				})
@@ -155,7 +164,18 @@ export default {
 					this.userdata.usdtBalance = res.data.usdtBalance,
 					this.userdata.interestRateDay = res.data.interestRateDay,
 					this.userdata.interestRate = res.data.interestRate
-				// let arr = res.data.interestRate.split(".");
+					if( res.data.interestRate==='0'){
+						parseInt(res.data.interestRate);
+						res.data.interestRate='0.00';
+						let arr = res.data.interestRate.split('.');
+						this.interestrate.left = parseInt(arr[0])
+						this.interestrate.right = parseInt(arr[1]);
+					}else {
+						let arr = res.data.interestRate.split('.');
+						this.interestrate.left = parseInt(arr[0]);
+						this.interestrate.right = parseInt(arr[1].substring(0,2));
+					}
+
 			}).catch((err) => {
 				console.log(err)
 			})

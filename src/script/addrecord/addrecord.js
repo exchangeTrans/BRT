@@ -15,7 +15,7 @@ export default {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: symbolType.name + "提币记录",
+                text: symbolType.name + "充币记录",
                 rightItem: {
                     type: "text",
                     text: "ID:AVV491",
@@ -37,7 +37,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: symbolType.name + "提币记录",
+                text: symbolType.name + "充币记录",
                 rightItem: {
                     type: "text",
                     text: "ID:AVV491",
