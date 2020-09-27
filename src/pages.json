@@ -41,6 +41,12 @@
       }
     },
     {
+      "path": "pages/sub/success",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
       "path": "pages/chooseCountry/chooseCountry",
       "style": {
         //"navigationBarTitleText": ""
@@ -299,6 +305,12 @@
 //    },
     {
       "path": "blackPages/sub/index",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
+      "path": "blackPages/sub/success",
       "style": {
         //"navigationBarTitleText": "uni-app"
       }

@@ -134,9 +134,10 @@ export default {
             },
 
 
-        transferInAmountSuccess(){
+        transferInAmountSuccess(account){
+
             this.$jumpPage.jump({
-                url:'sub/success',
+                url:'sub/success?account='+account,
                 type:'navigateTo'
             });
             this.getMining();

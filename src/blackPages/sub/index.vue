@@ -58,7 +58,7 @@
 					</view>
 				</view>
 				<view class="noDataBox" v-if="isNoDataFlag">
-					<noData :positionTop="positionTop"></noData>
+					<noData :positionTop="positionTop" :isGrey="true"></noData>
 				</view>
 			</view>
 		</scroll-view>
@@ -223,6 +223,7 @@
 						}
 					}
 					.releasePledge{
+						width: 100%;
 						color: #8D989E;
 					}
 					.closePledge{

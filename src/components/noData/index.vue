@@ -1,6 +1,6 @@
 <template>
     <view class="noData" :style="{'top':noDataStyle.top}">
-        <view class="noDataImg" :style="{'background-image':'url('+noData+')'}"></view>
+        <view class="noDataImg" :style="{'background-image':isGrey?'url('+noData_grey+')':'url('+noData+')'}"></view>
         <view class="noDataText" :class="{'isBlack': isBlack, 'isNotBlack': !isBlack}">暂无数据</view>
     </view>
 </template>
@@ -16,11 +16,16 @@
             isBlack: {
               type: Boolean,
                 default: false
-            }
+            },
+            isGrey: {
+                type: Boolean,
+                default: false
+            },
         },
         data(){
             return{
-                noData:`${require('@/static/images/noData/noData.png')}`
+                noData:`${require('@/static/images/noData/noData.png')}`,
+                noData_grey:`${require('@/static/images/noData/noData_grey.png')}`,
             }
         },
         computed:{

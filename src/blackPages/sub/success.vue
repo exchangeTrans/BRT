@@ -71,6 +71,7 @@
         .success-wrap {
             width: 100vw;
             height: 100vh;
+            background: #22252A;
             padding-top: calc(100rpx + var(--status-bar-height));
 
             .success-wrap-content {
@@ -99,11 +100,11 @@
                             font-size: 28rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: rgba(0, 0, 0, 0.5);
+                            color: #D9DADB;
                         }
 
                         .text-msg {
-
+                            opacity: 0.5;
                         }
 
                         .money {
@@ -111,7 +112,7 @@
                             font-size: 44rpx;
                             font-family: PingFangSC-Semibold, PingFang SC;
                             font-weight: 600;
-                            color: #000000;
+
                         }
                     }
 

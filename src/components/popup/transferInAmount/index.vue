@@ -12,7 +12,13 @@
                 <view class="beUsedNum">{{$t('transferInAmount').availableCount}}：{{availableCount}} BRT</view>
 
                 <view class="transferInput"   :style="{'background':mode==='night'?'#272A2E':'#ffffff'}">
-                    <input type="number" class="input" :placeholder="$t('transferInAmount').inputHolderText" v-model="counts">
+                    <input type="number"
+                           class="input"
+                           :placeholder="$t('transferInAmount').inputHolderText"
+                           v-model="counts"
+                           @input="changeInput"
+
+                    >
                     <view class="allTransfer"  @tap="allTransfer(availableCount)">{{$t('transferInAmount').allInto}}</view>
                 </view>
                 <view class="intro">{{$t('transferInAmount').intoIntro}}</view>
@@ -52,6 +58,19 @@
 
         },
 		methods: {
+
+            changeInput(e){
+                // console.log(e)
+
+                let value = e.detail.value;
+                if(value.length==1){
+                    value=value.replace(/[^1-9]/g,'');
+                }else{
+                    value=value.replace(/[^\d]/g,'');
+                }
+                this.counts = value;
+                // console.log(value)
+            },
             open(){
                 this.$nextTick(() => {
                     this.$refs['transferInAmount'].open();
@@ -68,6 +87,7 @@
 
             },
 			transfer(transferDate){
+                let that = this;
 				if(transferDate.type==="finance/inFinance"){
 					if(!this.counts){
 						this.$toast.show({
@@ -83,10 +103,9 @@
 					    method:'post',
 					    params:postData
 					}).then((res)=>{
-						console.log("succeed");
 						if (res.result.returnCode.toString() === "0") {
-						    this.close();
-						    this.$emit('transferInAmountSuccess')
+                            that.close();
+                            that.$emit('transferInAmountSuccess',that.counts)
 						}else{
 						    this.$toast.show({
 						        title: res.result.returnMessage,
@@ -114,7 +133,7 @@
                 }).then((res)=>{
                     if (res.result.returnCode.toString() === "0") {
                         this.close();
-                        this.$emit('transferInAmountSuccess')
+                        this.$emit('transferInAmountSuccess',this.counts)
                     }else{
                         this.$toast.show({
                             title: res.result.returnMessage,
