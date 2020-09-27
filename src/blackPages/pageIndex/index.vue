@@ -21,11 +21,11 @@
 
 <script>
 	import pageFooter from '@/components/common/footer.vue';
-	import index from '@/pages/index/index.vue';
-	import quotes from '@/pages/quotes/quotes.vue';
-	import trades from '@/pages/trades/index.vue';
-	import property from '@/pages/property/property.vue';
-	import user from '@/pages/user/user.vue';
+	import index from '@/blackPages/index/index.vue';
+	import quotes from '@/blackPages/quotes/quotes.vue';
+	import trades from '@/blackPages/trades/index.vue';
+	import property from '@/blackPages/property/property.vue';
+	import user from '@/blackPages/user/user.vue';
 	export default {
 		components: {
 			pageFooter,
