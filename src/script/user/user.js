@@ -11,11 +11,11 @@ export default {
     data() {
         return {
             listItemData: [
-                {
-                    name: "修改密码",
-                    path: "login/forgetPassword",
-                    img: `${require('@/static/images/user/password.png')}`,
-                },
+                // {
+                //     name: "修改密码",
+                //     path: "login/forgetPassword",
+                //     img: `${require('@/static/images/user/password.png')}`,
+                // },
                 {
                     name: "实名认证",
                     path: "auth/auth",

@@ -295,12 +295,13 @@ export default {
             let symbolType = this.$store.state.wallet.symbolType
 
             // 校验数据
-            if (parseInt(this.symbolDetail.symbolBalance) < parseInt(this.postData['amount'])) {
-                this.$toast.show({
-                    title: "余额不足"
-                })
-                return;
-            } else if (parseInt(this.postData['amount']) < parseInt(this.symbolDetail.withdrwaMin)) {
+            // if (parseInt(this.symbolDetail.symbolBalance) < parseInt(this.postData['amount'])) {
+            //     this.$toast.show({
+            //         title: "余额不足"
+            //     })
+            //     return;
+            // } 
+            if (parseInt(this.postData['amount']) < parseInt(this.symbolDetail.withdrwaMin)) {
                 this.$toast.show({
                     title: "未达到最小提币数量不足"
                 })
