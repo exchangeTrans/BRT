@@ -14,7 +14,7 @@
                         </view>
                         <view class="userMassage">
                             <span class="name">{{homeMsgData.nickname}}</span>
-                            <span class="id">ID:{{homeMsgData.account}}</span>
+                            <span class="id">ID:{{homeMsgData.inviteCode}}</span>
                             <!--<span class="signature">
                                 个性签名：Ta很懒，什么也没说
                             </span>-->

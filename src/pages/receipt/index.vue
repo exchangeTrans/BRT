@@ -19,11 +19,11 @@
 <!--                    <qrcodeComponents :url="data.userWalletAddress"-->
 <!--                                      :qrCodeStyle="qrCodeStyle"-->
 <!--                                      ref="qrcodeComponents"></qrcodeComponents>-->
-                <!-- </view> --> 
+                <!-- </view> -->
                 <view class="qrcodeBox">
                     <uni-qrcode cid="qrcode2243" @makeComplete="makeComplete" ref="qrcode2233" :text="data.userWalletAddress" :size="size" backgroundColor="rgba(255,255,255,0)" />
                 </view>
-                
+
                 <view class="rechargeTitle">充币地址</view>
                 <view class="rechargeTitle">{{data.userWalletAddress}}</view>
                 <view class="btnGroup">
@@ -33,7 +33,7 @@
                 </view>
             </view>
             <view class="remark">
-                请勿向上述地址充值任何非USDT资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。
+                请勿向上述地址充值任何非{{choiceType.name}}资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。
             </view>
         </view>
     </view>

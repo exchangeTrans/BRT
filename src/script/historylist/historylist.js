@@ -3,9 +3,9 @@ import historylist from '../../components/history_list/history_list'
 export default {
 	components: {
 		historyhead,
-		historylist 
+		historylist
 	},
-	
+
 	data() {
 		return {
 			headerOptions: {
@@ -90,6 +90,7 @@ export default {
 		let theme = this.$storage.getSync({
 			key: 'theme'
 		});
+		let userInfo = this.$store.state.defaultData.userInfo
 
 		if (theme === 'white') {
 			this.headerOptions = {
@@ -100,7 +101,7 @@ export default {
 
 				rightItem: {
 					type: "text",
-					text: "ID:AVV941",
+					text: "ID:" + userInfo.inviteCode,
 					style: {
 						"fontSize": '24rpx',
 						"fontFamily": 'PingFangSC-Regular, PingFang SC;',
@@ -123,7 +124,7 @@ export default {
 				isWhiteIcon: true,
 				rightItem: {
 					type: "text",
-					text: "ID:AVV941",
+					text: "ID:" + userInfo.inviteCode,
 					style: {
 						"fontSize": '24rpx',
 						"fontFamily": 'PingFangSC-Regular, PingFang SC;',
@@ -163,7 +164,7 @@ export default {
 					// 	symbolBalanceNum:Number(symbolBalance),
 					// }
 					// that.tradeInfo = data;
-					// console.log(Number(usdtBalance)) 
+					// console.log(Number(usdtBalance))
 					// this.$emit('transferInAmountSuccess')
 				}else{
 					// this.$toast.show({
@@ -173,5 +174,5 @@ export default {
 			})
 		}
 	}
-	
+
 }

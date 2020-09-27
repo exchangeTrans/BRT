@@ -31,6 +31,7 @@ export default{
         let theme = this.$storage.getSync({
             key: 'theme'
         });
+        let userInfo = this.$store.state.defaultData.userInfo
 
         if (theme === 'white') {
             this.headerOptions = {
@@ -40,7 +41,7 @@ export default{
                 background: "#FFFFFF",
                 rightItem: {
                     type: "text",
-                    text: "ID:AVV941",
+                    text: "ID:" + userInfo.inviteCode,
                     style: {
                         "fontSize": '24rpx',
                         "fontFamily": 'PingFangSC-Regular, PingFang SC;',
@@ -63,7 +64,7 @@ export default{
                 isWhiteIcon: true,
                 rightItem: {
                     type: "text",
-                    text: "ID:AVV941",
+                    text: "ID:" + userInfo.inviteCode,
                     style: {
                         "fontSize": '24rpx',
                         "fontFamily": 'PingFangSC-Regular, PingFang SC;',
