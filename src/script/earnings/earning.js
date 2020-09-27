@@ -1,13 +1,13 @@
 import appHeader from "@/components/common/header.vue";
 import earningBtn from "@/components/btn/index.vue";
-import transferInAmount from "@/components/popup/transferInAmount/index.vue";
+import financierInAmount from "@/components/popup/financierInAmount/index.vue";
 import subRuler from "@/components/popup/subRuler/index.vue";
 
 export default {
 	components: {
 		appHeader,
 		earningBtn,
-		transferInAmount,
+		financierInAmount,
 		subRuler
 	},
 
@@ -59,7 +59,6 @@ export default {
 			headerOptions: {
 
 			},
-			transferDate:{type:'finance/inFinance'},
 			background: 'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
 			borderRadius: '50rpx',
 			topBg: `${require('@/static/images/earning/topBg.png')}`,
@@ -94,7 +93,7 @@ export default {
 	},
 	methods: {
 		transferInAmount() {
-			this.$refs.transferInAmount.open();
+			this.$refs.financierInAmount.open();
 		},
 		sliderChange(e) {
 			this.sliderValue = e.detail.value;
@@ -203,8 +202,11 @@ export default {
 		downloadAPP() {
 
 		},
-		transferInAmountSuccess(){
-			this.$refs.transferInAmount.transfer(this.transferDate)
+		transferInAmountSuccess(account){
+			this.$jumpPage.jump({
+				url:'sub/success?account='+account,
+				type:'navigateTo'
+			});
 		},
 		//空投
 		// asset(){

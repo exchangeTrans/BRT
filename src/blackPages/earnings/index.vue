@@ -6,7 +6,7 @@
 				<view class="earningsTop" :style="{'background-image':'url('+topBg+')'}">
 					<view class="left">
 						<view class="balance">可用余额</view>
-						<view class="balanceNum"><span>{{userdata.usdtBalance}}</span>BRT</view>
+						<view class="balanceNum"><span>{{userdata.usdtBalance}}</span>USDT</view>
 					</view>
 					<!-- <view class="right">
 						<view class="idCode">ID 19029008</view>
@@ -96,11 +96,10 @@
 							@btnClick="downloadAPP"></earningBtn>
 			</view>
 		</scroll-view>
-		<transferInAmount ref="transferInAmount"
+		<financierInAmount ref="financierInAmount"
 						  @transferInAmountSuccess="transferInAmountSuccess"
-						  :transferDate="transferDate"
 						  :mode="'night'"
-						  :availableCount="userdata.financeBalance"></transferInAmount>
+						  :availableCounts="userdata.financeBalance"></financierInAmount>
 		<subRuler ref="subRuler"></subRuler>
 	</view>
 </template>

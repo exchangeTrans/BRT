@@ -99,6 +99,15 @@ export default {
         intoIntro:'质押週期为15日，到期后会自动解锁。',
         into:'转入',
     },
+    financierInAmount:{
+        inMining:'转入',
+        close:'取消',
+        availableCount:'可用数量',
+        inputHolderText:'请输入转入数量',
+        allInto:'全部转入',
+        intoIntro:'质押週期为7日，到期或达到止盈率后会自动解锁。',
+        into:'转入',
+    },
     //质押规则
     subRuler:{
         intro:'质押挖矿说明',
