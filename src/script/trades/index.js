@@ -264,6 +264,15 @@
 		this.getTradeInfo(symbolCode);
 	  },
 	  methods:{
+		toKline(){
+            this.$store.dispatch('getKline',{
+                period:'1min',
+            });
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: 'trade/index'
+            })
+		},
 		changeTradeType(item){
 			this.selectedTradeName = item;
 		},

@@ -17,7 +17,7 @@
 		},
 		computed: {},
 		mounted() {
-            let loginMsg = this.$storage.setSync({
+            let loginMsg = this.$storage.getSync({
                 key: "loginMsg"
             });
 

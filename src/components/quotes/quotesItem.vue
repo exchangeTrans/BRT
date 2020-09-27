@@ -1,8 +1,8 @@
 <template>
     <view id="quotesItem">
-        <view class="quotesItem-wrap" @tap="toKline(quotesData)">
+        <view class="quotesItem-wrap" >
             <view class="quotesItem-content">
-                <view class="quotesItem-item">
+                <view class="quotesItem-item" @tap="toKline(quotesData)">
                     <view class="currency-name">
                         <view class="currency-name-img">
                             <image :src="quotesData.iconPath"></image>
@@ -71,17 +71,17 @@
                     this.quotesDataStatus = "upsAndDowns-bg up";
                 }
             },
-        toKline(item){
-            this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
-            this.$mySocket.subscribeDepth();
-            this.$store.dispatch('getKline',{
-                period:res.code,
-            });
-            this.$jumpPage.jump({
-                type: 'navigateTo',
-                url: 'trade/index'
-            })
-        },
+            toKline(item){
+                this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
+                this.$mySocket.subscribeDepth();
+                // this.$store.dispatch('getKline',{
+                //     period:item.code,
+                // });
+                this.$jumpPage.jump({
+                    type: 'navigateTo',
+                    url: 'trades/index'
+                })
+            },
         },
     };
 </script>

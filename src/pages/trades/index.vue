@@ -10,7 +10,7 @@
 				<text class="tradetype">{{KLineTradingPair.name}}/{{KLineTradingPair.type}}</text>
 			</view>
 			<view class="msgright">
-				<image src="../../static/images/trades/headright.png" mode=""  class="righticon"></image>
+				<image src="../../static/images/trades/headright.png" mode="" @tap="toKline"  class="righticon"></image>
 				<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>						
 				<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
 				<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
@@ -183,14 +183,16 @@
 		.msgleft{
 			float: left;
 			margin-top: 16rpx;
+			display: flex;
+    align-items: center;
+
 			.lefticon{
-				width: 40rpx;
-				height: 40rpx;
+				width: 56rpx;
+				height: 56rpx;
 				// border: 1rpx #333333 dashed;
-				padding: 10rpx;
 				margin-left: 10rpx;
 				float: left;
-
+				    
 			}
 			.tradetype{
 				height: 60rpx;
