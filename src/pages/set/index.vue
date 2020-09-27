@@ -1,5 +1,5 @@
 <template>
-    <view class="setIndex" id="setIndex">
+    <view class="setIndex1" id="setIndex1">
         <app-header :headerOptions="headerOptions"
                     class="appHeader"></app-header>
 
@@ -67,9 +67,10 @@
 <script src="@/script/set/set.js"></script>
 
 <style lang="less">
-    .setIndex {
+    .setIndex1 {
         width: 100%;
         height: 100%;
+        background: #fff!important;
 
         .appHeader {
             top: var(--status-bar-height);

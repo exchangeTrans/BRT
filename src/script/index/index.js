@@ -104,7 +104,6 @@ export default {
             let userMsg = this.$store.state.defaultData.userMsg;
             let asset = userMsg.asset.toString().replace(/,/g, '');
             // 46,730,157.7127
-            console.log(asset)
             let changeObj = this.getChangeObj(asset);
             let money = changeMoney(changeObj);
             // console.log(money);
@@ -118,6 +117,18 @@ export default {
         // this.getfirst();
     },
     methods: {
+        toKline(item){
+            this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
+            this.$store.dispatch('getKline',{
+                period:'1min',
+            });
+            
+            this.$mySocket.subscribeDepth();
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: 'trade/index'
+            })
+        },
         toInfo(item) {
             this.$jumpPage.jump({
                 type: 'navigateTo',

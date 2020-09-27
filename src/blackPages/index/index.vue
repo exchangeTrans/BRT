@@ -42,7 +42,7 @@
 					<view class="upAndDown">24H涨跌</view>
 				</view>
 
-				<view class="performerItem" v-for="(item,index) in tradePairData" :key="index">
+				<view class="performerItem" v-for="(item,index) in tradePairData" :key="index" @tap="toKline(item)">
 					<view class="currency">
 						<view class="currencyTitle"> <span>{{item.name}}</span>/{{item.type}}</view>
 						<view class="currencyData">24H量{{item.nowData===null?'0.00':item.nowData.amount.toFixed(2)}}</view>

@@ -114,6 +114,19 @@ export default {
     },
     methods: {
         chooseModel(item) {
+            // if(item==='day'){
+            //     this.$storage.setSync({key: "theme", data: "white"});
+            // }else{
+            //     this.$storage.setSync({key: "theme", data: "black"});
+                
+            // }
+            // let that = this;
+            // setTimeout(() => {
+            //     that.$jumpPage.jump({
+            //         type: 'reLaunch',
+            //         url: 'set/index'
+            //     }) 
+            // }, 100);
             this.modelFlag = item;
         },
 

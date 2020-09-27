@@ -1,6 +1,6 @@
 <template>
     <view id="quotesItem">
-        <view class="quotesItem-wrap">
+        <view class="quotesItem-wrap" @tap="toKline(quotesData)">
             <view class="quotesItem-content">
                 <view class="quotesItem-item">
                     <view class="currency-name">
@@ -70,7 +70,18 @@
                 } else if (v.status === "up") {
                     this.quotesDataStatus = "upsAndDowns-bg up";
                 }
-            }
+            },
+        toKline(item){
+            this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
+            this.$mySocket.subscribeDepth();
+            this.$store.dispatch('getKline',{
+                period:res.code,
+            });
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: 'trade/index'
+            })
+        },
         },
     };
 </script>

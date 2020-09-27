@@ -194,7 +194,7 @@
         },
         watch:{
             KLineTradingPair(res){
-                // console.log(res)
+                console.log(res)
                 this.createKLineData()
             }
         },
@@ -263,9 +263,10 @@
         },  
         methods: {
 			initEcharts() {
-				myChart = echarts.init(document.getElementById('echarts'))
+                myChart = echarts.init(document.getElementById('echarts'))
                 // 观测更新的数据在 view 层可以直接访问到
                 this.createKLineData();
+                
 				
             },
              createKLineData(){
