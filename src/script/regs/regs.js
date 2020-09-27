@@ -75,9 +75,12 @@ export default {
             },
             type: "PHONE",
 
-            getCodeStatus: false,
-            spanName: '发送验证码',
-            time: 60,
+            phoneCodeStatus: false,
+            emailCodeStatus: false,
+            phoneName: '发送验证码',
+            phoneTime: 60,
+            emailName: '发送验证码',
+            emailTime: 60,
             postData: {
                 tel: "",
                 email: "",
@@ -285,25 +288,32 @@ export default {
             }
         },
 
-        sendSmsVerify() {
+        sendSmsVerify(name) {
             let that = this;
-            let sendCodeData = this.getSendCodeData();
-            if (sendCodeData) {
-                this.$request({
-                    url: "common/sendCode",
-                    method: "post",
-                    params: sendCodeData,
-                }).then((res) => {
-                    if (res.result.returnCode.toString() === "0") {
-                        that.postData.verifyKey = res.data.verifyKey;
-                        that.setIntervalFun()
-                    } else {
-                        this.$toast.show({
-                            title: res.result.returnMessage,
-                        })
-                    }
+            // debugger
+            if (!this[name]) {
+                let sendCodeData = this.getSendCodeData();
+                if (sendCodeData) {
+                    uni.showLoading({
+                        title: "加载中..."
+                    })
+                    this.$request({
+                        url: "common/sendCode",
+                        method: "post",
+                        params: sendCodeData,
+                    }).then((res) => {
+                        if (res.result.returnCode.toString() === "0") {
+                            that.postData.verifyKey = res.data.verifyKey;
+                            uni.hideLoading()
+                            that.setIntervalFun(sendCodeData.accountType);
+                        } else {
+                            this.$toast.show({
+                                title: res.result.returnMessage,
+                            })
+                        }
 
-                })
+                    })
+                }
             }
         },
         getSendCodeData() {
@@ -349,17 +359,22 @@ export default {
                 url: 'login/login'
             })
         },
-        setIntervalFun() {
-            let that = this
+        setIntervalFun(accountType) {
+            // debugger;
+            let that = this;
+            let tempAccountType = accountType === 0 ? 'phoneTime' : 'emailTime';//0手机 1邮箱
+            let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
+            let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
+            that[tempStauts] = true;
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that.spanName = that.time + '秒后重新发送';
-                --that.time;
-                if (that.time < 0) {
-                    that.spanName = "重新发送";
-                    that.time = 60;
-                    that.getCodeStatus = false
+                that[tempName] = that[tempAccountType] + '秒后重新发送';
+                --that[tempAccountType];
+                if (that[tempAccountType] < 0) {
+                    that[tempName] = "重新发送";
+                    that[tempAccountType] = 60;
+                    that.getCodeStatus = false;
                     clearInterval(interval);
                 }
             }, 1000);

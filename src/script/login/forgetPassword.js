@@ -80,9 +80,13 @@ export default {
                 width: '390rpx'
             },
 
-            getCodeStatus: false,
-            spanName: '发送验证码',
-            time: 60,
+            phoneCodeStatus: false,
+            emailCodeStatus: false,
+            phoneName: '发送验证码',
+            phoneTime: 60,
+            emailName: '发送验证码',
+            emailTime: 60,
+
             postData: {
                 tel: "",
                 email: "",
@@ -163,7 +167,16 @@ export default {
     },
     methods: {
         typeChange(type) {
-            this.type = type
+            this.type = type;
+            //切换注册方式重置数据
+            this.postData = {
+                tel: "",
+                email: "",
+                password: "",
+                passwordConfirm: "",
+                verifyCode: "",
+                verifyKey: "",
+            };
         },
         inputChange(key, value) {
             this.postData[key] = value;
@@ -191,18 +204,21 @@ export default {
         btnClick() {
             let postData = this.getPostData();
             if (postData) {
+                uni.showLoading({
+                    title: "加载中..."
+                })
                 this.$request({
                     url: "common/forget",
                     method: "post",
                     params: postData,
                 }).then((res) => {
                     // data: {userLoginId: "1307916833663221762", userLoginToken: "399354412b4201206d057d48d7216623"}
-                        // userLoginId: "1307916833663221762"
-                        // userLoginToken: "399354412b4201206d057d48d7216623"
+                    // userLoginId: "1307916833663221762"
+                    // userLoginToken: "399354412b4201206d057d48d7216623"
                     // result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
-                        // returnCode: "0"
-                        // returnMessage: "成功"
-                        // returnUserMessage: "成功"
+                    // returnCode: "0"
+                    // returnMessage: "成功"
+                    // returnUserMessage: "成功"
                     // console.log(res)
                     if (res.result.returnCode.toString() === "0") {
                         let loginMsg = {
@@ -215,9 +231,10 @@ export default {
                             data: loginMsg,
                         });
                         this.$jumpPage.jump({
-                            type:'reLaunch',
+                            type: 'reLaunch',
                             url: 'index/index'
                         });
+                        uni.hideLoading()
                     } else {
                         this.$toast.show({
                             title: res.result.returnMessage,
@@ -269,25 +286,31 @@ export default {
                 return false
             }
         },
-        sendSmsVerify() {
+        sendSmsVerify(name) {
             let that = this;
-            let sendCodeData = this.getSendCodeData();
-            if (sendCodeData) {
-                this.$request({
-                    url: "common/sendCode",
-                    method: "post",
-                    params: sendCodeData,
-                }).then((res) => {
-                    if (res.result.returnCode.toString() === "0") {
-                        that.postData.verifyKey = res.data.verifyKey;
-                        that.setIntervalFun()
-                    } else {
-                        this.$toast.show({
-                            title: res.result.returnMessage,
-                        })
-                    }
+            if (!this[name]) {
+                let sendCodeData = this.getSendCodeData();
+                if (sendCodeData) {
+                    uni.showLoading({
+                        title: "加载中..."
+                    })
+                    this.$request({
+                        url: "common/sendCode",
+                        method: "post",
+                        params: sendCodeData,
+                    }).then((res) => {
+                        if (res.result.returnCode.toString() === "0") {
+                            that.postData.verifyKey = res.data.verifyKey;
+                            uni.hideLoading()
+                            that.setIntervalFun(sendCodeData.accountType)
+                        } else {
+                            this.$toast.show({
+                                title: res.result.returnMessage,
+                            })
+                        }
 
-                })
+                    })
+                }
             }
         },
         getSendCodeData() {
@@ -327,17 +350,22 @@ export default {
                 return false
             }
         },
-        setIntervalFun() {
+        setIntervalFun(accountType) {
             let that = this
+            let tempAccountType = accountType === 0 ? 'phoneTime' : 'emailTime';//0手机 1邮箱
+            let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
+            let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
+            that[tempStauts] = true;
+
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that.spanName = that.time + '秒后重新发送';
-                --that.time;
-                if (that.time < 0) {
-                    that.spanName = "重新发送";
-                    that.time = 60;
-                    that.getCodeStatus = false
+                that[tempName] = that[tempAccountType] + '秒后重新发送';
+                --that[tempAccountType];
+                if (that[tempAccountType] < 0) {
+                    that[tempName] = "重新发送";
+                    that[tempAccountType] = 60;
+                    that.getCodeStatus = false;
                     clearInterval(interval);
                 }
             }, 1000);

@@ -25,10 +25,10 @@
                                 :placeHolder="$t('regs').inputPhoneVerifyCode"
                                 :inputStyle="inputVerifyCodeStyle"
                                 :lastTextShow="true"
-                                :lastText="spanName"
+                                :lastText="phoneName"
                                 :lastTextStyle="phoneLastTextStyle"
                                 :inputData="postData.verifyCode"
-                                @lastTextClick="sendSmsVerify"
+                                @lastTextClick="sendSmsVerify('phoneCodeStatus')"
                                 @inputChange="inputChange('verifyCode', $event)"></loginInput>
                     <loginInput :iconShow="true"
                                 :iconSrc="passwordIcon"
@@ -61,8 +61,8 @@
                                 @inputChange="inputChange('email', $event)"></loginInput>
                     <loginInput :iconShow="true" :iconSrc="smsVerifyCode"
                                 :lastTextShow="true"
-                                :lastText="spanName"
-                                @lastTextClick="sendSmsVerify"
+                                :lastText="emailName"
+                                @lastTextClick="sendSmsVerify('emailCodeStatus')"
                                 :placeHolder="$t('regs').inputEmailVerifyCode"
                                 :inputStyle="inputVerifyCodeStyle"
                                 :inputData="postData.verifyCode"
