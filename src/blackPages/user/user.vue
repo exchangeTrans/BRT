@@ -1,4 +1,4 @@
-<template>
+ <template>
     <view id="user">
         <scroll-view class="user-wrap" :scroll-y="true">
             <view class="bgimg">

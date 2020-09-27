@@ -1,6 +1,6 @@
 <template>
 	<view :class="blacktradelist==true?'blacktradelist':''">
-        <view class="listHeader" :class="isblack=true?'isblack':'iswhite'">币币交易</view>
+        <view class="listHeader" :class="isblack==true?'isblack':'iswhite'">币币交易</view>
 		<scroll-view class="datalist" scroll-y>
 			<view class="datalist_item" v-for="(item,index) in data" :key="index" @tap="chooseTradePair(item)">
                 <view class="itemName">{{item.name}}/{{item.type}}</view>
@@ -25,7 +25,11 @@
                 type: Array,
                 default: () => [],
             },
-            isBlack:{
+            isblack:{
+                type:Boolean,
+                default: () => {}
+            },
+            blacktradelist:{
                 type:Boolean,
                 default: () => {}
             }

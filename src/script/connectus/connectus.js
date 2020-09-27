@@ -13,7 +13,18 @@ export default{
                 // },
                 // bodyPadding: {"padding": '0,0,0,0'},
                 // headerIsNoBoder: true,
-            }
+            },
+            emailadress:'客服邮箱:test0001@gmail.com',
+        }
+    },
+    methods:{
+        copymsg(){
+            var clipboard = new this.Clipboard('.email')
+            clipboard.on('success', e => {
+                this.$toast.show({
+                    title: '复制成功',
+                })
+            })
         }
     },
     mounted() {

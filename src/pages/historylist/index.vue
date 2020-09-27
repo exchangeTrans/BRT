@@ -41,9 +41,10 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			height: calc(100vh - 100rpx - var(--status-bar-height));
 			.nologimg{
 				padding-top: calc(100rpx + var(--status-bar-height));
-				margin-top: 500rpx;
+				/*margin-top: 500rpx;*/
 				text-align: center;
 				.img{
 					width: 530rpx;
