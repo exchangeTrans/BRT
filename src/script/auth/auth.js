@@ -75,7 +75,7 @@ export default {
                 {
                     name: "证件号码",
                     checkKey: "cardNo",
-                    checkType: ["isIdcard"],
+                    // checkType: ["isIdcard"],
                 },
                 {
                     name: "手持照片",
@@ -155,22 +155,33 @@ export default {
             // debugger
             let postData = this.getAuthPostData(cardImage);
             if (postData) {
+                uni.showLoading({
+                    title:"加载中..."
+                })
                 this.$request({
                     url: "kyc/kyc1",
                     method: "post",
                     params: postData,
                 }).then((res) => {
                     if (res.result.returnCode.toString() === "0") {
-                        this.$toast.show({
-                            title: res.result.returnMessage,
-                        })
-                        this.$jumpPage.jump({
-                            type: 'navigateBack',
-                        })
+                        setTimeout(()=>{
+                            this.$toast.show({
+                                title: res.result.returnMessage,
+                            })
+                            // 服务端响应的 message 提示
+                            this.$jumpPage.jump({
+                                type: 'navigateBack',
+                            })
+                            //延时关闭  加载中的 loading框
+                            uni.hideLoading()
+                        },2000)
                     } else {
-                        this.$toast.show({
-                            title: res.result.returnMessage,
-                        })
+                        setTimeout(()=>{
+                            this.$toast.show({
+                                title: res.result.returnMessage,
+                            })
+                            uni.hideLoading()
+                        },2000)
                     }
                 })
             }
