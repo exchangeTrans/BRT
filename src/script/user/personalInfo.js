@@ -25,6 +25,7 @@ export default {
             avatar: "",
             // avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
             modifyUrl: `url(${require('@/static/images/user/modifyIcon.png')})`,
+            nicknameInput: false,
 
             userMsgData: {},
             checkArray: [
@@ -118,6 +119,13 @@ export default {
                     }
                 }
             });
+        },
+        nicknameClick() {
+            this.nicknameInput = true
+        },
+        nicknameMoveOut() {
+            this.nicknameInput = false
         }
+
     },
 }

@@ -6,11 +6,11 @@
             <view class="footerContent">
                 <view v-for="(item,key) in footerArray"
                       :key="key"
-                      :class="item.code===footerSelected.code?'footerTabLi active':'footerTabLi'"
+                      :class="item.pagePath===currentTab.pagePath?'footerTabLi active':'footerTabLi'"
                       @tap="changePage(item)">
                     <block>
                         <view class="imgBox"
-                              :style="{'backgroundImage':item.code===footerSelected.code?item.selectedIconPath:item.iconPath}"></view>
+                              :style="{'backgroundImage':item.pagePath===currentTab.pagePath?item.selectedIconPath:item.iconPath}"></view>
                         <span class="title">{{item.text}}</span>
                     </block>
                 </view>
@@ -29,7 +29,8 @@
                 title: 'footer',
                 windowHeight: "100%",
                 footerHeight: '0',
-                footerStyle: {top: 'calc(100vh - 116rpx)'}
+                footerStyle: {top: 'calc(100vh - 116rpx)'},
+                currentTab:{pagePath:""}
 
             }
         },
@@ -53,8 +54,18 @@
             }
 
         },
+        watch:{
+            footerSelected(){
+
+            },
+        },
         mounted() {
             let that = this;
+            this.currentTab = {
+                pagePath:that.$storage.getSync({key:'pagePath'})
+            }
+            this.$emit('changePage',this.currentTab)
+            
             const query = uni.createSelectorQuery().in(this);
             query.select('#footer').boundingClientRect(data => {
                 that.footerHeight = data.height;
@@ -95,14 +106,15 @@
             },
             changePage(item) {
                 let {footerSelected} = this;
-                if (footerSelected.code !== item.code) {
-                    this.$store.commit("setDefaultSync", {key: "footerSelected", val: item,})
-                    let jumpType = 'reLaunch';
-                    this.$jumpPage.jump({
-                        type: jumpType,
-                        url: item.pagePath
-                    })
-                }
+                // if (footerSelected.code !== item.code) {
+                this.$store.commit("setDefaultSync", {key: "footerSelected", val: item,})
+                let jumpType = 'reLaunch';
+                this.$jumpPage.jump({
+                    type: jumpType,
+                    url: item.pagePath
+                })
+                this.$emit('changePage',item)
+                // }
 
             },
 

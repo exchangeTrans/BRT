@@ -14,22 +14,27 @@
                 <view class="modify"
                       @tap="ChooseImage"
                       :style="{'background-image': modifyUrl}">
-            </view>
-
+                </view>
             </view>
         </view>
         <view class="nicknameBar">
             <view class="nicknameText">
                 {{$t('personInfo').nicknameText}}
             </view>
-            <input class="nickname"
-                   :name="userMsgData.nickname"
-                   v-model="userMsgData.nickname"/>
+            <view class="nicknameWrap">
+                <input class="nickname"
+                       :focus="nicknameInput"
+                       @blur="nicknameMoveOut"
+                       :name="userMsgData.nickname"
+                       v-model="userMsgData.nickname"/>
 
-            <!--<view class="modify"
+                <view class="modify"
+                      @tap="nicknameClick"
                       :style="{'background-image': modifyUrl}">
 
-            </view>-->
+                </view>
+            </view>
+
         </view>
         <view class="personalInfoBtn"
               @tap="saveBtnClick">
@@ -69,10 +74,12 @@
                 color: #D9DADB;
                 line-height: 44rpx;
             }
+
             .avatarWrap {
                 position: relative;
                 width: 80%;
                 height: 100%;
+
                 .avatar {
                     width: 120rpx;
                     height: 120rpx;
@@ -100,13 +107,10 @@
                     background-size: 100% 100%;
                 }
             }
-
-
-
         }
 
         .nicknameBar {
-            width: 750rpx;
+            width: 100%;
             height: 100rpx;
             background: #272A2E;
             box-shadow: 0rpx 2rpx 0rpx 0rpx rgba(255, 255, 255, 0.1);
@@ -115,6 +119,7 @@
 
             .nicknameText {
                 margin: auto 0 auto 30rpx;
+                width: 20%;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
@@ -122,25 +127,33 @@
                 line-height: 100rpx;
             }
 
-            .nickname {
-                font-size: 32rpx;
-                height: 100rpx;
-                font-family: PingFangSC-Regular, PingFang SC;
-                font-weight: 400;
-                color: #D9DADB;
-                margin-left: 30rpx;
-            }
+            .nicknameWrap {
+                position: relative;
+                width: 80%;
+                height: 100%;
 
-            /*.modify {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 30rpx;
-                width: 28rpx;
-                height: 28rpx;
-                background-size: 100% 100%;
-            }*/
+                .nickname {
+                    font-size: 32rpx;
+                    height: 100rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #D9DADB;
+                    margin-right: 98rpx;
+                    text-align: right;
+                }
+
+                .modify {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 30rpx;
+                    width: 28rpx;
+                    height: 28rpx;
+                    background-size: 100% 100%;
+                }
+            }
         }
+
 
         .personalInfoBtn {
             margin: 60rpx auto 0 auto;
@@ -159,5 +172,4 @@
         }
 
     }
-
 </style>

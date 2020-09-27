@@ -6,8 +6,8 @@
 
 
 		<view class="btnGroup">
-			<view class="btnItem"> 保存图片</view>
-			<view class="btnItem  copy">复制下载链接</view>
+			<view class="btnItem" @tap="saveImage"> 保存图片</view>
+			<view class="btnItem  copy" @tap="copy">复制下载链接</view>
 
 		</view>
 
@@ -56,7 +56,54 @@
 			},
             importAddress(){
 
-			}
+			},
+			saveImage(){
+				let filePath = this.filePath;
+				// uni.chooseImage({
+				//     count: 1,
+				//     sourceType: ['album '],
+				//     success: function (res) {
+				// uni.saveImageToPhotosAlbum({
+				//     filePath: filePath,
+				//     success: function () {
+				//         console.log('save success');
+				//     }
+				// });
+				// }
+				// })
+				uni.getImageInfo({
+					src: filePath,
+					success: function(image) {
+						console.log('图片信息：', JSON.stringify(image));
+						uni.saveImageToPhotosAlbum({
+							filePath: image.path,
+							success: function() {
+								console.log('save success');
+								uni.showToast({
+									title: '图片保存成功',
+									icon: 'none',
+									duration: 2200
+								});
+							},fail:function(e){
+								uni.showToast({
+									title: '图片保存失败',
+									icon: 'none',
+									duration: 2200
+								});
+							}
+						});
+					}
+				});
+
+			},
+			copy(){
+            	let text = "下载地址未知"
+				uni.setClipboardData({
+					data: text,
+					success: function () {
+					}
+				});
+			},
         }
     }
 </script>

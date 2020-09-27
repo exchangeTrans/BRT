@@ -35,6 +35,7 @@ export default {
     mounted() {
         let theme = this.$storage.getSync({key:'theme'});
         let symbolType = this.$store.state.wallet.symbolType
+        let userInfo = this.$store.state.defaultData.userInfo
         if(theme === 'white'){
             this.headerOptions = {
                 show: true,
@@ -42,7 +43,7 @@ export default {
                 text: symbolType.name + "提币记录",
                 rightItem: {
                     type: "text",
-                    text: "ID:AVV491",
+                    text: "ID:" + userInfo.inviteCode,
                     style: {
                         'fontSize': '24rpx',
                         'fontFamily': 'PingFangSC-Regular, PingFang SC',
@@ -64,7 +65,7 @@ export default {
                 text: symbolType.name + "提币记录",
                 rightItem: {
                     type: "text",
-                    text: "ID:AVV491",
+                    text: "ID:" + userInfo.inviteCode,
                     style: {
                         'fontSize': '24rpx',
                         'fontFamily': 'PingFangSC-Regular, PingFang SC',

@@ -6,7 +6,7 @@
                 <loginHead :defaultChoice="defaultType"
                            :leftText="leftText"
                            :rightText="rightText"
-                           @typeChange="typeChange"/>
+                           @typeChange="typeChange" class="loginHead"/>
                 <view class="phoneLoginFlag"
                       v-show="type === 'PHONE'">
                     <view class="lastInput" @tap="toChooseCountry">
@@ -87,6 +87,12 @@
 
             .wrap {
                 display: block;
+
+                .loginHead {
+                    /*width: 100%;*/
+                    width: 750rpx;
+                    height: 666rpx;
+                }
 
                 .lastInput {
                     position: relative;

@@ -97,6 +97,7 @@ export default {
     mounted() {
         let theme = this.$storage.getSync({key: 'theme'});
         let symbolType = this.$store.state.wallet.symbolType
+        let userInfo = this.$store.state.defaultData.userInfo
         if (theme === 'white') {
             this.headerOptions = {
                 show: true,
@@ -109,7 +110,7 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
-                    tipText: "AVV49111",
+                    tipText: userInfo.inviteCode,
                     haveTip: true,
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
@@ -130,7 +131,7 @@ export default {
                         fontSize: "28rpx",
                         color: "#098FE0",
                     },
-                    tipText: "AVV491",
+                    tipText: userInfo.inviteCode,
                     haveTip: true,
                     tipTextStyle: {
                         color: "#D9DADB",
@@ -300,7 +301,7 @@ export default {
             //         title: "余额不足"
             //     })
             //     return;
-            // } 
+            // }
             if (parseInt(this.postData['amount']) < parseInt(this.symbolDetail.withdrwaMin)) {
                 this.$toast.show({
                     title: "未达到最小提币数量不足"

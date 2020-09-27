@@ -100,6 +100,12 @@ export default {
         amountTotal(val) {
             let rate = this.$store.state.wallet.rate.USDCNY
             this.amountTotalRMB = val.replace(",", "") * rate
+            let amountIndex = this.amountTotalRMB.toString().indexOf(".")
+            if (amountIndex > 0) {
+                this.amountTotalRMB = this.amountTotalRMB.toString().substring(0, amountIndex) + "." + this.amountTotalRMB.toString().substring(amountIndex + 1, amountIndex + 3)
+            } else {
+                this.amountTotalRMB = this.amountTotalRMB
+            }
         },
     },
     methods: {
@@ -115,8 +121,19 @@ export default {
                     if (res.result.returnCode === "0") {
                         let data = res.data
                         var that = this
-                        that.freezeTotal = data.totalUsdtFrozen
-                        that.balanceTotal = data.totalUsdtBalance
+                        let frozenIndex = data.totalUsdtFrozen.toString().indexOf(".")
+                        if (frozenIndex > 0) {
+                            that.freezeTotal = data.totalUsdtFrozen.toString().substring(0, frozenIndex) + "." + data.totalUsdtFrozen.toString().substring(frozenIndex + 1, frozenIndex + 3)
+                        } else {
+                            that.freezeTotal = data.totalUsdtFrozen
+                        }
+
+                        let balanceIndex = data.totalUsdtBalance.toString().indexOf(".")
+                        if (balanceIndex > 0) {
+                            that.balanceTotal = data.totalUsdtBalance.toString().substring(0, balanceIndex) + "." + data.totalUsdtBalance.toString().substring(balanceIndex + 1, balanceIndex + 3)
+                        } else {
+                            that.balanceTotal = data.totalUsdtBalance
+                        }
                         data.list.forEach(i => {
                             i.asset = i.asset.replace(",", "")
                             let a = {

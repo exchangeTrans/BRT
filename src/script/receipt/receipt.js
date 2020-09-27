@@ -11,6 +11,7 @@ export default {
     },
     mounted() {
         let theme = this.$storage.getSync({key: 'theme'})
+        let userInfo = this.$store.state.defaultData.userInfo
         let that = this
         that.choiceType = this.$store.state.wallet.symbolType
         if (theme === 'white') {
@@ -26,7 +27,7 @@ export default {
                         'fontSize': '28rpx',
                         'color': '#098FE0'
                     },
-                    tipText: 'AVV491',
+                    tipText: userInfo.inviteCode,
                     haveTip: true
                 },
                 background: '#ffffff',
@@ -47,7 +48,7 @@ export default {
                         'fontSize': '28rpx',
                         'color': '#098FE0'
                     },
-                    tipText: 'AVV491',
+                    tipText: userInfo.inviteCode,
                     haveTip: true
                 },
                 style: {
@@ -126,8 +127,8 @@ export default {
                     setTimeout(() => {
                         that.$refs.qrcode2233.make()
                     }, 1000);
-                    
-                
+
+
                 } else {
                     this.$toast.show({
                         title: res.result.returnUserMessage
@@ -176,7 +177,7 @@ export default {
 					});
 				}
 			});
-            
+
         },
         copy(){
             let text = this.data.userWalletAddress;
