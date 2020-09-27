@@ -115,7 +115,7 @@
         .scrollWrap {
             width: 100%;
             box-sizing: border-box;
-            height: calc(100vh - var(--status-bar-height) - 100rpx);
+            height: 100%;
 
             .wrap {
                 display: block;
