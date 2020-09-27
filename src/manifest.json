@@ -87,6 +87,21 @@
                         "spotlight@3x" : "unpackage/res/icons/120x120.png"
                     }
                 }
+            },
+            "splashscreen" : {
+                "android" : {
+                    "hdpi" : "启动图/安卓/480_762.png",
+                    "xhdpi" : "启动图/安卓/720_1242.png",
+                    "xxhdpi" : "启动图/安卓/1080_1882.png"
+                },
+                "ios" : {
+                    "iphone" : {
+                        "portrait-896h@3x" : "启动图/iphone/1242_2688.png",
+                        "portrait-896h@2x" : "启动图/iphone/828_1792.png",
+                        "iphonex" : "启动图/iphone/1125_2436.png",
+                        "retina55" : "启动图/iphone/1242_2208.png"
+                    }
+                }
             }
         },
         "compilerVersion" : 2
