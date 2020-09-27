@@ -208,6 +208,9 @@ export default {
             // console.log("下一步")
             let postData = this.getPostData();
             if (postData) {
+                uni.showLoading({
+                    title: "加载中..."
+                })
                 this.$request({
                     url: "common/register",
                     method: "post",
@@ -234,6 +237,7 @@ export default {
                             type: 'reLaunch',
                             url: 'index/index'
                         })
+                        uni.hideLoading()
                     } else {
                         this.$toast.show({
                             title: res.result.returnMessage,
