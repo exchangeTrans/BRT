@@ -1,8 +1,8 @@
 <template>
 	<view class="">
-		<historyhead :headerOptions="headerOptions" class="headstyle"></historyhead>
+		<historyhead :headerOptions="headerOptions" ></historyhead>
 		<scroll-view scroll-y="true" class="list" v-if="listOptions.length>0">
-			<view v-for="(item,id) in listOptions" :key="item.id">
+			<view v-for="(item,index) in listOptions" :key="index">
 				<historylist :listOptions="item" class="item"></historylist>
 			</view>
 		</scroll-view>
@@ -28,7 +28,7 @@
 		// margin-top: 500rpx;
 		text-align: center;
 		background: #22252A;
-		height: calc(100vh - 100rpx);
+		height: calc(100vh - var(--status-bar-height));
 		.img{
 			width: 530rpx;
 			height: 400rpx;

@@ -160,6 +160,7 @@
 
                         input {
                             height: 100%;
+                            line-height: 120rpx;
                             padding-left: 162rpx;
                             width: 100%;
                             box-sizing: border-box;
@@ -178,11 +179,12 @@
                             font-size: 28rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
-                            color: #D9DADB;
+                            color: #d9dadb;
                         }
 
                         input {
                             height: 100%;
+                            line-height: 120rpx;
                             padding-left: 162rpx;
                             width: 100%;
                             box-sizing: border-box;
@@ -244,7 +246,7 @@
                 .button {
                     /*background: #fff;*/
                     width: 690rpx;
-                    margin: 40rpx auto 0;
+                    margin: 40rpx auto 156rpx;
                     height: 100rpx;
                     box-sizing: border-box;
                     background: linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%);

@@ -12,33 +12,16 @@
 		<view class="relation">
 			<view class="relationus">联系我们</view>
 			<view class="main">
-				<view class="email">客服邮箱:test0001@gmail.com</view>
+				<view class="email" @click="copymsg" :data-clipboard-text="this.emailadress">{{emailadress}}
 				<image src="../../static/images/connectus/email.png" mode="" class="img"></image>
+				</view>
 			</view>
 		</view>
 	</view>
 </template>
  
-<script>
-	import appheader from '../../components/common/header.vue'
-	export default{
-		components:{appheader},
-		data(){
-			return{
-				headerOptions:{
-					show: true,
-					isAllowReturn: true,
-					text: "联系客服",
-					rightItem: {
-					    type: "text",
-					    text: "",
-					},
-					bodyPadding: {"padding": '0,0,0,0'},
-					headerIsNoBoder: true,
-				}
-			}
-		}
-	}
+<script src="@/script/connectus/connectus.js">
+
 </script>
 
 <style lang="less">
@@ -113,6 +96,7 @@
 				margin-left: 30rpx;
 				margin-top: 20rpx;
 				float: left;
+				width: 90%;
 			}
 			.img{
 				width: 27.96rpx;
@@ -120,7 +104,7 @@
 				float: right;
 				margin-right: 32rpx;
 				background: #FFFFFF;
-				margin-top: 20rpx;
+				margin-top: 8rpx;
 			}
 		}
 	}

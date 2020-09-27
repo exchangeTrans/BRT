@@ -11,45 +11,11 @@ export default {
     mounted() {
         let theme = this.$storage.getSync({key: 'theme'});
         let symbolType = this.$store.state.wallet.symbolType
-        if (theme === 'white') {
+        if(theme === 'white'){
             this.headerOptions = {
                 show: true,
-                text: symbolType.name + "充币记录",
                 isAllowReturn: true,
-				background: '#FFFFFF',
-                style: {
-                    color: "#333333",
-					'fontSize': '34rpx',
-					'fontFamily':' PingFangSC-Regular, PingFang SC',
-					'fontWeight': '400',
-                },
-                isColor: true,
-                rightItem: {
-                    type: "text",
-                    text: "ID:AVV491",
-                    style: {
-						'fontSize': '24rpx',
-						'fontFamily': 'PingFangSC-Regular, PingFang SC',
-						'fontWeight': '400',
-						'color': '#000000',
-						'opacity': 0.5
-                    }
-                }
-            }
-        } else {
-            this.headerOptions = {
-                show: true,
                 text: symbolType.name + "充币记录",
-                isAllowReturn: true,
-				background: '#FFFFFF',
-                style: {
-					color: "#333333",
-					'fontSize': '34rpx',
-					'fontFamily':' PingFangSC-Regular, PingFang SC',
-					'fontWeight': '400',
-
-                },
-                isColor: true,
                 rightItem: {
                     type: "text",
                     text: "ID:AVV491",
@@ -58,10 +24,40 @@ export default {
                         'fontFamily': 'PingFangSC-Regular, PingFang SC',
                         'fontWeight': '400',
                         'color': '#000000',
-						'opacity': 0.5
+                        'opacity': 0.5
                     }
-                }
-            }
+                },
+                bodyPadding: {"padding": '0,0,0,0'},
+                headerIsNoBoder: true,
+            };
+            this.isBlack = false;
+            // this.BtnackgroundColor = "#B4BBC0";
+        } else {
+            this.headerOptions = {
+                show: true,
+                isAllowReturn: true,
+                isWhiteIcon: true,
+                text: symbolType.name + "充币记录",
+                rightItem: {
+                    type: "text",
+                    text: "ID:AVV491",
+                    style: {
+                        'fontSize': '24rpx',
+                        'fontFamily': 'PingFangSC-Regular, PingFang SC',
+                        'fontWeight': '400',
+                        'color': '#000000',
+                        'opacity': 0.5
+                    }
+                },
+                style: {
+                    'color': '#D9DADB'
+                },
+                background: '#00001A',
+                bodyPadding: {"padding": '0,0,0,0'},
+                headerIsNoBoder: true,
+            };
+            this.isBlack = true;
+            // this.BtnackgroundColor = "#8C939B";
         }
         this.getRecordList(this.currentIndex , recordAmount.num)
     },

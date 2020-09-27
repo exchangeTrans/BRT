@@ -44,19 +44,22 @@
         width: 100%;
         height: 100%;
         background: #F8F8F8;
+
         .addHeader {
             top: var(--status-bar-height);
         }
+
         .avatarBar {
-            width: 750rpx;
+            width: 100%;
             height: 160rpx;
             background: #FFFFFF;
             box-shadow: 0rpx 2rpx 0rpx 0rpx #EDEDED;
-            margin-top: 176rpx;
+            padding-top: 176rpx;
             position: relative;
             display: flex;
 
             .avatarText {
+                width: 20%;
                 margin: auto 0 auto 30rpx;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
@@ -65,32 +68,37 @@
                 line-height: 44rpx;
             }
 
-            .avatar {
-                width: 120rpx;
-                height: 120rpx;
-                background-size: 100% 100%;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 98rpx;
+            .avatarWrap {
+                position: relative;
+                width: 80%;
+                height: 100%;
 
-                image {
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 50%;
+                .avatar {
+                    width: 120rpx;
+                    height: 120rpx;
+                    background-size: 100% 100%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 98rpx;
+
+                    image {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                    }
+                }
+
+                .modify {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 30rpx;
+                    width: 28rpx;
+                    height: 28rpx;
+                    background-size: 100% 100%;
                 }
             }
-
-            .modify {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 30rpx;
-                width: 28rpx;
-                height: 28rpx;
-                background-size: 100% 100%;
-            }
-
         }
 
         .nicknameBar {

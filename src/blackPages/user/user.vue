@@ -1,4 +1,4 @@
-<template>
+ <template>
     <view id="user">
         <scroll-view class="user-wrap" :scroll-y="true">
             <view class="bgimg">
@@ -428,7 +428,7 @@
                         width: 690rpx;
                         box-sizing: border-box;
                         margin-top: 40rpx;
-                        margin-bottom: 40rpx;
+                        margin-bottom:116rpx;
                     }
                 }
 

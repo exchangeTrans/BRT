@@ -1,6 +1,6 @@
 <template>
 	<view class="noticeDetail" id="noticeDetail">
-		<ndheader :headerOptions="headerOptions" class="headstyle"></ndheader>
+		<ndheader :headerOptions="headerOptions" ></ndheader>
 		<view class="notice_list">
 			<view class="item">
 				<view class="notice_content">{{details_msg_list[id].title}}</view>

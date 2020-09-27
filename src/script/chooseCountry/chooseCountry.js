@@ -66,6 +66,10 @@ export default {
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             },
+            isBlack: {
+                type: Boolean,
+                default: false
+            },
 
             selectedItem:{},
         }
@@ -74,6 +78,7 @@ export default {
         let theme = this.$storage.getSync({key:'theme'});
         // console.log(theme);
         if(theme === 'white'){
+            this.isBlack = false
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
@@ -86,6 +91,7 @@ export default {
                 headerIsNoBoder: true,
             }
         } else {
+            this.isBlack = true
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
@@ -103,6 +109,7 @@ export default {
                 headerIsNoBoder: true,
             }
         }
+        console.log(this.isBlack)
 
         this.assembleCountryData()
     },

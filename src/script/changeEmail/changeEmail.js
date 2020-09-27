@@ -82,11 +82,11 @@ export default {
             postData: {
                 // tel: "",
                 dialingCode: "",
-                email: "11911257@qq.com",
+                email: "",
                 verifyKey: "",
-                verifyCode: "123456",
+                verifyCode: "",
                 verifyKeyNew: "",
-                verifyCodeNew: "123456",
+                verifyCodeNew: "",
             },
 
             /*chooseCountry: {

@@ -25,12 +25,12 @@
 			</view>
 			<view class="notice" @click="gonoticelist_details">
 				<view class="noticeIcon" :style="{'background-image':'url('+notice2+')'}"></view>
-				<view class="noticeText" >关于BRT上线的公告</view>
-				<view class="more" :style="{'background-image':'url('+more+')'}" @click="gonoticelist"></view>
+				<view class="noticeText" @click="gonoticelist_details">关于BRT上线的公告</view>
+				<view class="more" :style="{'background-image':'url('+more+')'}" @click.self.stop="gonoticelist"></view>
 				<view class="clearfix"></view>
 			</view>
 			<view class="advertising" :style="{'background-image':'url('+advertising+')'}">
-				广告位
+				<!-- 广告位 -->
 			</view>
 
 			<view class="performer">
@@ -42,7 +42,7 @@
 					<view class="upAndDown">24H涨跌</view>
 				</view>
 
-				<view class="performerItem" v-for="(item,index) in tradePairData" :key="index">
+				<view class="performerItem" v-for="(item,index) in tradePairData" :key="index" @tap="toKline(item)">
 					<view class="currency">
 						<view class="currencyTitle"> <span>{{item.name}}</span>/{{item.type}}</view>
 						<view class="currencyData">24H量{{item.nowData===null?'0.00':item.nowData.amount.toFixed(2)}}</view>

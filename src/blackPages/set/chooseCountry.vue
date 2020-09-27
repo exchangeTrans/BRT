@@ -10,7 +10,7 @@
                          :key="index"
                          @click="chooseItem(item)">
                         <image :src=item.icon alt=""/>
-                        <view class="name">
+                        <view class="name" :class="{'black': isBlack, 'isNotBlack': !isBlack}">
                             {{item.name}}
                         </view>
                         <view class="areaCode">
@@ -145,6 +145,11 @@
                             font-size: 28rpx;
                             font-family: "PingFang";
                             font-weight: 400;
+                        }
+                        .black {
+                            color: #D9DADB;
+                        }
+                        .isNotBlack {
                             color: rgba(51, 51, 51, 1);
                         }
                     }

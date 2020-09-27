@@ -110,7 +110,7 @@
 		</view> -->
 		</scroll-view>
 		<uniDrawer ref="showLeft" mode="left" :width="280" @change="change($event,'showLeft')">
-			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair"></tradelist>
+			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair" :isblack="false"></tradelist>
 		</uniDrawer>
 		<pageFooter/>
 	</view>

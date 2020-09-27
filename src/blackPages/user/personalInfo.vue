@@ -7,12 +7,14 @@
             <view class="avatarText">
                 {{$t('personInfo').avatarText}}
             </view>
-            <view class="avatar">
-                <image :src="avatar"></image>
+            <view class="avatarWrap">
+                <view class="avatar">
+                    <image :src="avatar"></image>
+                </view>
+                <view class="modify"
+                      @tap="ChooseImage"
+                      :style="{'background-image': modifyUrl}">
             </view>
-            <view class="modify"
-                  @tap="ChooseImage"
-                  :style="{'background-image': modifyUrl}">
 
             </view>
         </view>
@@ -43,61 +45,71 @@
     .personalInfo {
         width: 100%;
         height: 100%;
-        background: #F8F8F8;
+        background: #22252A;
+
         .addHeader {
             top: var(--status-bar-height);
         }
+
         .avatarBar {
-            width: 750rpx;
+            width: 100%;
             height: 160rpx;
-            background: #FFFFFF;
-            box-shadow: 0rpx 2rpx 0rpx 0rpx #EDEDED;
-            margin-top: 176rpx;
+            background: #272A2E;
+            box-shadow: 0rpx 2rpx 0rpx 0rpx rgba(255, 255, 255, 0.1);
+            padding-top: 176rpx;
             position: relative;
             display: flex;
 
             .avatarText {
+                width: 20%;
                 margin: auto 0 auto 30rpx;
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
-                color: #333333;
+                color: #D9DADB;
                 line-height: 44rpx;
             }
+            .avatarWrap {
+                position: relative;
+                width: 80%;
+                height: 100%;
+                .avatar {
+                    width: 120rpx;
+                    height: 120rpx;
+                    background-size: 100% 100%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 98rpx;
+                    /*border-radius: 50%;*/
 
-            .avatar {
-                width: 120rpx;
-                height: 120rpx;
-                background-size: 100% 100%;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 98rpx;
-                /*border-radius: 50%;*/
-                image {
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 50%;
+                    image {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                    }
+                }
+
+                .modify {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 30rpx;
+                    width: 28rpx;
+                    height: 28rpx;
+                    background-size: 100% 100%;
                 }
             }
 
-            .modify {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 30rpx;
-                width: 28rpx;
-                height: 28rpx;
-                background-size: 100% 100%;
-            }
+
 
         }
 
         .nicknameBar {
             width: 750rpx;
             height: 100rpx;
-            background: #FFFFFF;
-            box-shadow: 0rpx 2rpx 0rpx 0rpx #EDEDED;
+            background: #272A2E;
+            box-shadow: 0rpx 2rpx 0rpx 0rpx rgba(255, 255, 255, 0.1);
             position: relative;
             display: flex;
 
@@ -106,7 +118,7 @@
                 font-size: 32rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
-                color: #333333;
+                color: #D9DADB;
                 line-height: 100rpx;
             }
 
@@ -115,7 +127,7 @@
                 height: 100rpx;
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
-                color: #333333;
+                color: #D9DADB;
                 margin-left: 30rpx;
             }
 

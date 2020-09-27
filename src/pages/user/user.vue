@@ -143,6 +143,7 @@
                 .user-wrap-container {
                     width: 690rpx;
                     margin: 0 auto;
+                    padding-bottom: 64rpx;
 
                     .user-wrap-userMassage {
                         padding-bottom: 30rpx;
@@ -432,7 +433,7 @@
                         width: 690rpx;
                         box-sizing: border-box;
                         margin-top: 40rpx;
-                        margin-bottom: 40rpx;
+                        margin-bottom:116rpx;
                     }
                 }
 

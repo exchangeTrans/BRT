@@ -19,7 +19,7 @@
 
 				<view class="yield">
 					<view class="yieldText">
-						<view class="yieldPercent">32.<span>68%</span></view>
+						<view class="yieldPercent">{{interestrate.left}}<span>.{{interestrate.right}}%</span></view>
 						<view class="addUp">累计收益率</view>
 					</view>
 					<!--<view class="slider">-->
@@ -99,6 +99,7 @@
 		<transferInAmount ref="transferInAmount"
 						  @transferInAmountSuccess="transferInAmountSuccess"
 						  :transferDate="transferDate"
+						  :mode="'night'"
 						  :availableCount="userdata.financeBalance"></transferInAmount>
 		<subRuler ref="subRuler"></subRuler>
 	</view>

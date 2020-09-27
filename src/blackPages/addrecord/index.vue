@@ -10,9 +10,11 @@
 					:isBlack="isBlack"></record>
 		</view>
 		</scroll-view>
-		<view class="datacontent" v-else>
-			<image src="../../static/images/addrecord/addlog.png" mode="" class="img"></image>
-			<view class="item">暂无数据</view>
+		<view class="listcontent" v-else>
+			<view class="datacontent">
+				<image src="../../static/images/addrecord/addlog.png" mode="" class="img"></image>
+				<view class="item">暂无数据</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -21,6 +23,9 @@
 </script>
 
 <style lang="less">
+	*{
+		background: #272A2E;
+	}
 	.index {
 		width: 100%;
 		height: 100%;
@@ -29,7 +34,7 @@
 	.item{
 		height: 30rpx;
 		width: 100%;
-		background: #22252A;
+		/*background: #22252A;*/
 		margin-top: 42rpx;
 	}
 	.record-wrap{
@@ -43,23 +48,28 @@
 		height: calc(100vh);
 		padding-top: 100rpx;
 	}
-	.datacontent{
-		text-align: center;
-		padding-top: 384rpx;
-	}
-	.img{
-		width: 530rpx;
-		height: 400rpx;
-	}
-	.item{
+	.listcontent{
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		width: 100%;
-		height: 40rpx;
-		font-size: 28rpx;
-		font-family: PingFangSC-Regular, PingFang SC;
-		font-weight: 400;
-		color:#D9DADB;
-		line-height: 40rpx;
-		text-align: center;
-		opacity: 0.5;
+		height: calc(100vh - var(--status-bar-height) - 100rpx);
+		.datacontent{
+			padding-top: calc(100rpx + var(--status-bar-height));
+		}
+		.img{
+			width: 530rpx;
+			height: 400rpx;
+		}
+		.item{
+			width: 100%;
+			height: 40rpx;
+			font-size: 28rpx;
+			font-family: PingFangSC-Regular, PingFang SC;
+			font-weight: 400;
+			color:#D9DADB;
+			line-height: 40rpx;
+			text-align: center;
+		}
 	}
 </style>

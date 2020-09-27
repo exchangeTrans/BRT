@@ -1,6 +1,6 @@
 <template>
     <view id="record">
-        <app-header :headerOptions="headerOptions" @headertap=headertap class="headstyle"></app-header>
+        <app-header :headerOptions="headerOptions" @headertap='headertap' ></app-header>
         <scroll-view class="record-wrap" :scroll-y="true" v-if="recordDataList.length > 0">
             <view class="record-wrap-list">
                 <view class="record-wrap-item" v-for="(item, index) in recordDataList"
@@ -22,7 +22,7 @@
 
 <style scoped lang="less">
 	.headstyle{
-		padding-top: calc(100rpx + var(--status-bar-height));
+		padding-top: calc( var(--status-bar-height));
 	}
     #record {
         width: 100%;

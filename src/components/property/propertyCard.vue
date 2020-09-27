@@ -33,6 +33,7 @@
                         <view :class="isBlack? 'text black haveBorder' : 'text haveBorder'"
                               v-for="(item,index) in propertyOption"
                               :key="index"
+                              :style="btnStyle"
                               @tap="click(propertyCardData.symbolType,item.url)">
                             <span>{{item.text}}</span>
                         </view>
@@ -90,11 +91,27 @@
                 let rate = (1/column)*100 + "%"
                 // console.log(column,rate);
                 return {
-                    gridTemplateColumns: 'repeat(' + column + ', ' +rate + ')',
+                    // gridTemplateColumns: 'repeat(' + column + ', ' +rate + ')',
+                    // width: rate,
                     ...propertyCardStyle,
                 }
 
-            }
+            },
+            btnStyle() {
+                let {
+                    // propertyCardStyle,
+                    column
+                } = this.$props;
+                let rate = (1/column)*100 + "%"
+                // console.log(column,rate);
+                return {
+                    // gridTemplateColumns: 'repeat(' + column + ', ' +rate + ')',
+                    width: rate,
+                    // ...propertyCardStyle,
+                }
+
+            },
+            
         },
         data() {
             return {}
@@ -259,11 +276,12 @@
                         width: 100%;
                         border-top: 1rpx solid #E6E6E6;
                         height: 88rpx;
-                        display: grid;
+                        /*display: grid;*/
+                        display: flex;
                         box-sizing: border-box;
 
                         .text {
-                            /*width: auto;*/
+                            width: 50%;
                             height: 84rpx;
                             text-align: center;
                             box-sizing: border-box;

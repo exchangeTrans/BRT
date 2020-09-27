@@ -4,109 +4,113 @@
 			<view @tap="selectTradeHeader(item)" :class="selectHeader.code===item.code?'headItem active headItem'+index:'headItem headItem'+index" v-for="(item,index) in headerData" :key="item.code">{{item.name}}</view>
 		</view>
 		<scroll-view class="tradesContent" scroll-y>
-		<view class="msg">
-			<view class="msgleft">
-				<image @click="showDrawer" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
-				<text class="tradetype">{{KLineTradingPair.name}}/{{KLineTradingPair.type}}</text>
+			<view class="msg">
+				<view class="msgleft">
+					<image @click="showDrawer" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
+					<text class="tradetype">{{KLineTradingPair.name}}/{{KLineTradingPair.type}}</text>
+				</view>
+				<view class="msgright">
+					<image src="../../static/images/trades/headright.png" mode=""  class="righticon"></image>
+					<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>
+					<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
+					<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
+				</view>
 			</view>
-			<view class="msgright">
-				<image src="../../static/images/trades/headright.png" mode=""  class="righticon"></image>
-				<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>						
-				<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
-				<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
-			</view>
-		</view>
-		<view class="main">
-			<view class="left">
-				<view :class="item.code" v-for="item in tradeNameData" :key="item.code">
-					<image class="bluebg" v-if="item.code===selectedTradeName.code" src="../../static/images/trades/bluebg.png" mode=""></image>
-					<image class="whitebg" v-else src="../../static/images/trades/whitebg.png" mode=""></image>
-					<view class="income active" v-if="item.code===selectedTradeName.code">{{item.name}}</view>
-					<view class="income" v-else>{{item.name}}</view>
-				</view>
-				
-				<view class="charge">
-					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
-					<input placeholder="价格(HDU)" class="charge_name" type="number" min="0">
-					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
-				</view>
-				
-				<view class="num">
-					<image src="../../static/images/trades/sub.png" mode="" class="sub"></image>
-					<!-- <text class="charge_num">数量(LED)</text> -->
-					<input placeholder="数量(LED)" class="charge_num" type="number" min="0">
-					<image src="../../static/images/trades/add.png" mode="" class="add"></image>
-				</view>
-				
-				<view class="hdunum">可用：0 HDU</view>
-				<view class="hdupercent">
-					<view class="precent">25%</view>
-					<view class="precent">50%</view>
-					<view class="precent">75%</view>
-					<view class="precent">100%</view>
-				</view>
-				<text class="tradenum">交易额:</text><text class="number">1290</text>
-				<view class="buyit">买入LED</view>
-			</view>
-			<view class="right">
-				<view class="charge_and_num">
-					<view class="money">价格</view>
-					<view class="lednum">数量</view><br>
-					<view v-for="(item,id) in tradesOptions_list" :key="id">
-						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
+			<view class="main">
+				<view class="left">
+					<view :class="item.code" v-for="item in tradeNameData" :key="item.code" @tap="changeTradeType(item)">
+						<image class="bluebg" v-if="item.code===selectedTradeName.code" src="../../static/images/trades/bluebg.png" mode=""></image>
+						<image class="whitebg" v-else src="../../static/images/trades/whitebg.png" mode=""></image>
+						<view class="income active" v-if="item.code===selectedTradeName.code">{{item.name}}</view>
+						<view class="income" v-else>{{item.name}}</view>
 					</view>
-					
+
+					<!-- <view class="sale">
+                        <image src="../../static/images/trades/whitebg.png" mode=""></image>
+                        <view class="fonts">卖出</view>
+                    </view> -->
+
+					<view class="charge">
+						<image src="../../static/images/trades/sub.png" mode="" class="sub" @tap="reduce('tradePrice')"></image>
+						<input :placeholder="'价格('+KLineTradingPair.type+')'" class="charge_name" type="number" min="0" :value="tradePrice" @input="inputChange($event,'tradePrice')">
+						<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradePrice')"></image>
+					</view>
+
+					<view class="num">
+						<image src="../../static/images/trades/sub.png" mode="" class="sub"  @tap="reduce('tradeNum')"></image>
+						<!-- <text class="charge_num">数量(LED)</text> -->
+						<input :placeholder="'数量('+KLineTradingPair.name+')'" class="charge_num" type="number" min="0" :value="tradeNum" @input="inputChange($event,'tradeNum')">
+						<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradeNum')"></image>
+					</view>
+
+					<view class="hdunum">可用：{{selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.usdtBalance:0):(tradeInfo.symbolBalance?tradeInfo.symbolBalance:0)}} {{selectedTradeName.code==='buy'?KLineTradingPair.type:KLineTradingPair.name}}</view>
+					<view class="hdupercent">
+						<view class="precent" hover-class="hoverClass" @tap="choosePrecent(item)" v-for="item in precentList" :key="item.val">{{item.text}}</view>
+					</view>
+					<text class="tradenum">交易额:</text><text class="number">{{tradeAll}}</text>
+					<view class="buyit" @tap="tradeFunc" hover-class="hoverClass">{{selectedTradeName.name}}{{KLineTradingPair.name}}</view>
 				</view>
-				
-				<view class="charge_exchange">
-					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
-					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
-				</view>
-				<view class="charge_and_num">
-					<view v-for="(item,id) in tradesOptions_list" :key="id">
-						<data-list :colorOptions="red" :tradesOptions="item"></data-list>
+				<view class="right">
+					<view class="charge_and_num">
+						<view class="money">价格</view>
+						<view class="lednum">数量</view><br>
+						<view v-for="(item,index) in depthData.asks" :key="index">
+							<data-list :colorOptions="blackgreen" :tradesOptions="item"></data-list>
+						</view>
+
+					</view>
+
+					<view class="charge_exchange">
+						<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
+						<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
+					</view>
+					<view class="charge_and_num">
+						<view v-for="(item,index) in depthData.bids" :key="index">
+							<data-list :colorOptions="blackred" :tradesOptions="item"></data-list>
+						</view>
+					</view>
+					<view class="icon_list">
+						<image src="../../static/images/trades/choose.png" mode="" class="icon_item"></image>
+						<image src="../../static/images/trades/maichu.png" mode="" class="icon_item"></image>
+						<image src="../../static/images/trades/mairu.png" mode="" class="icon_item"></image>
 					</view>
 				</view>
-				<view class="icon_list">
-					<image src="../../static/images/trades/choose.png" mode="" class="icon_item"></image>
-					<image src="../../static/images/trades/maichu.png" mode="" class="icon_item"></image>
-					<image src="../../static/images/trades/mairu.png" mode="" class="icon_item"></image>
+			</view>
+			<view class="line"></view>
+			<view class="footer">
+				<view class="descript">当前委托</view>
+				<view class="historylog" @click="gohistorylog">
+					<image src="../../static/images/trades/historylog.png" mode="" class="clock"></image>
+					<view class="fontlog">历史记录</view>
 				</view>
-			</view>
-		</view>
-		<view class="line"></view>
-		<view class="footer">
-			<view class="descript">当前委托</view>
-			<view class="historylog" @click="gohistorylog">
-				<image src="../../static/images/trades/historylog.png" mode="" class="clock"></image>
-				<view class="fontlog">历史记录</view>
-			</view>
-			<view class="imgcon" v-if="shownodata">
-				<image src="../../static/images/trades/footer.png" mode="" class="img"></image>
-				<view class="footer_data">暂无数据</view>
-			</view>
-			<!-- <scroll-view scroll-y="true" class="historyloglist" v-if="showdata"> -->
-				<view v-for="(item,id) in historylogdata_list" :key="id">
-					<historylog :historylogdata="item"></historylog>
+				<view class="imgcon" v-if="historylogdata_list.length===0">
+					<image src="../../static/images/trades/footer.png" mode="" class="img"></image>
+					<view class="footer_data">暂无数据</view>
 				</view>
-			<!-- </scroll-view> -->
-			
-		</view>
-		
-		<!-- <view class="blackindex" v-if="showmask">
-			<view class="whiteindex">
-				<view class="whitefont">币币交易</view>
-				<scroll-view scroll-y="true" class="listh">
-					<view v-for="(item,index) in tradelistOptions" :key="index">
-						<tradelist :tradelistOptions="item"></tradelist>
+				<!-- <scroll-view scroll-y="true" class="historyloglist" v-if="showdata"> -->
+				<block v-if="historylogdata_list.length>0">
+					<view v-for="(item,id) in historylogdata_list" :key="id">
+						<historylog :historylogdata="item" @cancelTrade="cancelTrade"></historylog>
 					</view>
-				</scroll-view>
+				</block>
+				<!-- </scroll-view> -->
+
 			</view>
-			<view class="rightmsg" @click="showmask=false"></view>
-		</view> -->
+
+			<!-- <view class="blackindex" v-if="showmask">
+                <view class="whiteindex">
+                    <view class="whitefont">币币交易</view>
+                    <scroll-view scroll-y="true" class="listh">
+                        <view v-for="(item,index) in tradelistOptions" :key="index">
+                            <tradelist :tradelistOptions="item"></tradelist>
+                        </view>
+                    </scroll-view>
+                </view>
+                <view class="rightmsg" @click="showmask=false"></view>
+            </view> -->
 		</scroll-view>
 		<uniDrawer ref="showLeft" mode="left" :width="280" @change="change($event,'showLeft')">
-			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair"></tradelist>
+			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair" :isblack="true" :blacktradelist="true"></tradelist>
 		</uniDrawer>
 		<pageFooter/>
 	</view>
@@ -114,22 +118,26 @@
 
 <script src="@/script/trades/index.js"/>
 <style lang="less">
-	.head {
+	*{
+		/*background: #22252A;*/
+	}
+	.head{
 		width: 100%;
-		height: 100rpx;
+		height: calc(100rpx + var(--status-bar-height));
 		text-align: center;
 		line-height: 100rpx;
 		font-size: 40rpx;
-		height: calc(100rpx + var(--status-bar-height));
-		// border-bottom: 2rpx #E3E5E6 solid;
+		border-bottom: 1rpx #F9FAFA solid;
+		color: #1A1A1A;
 		font-family: PingFangSC-Semibold, PingFang SC;
 		padding-top: calc(20rpx + var(--status-bar-height));
 		display: flex;
 		justify-content: center;
 		overflow: hidden;
 		box-sizing: border-box;
+		background: #00001A;
+		margin-bottom: -2rpx;
 	}
-
 	.headItem{
 		width: 172rpx;
 		height: 60rpx;
@@ -147,7 +155,7 @@
 		color: #EFF3F9;
 		font-size: 24rpx;
 		line-height: 60rpx;
-		
+
 	}
 	.headItem0{
 		border-radius: 16rpx 0px 0px 16rpx;
@@ -155,53 +163,62 @@
 	.headItem1{
 		border-radius: 0px 16rpx 16rpx 0px;
 	}
+	// .headleft{
+
+	// }
+	// .headright{
+	// 	width: 172rpx;
+	// 	height: 60rpx;
+	// 	background: #EFF3F9;
+	// 	border-radius: 0px 16rpx 16rpx 0px;
+	// 	color: #098FE0;
+	// 	font-size: 24rpx;
+	// 	line-height: 60rpx;
+	// 	float: left;
+	// 	margin-top: 20rpx;
+	// }
 	.tradesContent{
 		width: 100vw;
 		height: calc(100vh - 100rpx - 116rpx - var(--status-bar-height));
 	}
-
-	.msg {
+	.msg{
 		width: 100%;
 		height: 88rpx;
 		background: #272A2E;
-		margin-top: -2rpx;
-		.msgleft {
+		/*padding-bottom: 20rpx;*/
+		.msgleft{
 			float: left;
 			margin-top: 16rpx;
-
-			.lefticon {
+			background: #272A2E;
+			.lefticon{
 				width: 40rpx;
 				height: 40rpx;
 				// border: 1rpx #333333 dashed;
 				padding: 10rpx;
 				margin-left: 10rpx;
 				float: left;
-
+				background: #272A2E;
 			}
-
-			.tradetype {
+			.tradetype{
 				height: 60rpx;
 				line-height: 60rpx;
-				font-weight: bold;
+				font-weight:bold;
 				margin-left: 10rpx;
-				color: #D9DADB;
 				font-family: PingFangSC-Semibold, PingFang SC;
-
+				color: #D9DADB;
+				background: #272A2E;
 			}
 		}
-
-		.msgright {
+		.msgright{
 			float: right;
 			margin-top: 24rpx;
-			color: #FFFFFF;
-
-			.righticon {
+			background: #272A2E;
+			.righticon{
 				width: 40rpx;
 				height: 40rpx;
 				margin-right: 10rpx;
-
+				background: #272A2E;
 			}
-
 			.change{
 				width: 116rpx;
 				height: 40rpx;
@@ -213,6 +230,7 @@
 				text-align: center;
 				margin-right: 20rpx;
 				border-radius: 5rpx;
+				background: #272A2E;
 			}
 			.change.up{
 				background-color: #FC3C5A;
@@ -222,22 +240,19 @@
 			}
 		}
 	}
-
-	.main {
+	.main{
+		/*margin-top: 20rpx;*/
 		padding-top: 20rpx;
-		padding-bottom: 20rpx;
 		width: 100%;
 		height: 654rpx;
-		background: #272A2E;
-		margin-top: -2rpx;
 		background: #22252A;
-		.left {
+		.left{
 			width: 50%;
 			height: 704rpx;
 			float: left;
 			overflow: hidden;
 			position: relative;
-
+			background: #22252A;
 			.buy{
 				width: 173.7rpx;
 				height: 76rpx;
@@ -249,6 +264,7 @@
 				overflow: hidden;
 				font-family: PingFangSC-Regular, PingFang SC;
 				color: #1A1A1A;
+				color:#D9DADB;
 				image{
 					width: 174rpx;
 					height: 76rpx;
@@ -259,7 +275,8 @@
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
-					color: #1A1A1A;
+					color:#D9DADB;
+
 				}
 				.income.active{
 					color: #FFFFFF;
@@ -288,7 +305,7 @@
 					text-align: center;
 					font-family: PingFangSC-Regular, PingFang SC;
 					font-size: 32rpx;
-					color: #1A1A1A;
+					color: #FFFFFF;
 				}
 				.income.active{
 					color: #FFFFFF;
@@ -297,131 +314,132 @@
 					transform: rotate(180deg);
 				}
 			}
-
-			.charge {
+			.charge{
 				width: 332rpx;
 				height: 76rpx;
 				float: left;
 				margin-left: 20rpx;
 				margin-top: 100rpx;
 				line-height: 76rpx;
+				border: 2rpx solid #E3E5E6;
 				border-radius: 76rpx;
 				position: absolute;
 				overflow: hidden;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				background: #3C3E49;
-
-				.sub {
+				color:#D9DADB;
+				.sub{
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: 1;
+					// z-index: -999;
 					top: 50%;
 					transform: translateY(-50%);
 					left: 30rpx;
+					// margin-left: 30rpx;
+					// margin-top: 20rpx;
 				}
-
-				.add {
+				.add{
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: 1;
+					// z-index: -999;
+					// margin-top: 20rpx;
+					// margin-left: 30rpx;
 					top: 50%;
 					transform: translateY(-50%);
 					right: 30rpx;
 					line-height: 76rpx;
 				}
-				.charge_name {
+				.fonts{
+					margin-left: 90rpx;
+				}
+				.charge_name{
 					font-size: 28rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #E3E5E6;
-					position: absolute;
-					z-index: 2;
+					color:#D9DADB;
+					// margin-left: 100rpx;
+					// background: darkblue;
 					width: 170rpx;
 					position: absolute;
 					top: 50%;
 					left: 50%;
 					text-align: center;
 					transform: translateX(-50%) translateY(-50%);
+
 				}
 
 			}
-
-			.num {
+			.num{
 				width: 332rpx;
 				height: 76rpx;
 				float: left;
 				margin-left: 20rpx;
 				margin-top: 230rpx;
 				line-height: 76rpx;
+				color: #E3E5E6;
+				border: 2rpx solid #E3E5E6;
 				border-radius: 76rpx;
 				position: absolute;
 				overflow: hidden;
 				font-family: PingFangSC-Regular, PingFang SC;
 				overflow: hidden;
 				font-size: 28rpx;
-				color: #FFFFFF;
-				background: #3C3E49;
-				.sub {
+				color: #E3E5E6;
+				.sub{
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: 1;
+					// z-index: -999;
 					top: 50%;
 					transform: translateY(-50%);
 					left: 30rpx;
 				}
-
-				.add {
+				.add{
 					width: 40rpx;
 					height: 40rpx;
 					position: absolute;
-					z-index: 1;
+					// z-index: -999;
 					top: 50%;
 					transform: translateY(-50%);
 					right: 30rpx;
 					line-height: 76rpx;
 				}
-
-				.fonts {
+				.fonts{
 					margin-left: 90rpx;
 				}
-
-				.charge_num {
+				.charge_num{
+					text-align: center;
 					font-size: 28rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #D9DADB;
+					color:#D9DADB;
 					// margin-left: 100rpx;
+					// background: darkblue;
 					width: 170rpx;
 					position: absolute;
 					top: 50%;
 					left: 50%;
-					text-align: center;
 					transform: translateX(-50%) translateY(-50%);
 				}
 			}
-
-			.hdunum {
+			.hdunum{
 				// width: 50%;
 				height: 34rpx;
 				font-size: 24rpx;
 				margin-left: 20rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #D9DADB;
+				color:#D9DADB;
 				margin-top: 320rpx;
 				opacity: 0.5;
 			}
-
-			.hdupercent {
+			.hdupercent{
 				margin-left: 20rpx;
 				display: flex;
 				position: absolute;
 				margin-top: -30rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #D9DADB;
-
-				.precent {
+				color:#D9DADB;
+				.precent{
 					margin-right: 12rpx;
 					margin-top: 50rpx;
 					width: 76rpx;
@@ -432,16 +450,15 @@
 					line-height: 38rpx;
 					font-size: 24rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #D9DADB;
+					color:#D9DADB;
 					opacity: 0.5;
 				}
 			}
-
-			.tradenum {
+			.tradenum{
 				margin-top: 90rpx;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #D9DADB;
+				color:#D9DADB;
 				margin-left: 20rpx;
 				float: left;
 				opacity: 0.5;
@@ -449,21 +466,19 @@
 					opacity: 1;
 				}
 			}
-
-			.number {
+			.number{
 				margin-top: 90rpx;
 				float: left;
 				margin-left: 20rpx;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				color: #D9DADB;
+				color:#D9DADB;
 			}
-
-			.buyit {
+			.buyit{
 				margin-top: 155rpx;
 				width: 348rpx;
 				height: 74rpx;
-				background: linear-gradient(to right, #004FA8, #007CD3, #25D4ED);
+				background: linear-gradient(to right,#004FA8,#007CD3,#25D4ED);
 				text-align: center;
 				line-height: 74rpx;
 				border-radius: 74rpx;
@@ -472,70 +487,59 @@
 				font-size: 32rpx;
 			}
 		}
-
-		.right {
+		.right{
 			width: 50%;
 			height: 704rpx;
 			float: right;
-
-			.charge_and_num {
+			background: #22252A;
+			.charge_and_num{
 				margin-left: 10rpx;
-
-				.money {
-					opacity: 0.5;
+				.money{
 					float: left;
 					font-size: 30rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #D9DADB;
+					color:#D9DADB;
 					margin-left: 20rpx;
 					overflow: hidden;
-				}
-
-				.lednum {
 					opacity: 0.5;
+				}
+				.lednum{
 					float: right;
 					font-size: 30rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #D9DADB;
+					color:#D9DADB;
 					margin-right: 20rpx;
 					overflow: hidden;
+					opacity: 0.5;
 				}
 			}
-
-			.charge_exchange {
+			.charge_exchange{
 				width: 100%;
 				height: 100rpx;
-				// border-top: 2rpx solid #E3E5E6;
-				// border-bottom: 2rpx solid #E3E5E6;
-				
-				box-shadow: 0px 1rpx 0px 0px rgba(255, 255, 255, 0.1), 0px -1rpx 0px 0px rgba(255, 255, 255, 0.1);
+				border-top: 2rpx solid #F9FAFA;
+				border-bottom: 2rpx solid #F9FAFA;
 				line-height: 50rpx;
 				margin-left: 20rpx;
 				margin-bottom: 10rpx;
 				margin-top: 10rpx;
-
-				.exchange_rate1 {
+				.exchange_rate1{
 					font-size: 30rpx;
 					color: #FC3C5A;
 					font-weight: bold;
-					
 				}
-
-				.exchange_rate2 {
+				.exchange_rate2{
+					opacity: 0.5;
 					font-size: 24rpx;
 					font-family: PingFangSC-Regular, PingFang SC;
-					color: #D9DADB;
-					opacity: 0.5;
+					color:#D9DADB;
 				}
 			}
-
-			.icon_list {
+			.icon_list{
 				width: 400rpx;
 				height: 51rpx;
 				display: flex;
 				margin-top: 10rpx;
-
-				.icon_item {
+				.icon_item{
 					width: 50rpx;
 					height: 50rpx;
 					margin-left: 60rpx;
@@ -543,101 +547,90 @@
 			}
 		}
 	}
-
-	.line {
+	.line{
 		width: 100%;
 		height: 20rpx;
-		
-		background: #22252A;
-		margin-top: -2rpx;
+		background-color: #F9FAFA;
+		margin-top: 20rpx;
 	}
-
-	.footer {
-		margin-top: -2rpx;
+	.footer{
 		padding-top: 20rpx;
-		background: #F9FAFA;
+		/*background: #F9FAFA;*/
 		width: 100%;
-		// height: calc(100vh - 638rpx);
 		background: #22252A;
-		.descript {
+		height: calc(100vh - var(--status-bar-height) - 1038rpx);
+		.descript{
 			font-size: 32rpx;
 			font-weight: bold;
 			margin-left: 20rpx;
-			color: #D9DADB;
+			color:#D9DADB;
 			font-family: PingFangSC-Semibold, PingFang SC;
 			// padding-top: calc(100rpx+var(--status-bar-height));
 			// height: calc(100vh-var(--status-bar-height)-100rpx);
 			float: left;
 		}
-
-		.img {
+		.img{
 			width: 250rpx;
 			height: 250rpx;
-			margin-top: 60rpx;
+			margin-top:60rpx;
 			margin-left: 100rpx;
 		}
-
-		.footer_data {
+		.footer_data{
 			width: 100%;
 			text-align: center;
 			font-size: 24rpx;
-			color: #BEBEBE;
+			color:#BEBEBE ;
 			padding-bottom: 50rpx;
 		}
-
-		.historylog {
+		.historylog{
 			float: right;
 			margin-right: 20rpx;
 			height: 40rpx;
 			margin-bottom: 20rpx;
-
-			.clock {
+			.clock{
 				width: 32rpx;
 				height: 30rpx;
 				float: left;
 				line-height: 40rpx;
 				margin-right: 10rpx;
 			}
-			.fontlog {
+			.fontlog{
 				width: 112rpx;
 				height: 40rpx;
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
-				font-weight: 400;		
-				color: #D9DADB;
+				font-weight: 400;
+				color:#D9DADB;
 				line-height: 30rpx;
 				float: left;
 				opacity: 0.5;
 			}
 		}
-
-		.historyloglist {
-			height: calc(100vh - var(--status-bar-height) - 1050rpx );
+		.historyloglist{
+			height: calc(100vh - var(--status-bar-height) - 1050rpx);
+			// height: 250rpx;
 		}
 	}
-
-	.blackindex {
+	.blackindex{
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: calc(100vh);
-		background: rgba(0, 0, 0, 0.6);
+		background: rgba(0,0,0,0.6);
 		z-index: 10;
 		overflow: hidden;
-
-		.whiteindex {
+		.whiteindex{
 			position: fixed;
 			top: 0;
 			left: 0;
-			background: #272A2E;
-			box-shadow: 0px -2px 0px 0px rgba(0, 0, 0, 0.05);
+			background: #FFFFFF;
+			box-shadow: 0px -2rpx 0px 0px rgba(0, 0, 0, 0.05);
 			width: 80%;
 			height: calc(100vh);
 			z-index: 20;
 			opacity: 1;
-
-			.time {
+			.time{
 				width: 108rpx;
 				height: 36rpx;
 				font-size: 30rpx;
@@ -648,27 +641,24 @@
 				margin-top: 42rpx;
 				text-align: center;
 			}
-
-			.whitefont {
+			.whitefont{
 				width: 136rpx;
 				height: 48rpx;
 				font-size: 34rpx;
 				font-family: PingFangSC-Medium, PingFang SC;
 				font-weight: 500;
-				color: #D9DADB;
+				color: #1A1A1A;
 				line-height: 48rpx;
 				margin-left: 30rpx;
 				margin-top: 30rpx;
 				margin-bottom: 30rpx;
 			}
-
-			.listh {
+			.listh{
 				width: 100%;
 				height: calc(100vh - 100rpx);
 			}
 		}
-
-		.rightmsg {
+		.rightmsg{
 			width: 20%;
 			height: 100%;
 			float: right;

@@ -23,6 +23,14 @@
 				bgc:"#FEEBEE",
 				fonts_color:"#FC3C5A"
 			},
+			blackgreen:{
+				bgc:"#2D453C",
+				fonts_color:"#5BC788"
+			},
+			blackred:{
+				bgc:"rgba(252, 60, 90,0.1)",
+				fonts_color:"#FC3C5A"
+			},
 
 			tradePrice:'',
 			tradeNum:'',
@@ -192,7 +200,18 @@
             ],
 		}
 	  },
-	  
+	  onLoad(options) {
+		  if(options.code){
+			  this.selectedTradeName={
+				  code:options.code
+			  }
+		  }
+		// this.details_msg_list = JSON.parse(options.details_list).reverse();
+		// console.log(details_msg_list);
+		// this.id = options.id
+		// console.log(this.details_msg_list);
+		// console.log(this.id)
+	},
 	  computed:{
 		tradeListData(){
 			return this.$store.state.tradeData.tradePairData;

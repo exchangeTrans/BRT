@@ -95,7 +95,6 @@ export const mySocket={
         
     },
     upDataKlineData(data){
-        console.log(data)
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
         let tick = data.tick;
@@ -114,7 +113,6 @@ export const mySocket={
                     ...KLineTradingPair,
                     dataArray:dataArray
                 }
-                console.log(dataArray)
                 store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
             }
             // let KLineTradingPairObj = {
@@ -174,9 +172,11 @@ export const mySocket={
             let bids = data.tick.bids;
             asks = mySocket.handleDeepData(asks);
             bids = mySocket.handleDeepData(bids);
+            
             let KLineTradingPairObj = {
                 ...KLineTradingPair,
                 depth:{
+
                     asks, 
                     bids
                 }

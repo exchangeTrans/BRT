@@ -9,7 +9,7 @@
                     <view class="countryChoice"
                           @tap="toChooseCountry">
                         <view class="chountryChoiceIcon" :style="{'background-image': countryIcon}"></view>
-                        <view class="countryText">{{country}}
+                        <view class="countryText">{{chooseCountry.titleCN}}
                         </view>
                         <view class="lastCountryIcon" :style="{'background-image': lastCountryIcon}"></view>
                     </view>
@@ -119,7 +119,7 @@
         .scrollWrap {
             width: 100%;
             box-sizing: border-box;
-            height: calc(100vh - var(--status-bar-height));
+            height: 100%;
 
             .wrap {
                 display: block;

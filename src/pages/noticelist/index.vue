@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<noticehead :headerOptions="headerOptions" class="headstyle"></noticehead>
+		<noticehead :headerOptions="headerOptions" ></noticehead>
 		<scroll-view class="notice_list" scroll-y v-if="notice_list.length>0">
 			<view v-for="(item,id) in notice_list" :key="item.id" @click="gonoticedetails(id)">
-				<noticeitem :noticeOptions="item"></noticeitem>
+				<noticeitem :noticeOptions="item" :isBlack="false"></noticeitem>
 			</view>
 		</scroll-view>
 		<view class="setcenter" v-else>
@@ -20,12 +20,9 @@
 </script>
 
 <style lang="less">
-	.headstyle{
-		padding-top:calc(var(--status-bar-height));
-	}
 	.notice_list{
 		padding-top:calc(100rpx + var(--status-bar-height));
-		height: calc(100vh - 100rpx - var(--status-bar-height));
+		height: calc(100vh - var(--status-bar-height));
 		box-sizing: border-box;
 	}
 	.setcenter{
