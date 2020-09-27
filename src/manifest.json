@@ -54,7 +54,8 @@
                 "ad" : {}
             }
         },
-        "compilerVersion" : 2
+        "compilerVersion" : 2,
+        "nvueLaunchMode" : "fast"
     },
     /* SDK配置 */
     "quickapp" : {},
