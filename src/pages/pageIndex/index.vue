@@ -61,6 +61,6 @@
 	.pageIndex{
 		width: 100vw;
 		height: 100vh;
-		background: #EEEFEF;
+		background: #fff;
 	}
 </style>
