@@ -19,12 +19,13 @@ export default{
     },
     methods:{
         copymsg(){
-            var clipboard = new this.Clipboard('.email')
-            clipboard.on('success', e => {
-                this.$toast.show({
-                    title: '复制成功',
-                })
-            })
+            let text = this.emailadress
+            uni.setClipboardData({
+                data:text,
+                success: (res) => {
+                    console.log("succeed");
+                }
+            });
         }
     },
     mounted() {

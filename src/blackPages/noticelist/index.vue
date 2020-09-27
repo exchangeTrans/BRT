@@ -54,7 +54,6 @@
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
 				font-weight: 400;
-				color: #000000;
 				line-height: 40rpx;
 				text-align: center;
 				opacity: 0.5;

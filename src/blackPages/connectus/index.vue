@@ -12,9 +12,8 @@
         <view class="relation">
             <view class="relationus">联系我们</view>
             <view class="main">
-                <view class="email" @click="copymsg" :data-clipboard-text="this.emailadress">{{emailadress}}
-                    <image src="../../static/images/connectus/email.png" mode="" class="img"></image>
-                </view>
+                <view class="email">{{emailadress}}</view>
+                <image src="../../static/images/connectus/email.png" mode="" class="img" @click="copymsg"></image>
             </view>
         </view>
     </view>
@@ -96,7 +95,7 @@
                 margin-left: 30rpx;
                 margin-top: 20rpx;
                 float: left;
-                width: 90%;
+                /*width: 90%;*/
             }
             .img{
                 width: 27.96rpx;
@@ -104,7 +103,7 @@
                 float: right;
                 margin-right: 32rpx;
                 background: #272A2E;
-                margin-top: 10rpx;
+                margin-top: 26rpx;
             }
         }
     }

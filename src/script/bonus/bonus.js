@@ -80,7 +80,6 @@ export default {
                 isAllowReturn: true,
                 isWhiteIcon: true,
                 text: "矿池分红",
-
                 rightItem: {
                     type: "text",
                     text: "",

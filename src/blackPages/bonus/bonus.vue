@@ -57,8 +57,11 @@
             </view>
             <earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="isBlack"  v-if="!isNoDataFlag"></earningsRecordList>
             <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"     v-if="!isNoDataFlag"></uni-load-more>
-            <view class="noDataBox"  v-if="isNoDataFlag">
-                <noData></noData>
+            <view class="setcenter" v-else>
+                <view class="nologimg">
+                    <image src="../../static/images/nohistorylog/nohistorylog.png" mode="" class="img"></image>
+                    <view class="item">暂无数据</view>
+                </view>
             </view>
         </scroll-view>
     </view>
@@ -210,10 +213,35 @@
                         color: #D9DADB !important;
                     }
                 }
-
-                .noDataBox {
-                    position: relative;
-                }
+            }
+        }
+    }
+    .setcenter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 520rpx - var(--status-bar-height));
+        .nologimg{
+            text-align: center;
+            vertical-align: middle;
+            .img{
+                width: 530rpx;
+                height: 400rpx;
+                margin-left:auto;
+                margin-right:auto
+            }
+            .item{
+                width: 100%;
+                height: 40rpx;
+                font-size: 28rpx;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #D9DADB;
+                line-height: 40rpx;
+                text-align: center;
+                opacity: 0.5;
+                margin-left:auto;
+                margin-right:auto
             }
         }
     }
