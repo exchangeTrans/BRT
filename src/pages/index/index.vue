@@ -30,7 +30,7 @@
 				<view class="clearfix"></view>
 			</view>
 			<view class="advertising" :style="{'background-image':'url('+advertising+')'}">
-				广告位
+				<!-- 广告位 -->
 			</view>
 
 			<view class="performer">
