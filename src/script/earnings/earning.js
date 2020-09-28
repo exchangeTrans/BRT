@@ -156,10 +156,10 @@ export default {
 			}).then((res) => {
 				this.userdata.financeBalance = res.data.financeBalance,
 					this.userdata.loan = res.data.loan,
-					this.userdata.maxDawndown = res.data.maxDawndown,
+					this.userdata.maxDawndown = res.data.maxDawndown+'%',
 					this.userdata.minLimit = res.data.minLimit,
-					this.userdata.stopLoseRate = res.data.stopLoseRate,
-					this.userdata.stopWinRate = res.data.stopWinRate,
+					this.userdata.stopLoseRate = res.data.stopLoseRate+'%',
+					this.userdata.stopWinRate = res.data.stopWinRate+'%',
 					this.userdata.usdtBalance = res.data.usdtBalance,
 					this.userdata.interestRateDay = res.data.interestRateDay,
 					this.userdata.interestRate = res.data.interestRate

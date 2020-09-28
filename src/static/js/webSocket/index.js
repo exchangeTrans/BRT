@@ -50,35 +50,10 @@ export const mySocket={
             }else{
                 mySocket.onopen();
             }
-            // // console.log(res)
-            // // setTimeout(function () {
-            
-            //     // }, 2000)    
-            // // console.log(store.state)
-            // toast.show({title:"WebSocket连接已打开！"});
-            // console.log('WebSocket连接已打开！');
         });
         uni.onSocketMessage(function (res) {
             let data = JSON.parse(res.data);
             mySocket.upData(data);
-            // console.log(JSON.parse(res.data))
-            //             ch: "market.ethusdt.detail"
-            // symbol: "ethusdt"
-            // tick:
-            // amount: 797466.8367888945
-            // close: 335.3
-            // count: 418752
-            // high: 343.45
-            // id: 219018751981
-            // low: 313.41
-            // open: 341.68
-            // ts: 0
-            // version: 219018751981
-            // vol: 262151886.003173
-            // __proto__: Object
-            // ts: 1600953565024
-            // toast.show({title:"收到消息"});
-            // console.log('收到服务器内容：' + res.data);
         });
         uni.onSocketError(function (res) {
             mySocket.createSocket();
@@ -86,15 +61,35 @@ export const mySocket={
     },
     upData(data){
         let ch = data.ch;
-        if(ch.indexOf('detail')>-1&&data.tick){
-            mySocket.upDataRangeData(data)
+        if(ch.indexOf('trade.detail')>-1&&data.tick){
+            mySocket.upDataDetailData(data)
         }else if(ch.indexOf('depth')>-1){
             mySocket.upDataDepthData(data)
         }else if(ch.indexOf('kline')>-1){
             mySocket.upDataKlineData(data)
+        }else if(ch.indexOf('detail')>-1){
+            mySocket.upDataRangeData(data)
         }
+        // console.log(data)
         
     },
+    //成交明细订阅
+    upDataDetailData(data){
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let symbol = data.symbol;
+        let tick = data.tick;
+        let OldDetail = KLineTradingPair.detail;
+        if(KLineTradingPair.id===symbol){
+            let detail = data.tick.data.concat(OldDetail);
+            let newData = detail.slice(0,10)
+            let KLineTradingPairObj = {
+                ...KLineTradingPair,
+                detail:newData
+            }
+            store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+        }
+    },
+
     upDataKlineData(data){
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
@@ -260,8 +255,25 @@ export const mySocket={
                                 
         });
         mySocket.subscribeDepth();
-        mySocket.subscribeKline('1min')
+        mySocket.subscribeKline('1min');
+        mySocket.subscribeDetail()
         
+    },
+    subscribeDetail(item){
+        let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
+
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".trade.detail"
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            // period:"1min",
+            id: 'markettradeDetail',
+            isLocal:KLineTradingPair.isLocal
+            
+        } 
+        mySocket.subscribe(data); 
     },
     subscribeDepth(item){
         let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;

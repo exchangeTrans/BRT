@@ -53,7 +53,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: calc(100vh - var(--status-bar-height) - 100rpx);
+		height: calc(100vh - var(--status-bar-height));
 		.datacontent{
 			padding-top: calc(100rpx + var(--status-bar-height));
 		}

@@ -77,7 +77,6 @@
                     let newData = bids.map(function (item,index) {
                         return {bids:item,asks:asks[index]}                   
                     });
-                    console.log(newData)
                     this.tableData = newData;
                 }
                 

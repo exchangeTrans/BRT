@@ -109,7 +109,7 @@
                     headerIsNoBoder: false,
                 },
                 chartTabArray:[
-                    {code:'1min',name:"1分",id:''},
+                    {code:'5min',name:"5分",id:''},
                     {code:'15min',name:"15分",id:''},
                     {code:'60min',name:"1小时",id:''},
                     {code:'4hour',name:"4小时",id:''},
@@ -118,7 +118,7 @@
                     // {code:'7',name:"指标",id:''},
                     // 1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
                 ],
-                chartTabSelect:{code:'1min',name:"1分",id:''},
+                chartTabSelect:{code:'5min',name:"5分",id:''},
                 tableTabArray:[
                     {code:'table1',name:"买单/卖单",id:''},
                     {code:'table2',name:"最新成交",id:''},
