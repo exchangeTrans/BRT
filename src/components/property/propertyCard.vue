@@ -76,7 +76,8 @@
             propertyOption: {
                 type: Array,
                 default: () => [],
-            }
+            },
+            drawSymbol: {},
         },
         computed: {
             nameIcon() {
@@ -97,7 +98,7 @@
                 }
 
             },
-		
+
             selectedCurrency(){
                 return this.$store.state.defaultData.selectedCurrency;
             },
@@ -115,7 +116,7 @@
                 }
 
             },
-            
+
         },
         data() {
             return {}
@@ -124,6 +125,11 @@
             click(symbolType,url) {
                 let symbolName = this.propertyCardData.name
                 this.$store.commit("setSymbolType", {"symbolType": symbolType, "name": symbolName})
+                if (url.toString() === "receipt/index") {
+                    this.drawSymbol.drawList
+                    console.log(this.drawSymbol.drawList)
+                    console.log(this.drawSymbol.drawList.contain(symbolType))
+                }
 
                 if(url !== ''){
                     this.$jumpPage.jump({
