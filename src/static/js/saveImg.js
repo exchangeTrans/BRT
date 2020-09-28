@@ -1,6 +1,6 @@
 const saveImg = {
     //获取相册授权
-    getPhoneAuth: function (imgUrl) {
+    getPhoneAuth(imgUrl) {
         debugger
         uni.getSetting({
                 success(res) {

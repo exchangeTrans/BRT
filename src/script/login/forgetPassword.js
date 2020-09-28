@@ -287,6 +287,7 @@ export default {
             }
         },
         sendSmsVerify(name) {
+            // debugger
             let that = this;
             if (!this[name]) {
                 let sendCodeData = this.getSendCodeData();
@@ -365,7 +366,7 @@ export default {
                 if (that[tempAccountType] < 0) {
                     that[tempName] = "重新发送";
                     that[tempAccountType] = 60;
-                    that.getCodeStatus = false;
+                    that[tempName] = false;
                     clearInterval(interval);
                 }
             }, 1000);
