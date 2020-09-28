@@ -40,7 +40,7 @@
                                       :column="2"
                                       :propertyOption="propertyOption"></PropertyCard>
                     </view>
-                </view>r
+                </view>
             </view>
         </scroll-view>
         <pageFooter/>

@@ -75,7 +75,6 @@ export const mySocket={
     },
     //成交明细订阅
     upDataDetailData(data){
-        console.log(data)
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
         let tick = data.tick;
