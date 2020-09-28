@@ -91,7 +91,8 @@ export default {
                     text: "获取验证码",
                 },
                 name: "verifyCode",
-            }
+            },
+            isAllowClick:true,
         }
     },
     mounted() {
@@ -293,6 +294,9 @@ export default {
             if (!this.btnCanClick) {
                 return
             }
+            if(!this.isAllowClick){
+                return
+            }
             let symbolType = this.$store.state.wallet.symbolType
 
             // 校验数据
@@ -308,34 +312,43 @@ export default {
                 })
                 return;
             }
+            this.isAllowClick = false;
+            this.$toast.showLoading({
+                title:'提币中'
+            })
+            let that = this;
             this.$request({
                 url: "wallet/validateAddress",
                 method: "post",
                 params: {
                     symbolType: symbolType.symbolType,
-                    address: this.postData.address
+                    address: that.postData.address
                 }
             }).then(res => {
-                if (res.resul.returnCode.toString() === "0" && res.data.validate.toString() === "0") {
+                that.postData.symbolType=symbolType.symbolType;
+                if (res.result.returnCode.toString() === "0" && res.data.validate.toString() === "0") {
                     this.$request({
                         url: "wallet/transfer",
                         method: "post",
-                        params: this.postData,
+                        params: that.postData,
                     }).then((res) => {
+                        that.isAllowClick = true;
+                        that.$toast.hideLoading()
                         if (res.result.returnCode.toString() === "0") {
                             that.postData.verifyKey = res.data.verifyKey;
-                            this.$jumpPage.jump({
+                            that.$jumpPage.jump({
                                 url: "index/index",
                                 type: "navigateTo"
                             })
                         } else {
-                            this.$toast.show({
+                            that.$toast.show({
                                 title: res.result.returnMessage,
                             })
                         }
                     })
                 } else {
-                    this.$toast.show({
+                    that.isAllowClick = true;
+                    that.$toast.show({
                         title: "请先输入正确的提币地址"
                     })
                 }

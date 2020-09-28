@@ -118,7 +118,8 @@ const http = ({
                 //     // }
                 // }
                 if (res[1].statusCode&&res[1].statusCode.toString() === "200") {
-                    if(res[1].data&&res[1].data.result&&res[1].data.result.returnCode&&res[1].data.result.returnCode.toString()===('10032'||"10032")){
+                    // debugger
+                    if(res[1].data&&res[1].data.result&&res[1].data.result.returnCode&&(res[1].data.result.returnCode.toString()==='10032'||res[1].data.result.returnCode.toString()==="10031")){
                         let loginMsg = {
                             isLogin:false,
                             userLoginId:'',
