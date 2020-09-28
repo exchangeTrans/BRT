@@ -36,6 +36,7 @@
                           :key="index">
                         <PropertyCard :propertyCardData="item"
                                       :column="2"
+                                      :drawSymbol="drawSymbol"
                                       :propertyOption="propertyOption" :isBlack="isBlack"></PropertyCard>
                     </view>
                 </view>

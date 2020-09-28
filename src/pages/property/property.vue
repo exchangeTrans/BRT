@@ -36,10 +36,11 @@
                           v-for="(item, index) in propertyCardData"
                           :key="index">
                         <PropertyCard :propertyCardData="item"
+                                      :drawSymbol="drawSymbol"
                                       :column="2"
                                       :propertyOption="propertyOption"></PropertyCard>
                     </view>
-                </view>
+                </view>r
             </view>
         </scroll-view>
         <pageFooter/>
@@ -53,7 +54,7 @@
         width: 100vw;
         height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
-        
+
         .appHeader {
             top: 0;
             background: #fff;
