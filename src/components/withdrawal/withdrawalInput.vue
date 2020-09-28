@@ -17,8 +17,8 @@
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
                                 <span>{{inputData.rightItem.text}}</span>
                             </view>
-                            <view class="isIcon" v-if="inputData.rightItem.type === 'isIcon'" @tap="btnClick">
-                                <image :src="scan"></image>
+                            <view class="isIcon" v-if="inputData.rightItem.type === 'isIcon'" ><!--@tap="btnClick"-->
+                                <!--<image :src="scan"></image>-->
                             </view>
                             <view class="isBtn" v-if="inputData.rightItem.type === 'isBtn'" @tap="btnClick">
                                 <span>{{inputData.rightItem.text}}</span>
@@ -54,7 +54,7 @@
             },
         },
         computed:{
-              
+
         },
         data() {
             return {

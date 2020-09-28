@@ -17,9 +17,9 @@
                               :style="{'background-image':'url('+selectedIcon+')'}"
                               v-if="selectedItem.countryCode === item.countryCode">
                         </view>
-                        <!--<view class="areaCode">
-                            ({{item.AreaCode}})
-                        </view>-->
+                        <view class="areaCode">
+                            (+{{item.dialingCode}})
+                        </view>
                     </view>
                 </view>
             </view>
