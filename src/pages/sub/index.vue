@@ -48,7 +48,7 @@
 
 				<view class="earningsItem" v-for="(item,index) in subRecord" :key="index">
 					<view class="accruedIncome">
-						{{$t('sub').accumulatedIncome}}：<span>{{item.bounsAmount}}  BRt</span>
+						{{$t('sub').accumulatedIncome}}：<span>{{item.bounsAmount}}  BRT</span>
 					</view>
 					<view class="nums">
 						{{$t('sub').pledgeNumber}}：{{item.holdAmount}} BRT

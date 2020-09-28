@@ -30,7 +30,6 @@
 					<view class="num">{{teamData.teamQty}}</view>
 				</view>
 			</view>
-
 		</view>
 		<view class="invitelog">
 			<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
@@ -71,223 +70,225 @@
 		width: 100%;
 		height: 100%;
 		// padding-top: calc(100rpx + var(--status-bar-height));
-	}
-	.headbg{
-		position: relative;
-		width: 100%;
-		height: 506rpx;
-		background: linear-gradient(to right,#004FA8,#007CD3,#25D4ED);
-		border-bottom-left-radius: 50rpx;
-		border-bottom-right-radius: 50rpx;
-	}
-	.headname{
-		font-size: 36rpx;
-		color: #FFFFFF;
-		font-family: PingFangSC-Semibold, PingFang SC;
-	}
-	.usermsgcon{
-		position: absolute;
-		width: 100%;
-		//height: 120rpx;
-		padding-left:40rpx;
-		box-sizing: border-box;
-		/*margin-top: 10rpx;*/
-		line-height: 120rpx;
-		/*margin-left: 40rpx;*/
-		padding-top: var(--status-bar-height);
-		.headphoto{
-			width: 118rpx;
-			height: 118rpx;
-			border-radius: 140rpx;
-			margin-top: 140rpx;
-			float: left;
-		}
-		.usermsg{
-			width: 60rpx;
-			height: 60rpx;
-			float: left;
-			line-height: 60rpx;
-			margin-left: 20rpx;
-			.username{
-				color: #FFFFFF;
-				margin-top: 140rpx;
+		.headbg{
+			position: relative;
+			width: 100%;
+			height: 506rpx;
+			background: linear-gradient(to right,#004FA8,#007CD3,#25D4ED);
+			border-bottom-left-radius: 50rpx;
+			border-bottom-right-radius: 50rpx;
+			.headname{
 				font-size: 36rpx;
+				color: #FFFFFF;
 				font-family: PingFangSC-Semibold, PingFang SC;
-				font-weight: 600;
 			}
-			.userid{
-				color: #C0C0C0;
-				font-size: 28rpx;
-				font-family: PingFangSC-Regular, PingFang SC;
-				opacity: 0.6;
-				font-weight: 400;
+			.usermsgcon{
+				position: absolute;
+				width: 100%;
+				//height: 120rpx;
+				padding-left:40rpx;
+				box-sizing: border-box;
+				/*margin-top: 10rpx;*/
+				line-height: 120rpx;
+				/*margin-left: 40rpx;*/
+				padding-top: var(--status-bar-height);
+				.headphoto{
+					width: 118rpx;
+					height: 118rpx;
+					border-radius: 140rpx;
+					margin-top: 140rpx;
+					float: left;
+				}
+				.usermsg{
+					width: 60rpx;
+					height: 60rpx;
+					float: left;
+					line-height: 60rpx;
+					margin-left: 20rpx;
+					.username{
+						color: #FFFFFF;
+						margin-top: 140rpx;
+						font-size: 36rpx;
+						font-family: PingFangSC-Semibold, PingFang SC;
+						font-weight: 600;
+					}
+					.userid{
+						color: #C0C0C0;
+						font-size: 28rpx;
+						font-family: PingFangSC-Regular, PingFang SC;
+						opacity: 0.6;
+						font-weight: 400;
+					}
+				}
+				.incomelog{
+					width: 116rpx;
+					height: 48rpx;
+					font-size: 30rpx;
+					line-height: 40rpx;
+					background: #FFFFFF;
+					border-radius: 24rpx;
+					float: right;
+					margin-top: 154rpx;
+					margin-right: 60rpx;
+					display: flex;
+					align-items: center;
+					.crown{
+						width: 40rpx;
+						height: 32rpx;
+						margin-left: 25rpx;
+						margin-right: 15rpx;
+
+					}
+					.grade{
+						line-height: 28rpx;
+						font-size: 28rpx;
+						font-family: PingFangSC-Medium, PingFang SC;
+						font-weight: 500;
+						color: #098FE0;
+					}
+				}
+			}
+			.teammsg{
+				width: 100%;
+				height: 100rpx;
+				// padding-top: calc(100rpx + var(--status-bar-height));
+				.teamablity{
+					height: 100rpx;
+					width: 200rpx;
+					color: #FFFFFF;
+					position: absolute;
+					border-right: 2rpx #ccc solid;
+					margin-top: 350rpx;
+					margin-left: 50rpx;
+					text-align: center;
+				}
+				.teamtoday{
+					height: 100rpx;
+					width: 200rpx;
+					color: #FFFFFF;
+					position: absolute;
+					border-right: 2rpx #ccc solid;
+					margin-top: 350rpx;
+					margin-left: 270rpx;
+					text-align: center;
+				}
+				.teamyestoday{
+					height: 100rpx;
+					width: 200rpx;
+					color: #FFFFFF;
+					position: absolute;
+					margin-top: 350rpx;
+					margin-left: 490rpx;
+					text-align: center;
+				}
+				.descrip{
+					font-size: 28rpx;
+					margin-bottom: 18rpx;
+					opacity: 0.8;
+					font-family: PingFangSC-Regular, PingFang SC;
+					font-weight: 400;
+					color: #FFFFFF;
+				}
+				.num{
+					font-size: 32rpx;
+					font-family: PingFangSC-Semibold, PingFang SC;
+					font-weight: 600;
+					color: #FFFFFF;
+				}
 			}
 		}
-		.incomelog{
-			width: 116rpx;
-			height: 48rpx;
-			font-size: 30rpx;
-			line-height: 40rpx;
-			background: #FFFFFF;
-			border-radius: 24rpx;
-			float: right;
-			margin-top: 154rpx;
-			margin-right: 60rpx;
-			display: flex;
-			align-items: center;
-			.crown{
-				width: 40rpx;
+		.invitelog{
+			padding-bottom: 30rpx;
+			clear: both;
+			width: 100%;
+			height: 160rpx;
+			margin-top: -45rpx;
+			.img{
+				width: 32rpx;
 				height: 32rpx;
-				margin-left: 25rpx;
-				margin-right: 15rpx;
-				
+				float: left;
+				margin-left: 20rpx;
+				margin-right: 10rpx;
+				margin-top: 110rpx;
+			}
+			.log{
+				font-weight: bold;
+				font-size: 36rpx;
+				color: #262626;
+				font-family: PingFangSC-Medium, PingFang SC;
+				line-height: 250rpx;
+			}
+		}
+		.datalisthead{
+			width: 100%;
+			height: 100rpx;
+			background-color: #F9FAFA;
+			font-size: 28rpx;
+			line-height: 100rpx;
+			font-family: PingFangSC-Regular, PingFang SC;
+			color: #1A1A1A;
+			.count{
+				margin-left: 40rpx;
+				float: left;
+				font-family: PingFangSC-Regular, PingFang SC;
+				color: #1A1A1A;
+			}
+			.memberid{
+				margin-left: 205rpx;
+				float: left;
+				font-family: PingFangSC-Regular, PingFang SC;
+				color: #1A1A1A;
 			}
 			.grade{
-				line-height: 28rpx;
+				margin-left: 530rpx;
+				font-family: PingFangSC-Regular, PingFang SC;
+				color: #1A1A1A;
+			}
+		}
+		.datalist{
+			font-size: 28rpx;
+			width: 100%;
+			height: 100rpx;
+			line-height: 100rpx;
+			font-family: PingFangSC-Regular, PingFang SC;
+			color: #1A1A1A;
+			.flag{
+				width: 50rpx;
+				height: 34rpx;
+				float: left;
+				margin-top: 30rpx;
+				margin-left: 20rpx;
+			}
+			.count{
+				margin-left: 20rpx;
+				float: left;
 				font-size: 28rpx;
-				font-family: PingFangSC-Medium, PingFang SC;
-				font-weight: 500;
-				color: #098FE0;
+				font-family: PingFangSC-Regular, PingFang SC;
+				margin-top: -5rpx;
+			}
+			.memberid{
+				margin-left: 80rpx;
+				float: left;
+				font-size: 28rpx;
+				font-family: PingFangSC-Regular, PingFang SC;
+				margin-top: -5rpx;
+			}
+			.grade{
+				margin-left: 560rpx;
+				font-size: 28rpx;
+				font-family: PingFangSC-Regular, PingFang SC;
+				margin-top: -5rpx;
+			}
+		}
+		.scrollh{
+			width: 100%;
+			height: calc(100vh - 715rpx - var(--status-bar-height));
+			.noDataBox {
+				position: relative;
 			}
 		}
 	}
-	.teammsg{
-		width: 100%;
-		height: 100rpx;
-		// padding-top: calc(100rpx + var(--status-bar-height));
-		.teamablity{
-			height: 100rpx;
-			width: 200rpx;
-			color: #FFFFFF;
-			position: absolute;
-			border-right: 2rpx #ccc solid;
-			margin-top: 350rpx;
-			margin-left: 50rpx;
-			text-align: center;
-		}
-		.teamtoday{
-			height: 100rpx;
-			width: 200rpx;
-			color: #FFFFFF;
-			position: absolute;
-			border-right: 2rpx #ccc solid;
-			margin-top: 350rpx;
-			margin-left: 270rpx;
-			text-align: center;
-		}
-		.teamyestoday{
-			height: 100rpx;
-			width: 200rpx;
-			color: #FFFFFF;
-			position: absolute;
-			margin-top: 350rpx;
-			margin-left: 490rpx;
-			text-align: center;
-		}
-		.descrip{
-			font-size: 28rpx;
-			margin-bottom: 18rpx;
-			opacity: 0.8;
-			font-family: PingFangSC-Regular, PingFang SC;
-			font-weight: 400;
-			color: #FFFFFF;
-		}
-		.num{
-			font-size: 32rpx;
-			font-family: PingFangSC-Semibold, PingFang SC;
-			font-weight: 600;
-			color: #FFFFFF;
-		}
-	}
-	.invitelog{
-		margin-top: ;
-		padding-bottom: 30rpx;
-		clear: both;
-		width: 100%;
-		height: 160rpx;
-		margin-top: -45rpx;
-		.img{
-			width: 32rpx;
-			height: 32rpx;
-			float: left;
-			margin-left: 20rpx;
-			margin-right: 10rpx;
-			margin-top: 110rpx;
-		}
-		.log{
-			font-weight: bold;
-			font-size: 36rpx;
-			color: #262626;
-			font-family: PingFangSC-Medium, PingFang SC;
-			line-height: 250rpx;
-		}
-	}
-	.datalisthead{
-		width: 100%;
-		height: 100rpx;
-		background-color: #F9FAFA;
-		font-size: 28rpx;
-		line-height: 100rpx;
-		font-family: PingFangSC-Regular, PingFang SC;
-		color: #1A1A1A;
-		.count{
-			margin-left: 40rpx;
-			float: left;
-			font-family: PingFangSC-Regular, PingFang SC;
-			color: #1A1A1A;
-		}
-		.memberid{
-			margin-left: 205rpx;
-			float: left;
-			font-family: PingFangSC-Regular, PingFang SC;
-			color: #1A1A1A;
-		}
-		.grade{
-			margin-left: 530rpx;
-			font-family: PingFangSC-Regular, PingFang SC;
-			color: #1A1A1A;
-		}
-	}
-	.datalist{
-		font-size: 28rpx;
-		width: 100%;
-		height: 100rpx;
-		line-height: 100rpx;
-		font-family: PingFangSC-Regular, PingFang SC;
-		color: #1A1A1A;
-		.flag{
-			width: 50rpx;
-			height: 34rpx;
-			float: left;
-			margin-top: 30rpx;
-			margin-left: 20rpx;
-		}
-		.count{
-			margin-left: 20rpx;
-			float: left;
-			font-size: 28rpx;
-			font-family: PingFangSC-Regular, PingFang SC;
-			margin-top: -5rpx;
-		}
-		.memberid{
-			margin-left: 80rpx;
-			float: left;
-			font-size: 28rpx;
-			font-family: PingFangSC-Regular, PingFang SC;
-			margin-top: -5rpx;
-		}
-		.grade{
-			margin-left: 560rpx;
-			font-size: 28rpx;
-			font-family: PingFangSC-Regular, PingFang SC;
-			margin-top: -5rpx;
-		}
-	}
-	.scrollh{
-		width: 100%;
-		height: calc(100vh - 710rpx - var(--status-bar-height));
-		.noDataBox {
-			position: relative;
-		}
-	}
+
+
+
 </style>

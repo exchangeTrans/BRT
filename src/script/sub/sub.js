@@ -26,7 +26,7 @@ export default {
                 },
 
                 style:{
-                    'top': 'var(--status-bar-height)'
+                 //   'top': 'var(--status-bar-height)'
                 },
                 bodyPadding:{"padding":'0,0,0,0'},
                 headerIsNoBoder: true,
@@ -43,7 +43,7 @@ export default {
                 },
                 style:{
                     'color': '#D9DADB',
-                    'top': 'var(--status-bar-height)'
+                   // 'top': 'var(--status-bar-height)'
                 },
                 bodyPadding:{"padding":'0,0,0,0'},
                 headerIsNoBoder: true,

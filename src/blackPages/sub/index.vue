@@ -46,7 +46,7 @@
 				<view class="earningsList" v-if="!isNoDataFlag" :style="{'transform':subData.holdStateType===0?'translateY(-120rpx)':'translateY(-80rpx)'}">
 					<view class="earningsItem" v-for="(item,index) in subData.list" :key="index">
 						<view class="accruedIncome">
-							{{$t('sub').accumulatedIncome}}：<span>{{item.bounsAmount}}  BRt</span>
+							{{$t('sub').accumulatedIncome}}：<span>{{item.bounsAmount}}  BRT</span>
 						</view>
 						<view class="nums">
 							{{$t('sub').pledgeNumber}}：{{item.holdAmount}} BRT
@@ -119,7 +119,6 @@
 	.sub{
 		width: 100%;
 		height: 100%;
-
 		background: #22252A;
 		.content{
 			width: 100%;
