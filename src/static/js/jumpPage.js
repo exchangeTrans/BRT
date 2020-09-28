@@ -14,6 +14,11 @@ let jumpPage={
         //     delta:""
         //      data:{}
         // }
+                
+        let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+        let curRoute = routes[routes.length - 1].route // 获取当前页面路由，也就是最后一个打开的页面路由
+        console.log(routes)
+        console.log(curRoute)
         let type = options.type;
         let theme = datastorage.getSync({key:'theme'});
         // "blackPages/index/index"
@@ -23,11 +28,19 @@ let jumpPage={
             datastorage.setSync({key:'pagePath',data: pageUrl});
             pageUrl='pageIndex/index';
         }
+        
 
 
         // if(type===switchTab)
         pageUrl = theme==='black'?('/blackPages/'+pageUrl):('/pages/'+pageUrl);
         options.url = pageUrl;
+        // debugger
+        if(pageUrl==='/'+curRoute){
+            if(success){
+                success();
+            }
+            return
+        }
 
 
 

@@ -113,6 +113,9 @@
                     type: jumpType,
                     url: item.pagePath
                 })
+                this.currentTab = {
+                    pagePath:item.pagePath
+                }
                 this.$emit('changePage',item)
                 // }
 
