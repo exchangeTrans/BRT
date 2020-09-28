@@ -1,7 +1,8 @@
 <template>
 	<view class="loginHead" :style="loginHeadStyle" id="loginHead">
 		<view class="headerBackImg" :style="{'background-image':headerBackImg}">
-			<view class="logo" :style="{'background-image':headerLogo}"></view>
+			<view class="logo" ></view>
+			<!-- :style="{'background-image':headerLogo}" -->
 			<view class="choiceType">
 				<view :class="type === 'PHONE' ? 'activeChoice' : 'inactiveChoice'" :style="{'background-image': leftBackground}"
 				 @tap="typeClick('PHONE')">{{leftText}}</view>

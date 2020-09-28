@@ -20,7 +20,7 @@
                                 :iconShow="true"
                                 :iconSrc="phoneIcon"
                                 :firstTextShow="true"
-                                :firstText="chooseCountry.dialingCode"
+                                :firstText="'+'+chooseCountry.dialingCode"
                                 :firstTextStyle="phoneFirstText"
                                 :placeHolder="$t('login').inputPhone"
                                 :inputStyle="inputPhoneStyle"

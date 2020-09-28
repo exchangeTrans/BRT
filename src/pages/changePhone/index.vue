@@ -37,7 +37,7 @@
                 <loginInput :iconShow="true"
                             :iconSrc="phoneIcon"
                             :firstTextShow="true"
-                            :firstText="chooseCountry.dialingCode"
+                            :firstText="'+'+chooseCountry.dialingCode"
                             :firstTextStyle="phoneFirstTextStyle"
                             :inputData="postData.tel"
                             :placeHolder="'请输入新绑定手机号码'"
