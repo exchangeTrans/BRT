@@ -19,7 +19,7 @@
     </view>
 </template>
 
-<script src="@/script/connectus/connectus">
+<script src="@/script/connectus/connectus.js">
 
 </script>
 
