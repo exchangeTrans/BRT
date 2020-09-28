@@ -146,7 +146,7 @@ export const mySocket={
                         ...KLineTradingPair,
                         range:range,
                         nowData:data.tick,
-                        price:price.toFixed(6)
+                        price:price
                     }
                     store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
                 }
@@ -156,7 +156,7 @@ export const mySocket={
                 // dataArray:data,
                 range:range,
                 nowData:data.tick,
-                price:price.toFixed(6)
+                price:price
               }
             }else{
               return item

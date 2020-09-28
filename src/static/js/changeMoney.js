@@ -42,7 +42,7 @@ export const getMoney = (money,firstCode,lastCode) => {
     let toUSDTRange = firstCode==='USDT'?1:rangeList[toUSDTCode];
     let toMoneyCode = "USDT" + selectedCurrency;
     let toMoneyRange = rangeList[toMoneyCode]
-    let asset = money.replace(/,/g,"");
+    let asset = String(money).replace(/,/g,"");
     let price = 0;
     if(toUSDTRange&&toMoneyRange){
         price = (Number(toUSDTRange) * Number(toMoneyRange) * Number(asset)).toFixed(2);

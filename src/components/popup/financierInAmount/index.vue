@@ -1,6 +1,6 @@
 <template>
     <view>
-        <uni-popup ref="financierInAmount" type="bottom" >
+        <uni-popup ref="financierInAmountDialog" type="bottom" >
             <view class="transfer"
                   :style="{'background':mode==='night'?'#22252A':'#ffffff',
             'color':mode==='night'?'#D9DADB':'#1A1A1A'}">
@@ -19,7 +19,7 @@
                            @input="changeInput"
 
                     >
-                    <view class="allTransfer"  @tap="allTransfer(availableCounts)">{{$t('financierInAmount').allInto}}</view>
+                    <view class="allTransfer"  @tap="allTransfer(availableCounts)">{{counts}}{{$t('financierInAmount').allInto}}</view>
                 </view>
                 <view class="intro">{{$t('financierInAmount').intoIntro}}</view>
 
@@ -52,7 +52,7 @@
         props: {
             mode:{type:String,default:'day'},
             availableCounts:{type:String,default:''},
-            // transferDate:{type:Object,default:()=>{}}
+            transferDate:{type:Object,default:()=>{}}
         },
         mounted(){
 
@@ -73,12 +73,12 @@
             },
             open(){
                 this.$nextTick(() => {
-                    this.$refs['financierInAmount'].open();
+                    this.$refs['financierInAmountDialog'].open();
                 })
             },
             close(){
                 this.$nextTick(() => {
-                    this.$refs['financierInAmount'].close();
+                    this.$refs['financierInAmountDialog'].close();
                 })
             },
             allTransfer(item){

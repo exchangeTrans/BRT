@@ -12,7 +12,7 @@
 				</view>
 				<view class="incomelog">
 					<image src="../../static/images/myteam/crown.png" class="crown" mode=""></image>
-					<text class="grade">1</text>
+					<text class="grade">{{teamData.vipType}}</text>
 				</view>
 				<view class="clearfix"></view>
 			</view>
@@ -133,14 +133,17 @@
 			float: right;
 			margin-top: 154rpx;
 			margin-right: 60rpx;
+			display: flex;
+			align-items: center;
 			.crown{
 				width: 40rpx;
 				height: 32rpx;
-				margin-top: 8rpx;
 				margin-left: 25rpx;
 				margin-right: 15rpx;
+				
 			}
 			.grade{
+				line-height: 28rpx;
 				font-size: 28rpx;
 				font-family: PingFangSC-Medium, PingFang SC;
 				font-weight: 500;

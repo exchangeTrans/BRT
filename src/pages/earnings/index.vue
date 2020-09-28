@@ -6,7 +6,7 @@
 				<view class="earningsTop" :style="{'background-image':'url('+topBg+')'}">
 					<view class="left">
 						<view class="balance">可用余额</view>
-						<view class="balanceNum"><span>{{userdata.usdtBalance}}</span>BRT</view>
+						<view class="balanceNum"><span>{{userdata.usdtBalance}}</span>USDT</view>
 					</view>
 					<!-- <view class="right">
 						<view class="idCode">ID 19029008</view>
@@ -19,7 +19,7 @@
 
 				<view class="yield">
 					<view class="yieldText">
-						<view class="yieldPercent">32.<span>68%</span></view>
+						<view class="yieldPercent">{{interestrate.left}}<span>.{{interestrate.right}}%</span></view>
 						<view class="addUp">累计收益率</view>
 					</view>
 					<!--<view class="slider">-->
@@ -91,15 +91,14 @@
 			</view>
 			<view class="btnGroup">
 				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'转入加仓'" v-if="selectedTab==='earningInfo'"
-				 @btnClick="transferInAmount"></earningBtn>
+							@btnClick="transferInAmount"></earningBtn>
 				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'下载韩亚量化App'" v-if="selectedTab==='data'"
-				 @btnClick="downloadAPP"></earningBtn>
+							@btnClick="downloadAPP"></earningBtn>
 			</view>
 		</scroll-view>
-		<transferInAmount ref="transferInAmount"
+		<financierInAmount ref="financierInAmount"
 						  @transferInAmountSuccess="transferInAmountSuccess"
-						  :transferDate="transferDate"
-						  :availableCount="userdata.financeBalance"></transferInAmount>
+						  :availableCounts="userdata.usdtBalance"></financierInAmount>
 		<subRuler ref="subRuler"></subRuler>
 	</view>
 </template>

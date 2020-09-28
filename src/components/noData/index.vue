@@ -62,6 +62,7 @@
             font-weight: 400;
             opacity: 0.5;
             line-height: 40rpx;
+            padding-bottom: 80rpx;
         }
 
         .isBlack {

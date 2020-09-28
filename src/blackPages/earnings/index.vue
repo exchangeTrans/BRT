@@ -99,7 +99,7 @@
 		<financierInAmount ref="financierInAmount"
 						  @transferInAmountSuccess="transferInAmountSuccess"
 						  :mode="'night'"
-						  :availableCounts="userdata.financeBalance"></financierInAmount>
+						  :availableCounts="userdata.usdtBalance"></financierInAmount>
 		<subRuler ref="subRuler"></subRuler>
 	</view>
 </template>

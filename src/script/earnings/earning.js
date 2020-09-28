@@ -66,7 +66,8 @@ export default {
 			logoIcon: `${require('@/static/images/earning/logoIcon.png')}`,
 			sliderValue: 50,
 			selectedTab: 'earningInfo',
-			rulerText: '量化理财运行七天后或是收益率达到止盈率或止损率时，量化馀额会自动转入可用馀额。量化运行时可以转入加仓，但不可提现。最少需投入1000 USDT才可进行量化。',
+			rulerText:'量化理财运行七天后或是收益率达到止盈率或止损率时，量化馀额会自动转入可用馀额。量化运行时可以转入加仓，但不可提现。最少需投入1000 USDT才可进行量化。',
+			transferDate: {},
 			showincome_earing: true,
 			showdata_earing: false,
 			userdata: {
@@ -153,7 +154,6 @@ export default {
 				method: "post",
 				params: '',
 			}).then((res) => {
-				console.log(res)
 				this.userdata.financeBalance = res.data.financeBalance,
 					this.userdata.loan = res.data.loan,
 					this.userdata.maxDawndown = res.data.maxDawndown,
@@ -203,6 +203,7 @@ export default {
 
 		},
 		transferInAmountSuccess(account){
+			this.getusermsg()
 			this.$jumpPage.jump({
 				url:'sub/success?account='+account,
 				type:'navigateTo'
