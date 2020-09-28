@@ -191,8 +191,8 @@ export default {
 
         },
         getAuthPostData(cardImage){
-            let cardName =  this.postData.name;
-            let cardNo = this.postData.idCard;
+            let cardName =  this.authStatusData.cardName;
+            let cardNo = this.authStatusData.cardNo;
 
             let postData = {
                 cardName,
