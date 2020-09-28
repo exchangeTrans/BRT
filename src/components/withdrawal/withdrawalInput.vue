@@ -11,7 +11,7 @@
                                :class="isBlack ? 'blackInput':'input'"
                                :placeholder="inputData.placeholder"
                                :disabled="inputData.disabled"
-                               v-model="inputValue"
+                               :value="inputValue"
                                @input="inputChange($event)">
                         <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">

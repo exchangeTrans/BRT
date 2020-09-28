@@ -174,18 +174,19 @@ export default {
             })
         },
         toScanCode(){
-            let that = this;
-            scanCode(function (res) {
-                //     "result": "X-HM://005KKFLVD3YAG",
-                //     "scanType": "QR_CODE",
-                //     "charSet": "utf8",
-                //     "path": "file:///var/mobile/Containers/Data/Application/409633F4-FB48-4729-A22A-4921F46A9E26/Documents/Pandora/apps/HBuilder/doc/1600848159-IMG_0736.JPG",
-                //     "errMsg": "scanCode:ok"
-                // console.log(res.result);
-                that.addressUrl = res.result;
-            })
+            // let that = this;
+            // scanCode(function (res) {
+            //     //     "result": "X-HM://005KKFLVD3YAG",
+            //     //     "scanType": "QR_CODE",
+            //     //     "charSet": "utf8",
+            //     //     "path": "file:///var/mobile/Containers/Data/Application/409633F4-FB48-4729-A22A-4921F46A9E26/Documents/Pandora/apps/HBuilder/doc/1600848159-IMG_0736.JPG",
+            //     //     "errMsg": "scanCode:ok"
+            //     // console.log(res.result);
+            //     that.addressUrl = res.result;
+            // })
         },
         inputChange(name, e) {
+            // debugger
             if (name === "amount") {
                 if (e.trim() !== "") {
                     this.btnInputObject.amount = true
@@ -340,7 +341,8 @@ export default {
                 }
             }).then(res => {
                 that.postData.symbolType=symbolType.symbolType;
-                if (res.result.returnCode.toString() === "0" && res.data.validate.toString() === "0") {
+                // && res.data.validate.toString() === "0"
+                if (res.result.returnCode.toString() === "0") {
                     this.$request({
                         url: "wallet/transfer",
                         method: "post",

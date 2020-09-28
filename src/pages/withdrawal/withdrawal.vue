@@ -7,7 +7,8 @@
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" @btnClick="toScanCode"></WithdrawalInput>
+                         <!-- @btnClick="toScanCode" -->
+                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
                         <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>

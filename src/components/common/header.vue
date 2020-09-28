@@ -154,7 +154,7 @@
             hearderOpacity:{type:Number,default:1},
         },
         mounted(){
-            let userInfo = this.$store.state.defaultData.userInfo
+            let userInfo = this.$store.state.defaultData.userMsg
             this.userId = userInfo.inviteCode?userInfo.inviteCode:"";
         },
         computed: {
