@@ -77,10 +77,11 @@
                 // this.$store.dispatch('getKline',{
                 //     period:item.code,
                 // });
-                this.$jumpPage.jump({
-                    type: 'navigateTo',
-                    url: 'trades/index'
-                })
+                this.$monitor.emit("changeTab",{path:'trades/index'});
+                // this.$jumpPage.jump({
+                //     type: 'navigateTo',
+                //     url: 'trades/index'
+                // })
             },
         },
     };
