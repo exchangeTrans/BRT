@@ -15,7 +15,7 @@
                     <loginInput :iconShow="true"
                                 :iconSrc="phoneIcon"
                                 :firstTextShow="true"
-                                :firstText="chooseCountry.dialingCode"
+                                :firstText="'+'+chooseCountry.dialingCode"
                                 :firstTextStyle="phoneFirstTextStyle"
                                 :placeHolder="$t('regs').inputPhone"
                                 :inputStyle="inputPhoneStyle"
