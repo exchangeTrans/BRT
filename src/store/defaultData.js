@@ -122,7 +122,7 @@ export default {
                     name: '人民币',
                     // code: "RMB",
                     img: `${require('@/static/images/set/rmb.png')}`,
-                    code: "CNY",
+                    code: "RMB",
                     unit: '¥'
                 },
                 {
@@ -141,7 +141,7 @@ export default {
             'en-US': [
                 {
                     name: '人民币',
-                    code: "CNY",
+                    code: "RMB",
                     // code: "RMB",
                     img: `${require('@/static/images/set/rmb.png')}`,
                     unit: '¥'
@@ -162,7 +162,7 @@ export default {
             'ko-KR': [
                 {
                     name: '人民币',
-                    code: "CNY",
+                    code: "RMB",
                     img: `${require('@/static/images/set/rmb.png')}`,
                     unit: '¥'
                 },
@@ -184,7 +184,7 @@ export default {
         selectedCurrency: {
             name: '人民币',
             img: `${require('@/static/images/set/rmb.png')}`,
-            code: "CNY",
+            code: "RMB",
             unit: '¥'
         },
         rangeData: {},

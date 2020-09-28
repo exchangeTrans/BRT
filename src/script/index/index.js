@@ -3,7 +3,7 @@ import pageFooter from '@/components/common/footer.vue'
 import {
     DateFunc
 } from '../../static/js/common.js';
-import {changeMoney} from "../../static/js/changeMoney";
+import {changeMoney,getMoney} from "../../static/js/changeMoney";
 
 export default {
     components: {
@@ -101,12 +101,14 @@ export default {
         },
         changeMoneyData() {
             // debugger
+            // debugger
             let userMsg = this.$store.state.defaultData.userMsg;
             let asset = userMsg.asset.toString().replace(/,/g, '');
             // 46,730,157.7127
             let changeObj = this.getChangeObj(asset);
-            let money = changeMoney(changeObj);
-            // console.log(money);
+            let money = getMoney(asset,'USDT');
+            console.log(asset);
+            console.log(money);
             return {
                 ...money
             };

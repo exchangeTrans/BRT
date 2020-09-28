@@ -23,3 +23,37 @@ export const changeMoney = (changeObj) => {
         price: price,
     }
 }
+
+export const getMoney = (money,firstCode,lastCode) => {
+    // debugger
+    /*
+    let changeObj = {
+        firstCode,//第一个单位
+        lastCode,//第二个单位
+        asset,//用户的钱 USDT
+    }
+    */
+//    debugger
+
+    let rangeList = store.state.defaultData.rangeData;
+    let selectedCurrency = lastCode?lastCode:store.state.defaultData.selectedCurrency.code;
+    
+    let toUSDTCode = firstCode + 'USDT'
+    let toUSDTRange = firstCode==='USDT'?1:rangeList[toUSDTCode];
+    let toMoneyCode = "USDT" + selectedCurrency;
+    let toMoneyRange = rangeList[toMoneyCode]
+    let asset = money.replace(/,/g,"");
+    let price = 0;
+    if(toUSDTRange&&toMoneyRange){
+        price = (Number(toUSDTRange) * Number(toMoneyRange) * Number(asset)).toFixed(2);
+    }
+    
+    // console.log(price);
+
+    return {
+        firstCode: firstCode,
+        lastCode: selectedCurrency,
+        asset: asset,
+        price: price,
+    }
+}

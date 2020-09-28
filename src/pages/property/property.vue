@@ -13,7 +13,7 @@
                             </view>
                             <view class="totalAsset-money">
                                 <span>{{amountTotal}}</span>
-                                <span class="about">≈{{amountTotalRMB}} RMB</span>
+                                <span class="about">≈{{amountTotalRMB}} {{selectedCurrency.code}}</span>
                             </view>
                         </view>
                         <view class="balance">

@@ -81,7 +81,7 @@
                          'color':headerOptions.rightItem.tipTextStyle&&headerOptions.rightItem.tipTextStyle.color?headerOptions.rightItem.tipTextStyle.color:'',
                          'opacity': headerOptions.rightItem.tipTextStyle&&headerOptions.rightItem.tipTextStyle.opacity?headerOptions.rightItem.tipTextStyle.opacity: 1,
                      }">
-                    ID: {{headerOptions.rightItem.tipText}}
+                    ID: {{userId}}
                 </div>
 
             </div>
@@ -132,7 +132,8 @@
                     arrow_w: `${require('@/static/images/header/arrow_w.png')}`,
                     // eslint-disable-next-line no-undef
                     close:"imgMaps.header.close",
-                }
+                },
+                userId:"",
 
             }
         },
@@ -152,8 +153,9 @@
             },
             hearderOpacity:{type:Number,default:1},
         },
-        onLoad() {
-
+        mounted(){
+            let userInfo = this.$store.state.defaultData.userInfo
+            this.userId = userInfo.inviteCode?userInfo.inviteCode:"";
         },
         computed: {
             headerStyle() {

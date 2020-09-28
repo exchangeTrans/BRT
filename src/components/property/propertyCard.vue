@@ -13,7 +13,7 @@
                             </view>
                             <view :class="isBlack ? 'totalAsset-money black' : 'totalAsset-money'">
                                 <span>{{propertyCardData.money}}</span>
-                                <span class="about">≈{{propertyCardData.aboutMoney}} CNY</span>
+                                <span class="about">≈{{propertyCardData.aboutMoney}} {{selectedCurrency.code}}</span>
                             </view>
                         </view>
                         <view class="balance">
@@ -96,6 +96,10 @@
                     ...propertyCardStyle,
                 }
 
+            },
+		
+            selectedCurrency(){
+                return this.$store.state.defaultData.selectedCurrency;
             },
             btnStyle() {
                 let {

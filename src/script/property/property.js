@@ -1,7 +1,7 @@
 import pageHeader from '@/components/common/header.vue'
 import PropertyCard from "../../components/property/propertyCard";
 import pageFooter from '@/components/common/footer.vue';
-
+import {getMoney} from "../../static/js/changeMoney";
 export default {
     name: "property",
     components: {
@@ -92,22 +92,39 @@ export default {
     },
     watch: {
         balanceTotal(val) {
-            this.amountTotal = parseInt(this.freezeTotal) + parseInt(val)
+            
+            let res = val.replace(/,/g,"");
+            let freezeTotal = this.freezeTotal.replace(/,/g,"");
+            let amountTotal = Number(freezeTotal) + Number(res);
+            this.amountTotal = amountTotal.toFixed(2);
         },
         freezeTotal(val) {
-            this.amountTotal = parseInt(this.balanceTotal) + parseInt(val)
+            let res = val.replace(/,/g,"");
+            let balanceTotal = this.balanceTotal.replace(/,/g,"");
+            let amountTotal = Number(balanceTotal) + Number(res);
+            this.amountTotal = amountTotal.toFixed(2);
+            // this.amountTotal = parseInt(this.balanceTotal) + parseInt(val)
         },
         amountTotal(val) {
-            let rate = this.$store.state.wallet.rate.USDCNY
-            this.amountTotalRMB = val.replace(",", "") * rate
-            let amountIndex = this.amountTotalRMB.toString().indexOf(".")
-            if (amountIndex > 0) {
-                this.amountTotalRMB = this.amountTotalRMB.toString().substring(0, amountIndex) + "." + this.amountTotalRMB.toString().substring(amountIndex + 1, amountIndex + 3)
-            } else {
-                this.amountTotalRMB = this.amountTotalRMB
-            }
+            // let rate = this.$store.state.wallet.rate["USDTRMB"]
+            // let amountTotalRMB = Number(val.replace(/,/g,"")) * Number(rate);
+            this.amountTotalRMB = getMoney(val,'USDT').price
+            // this.amountTotalRMB =amountTotalRMB.toFixed(2)
+            // let amountIndex = this.amountTotalRMB.toString().indexOf(".")
+            // if (amountIndex > 0) {
+            //     this.amountTotalRMB = this.amountTotalRMB.toString().substring(0, amountIndex) + "." + this.amountTotalRMB.toString().substring(amountIndex + 1, amountIndex + 3)
+            // } else {
+            //     this.amountTotalRMB = this.amountTotalRMB
+            // }
         },
     },
+    computed:{
+		
+		selectedCurrency(){
+            return this.$store.state.defaultData.selectedCurrency;
+		},
+
+	  },
     methods: {
         stopPenetrate(){
             return;
@@ -135,11 +152,15 @@ export default {
                             that.balanceTotal = data.totalUsdtBalance
                         }
                         data.list.forEach(i => {
-                            i.asset = i.asset.replace(",", "")
+                            i.asset = i.asset.replace(/,/g,"")
+                            // let aboutMoney = getMoney(i.asset,i.symbolTitle.toUpperCase())
+                            // console.log(aboutMoney)deb
+                            let aboutMoney = getMoney(i.asset,i.symbolTitle.toUpperCase())
+                            // let aboutMoney = 0
                             let a = {
                                 name: i.symbolTitle.toUpperCase(),
                                 money: i.asset,
-                                aboutMoney: i.asset * i.usdt,
+                                aboutMoney: aboutMoney.price,
                                 availableBalance: i.balance,
                                 lockBalance: i.frozen,
                                 symbolType: i.symbolType,

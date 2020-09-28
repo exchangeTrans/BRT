@@ -1,6 +1,6 @@
 import Btn from "../../components/btn/index";
 import pageFooter from '@/components/common/footer.vue'
-import {changeMoney} from "../../static/js/changeMoney";
+import {changeMoney,getMoney} from "../../static/js/changeMoney";
 
 export default {
     name: "user",
@@ -119,16 +119,21 @@ export default {
             };
         }*/
         // this.getHomeMsg();
+        this.getLoginStatus();
     },
     onShow() {
-        this.getLoginStatus();
+        
     },
     methods: {
         toPage(path) {
-            this.$jumpPage.jump({
-                type: 'navigateTo',
-                url: path,
-            })
+            // console.log(path)
+            if(path!==''){
+                this.$jumpPage.jump({
+                    type: 'navigateTo',
+                    url: path,
+                })
+            }
+            
         },
         btnClick() {
             // debugger
@@ -200,7 +205,7 @@ export default {
                     // debugger
                     let changeObj = that.getChangeObj(asset)
                     that.changeMoneyData = {
-                        ...changeMoney(changeObj)
+                        ...getMoney(asset,'USDT')
                     };
                     // console.log(that.changeMoneyData);
                 } else {
@@ -222,6 +227,7 @@ export default {
             })
         },
         getChangeObj(asset) {
+            // debugger
             let firstCode = "USDT"//第一个单位
             let lastCode = this.$store.state.defaultData.selectedCurrency.code//第二个单位
             // asset//用户的钱 USDT
@@ -244,7 +250,7 @@ export default {
                     }
                     let userAccountType = res.data.userAccountType//0 是手机， 1就是邮件
                     // that.listItemData[0].path = 'changeEmail/index'
-                    that.listItemData[5].path = userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index'
+                    that.listItemData[4].path = userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index'
                     // console.log(userAccountType == 0 ? 'changePhone/index' : 'changeEmail/index')
                     this.$store.commit("setDefaultSync", {
                         key: "userInfo",

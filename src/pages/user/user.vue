@@ -9,7 +9,7 @@
                     <view class="user-wrap-userMassage" @tap="toPage('user/personalInfo')">
                         <view class="user-wrap-headerImg">
                             <view class="img">
-                                <image :src="homeMsgData.avatar"></image>
+                                <image :src="homeMsgData.avatar===''?headerImg:homeMsgData.avatar"></image>
                             </view>
                         </view>
                         <view class="userMassage">
@@ -60,7 +60,7 @@
                             <view class="user-wrap-list-item"
                                   v-for="(item, index) in listItemData"
                                   :key="index"
-                                  @tap="toPage(item.path)">
+                                  @tap.stop="toPage(item.path)">
                                 <view class="icon">
                                     <image :src="item.img"></image>
                                 </view>

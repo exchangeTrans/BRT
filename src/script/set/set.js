@@ -103,7 +103,7 @@ export default {
             selectedObj:{
                 name: '人民币',
                 img: `${require('@/static/images/set/rmb.png')}`,
-                code: "CNY",
+                code: "RMB",
                 unit:'¥'
             },//币种类
 

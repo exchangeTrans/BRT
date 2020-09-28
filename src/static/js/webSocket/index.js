@@ -1,6 +1,7 @@
 import pako from 'pako'
 import toast from "@/static/js/dialog.js";
 import store from '@/store/index.js';
+import {getMoney} from "@/static/js/changeMoney";
 let Socket = false;
 let socketStatus = false;
 let setIntervalWesocketPush = null;
@@ -137,8 +138,9 @@ export const mySocket={
             
             if(item.id===symbol){
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
-                let code = item.type+selectedCurrency
-                let price = Number(rangeList[code])*tick.close; 
+                // let code = item.type+selectedCurrency
+                // let price = Number(rangeList[code])*tick.close; 
+                let price = getMoney(tick.close,item.type).price
                 if(KLineTradingPair.id === item.id){
                     let KLineTradingPairObj = {
                         ...KLineTradingPair,
