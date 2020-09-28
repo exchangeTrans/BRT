@@ -71,6 +71,7 @@ export default {
                     path: "",
                     img: `${require('@/static/images/user/version.png')}`,
                     url: "v1.15",
+                    isNoImg:true
                 },
             ],
             btnText: "退出登录",

@@ -65,7 +65,7 @@
                                     <image :src="item.img"></image>
                                 </view>
                                 <view class="itemType">{{item.name}}</view>
-                                <view class="icon iconRight">
+                                <view class="icon iconRight" >
                                     <image :src="rightIcon"></image>
                                 </view>
                                 <view class="clearfix"></view>
@@ -80,8 +80,8 @@
                                     <image :src="item.img"></image>
                                 </view>
                                 <view class="itemType">{{item.name}}</view>
-                                <view class="icon iconRight">
-                                    <image :src="rightIcon"></image>
+                                <view class="icon iconRight" >
+                                    <image :src="rightIcon" v-if="!item.isNoImg"></image>
                                 </view>
                                 <view class="urlText">
                                     <span>{{item.url}}</span>
