@@ -95,7 +95,7 @@
 				this.$store.dispatch('getRange');
 
 				this.$store.dispatch('getKline',{
-					period:'1min',
+					period:'5min',
 				});
 				this.$store.dispatch('getRate');
 				this.$store.dispatch('getUserMsg');
