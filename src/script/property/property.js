@@ -167,6 +167,8 @@ export default {
                             // let aboutMoney = getMoney(i.asset,i.symbolTitle.toUpperCase())
                             // console.log(aboutMoney)deb
                             let aboutMoney = getMoney(i.asset,i.symbolTitle.toUpperCase())
+                            // console.log(i.symbolTitle.toUpperCase())
+                            // console.log(aboutMoney.price)
                             // let aboutMoney = 0
                             let a = {
                                 name: i.symbolTitle.toUpperCase(),

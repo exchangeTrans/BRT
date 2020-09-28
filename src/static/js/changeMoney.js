@@ -34,6 +34,9 @@ export const getMoney = (money,firstCode,lastCode) => {
     }
     */
 //    debugger
+// if(firstCode==='BRT'){
+//     debugger
+// }
 
     let rangeList = store.state.defaultData.rangeData;
     let selectedCurrency = lastCode?lastCode:store.state.defaultData.selectedCurrency.code;
@@ -43,6 +46,8 @@ export const getMoney = (money,firstCode,lastCode) => {
     let toMoneyCode = "USDT" + selectedCurrency;
     let toMoneyRange = rangeList[toMoneyCode]
     let asset = String(money).replace(/,/g,"");
+    // console.log(money)
+    
     let price = 0;
     if(toUSDTRange&&toMoneyRange){
         price = (Number(toUSDTRange) * Number(toMoneyRange) * Number(asset)).toFixed(2);

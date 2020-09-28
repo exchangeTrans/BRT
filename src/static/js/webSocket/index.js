@@ -134,8 +134,9 @@ export const mySocket={
             if(item.id===symbol){
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
                 // let code = item.type+selectedCurrency
-                // let price = Number(rangeList[code])*tick.close; 
-                let price = getMoney(tick.close,item.type).price
+                // let price = Number(rangeList[code])*tick.close;
+                // debugger 
+                let price = getMoney(tick.close,item.name).price
                 if(KLineTradingPair.id === item.id){
                     let KLineTradingPairObj = {
                         ...KLineTradingPair,
