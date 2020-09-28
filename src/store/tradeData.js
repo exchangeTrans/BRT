@@ -104,8 +104,8 @@ export default {
     },
     KLineTradingPair:{
       type:'USDT',
-        name:'XRP',
-        id:'xrpusdt',
+        name:'BRT',
+        id:'brtusdt',
       range:0,
       price:0.00,
       nowData:null,

@@ -125,7 +125,7 @@ export default {
     },
     miningEarnings:{
         title:'挖矿收益',
-        availableBalance:'可用余额',
+        availableBalance:'当前质押',
         accumulatedIncome:'累计收益',
         interestDay:'昨日收益',
         bestHold:'昨日最佳持币',

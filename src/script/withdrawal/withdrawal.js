@@ -106,7 +106,7 @@ export default {
                 text: symbolType.name + " 提币",
                 rightItem: {
                     type: "text",
-                    text: "提现记录",
+                    text: "提币纪录",
                     style: {
                         fontSize: "28rpx",
                         color: "#098FE0",
@@ -127,7 +127,7 @@ export default {
                 text: symbolType.name + " 提币",
                 rightItem: {
                     type: "text",
-                    text: "提现记录",
+                    text: "提币纪录",
                     style: {
                         fontSize: "28rpx",
                         color: "#098FE0",

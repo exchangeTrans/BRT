@@ -30,7 +30,7 @@
                                     <view class="icon">
                                         <image :src="wallet"></image>
                                     </view>
-                                    <span>我的资产</span>
+                                    <span>总资产</span>
                                 </view>
                                 <view class="valuation">
                                     <!--<view class="icon">

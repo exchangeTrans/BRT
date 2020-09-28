@@ -20,11 +20,11 @@
                             <view class="balance-container">
                                 <view :class="isBlack ? 'balance-content black':'balance-content'">
                                     <span>{{propertyCardData.availableBalance}}</span>
-                                    <span class="balance-content-text">可用馀额</span>
+                                    <span class="balance-content-text">可用余额</span>
                                 </view>
                                 <view :class="isBlack ? 'balance-content black':'balance-content'">
                                     <span>{{propertyCardData.lockBalance}}</span>
-                                    <span class="balance-content-text">锁仓馀额</span>
+                                    <span class="balance-content-text">锁仓余额</span>
                                 </view>
                             </view>
                         </view>

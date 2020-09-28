@@ -9,7 +9,7 @@
                         </view>
                         <view :class="isBlack ? 'currency-name-content black' : 'currency-name-content'">
                             <span class="name">{{quotesData.name}}</span>
-                            <span class="number">1{{quotesData.type}}</span>
+                            <span class="number">{{quotesData.type}}</span>
                         </view>
                     </view>
                     <view :class="isBlack ? 'price black' : 'price'">

@@ -34,7 +34,7 @@
 			</view>
 
 			<view class="performer">
-				<view class="performerTitle">24H <span>涨幅榜</span></view>
+				<view class="performerTitle">24H <span>币价行情</span></view>
 
 				<view class="performerTab">
 					<view class="cate">币种</view>
