@@ -88,6 +88,7 @@ export default {
                 cardType:"",
                 cardName:"",
                 cardNo:"",
+                disabled:null,
             },
 
         }
@@ -117,6 +118,7 @@ export default {
                         cardType: res.data.cardType,//1身份证 2护照
                         cardName: res.data.cardName,
                         cardNo: res.data.cardNo,
+                        disabled: res.data.kyc1 == 0 ? false : true,
                     }
                     // console.log(res);
                 } else {
@@ -167,11 +169,12 @@ export default {
                         setTimeout(()=>{
                             this.$toast.show({
                                 title: res.result.returnMessage,
-                            })
-                            // 服务端响应的 message 提示
-                            this.$jumpPage.jump({
-                                type: 'navigateBack',
-                            })
+                            });
+                            this.getAuthStatus()
+                            // // 服务端响应的 message 提示
+                            // this.$jumpPage.jump({
+                            //     type: 'navigateBack',
+                            // })
                             //延时关闭  加载中的 loading框
                             uni.hideLoading()
                         },2000)
