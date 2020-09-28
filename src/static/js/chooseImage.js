@@ -2,7 +2,9 @@ export const chooseImage = (num,cb) => {
     uni.chooseImage({
         count: num,
         success: (res) => {
-            cb(res.tempFilePaths);
+            if(cb){
+                cb(res.tempFilePaths);
+            }
         }
     });
 }
