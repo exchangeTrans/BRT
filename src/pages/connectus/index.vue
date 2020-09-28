@@ -45,7 +45,7 @@
 			margin-left: 30rpx;
 			margin-top: 30rpx;
 			margin-bottom: 14rpx;
-			width: 124rpx;
+			width: 100%;
 			height: 44rpx;
 			font-size: 32rpx;
 			font-family: PingFangSC-Medium, PingFang SC;
