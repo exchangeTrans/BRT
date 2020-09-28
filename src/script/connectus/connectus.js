@@ -15,15 +15,16 @@ export default{
                 // headerIsNoBoder: true,
             },
             emailadress:'客服邮箱:test0001@gmail.com',
+            copyText:'test0001@gmail.com'
         }
     },
     methods:{
         copymsg(){
-            let text = this.emailadress
+            let text = this.copyText
             uni.setClipboardData({
                 data:text,
                 success: (res) => {
-                    console.log("succeed");
+                    // console.log("succeed");
                 }
             });
         }
