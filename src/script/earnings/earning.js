@@ -208,6 +208,7 @@ export default {
 				url:'sub/success?account='+account,
 				type:'navigateTo'
 			});
+			page.onLoad();
 		},
 		//空投
 		// asset(){

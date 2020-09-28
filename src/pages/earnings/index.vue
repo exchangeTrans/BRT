@@ -97,8 +97,8 @@
 			</view>
 		</scroll-view>
 		<financierInAmount ref="financierInAmount"
-						  @transferInAmountSuccess="transferInAmountSuccess"
-						  :availableCounts="userdata.usdtBalance"></financierInAmount>
+						   @transferInAmountSuccess="transferInAmountSuccess"
+						   :availableCounts="userdata.usdtBalance"></financierInAmount>
 		<subRuler ref="subRuler"></subRuler>
 	</view>
 </template>

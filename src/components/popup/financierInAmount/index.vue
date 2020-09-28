@@ -19,7 +19,7 @@
                            @input="changeInput"
 
                     >
-                    <view class="allTransfer"  @tap="allTransfer(availableCounts)">{{counts}}{{$t('financierInAmount').allInto}}</view>
+                    <view class="allTransfer"  @tap="allTransfer(availableCounts)">{{$t('financierInAmount').allInto}}</view>
                 </view>
                 <view class="intro">{{$t('financierInAmount').intoIntro}}</view>
 
