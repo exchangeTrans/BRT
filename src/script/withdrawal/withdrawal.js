@@ -2,6 +2,7 @@ import appHeader from "@/components/common/header.vue";
 import WithdrawalInput from "../../components/withdrawal/withdrawalInput";
 import Btn from "../../components/btn/index";
 import {checkDataFunc} from "@/static/js/common";
+import {scanCode} from "../../static/js/scanCode";
 
 export default {
     components: {
@@ -50,6 +51,7 @@ export default {
             receiveAmount: "0 BRT",
             commissionAmount: "1.00",
             amountInputValue: "",
+            addressUrl:"",
             time: 60,
             getCodeStatus: true,
 
@@ -171,6 +173,18 @@ export default {
                 type: "navigateTo"
             })
         },
+        toScanCode(){
+            let that = this;
+            scanCode(function (res) {
+                //     "result": "X-HM://005KKFLVD3YAG",
+                //     "scanType": "QR_CODE",
+                //     "charSet": "utf8",
+                //     "path": "file:///var/mobile/Containers/Data/Application/409633F4-FB48-4729-A22A-4921F46A9E26/Documents/Pandora/apps/HBuilder/doc/1600848159-IMG_0736.JPG",
+                //     "errMsg": "scanCode:ok"
+                // console.log(res.result);
+                that.addressUrl = res.result;
+            })
+        },
         inputChange(name, e) {
             if (name === "amount") {
                 if (e.trim() !== "") {
@@ -180,7 +194,7 @@ export default {
                 }
                 e = e.replace(/[^\d]/g, '')
             }
-            this.postData[name] = e
+            this.postData[name] = e;
 
             // 数据校验
             if (name === "address") {

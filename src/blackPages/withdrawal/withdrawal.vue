@@ -6,11 +6,14 @@
         <scroll-view class="withdrawal-wrap" :scroll-y="true">
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
-                    <view class="withdrawal-wrap-container-item"
-                          v-for="(item, index) in inputDatas"
-                          :key="index">
-                        <WithdrawalInput :inputData="item"
-                                         :isBlack="isBlack"></WithdrawalInput>
+                    <view class="withdrawal-wrap-container-item">
+                        <WithdrawalInput :inputData="address" :isBlack="true" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" @btnClick="toScanCode"></WithdrawalInput>
+                    </view>
+                    <view class="withdrawal-wrap-container-item">
+                        <WithdrawalInput :inputData="amount" :isBlack="true" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
+                    </view>
+                    <view class="withdrawal-wrap-container-item">
+                        <WithdrawalInput :inputData="commission" :isBlack="true" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
                     </view>
                 </view>
                 <view :class="isBlack ? 'withdrawal-wrap-container-text black':'withdrawal-wrap-container-text'">
@@ -109,13 +112,16 @@
 
                 .withdrawal-wrap-container-tip {
 
-                    margin: 30rpx 30rpx 0;
+                    margin: 30rpx auto 0;
 
                     .withdrawal-wrap-container-tip-content {
-                        padding: 30rpx;
+                        width: 690rpx;
+                        box-sizing: border-box;
+                        padding:20rpx;
                         height: 254rpx;
                         background: #F5F8FC;
                         border-radius: 8px;
+                        margin: 0 auto;
 
                         span {
                             display: block;
@@ -130,7 +136,7 @@
                         }
 
                         .mgt {
-                            margin-top: 50rpx;
+                            margin-top: 40rpx;
                         }
                     }
                     .black {

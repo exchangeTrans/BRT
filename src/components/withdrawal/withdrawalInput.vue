@@ -8,15 +8,16 @@
                     </view>
                     <view class="withdrawalInput-item-content">
                         <input type="text"
+                               :class="isBlack ? 'blackInput':'input'"
                                :placeholder="inputData.placeholder"
                                :disabled="inputData.disabled"
-                               :value="inputValue"
+                               v-model="inputValue"
                                @input="inputChange($event)">
                         <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
                                 <span>{{inputData.rightItem.text}}</span>
                             </view>
-                            <view class="isIcon" v-if="inputData.rightItem.type === 'isIcon'">
+                            <view class="isIcon" v-if="inputData.rightItem.type === 'isIcon'" @tap="btnClick">
                                 <image :src="scan"></image>
                             </view>
                             <view class="isBtn" v-if="inputData.rightItem.type === 'isBtn'" @tap="btnClick">
@@ -51,6 +52,9 @@
                 type: String,
                 default: "",
             },
+        },
+        computed:{
+              
         },
         data() {
             return {
@@ -99,13 +103,24 @@
                         border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
                         position: relative;
 
-                        input {
+                        .input {
                             height: 112rpx;
                             font-size: 32rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
                             /*color: #D9DADB;*/
 
+                            .uni-input-input {
+                                text-indent: 0;
+                            }
+                        }
+
+                        .blackInput {
+                            height: 112rpx;
+                            font-size: 32rpx;
+                            font-family: PingFangSC-Regular, PingFang SC;
+                            font-weight: 400;
+                            color: #D9DADB;
                             .uni-input-input {
                                 text-indent: 0;
                             }

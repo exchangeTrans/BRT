@@ -7,7 +7,7 @@
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)"></WithdrawalInput>
+                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" @btnClick="toScanCode"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
                         <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
@@ -103,13 +103,16 @@
 
                 .withdrawal-wrap-container-tip {
 
-                    margin: 30rpx 30rpx 0;
+                    margin: 30rpx auto 0;
 
                     .withdrawal-wrap-container-tip-content {
-                        padding: 30rpx;
+                        width: 690rpx;
+                        box-sizing: border-box;
+                        padding:20rpx;
                         height: 254rpx;
                         background: #F5F8FC;
                         border-radius: 8px;
+                        margin: 0 auto;
 
                         span {
                             display: block;
@@ -124,7 +127,7 @@
                         }
 
                         .mgt {
-                            margin-top: 50rpx;
+                            margin-top: 40rpx;
                         }
                     }
                 }
