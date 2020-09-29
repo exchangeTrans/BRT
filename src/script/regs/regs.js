@@ -224,6 +224,7 @@ export default {
                     // returnMessage: "成功"
                     // returnUserMessage: "成功"
                     if (res.result.returnCode.toString() === "0") {
+                        this.$store.dispatch('getUserMsg');
                         let loginMsg = {
                             isLogin: true,
                             userLoginId: res.data.userLoginId,

@@ -355,6 +355,7 @@
 						this.$toast.show({
 							title: res.result.returnUserMessage,
 						})
+						this.$store.dispatch('getUserMsg');
 						// // this.close();
 						// let usdtBalance = res.data.usdtBalance.replace(",","")
 						// let symbolBalance = res.data.symbolBalance.replace(",","")

@@ -79,7 +79,7 @@
                     },
                     grid: {
                         top:10,
-                        bottom: 10,
+                        bottom: 40,
                         right:60,
                         left:10
                     },
@@ -332,6 +332,13 @@ import store from '@/store/index.js';
                         }
                         // formatter: '{b0}: {c0}<br />{b1}: {c1}'
                     },
+                    dataZoom:[{
+type: 'slider',//图表下方的伸缩条
+show : true, //是否显示
+realtime : true, //拖动时，是否实时更新系列的视图
+// start : 0, //伸缩条开始位置（1-100），可以随时更改
+// end : 100, //伸缩条结束位置（1-100），可以随时更改
+}],
                     
                     series: [
                         {
