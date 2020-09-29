@@ -207,6 +207,7 @@ export default {
         btnClick() {
             // console.log("下一步")
             let postData = this.getPostData();
+            let that = this;
             if (postData) {
                 uni.showLoading({
                     title: "加载中..."
@@ -224,20 +225,21 @@ export default {
                     // returnMessage: "成功"
                     // returnUserMessage: "成功"
                     if (res.result.returnCode.toString() === "0") {
-                        this.$store.dispatch('getUserMsg');
                         let loginMsg = {
                             isLogin: true,
                             userLoginId: res.data.userLoginId,
                             userLoginToken: res.data.userLoginToken,
                         }
-                        this.$storage.setSync({
+                        this.$storage.set({
                             key: "loginMsg",
                             data: loginMsg,
+                        },function(){
+                            that.$store.dispatch('getUserMsg');
                         });
                         this.$jumpPage.jump({
                             type: 'reLaunch',
                             url: 'index/index'
-                        })
+                        });
                         uni.hideLoading()
                     } else {
                         this.$toast.show({
