@@ -3,7 +3,7 @@
 		<view class="tableHeader">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr2[0]}}</view>
             <view class="tableLi tableLi2">{{$t('trade').tableHeadTr2[1]}}</view>
-            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr2[2]}}({{KLineTradingPair.name}})</view>
+            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr2[2]}}({{KLineTradingPair.type}})</view>
             <view class="tableLi tableLi4">{{$t('trade').tableHeadTr2[3]}}</view>
         </view>
         <view class="tableTr" v-for="(item,index) in tableData" :key="index">

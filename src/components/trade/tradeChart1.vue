@@ -262,7 +262,6 @@ import store from '@/store/index.js';
         }, 
         watch:{
             KLineTradingPair1(res){
-                console.log(2)
                 // this.createKLineData()
             }
         }, 
@@ -314,6 +313,7 @@ import store from '@/store/index.js';
             setEchart(data,xData) {
                 // let $element = document.getElementById("myChart");
                 // let that = this;
+                let KLineTradingPair1 = this.KLineTradingPair1
                 let chartOpts = this.option;
                 let xAxis = this.option.xAxis;
                 let tooltip = this.option.tooltip;
@@ -325,11 +325,12 @@ import store from '@/store/index.js';
                     },
                     tooltip:{
                         ...tooltip,
-                        formatter:function name(params) {
-                        //     let data  = '开盘:'+'{c0} <br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>';
+                        // formatter:function name(params) {
+                        // //     let data  = '开盘:'+'{c0} <br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>';
                         //     console.log(params)
-                        //     return data
-                        }
+                        // //     return data
+                        // // return '{b0}: {c0}<br />{b1}: {c1}'
+                        // }
                         // formatter: '{b0}: {c0}<br />{b1}: {c1}'
                     },
                     dataZoom:[{
@@ -343,7 +344,7 @@ realtime : true, //拖动时，是否实时更新系列的视图
                     series: [
                         {
                             type: 'candlestick',
-                            name: '日K',
+                            name: KLineTradingPair1.name,
                             data: data,
                             itemStyle: {
                                 color: '#F44E33',
