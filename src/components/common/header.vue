@@ -154,7 +154,7 @@
             hearderOpacity:{type:Number,default:1},
         },
         mounted(){
-            let userInfo = this.$store.state.defaultData.userMsg
+            let userInfo = this.$store.state.defaultData.userInfo;
             this.userId = userInfo.inviteCode?userInfo.inviteCode:"";
         },
         computed: {
@@ -175,6 +175,14 @@
                     background,
                     borderBottom,
                 }
+            },
+            userInfo(){
+                return this.$store.state.defaultData.userInfo
+            }
+        },
+        watch:{
+            userInfo(res){
+                this.userId = res.inviteCode;
             }
         },
         methods: {

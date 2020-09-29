@@ -266,7 +266,7 @@
 	  methods:{
 		toKline(){
             this.$store.dispatch('getKline',{
-                period:'1min',
+                period:'5min',
             });
             this.$jumpPage.jump({
                 type: 'navigateTo',

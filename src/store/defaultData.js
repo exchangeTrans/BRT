@@ -71,7 +71,7 @@ export default {
         },
         conturyList: [],
         contury: {},
-        userInfo: {},
+        userInfo: {asset:0,},
         footerArray: [
             {
                 code: 'index',
@@ -247,6 +247,7 @@ export default {
         },
         [GETUSERINFO](state, result) {
             state.userMsg = result;
+            state.userInfo = result;
         },
         setDefaultSync(state, param) {
             state[param.key] = param.val;

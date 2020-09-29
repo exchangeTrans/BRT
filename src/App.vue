@@ -26,6 +26,11 @@
 			this.initLangMsg();
 			this.initStoreData();
 
+			let isLogin = this.$storage.getSync({key:'loginMsg'}).isLogin;
+			if(isLogin){
+				this.$store.dispatch('getUserMsg');
+			}
+
 			// this.initAuotationData();
 			let that = this;
 			// uni.onSocketOpen(function (res) {

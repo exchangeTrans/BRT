@@ -52,6 +52,11 @@ export const mySocket={
             }
         });
         uni.onSocketMessage(function (res) {
+            // console.log(res)
+            // console.log(typeof(res.data))
+            if(typeof(res.data)==="object"){
+                return
+            }
             let data = JSON.parse(res.data);
             mySocket.upData(data);
         });
@@ -136,7 +141,7 @@ export const mySocket={
                 // let code = item.type+selectedCurrency
                 // let price = Number(rangeList[code])*tick.close;
                 // debugger 
-                let price = getMoney(tick.close,item.name).price
+                let price = getMoney(tick.close,"USDT").price
                 if(KLineTradingPair.id === item.id){
                     let KLineTradingPairObj = {
                         ...KLineTradingPair,
@@ -256,7 +261,7 @@ export const mySocket={
                                 
         });
         mySocket.subscribeDepth();
-        mySocket.subscribeKline('1min');
+        mySocket.subscribeKline('5min');
         mySocket.subscribeDetail()
         
     },
