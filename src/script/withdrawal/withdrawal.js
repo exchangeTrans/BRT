@@ -350,6 +350,7 @@ export default {
                     }).then((res) => {
                         that.isAllowClick = true;
                         that.$toast.hideLoading()
+                        that.$store.dispatch('getUserMsg');
                         if (res.result.returnCode.toString() === "0") {
                             that.postData.verifyKey = res.data.verifyKey;
                             that.$jumpPage.jump({

@@ -266,7 +266,7 @@
 	  methods:{
 		toKline(){
             this.$store.dispatch('getKline',{
-                period:'1min',
+                period:'5min',
             });
             this.$jumpPage.jump({
                 type: 'navigateTo',
@@ -355,6 +355,7 @@
 						this.$toast.show({
 							title: res.result.returnUserMessage,
 						})
+						this.$store.dispatch('getUserMsg');
 						// // this.close();
 						// let usdtBalance = res.data.usdtBalance.replace(",","")
 						// let symbolBalance = res.data.symbolBalance.replace(",","")

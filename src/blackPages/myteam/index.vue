@@ -99,7 +99,7 @@
 					float: left;
 				}
 				.usermsg{
-					width: 60rpx;
+					width: 300rpx;
 					height: 60rpx;
 					float: left;
 					line-height: 60rpx;
@@ -110,6 +110,7 @@
 						font-size: 36rpx;
 						font-family: PingFangSC-Semibold, PingFang SC;
 						font-weight: 600;
+						width: 300rpx;
 					}
 					.userid{
 						color: #C0C0C0;
@@ -117,6 +118,7 @@
 						font-family: PingFangSC-Regular, PingFang SC;
 						opacity: 0.6;
 						font-weight: 400;
+						width: 300rpx;
 					}
 				}
 				.incomelog{

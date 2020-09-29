@@ -11,58 +11,7 @@ export default {
 			headerOptions: {
 
 			},
-			listOptions: [{
-					num: "0.3567",
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "买",
-						status: "1",
-					},
-					style: {
-						color: ''
-					}
-				},
-				{
-					num: '0.3567',
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "买",
-						status: "1",
-					},
-					style: {
-						color: ''
-					}
-				},
-				{
-					num: '0.3567',
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "卖",
-						status: "0",
-					},
-					style: {
-						color: ''
-					}
-				},
-				{
-					num: '0.3567',
-					charge: "46.76",
-					money: "9.4658",
-					all: "39.54",
-					buytype: {
-						type: "卖",
-						status: "0",
-					},
-					style: {
-						color: ''
-					}
-				}]
+			listOptions: []
 		}
 	},
 	computed:{
@@ -77,6 +26,9 @@ export default {
 		},
 		symbolDefaultData(){
 			return this.$store.state.tradeData.symbolDefaultData
+		},
+		userInfo(){
+			return this.$store.state.defaultData.userInfo
 		}
 		// tradeNoticeData(){
 		// 	return this.$store.state.tradeData.tradeNoticeData;
@@ -86,61 +38,70 @@ export default {
 		// }
 
 	},
-	mounted() {
-		let theme = this.$storage.getSync({
-			key: 'theme'
-		});
-		let userInfo = this.$store.state.defaultData.userInfo
-
-		if (theme === 'white') {
-			this.headerOptions = {
-				show: true,
-				isAllowReturn: true,
-				text: "历史记录",
-				background: "#FFFFFF",
-
-				rightItem: {
-					type: "text",
-					text: "ID:" + userInfo.inviteCode,
-					style: {
-						"fontSize": '24rpx',
-						"fontFamily": 'PingFangSC-Regular, PingFang SC;',
-						"fontWeight": '400',
-						"color": 'rgba(68,68,68,1)'
-					}
-				},
-				style: {
-					color: "#000000"
-				},
-				isWhiteIcon: false,
-				headerIsNoBoder: false,
-			}
-		} else {
-			this.headerOptions={
-				show: true,
-				isAllowReturn: true,
-				text: "历史记录",
-				background: "#00001A",
-				isWhiteIcon: true,
-				rightItem: {
-					type: "text",
-					text: "ID:" + userInfo.inviteCode,
-					style: {
-						"fontSize": '24rpx',
-						"fontFamily": 'PingFangSC-Regular, PingFang SC;',
-						"fontWeight": '400',
-						"color": 'rgba(68,68,68,1)'
-					}
-				},
-				style: {
-					color: "#D9DADB"
-				},
-				headerIsNoBoder: true,
-			}
+	watch:{
+		userInfo(res){
+			this.initHeader()
 		}
+	},
+	mounted() {
+		this.initHeader()
 		this.getList()
 	},
 	methods:{
+		initHeader(){
+			let theme = this.$storage.getSync({
+				key: 'theme'
+			});
+			let userInfo = this.$store.state.defaultData.userInfo
+			let inviteCode = userInfo.inviteCode?userInfo.inviteCode:''
+	
+			if (theme === 'white') {
+				this.headerOptions = {
+					show: true,
+					isAllowReturn: true,
+					text: "历史记录",
+					background: "#FFFFFF",
+	
+					rightItem: {
+						type: "text",
+						text: "ID:" + inviteCode,
+						style: {
+							"fontSize": '24rpx',
+							"fontFamily": 'PingFangSC-Regular, PingFang SC;',
+							"fontWeight": '400',
+							"color": 'rgba(68,68,68,1)'
+						}
+					},
+					style: {
+						color: "#000000"
+					},
+					isWhiteIcon: false,
+					headerIsNoBoder: false,
+				}
+			} else {
+				this.headerOptions={
+					show: true,
+					isAllowReturn: true,
+					text: "历史记录",
+					background: "#00001A",
+					isWhiteIcon: true,
+					rightItem: {
+						type: "text",
+						text: "ID:" + inviteCode,
+						style: {
+							"fontSize": '24rpx',
+							"fontFamily": 'PingFangSC-Regular, PingFang SC;',
+							"fontWeight": '400',
+							"color": 'rgba(68,68,68,1)'
+						}
+					},
+					style: {
+						color: "#D9DADB"
+					},
+					headerIsNoBoder: true,
+				}
+			}
+		},
 		getList(){
 			let symbolType = this.KLineTradingPair.name;
 			let symbolCode = String(this.symbolDefaultData[symbolType])

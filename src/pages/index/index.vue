@@ -8,8 +8,8 @@
 				</view>
 
 				<view class="earning">
-					<view class="earningTitle">资产总额</view>
-					<view class="earningNumber">
+					<view class="earningTitle " v-if="changeMoneyData.asset">资产总额</view>
+					<view class="earningNumber" v-if="changeMoneyData.asset">
 						<span>{{changeMoneyData.asset}} {{changeMoneyData.firstCode}}</span>
 						<span>≈ {{changeMoneyData.price==="NaN" ? 0.00 : changeMoneyData.price}} {{changeMoneyData.lastCode}}</span>
 					</view>

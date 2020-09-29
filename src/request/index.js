@@ -125,11 +125,11 @@ const http = ({
                             userLoginId:'',
                             userLoginToken:''
                         }
-                        // datastorage.getSync({key: "loginMsg",data: loginMsg});
-                        // jumpPage.jump({
-                        //     type: 'reLaunch',
-                        //     url: 'login/login',
-                        // })
+                        datastorage.getSync({key: "loginMsg",data: loginMsg});
+                        jumpPage.jump({
+                            type: 'reLaunch',
+                            url: 'login/login',
+                        })
                     }else{
                         resolve(res[1].data);
                     }
