@@ -3,6 +3,7 @@ import loginHead from '@/components/login/loginHead.vue'
 import loginBtn from '@/components/login/btn.vue'
 import loginInput from "@/components/input/loginInput.vue";
 import {checkDataFunc} from "../../static/js/common";
+import set from "../set/set";
 
 export default {
     name: "forgetPassword",
@@ -290,6 +291,7 @@ export default {
             // debugger
             let that = this;
             if (!this[name]) {
+                this[name] = true;
                 let sendCodeData = this.getSendCodeData();
                 if (sendCodeData) {
                     uni.showLoading({
@@ -302,12 +304,17 @@ export default {
                     }).then((res) => {
                         if (res.result.returnCode.toString() === "0") {
                             that.postData.verifyKey = res.data.verifyKey;
-                            uni.hideLoading()
-                            that.setIntervalFun(sendCodeData.accountType)
+                            uni.hideLoading();
+                            that.setIntervalFun(sendCodeData.accountType);
                         } else {
-                            this.$toast.show({
+
+                            that.$toast.show({
                                 title: res.result.returnMessage,
-                            })
+                            });
+                            uni.hideLoading();
+                            setTimeout(function () {
+                                that[name] = false;
+                            },3000)
                         }
 
                     })
@@ -355,8 +362,8 @@ export default {
             let that = this
             let tempAccountType = accountType === 0 ? 'phoneTime' : 'emailTime';//0手机 1邮箱
             let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
-            let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
-            that[tempStauts] = true;
+            // let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
+            // that[tempStauts] = true;
 
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger

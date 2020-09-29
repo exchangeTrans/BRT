@@ -296,6 +296,7 @@ export default {
             let that = this;
             // debugger
             if (!this[name]) {
+                this[name] = true;
                 let sendCodeData = this.getSendCodeData();
                 if (sendCodeData) {
                     uni.showLoading({
@@ -311,9 +312,14 @@ export default {
                             uni.hideLoading()
                             that.setIntervalFun(sendCodeData.accountType);
                         } else {
-                            this.$toast.show({
+                            // this[name] = false;
+                            that.$toast.show({
                                 title: res.result.returnMessage,
                             })
+                            uni.hideLoading()
+                            setTimeout(function () {
+                                that[name] = false;
+                            },3000)
                         }
 
                     })
@@ -368,8 +374,8 @@ export default {
             let that = this;
             let tempAccountType = accountType === 0 ? 'phoneTime' : 'emailTime';//0手机 1邮箱
             let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
-            let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
-            that[tempStauts] = true;
+            // let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
+            // that[tempStauts] = true;
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
