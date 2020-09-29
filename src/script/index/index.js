@@ -3,7 +3,7 @@ import pageFooter from '@/components/common/footer.vue'
 import {
     DateFunc
 } from '../../static/js/common.js';
-import {changeMoney,getMoney} from "../../static/js/changeMoney";
+import {changeMoney, getMoney} from "../../static/js/changeMoney";
 
 export default {
     components: {
@@ -64,7 +64,7 @@ export default {
             notice_deails_list: [],
 
             userMsg: {},
-            changeMoneyData:{}
+            changeMoneyData: {}
             // changeMoneyData: {}
 
         }
@@ -113,7 +113,7 @@ export default {
         //         ...money
         //     };
         // },
-        userInfo(){
+        userInfo() {
             return this.$store.state.defaultData.userInfo
         }
     },
@@ -122,26 +122,26 @@ export default {
         //   this.$refs.update.open();
         // this.getfirst();
     },
-    watch:{
-        userInfo(res){
+    watch: {
+        userInfo(res) {
             this.getChangeMoneyData();
         }
     },
     methods: {
-        getChangeMoneyData(){            
+        getChangeMoneyData() {
             let userMsg = this.$store.state.defaultData.userMsg;
             let asset = userMsg.asset.toString().replace(/,/g, '');
             // 46,730,157.7127
             let changeObj = this.getChangeObj(asset);
-            let money = getMoney(asset,'USDT');
+            let money = getMoney(asset, 'USDT');
             this.changeMoneyData = money;
         },
-        toKline(item){
-            this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
-            this.$store.dispatch('getKline',{
-                period:'5min',
+        toKline(item) {
+            this.$store.commit("setTredDataSync", {key: "KLineTradingPair", val: item,})
+            this.$store.dispatch('getKline', {
+                period: '5min',
             });
-            
+
             this.$mySocket.subscribeDepth();
             this.$jumpPage.jump({
                 type: 'navigateTo',
@@ -149,10 +149,17 @@ export default {
             })
         },
         toInfo(item) {
-            this.$jumpPage.jump({
-                type: 'navigateTo',
-                url: item.url
-            })
+            // debugger
+            if (item.url === "#") {
+                this.$toast.show({
+                    title: "暂未开放",
+                })
+            } else {
+                this.$jumpPage.jump({
+                    type: 'navigateTo',
+                    url: item.url
+                })
+            }
         },
         gonoticelist() {
             this.$jumpPage.jump({

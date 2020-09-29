@@ -24,7 +24,7 @@ export default {
             nickname: "CS1997",
             avatar: "",
             // avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
-            modifyUrl: `url(${require('@/static/images/user/modifyIcon.png')})`,
+            modifyUrl: `${require('@/static/images/user/modifyIcon.png')}`,
             nicknameInput: false,
 
             userMsgData: {},
@@ -39,13 +39,44 @@ export default {
         }
     },
     mounted() {
+        let theme = this.$storage.getSync({key: 'theme'});
+        if (theme === 'white') {
+            this.headerOptions = {
+                show: true,
+                isAllowReturn: true,
+                isWhiteIcon: false,
+                text: this.$t('personInfo').title,
+                rightItem: {
+                    type: "text",
+                    text: "",
+                },
+                bodyPadding: {"padding": '0,0,0,0'},
+                headerIsNoBoder: true,
+            }
+        } else {
+            this.headerOptions = {
+                show: true,
+                isAllowReturn: true,
+                isWhiteIcon: true,
+                text: this.$t('personInfo').title,
+                rightItem: {
+                    type: "text",
+                    path: '',
+                },
+                style: {
+                    'color': '#D9DADB'
+                },
+                background: '#00001A',
+                headerIsNoBoder: true,
+            }
+        };
         this.getUserMsg();
     },
     methods: {
         ChooseImage() {
             let that = this;
             uploadImage(1,function (res) {
-                console.log(res);
+                // console.log(res);
                 that.avatar = res;
             });
         },
