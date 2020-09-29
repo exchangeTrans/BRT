@@ -277,9 +277,19 @@
 			this.selectedTradeName = item;
 		},
 		choosePrecent(item){
-			// debugger
-			let num = this.selectedTradeName.code==='buy'?(this.tradeInfo.usdtBalanceNum?this.tradeInfo.usdtBalanceNum:0):(this.tradeInfo.symbolBalanceNum?this.tradeInfo.symbolBalanceNum:0)
-			this.tradeNum = Number(num)*item.val
+			let {tradePrice,selectedTradeName,tradeInfo} = this;
+			let pr = selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.symbolBalanceNum:0):(tradeInfo.usdtBalanceNum?tradeInfo.usdtBalanceNum:0);
+			if(tradePrice.trim()===''||Number(tradePrice)===0){
+				this.$toast.show({
+					title: "请先填写交易价格",
+				})
+				return
+			}
+			this.tradeNum = (Number(pr)/Number(tradePrice))*item.val
+			// 可用馀额/用户上方填写的价格 * 用户选择的百分比。如果用户没有填写价格
+			// // debugger
+			// let num = this.selectedTradeName.code==='buy'?(this.tradeInfo.usdtBalanceNum?this.tradeInfo.usdtBalanceNum:0):(this.tradeInfo.symbolBalanceNum?this.tradeInfo.symbolBalanceNum:0)
+			// this.tradeNum = Number(num)*item.val
 		},
 		reduce(code){
 			let data = this[code];
@@ -324,8 +334,8 @@
 				if (res.result.returnCode.toString() === "0") {
 					
 					// this.close();
-					let usdtBalance = res.data.usdtBalance.replace(",","")
-					let symbolBalance = res.data.symbolBalance.replace(",","")
+					let usdtBalance = res.data.usdtBalance.replace(/,/g,"")
+					let symbolBalance = res.data.symbolBalance.replace(/,/g,"")
 					let data = {
 						...res.data,
 						usdtBalanceNum:Number(usdtBalance),

@@ -68,7 +68,7 @@
     .isblack{
         color: #D9DADB;
     }
-    iswhite{
+    .iswhite{
         color: #1A1A1A;
     }
     .listHeader{
@@ -80,6 +80,8 @@
         font-family: PingFangSC-Medium, PingFang SC;
         font-weight: 500;
         line-height: 108rpx;
+        margin-top: var(--status-bar-height);
+
     }
 	.datalist{
         width: 100%;
