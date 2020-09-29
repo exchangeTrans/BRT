@@ -128,14 +128,24 @@ export default {
             //     this.amountTotalRMB = this.amountTotalRMB
             // }
         },
+        tradePairData(res){
+            // console.log(res)
+            this.getDataList(this.propertyCardData)
+        }
     },
     computed:{
 
 		selectedCurrency(){
             return this.$store.state.defaultData.selectedCurrency;
-		},
+        },
+        // tradingSymol(){
+        //     return this.$store.state.tradeData.tradingSymol;
+        // },
+        tradePairData(){
+            return this.$store.state.tradeData.tradePairData;
+        }
 
-	  },
+    },
     methods: {
         stopPenetrate(){
             return;
@@ -147,8 +157,7 @@ export default {
                 method: "post"
             }).then((res) => {
                     if (res.result.returnCode === "0") {
-                        let data = res.data
-                        var that = this
+                        let data = res.data;
                         let frozenIndex = data.totalUsdtFrozen.toString().indexOf(".")
                         if (frozenIndex > 0) {
                             that.freezeTotal = data.totalUsdtFrozen.toString().substring(0, frozenIndex) + "." + data.totalUsdtFrozen.toString().substring(frozenIndex + 1, frozenIndex + 3)
@@ -162,24 +171,8 @@ export default {
                         } else {
                             that.balanceTotal = data.totalUsdtBalance
                         }
-                        data.list.forEach(i => {
-                            i.asset = i.asset.replace(/,/g,"")
-                            // let aboutMoney = getMoney(i.asset,i.symbolTitle.toUpperCase())
-                            // console.log(aboutMoney)deb
-                            let aboutMoney = getMoney(i.asset,i.symbolTitle.toUpperCase())
-                            // console.log(i.symbolTitle.toUpperCase())
-                            // console.log(aboutMoney.price)
-                            // let aboutMoney = 0
-                            let a = {
-                                name: i.symbolTitle.toUpperCase(),
-                                money: i.asset,
-                                aboutMoney: aboutMoney.price,
-                                availableBalance: i.balance,
-                                lockBalance: i.frozen,
-                                symbolType: i.symbolType,
-                            }
-                            that.propertyCardData.push(a)
-                        })
+                        that.getDataList(data.list)
+                        
                     } else {
                         this.$toast.show({
                             title: res.result.returnUserMessage,
@@ -187,6 +180,29 @@ export default {
                     }
                 }
             )
+        },
+        getDataList(data){
+            // console.log(data)
+            let tradingSymol= this.$store.state.tradeData.tradingSymol;
+            this.propertyCardData = data.map(function (item) {
+                item.asset = item.asset.replace(/,/g,"");
+                let symbolTitle = item.symbolTitle.toUpperCase();
+                let nowData = tradingSymol[symbolTitle].nowData
+                console.log(item)
+                let price = nowData===null?1:nowData.close;
+                price = Number(price)*Number(item.asset)
+                let aboutMoney = getMoney(price,'USDT')
+                let res = {
+                    ...item,
+                    name: item.symbolTitle.toUpperCase(),
+                    money: item.asset,
+                    aboutMoney: aboutMoney.price,
+                    availableBalance: item.balance,
+                    lockBalance: item.frozen,
+                    symbolType: item.symbolType,
+                }
+                return res
+            })
         }
     }
 }

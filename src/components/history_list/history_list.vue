@@ -20,7 +20,7 @@
 			<view class="threeline_1">{{listOptions.amountSum}}</view>
 			<view class="threeline_2">{{listOptions.price}}</view>
 			<view class="threeline_3">{{Number(listOptions.amountExecuted)*Number(listOptions.price)}}</view>
-			<view class="threeline_4">{{listOptions.amountExecuted}}</view>
+			<view class="threeline_4"><text>{{listOptions.amountExecuted}}</text></view>
 		</view>
 	</view>
 </template>
@@ -102,7 +102,7 @@
 		color: #8D989E;
 		clear: both;
 		width: 100%;
-		height: 40rpx;
+		height: 80rpx;
 		.twoline_1{
 			// width: 112rpx;
 			// height: 40rpx;
@@ -135,31 +135,40 @@
 		font-weight: 400;
 		color: #00001A;
 		width: 100%;
-		height: 40rpx;
+		height: 80rpx;
 		.threeline_1{
 			width: 112rpx;
-			height: 40rpx;
+			height: 50rpx;
 			float: left;
 			margin-right: 70rpx;
 			margin-left: 20rpx;
+			box-sizing: border-box;
 		}
 		.threeline_2{
 			width: 112rpx;
-			height: 40rpx;
+			height: 50rpx;
 			float: left;
 			margin-right: 70rpx;
+			box-sizing: border-box;
+
 		}
 		.threeline_3{
 			width: 112rpx;
-			height: 40rpx;
+			height: 50rpx;
 			float: left;
 			margin-right: 70rpx;
+			box-sizing: border-box;
+
 		}
 		.threeline_4{
 			width: 112rpx;
-			height: 40rpx;
+			height: 50rpx;
 			float: right;
-			margin-right: -10rpx;
+			box-sizing: border-box;
+			text{
+				float: right;
+				margin-right: 30rpx;
+			}
 		}
 	}
 	.item.black{

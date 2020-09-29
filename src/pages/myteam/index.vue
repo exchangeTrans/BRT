@@ -1,10 +1,10 @@
 <template>
-	<view class="myteam">
+	<view class="myTeam" id="myTeam">
 		<pageHeader :headerOptions="headerOptions"></pageHeader>
 		<view class="headbg">
 			<view class="usermsgcon">
 				<view class="headphoto">
-					<image src="../../static/images/myteam/headphoto.png" mode="" style="width:118rpx; height: 118rpx;"></image>
+					<image :src="teamData.avatar" mode="" style="width:118rpx; height: 118rpx; border-radius: 50%"></image>
 				</view>
 				<view class="usermsg">
 					<view class="username">{{teamData.nickname}}</view>
@@ -47,8 +47,10 @@
 				<view class="memberid">{{item.memberid}}</view>
 				<view class="grade">{{item.grade}}</view> -->
 			<view class="datalist" v-for="(item,id) in inviteRecord" :key="id">
-				<image :src=countryFlagArr[item.countryCode] mode="" class="flag"></image>
-				<view class="time">{{item.account}}</view>
+				<view class="inviteAccount">
+					<image :src="countryFlagArr[item.countryCode]" mode="" class="flag"></image>
+					<view class="time">{{item.account}}</view>
+				</view>
 				<view class="memberid">{{item.inviteCode}}</view>
 				<view class="grade">{{item.teamMining}}</view>
 			</view>
@@ -66,7 +68,7 @@
 <script src="@/script/myTeam/myTeam.js"></script>
 
 <style lang="less">
-	.myteam{
+	.myTeam{
 		width: 100%;
 		height: 100%;
 		// padding-top: calc(100rpx + var(--status-bar-height));
@@ -100,7 +102,7 @@
 					float: left;
 				}
 				.usermsg{
-					width: 300rpx;
+					width: 50%;
 					height: 60rpx;
 					float: left;
 					line-height: 60rpx;
@@ -111,7 +113,6 @@
 						font-size: 36rpx;
 						font-family: PingFangSC-Semibold, PingFang SC;
 						font-weight: 600;
-						width: 300rpx;
 					}
 					.userid{
 						color: #C0C0C0;
@@ -119,7 +120,6 @@
 						font-family: PingFangSC-Regular, PingFang SC;
 						opacity: 0.6;
 						font-weight: 400;
-						width: 300rpx;
 					}
 				}
 				.incomelog{
@@ -229,22 +229,21 @@
 			line-height: 100rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
 			color: #1A1A1A;
+			display: flex;
 			.count{
-				margin-left: 40rpx;
-				float: left;
-				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				flex: 7;
+				text-indent: 40rpx;
+				box-sizing: border-box;
+				/*margin-left: 40rpx;*/
+				/*float: left;*/
 			}
 			.memberid{
-				margin-left: 205rpx;
-				float: left;
-				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				flex: 4;
+				/*margin-left: 205rpx;*/
 			}
 			.grade{
-				margin-left: 530rpx;
-				font-family: PingFangSC-Regular, PingFang SC;
-				color: #1A1A1A;
+				flex: 4;
+				/*margin-left: 530rpx;*/
 			}
 		}
 		.datalist{
@@ -254,32 +253,36 @@
 			line-height: 100rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
 			color: #1A1A1A;
-			.flag{
-				width: 50rpx;
-				height: 34rpx;
-				float: left;
-				margin-top: 30rpx;
-				margin-left: 20rpx;
+			display: flex;
+			.inviteAccount{
+				flex: 7;
+				.flag{
+					width: 50rpx;
+					height: 34rpx;
+					float: left;
+					margin: 35rpx 15rpx 0 20rpx;
+
+				}
+				.time{
+					float: left;
+				}
 			}
 			.count{
-				margin-left: 20rpx;
-				float: left;
+				/*margin-left: 20rpx;*/
+				/*float: left;*/
 				font-size: 28rpx;
 				font-family: PingFangSC-Regular, PingFang SC;
 				margin-top: -5rpx;
 			}
 			.memberid{
-				margin-left: 80rpx;
-				float: left;
-				font-size: 28rpx;
-				font-family: PingFangSC-Regular, PingFang SC;
-				margin-top: -5rpx;
+				flex: 4;
+				/*margin-left: 80rpx;*/
+				/*float: left;*/
+
 			}
 			.grade{
-				margin-left: 560rpx;
-				font-size: 28rpx;
-				font-family: PingFangSC-Regular, PingFang SC;
-				margin-top: -5rpx;
+				text-align: center;
+				flex: 4;
 			}
 		}
 		.scrollh{

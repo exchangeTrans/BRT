@@ -102,6 +102,7 @@ export default {
         }
       },
     },
+
     KLineTradingPair:{
       type:'USDT',
       name:'BTC',
@@ -114,16 +115,18 @@ export default {
       dataArray:[],
       isLocal:false,
     },
-    tradingSymol: [
-        {name:'BRT',isLocal:true},
-        {name:'USDT',isLocal:true},
-        {name:'BTC',isLocal:false},
-        {name:'ETH',isLocal:false},
-        {name:'XRP',isLocal:false},
-        {name:'BCH',isLocal:false},
-        {name:'LTC',isLocal:false},
-        {name:'XMR',isLocal:false},      
-    ],
+    tradingSymol: {
+      BRT:{name:'BRT',type:'USDT',nowData:null,isLocal:true},
+      USDT:{name:'USDT',type:'USDT',nowData:null,isLocal:true},
+      BTC:{name:'BTC',type:'USDT',nowData:null,isLocal:false},
+      ETH:{name:'ETH',type:'USDT',nowData:null,isLocal:false},
+      XRP:{name:'XRP',type:'USDT',nowData:null,isLocal:false},
+      BCH:{name:'BCH',type:'USDT',nowData:null,isLocal:false},
+      LTC:{name:'LTC',type:'USDT',nowData:null,isLocal:false},
+      XMR:{name:'XMR',type:'USDT',nowData:null,isLocal:false},   
+      EOS:{name:'EOS',type:'USDT',nowData:null,isLocal:false},
+      DASH:{name:'DASH',type:'USDT',nowData:null,isLocal:false},   
+    },
     selectSymbol:{name:'USDT',isLocal:false},
     quotationData:{},
 

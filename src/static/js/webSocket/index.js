@@ -135,8 +135,15 @@ export const mySocket={
         let selectedCurrency = store.state.defaultData.selectedCurrency.code;
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let newData = tradePairData.map(function (item) {
+            let tradingSymol = store.state.tradeData.tradingSymol;
             
+            // console.log(tradingSymol)
+            
+            // tradingSymol[]
             if(item.id===symbol){
+                let symbolName = item.name;
+                tradingSymol[symbolName].nowData=data.tick;
+                store.commit("setTredDataSync",{key:"tradingSymol", val: tradingSymol,})
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
                 // let code = item.type+selectedCurrency
                 // let price = Number(rangeList[code])*tick.close;

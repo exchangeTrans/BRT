@@ -7,8 +7,6 @@
 		<view class="import">	<importBtn :btnText="'导入地址'" @btnClick="importAddress"></importBtn></view>
 
 
-
-
 		<view class="tcp">
 			<checkbox value="cb" checked="true" />   我已仔细阅读并同意《BRT用户协议》
 		</view>

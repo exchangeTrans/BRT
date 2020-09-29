@@ -58,13 +58,13 @@ export default {
                     name: "区块链浏览器",
                     path: "",
                     img: `${require('@/static/images/user/blockchain.png')}`,
-                    url: "https://drrfffs.brt.com/",
+                    url: "https://www.brtscan.pro",
                 },
                 {
-                    name: "开发者支持",
+                    name: "开源代码",
                     path: "",
                     img: `${require('@/static/images/user/dev.png')}`,
-                    url: "https://drrfffs.brt.com/",
+                    url: "https://github.com/BRTChain/BRT-Chain",
                 },
                 {
                     name: "版本",
@@ -123,7 +123,7 @@ export default {
         this.getLoginStatus();
     },
     onShow() {
-        
+
     },
     methods: {
         toPage(path) {
@@ -134,7 +134,7 @@ export default {
                     url: path,
                 })
             }
-            
+
         },
         btnClick() {
             // debugger

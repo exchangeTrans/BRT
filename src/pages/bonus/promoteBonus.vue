@@ -101,6 +101,7 @@
                         margin-left: 40rpx;
                         width: 118rpx;
                         height: 118rpx;
+                        border-radius: 50%;
                         background-size: 100% 100%;
                     }
 
