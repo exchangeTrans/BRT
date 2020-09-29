@@ -42,7 +42,8 @@
                                :disabled="authStatusData.disabled">
                     </view>
                 </view>
-                <view class="unrealName" v-if="authStatusData.kyc1.toString() === '0'">
+                <view class="unrealName"
+                      v-if="authStatusData.kyc1 == 0 || authStatusData.kyc1 == 3">
                     <view class="upload-img">
                         <view class="upload-img-title">
                             <view class="upload-img-text">
