@@ -362,7 +362,7 @@ export default {
             let that = this
             let tempAccountType = accountType === 0 ? 'phoneTime' : 'emailTime';//0手机 1邮箱
             let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
-            // let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
+            let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
             // that[tempStauts] = true;
 
             let interval = setInterval(function () {
@@ -372,8 +372,8 @@ export default {
                 --that[tempAccountType];
                 if (that[tempAccountType] < 0) {
                     that[tempName] = "重新发送";
+                    that[tempStauts] = false;
                     that[tempAccountType] = 60;
-                    that[tempName] = false;
                     clearInterval(interval);
                 }
             }, 1000);
