@@ -126,7 +126,7 @@ export default {
                     that.data = res.data
                     setTimeout(() => {
                         that.$refs.qrcode2233.make()
-                    }, 1000);
+                    }, 100);
 
 
                 } else {
@@ -137,7 +137,6 @@ export default {
             })
         },
         makeComplete(res){
-            console.log(res)
             this.filePath = res;
         },
         saveImage(){

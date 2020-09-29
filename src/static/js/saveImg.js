@@ -1,15 +1,14 @@
 const saveImg = {
     //获取相册授权
     getPhoneAuth(imgUrl) {
-        debugger
         uni.getSetting({
                 success(res) {
-                    debugger
+                    console.log(res)
                     if (!res.authSetting['scope.writePhotosAlbum']) {
                         uni.authorize({
                             scope: 'scope.writePhotosAlbum',
                             success() {
-                                debugger
+                                console.log(res)
                                 //这里是用户同意授权后的回调
                                 saveImgToLocal(imgUrl);
                             },
@@ -18,6 +17,7 @@ const saveImg = {
                             }
                         })
                     } else {//用户已经授权过了
+                        console.log(imgUrl)
                         saveImgToLocal(imgUrl);
                     }
                 }
@@ -25,11 +25,10 @@ const saveImg = {
         )
 
         function saveImgToLocal(imgUrl) {
-            debugger
             uni.downloadFile({
                 url: imgUrl,
                 success: (res) => {
-                    debugger
+                    console.log(res)
                     if (res.statusCode === 200) {
                         uni.saveImageToPhotosAlbum({
                             filePath: res.tempFilePath,

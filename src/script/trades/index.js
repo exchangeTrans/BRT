@@ -312,7 +312,7 @@
 		selectTradeHeader(item){
 			if(item.code==='2'){
 				this.$toast.show({
-					title: "暂未开放此功能",
+					title: "暂未开放",
 				})
 			}
 		},

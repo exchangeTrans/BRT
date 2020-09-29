@@ -94,7 +94,10 @@ export default {
 	},
 	methods: {
 		transferInAmount() {
-			this.$refs.financierInAmount.open();
+			// this.$refs.financierInAmount.open();
+			this.$toast.show({
+				title: "暂未开放",
+			})
 		},
 		sliderChange(e) {
 			this.sliderValue = e.detail.value;

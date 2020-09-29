@@ -3,16 +3,17 @@
 		<!--<view class="logo"></view>-->
 		<!--<view class="welcomeText">欢迎来到 BRT 交易平台</view>-->
 		<appHeader :headerOptions="headerOptions"></appHeader>
+		
 
 		<view class="promotion">
-			<view class="qeCode"></view>
-			<view class="inviteCode">邀请码：ABC928</view>
+			<view class="qeCodeBox"><uni-qrcode cid="qrcodeVis" @makeComplete="makeComplete" ref="qrcodeVis" :text="codeUrl" :size="size" backgroundColor="rgba(255,255,255,0)" /></view>
+			<view class="inviteCode">邀请码：{{userInfo.inviteCode}}</view>
 		</view>
 
 
 		<view class="btnGroup">
 			<view class="btnItem" @tap="saveImage"> 保存图片</view>
-			<view class="btnItem  copy" @tap="copy">复制下载链接</view>
+			<view class="btnItem  copy" @tap="copy">複製分享鏈接</view>
 
 		</view>
 
@@ -29,9 +30,12 @@
 
 <script>
 	import appHeader from '@/components/common/header.vue'
+	import uniQrcode from '@/components/uqrcode/index.vue'
+	import saveImg from '@/static/js/saveImg.js';
     export default {
 	    components:{
-            appHeader
+			appHeader,
+			uniQrcode
 		},
         data() {
             return {
@@ -48,22 +52,119 @@
                     bodyPadding:{"padding":'0,0,0,0'},
                     headerIsNoBoder: true,
                 },
-                welcomeBg:`${require('@/static/images/welcome/welcomeBg.png')}`
+				welcomeBg:`${require('@/static/images/welcome/welcomeBg.png')}`,
+				codeUrl:'',
+				size:uni.upx2px(202),
+				filePath:''
 
             }
         },
         onLoad() {
 
-        },
+		},
+		mounted(){
+			this.createAddress()
+		},
+		computed: {
+			
+			userInfo() {
+				return this.$store.state.defaultData.userInfo
+			}
+		},
         methods: {
             createAddress(){
-
+				// let url = 'http://reg.brtscan.pro/#/?'
+				// let url = 'http://www.baidu.com/?'
+				// let inviteCode = this.userInfo.inviteCode;
+				let shareUrl = this.userInfo.shareUrl;
+				
+				// let str = this.userInfo.tel;
+				// let telArray = str.split("");
+				// let phoneArray = telArray.map(function (item,index) {
+				// 	if(index>2&&index<telArray.length-4){
+				// 		return '*'
+				// 	}
+				// 	return item
+				// })
+				let that = this;
+				// let phone = phoneArray.join('');
+				this.codeUrl = shareUrl;
+				setTimeout(() => {
+					that.$refs.qrcodeVis.make()
+				}, 100);
+			},
+			makeComplete(res){
+				this.filePath = res;
 			},
             importAddress(){
 
 			},
-			saveImage(){
+			saveImage() {
+			const that = this;
+			/* 获取屏幕信息 */
+			let ws = this.$mp.page.$getAppWebview();
+			let bitmap = new plus.nativeObj.Bitmap('test');
+			// 将webview内容绘制到Bitmap对象中
+			ws.draw(
+				bitmap,
+				function(e) {
+					/* 获取base64 */
+					that.test= bitmap.toBase64Data();
+					/* 加载base64编码 */
+					bitmap.loadBase64Data(
+						bitmap.toBase64Data(),
+						function() {
+							console.log('加载Base64图片数据成功');
+							/* 保存图片 */
+							bitmap.save(
+								'_doc/share.jpg',
+								{},
+								async (i)=>{
+									console.log('保存图片成功：' + JSON.stringify(i));
+									uni.saveImageToPhotosAlbum({
+										filePath: i.target,
+										success: function() {
+											/* 清除 */
+											bitmap.clear();
+											uni.showToast({
+												title: '图片保存成功',
+												icon: 'none',
+												duration: 2200
+											});
+										},
+										fail(e) {
+											uni.showToast({
+												title: '保存失败',
+												icon: 'none',
+												duration: 2200
+											});
+										}
+									});
+								},
+								function(e) {
+									console.log('保存图片失败：' + JSON.stringify(e));
+								}
+							);
+						},
+						function() {
+							console.log('加载Base64图片数据失败：' + JSON.stringify(e));
+						}
+					);
+				},
+				function(e) {
+					console.log('截屏绘制图片失败：' + JSON.stringify(e));
+				},
+				{
+					check: true, // 设置为检测白屏
+					clip: { top: '100px', left: '0px', height: '100%', width: '100%' } // 设置截屏区域
+				}
+			);
+		},
+
+			saveImage1(){
 				let filePath = this.filePath;
+				console.log(filePath)
+				saveImg(filePath)
 				// uni.chooseImage({
 				//     count: 1,
 				//     sourceType: ['album '],
@@ -76,33 +177,33 @@
 				// });
 				// }
 				// })
-				uni.getImageInfo({
-					src: filePath,
-					success: function(image) {
-						console.log('图片信息：', JSON.stringify(image));
-						uni.saveImageToPhotosAlbum({
-							filePath: image.path,
-							success: function() {
-								console.log('save success');
-								uni.showToast({
-									title: '图片保存成功',
-									icon: 'none',
-									duration: 2200
-								});
-							},fail:function(e){
-								uni.showToast({
-									title: '图片保存失败',
-									icon: 'none',
-									duration: 2200
-								});
-							}
-						});
-					}
-				});
+				// uni.getImageInfo({
+				// 	src: filePath,
+				// 	success: function(image) {
+				// 		console.log('图片信息：', JSON.stringify(image));
+				// 		uni.saveImageToPhotosAlbum({
+				// 			filePath: image.path,
+				// 			success: function() {
+				// 				console.log('save success');
+				// 				uni.showToast({
+				// 					title: '图片保存成功',
+				// 					icon: 'none',
+				// 					duration: 2200
+				// 				});
+				// 			},fail:function(e){
+				// 				uni.showToast({
+				// 					title: '图片保存失败',
+				// 					icon: 'none',
+				// 					duration: 2200
+				// 				});
+				// 			}
+				// 		});
+				// 	}
+				// });
 
 			},
 			copy(){
-            	let text = "下载地址未知"
+            	let text = this.codeUrl;
 				uni.setClipboardData({
 					data: text,
 					success: function () {
@@ -139,11 +240,12 @@
 			position: absolute;
 			bottom: 27%;
 			left: 0;
-			.qeCode{
-				width: 210rpx;
-				height: 210rpx;
+			.qeCodeBox{
+				width: 202rpx;
+				height: 202rpx;
+				padding: 8rpx;
 				margin: 0 auto;
-				background-color: #333333;
+				background-color: #fff;
 			}
 			.inviteCode{
 				margin-top: 20rpx;
