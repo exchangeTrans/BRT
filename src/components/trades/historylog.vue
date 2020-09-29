@@ -10,8 +10,8 @@
 			<view class="cancelitem" @tap='cancelTrade(historylogdata)'>撤单</view>
 		</view>
 		<view class="twoline" >
-			<view class="item-tr-left">委托价格({{KLineTradingPair.name}})</view>
-			<view class="item-tr-right">委托数量({{KLineTradingPair.type}})</view>
+			<view class="item-tr-left">委托价格({{KLineTradingPair.type}})</view>
+			<view class="item-tr-right">委托数量({{KLineTradingPair.name}})</view>
 		</view>
 		<view class="threeline">
 			<view class="itemcharge">{{historylogdata.price}}</view>
