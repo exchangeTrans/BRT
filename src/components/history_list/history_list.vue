@@ -15,12 +15,12 @@
 			<view class="twoline_3">成交总额</view>
 			<view class="twoline_4">成交量</view>
 		</view>
-	
+
 		<view class="threeline">
-			<view class="threeline_1">{{listOptions.amountSum}}</view>
-			<view class="threeline_2">{{listOptions.price}}</view>
-			<view class="threeline_3">{{Number(listOptions.amountExecuted)*Number(listOptions.price)}}</view>
-			<view class="threeline_4">{{listOptions.amountExecuted}}</view>
+			<view class="threeline_1">{{listOptions.amountSum.toFixed(4)}}</view>
+			<view class="threeline_2">{{listOptions.price.toFixed(4)}}</view>
+			<view class="threeline_3">{{(Number(listOptions.amountExecuted)*Number(listOptions.price)).toFixed(4)}}</view>
+			<view class="threeline_4">{{listOptions.amountExecuted.toFixed(4)}}</view>
 		</view>
 	</view>
 </template>
@@ -51,7 +51,7 @@
 		},
 		data(){
 			return{
-				
+
 			}
 		}
 	}
@@ -165,7 +165,7 @@
 	.item.black{
 		background: #272A2E;
 		.oneline{
-			
+
 		color: #D9DADB
 		}
 		.twoline{
@@ -176,5 +176,5 @@
 			color: #D9DADB
 		}
 	}
-	
+
 </style>

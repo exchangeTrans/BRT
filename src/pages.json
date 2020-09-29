@@ -308,12 +308,12 @@
       }
     },
 
-//    {
-//      "path": "blackPages/aboutUs/index",
-//      "style": {
-//        //"navigationBarTitleText": ""
-//      }
-//    },
+    {
+      "path": "blackPages/aboutUs/index",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
     {
       "path": "blackPages/sub/index",
       "style": {
