@@ -3,16 +3,23 @@
 		<view class="tableHeader">
             <view class="tableLi tableLi1">{{$t('trade').tableHeadTr2[0]}}</view>
             <view class="tableLi tableLi2">{{$t('trade').tableHeadTr2[1]}}</view>
-            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr2[2]}}(HDU)</view>
+            <view class="tableLi tableLi3">{{$t('trade').tableHeadTr2[2]}}({{KLineTradingPair.name}})</view>
             <view class="tableLi tableLi4">{{$t('trade').tableHeadTr2[3]}}</view>
         </view>
-        <view class="tableTr">
-            <view class="tableLi tableLi1">14:34:43</view>
-            <view class="tableLi tableLi2">{{$t('trade').sell}}</view>
-            <view class="tableLi tableLi3">1200.96</view>
-            <view class="tableLi tableLi4">1</view>
+        <view class="tableTr" v-for="(item,index) in tableData" :key="index">
+            <view class="tableLi tableLi1">{{item.ts}}</view>
+            <view class="tableLi tableLi2 buy" v-if="item.direction==='buy'">{{$t('trade').buy}}</view>
+            <view class="tableLi tableLi2" v-else>{{$t('trade').sell}}</view>
+            <view class="tableLi tableLi3">{{item.price}}</view>
+            <view class="tableLi tableLi4">{{item.amount}}</view>
         </view>
-        <view class="tableTr">
+        <!-- amount: 0.00662
+direction: "buy"
+id: "113148402599112150493040940"
+price: 10898.6
+tradeId: "102194428546"
+ts: 1601307776068 -->
+        <!-- <view class="tableTr">
             <view class="tableLi tableLi1">14:34:43</view>
             <view class="tableLi tableLi2 buy">{{$t('trade').buy}}</view>
             <view class="tableLi tableLi3">1200.96</view>
@@ -23,12 +30,14 @@
             <view class="tableLi tableLi2 buy">{{$t('trade').sell}}</view>
             <view class="tableLi tableLi3">1200.96</view>
             <view class="tableLi tableLi4">1</view>
-        </view>
+        </view> -->
 	</view>
 </template>
 
 <script>
+    import {DateFunc} from '@/static/js/common.js';
     export default {
+        
 	    components:{
 		},
         data() {
@@ -65,6 +74,7 @@
                     {code:'3',name:"币种简介",id:''},
                 ],
                 tableTabSelect:{code:'2',name:"最新成交",id:''},
+                tableData:[],
                 
 
             }
@@ -72,7 +82,45 @@
         onLoad() {
 
         },
+        computed: {  
+            pageText () {  
+                // console.log(this.$t('trade'))
+                return this.$t('trade')  
+            },
+            KLineTradingPair(){
+                return this.$store.state.tradeData.KLineTradingPair;
+            },
+            // detailData(){
+            //     console.log(this.$store.state.tradeData.KLineTradingPair.detail)
+            //     return this.$store.state.tradeData.KLineTradingPair.detail;
+            // }
+        },  
+        watch:{
+            KLineTradingPair(){
+                this.getTableData()
+            }
+        },
         methods: {
+            getTableData(){
+                let detail = this.KLineTradingPair.detail;
+                let newData = detail.map(function (item) {
+                    if(item&&item.ts){
+                        let res = DateFunc.resetTime_getObj(item.ts,'hms')
+                        let ts = res.viewTime;
+                        return {
+                            ...item,
+                            ts
+                        }
+                    }
+                });
+                
+                this.tableData = newData;
+            },   
+                
+                
+
+
+            // },
             selectChartTab(item){
                 this.chartTabSelect = item;
             },

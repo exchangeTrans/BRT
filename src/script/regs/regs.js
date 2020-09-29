@@ -207,6 +207,7 @@ export default {
         btnClick() {
             // console.log("下一步")
             let postData = this.getPostData();
+            let that = this;
             if (postData) {
                 uni.showLoading({
                     title: "加载中..."
@@ -229,14 +230,16 @@ export default {
                             userLoginId: res.data.userLoginId,
                             userLoginToken: res.data.userLoginToken,
                         }
-                        this.$storage.setSync({
+                        this.$storage.set({
                             key: "loginMsg",
                             data: loginMsg,
+                        },function(){
+                            that.$store.dispatch('getUserMsg');
                         });
                         this.$jumpPage.jump({
                             type: 'reLaunch',
                             url: 'index/index'
-                        })
+                        });
                         uni.hideLoading()
                     } else {
                         this.$toast.show({
@@ -296,6 +299,7 @@ export default {
             let that = this;
             // debugger
             if (!this[name]) {
+                this[name] = true;
                 let sendCodeData = this.getSendCodeData();
                 if (sendCodeData) {
                     uni.showLoading({
@@ -311,9 +315,14 @@ export default {
                             uni.hideLoading()
                             that.setIntervalFun(sendCodeData.accountType);
                         } else {
-                            this.$toast.show({
+                            // this[name] = false;
+                            that.$toast.show({
                                 title: res.result.returnMessage,
                             })
+                            uni.hideLoading()
+                            setTimeout(function () {
+                                that[name] = false;
+                            },3000)
                         }
 
                     })
@@ -369,7 +378,7 @@ export default {
             let tempAccountType = accountType === 0 ? 'phoneTime' : 'emailTime';//0手机 1邮箱
             let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
             let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
-            that[tempStauts] = true;
+            // that[tempStauts] = true;
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
@@ -377,8 +386,8 @@ export default {
                 --that[tempAccountType];
                 if (that[tempAccountType] < 0) {
                     that[tempName] = "重新发送";
+                    that[tempStauts] = false;
                     that[tempAccountType] = 60;
-                    that.getCodeStatus = false;
                     clearInterval(interval);
                 }
             }, 1000);

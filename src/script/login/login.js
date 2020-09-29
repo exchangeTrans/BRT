@@ -174,6 +174,7 @@ export default {
             let postData = this.getPostData()
             // debugger
             // console.log(postData);
+            let that = this;
             if (postData) {
                 this.$request({
                     url: "common/login",
@@ -191,14 +192,17 @@ export default {
                     // returnUserMessage: "登录成功"
                     if (res.result.returnCode.toString() === "0") {
                         // console.log(res);
+                        
                         let loginMsg = {
                             isLogin: true,
                             userLoginId: res.data.userLoginId,
                             userLoginToken: res.data.userLoginToken,
                         }
-                        this.$storage.setSync({
+                        this.$storage.set({
                             key: "loginMsg",
                             data: loginMsg,
+                        },function(){
+                            that.$store.dispatch('getUserMsg');
                         });
                         // switchTab
                         this.$toast.show({

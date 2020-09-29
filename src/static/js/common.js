@@ -221,6 +221,7 @@ export const DateFunc = {
         } else {
             times = year + "年" + (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day) + " " + (hh < 10 ? "0" + hh : hh) + ":" + (mm < 10 ? "0" + mm : mm);
         }
+        // let formatterTime = 
         let result = {
             viewTime: times,
             year,

@@ -76,7 +76,23 @@
             propertyOption: {
                 type: Array,
                 default: () => [],
+            },
+            // drawSymbol: {},
+
+        },
+        data(){
+            return{
+                drawList: [
+                    "XRP",
+                    "BCH",
+                    "LTC",
+                    "XMR",
+                    "EOS",
+                    "DASH",
+                ],
+                tip: "此币只开发提现",
             }
+            
         },
         computed: {
             nameIcon() {
@@ -97,7 +113,7 @@
                 }
 
             },
-		
+
             selectedCurrency(){
                 return this.$store.state.defaultData.selectedCurrency;
             },
@@ -115,17 +131,28 @@
                 }
 
             },
-            
-        },
-        data() {
-            return {}
+
         },
         methods: {
             click(symbolType,url) {
-                let symbolName = this.propertyCardData.name
+                let symbolName = this.propertyCardData.name;
+                let drawList = this.drawList;
                 this.$store.commit("setSymbolType", {"symbolType": symbolType, "name": symbolName})
+                if (url.toString() === "receipt/index") {
+                    if(drawList.indexOf(symbolName)>-1){
+                        this.$toast.show({
+                            title: '此币种目前只支持提币',
+                        })
+                    }else{
+                        this.$jumpPage.jump({
+                            type:'navigateTo',
+                            url:url
+                        })
+                    }
+                    
+                }
 
-                if(url !== ''){
+                else if(url !== ''){
                     this.$jumpPage.jump({
                         type:'navigateTo',
                         url:url

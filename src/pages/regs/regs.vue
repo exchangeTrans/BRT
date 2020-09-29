@@ -21,7 +21,8 @@
                                 :inputStyle="inputPhoneStyle"
                                 :inputData="postData.tel"
                                 @inputChange="inputChange('tel', $event)"></loginInput>
-                    <loginInput :iconShow="true" :iconSrc="smsVerifyCode"
+                    <loginInput :iconShow="true"
+                                :iconSrc="smsVerifyCode"
                                 :placeHolder="$t('regs').inputPhoneVerifyCode"
                                 :inputStyle="inputVerifyCodeStyle"
                                 :lastTextShow="true"
@@ -59,7 +60,8 @@
                                 :inputStyle="passwordStyle"
                                 :inputData="postData.email"
                                 @inputChange="inputChange('email', $event)"></loginInput>
-                    <loginInput :iconShow="true" :iconSrc="smsVerifyCode"
+                    <loginInput :iconShow="true"
+                                :iconSrc="smsVerifyCode"
                                 :lastTextShow="true"
                                 :lastText="emailName"
                                 @lastTextClick="sendSmsVerify('emailCodeStatus')"

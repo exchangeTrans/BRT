@@ -11,10 +11,10 @@
             </view>
         </scroll-view>
         <view class="listcontent" v-else>
-		    <view class="datacontent">
-			    <image src="../../static/images/addrecord/addlog.png" mode="" class="img"></image>
-			    <view class="item">暂无数据</view>
-		    </view>
+            <view class="datacontent">
+                <image src="../../static/images/addrecord/addlog.png" mode="" class="img"></image>
+                <view class="item">暂无数据</view>
+            </view>
         </view>
     </view>
 </template>
@@ -41,21 +41,13 @@
             }
         }
     }
-	.headstyle{
-		padding-top: calc(100rpx + var(--status-bar-height));
-	}
-	.record{
-		background: #272A2E;
-		width: 100%;
-		height: calc(100vh);
-		padding-top: 100rpx;
-	}
     .listcontent{
+        margin-top: -100rpx;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: calc(100vh - var(--status-bar-height) - 100rpx);
+        height: calc(100vh - var(--status-bar-height));
         .datacontent{
             padding-top: calc(100rpx + var(--status-bar-height));
         }
@@ -72,7 +64,7 @@
             color:#D9DADB;
             line-height: 40rpx;
             text-align: center;
+            margin-top: 33rpx;
         }
     }
-
 </style>

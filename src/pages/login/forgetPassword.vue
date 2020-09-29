@@ -164,6 +164,7 @@
 
                 .regsTouch {
                     margin-top: 40rpx;
+                    margin-bottom: 232rpx;
                     font-size: 32rpx;
                     font-family: PingFangSC-Regular, PingFang SC;
                     font-weight: 400;

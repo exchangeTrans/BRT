@@ -76,6 +76,11 @@
                     that.windowHeight = windowHeight;
                 }
             }).exec();
+            this.$monitor.on("changeTab",function(res){
+                that.changePage({
+                    pagePath:res.path
+                })
+            });
         },
         watch: {
             footerHeight() {

@@ -25,13 +25,13 @@
                                 @inputChange="inputChange('tel', $event)"></loginInput>
                     <loginInput :mode="'DARK'"
                                 :iconShow="true"
-                                :iconSrc="smsVerifyCode('phoneCodeStatus')"
+                                :iconSrc="smsVerifyCode"
                                 :placeHolder="$t('regs').inputPhoneVerifyCode"
                                 :inputStyle="inputVerifyCodeStyle"
                                 :lastTextShow="true"
                                 :lastText="phoneName"
                                 :lastTextStyle="phoneLastTextStyle"
-                                @lastTextClick="sendSmsVerify"
+                                @lastTextClick="sendSmsVerify('phoneCodeStatus')"
                                 :inputData="postData.verifyCode"
                                 @inputChange="inputChange('verifyCode', $event)"></loginInput>
                     <loginInput :mode="'DARK'" :iconShow="true"
@@ -65,10 +65,11 @@
                                 @inputChange="inputChange('email', $event)"></loginInput>
                     <loginInput :mode="'DARK'"
                                 :iconShow="true"
-                                :iconSrc="smsVerifyCode('emailCodeStatus')"
-                                :lastText="emailName"
+                                :iconSrc="smsVerifyCode"
                                 :lastTextShow="true"
-                                :placeHolder="$t('regs').inputEmail"
+                                :lastText="emailName"
+                                @lastTextClick="sendSmsVerify('emailCodeStatus')"
+                                :placeHolder="$t('regs').inputEmailVerifyCode"
                                 :inputStyle="inputVerifyCodeStyle"
                                 :inputData="postData.verifyCode"
                                 @inputChange="inputChange('verifyCode', $event)"></loginInput>

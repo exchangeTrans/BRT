@@ -64,7 +64,9 @@ export default {
             notice_deails_list: [],
 
             userMsg: {},
+            changeMoneyData:{}
             // changeMoneyData: {}
+
         }
     },
     onLoad() {
@@ -99,30 +101,45 @@ export default {
             });
             return langMsg.name
         },
-        changeMoneyData() {
-            // debugger
-            // debugger
+        // changeMoneyData() {
+        //     // debugger
+        //     // debugger
+        //     let userMsg = this.$store.state.defaultData.userMsg;
+        //     let asset = userMsg.asset.toString().replace(/,/g, '');
+        //     // 46,730,157.7127
+        //     let changeObj = this.getChangeObj(asset);
+        //     let money = getMoney(asset,'USDT');
+        //     return {
+        //         ...money
+        //     };
+        // },
+        userInfo(){
+            return this.$store.state.defaultData.userInfo
+        }
+    },
+    mounted() {
+        this.getChangeMoneyData();
+        //   this.$refs.update.open();
+        // this.getfirst();
+    },
+    watch:{
+        userInfo(res){
+            this.getChangeMoneyData();
+        }
+    },
+    methods: {
+        getChangeMoneyData(){            
             let userMsg = this.$store.state.defaultData.userMsg;
             let asset = userMsg.asset.toString().replace(/,/g, '');
             // 46,730,157.7127
             let changeObj = this.getChangeObj(asset);
             let money = getMoney(asset,'USDT');
-            console.log(asset);
-            console.log(money);
-            return {
-                ...money
-            };
-        }
-    },
-    mounted() {
-        //   this.$refs.update.open();
-        // this.getfirst();
-    },
-    methods: {
+            this.changeMoneyData = money;
+        },
         toKline(item){
             this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
             this.$store.dispatch('getKline',{
-                period:'1min',
+                period:'5min',
             });
             
             this.$mySocket.subscribeDepth();

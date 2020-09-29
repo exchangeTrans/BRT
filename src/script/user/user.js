@@ -257,6 +257,7 @@ export default {
                         key: "userInfo",
                         val: res.data,
                     })
+                    this.$store.dispatch('getUserMsg');
                     // console.log(that.$store.state.defaultData.userInfo);
                 } else {
                     if (res.result.returnCode.toString() === "10032") {

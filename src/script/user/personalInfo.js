@@ -79,7 +79,6 @@ export default {
             }
         },
         getPostData() {
-            debugger
             let nickname = this.userMsgData.nickname;
             let avatar = this.avatar;
             let postData = {

@@ -26,6 +26,11 @@
 			this.initLangMsg();
 			this.initStoreData();
 
+			let isLogin = this.$storage.getSync({key:'loginMsg'}).isLogin;
+			if(isLogin){
+				this.$store.dispatch('getUserMsg');
+			}
+
 			// this.initAuotationData();
 			let that = this;
 			// uni.onSocketOpen(function (res) {
@@ -95,7 +100,7 @@
 				this.$store.dispatch('getRange');
 
 				this.$store.dispatch('getKline',{
-					period:'1min',
+					period:'5min',
 				});
 				this.$store.dispatch('getRate');
 				this.$store.dispatch('getUserMsg');

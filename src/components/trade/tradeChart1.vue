@@ -24,7 +24,7 @@
         :style="{'width':cWidth*pixelRatio+'px','height':cHeight*pixelRatio+'px', 'transform': 'scale('+(1/pixelRatio)+')','margin-left':-cWidth*(pixelRatio-1)/2+'px','margin-top':-cHeight*(pixelRatio-1)/2+'px'}"
         class="tradeChart1" id="tradeChart1" 
         :prop="option" :change:prop="echarts.update" @click="echarts.onClick"></view> -->
-        <view @click="echarts.onClick" :prop="option" :change:prop="echarts.updateEcharts" id="echarts" class="echarts tradeChart1"></view>
+        <view @click="echarts.onClick" :prop="option" :change:prop="echarts.updateEcharts" :change:test="echarts.test" :test="KLineTradingPair" id="echarts" class="echarts tradeChart1"></view>
 	</view>
 </template>
 <script>
@@ -79,7 +79,7 @@
                     },
                     grid: {
                         top:10,
-                        bottom: 60,
+                        bottom: 40,
                         right:60,
                         left:10
                     },
@@ -194,8 +194,7 @@
         },
         watch:{
             KLineTradingPair(res){
-                console.log(res)
-                this.createKLineData()
+                // this.createKLineData()
             }
         },
         mounted(){
@@ -214,6 +213,7 @@
 	}
 </script>
 <script module="echarts" lang="renderjs">
+import store from '@/store/index.js';
     // import uCharts from '@/components/u-charts/component.vue';
     // import uCharts from '@/static/js/uChart/u-charts.js';
     // import {
@@ -256,11 +256,17 @@
             
         },
         computed: {  
-            // pageText () {  
-            //     // console.log(this.$t('trade'))
-            //     return this.$t('trade')  
-            // }  
-        },  
+            KLineTradingPair1(){
+                return store.state.tradeData.KLineTradingPair;
+            },  
+        }, 
+        watch:{
+            KLineTradingPair1(res){
+                console.log(2)
+                // this.createKLineData()
+            }
+        }, 
+        
         methods: {
 			initEcharts() {
                 myChart = echarts.init(document.getElementById('echarts'))
@@ -269,6 +275,7 @@
                 
 				
             },
+
              createKLineData(){
                 let KLineTradingPair = this.KLineTradingPair
                 // let that = this;
@@ -283,10 +290,10 @@
                     let data = [];
                     let xData = [];
                     KLineTradingPair.dataArray.forEach((item,index) => {
-                        if(index>150){
+                        // if(index>100){
                             data.push([item.open, item.close, item.low,item.high])
                             xData.push(new Date(parseInt(item.id) * 1000).toLocaleString().replace(/:\d{1,2}$/,' '));
-                        }
+                        // }
                     });
                     // this.nowTradePrice = res.data[res.data.length-1].close;
                     this.KLindeData = data;
@@ -325,6 +332,13 @@
                         }
                         // formatter: '{b0}: {c0}<br />{b1}: {c1}'
                     },
+                    dataZoom:[{
+type: 'slider',//图表下方的伸缩条
+show : true, //是否显示
+realtime : true, //拖动时，是否实时更新系列的视图
+// start : 0, //伸缩条开始位置（1-100），可以随时更改
+// end : 100, //伸缩条结束位置（1-100），可以随时更改
+}],
                     
                     series: [
                         {
@@ -344,8 +358,12 @@
             },
 			updateEcharts(newValue, oldValue, ownerInstance, instance) {
 				// 监听 service 层数据变更
-				// myChart.setOption(newValue)
-			},
+                // myChart.setOption(newValue)
+                
+            },
+            test(){
+                this.initEcharts()
+            },
 			onClick(event, ownerInstance) {
                 console.log(event)
                 console.log(ownerInstance)
