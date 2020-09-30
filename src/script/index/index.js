@@ -1,4 +1,4 @@
-import forcedUpdating from "@/components/popup/forcedUpdating/index.vue"
+// import forcedUpdating from "@/components/popup/forcedUpdating/index.vue"
 import pageFooter from '@/components/common/footer.vue'
 import {
     DateFunc
@@ -7,7 +7,7 @@ import {changeMoney, getMoney} from "../../static/js/changeMoney";
 
 export default {
     components: {
-        forcedUpdating,
+        // forcedUpdating,
         pageFooter
     },
     data() {

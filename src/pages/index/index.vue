@@ -61,7 +61,7 @@
 
 		</scroll-view>
 		<pageFooter/>
-		<forcedUpdating ref="update" name="update"></forcedUpdating>
+		<!-- <forcedUpdating ref="update" name="update"></forcedUpdating> -->
 	</view>
 </template>
 

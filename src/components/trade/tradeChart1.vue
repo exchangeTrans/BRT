@@ -92,7 +92,7 @@
                     xAxis: {
                         show:false,
                         type: 'category',
-                        data: ['周一', '周二', '周三', '周四', '周五'],
+                        data: [],
                         axisTick: {
                             show: false
                         },
@@ -135,30 +135,30 @@
                         }
                     },
                     series: [
-                        {
-                            name: '邮件',
-                            type: 'bar',
-                            data: [120, 132, 101, 134, 90],
-                            // 自定义变量，以数组形式传递渐变参数
-                            linearGradient: [0, 0, 0, 1,
-                            [
-                                {offset: 0, color: '#2378f7'},
-                                {offset: 0.7, color: '#2378f7'},
-                                {offset: 1, color: '#83bff6'}
-                            ]]
-                        },
-                        {
-                            name: '手机',
-                            type: 'bar',
-                            data: [220, 182, 191, 234, 290],
-                            // 自定义变量，以数组形式传递渐变参数
-                            linearGradient: [0, 0, 0, 1,
-                            [
-                                {offset: 0, color: '#0bac00'},
-                                {offset: 0.7, color: '#0dcb00'},
-                                {offset: 1, color: '#0fef00'}
-                            ]]
-                        }
+                        // {
+                        //     name: '邮件',
+                        //     type: 'bar',
+                        //     data: [120, 132, 101, 134, 90],
+                        //     // 自定义变量，以数组形式传递渐变参数
+                        //     linearGradient: [0, 0, 0, 1,
+                        //     [
+                        //         {offset: 0, color: '#2378f7'},
+                        //         {offset: 0.7, color: '#2378f7'},
+                        //         {offset: 1, color: '#83bff6'}
+                        //     ]]
+                        // },
+                        // {
+                        //     name: '手机',
+                        //     type: 'bar',
+                        //     data: [220, 182, 191, 234, 290],
+                        //     // 自定义变量，以数组形式传递渐变参数
+                        //     linearGradient: [0, 0, 0, 1,
+                        //     [
+                        //         {offset: 0, color: '#0bac00'},
+                        //         {offset: 0.7, color: '#0dcb00'},
+                        //         {offset: 1, color: '#0fef00'}
+                        //     ]]
+                        // }
                     ]
                 },
                 KLindeData:null,
@@ -328,13 +328,12 @@ import store from '@/store/index.js';
                         ...tooltip,
                         formatter: function (datas) {
                             let data = datas[0];
-                            var res = datas[0].name + '<br/>'
-                            
-                            res=res+datas[0].seriesName + '<br/>'
-                            res=res+'开盘价:'+datas[0].data[0] + '<br/>'
-                            res=res+'收盘价:'+datas[0].data[1]+ '<br/>'
-                            res=res+'最低价:'+datas[0].data[2]+ '<br/>'
-                            res=res+'最高价:'+datas[0].data[3]+ '<br/>'
+                            var res = datas[0].name+'<br>'                           
+                            +datas[0].seriesName+'<br>'
+                            +'开盘价:'+datas[0].data[0]+'<br>'
+                            +'收盘价:'+datas[0].data[1]+'<br>'
+                            +'最低价:'+datas[0].data[2]+'<br>'
+                            +'最高价:'+datas[0].data[3]+'<br>'
                             return res
                         }
                     },
