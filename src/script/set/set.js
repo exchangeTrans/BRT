@@ -127,7 +127,14 @@ export default {
             //         url: 'set/index'
             //     }) 
             // }, 100);
-            this.modelFlag = item;
+            if(item==='day'){
+                this.modelFlag = item;
+            }else if(item==='night'){
+                this.$toast.show({
+                    title: "暂未开放",
+                })
+            }
+
         },
 
         chooseLanguage(languageItem) {
