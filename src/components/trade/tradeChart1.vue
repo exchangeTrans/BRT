@@ -328,12 +328,12 @@ import store from '@/store/index.js';
                         ...tooltip,
                         formatter: function (datas) {
                             let data = datas[0];
-                            var res = datas[0].name+'<br>'                           
-                            +datas[0].seriesName+'<br>'
-                            +'开盘价:'+datas[0].data[0]+'<br>'
-                            +'收盘价:'+datas[0].data[1]+'<br>'
-                            +'最低价:'+datas[0].data[2]+'<br>'
-                            +'最高价:'+datas[0].data[3]+'<br>'
+                            var res = datas[0].name +'\n'                          
+                            +datas[0].seriesName+'\n' 
+                            +'开盘价:'+datas[0].data[0]+'\n' 
+                            +'收盘价:'+datas[0].data[1]+'\n' 
+                            +'最低价:'+datas[0].data[2]+'\n' 
+                            +'最高价:'+datas[0].data[3]
                             return res
                         }
                     },
