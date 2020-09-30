@@ -6,7 +6,7 @@
                     <view :class="isBlack ? 'withdrawalInput-item-title block':'withdrawalInput-item-title'">
                         <span>{{inputData.textTitle}}</span>
                     </view>
-                    <view class="withdrawalInput-item-content">
+                    <view :class="isBlack ? 'withdrawalInput-item-content withdrawalInput-item-content-block':'withdrawalInput-item-content'">
                         <input type="text"
                                :class="isBlack ? 'blackInput':'input'"
                                :placeholder="inputData.placeholder"
@@ -100,7 +100,7 @@
                     .withdrawalInput-item-content {
                         width: 100%;
                         height: 112rpx;
-                        border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+                        border-bottom: 1rpx solid #EDEDED;
                         position: relative;
 
                         .input {
@@ -177,6 +177,11 @@
                             }
                         }
                     }
+                    .withdrawalInput-item-content-block {
+                        border-bottom: 1rpx solid rgba(217, 218, 219, 0.5);
+                    }
+
+                    
 
 
                     .withdrawalInput-item-tip {

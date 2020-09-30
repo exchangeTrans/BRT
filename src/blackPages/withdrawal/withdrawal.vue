@@ -54,8 +54,8 @@
 
 <style scoped lang="less">
     #withdrawal {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         padding-top: calc(100rpx + var(--status-bar-height));
 
         .appHeader {
@@ -69,7 +69,7 @@
             background: #22252A;
 
             .withdrawal-wrap-container {
-                box-sizing: border-box;
+                /*box-sizing: border-box;*/
 
                 .withdrawal-wrap-container-list {
                     margin: 0 30rpx;
@@ -146,7 +146,7 @@
 
                 .withdrawal-wrap-container-btn {
                     margin-top: 40rpx;
-                    margin-bottom: 80rpx;
+                    padding-bottom: 80rpx;
                     width: 100%;
                     .btn-wrap {
                         width: 710rpx;

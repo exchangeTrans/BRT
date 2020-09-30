@@ -118,7 +118,7 @@ export default {
                         cardType: res.data.cardType,//1身份证 2护照
                         cardName: res.data.cardName,
                         cardNo: res.data.cardNo,
-                        disabled: res.data.kyc1 == 0 ? false : true,
+                        disabled: res.data.kyc1 === 0 || res.data.kyc1 === 3 ? false : true,
                     }
                     // console.log(res);
                 } else {

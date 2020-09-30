@@ -188,7 +188,7 @@ export default {
                 item.asset = item.asset.replace(/,/g,"");
                 let symbolTitle = item.symbolTitle.toUpperCase();
                 let nowData = tradingSymol[symbolTitle].nowData
-                console.log(item)
+                // console.log(item)
                 let price = nowData===null?1:nowData.close;
                 price = Number(price)*Number(item.asset)
                 let aboutMoney = getMoney(price,'USDT')
