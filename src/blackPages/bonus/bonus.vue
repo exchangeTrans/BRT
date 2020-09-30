@@ -8,7 +8,7 @@
                 <view class="bonus-wrap-content-card">
                     <view class="bonus-wrap-content-card-msg">
                         <view class="left">
-                            <view class="grade">V{{vipType}}</view>
+                            <view class="grade">{{vipTypeArray[vipType].text}}</view>
                             <view class="grade-text">您的VIP等级</view>
                         </view>
                         <view class="right">

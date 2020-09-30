@@ -7,8 +7,9 @@
             <view class="qrCode">
                 <view class="nameItem">
                     <view class="name">{{choiceType.name}}</view>
-                    <view class="intro">币种名称</view>
-                    <view class="rightIcon" :style="{'background-image':'url('+rightIcon+')'}"></view>
+                    <!-- <view class="intro">币种名称</view> -->
+					<view class="intro" v-if="choiceType.name&&choiceType.name==='USDT'"> ERC20版本</view>
+                    <!-- <view class="rightIcon" :style="{'background-image':'url('+rightIcon+')'}"></view> -->
                     <view class="clearfix"></view>
                 </view>
 
@@ -140,7 +141,7 @@
 					}
 					.intro{
 						position: absolute;
-						right: 84rpx;
+						right: 28rpx;
 						top: 0;
 						color: #B6B6B6;
 					}

@@ -49,6 +49,28 @@ export default {
             isBlack: true,
             total: "",
             vipType: 0,
+            vipTypeArray:{
+                0:{
+                    text:'普通会员',
+                    level:0
+                },
+                1:{
+                    text:'初级节点',
+                    level:0
+                },
+                2:{
+                    text:'中级节点',
+                    level:0
+                },
+                3:{
+                    text:'高级节点',
+                    level:0
+                },
+                4:{
+                    text:'最高节点',
+                    level:0
+                },
+            },
             haveNext:true,
             dayNum:0,
             hourNum:0,
