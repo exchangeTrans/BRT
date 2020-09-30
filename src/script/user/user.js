@@ -1,7 +1,6 @@
 import Btn from "../../components/btn/index";
 import pageFooter from '@/components/common/footer.vue'
 import {changeMoney,getMoney} from "../../static/js/changeMoney";
-
 export default {
     name: "user",
     components: {
@@ -80,9 +79,10 @@ export default {
                     name: "版本",
                     path: "",
                     img: `${require('@/static/images/user/version.png')}`,
-                    url: "v1.15",
+                    url: '',
                     allowToUrl:false,
-                    isNoImg:true
+                    isNoImg:true,
+                    code:'version'
                 },
             ],
             btnText: "退出登录",
@@ -100,37 +100,13 @@ export default {
             changeMoneyData: {},
         }
     },
+    computed:{
+        version(){
+            return this.$store.state.defaultData.version;
+        },
+
+    },
     mounted() {
-        /*let theme = this.$storage.getSync({key:'theme'});
-        // console.log(theme);
-        if(theme === 'white'){
-            this.headerOptions = {
-                show: true,
-                isAllowReturn: false,
-                text: "资产",
-                rightItem: {
-                    type: "text",
-                    text: "",
-                },
-                headerIsNoBoder: false,
-            };
-        } else {
-            this.headerOptions = {
-                show: true,
-                isAllowReturn: false,
-                text: "资产",
-                rightItem: {
-                    type: "text",
-                    text: "",
-                },
-                style:{
-                    'color':'#D9DADB'
-                },
-                background: '#00001A',
-                headerIsNoBoder: true,
-            };
-        }*/
-        // this.getHomeMsg();
         this.getLoginStatus();
     },
     onShow() {
@@ -139,9 +115,7 @@ export default {
     methods: {
         toUrl(item){
             if(item.allowToUrl){
-                console.log(item.url)
                 var urlStr = encodeURI(item.urlBody)//把字符串作为url进行编码
-                console.log(urlStr)
                 plus.runtime.openURL(item.urlHeader + urlStr);
                 // plus.runtime.openUrl(item.url)
             }
@@ -168,6 +142,12 @@ export default {
                 // returnMessage: "注销成功"
                 // returnUserMessage: "注销成功"
                 if (res.result.returnCode.toString() === "0") {
+                    let loginMsg = {
+                        isLogin:false,
+                        userLoginId:'',
+                        userLoginToken:''
+                    }
+                    this.$storage.setSync({key: "loginMsg",data: loginMsg});
                     this.$jumpPage.jump({
                         type: 'redirectTo',
                         url: 'login/login',
@@ -194,25 +174,6 @@ export default {
         },
         getHomeMsg() {
             let that = this
-            // data: {website: "_", vipType: 0, avatar: "", dialingCode: "86", inviteCode: "MTB163", browser: "_",…}
-            // account: "8615282148708"
-            // asset: "0"
-            // avatar: ""
-            // browser: "_"
-            // dialingCode: "86"
-            // email: "1191125750@qq.com"
-            // inviteCode: "MTB163"
-            // nickname: "User"
-            // open: "_"
-            // shareUrl: "http://brt.io?inviteCode=MTB163"
-            // tel: "15282148708"
-            // userAccountType: 1
-            // vipType: 0
-            // website: "_"
-            // result: {returnCode: "0", returnUserMessage: "成功", returnMessage: "成功"}
-            // returnCode: "0"
-            // returnMessage: "成功"
-            // returnUserMessage: "成功"
             this.$request({
                 url: "me/getHome",
                 method: "post",

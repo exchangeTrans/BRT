@@ -4,113 +4,113 @@
 			<view @tap="selectTradeHeader(item)" :class="selectHeader.code===item.code?'headItem active headItem'+index:'headItem headItem'+index" v-for="(item,index) in headerData" :key="item.code">{{item.name}}</view>
 		</view>
 		<scroll-view class="tradesContent" scroll-y>
-			<view class="msg">
-				<view class="msgleft">
-					<image @click="showDrawer" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
-					<text class="tradetype">{{KLineTradingPair.name}}/{{KLineTradingPair.type}}</text>
+		<view class="msg">
+			<view class="msgleft">
+				<image @click="showDrawer" src="../../static/images/trades/headleft.png" mode="" class="lefticon"></image>
+				<text class="tradetype">{{KLineTradingPair.name}}/{{KLineTradingPair.type}}</text>
+			</view>
+			<view class="msgright">
+				<image src="../../static/images/trades/headright.png" mode="" @tap="toKline"  class="righticon"></image>
+				<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>						
+				<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
+				<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
+			</view>
+		</view>
+		<view class="main">
+			<view class="left">
+				<view :class="item.code" v-for="item in tradeNameData" :key="item.code" @tap="changeTradeType(item)">
+					<image class="bluebg" v-if="item.code===selectedTradeName.code" src="../../static/images/trades/bluebg.png" mode=""></image>
+					<image class="whitebg" v-else src="../../static/images/trades/whitebg.png" mode=""></image>
+					<view class="income active" v-if="item.code===selectedTradeName.code">{{item.name}}</view>
+					<view class="income" v-else>{{item.name}}</view>
 				</view>
-				<view class="msgright">
-					<image src="../../static/images/trades/headright.png" mode=""  @tap="toKline"  class="righticon"></image>
-					<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>
-					<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
-					<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
+				
+				<!-- <view class="sale">
+					<image src="../../static/images/trades/whitebg.png" mode=""></image>
+					<view class="fonts">卖出</view>
+				</view> -->
+				
+				<view class="charge">
+					<image src="../../static/images/trades/sub.png" mode="" class="sub" @tap="reduce('tradePrice')"></image>
+					<input :placeholder="'价格('+KLineTradingPair.type+')'" class="charge_name" type="number" min="0" :value="tradePrice" @input="inputChange($event,'tradePrice')">
+					<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradePrice')"></image>
+				</view>
+				
+				<view class="num">
+					<image src="../../static/images/trades/sub.png" mode="" class="sub"  @tap="reduce('tradeNum')"></image>
+					<!-- <text class="charge_num">数量(LED)</text> -->
+					<input :placeholder="'数量('+KLineTradingPair.name+')'" class="charge_num" type="number" min="0" :value="tradeNum" @input="inputChange($event,'tradeNum')">
+					<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradeNum')"></image>
+				</view>
+				
+				<view class="hdunum">可用：{{selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.usdtBalance:0):(tradeInfo.symbolBalance?tradeInfo.symbolBalance:0)}} {{selectedTradeName.code==='buy'?KLineTradingPair.type:KLineTradingPair.name}}</view>
+				<view class="hdupercent">
+					<view class="precent" hover-class="hoverClass" @tap="choosePrecent(item)" v-for="item in precentList" :key="item.val">{{item.text}}</view>
+				</view>
+				<text class="tradenum">交易额:</text><text class="number">{{tradeAll.toFixed(2)}} {{selectedTradeName.code==='buy'?KLineTradingPair.type:KLineTradingPair.name}}</text>
+				<view class="buyit" @tap="tradeFunc" hover-class="hoverClass">{{selectedTradeName.name}}{{KLineTradingPair.name}}</view>
+			</view>
+			<view class="right">
+				<view class="charge_and_num">
+					<view class="money">价格</view>
+					<view class="lednum">数量</view><br>
+					<view v-for="(item,index) in depthData.asks" :key="index">
+						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
+					</view>
+					
+				</view>
+				
+				<view class="charge_exchange">
+					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
+					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
+				</view>
+				<view class="charge_and_num">
+					<view v-for="(item,index) in depthData.bids" :key="index">
+						<data-list :colorOptions="red" :tradesOptions="item"></data-list>
+					</view>
+				</view>
+				<view class="icon_list">
+					<image src="../../static/images/trades/choose.png" mode="" class="icon_item"></image>
+					<image src="../../static/images/trades/maichu.png" mode="" class="icon_item"></image>
+					<image src="../../static/images/trades/mairu.png" mode="" class="icon_item"></image>
 				</view>
 			</view>
-			<view class="main">
-				<view class="left">
-					<view :class="item.code" v-for="item in tradeNameData" :key="item.code" @tap="changeTradeType(item)">
-						<image class="bluebg" v-if="item.code===selectedTradeName.code" src="../../static/images/trades/bluebg.png" mode=""></image>
-						<image class="whitebg" v-else src="../../static/images/trades/whitebg.png" mode=""></image>
-						<view class="income active" v-if="item.code===selectedTradeName.code">{{item.name}}</view>
-						<view class="income" v-else>{{item.name}}</view>
-					</view>
-
-					<!-- <view class="sale">
-                        <image src="../../static/images/trades/whitebg.png" mode=""></image>
-                        <view class="fonts">卖出</view>
-                    </view> -->
-
-					<view class="charge">
-						<image src="../../static/images/trades/sub.png" mode="" class="sub" @tap="reduce('tradePrice')"></image>
-						<input :placeholder="'价格('+KLineTradingPair.type+')'" class="charge_name" type="number" min="0" :value="tradePrice" @input="inputChange($event,'tradePrice')">
-						<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradePrice')"></image>
-					</view>
-
-					<view class="num">
-						<image src="../../static/images/trades/sub.png" mode="" class="sub"  @tap="reduce('tradeNum')"></image>
-						<!-- <text class="charge_num">数量(LED)</text> -->
-						<input :placeholder="'数量('+KLineTradingPair.name+')'" class="charge_num" type="number" min="0" :value="tradeNum" @input="inputChange($event,'tradeNum')">
-						<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradeNum')"></image>
-					</view>
-
-					<view class="hdunum">可用：{{selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.usdtBalance:0):(tradeInfo.symbolBalance?tradeInfo.symbolBalance:0)}} {{selectedTradeName.code==='buy'?KLineTradingPair.type:KLineTradingPair.name}}</view>
-					<view class="hdupercent">
-						<view class="precent" hover-class="hoverClass" @tap="choosePrecent(item)" v-for="item in precentList" :key="item.val">{{item.text}}</view>
-					</view>
-					<text class="tradenum">交易额:</text><text class="number">{{tradeAll}}</text>
-					<view class="buyit" @tap="tradeFunc" hover-class="hoverClass">{{selectedTradeName.name}}{{KLineTradingPair.name}}</view>
-				</view>
-				<view class="right">
-					<view class="charge_and_num">
-						<view class="money">价格</view>
-						<view class="lednum">数量</view><br>
-						<view v-for="(item,index) in depthData.asks" :key="index">
-							<data-list :colorOptions="blackgreen" :tradesOptions="item"></data-list>
-						</view>
-
-					</view>
-
-					<view class="charge_exchange">
-						<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
-						<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
-					</view>
-					<view class="charge_and_num">
-						<view v-for="(item,index) in depthData.bids" :key="index">
-							<data-list :colorOptions="blackred" :tradesOptions="item"></data-list>
-						</view>
-					</view>
-					<view class="icon_list">
-						<image src="../../static/images/trades/choose.png" mode="" class="icon_item"></image>
-						<image src="../../static/images/trades/maichu.png" mode="" class="icon_item"></image>
-						<image src="../../static/images/trades/mairu.png" mode="" class="icon_item"></image>
-					</view>
-				</view>
+		</view>
+		<view class="line"></view>
+		<view class="footer">
+			<view class="descript">当前委托</view>
+			<view class="historylog" @click="gohistorylog">
+				<image src="../../static/images/trades/historylog.png" mode="" class="clock"></image>
+				<view class="fontlog">历史记录</view>
 			</view>
-			<view class="line"></view>
-			<view class="footer">
-				<view class="descript">当前委托</view>
-				<view class="historylog" @click="gohistorylog">
-					<image src="../../static/images/trades/historylog.png" mode="" class="clock"></image>
-					<view class="fontlog">历史记录</view>
-				</view>
-				<view class="imgcon" v-if="historylogdata_list.length===0">
-					<image src="../../static/images/trades/footer.png" mode="" class="img"></image>
-					<view class="footer_data">暂无数据</view>
-				</view>
-				<!-- <scroll-view scroll-y="true" class="historyloglist" v-if="showdata"> -->
-				<block v-if="historylogdata_list.length>0">
-					<view v-for="(item,id) in historylogdata_list" :key="id">
-						<historylog :historylogdata="item" @cancelTrade="cancelTrade"></historylog>
-					</view>
-				</block>
-				<!-- </scroll-view> -->
-
+			<view class="imgcon" v-if="historylogdata_list.length===0">
+				<image src="../../static/images/trades/footer.png" mode="" class="img"></image>
+				<view class="footer_data">暂无数据</view>
 			</view>
-
-			<!-- <view class="blackindex" v-if="showmask">
-                <view class="whiteindex">
-                    <view class="whitefont">币币交易</view>
-                    <scroll-view scroll-y="true" class="listh">
-                        <view v-for="(item,index) in tradelistOptions" :key="index">
-                            <tradelist :tradelistOptions="item"></tradelist>
-                        </view>
-                    </scroll-view>
-                </view>
-                <view class="rightmsg" @click="showmask=false"></view>
-            </view> -->
+			<!-- <scroll-view scroll-y="true" class="historyloglist" v-if="showdata"> -->
+			<block v-if="historylogdata_list.length>0">	
+				<view v-for="(item,id) in historylogdata_list" :key="id">
+					<historylog :historylogdata="item" @cancelTrade="cancelTrade"></historylog>
+				</view>
+			</block>
+			<!-- </scroll-view> -->
+			
+		</view>
+		
+		<!-- <view class="blackindex" v-if="showmask">
+			<view class="whiteindex">
+				<view class="whitefont">币币交易</view>
+				<scroll-view scroll-y="true" class="listh">
+					<view v-for="(item,index) in tradelistOptions" :key="index">
+						<tradelist :tradelistOptions="item"></tradelist>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="rightmsg" @click="showmask=false"></view>
+		</view> -->
 		</scroll-view>
 		<uniDrawer ref="showLeft" mode="left" :width="280" @change="change($event,'showLeft')">
-			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair" :isblack="true" :blacktradelist="true"></tradelist>
+			<tradelist :data="tradeListData" @chooseTradePair="chooseTradePair" :isblack="false"></tradelist>
 		</uniDrawer>
 		<pageFooter/>
 	</view>

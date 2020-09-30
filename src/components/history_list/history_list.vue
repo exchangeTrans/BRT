@@ -2,8 +2,8 @@
 	<view :class="'item '+theme" :style="theme==='black' ? 'background:#272A2E':''">
 		<view class="oneline">
 			<view class="oneline-left">
-				<text class="red" v-if="String(listOptions.orderType)==='1'">买入</text>
-				<text class="green" v-if="String(listOptions.orderType)==='2'">卖出</text>
+				<text class="green" v-if="String(listOptions.orderType)==='1'">买入</text>
+				<text class="red" v-if="String(listOptions.orderType)==='2'">卖出</text>
 				{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
 			<view class="oneline-right">{{listOptions.createTime}}</view>

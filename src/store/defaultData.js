@@ -7,6 +7,10 @@ const GETUSERINFO = "GETUSERINFO";
 
 export default {
     state: {
+        version:{
+            text:'v1.0.0',
+            code:1
+        },
         langArray: {
             'zh-CN': [
                 {

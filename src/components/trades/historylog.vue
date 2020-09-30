@@ -2,10 +2,10 @@
 	<view :class="'logitem '+theme">
 		<view class="oneline">
 			<view class="buyitem" v-if="String(historylogdata.orderType)==='1'">
-                <text class="buyitin" >买单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
+                <text class="buyitin buy" >买单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
 			<view class="buyitem" v-if="String(historylogdata.orderType)==='2'">          
-				<text class="buyitin"  >卖单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
+				<text class="buyitin sell"  >卖单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
 			<view class="cancelitem" @tap='cancelTrade(historylogdata)'>撤单</view>
 		</view>
@@ -91,6 +91,12 @@
 				font-size: 32rpx;
 				color: #1A1A1A;
 				float: left;
+			}
+			.buyitin.buy{
+				color: #5BC788;
+			}
+			.buyitin.sell{
+				color: #FC3C5A;
 			}
 			.cancelitem{
 				float: right;

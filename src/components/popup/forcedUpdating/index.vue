@@ -3,13 +3,14 @@
 
         <uni-popup ref="update"
                    type="center"
-                   :mask-click="!isMustUpDate">
+                   :mask-click="false">
             <view class="uni-image"
                   :style="{'background':mode==='night'?'#272A2E':'#ffffff'}"
             >
                 <view class="image" :style="{'background-image':'url('+updateIcon+')'}"></view>
                 <view class="findNew" :style="{'color':mode==='night'?'#D9DADB':'#000000'}">发现新版本</view>
-                <view class="updateText">{{updateText}}</view>
+                <view class="updateText" v-if="mobileMsg.devicePlatform&&mobileMsg.devicePlatform==='iOS'">{{upDate.iosMemo?upDate.iosMemo:''}}</view>
+                <view class="updateText" v-else>{{upDate.androidMemo?upDate.androidMemo:''}}</view>
                 <view   class="updateBtn" @tap="updateBtn">立即更新</view>
                 <!--<view class="closeIcon" @tap="close()" :style="{'background-image':'url('+closeIcon+')'}"></view>-->
             </view>
@@ -25,7 +26,11 @@
             uniPopup,
         },
         props:{
-		  mode:{type:String,default:'day'}
+          mode:{type:String,default:'day'},
+          upDate:{
+              type:Object,default: () => {
+                },
+          }
         },
 		data() {
 			return {
@@ -39,6 +44,14 @@
 		},
         watch:{
 
+        },
+        computed:{
+            mobileMsg(){
+                return this.$storage.getSync({
+					key: "mobileMsg",
+				});
+            }
+            
         },
 		mounted(){
 
@@ -55,7 +68,7 @@
                 })
             },
             updateBtn(){
-
+                this.$emit('upDateFunc')
             }
 
 		}

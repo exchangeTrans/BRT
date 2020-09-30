@@ -84,7 +84,8 @@
                                     <image :src="rightIcon" v-if="!item.isNoImg"></image>
                                 </view>
                                 <view class="urlText">
-                                    <span>{{item.url}}</span>
+                                    <span v-if="item.code&&item.code==='version'">{{version.text}}</span>
+                                    <span v-else>{{item.url}}</span>
                                 </view>
                                 <view class="clearfix"></view>
                             </view>
