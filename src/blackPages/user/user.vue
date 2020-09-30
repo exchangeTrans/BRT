@@ -75,7 +75,7 @@
                             <view class="user-wrap-list-item"
                                   v-for="(item, index) in aboutItemData"
                                   :key="index"
-                                  @tap="toPage(item.path)">
+                                  @tap="toUrl(item)">
                                 <view class="icon">
                                     <image :src="item.img"></image>
                                 </view>

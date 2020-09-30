@@ -52,25 +52,36 @@ export default {
                     name: "官网",
                     path: "",
                     img: `${require('@/static/images/user/official.png')}`,
-                    url: "https://drrfffs.brt.com/https://drrfffs.brt.com/https://drrfffs.brt.com/",
+                    url: "drrfffs.brt.com/https://drrfffs.brt.com/https://drrfffs.brt.com/",
+                    allowToUrl:true,
+                    urlHeader:'https://',
+                    urlBody:"drrfffs.brt.com/https://drrfffs.brt.com/https://drrfffs.brt.com/",
+                    
                 },
                 {
                     name: "区块链浏览器",
                     path: "",
                     img: `${require('@/static/images/user/blockchain.png')}`,
-                    url: "https://www.brtscan.pro",
+                    url: "www.brtscan.pro",
+                    urlHeader:'https://',
+                    urlBody:"www.brtscan.pro",
+                    allowToUrl:true,
                 },
                 {
                     name: "开源代码",
                     path: "",
                     img: `${require('@/static/images/user/dev.png')}`,
-                    url: "https://github.com/BRTChain/BRT-Chain",
+                    url: "github.com/BRTChain/BRT-Chain",
+                    urlHeader:'https://',
+                    urlBody:"github.com/BRTChain/BRT-Chain",
+                    allowToUrl:true,
                 },
                 {
                     name: "版本",
                     path: "",
                     img: `${require('@/static/images/user/version.png')}`,
                     url: "v1.15",
+                    allowToUrl:false,
                     isNoImg:true
                 },
             ],
@@ -126,6 +137,15 @@ export default {
 
     },
     methods: {
+        toUrl(item){
+            if(item.allowToUrl){
+                console.log(item.url)
+                var urlStr = encodeURI(item.urlBody)//把字符串作为url进行编码
+                console.log(urlStr)
+                plus.runtime.openURL(item.urlHeader + urlStr);
+                // plus.runtime.openUrl(item.url)
+            }
+        },
         toPage(path) {
             // console.log(path)
             if(path!==''){

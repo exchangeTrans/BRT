@@ -13,7 +13,7 @@
 
 		<view class="btnGroup">
 			<view class="btnItem" @tap="saveImage"> 保存图片</view>
-			<view class="btnItem  copy" @tap="copy">複製分享鏈接</view>
+			<view class="btnItem  copy" @tap="copy">复制分享链接</view>
 
 		</view>
 

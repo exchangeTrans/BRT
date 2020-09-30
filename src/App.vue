@@ -103,7 +103,7 @@
 					period:'5min',
 				});
 				this.$store.dispatch('getRate');
-				this.$store.dispatch('getUserMsg');
+				// this.$store.dispatch('getUserMsg');
 				// this.$store.dispatch('initQuotationData')
 
 			},

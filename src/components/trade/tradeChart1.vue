@@ -313,7 +313,8 @@ import store from '@/store/index.js';
             setEchart(data,xData) {
                 // let $element = document.getElementById("myChart");
                 // let that = this;
-                let KLineTradingPair1 = this.KLineTradingPair1
+                // let KLineTradingPair1 = this.KLineTradingPair1
+                let KLineTradingPair = this.KLineTradingPair
                 let chartOpts = this.option;
                 let xAxis = this.option.xAxis;
                 let tooltip = this.option.tooltip;
@@ -325,26 +326,30 @@ import store from '@/store/index.js';
                     },
                     tooltip:{
                         ...tooltip,
-                        // formatter:function name(params) {
-                        // //     let data  = '开盘:'+'{c0} <br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>'+'开盘:'+'{c0}<br/>';
-                        //     console.log(params)
-                        // //     return data
-                        // // return '{b0}: {c0}<br />{b1}: {c1}'
-                        // }
-                        // formatter: '{b0}: {c0}<br />{b1}: {c1}'
+                        formatter: function (datas) {
+                            let data = datas[0];
+                            var res = datas[0].name + '<br/>'
+                            
+                            res=res+datas[0].seriesName + '<br/>'
+                            res=res+'开盘价:'+datas[0].data[0] + '<br/>'
+                            res=res+'收盘价:'+datas[0].data[1]+ '<br/>'
+                            res=res+'最低价:'+datas[0].data[2]+ '<br/>'
+                            res=res+'最高价:'+datas[0].data[3]+ '<br/>'
+                            return res
+                        }
                     },
                     dataZoom:[{
-type: 'slider',//图表下方的伸缩条
-show : true, //是否显示
-realtime : true, //拖动时，是否实时更新系列的视图
-// start : 0, //伸缩条开始位置（1-100），可以随时更改
-// end : 100, //伸缩条结束位置（1-100），可以随时更改
-}],
+                    type: 'slider',//图表下方的伸缩条
+                    show : true, //是否显示
+                    realtime : true, //拖动时，是否实时更新系列的视图
+                    // start : 0, //伸缩条开始位置（1-100），可以随时更改
+                    // end : 100, //伸缩条结束位置（1-100），可以随时更改
+                    }],
                     
                     series: [
                         {
                             type: 'candlestick',
-                            name: KLineTradingPair1.name,
+                            name: KLineTradingPair.name,
                             data: data,
                             itemStyle: {
                                 color: '#F44E33',
@@ -366,8 +371,6 @@ realtime : true, //拖动时，是否实时更新系列的视图
                 this.initEcharts()
             },
 			onClick(event, ownerInstance) {
-                console.log(event)
-                console.log(ownerInstance)
 				// 调用 service 层的方法
 				ownerInstance.callMethod('onViewClick', {
 					test: 'test'

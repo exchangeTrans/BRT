@@ -125,7 +125,7 @@ const http = ({
                             userLoginId:'',
                             userLoginToken:''
                         }
-                        datastorage.getSync({key: "loginMsg",data: loginMsg});
+                        datastorage.setSync({key: "loginMsg",data: loginMsg});
                         jumpPage.jump({
                             type: 'reLaunch',
                             url: 'login/login',
