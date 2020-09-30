@@ -56,7 +56,7 @@
 			</view>
 
 
-			<uni-load-more  @clickLoadMore="getMiningInterest(true)" :status="status"    v-if="!isNoDataFlag"></uni-load-more>
+			<uni-load-more  @clickLoadMore="getTeam(true)" :status="status"    v-if="!isNoDataFlag"></uni-load-more>
 
 			<view class="noDataBox"  v-if="isNoDataFlag">
 				<noData></noData>
@@ -264,7 +264,11 @@
 
 				}
 				.time{
+					width: 220rpx;
 					float: left;
+					overflow: hidden;
+					text-overflow:ellipsis;
+					white-space: nowrap;
 				}
 			}
 			.count{
@@ -287,7 +291,7 @@
 		}
 		.scrollh{
 			width: 100%;
-			height: calc(100vh - 715rpx - var(--status-bar-height));
+			height: calc(100vh - 755rpx - var(--status-bar-height));
 			.noDataBox {
 				position: relative;
 			}

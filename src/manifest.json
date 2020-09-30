@@ -13,7 +13,7 @@
         "usingComponents" : true,
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
-            "waiting" : false,
+            "waiting" : true,
             "autoclose" : true,
             "delay" : 0
         },
@@ -21,12 +21,6 @@
             "ignoreVersion" : true
         },
         "modules" : {},
-        "permissions":{
-            // ...
-            "Runtime": {
-                "description": "运行环境"
-            }
-        },
         /* 模块配置 */
         "distribute" : {
             /* 应用发布信息 */
@@ -107,7 +101,7 @@
                         "iphonex" : "启动图/iphone/1125_2436.png",
                         "retina55" : "启动图/iphone/1242_2208.png",
                         "retina40" : "启动图/iphone/1136_640.png",
-                        "retina47" : ""
+                        "retina47" : "启动图/iphone/750_1334.png"
                     }
                 }
             }
