@@ -23,6 +23,7 @@ let getUint8Value=function(e, t) {
     } 
     t(n);
   }
+ 
 export const mySocket={
     getEntity:function(){
         return Socket;
@@ -45,6 +46,7 @@ export const mySocket={
         });
         uni.onSocketOpen(function (res) {
             socketStatus = true;
+            console.log('open')
             if(cb){
                 cb()
             }else{
@@ -61,8 +63,16 @@ export const mySocket={
             mySocket.upData(data);
         });
         uni.onSocketError(function (res) {
+            console.log('错误')
+            socketStatus = false;
             mySocket.createSocket();
         });
+        uni.onSocketClose(function (res) {
+            socketStatus = false;
+            console.log('关闭')
+            mySocket.createSocket();
+        });
+        
     },
     upData(data){
         let ch = data.ch;

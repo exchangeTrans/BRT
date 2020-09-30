@@ -332,7 +332,7 @@ export default {
                 {
                     name: "手机号",
                     checkKey: "tel",
-                    checkType: ["isPhone"],
+                    // checkType: ["isPhone"],
                 },
             ];
             let checkEmailArray = [

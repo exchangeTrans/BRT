@@ -186,7 +186,7 @@ export default {
                 {
                     name: "新绑定手机号码",
                     checkKey: "tel",
-                    checkType: ["isPhone"],
+                    // checkType: ["isPhone"],
                 },
                 {
                     name: "当前手机验证码",
@@ -287,7 +287,7 @@ export default {
                 {
                     name: "手机号",
                     checkKey: "tel",
-                    checkType: ["isPhone"],
+                    // checkType: ["isPhone"],
                 },
             ];
 
