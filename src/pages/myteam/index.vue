@@ -4,7 +4,7 @@
 		<view class="headbg">
 			<view class="usermsgcon">
 				<view class="headphoto">
-					<image :src="teamData.avatar" mode="" style="width:118rpx; height: 118rpx; border-radius: 50%"></image>
+					<image :src="teamData.avatar===''?headerImgRight:teamData.avatar" mode="" style="width:118rpx; height: 118rpx; border-radius: 50%"></image>
 				</view>
 				<view class="usermsg">
 					<view class="username">{{teamData.nickname}}</view>

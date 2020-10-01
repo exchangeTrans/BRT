@@ -46,7 +46,7 @@ export const mySocket={
         });
         uni.onSocketOpen(function (res) {
             socketStatus = true;
-            console.log('open')
+            // console.log('open')
             if(cb){
                 cb()
             }else{
@@ -206,26 +206,75 @@ export const mySocket={
         }
     },
     handleDeepData(data){
-        let all = data[0][1]+data[1][1]+data[2][1]+data[3][1]+data[4][1];
-        // console.log(data)
-        let newData = data.slice(0,5)
         
+        if(data.length===0){
+            return []
+        }
+        let all = 0;
         let depth = 0;
-        let res = newData.map(function (item,index) {
-            depth=depth+item[1];
-            let percent=(depth/all)*2
-            percent = percent>1?1:percent;
-            percent = percent*100;
+        let NewData = []
+        for (let index = 0; index < 5; index++) {
+            let item = data[index];
             let obj = {
-                size:item[1],
-                price:item[0],
+                size:0,
+                price:0,
                 all:all,
-                percent:percent,
+                percent:0,
                 depth:depth
             }
-            return obj
+            if(item){
+                all = all+item[1];
+                depth=depth+item[1];
+                let percent=(depth/all)*2
+                percent = percent>1?1:percent;
+                percent = percent*100;
+                obj = {
+                    size:item[1],
+                    price:item[0],
+                    all:all,
+                    percent:percent,
+                    depth:depth
+                }
+            }
+            NewData.push(obj)
             
-        })
+        }
+        return NewData
+        // data.forEach(item => {
+        //     all = all+item[1];
+        //     depth=depth+item[1];
+        //     let percent=(depth/all)*2
+        //     percent = percent>1?1:percent;
+        //     percent = percent*100;
+        //     let obj = {
+        //         size:item[1],
+        //         price:item[0],
+        //         all:all,
+        //         percent:percent,
+        //         depth:depth
+        //     }
+        // });
+        // let all = data[0][1]+data[1][1]+data[2][1]+data[3][1]+data[4][1];
+        // // console.log(data)
+        // let newData = data.slice(0,5)
+        
+        // let depth = 0;
+        // let res = newData.map(function (item,index) {
+        //     depth=depth+item[1];
+        //     let percent=(depth/all)*2
+        //     percent = percent>1?1:percent;
+        //     percent = percent*100;
+        //     let obj = {
+        //         size:item[1],
+        //         price:item[0],
+        //         all:all,
+        //         percent:percent,
+        //         depth:depth
+        //     }
+        //     return obj
+            
+        // })
+
         return res
     },
     //socket 订阅行情

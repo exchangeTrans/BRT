@@ -77,7 +77,7 @@ export default{
 // Russia: `${require('@/static/images/user/Russia.png')}`,
             'US': `${require('@/static/images/user/USA.png')}`
             },
-
+            headerImgRight: `${require('@/static/images/user/headerRight.png')}`,
             teamData:{},
             inviteRecord:[],
             haveNext:true,
