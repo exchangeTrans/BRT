@@ -82,6 +82,9 @@ ts: 1601307776068 -->
         onLoad() {
 
         },
+        mounted(){
+            this.getTableData()
+        },
         computed: {  
             pageText () {  
                 // console.log(this.$t('trade'))
@@ -97,6 +100,7 @@ ts: 1601307776068 -->
         },  
         watch:{
             KLineTradingPair(){
+                console.log(111)
                 this.getTableData()
             }
         },

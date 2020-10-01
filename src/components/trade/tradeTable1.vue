@@ -71,6 +71,7 @@
         methods: {
             getDepthData(){
                 let depth = this.KLineTradingPair.depth;
+                console.log(this.KLineTradingPair)
                 if(depth!==null){
                     let asks = depth.asks;
                     let bids = depth.bids;

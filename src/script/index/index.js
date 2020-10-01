@@ -143,6 +143,7 @@ export default {
             });
 
             this.$mySocket.subscribeDepth();
+            this.$mySocket.subscribeDetail();
             this.$jumpPage.jump({
                 type: 'navigateTo',
                 url: 'trade/index'

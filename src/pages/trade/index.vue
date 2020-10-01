@@ -164,8 +164,8 @@
             },
             toPage(code){
                 this.$jumpPage.jump({
-					type: 'navigateBack',
-                    // url: 'trades/index?code='+code,
+					type: 'navigateTo',
+                    url: 'pageIndex/index?code='+code,
 				})
             },
             changeTest(){
