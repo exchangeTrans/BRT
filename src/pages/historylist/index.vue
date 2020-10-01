@@ -23,7 +23,7 @@
 	#historylist{
 		.list {
 			width: 100%;
-			height: calc(100vh - var(--status-bar-height) - 100rpx);
+			height: calc(100vh);
 			background: #F8F8F8;
 			padding-top: calc(100rpx + var(--status-bar-height));
 			box-sizing: border-box;

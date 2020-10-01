@@ -14,7 +14,7 @@
                         <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="commission" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
+                        <WithdrawalInput :inputData="commission" inputType="text" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-text">

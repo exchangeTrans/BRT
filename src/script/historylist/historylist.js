@@ -115,7 +115,14 @@ export default {
 				params:postData
 			}).then((res)=>{
 				if (res.result.returnCode.toString() === "0") {
-					that.listOptions = res.data.orderList;
+					// that.listOptions = res.data.orderList;
+					that.listOptions = res.data.orderList.map(function (item) {
+						return {
+							...item,
+							price:String(item.price).replace(/,/g,""),
+							amountExecuted:String(item.amountExecuted).replace(/,/g,""),
+						}
+					})
 					// this.close();
 					// let usdtBalance = res.data.usdtBalance.replace(",","")
 					// let symbolBalance = res.data.symbolBalance.replace(",","")

@@ -254,7 +254,7 @@
 			}
 		},
 		tradeInfo(res){
-			this.historylogdata_list = res&&res.orderList?res.orderList:[];
+			// this.historylogdata_list = res&&res.orderList?res.orderList:[];
 		}
 
 	  },
@@ -278,8 +278,8 @@
 		},
 		choosePrecent(item){
 			let {tradePrice,selectedTradeName,tradeInfo} = this;
-			let pr = selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.symbolBalanceNum:0):(tradeInfo.usdtBalanceNum?tradeInfo.usdtBalanceNum:0);
-			if(tradePrice.trim()===''||Number(tradePrice)===0){
+			let pr = selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.usdtBalance:0):(tradeInfo.symbolBalanceNum?tradeInfo.symbolBalanceNum:0);
+			if(String(tradePrice).trim()===''||Number(tradePrice)===0){
 				this.$toast.show({
 					title: "请先填写交易价格",
 				})
@@ -287,9 +287,6 @@
 			}
 			this.tradeNum = (Number(pr)/Number(tradePrice))*item.val
 			// 可用馀额/用户上方填写的价格 * 用户选择的百分比。如果用户没有填写价格
-			// // debugger
-			// let num = this.selectedTradeName.code==='buy'?(this.tradeInfo.usdtBalanceNum?this.tradeInfo.usdtBalanceNum:0):(this.tradeInfo.symbolBalanceNum?this.tradeInfo.symbolBalanceNum:0)
-			// this.tradeNum = Number(num)*item.val
 		},
 		reduce(code){
 			let data = this[code];
@@ -342,12 +339,37 @@
 						symbolBalanceNum:Number(symbolBalance),
 					}
 					that.tradeInfo = data;
+					that.historylogdata_list = data&&data.orderList?data.orderList:[];
+					setTimeout(() => {
+						that.refreshHistory()
+					}, 3000);
 					// console.log(Number(usdtBalance)) 
 					// this.$emit('transferInAmountSuccess')
 				}else{
 					// this.$toast.show({
 					// 	title: res.result.returnMessage,
 					// })
+				}
+			})
+		},
+		refreshHistory(){
+			let symbolType =  this.KLineTradingPair.name;
+			symbolType = String(this.symbolDefaultData[symbolType])			
+			let postData={
+				symbolType: symbolType
+			};
+			let that = this;
+			this.$request({
+				url:'trade/getTradeInfo',
+				method:'post',
+				params:postData
+			}).then((res)=>{
+				if (res.result.returnCode.toString() === "0") {
+					that.historylogdata_list = res.data&&res.data.orderList?res.data.orderList:[];
+					setTimeout(() => {
+						that.refreshHistory()
+					}, 3000);
+				}else{
 				}
 			})
 		},

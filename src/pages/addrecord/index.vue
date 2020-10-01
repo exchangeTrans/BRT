@@ -2,11 +2,13 @@
     <view class="index">
         <appHeader :headerOptions="headerOptions"></appHeader>
         <scroll-view class="record-wrap" :scroll-y="true" v-if="recordData_list.length > 0">
+            <view class="record-wrap-list">
             <view
                     v-for="(item,index) in recordData_list"
                     :key="index">
                 <record :recordData="item"></record>
             </view>
+        </view>
         </scroll-view>
         <view class="setcenter" v-else>
             <view class="datacontent" >
@@ -29,7 +31,10 @@
     }
     .record-wrap {
         height: calc(100vh - var(--status-bar-height) - 100rpx);
-		padding-top: calc(100rpx + var(--status-bar-height));
+        padding-top: calc(100rpx + var(--status-bar-height));
+        .record-wrap-list {
+            margin-top: 30rpx !important;
+        }
     }
     .setcenter{
         display: flex;

@@ -7,12 +7,13 @@
                         <span>{{inputData.textTitle}}</span>
                     </view>
                     <view :class="isBlack ? 'withdrawalInput-item-content withdrawalInput-item-content-block':'withdrawalInput-item-content'">
-                        <input type="text"
+                        <input
                                :class="isBlack ? 'blackInput':'input'"
                                :placeholder="inputData.placeholder"
                                :disabled="inputData.disabled"
+                               :type="inputType"
                                :value="inputValue"
-                               @input="inputChange($event)">
+                               @input="inputChange($event)"/>
                         <view :class="isBlack ? 'withdrawalInput-item-rightItem black':'withdrawalInput-item-rightItem'">
                             <view class="isText" v-if="inputData.rightItem.type === 'isText'">
                                 <span>{{inputData.rightItem.text}}</span>
@@ -52,6 +53,10 @@
                 type: String,
                 default: "",
             },
+            inputType:{
+                type: String,
+                default: "number",
+            },
         },
         computed:{
 
@@ -63,9 +68,10 @@
         },
         methods: {
             inputChange(e) {
-                // debugger
+                let key = this.$props.inputData.name;
                 let value = e.detail.value;
-                this.$emit('inputChange', value)
+                // console.log(value)
+                this.$emit('inputChange', key,value)
             },
             btnClick() {
                 this.$emit("btnClick")

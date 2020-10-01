@@ -49,7 +49,8 @@ export default {
                         'fontFamily': 'PingFangSC-Regular, PingFang SC',
                         'fontWeight': '400',
                         'color': '#000000',
-                        'opacity': 0.5
+                        'opacity': 0.5,
+                        
                     }
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
@@ -116,9 +117,18 @@ export default {
                     }
                     that.currentIndex++
                     res.data.list.forEach(item => {
+                        let stateType= item.stateType;
+                        let status='success';
+                        if(stateType.toString()==='1'){
+                            status='success';
+                        }else if(stateType.toString()==='2'){
+                            status='fail';
+                        }else{
+                            status='inTheReview';
+                        }
                         let obj = {
                             "titleName": item.operationTypeText,
-                            "status": 'success',
+                            "status": status,
                             "number": item.amount,
                             "date": DateFunc.dateFormat(item.createTime, "hh:mm MM/dd"),
                         }

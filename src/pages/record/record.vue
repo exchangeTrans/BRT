@@ -1,5 +1,5 @@
 <template>
-    <view id="record">
+    <view id="record" class="recordPage">
         <app-header :headerOptions="headerOptions" @headertap='headertap' ></app-header>
         <scroll-view class="record-wrap" :scroll-y="true" v-if="recordDataList.length > 0">
             <view class="record-wrap-list">
@@ -26,7 +26,7 @@
 	.headstyle{
 		padding-top: calc( var(--status-bar-height));
 	}
-    #record {
+    .recordPage {
         width: 100%;
         height: 100%;
         padding-top: calc(100rpx + var(--status-bar-height));
@@ -36,7 +36,7 @@
             width: 100%;
             height: calc(100vh - var(--status-bar-height) - 100rpx);
             background-color: #F8F8F8;
-			padding-top: calc(100rpx + var(--status-bar-height));
+			// padding-top: calc(100rpx + var(--status-bar-height));
             .record-wrap-list {
                 margin-top: 30rpx !important;
             }

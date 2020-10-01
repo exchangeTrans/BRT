@@ -7,13 +7,13 @@
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="address" :isBlack="true" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" @btnClick="toScanCode"></WithdrawalInput>
+                        <WithdrawalInput :inputData="address"  :isBlack="true" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" @btnClick="toScanCode"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
                         <WithdrawalInput :inputData="amount" :isBlack="true" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="commission" :isBlack="true" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
+                        <WithdrawalInput :inputData="commission" inputType="text" :isBlack="true" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
                     </view>
                 </view>
                 <view :class="isBlack ? 'withdrawal-wrap-container-text black':'withdrawal-wrap-container-text'">

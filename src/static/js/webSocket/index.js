@@ -8,7 +8,7 @@ let setIntervalWesocketPush = null;
 // let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
 // let socketUrl = "ws://13.125.88.118:8188/ws/market"
-let socketUrl = "ws://52.78.213.185:8188/ws/market"
+let socketUrl = "ws://15.164.166.64:8188/ws/market"
 
 let ping = 1492420473027;
 let socketArray=[];

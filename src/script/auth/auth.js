@@ -116,8 +116,8 @@ export default {
                     this.authStatusData = {
                         kyc1: res.data.kyc1,//0待实名 1已实名 2待审核（未审核） 3待审核（审核失败）
                         cardType: res.data.cardType,//1身份证 2护照
-                        cardName: res.data.cardName,
-                        cardNo: res.data.cardNo,
+                        cardName: res.data.kyc1 === 3?'':res.data.cardName,
+                        cardNo: res.data.kyc1 === 3?'':res.data.cardNo,
                         disabled: res.data.kyc1 === 0 || res.data.kyc1 === 3 ? false : true,
               x      }
                     // console.log(res);
