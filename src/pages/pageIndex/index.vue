@@ -48,7 +48,7 @@
 			if(options.code){
 				this.tradeCode = options.code;
 			}
-			console.log(options)
+			// console.log(options)
 		},
 		computed: {
 			version(){
