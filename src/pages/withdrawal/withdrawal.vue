@@ -58,9 +58,10 @@
         width: 100%;
         height: 100%;
         padding-top: calc(100rpx + var(--status-bar-height));
+        box-sizing: border-box;
 
         .appHeader {
-            top: var(--status-bar-height);
+            // top: var(--status-bar-height);
         }
 
         .withdrawal-wrap {
@@ -70,6 +71,8 @@
 
             .withdrawal-wrap-container {
                 box-sizing: border-box;
+                overflow: hidden;
+                
 
                 .withdrawal-wrap-container-list {
                     margin: 0 30rpx;

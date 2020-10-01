@@ -279,6 +279,7 @@
 		choosePrecent(item){
 			let {tradePrice,selectedTradeName,tradeInfo} = this;
 			let pr = selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.usdtBalance:0):(tradeInfo.symbolBalanceNum?tradeInfo.symbolBalanceNum:0);
+			pr = String(pr).replace(/,/g,"");
 			if(String(tradePrice).trim()===''||Number(tradePrice)===0){
 				this.$toast.show({
 					title: "请先填写交易价格",
