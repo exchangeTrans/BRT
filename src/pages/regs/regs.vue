@@ -92,7 +92,7 @@
                 </view>
                 <loginBtn :btnText="btnText"
                           :btnStyle="btnStyle"
-                          @btnClick="btnClick"></loginBtn>
+                          @btnClick.once="btnClick"></loginBtn>
                 <view class="loginTouch"
                       @tap="loginTouch">{{$t('regs').loginJump}}
                 </view>
