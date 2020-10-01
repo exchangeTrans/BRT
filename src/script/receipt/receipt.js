@@ -2,7 +2,7 @@ import appHeader from '@/components/common/header.vue'
 // import QRCode from 'qrcodejs2'
 // import qrcodeComponents from '@/components/qrcode/qrcode'
 import uniQrcode from '@/components/uqrcode/index.vue'
-import {saveHeadImgFile} from "../../static/js/saveImg";
+// import {saveHeadImgFile} from "../../static/js/saveImg";
 
 export default {
     components: {

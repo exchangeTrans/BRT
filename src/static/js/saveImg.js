@@ -7,7 +7,7 @@ export function saveHeadImgFile(base64, quality) {
             const url = "_doc/" + getTimeStamps() + ".png";  // url为时间戳命名方式
             bitmap.save(url, {
                 overwrite: true,  // 是否覆盖
-                quality: quality  // 图片清晰度
+                // quality: quality  // 图片清晰度
             }, (i) => {
                 uni.saveImageToPhotosAlbum({
                     filePath: url,
