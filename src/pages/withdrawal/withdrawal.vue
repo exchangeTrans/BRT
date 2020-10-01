@@ -3,12 +3,12 @@
         <app-header :headerOptions="headerOptions"
                     @headertap=headertap
                     class="appHeader"></app-header>
-        <scroll-view class="withdrawal-wrap" :scroll-y="true">
+        <scroll-view class="withdrawal-wrap" :scroll-y="true" @touchmove.stop.prevent="moveHandle">
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
                          <!-- @btnClick="toScanCode" -->
-                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl"></WithdrawalInput>
+                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" :inputType="'text'"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
                         <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
@@ -58,9 +58,10 @@
         width: 100%;
         height: 100%;
         padding-top: calc(100rpx + var(--status-bar-height));
+        box-sizing: border-box;
 
         .appHeader {
-            top: var(--status-bar-height);
+            // top: var(--status-bar-height);
         }
 
         .withdrawal-wrap {
@@ -70,6 +71,8 @@
 
             .withdrawal-wrap-container {
                 box-sizing: border-box;
+                overflow: hidden;
+                
 
                 .withdrawal-wrap-container-list {
                     margin: 0 30rpx;

@@ -68,10 +68,9 @@
         },
         methods: {
             inputChange(e) {
-                let key = this.$props.inputData.name;
                 let value = e.detail.value;
                 // console.log(value)
-                this.$emit('inputChange', key,value)
+                this.$emit('inputChange',value)
             },
             btnClick() {
                 this.$emit("btnClick")

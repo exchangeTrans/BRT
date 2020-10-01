@@ -167,6 +167,9 @@ export default {
         }
     },
     methods: {
+        moveHandle(){
+            return;
+        },
         headertap(type) {
             this.$jumpPage.jump({
                 url: "record/record",
@@ -186,7 +189,6 @@ export default {
             // })
         },
         inputChange(name, e) {
-            // debugger
             if (name === "amount") {
                 if (e.trim() !== "") {
                     this.btnInputObject.amount = true
@@ -280,6 +282,7 @@ export default {
                 method: "post",
                 params: sendCodeData,
             }).then((res) => {
+                that.getCodeStatus = true
                 if (res.result.returnCode.toString() === "0") {
                     that.postData.verifyKey = res.data.verifyKey;
                     that.setIntervalFun()

@@ -22,7 +22,7 @@
                         </view>
                         <view class="check" v-else-if="authStatusData.kyc1==3">
                             <image :src="authStatusCheckImg"></image>
-                            <span class="red">待审核（审核失败）</span>
+                            <span class="red">审核失败,请重新提交</span>
                         </view>
                     </view>
                 </view>
