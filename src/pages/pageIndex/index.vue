@@ -7,7 +7,7 @@
 			<quotes/>
 		</block>
 		<block v-if="currentPage.pagePath==='trades/index'">
-			<trades/>
+			<trades :tradeCode="tradeCode"/>
 		</block>
 		<block v-if="currentPage.pagePath==='property/property'">
 			<property/>
@@ -40,11 +40,15 @@
 		data() {
 			return {
 				currentPage:{pagePath:''},
-				upDate:{iosMemo:'',androidMemo:''}
+				upDate:{iosMemo:'',androidMemo:''},
+				tradeCode:"buy"
 			}
 		},
-		onLoad() {
-
+		onLoad(options) {
+			if(options.code){
+				this.tradeCode = options.code;
+			}
+			console.log(options)
 		},
 		computed: {
 			version(){

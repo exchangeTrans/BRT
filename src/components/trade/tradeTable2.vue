@@ -100,7 +100,6 @@ ts: 1601307776068 -->
         },  
         watch:{
             KLineTradingPair(){
-                console.log(111)
                 this.getTableData()
             }
         },

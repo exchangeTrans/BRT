@@ -14,8 +14,8 @@ export default{
                 // bodyPadding: {"padding": '0,0,0,0'},
                 // headerIsNoBoder: true,
             },
-            emailadress:'客服邮箱:test0001@gmail.com',
-            copyText:'test0001@gmail.com'
+            emailadress:'客服邮箱:ukbatubrt@gmail.com',
+            copyText:'ukbatubrt@gmail.com'
         }
     },
     methods:{
