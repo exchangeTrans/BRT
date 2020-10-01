@@ -167,6 +167,9 @@ export default {
         }
     },
     methods: {
+        moveHandle(){
+            return;
+        },
         headertap(type) {
             this.$jumpPage.jump({
                 url: "record/record",

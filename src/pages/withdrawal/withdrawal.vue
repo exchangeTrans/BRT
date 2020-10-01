@@ -3,12 +3,12 @@
         <app-header :headerOptions="headerOptions"
                     @headertap=headertap
                     class="appHeader"></app-header>
-        <scroll-view class="withdrawal-wrap" :scroll-y="true">
+        <scroll-view class="withdrawal-wrap" :scroll-y="true" @touchmove.stop.prevent="moveHandle">
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
                          <!-- @btnClick="toScanCode" -->
-                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl"></WithdrawalInput>
+                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" :inputType="'text'"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
                         <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
