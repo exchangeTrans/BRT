@@ -139,12 +139,27 @@ export default {
 
         chooseLanguage(languageItem) {
             // console.log(languageItem)
-            this.languageItem = languageItem;
+            
+            if(languageItem.name==='zh-CN'){
+                this.languageItem = languageItem;
+            }else{
+                this.$toast.show({
+                    title: "暂未开放",
+                })
+            }
+
+
         },
 
         chooseCurrencyData(item) {
-            // console.log(item);
-            this.selectedObj = item;
+            if(item.code==='"RMB"'){
+                this.selectedObj = item;
+            }else{
+                this.$toast.show({
+                    title: "暂未开放",
+                })
+            }
+            
         },
 
         btnClick(){
