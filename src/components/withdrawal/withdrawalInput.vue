@@ -63,6 +63,7 @@
         },
         methods: {
             inputChange(e) {
+                // debugger
                 let value = e.detail.value;
                 this.$emit('inputChange', value)
             },

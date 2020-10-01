@@ -139,6 +139,24 @@ export default {
         makeComplete(res) {
             this.filePath = res;
         },
+        //获取相册授权
+        getalbumAuth(){
+            let that = this;
+            uni.getSetting({
+                success: function (res) {
+                    if (!res.authSetting['scope.writePhotosAlbum']) {
+                        uni.authorize({
+                            scope: "scope.writePhotosAlbum",
+                            success() {
+                                that.saveImage();
+                            }
+                        })
+                    } else {
+                        that.saveImage()
+                    }
+                }
+            })
+        },
         saveImage() {
             let filePath = this.filePath;
             // uni.chooseImage({
@@ -168,12 +186,12 @@ export default {
                             });
                         },
                         fail: function (err) {
-                            // uni.showToast({
-                            // 	title: '图片保存失败',
-                            // 	icon: 'none',
-                            // 	duration: 2200
-                            // });
-                            if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny" || err.errMsg ===
+                            uni.showToast({
+                            	title: '图片保存失败',
+                            	icon: 'none',
+                            	duration: 2200
+                            });
+                            /*if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny" || err.errMsg ===
                                 "saveImageToPhotosAlbum:fail authorize no response" || err.errMsg === "saveImageToPhotosAlbum:fail auth denied") { // 没有授权，重新授权，兼容iso和Android
                                 uni.showModal({
                                     title: '授权提示',
@@ -207,7 +225,7 @@ export default {
                                     title: "暂无图片",
                                     icon: "none"
                                 });
-                            }
+                            }*/
                         }
                     });
                 }

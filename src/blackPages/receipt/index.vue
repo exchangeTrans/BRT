@@ -28,7 +28,7 @@
                 <view class="rechargeTitle">充币地址</view>
                 <view class="rechargeTitle">{{data.userWalletAddress}}</view>
                 <view class="btnGroup">
-                    <view class="btnItem" @tap='saveImage'> 保存二维码</view>
+                    <view class="btnItem" @tap='getalbumAuth'> 保存二维码</view>
                     <view class="btnItem  copy" @tap='copy'>复制地址</view>
 
                 </view>

@@ -58,10 +58,10 @@
             },
             "icons" : {
                 "android" : {
-                    "hdpi" : "unpackage/res/icons/72x72.png",
-                    "xhdpi" : "unpackage/res/icons/96x96.png",
-                    "xxhdpi" : "unpackage/res/icons/144x144.png",
-                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
+                    "hdpi" : "logo/安卓/res/drawable-hdpi/logo.png",
+                    "xhdpi" : "logo/安卓/res/drawable-xhdpi/logo.png",
+                    "xxhdpi" : "logo/安卓/res/drawable-xxhdpi/logo.png",
+                    "xxxhdpi" : "logo/安卓/res/drawable-xxxhdpi/logo.png"
                 },
                 "ios" : {
                     "appstore" : "unpackage/res/icons/1024x1024.png",
