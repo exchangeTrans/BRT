@@ -25,9 +25,11 @@ export default {
                         'fontFamily': 'PingFangSC-Regular, PingFang SC',
                         'fontWeight': '400',
                         'color': '#000000',
-                        'opacity': 0.5
+                        'opacity': 0.5,
                     }
                 },
+                'background':'#fff',
+                
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,
             };

@@ -34,7 +34,7 @@
             width: 100%;
             height: calc(100vh - var(--status-bar-height) - 100rpx);
             /*background-color: #F8F8F8;*/
-			padding-top: calc(100rpx + var(--status-bar-height));
+			// padding-top: calc(100rpx + var(--status-bar-height));
 
             .record-wrap-list {
                 margin-top: 30rpx;

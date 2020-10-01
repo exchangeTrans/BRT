@@ -14,8 +14,8 @@
                     <view :class="isBlack?'recordItem-wrap-container-content-text blackText':'recordItem-wrap-container-content-text'">
                         <view class="text">{{recordData.number}}</view>
                         <view class="text blue" v-if="recordData.status === 'inTheReview'">审核中</view>
-                        <view class="text red" v-else-if="recordData.status === 'fail'">审核失败</view>
-                        <view class="text" v-else="recordData.status === 'success'">已完成</view>
+                        <view class="text red" v-else-if="recordData.status === 'fail'">失败</view>
+                        <view class="text" v-else>成功</view>
                         <view class="text end">{{recordData.date}}</view>
                     </view>
                 </view>

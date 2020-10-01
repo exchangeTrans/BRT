@@ -47,7 +47,7 @@
 				<view class="hdupercent">
 					<view class="precent" hover-class="hoverClass" @tap="choosePrecent(item)" v-for="item in precentList" :key="item.val">{{item.text}}</view>
 				</view>
-				<text class="tradenum">交易额:</text><text class="number">{{tradeAll.toFixed(2)}} {{selectedTradeName.code==='buy'?KLineTradingPair.type:KLineTradingPair.name}}</text>
+				<text class="tradenum">交易额:</text><text class="number">{{tradeAll.toFixed(2)}} {{KLineTradingPair.type}}</text>
 				<view class="buyit" @tap="tradeFunc" hover-class="hoverClass">{{selectedTradeName.name}}{{KLineTradingPair.name}}</view>
 			</view>
 			<view class="right">
@@ -55,7 +55,7 @@
 					<view class="money">价格</view>
 					<view class="lednum">数量</view><br>
 					<view v-for="(item,index) in depthData.asks" :key="index">
-						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
+						<data-list :colorOptions="red" :tradesOptions="item"></data-list>
 					</view>
 					
 				</view>
@@ -66,7 +66,7 @@
 				</view>
 				<view class="charge_and_num">
 					<view v-for="(item,index) in depthData.bids" :key="index">
-						<data-list :colorOptions="red" :tradesOptions="item"></data-list>
+						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
 					</view>
 				</view>
 				<view class="icon_list">

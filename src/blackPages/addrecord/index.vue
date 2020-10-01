@@ -2,13 +2,16 @@
 	<view class="index">
 		<appHeader :headerOptions="headerOptions"></appHeader>
 <!--		<view class="item"></view>-->
+		
+		
 		<scroll-view class="record-wrap" :scroll-y="true" v-if="recordData_list.length > 0">
-		<view
-			v-for="(item,index) in recordData_list"
-			:key="index">
-			<record :recordData="item"
-					:isBlack="isBlack"></record>
-		</view>
+            <view class="record-wrap-list">
+            <view
+                    v-for="(item,index) in recordData_list"
+                    :key="index">
+                <record :recordData="item" :isBlack="isBlack"></record>
+            </view>
+        </view>
 		</scroll-view>
 		<view class="listcontent" v-else>
 			<view class="datacontent">
