@@ -165,7 +165,34 @@ export default {
             bitmap.loadBase64Data(filePath,function () {
                 let timestamp = (new Date()).valueOf();
                 const url = "_doc/" + timestamp + ".png";  // url为时间戳命名方式
-                uni.saveImageToPhotosAlbum({
+                bitmap.save(url, {
+                    overwrite: true,
+                    // quality: quality
+                }, (i) => {
+                    uni.saveImageToPhotosAlbum({
+                        filePath: url,
+                        success: function () {
+                            // console.log('save success');
+                            uni.showToast({
+                                title: '图片保存成功',
+                                icon: 'none',
+                                duration: 2200
+                            });
+                        },
+                        fail: function (err) {
+                            console.log(err)
+                            // console.log(url)
+                            uni.showToast({
+                                title: '图片保存失败',
+                                icon: 'none',
+                                duration: 2200
+                            });
+                        }
+                    });
+                }, (e) => {
+                    console.log('保存图片失败：' + JSON.stringify(e));
+                });
+                /*uni.saveImageToPhotosAlbum({
                     filePath: url,
                     success: function () {
                         // console.log('save success');
@@ -176,14 +203,15 @@ export default {
                         });
                     },
                     fail: function (err) {
-                        console.log(err)
+                        // console.log(err)
+                        console.log(url)
                         uni.showToast({
                             title: '图片保存失败',
                             icon: 'none',
                             duration: 2200
                         });
                     }
-                });
+                });*/
             })
             /*plus.gallery.save(dataURLtoFile, function (e) {//保存到相册方法
                 // plus.nativeUI.closeWaiting()
