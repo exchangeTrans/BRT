@@ -15,6 +15,7 @@
 	  },
 	  data(){
 	    return{
+			isAllowTrade:true,
 			green:{
 				bgc:"#DEF4E7",
 				fonts_color:"#5BC788"
@@ -111,78 +112,7 @@
 			],
 			historylogdata_list:[],
 			tradelistOptions:[
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+3.0%",
-					status:0
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+4.0%",
-					status:1
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+3.0%",
-					status:0
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+4.0%",
-					status:1
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+3.0%",
-					status:0
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+4.0%",
-					status:1
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+3.0%",
-					status:0
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+4.0%",
-					status:1
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+3.0%",
-					status:0
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+4.0%",
-					status:1
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+3.0%",
-					status:0
-				},
-				{
-					type:"USDT/BRT",
-					number:"14.5689",
-					per:"+4.0%",
-					status:1
-				},
+				
 			],
 			showmask:false,
 			shownodata:true,
@@ -393,6 +323,10 @@
 			})
 		},
 		tradeFunc(){
+			if(!this.isAllowTrade){
+				return
+			}
+			this.isAllowTrade = false;
 			let postData = this.getPostData();
 			if(postData){
 				let that = this;
@@ -401,6 +335,7 @@
 					method:'post',
 					params:postData
 				}).then((res)=>{
+					that.isAllowTrade = true;
 					if (res.result.returnCode.toString() === "0") {
 						this.getTradeInfo();
 						this.$toast.show({
