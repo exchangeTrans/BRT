@@ -1,5 +1,5 @@
 import {getPermissionID} from './permissionID.js'
-import {toast} from "@/static/dialog";
+import {toast} from "@/static/js/dialog.js";
 
 // location:{idName:"location",queryVal:"",des:"系统定位",},// location	位置
 let permissionFunc={

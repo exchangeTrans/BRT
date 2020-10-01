@@ -1,55 +1,29 @@
-const saveImg = {
-    //获取相册授权
-    getPhoneAuth(imgUrl) {
-        uni.getSetting({
-                success(res) {
-                    console.log(res)
-                    if (!res.authSetting['scope.writePhotosAlbum']) {
-                        uni.authorize({
-                            scope: 'scope.writePhotosAlbum',
-                            success() {
-                                console.log(res)
-                                //这里是用户同意授权后的回调
-                                saveImgToLocal(imgUrl);
-                            },
-                            fail() {//这里是用户拒绝授权后的回调
-                                // _self.openSettingBtnHidden=false
-                            }
-                        })
-                    } else {//用户已经授权过了
-                        console.log(imgUrl)
-                        saveImgToLocal(imgUrl);
-                    }
-                }
-            },
-        )
-
-        function saveImgToLocal(imgUrl) {
-            uni.downloadFile({
-                url: imgUrl,
-                success: (res) => {
-                    console.log(res)
-                    if (res.statusCode === 200) {
-                        uni.saveImageToPhotosAlbum({
-                            filePath: res.tempFilePath,
-                            success: function () {
-                                uni.showToast({
-                                    title: "保存成功",
-                                    icon: "none"
-                                });
-                            },
-                            fail: function () {
-                                uni.showToast({
-                                    title: "保存失败",
-                                    icon: "none"
-                                });
-                            }
+// 保存图片
+export function saveHeadImgFile(base64, quality) {
+    const bitmap = new plus.nativeObj.Bitmap("test");
+    return new Promise((resolve, reject) => {
+        // 从本地加载Bitmap图片
+        bitmap.loadBase64Data(base64, function() {
+            const url = "_doc/" + getTimeStamps() + ".png";  // url为时间戳命名方式
+            bitmap.save(url, {
+                overwrite: true,  // 是否覆盖
+                quality: quality  // 图片清晰度
+            }, (i) => {
+                uni.saveImageToPhotosAlbum({
+                    filePath: url,
+                    success: function() {
+                        resolve({
+                            code: 0,
+                            msg: '保存成功',
+                            filePath: url
                         });
                     }
-                }
-            })
-        }
-    },
+                });
+            }, (e) => {
+                reject('保存图片失败：' + JSON.stringify(e));
+            });
+        }, (e) => {
+            reject('加载图片失败：' + JSON.stringify(e));
+        });
+    })
 }
-
-export default saveImg

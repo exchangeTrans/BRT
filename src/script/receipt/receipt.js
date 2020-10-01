@@ -2,6 +2,7 @@ import appHeader from '@/components/common/header.vue'
 // import QRCode from 'qrcodejs2'
 // import qrcodeComponents from '@/components/qrcode/qrcode'
 import uniQrcode from '@/components/uqrcode/index.vue'
+import {saveHeadImgFile} from "../../static/js/saveImg";
 
 export default {
     components: {
@@ -139,7 +140,7 @@ export default {
         makeComplete(res) {
             this.filePath = res;
         },
-        //获取相册授权
+        /*//获取相册授权
         getalbumAuth(){
             let that = this;
             uni.getSetting({
@@ -156,29 +157,63 @@ export default {
                     }
                 }
             })
-        },
+        },*/
         saveImage() {
+            // debugger
             let filePath = this.filePath;
-            // uni.chooseImage({
-            //     count: 1,
-            //     sourceType: ['album '],
-            //     success: function (res) {
-            // uni.saveImageToPhotosAlbum({
-            //     filePath: filePath,
-            //     success: function () {
-            //         console.log('save success');
-            //     }
-            // });
-            // }
-            // })
+            const bitmap = new plus.nativeObj.Bitmap("test");
+            bitmap.loadBase64Data(filePath,function () {
+                let timestamp = (new Date()).valueOf();
+                const url = "_doc/" + timestamp + ".png";  // url为时间戳命名方式
+                uni.saveImageToPhotosAlbum({
+                    filePath: url,
+                    success: function () {
+                        // console.log('save success');
+                        uni.showToast({
+                            title: '图片保存成功',
+                            icon: 'none',
+                            duration: 2200
+                        });
+                    },
+                    fail: function (err) {
+                        console.log(err)
+                        uni.showToast({
+                            title: '图片保存失败',
+                            icon: 'none',
+                            duration: 2200
+                        });
+                    }
+                });
+            })
+            /*plus.gallery.save(dataURLtoFile, function (e) {//保存到相册方法
+                // plus.nativeUI.closeWaiting()
+                // mui.toast('已保存到手机相册');
+                // console.log('图片保存成功');
+                console.log(e);
+                uni.showToast({
+                    title: '图片保存成功',
+                    icon: 'none',
+                    duration: 2200
+                });
+            }, function (e) {
+                console.log(e)
+                // plus.nativeUI.closeWaiting()
+                // mui.toast('保存失败，请重试！');
+                uni.showToast({
+                    title: '图片保存失败',
+                    icon: 'none',
+                    duration: 2200
+                });
+            });
             uni.getImageInfo({
                 src: filePath,
                 success: function (image) {
-                    console.log('图片信息：', JSON.stringify(image));
+                    // console.log('图片信息：', JSON.stringify(image));
+                    // console.log(image.path);
                     uni.saveImageToPhotosAlbum({
                         filePath: image.path,
                         success: function () {
-                            console.log('save success');
+                            // console.log('save success');
                             uni.showToast({
                                 title: '图片保存成功',
                                 icon: 'none',
@@ -186,12 +221,13 @@ export default {
                             });
                         },
                         fail: function (err) {
+                            // console.log(err)
                             uni.showToast({
                             	title: '图片保存失败',
                             	icon: 'none',
                             	duration: 2200
                             });
-                            /*if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny" || err.errMsg ===
+                            /!*if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny" || err.errMsg ===
                                 "saveImageToPhotosAlbum:fail authorize no response" || err.errMsg === "saveImageToPhotosAlbum:fail auth denied") { // 没有授权，重新授权，兼容iso和Android
                                 uni.showModal({
                                     title: '授权提示',
@@ -225,12 +261,21 @@ export default {
                                     title: "暂无图片",
                                     icon: "none"
                                 });
-                            }*/
+                            }*!/
                         }
                     });
-                }
-            });
 
+                }
+            });*/
+
+        },
+        dataURLtoFile(dataurl, filename) {
+            let arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new File([u8arr], filename, {type: mime});
         },
         copy() {
             let text = this.data.userWalletAddress;
