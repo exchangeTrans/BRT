@@ -54,7 +54,7 @@ export default {
                     url: "drrfffs.brt.com/https://drrfffs.brt.com/https://drrfffs.brt.com/",
                     allowToUrl:true,
                     urlHeader:'https://',
-                    urlBody:"drrfffs.brt.com/https://drrfffs.brt.com/https://drrfffs.brt.com/",
+                    urlBody:"www.brtdefi.com",
                     
                 },
                 {
