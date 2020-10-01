@@ -193,7 +193,7 @@ export default {
                 } else {
                     this.btnInputObject.amount = false
                 }
-                e = e.replace(/[^\d]/g, '')
+                // e = e.replace(/[^\d]/g, '')
             }
             this.postData[name] = e;
 
@@ -207,6 +207,7 @@ export default {
                     this.btnInputObject.address = false
                 }
             } else if (name === "amount") {
+                // debugger
                 this.btnCorrectNum++
                 // 计算
                 this.amountInputValue = e
