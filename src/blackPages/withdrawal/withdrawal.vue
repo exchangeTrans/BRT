@@ -31,6 +31,7 @@
                 <view class="withdrawal-wrap-container-tip">
                     <view :class="isBlack?'withdrawal-wrap-container-tip-content black': 'withdrawal-wrap-container-tip-content'">
                         <span class="tipTitle">最小提币数量：{{minDrawTip}}</span>
+                        <span class="tipContent">平台间用户转帐无手续费。</span>
                         <span class="tipContent">为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。</span>
                         <span class="tipContent mgt">请务必确认电脑及浏览器安全，防止信息被篡改或泄露</span>
                     </view>
@@ -120,7 +121,7 @@
                         width: 690rpx;
                         box-sizing: border-box;
                         padding:20rpx;
-                        height: 254rpx;
+                        height: auto;
                         background: #F5F8FC;
                         border-radius: 8px;
                         margin: 0 auto;
