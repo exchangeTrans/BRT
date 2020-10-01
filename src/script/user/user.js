@@ -51,7 +51,7 @@ export default {
                     name: "官网",
                     path: "",
                     img: `${require('@/static/images/user/official.png')}`,
-                    url: "drrfffs.brt.com/https://drrfffs.brt.com/https://drrfffs.brt.com/",
+                    url: "www.brtdefi.com",
                     allowToUrl:true,
                     urlHeader:'https://',
                     urlBody:"www.brtdefi.com",
