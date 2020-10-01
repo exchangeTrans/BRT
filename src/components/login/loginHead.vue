@@ -57,6 +57,12 @@
 		},
 		methods: {
 			typeClick(type) {
+				if(type==='EMAIL'){
+					this.$toast.show({
+                        title: '暂未开放',
+					})
+					return
+				}
 				if (type !== this.type) {
 					this.type = type
 					this.$emit('typeChange', type)

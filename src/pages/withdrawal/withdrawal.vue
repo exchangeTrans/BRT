@@ -8,13 +8,13 @@
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
                          <!-- @btnClick="toScanCode" -->
-                        <WithdrawalInput :inputData="address" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" :inputType="'text'"></WithdrawalInput>
+                        <WithdrawalInput :inputData="address" inputType="text" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" :inputType="'text'"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
                         <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="commission" inputType="text" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
+                        <WithdrawalInput :inputData="commission"  @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-text">

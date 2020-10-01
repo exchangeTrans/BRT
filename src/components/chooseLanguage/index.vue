@@ -100,8 +100,15 @@
         },
         methods: {
             chooseItem(item) {
-                this.selectedObj=item;
-                this.$emit('chooseItem',item);
+                if(item.name==='zh-CN'){
+                    this.selectedObj=item;
+                    this.$emit('chooseItem',item);
+                }else{
+                    this.$toast.show({
+                        title: "暂未开放",
+                    })
+                }
+                
             },
         }
     }
