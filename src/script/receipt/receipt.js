@@ -162,14 +162,25 @@ export default {
             // debugger
             let filePath = this.filePath;
             const bitmap = new plus.nativeObj.Bitmap("test");
-            bitmap.loadBase64Data(filePath,function () {
+            bitmap.loadBase64Data(filePath, function () {
                 let timestamp = (new Date()).valueOf();
                 const url = "_doc/" + timestamp + ".png";  // url为时间戳命名方式
-                bitmap.save(url, {
-                    overwrite: true,
-                    // quality: quality
-                }, (i) => {
-                    uni.saveImageToPhotosAlbum({
+                bitmap.save(url, {overwrite: true, quality: 100,}, (i) => {
+                    console.log('保存图片成功：' + JSON.stringify(i.target));
+                    plus.gallery.save(i.target, function () {
+                        uni.showToast({
+                            title: '图片保存成功',
+                            icon: 'none',
+                            duration: 2200
+                        });
+                    }, function () {
+                        uni.showToast({
+                            title: '图片保存失败',
+                            icon: 'none',
+                            duration: 2200
+                        });
+                    });
+                    /*uni.saveImageToPhotosAlbum({
                         filePath: url,
                         success: function () {
                             // console.log('save success');
@@ -188,9 +199,14 @@ export default {
                                 duration: 2200
                             });
                         }
-                    });
+                    });*/
                 }, (e) => {
                     console.log('保存图片失败：' + JSON.stringify(e));
+                    uni.showToast({
+                        title: e,
+                        icon: 'none',
+                        duration: 2200
+                    });
                 });
                 /*uni.saveImageToPhotosAlbum({
                     filePath: url,
