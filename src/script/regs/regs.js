@@ -297,7 +297,6 @@ export default {
 
         sendSmsVerify(name) {
             let that = this;
-            // debugger
             if (!this[name]) {
                 this[name] = true;
                 let sendCodeData = this.getSendCodeData();

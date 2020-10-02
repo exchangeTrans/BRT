@@ -1,6 +1,6 @@
 <template>
     <view class="btn" id="btn">
-        <view class="wrap" :style="btnStyle" @tap="btnClick">
+        <view class="wrap" :style="btnStyle" @tap.stop="btnClick">
             {{btnText}}
         </view>
     </view>

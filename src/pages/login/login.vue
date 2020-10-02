@@ -52,7 +52,7 @@
                 </view>
                 <loginBtn :btnStyle="btnStyle"
                           :btnText="btnText"
-                          @btnClick.once="loginClick"></loginBtn>
+                          @btnClick="loginClick"></loginBtn>
                 <view class="touchFunc">
                     <view class="forgetPasswordTouch"
                           @tap="jumpForgetPassword">

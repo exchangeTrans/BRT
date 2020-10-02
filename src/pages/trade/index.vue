@@ -163,10 +163,16 @@
                 this.tableTabSelect = item;
             },
             toPage(code){
-                this.$jumpPage.jump({
-					type: 'navigateTo',
-                    url: 'pageIndex/index?code='+code,
-				})
+                let that = this;
+                this.$storage.set({
+                    key: "pagePath",
+                    data: 'trades/index',
+                },function(){
+                    that.$jumpPage.jump({
+                        type: 'navigateTo',
+                        url: 'pageIndex/index?code='+code,
+                    })
+                });
             },
             changeTest(){
                 this.$storage.setSync({key: "lang", data: "zh-CN"});

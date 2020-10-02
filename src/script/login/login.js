@@ -124,6 +124,7 @@ export default {
                 titleJP: "CHINA",
                 titleKO: "CHINA",
             },
+            isAllowClick:true,
         }
     },
     onShow() {
@@ -170,7 +171,11 @@ export default {
         },
         loginClick() {
             // console.log("登录")
-            // debugger
+            if(!this.isAllowClick){
+                return
+            }
+            this.isAllowClick=false;
+            // return
             let postData = this.getPostData()
             // debugger
             // console.log(postData);
@@ -181,6 +186,7 @@ export default {
                     method: "post",
                     params: postData,
                 }).then((res) => {
+                    that.isAllowClick = true;
                     // debugger
                     // console.log(res);
                     // data: {userLoginId: "1307906608826679298", userLoginToken: "bf1c35263cb4c36d1ad4dafdd04efa85"}
@@ -191,7 +197,6 @@ export default {
                     // returnMessage: "登录成功"
                     // returnUserMessage: "登录成功"
                     if (res.result.returnCode.toString() === "0") {
-                        debugger
                         // console.log(res);
                         
                         let loginMsg = {
@@ -214,7 +219,7 @@ export default {
                             url: 'index/index'
                         });
                     } else {
-                        debugger
+                        that.isAllowClick = true;
                         this.$toast.show({
                             title: res.result.returnMessage,
                         })
