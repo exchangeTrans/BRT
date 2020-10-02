@@ -7,7 +7,7 @@ let api={
     commApi:commonIp,
     // klineApi:'http://52.78.213.185:8100',
     // klineApi:'http://13.125.88.118:8100',
-    klineApi:'https://www.brt-finance.com:8100',
+    klineApi:'http://www.brt-finance.com:8100',
     
     qiniuApi:qiniuApi,
 };
