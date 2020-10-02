@@ -116,6 +116,7 @@ export default{
                 params:postData
             }).then((res)=>{
                 if (res.result.returnCode.toString() === "0") {
+                    let inviteRecord = that.inviteRecord;
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
                         that.haveNext=false;
@@ -125,10 +126,12 @@ export default{
                     }
                     //判断是第一次加载还是加载更多
                     if (isMore){
-                        that.inviteRecord.concat(res.data.list);
+                        inviteRecord = inviteRecord.concat(res.data.list);
+                        that.inviteRecord = that.getData(inviteRecord)
                     }else {
                         that.teamData=res.data;
-                        that.inviteRecord=res.data.list;
+                        inviteRecord=res.data.list;
+                        that.inviteRecord = that.getData(inviteRecord)
 
                         //判断是否有数据
                         if (res.data.list.length===0){
@@ -144,6 +147,26 @@ export default{
                     })
                 }
             })
+        },
+        getData(data){
+            let result = []
+            if(!data||data===null||data.length===0){
+                reresult = data.map(function (item) {
+                    let account = item.account;
+                    let accountArray = str.split("");
+				    let newAccount = accountArray.map(function (item,index) {
+                        if(index>2&&index<accountArray.length-4){
+                            return '*'
+                        }
+                        return item
+                    })
+                    return {
+                        ...item,
+                        newAccount
+                    }
+                })
+            }
+            return reresult
         }
     }
 }
