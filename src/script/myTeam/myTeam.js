@@ -77,7 +77,7 @@ export default{
 // Russia: `${require('@/static/images/user/Russia.png')}`,
             'US': `${require('@/static/images/user/USA.png')}`
             },
-            headerImgRight: `${require('@/static/images/user/headerRight.png')}`,
+            headerImgRight: `${require('@/static/images/user/head.png')}`,
             teamData:{},
             inviteRecord:[],
             haveNext:true,
@@ -149,24 +149,27 @@ export default{
             })
         },
         getData(data){
-            let result = []
             if(!data||data===null||data.length===0){
-                reresult = data.map(function (item) {
+                return []
+            }else{
+                let result = data.map(function (item) {
                     let account = item.account;
-                    let accountArray = str.split("");
+                    let accountArray = account.split("");
 				    let newAccount = accountArray.map(function (item,index) {
                         if(index>2&&index<accountArray.length-4){
                             return '*'
                         }
                         return item
                     })
+                    newAccount =newAccount.join('')
                     return {
                         ...item,
-                        newAccount
+                        account:newAccount
                     }
                 })
+                return result
             }
-            return reresult
+            
         }
     }
 }
