@@ -57,13 +57,13 @@
 						<view class="dataList" v-if="showdata_earing" >
 							<view class="dataItem">
 								<view class="itemTitle">止盈率</view>
-								<input class="itemInput" v-model="userdata.stopWinRate"></input>
+								<input class="itemInput" v-model="userdata.stopWinRate"/>
 								<view class="itemSet" @tap="setincomerate">设置</view>
 								<view class="clearfix"></view>
 							</view>
 							<view class="dataItem">
 								<view class="itemTitle">止损率</view>
-								<input class="itemInput" v-model="userdata.stopLoseRate"></input>
+								<input class="itemInput" v-model="userdata.stopLoseRate"/>
 								<view class="itemSet" @tap="setlossrate">设置</view>
 								<view class="clearfix"></view>
 							</view>
@@ -294,37 +294,46 @@
 
 						.dataItem {
 							height: 80rpx;
-							line-height: 80rpx;
+							
 
 							.itemTitle {
+								line-height: 80rpx;
 								width: 196rpx;
-								display: inline-block;
+								line-height: 80rpx;
+								height: 80rpx;
+								// display: inline-block;
+								float: left;
 							}
 
 							.itemText {
-								display: inline-block;
+								height:80rpx;
+								// display:inline-block;
 								color: #098FE0;
+								float: left;
+								line-height: 80rpx;
 							}
 							.itemInput{
-								display: inline-block;
+								float: left;
+								// display: inline-block;
 								color: #098FE0;
 								width: 60rpx;
-								height: 40rpx;
+								height: 80rpx;
 								font-size: 28rpx;
 								box-sizing: border-box;
-								padding-top: 18rpx;
+								// padding-top: 18rpx;
 							}
 							.itemSet{
 								// width: 64rpx;
-								// height: 40rpx;
+								height: 80rpx;
+								line-height: 80rpx;
 								font-size: 28rpx;
 								font-family: PingFangSC-Regular, PingFang SC;
 								font-weight: 400;
 								color: #098FE0;
-								line-height: 40rpx;
+								// line-height: 40rpx;
 								float: right;
 								padding-left: 100rpx;
-								margin-top: 20rpx;
+								// margin-top: 20rpx;
 							}
 						}
 					}

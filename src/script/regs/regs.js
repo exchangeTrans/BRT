@@ -305,6 +305,7 @@ export default {
                     uni.showLoading({
                         title: "加载中..."
                     })
+                    that.setIntervalFun(sendCodeData.accountType);
                     this.$request({
                         url: "common/sendCode",
                         method: "post",
@@ -313,7 +314,7 @@ export default {
                         if (res.result.returnCode.toString() === "0") {
                             that.postData.verifyKey = res.data.verifyKey;
                             uni.hideLoading()
-                            that.setIntervalFun(sendCodeData.accountType);
+                            
                         } else {
                             // this[name] = false;
                             that.$toast.show({

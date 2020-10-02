@@ -233,7 +233,7 @@ export default {
         id:'brtusdt',
         range:0,
         price:0.00,
-      detail:[],
+        detail:[],
         depth:null,
         iconPath:`${require('@/static/images/tradeSymbol/BRT.png')}`,
         nowData:null,

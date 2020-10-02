@@ -191,6 +191,7 @@ export default {
                     // returnMessage: "登录成功"
                     // returnUserMessage: "登录成功"
                     if (res.result.returnCode.toString() === "0") {
+                        debugger
                         // console.log(res);
                         
                         let loginMsg = {
@@ -213,6 +214,7 @@ export default {
                             url: 'index/index'
                         });
                     } else {
+                        debugger
                         this.$toast.show({
                             title: res.result.returnMessage,
                         })

@@ -33,6 +33,32 @@ export const mySocket={
      * @param {string} url ws地址
      */
     createSocket:function(url,cb){
+
+        
+        // let defaultKlineData = {
+        //     ch: "market.brtusdt.kline.5min",
+        //     symbol: "brtusdt",
+        //     tick:{
+        //         amount: 0,
+        //         close: 0.05,
+        //         count: 32603,
+        //         high: 0.05,
+        //         id: 202095710586,
+        //         low: 0.05,
+        //         open: 0.05,
+        //         ts: 0,
+        //         version: 202095710586,
+        //         vol: 10696585.162752753,
+        //     }
+        // }
+        // mySocket.upDataKlineData(defaultKlineData)
+
+
+
+
+
+
+
         url = url?url:socketUrl;
         if(socketStatus) return;
         Socket=uni.connectSocket({
@@ -157,7 +183,11 @@ export const mySocket={
                 let range = (((tick.close-tick.open)/tick.open).toFixed(4))*100;
                 // let code = item.type+selectedCurrency
                 // let price = Number(rangeList[code])*tick.close;
-                // debugger 
+                // debugger
+                let close  = tick.close;
+                if(symbolName==="brtusdt"){
+                    close = tick.close===0||tick.close==='0'?0.05:tick.close
+                }
                 let price = getMoney(tick.close,"USDT").price
                 if(KLineTradingPair.id === item.id){
                     let KLineTradingPairObj = {
@@ -329,6 +359,8 @@ export const mySocket={
         mySocket.subscribeDepth();
         mySocket.subscribeKline('5min');
         mySocket.subscribeDetail()
+        
+
         
     },
     subscribeDetail(item){

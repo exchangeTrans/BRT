@@ -294,6 +294,7 @@ export default {
                 this[name] = true;
                 let sendCodeData = this.getSendCodeData();
                 if (sendCodeData) {
+                    that.setIntervalFun(sendCodeData.accountType);
                     uni.showLoading({
                         title: "加载中..."
                     })
@@ -305,7 +306,7 @@ export default {
                         if (res.result.returnCode.toString() === "0") {
                             that.postData.verifyKey = res.data.verifyKey;
                             uni.hideLoading();
-                            that.setIntervalFun(sendCodeData.accountType);
+                            
                         } else {
 
                             that.$toast.show({

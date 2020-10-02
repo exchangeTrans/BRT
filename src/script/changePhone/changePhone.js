@@ -247,6 +247,11 @@ export default {
             let that = this;
             let sendCodeData = this.getSendCodeData(type);
             if (sendCodeData) {
+                if (type === 4) {
+                    that.setIntervalFun(type, "spanNameOld")
+                } else if (type === 5) {
+                    that.setIntervalFun(type, "spanNameNew")
+                }
                 this.$request({
                     url: "common/sendCode",
                     method: "post",
@@ -255,10 +260,8 @@ export default {
                     if (res.result.returnCode.toString() === "0") {
                         if (type === 4) {
                             that.postData.verifyKey = res.data.verifyKey;
-                            that.setIntervalFun(type, "spanNameOld")
                         } else if (type === 5) {
                             that.postData.verifyKeyNew = res.data.verifyKey;
-                            that.setIntervalFun(type, "spanNameNew")
                         }
 
 
