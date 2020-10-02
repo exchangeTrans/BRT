@@ -263,12 +263,13 @@ export default {
         },
         sendVerifyCode() {
             let userInfo = this.$store.state.defaultData.userInfo
-            console.log(userInfo)
             let phone = userInfo.tel
             let dialingCode = userInfo.dialingCode
+            
             if (!this.getCodeStatus) {
                 return
             }
+            this.setIntervalFun()
             this.getCodeStatus = false
             let sendCodeData = {
                 type: 3,
@@ -285,7 +286,7 @@ export default {
                 that.getCodeStatus = true
                 if (res.result.returnCode.toString() === "0") {
                     that.postData.verifyKey = res.data.verifyKey;
-                    that.setIntervalFun()
+                    
                 } else {
                     this.$toast.show({
                         title: res.result.returnMessage,

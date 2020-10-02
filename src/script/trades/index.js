@@ -203,8 +203,10 @@
 	  },
 	  mounted(){
 		let {tradeCode} = this.$props;
+		let code = tradeCode&&tradeCode!==''&&tradeCode!==null?tradeCode:'buy'
 		this.selectedTradeName={
-			code:tradeCode&&tradeCode!==''&&tradeCode!==null?tradeCode:'buy'
+			code,
+			id:code==='buy'?'1':'2',
 		}
 		let symbolType = this.KLineTradingPair.name;
 		let symbolCode = String(this.symbolDefaultData[symbolType])

@@ -12,6 +12,7 @@ import VueI18n from 'vue-i18n'
 import lang from './static/lang/index.js';
 import request from './request/index.js';
 import md5 from 'js-md5';
+import permissionFunc from './static/js/permission/index.js';
 
 // import echarts from 'echarts'
 
@@ -27,6 +28,7 @@ Vue.prototype.$md5 = md5;
 Vue.prototype.$monitor = monitorFunc;
 Vue.prototype.$storage = datastorage;
 Vue.prototype.$jumpPage = jumpPage;
+Vue.prototype.$permissionFunc = permissionFunc;
 Vue.prototype.$mySocket = mySocket;
 
 

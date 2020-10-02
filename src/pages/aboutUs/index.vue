@@ -100,65 +100,43 @@
 
 			},
 			saveImage() {
-			const that = this;
-			/* 获取屏幕信息 */
-			let ws = this.$mp.page.$getAppWebview();
-			let bitmap = new plus.nativeObj.Bitmap('test');
-			// 将webview内容绘制到Bitmap对象中
-			ws.draw(
-				bitmap,
-				function(e) {
-					/* 获取base64 */
-					that.test= bitmap.toBase64Data();
-					/* 加载base64编码 */
-					bitmap.loadBase64Data(
-						bitmap.toBase64Data(),
-						function() {
-							console.log('加载Base64图片数据成功');
-							/* 保存图片 */
-							bitmap.save(
-								'_doc/share.jpg',
-								{},
-								async (i)=>{
-									console.log('保存图片成功：' + JSON.stringify(i));
-									uni.saveImageToPhotosAlbum({
-										filePath: i.target,
-										success: function() {
-											/* 清除 */
-											bitmap.clear();
-											uni.showToast({
-												title: '图片保存成功',
-												icon: 'none',
-												duration: 2200
-											});
-										},
-										fail(e) {
-											uni.showToast({
-												title: '保存失败',
-												icon: 'none',
-												duration: 2200
-											});
-										}
-									});
-								},
-								function(e) {
-									console.log('保存图片失败：' + JSON.stringify(e));
-								}
-							);
-						},
-						function() {
-							console.log('加载Base64图片数据失败：' + JSON.stringify(e));
-						}
-					);
-				},
-				function(e) {
-					console.log('截屏绘制图片失败：' + JSON.stringify(e));
-				},
-				{
-					check: true, // 设置为检测白屏
-					clip: { top: '100px', left: '0px', height: '100%', width: '100%' } // 设置截屏区域
-				}
-			);
+				let that = this;
+				this.$permissionFunc.query("photoLibrary",function(){
+					var pages = getCurrentPages();  
+					var page = pages[pages.length - 1];  
+					console.log('当前页：'+pages.length-1);  
+					var bitmap=null;  
+					var currentWebview = page.$getAppWebview();    
+					bitmap = new plus.nativeObj.Bitmap('amway_img');  
+					// 将webview内容绘制到Bitmap对象中  
+					currentWebview.draw(bitmap,function(){  
+						console.log('截屏绘制图片成功');  
+						bitmap.save( "_doc/a.jpg"  
+						,{}  
+						,function(i){  
+							console.log('保存图片成功：'+JSON.stringify(i));  
+							uni.saveImageToPhotosAlbum({  
+								filePath: i.target,  
+								success: function () {  
+									bitmap.clear(); //销毁Bitmap图片  
+									uni.showToast({  
+										title: '保存图片成功',  
+										mask: false,  
+										duration: 1500  
+									});  
+								}  
+							});  
+						}  
+						,function(e){  
+							console.log('保存图片失败：'+JSON.stringify(e));  
+						});  
+					},function(e){  
+						console.log('截屏绘制图片失败：'+JSON.stringify(e));  
+					});  
+
+				})
+			
+                //currentWebview.append(amway_bit);
 		},
 
 			saveImage1(){
@@ -217,8 +195,9 @@
 <style lang="less">
 	.aboutUs{
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 		background-size: 100% 100%;
+		background-repeat: no-repeat;
 		.logo{
 			width: 276rpx;
 			height: 276rpx;
