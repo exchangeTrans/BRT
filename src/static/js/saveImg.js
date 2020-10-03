@@ -1,29 +1,30 @@
 // 保存图片
-export function saveHeadImgFile(base64, quality) {
+export function saveHeadImgFile(base64) {
     const bitmap = new plus.nativeObj.Bitmap("test");
     return new Promise((resolve, reject) => {
         // 从本地加载Bitmap图片
         bitmap.loadBase64Data(base64, function() {
-            const url = "_doc/" + getTimeStamps() + ".png";  // url为时间戳命名方式
-            bitmap.save(url, {
-                overwrite: true,  // 是否覆盖
-                // quality: quality  // 图片清晰度
-            }, (i) => {
+            let timestamp = (new Date()).valueOf();
+            const url = "_doc/" + timestamp + ".png";  // url为时间戳命名方式
+            bitmap.save(url, {}, (i) => {
                 uni.saveImageToPhotosAlbum({
-                    filePath: url,
+                    filePath: i.target,
                     success: function() {
+                        bitmap.clear(); //销毁Bitmap图片
                         resolve({
                             code: 0,
                             msg: '保存成功',
-                            filePath: url
                         });
+                    },
+                    fail: function (e) {
+                        reject('保存图片失败saveImageToPhotosAlbum：' + JSON.stringify(e));
                     }
                 });
             }, (e) => {
-                reject('保存图片失败：' + JSON.stringify(e));
+                reject('保存图片失败bitmap.save：' + JSON.stringify(e));
             });
         }, (e) => {
-            reject('加载图片失败：' + JSON.stringify(e));
+            reject('加载图片失败bitmap.loadBase64Data：' + JSON.stringify(e));
         });
     })
 }

@@ -2,6 +2,8 @@ import appHeader from '@/components/common/header.vue'
 // import QRCode from 'qrcodejs2'
 // import qrcodeComponents from '@/components/qrcode/qrcode'
 import uniQrcode from '@/components/uqrcode/index.vue'
+import {saveHeadImgFile} from "../../static/js/saveImg";
+import permissionFunc from "../../static/js/permission";
 // import {saveHeadImgFile} from "../../static/js/saveImg";
 
 export default {
@@ -140,36 +142,49 @@ export default {
         makeComplete(res) {
             this.filePath = res;
         },
-        /*//获取相册授权
+        //获取相册授权
         getalbumAuth(){
-            let that = this;
-            uni.getSetting({
-                success: function (res) {
-                    if (!res.authSetting['scope.writePhotosAlbum']) {
-                        uni.authorize({
-                            scope: "scope.writePhotosAlbum",
-                            success() {
-                                that.saveImage();
-                            }
-                        })
-                    } else {
-                        that.saveImage()
-                    }
-                }
-            })
-        },*/
+            permissionFunc.query()
+        },
         saveImage() {
             let that = this;
             this.$permissionFunc.query("photoLibrary",function(){
                 let filePath = that.filePath;
-                console.log(filePath)
-                
-                const bitmap = new plus.nativeObj.Bitmap("test");
+                saveHeadImgFile(filePath).then((res)=>{
+                    console.log(res);
+                    uni.showToast({
+                        title: '保存图片成功',
+                        mask: false,
+                        duration: 1500
+                    });
+                }).catch((err) => {
+                    console.log(err);
+                });
+                /*const bitmap = new plus.nativeObj.Bitmap("test");
                 bitmap.loadBase64Data(filePath, function () {
                     let timestamp = (new Date()).valueOf();
                     const url = "_doc/" + timestamp + ".png";  // url为时间戳命名方式
                     bitmap.save(url, {overwrite: true, quality: 100,}, (i) => {
-                        console.log('保存图片成功：' + JSON.stringify(i.target));
+                        uni.saveImageToPhotosAlbum({
+                            filePath: i.target,
+                            success: function () {
+                                bitmap.clear(); //销毁Bitmap图片
+                                uni.showToast({
+                                    title: '保存图片成功',
+                                    mask: false,
+                                    duration: 1500
+                                });
+                            },
+                            fail: function (err) {
+                                console.log(err);
+                                uni.showToast({
+                                    title: '图片保存失败',
+                                    icon: 'none',
+                                    duration: 1500
+                                });
+                            }
+                        });
+                        /!*console.log('保存图片成功：' + JSON.stringify(i.target));
                         plus.gallery.save(i.target, function () {
                             uni.showToast({
                                 title: '图片保存成功',
@@ -182,7 +197,7 @@ export default {
                                 icon: 'none',
                                 duration: 2200
                             });
-                        });
+                        });*!/
                     }, (e) => {
                         console.log('保存图片失败：' + JSON.stringify(e));
                         uni.showToast({
@@ -191,9 +206,8 @@ export default {
                             duration: 2200
                         });
                     });
-                })
-            })
-            // debugger
+                })*/
+            });
             
 
         },
