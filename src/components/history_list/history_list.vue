@@ -19,7 +19,7 @@
 		<view class="threeline">
 			<view class="threeline_1">{{listOptions.amountSum}}</view>
 			<view class="threeline_2">{{listOptions.price}}</view>
-			<view class="threeline_3">{{Number(listOptions.amountExecuted)*Number(listOptions.price)}}</view>
+			<view class="threeline_3">{{(Number(listOptions.amountExecuted)*Number(listOptions.price)).toFixed(4)}}</view>
 			<view class="threeline_4"><text>{{listOptions.amountExecuted}}</text></view>
 		</view>
 	</view>

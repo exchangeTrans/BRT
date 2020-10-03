@@ -228,6 +228,7 @@ export default {
                     this.commissionAmount = fee.toString()
                     this.receiveAmount = e - fee
                 }
+                this.receiveAmount =  parseFloat(this.receiveAmount.toFixed(5))
                 // commissionAmount
                 // receiveAmount
             } else if (name === "verifyCode") {

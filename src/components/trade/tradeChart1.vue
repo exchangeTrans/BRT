@@ -330,10 +330,10 @@ import store from '@/store/index.js';
                             let data = datas[0];
                             var res = datas[0].name +'</br>'                          
                             +datas[0].seriesName+'</br>' 
-                            +'开盘价:'+datas[0].data[0]+'</br>' 
-                            +'收盘价:'+datas[0].data[1]+'</br>' 
-                            +'最低价:'+datas[0].data[2]+'</br>' 
-                            +'最高价:'+datas[0].data[3]+'</br>' 
+                            +'开盘价:'+datas[0].data[1]+'</br>' 
+                            +'收盘价:'+datas[0].data[2]+'</br>' 
+                            +'最低价:'+datas[0].data[3]+'</br>' 
+                            +'最高价:'+datas[0].data[4]+'</br>' 
                             return res
                         }
                     },

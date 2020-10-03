@@ -11,7 +11,7 @@
                     <block>
                         <view class="imgBox"
                               :style="{'backgroundImage':item.pagePath===currentTab.pagePath?item.selectedIconPath:item.iconPath}"></view>
-                        <span class="title">{{item.text}}</span>
+                        <span class="title">{{$t('footer')[key]}}</span>
                     </block>
                 </view>
             </view>

@@ -13,43 +13,43 @@ export default {
     data() {
         return {
             girdData: [{
-                text: '质押挖矿',
+                text: this.$t('index').gridData[0],
                 img: `${require('@/static/images/home/detail.png')}`,
                 url: 'sub/index'
             },
                 {
-                    text: '挖矿收益',
+                    text: this.$t('index').gridData[1],
                     img: `${require('@/static/images/home/dividend.png')}`,
                     url: 'miningEarnings/index'
                 },
                 {
-                    text: '量化理财',
+                    text: this.$t('index').gridData[2],
                     img: `${require('@/static/images/home/deal.png')}`,
                     url: 'earnings/index'
                 },
                 {
-                    text: '智能合约',
+                    text: this.$t('index').gridData[3],
                     img: `${require('@/static/images/home/agreement.png')}`,
                     url: '#'
                 },
                 {
-                    text: '节点矿池',
+                    text: this.$t('index').gridData[4],
                     img: `${require('@/static/images/home/pool.png')}`,
                     url: 'bonus/bonus'
                 },
 
                 {
-                    text: '团队详情',
+                    text: this.$t('index').gridData[5],
                     img: `${require('@/static/images/home/team.png')}`,
                     url: 'myteam/index'
                 },
                 {
-                    text: '推广收益',
+                    text: this.$t('index').gridData[6],
                     img: `${require('@/static/images/home/list.png')}`,
                     url: 'bonus/promoteBonus'
                 },
                 {
-                    text: '上币申请',
+                    text: this.$t('index').gridData[7],
                     img: `${require('@/static/images/home/apply.png')}`,
                     url: '#'
                 },
