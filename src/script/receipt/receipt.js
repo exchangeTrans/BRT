@@ -159,158 +159,42 @@ export default {
             })
         },*/
         saveImage() {
-            // debugger
-            let filePath = this.filePath;
-            const bitmap = new plus.nativeObj.Bitmap("test");
-            bitmap.loadBase64Data(filePath, function () {
-                let timestamp = (new Date()).valueOf();
-                const url = "_doc/" + timestamp + ".png";  // url为时间戳命名方式
-                bitmap.save(url, {overwrite: true, quality: 100,}, (i) => {
-                    console.log('保存图片成功：' + JSON.stringify(i.target));
-                    plus.gallery.save(i.target, function () {
-                        uni.showToast({
-                            title: '图片保存成功',
-                            icon: 'none',
-                            duration: 2200
-                        });
-                    }, function () {
-                        uni.showToast({
-                            title: '图片保存失败',
-                            icon: 'none',
-                            duration: 2200
-                        });
-                    });
-                    /*uni.saveImageToPhotosAlbum({
-                        filePath: url,
-                        success: function () {
-                            // console.log('save success');
+            let that = this;
+            this.$permissionFunc.query("photoLibrary",function(){
+                let filePath = that.filePath;
+                console.log(filePath)
+                
+                const bitmap = new plus.nativeObj.Bitmap("test");
+                bitmap.loadBase64Data(filePath, function () {
+                    let timestamp = (new Date()).valueOf();
+                    const url = "_doc/" + timestamp + ".png";  // url为时间戳命名方式
+                    bitmap.save(url, {overwrite: true, quality: 100,}, (i) => {
+                        console.log('保存图片成功：' + JSON.stringify(i.target));
+                        plus.gallery.save(i.target, function () {
                             uni.showToast({
                                 title: '图片保存成功',
                                 icon: 'none',
                                 duration: 2200
                             });
-                        },
-                        fail: function (err) {
-                            console.log(err)
-                            // console.log(url)
+                        }, function () {
                             uni.showToast({
                                 title: '图片保存失败',
                                 icon: 'none',
                                 duration: 2200
                             });
-                        }
-                    });*/
-                }, (e) => {
-                    console.log('保存图片失败：' + JSON.stringify(e));
-                    uni.showToast({
-                        title: e,
-                        icon: 'none',
-                        duration: 2200
+                        });
+                    }, (e) => {
+                        console.log('保存图片失败：' + JSON.stringify(e));
+                        uni.showToast({
+                            title: e,
+                            icon: 'none',
+                            duration: 2200
+                        });
                     });
-                });
-                /*uni.saveImageToPhotosAlbum({
-                    filePath: url,
-                    success: function () {
-                        // console.log('save success');
-                        uni.showToast({
-                            title: '图片保存成功',
-                            icon: 'none',
-                            duration: 2200
-                        });
-                    },
-                    fail: function (err) {
-                        // console.log(err)
-                        console.log(url)
-                        uni.showToast({
-                            title: '图片保存失败',
-                            icon: 'none',
-                            duration: 2200
-                        });
-                    }
-                });*/
+                })
             })
-            /*plus.gallery.save(dataURLtoFile, function (e) {//保存到相册方法
-                // plus.nativeUI.closeWaiting()
-                // mui.toast('已保存到手机相册');
-                // console.log('图片保存成功');
-                console.log(e);
-                uni.showToast({
-                    title: '图片保存成功',
-                    icon: 'none',
-                    duration: 2200
-                });
-            }, function (e) {
-                console.log(e)
-                // plus.nativeUI.closeWaiting()
-                // mui.toast('保存失败，请重试！');
-                uni.showToast({
-                    title: '图片保存失败',
-                    icon: 'none',
-                    duration: 2200
-                });
-            });
-            uni.getImageInfo({
-                src: filePath,
-                success: function (image) {
-                    // console.log('图片信息：', JSON.stringify(image));
-                    // console.log(image.path);
-                    uni.saveImageToPhotosAlbum({
-                        filePath: image.path,
-                        success: function () {
-                            // console.log('save success');
-                            uni.showToast({
-                                title: '图片保存成功',
-                                icon: 'none',
-                                duration: 2200
-                            });
-                        },
-                        fail: function (err) {
-                            // console.log(err)
-                            uni.showToast({
-                            	title: '图片保存失败',
-                            	icon: 'none',
-                            	duration: 2200
-                            });
-                            /!*if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny" || err.errMsg ===
-                                "saveImageToPhotosAlbum:fail authorize no response" || err.errMsg === "saveImageToPhotosAlbum:fail auth denied") { // 没有授权，重新授权，兼容iso和Android
-                                uni.showModal({
-                                    title: '授权提示',
-                                    content: "是否允许获取保存相册权限",
-                                    success: (res) => {
-                                        if (res.confirm) { // 点击确定，则调用相册授权
-                                            uni.openSetting({
-                                                success(settingdata) {
-                                                    if (settingdata.authSetting["scope.writePhotosAlbum"]) {
-                                                        console.log("获取权限成功，再次点击图片保存到相册")
-                                                        uni.showToast({
-                                                            title: '授权成功，请重试哦~'
-                                                        });
-                                                    } else {
-                                                        console.log("获取权限失败")
-                                                        uni.showToast({
-                                                            title: '请确定已打开保存权限',
-                                                            icon: "none"
-                                                        });
-                                                    }
-                                                }
-                                            })
-                                        }
-                                    }
-                                })
-                            } else if (err.errMsg === "saveImageToPhotosAlbum:fail file not found" || err.errMsg ===
-                                "saveImageToPhotosAlbum:fail file not exists" || err.errMsg ===
-                                "saveImageToPhotosAlbum:fail get file data fail"
-                            ) { // 无图片，则提示
-                                uni.showToast({
-                                    title: "暂无图片",
-                                    icon: "none"
-                                });
-                            }*!/
-                        }
-                    });
-
-                }
-            });*/
+            // debugger
+            
 
         },
         dataURLtoFile(dataurl, filename) {
