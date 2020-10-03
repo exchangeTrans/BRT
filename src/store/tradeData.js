@@ -387,7 +387,7 @@ export default {
       let postData = {
 					symbol:str,
 					period:data.period,
-          size:'50',
+          size:'30',
           isLocal:KLineTradingPair.isLocal
       }
       request({

@@ -7,16 +7,19 @@
             <view class="tableLi tableLi4">{{$t('trade').tableHeadTr1[3]}}({{KLineTradingPair.name}})</view>
             <view class="tableLi tableLi5">{{$t('trade').tableHeadTr1[4]}}</view>
         </view>
-        <view class="tableTr" v-for="(item,index) in tableData" :key="index">
-            <view class="tableLi tableLi1">{{index+1}}</view>
-            <view class="tableLi tableLi2">{{item.bids.size}}</view>
-            <view class="tableLi tableLi3">
-                <view class="price1">{{item.bids.price}}</view>
-                <view class="price2">{{item.asks.price}}</view>
+        <block  v-for="(item,index) in tableData" :key="index">
+            <view class="tableTr" v-if="index<10">
+                <view class="tableLi tableLi1">{{index+1}}</view>
+                <view class="tableLi tableLi2">{{item.bids.size}}</view>
+                <view class="tableLi tableLi3">
+                    <view class="price1">{{item.bids.price}}</view>
+                    <view class="price2">{{item.asks.price}}</view>
+                </view>
+                <view class="tableLi tableLi4">{{item.asks.size}}</view>
+                <view class="tableLi tableLi5">{{index+1}}</view>
             </view>
-            <view class="tableLi tableLi4">{{item.asks.size}}</view>
-            <view class="tableLi tableLi5">{{index+1}}</view>
-        </view>
+        </block>
+        
 	</view>
 </template>
 
@@ -73,7 +76,7 @@
                 let depth = this.KLineTradingPair.depth;
                 console.log(this.KLineTradingPair)
                 if(depth!==null){
-                    let asks = depth.asks;
+                    let asks = depth.asks.reverse();
                     let bids = depth.bids;
                     let newData = bids.map(function (item,index) {
                         return {bids:item,asks:asks[index]}                   
@@ -159,10 +162,11 @@
                 justify-content: center;
                 .price1{
                     margin-right: 10rpx;
-                    color: #FC3C5A;
+                    
+                    color: #5BC788;
                 }
                 .price2{
-                    color: #5BC788;
+                    color: #FC3C5A;
                 }
             }
             .tableLi4{

@@ -55,9 +55,14 @@
 				<view class="charge_and_num">
 					<view class="money">价格</view>
 					<view class="lednum">数量</view><br>
-					<view v-for="(item,index) in depthData.asks" :key="index">
+					<block v-for="(item,index) in depthData.asks" :key="index">
+						<view v-if="index<5">
+							<data-list :colorOptions="red" :tradesOptions="item"></data-list>
+						</view>
+					</block>
+					<!-- <view v-for="(item,index) in depthData.asks" :key="index">
 						<data-list :colorOptions="red" :tradesOptions="item"></data-list>
-					</view>
+					</view> -->
 					
 				</view>
 				
@@ -66,9 +71,11 @@
 					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
 				<view class="charge_and_num">
-					<view v-for="(item,index) in depthData.bids" :key="index">
-						<data-list :colorOptions="green" :tradesOptions="item"></data-list>
-					</view>
+					<block v-for="(item,index) in depthData.bids" :key="index">
+						<view v-if="index<5">
+							<data-list :colorOptions="green" :tradesOptions="item"></data-list>
+						</view>
+					</block>
 				</view>
 				<view class="icon_list">
 					<image src="../../static/images/trades/choose.png" mode="" class="icon_item"></image>

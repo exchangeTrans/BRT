@@ -119,7 +119,7 @@ export default {
                         cardName: res.data.kyc1 === 3?'':res.data.cardName,
                         cardNo: res.data.kyc1 === 3?'':res.data.cardNo,
                         disabled: res.data.kyc1 === 0 || res.data.kyc1 === 3 ? false : true,
-              x      }
+                   }
                     // console.log(res);
                 } else {
                     this.$toast.show({

@@ -100,7 +100,7 @@
 
 			},
 			saveImage() {
-			let that = this;
+				let that = this;
 				this.$permissionFunc.query("photoLibrary",function(){
 					var pages = getCurrentPages();  
 					var page = pages[pages.length - 1];  
@@ -135,10 +135,13 @@
 					});  
 
 				})
-			},
+			
+                //currentWebview.append(amway_bit);
+		},
 
 			saveImage1(){
 				let filePath = this.filePath;
+				console.log(filePath)
 				saveImg(filePath)
 				// uni.chooseImage({
 				//     count: 1,
@@ -194,6 +197,7 @@
 		width: 100%;
 		height: 100vh;
 		background-size: 100% 100%;
+		background-repeat: no-repeat;
 		.logo{
 			width: 276rpx;
 			height: 276rpx;
@@ -220,7 +224,7 @@
 				height: 202rpx;
 				padding: 8rpx;
 				margin: 0 auto;
-				background-color: #333333;
+				background-color: #fff;
 			}
 			.inviteCode{
 				margin-top: 20rpx;

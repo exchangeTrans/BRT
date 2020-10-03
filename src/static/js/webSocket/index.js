@@ -220,8 +220,8 @@ export const mySocket={
         if(KLineTradingPair.id===symbol){
             let asks = data.tick.asks;
             let bids = data.tick.bids;
-            asks = mySocket.handleDeepData(asks).reverse();
-            bids = mySocket.handleDeepData(bids);
+            asks = mySocket.handleDeepData(asks).reverse();//卖单
+            bids = mySocket.handleDeepData(bids);//买单
             
             let KLineTradingPairObj = {
                 ...KLineTradingPair,
@@ -243,7 +243,7 @@ export const mySocket={
         let all = 0;
         let depth = 0;
         let NewData = []
-        for (let index = 0; index < 5; index++) {
+        for (let index = 0; index < data.length; index++) {
             let item = data[index];
             let obj = {
                 size:0,
