@@ -292,7 +292,7 @@
 					that.tradeInfo = data;
 					that.historylogdata_list = data&&data.orderList?data.orderList:[];
 					setTimeout(() => {
-						that.refreshHistory()
+						that.getTradeInfo()
 					}, 3000);
 					// console.log(Number(usdtBalance)) 
 					// this.$emit('transferInAmountSuccess')
