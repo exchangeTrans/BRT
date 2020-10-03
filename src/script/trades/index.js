@@ -227,7 +227,7 @@
 		},
 		choosePrecent(item){
 			let {tradePrice,selectedTradeName,tradeInfo} = this;
-			let pr = selectedTradeName.code==='buy'?(tradeInfo.usdtBalance?tradeInfo.usdtBalance:0):(tradeInfo.symbolBalanceNum?tradeInfo.symbolBalanceNum:0);
+			let pr = selectedTradeName.code==='buy'?(tradeInfo.usdtBalanceNum?tradeInfo.usdtBalanceNum:0):(tradeInfo.symbolBalanceNum?tradeInfo.symbolBalanceNum:0);
 			pr = String(pr).replace(/,/g,"");
 			if(String(tradePrice).trim()===''||Number(tradePrice)===0){
 				this.$toast.show({
@@ -235,7 +235,12 @@
 				})
 				return
 			}
-			this.tradeNum = (Number(pr)/Number(tradePrice))*item.val
+			if(selectedTradeName.code==='buy'){
+				this.tradeNum = (Number(pr)/Number(tradePrice))*item.val
+			}else{
+				this.tradeNum =  Number(pr)*item.val
+			}
+			
 			// 可用馀额/用户上方填写的价格 * 用户选择的百分比。如果用户没有填写价格
 		},
 		reduce(code){

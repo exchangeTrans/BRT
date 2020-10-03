@@ -319,7 +319,7 @@ export default {
                             that.$toast.show({
                                 title: res.result.returnMessage,
                             })
-                            uni.hideLoading()
+                            // uni.hideLoading()
                             setTimeout(function () {
                                 that[name] = false;
                             },3000)
