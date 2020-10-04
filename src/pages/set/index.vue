@@ -7,14 +7,14 @@
             <view class="model">
                 <view class="modelText">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
-                    日夜模式
+                    {{$t('setting').modelText}}
                 </view>
                 <view class="chooseModel">
                     <view :class="modelFlag==='day'?'chooseItem active':'chooseItem'"
-                          @tap="chooseModel('day')">日间模式
+                          @tap="chooseModel('day')">{{$t('setting').day}}
                     </view>
                     <view :class="modelFlag==='night'?'chooseItem active night':'chooseItem night'"
-                          @tap="chooseModel('night')">夜晚模式
+                          @tap="chooseModel('night')">{{$t('setting').night}}
                     </view>
                 </view>
                 <view class="clearfix"></view>
@@ -23,20 +23,20 @@
             <view class="currency">
                 <view class="currencyTitle">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
-                    显示币种
+                    {{$t('setting').showCurrency}}
                 </view>
 
             </view>
 
             <view class="currencyItem"
-				  v-for="(item,index) in currencyData"
+                  v-for="(item,index) in currencyData"
                   :key="index"
                   @tap="chooseCurrencyData(item)">
                 <view class="currencyIcon"
-					  :style="{'background-image':'url('+item.img+')'}"></view>
+                      :style="{'background-image':'url('+item.img+')'}"></view>
                 <view class="currencyText">{{item.name}}（{{item.code}}）</view>
                 <view class="selected"
-					  :style="{'background-image':'url('+selectedIcon+')'}"
+                      :style="{'background-image':'url('+selectedIcon+')'}"
                       v-if="selectedObj.name===item.name">
                 </view>
             </view>
@@ -44,7 +44,7 @@
             <view class="currency">
                 <view class="currencyTitle">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
-                    显示语言
+                    {{$t('setting').showLang}}
                 </view>
 
             </view>
@@ -70,7 +70,7 @@
     .setIndex1 {
         width: 100%;
         height: 100%;
-        background: #fff!important;
+        background: #fff !important;
 
         .appHeader {
             top: var(--status-bar-height);

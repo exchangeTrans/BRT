@@ -5,39 +5,39 @@
             <view class="auth-wrap-content">
                 <view class="auth-status">
                     <view class="auth-status-text">
-                        <span>实名状态</span>
+                        <span>{{$t('authL').authStatus}}</span>
                     </view>
                     <view class="auth-status-text">
                         <view class="await" v-if="authStatusData.kyc1==0">
                             <image :src="authStatusAwaitImg"></image>
-                            <span class="blue">待实名</span>
+                            <span class="blue">{{$t('authL').authAwait}}</span>
                         </view>
                         <view class="await" v-else-if="authStatusData.kyc1==1">
                             <image :src="authStatusAwaitImg"></image>
-                            <span class="blue">已实名</span>
+                            <span class="blue">{{$t('authL').realName}}</span>
                         </view>
                         <view class="check" v-else-if="authStatusData.kyc1==2">
                             <image :src="authStatusCheckImg"></image>
-                            <span class="red">待审核（未审核）</span>
+                            <span class="red">{{$t('authL').noRealName}}</span>
                         </view>
                         <view class="check" v-else-if="authStatusData.kyc1==3">
                             <image :src="authStatusCheckImg"></image>
-                            <span class="red">审核失败,请重新提交</span>
+                            <span class="red">{{$t('authL').notReviewed}}</span>
                         </view>
                     </view>
                 </view>
                 <view class="user-message">
                     <view class="user-name">
-                        <span>真实姓名</span>
+                        <span>{{$t('authL').realname}}</span>
                         <input type="text"
-                               placeholder="和身份证上的姓名保持一致"
+                               :placeholder="this.$t('authL').realnamePlaceholder"
                                v-model="authStatusData.cardName"
                                :disabled="authStatusData.disabled">
                     </view>
                     <view class="user-cardNumber">
-                        <span>证件号</span>
+                        <span>{{$t('authL').cardNumber}}</span>
                         <input type="number"
-                               placeholder="请输入身份证号"
+                               :placeholder="this.$t('authL').cardNumberPlaceholder"
                                v-model="authStatusData.cardNo"
                                :disabled="authStatusData.disabled">
                     </view>
@@ -48,12 +48,12 @@
                         <view class="upload-img-title">
                             <view class="upload-img-text">
                             <span>
-                                请上传手持法定证件和手写纸条的照片，手写纸条上面写（BRT；日期；日期请用认证当日日期）
+                                {{$t('authL').uploadImgText}}
                             </span>
                             </view>
                             <view class="upload-img-btn"
                                   @tap="uplaodaImg">
-                                <span>上传照片</span>
+                                <span>{{$t('authL').uploadImgBtn}}</span>
                             </view>
                         </view>
                         <view class="upload-img-content">
@@ -65,7 +65,7 @@
                     </view>
                     <view class="button"
                           @tap="commitAuth">
-                        <span>提交认证审核</span>
+                        <span>{{$t('authL').button}}</span>
                     </view>
                 </view>
             </view>

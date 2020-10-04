@@ -30,7 +30,7 @@
                                     <view class="icon">
                                         <image :src="wallet"></image>
                                     </view>
-                                    <span>总资产</span>
+                                    <span>{{$t('userL').totalAssets}}</span>
                                 </view>
                                 <view class="valuation">
                                     <!--<view class="icon">
@@ -64,7 +64,7 @@
                                 <view class="icon">
                                     <image :src="item.img"></image>
                                 </view>
-                                <view class="itemType">{{item.name}}</view>
+                                <view class="itemType">{{$t('userL').listItemData[index].name}}</view>
                                 <view class="icon iconRight">
                                     <image :src="rightIcon"></image>
                                 </view>
@@ -79,7 +79,7 @@
                                 <view class="icon">
                                     <image :src="item.img"></image>
                                 </view>
-                                <view class="itemType">{{item.name}}</view>
+                                <view class="itemType">{{$t('userL').aboutItemData[index].name}}</view>
                                 <view class="icon iconRight" >
                                     <image :src="rightIcon" v-if="!item.isNoImg"></image>
                                 </view>

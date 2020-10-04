@@ -15,7 +15,7 @@ export default {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "设置",
+                text: this.$t('setting').settingText,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -31,7 +31,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "设置",
+                text: this.$t('setting').settingText,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -131,7 +131,7 @@ export default {
                 this.modelFlag = item;
             }else if(item==='night'){
                 this.$toast.show({
-                    title: "暂未开放",
+                    title: this.$t('setting').noOpen,
                 })
             }
 
@@ -144,7 +144,7 @@ export default {
                 this.languageItem = languageItem;
             }else{
                 this.$toast.show({
-                    title: "暂未开放",
+                    title: this.$t('setting').noOpen,
                 })
             }
 
@@ -156,7 +156,7 @@ export default {
                 this.selectedObj = item;
             }else{
                 this.$toast.show({
-                    title: "暂未开放",
+                    title: this.$t('setting').noOpen,
                 })
             }
             

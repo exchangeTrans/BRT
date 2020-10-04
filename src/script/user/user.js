@@ -16,39 +16,39 @@ export default {
                 //     img: `${require('@/static/images/user/password.png')}`,
                 // },
                 {
-                    name: "实名认证",
+                    // name: "实名认证",
                     path: "auth/auth",
                     img: `${require('@/static/images/user/auth.png')}`,
                 },
                 {
-                    name: "推广链接",
+                    // name: "推广链接",
                     path: "aboutUs/index",
                     img: `${require('@/static/images/user/link.png')}`,
                 },
                 {
-                    name: "公告列表",
+                    // name: "公告列表",
                     path: "noticelist/index",
                     img: `${require('@/static/images/user/announcement.png')}`,
                 },
                 {
-                    name: "联系客服",
+                    // name: this.$t('listItemData'),
                     path: "connectus/index",
                     img: `${require('@/static/images/user/service.png')}`,
                 },
                 {
-                    name: "修改绑定手机邮箱",
+                    // name: "修改绑定手机邮箱",
                     path: "",
                     img: `${require('@/static/images/user/alter.png')}`,
                 },
                 {
-                    name: "设置",
+                    // name: "设置",
                     path: "set/index",
                     img: `${require('@/static/images/user/set.png')}`,
                 },
             ],
             aboutItemData: [
                 {
-                    name: "官网",
+                    // name: "官网",
                     path: "",
                     img: `${require('@/static/images/user/official.png')}`,
                     url: "www.brtdefi.com",
@@ -58,7 +58,7 @@ export default {
                     
                 },
                 {
-                    name: "区块链浏览器",
+                    // name: "区块链浏览器",
                     path: "",
                     img: `${require('@/static/images/user/blockchain.png')}`,
                     url: "www.brtscan.pro",
@@ -67,7 +67,7 @@ export default {
                     allowToUrl:true,
                 },
                 {
-                    name: "开源代码",
+                    // name: "开源代码",
                     path: "",
                     img: `${require('@/static/images/user/dev.png')}`,
                     url: "github.com/BRTChain/BRT-Chain",
@@ -76,7 +76,7 @@ export default {
                     allowToUrl:true,
                 },
                 {
-                    name: "版本",
+                    // name: "版本",
                     path: "",
                     img: `${require('@/static/images/user/version.png')}`,
                     url: '',
@@ -85,7 +85,7 @@ export default {
                     code:'version'
                 },
             ],
-            btnText: "退出登录",
+            btnText: this.$t('userL').btnText,
             backgroundImage: `${require('@/static/images/user/background.png')}`,
             assetBackgroundImage: `url(${require('@/static/images/user/assetBg.png')})`,
             headerImg: `${require('@/static/images/user/head.png')}`,

@@ -14,7 +14,7 @@ export default {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "实名认证",
+                text: this.$t('authL').authentication,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -27,7 +27,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "实名认证",
+                text: this.$t('authL').authentication,
                 rightItem: {
                     type: "text",
                     path: '',
@@ -38,14 +38,15 @@ export default {
                 background: '#00001A',
                 headerIsNoBoder: true,
             }
-        };
+        }
+        ;
 
         this.getAuthStatus();
     },
     data() {
         return {
             headerOptions: {
-                show: true,
+                /*show: true,
                 isAllowReturn: true,
                 text: "实名认证",
                 rightItem: {
@@ -53,7 +54,7 @@ export default {
                     text: "",
                 },
                 bodyPadding: {"padding": '0,0,0,0'},
-                headerIsNoBoder: true,
+                headerIsNoBoder: true,*/
             },
             authStatusImg: "",
             authStatusAwaitImg: `${require('@/static/images/auth/certify.png')}`,
@@ -65,36 +66,36 @@ export default {
                 idCard: "",
             },
             filePath: "",
-            upToken:"",
+            upToken: "",
 
             checkArray: [
                 {
-                    name: "姓名",
+                    name: this.$t('authL').checkArray[0],
                     checkKey: "cardName",
                 },
                 {
-                    name: "证件号码",
+                    name: this.$t('authL').checkArray[1],
                     checkKey: "cardNo",
                     // checkType: ["isIdcard"],
                 },
                 {
-                    name: "手持照片",
+                    name: this.$t('authL').checkArray[2],
                     checkKey: "cardImage",
                 },
             ],
 
             authStatusData: {
-                kyc1:"",
-                cardType:"",
-                cardName:"",
-                cardNo:"",
-                disabled:null,
+                kyc1: "",
+                cardType: "",
+                cardName: "",
+                cardNo: "",
+                disabled: null,
             },
 
         }
     },
     methods: {
-        getAuthStatus(){
+        getAuthStatus() {
             // kyc/getKycState
 
             this.$request({
@@ -116,10 +117,10 @@ export default {
                     this.authStatusData = {
                         kyc1: res.data.kyc1,//0待实名 1已实名 2待审核（未审核） 3待审核（审核失败）
                         cardType: res.data.cardType,//1身份证 2护照
-                        cardName: res.data.kyc1 === 3?'':res.data.cardName,
-                        cardNo: res.data.kyc1 === 3?'':res.data.cardNo,
+                        cardName: res.data.kyc1 === 3 ? '' : res.data.cardName,
+                        cardNo: res.data.kyc1 === 3 ? '' : res.data.cardNo,
                         disabled: res.data.kyc1 === 0 || res.data.kyc1 === 3 ? false : true,
-                   }
+                    }
                     // console.log(res);
                 } else {
                     this.$toast.show({
@@ -153,12 +154,12 @@ export default {
 
         },
 
-        getAuth(cardImage){
+        getAuth(cardImage) {
             // debugger
             let postData = this.getAuthPostData(cardImage);
             if (postData) {
                 uni.showLoading({
-                    title:"加载中..."
+                    title: this.$t('authL').loading
                 })
                 this.$request({
                     url: "kyc/kyc1",
@@ -166,7 +167,7 @@ export default {
                     params: postData,
                 }).then((res) => {
                     if (res.result.returnCode.toString() === "0") {
-                        setTimeout(()=>{
+                        setTimeout(() => {
                             this.$toast.show({
                                 title: res.result.returnMessage,
                             });
@@ -177,21 +178,21 @@ export default {
                             // })
                             //延时关闭  加载中的 loading框
                             uni.hideLoading()
-                        },2000)
+                        }, 2000)
                     } else {
-                        setTimeout(()=>{
+                        setTimeout(() => {
                             this.$toast.show({
                                 title: res.result.returnMessage,
                             })
                             uni.hideLoading()
-                        },2000)
+                        }, 2000)
                     }
                 })
             }
 
         },
-        getAuthPostData(cardImage){
-            let cardName =  this.authStatusData.cardName;
+        getAuthPostData(cardImage) {
+            let cardName = this.authStatusData.cardName;
             let cardNo = this.authStatusData.cardNo;
 
             let postData = {

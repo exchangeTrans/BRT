@@ -6,13 +6,15 @@
             <view class="model">
                 <view class="modelText">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
-                    日夜模式
+                    {{$t('setting').modelText}}
                 </view>
                 <view class="chooseModel">
-                    <view :class="modelFlag==='day'?'chooseItem active':'chooseItem'" @tap="chooseModel('day')">日间模式
+                    <view :class="modelFlag==='day'?'chooseItem active':'chooseItem'" @tap="chooseModel('day')">
+                        {{$t('setting').day}}
                     </view>
                     <view :class="modelFlag==='night'?'chooseItem active night':'chooseItem night'"
-                          @tap="chooseModel('night')">夜晚模式
+                          @tap="chooseModel('night')">
+                        {{$t('setting').night}}
                     </view>
                 </view>
                 <view class="clearfix"></view>
@@ -22,7 +24,7 @@
             <view class="currency">
                 <view class="currencyTitle">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
-                    显示币种
+                    {{$t('setting').showCurrency}}
                 </view>
 
             </view>
@@ -43,7 +45,7 @@
             <view class="currency">
                 <view class="currencyTitle">
                     <view class="line" :style="{'background-image':'url('+titleLine+')'}"></view>
-                    显示语言
+                    {{$t('setting').showLang}}
                 </view>
 
             </view>
@@ -67,7 +69,8 @@
         width: 100%;
         height: 100%;
         /*margin-top: calc(100rpx + var(--status-bar-height));*/
-        background: #22252A!important;
+        background: #22252A !important;
+
         .content {
             margin-top: calc(100rpx + var(--status-bar-height));
             font-family: PingFangSC-Semibold, PingFang SC;
