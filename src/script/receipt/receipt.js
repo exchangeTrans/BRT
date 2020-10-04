@@ -62,7 +62,8 @@ export default {
             }
         }
         this.getUserWalletAddress();
-        this.setQrcodeStyle()
+        this.setQrcodeStyle();
+        this.makeComplete();
     },
     data() {
         return {
@@ -141,16 +142,18 @@ export default {
         },
         makeComplete(res) {
             this.filePath = res;
+            // console.log(this.filePath)
         },
-        //获取相册授权
-        getalbumAuth(){
+        /*//获取相册授权
+        getalbumAuth() {
             permissionFunc.query()
-        },
+        },*/
         saveImage() {
             let that = this;
-            this.$permissionFunc.query("photoLibrary",function(){
+            this.$permissionFunc.query("photoLibrary", function () {
                 let filePath = that.filePath;
-                saveHeadImgFile(filePath).then((res)=>{
+                // console.log(that.filePath)
+                saveHeadImgFile(filePath).then((res) => {
                     console.log(res);
                     uni.showToast({
                         title: '保存图片成功',
@@ -208,7 +211,7 @@ export default {
                     });
                 })*/
             });
-            
+
 
         },
         dataURLtoFile(dataurl, filename) {
