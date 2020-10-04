@@ -18,15 +18,15 @@
 			</view>
 			<view class="teammsg">
 				<view class="teamablity">
-					<view class="descrip">团队总质押</view>
+					<view class="descrip">{{$t('myTeam').teamPledge}}</view>
 					<view class="num">{{teamData.teamMining}}</view>
 				</view>
 				<view class="teamtoday">
-					<view class="descrip">今日新增质押</view>
+					<view class="descrip">{{$t('myTeam').addPledge}}</view>
 					<view class="num">{{teamData.teamMiningDay}}</view>
 				</view>
 				<view class="teamyestoday">
-					<view class="descrip">团队总人数</view>
+					<view class="descrip">{{$t('myTeam').teamNum}}</view>
 					<view class="num">{{teamData.teamQty}}</view>
 				</view>
 			</view>
@@ -34,12 +34,12 @@
 		</view>
 		<view class="invitelog">
 			<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
-			<view class="log">邀请记录</view>
+			<view class="log">{{$t('myTeam').invitationRecord}}</view>
 		</view>
 		<view class="datalisthead">
-			<view class="count">邀请账户</view>
+			<view class="count">{{$t('myTeam').invitationAccount}}</view>
 			<view class="memberid">ID</view>
-			<view class="grade">团队质押业绩</view>
+			<view class="grade">{{$t('myTeam').pledgeAmount}}</view>
 		</view>
 		<scroll-view scroll-y="true" class="scrollh">
 			<!-- <view class="datalist" v-for="(item,id) in datalist" :key="id">

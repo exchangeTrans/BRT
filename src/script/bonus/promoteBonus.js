@@ -58,7 +58,7 @@ export default {
             }*/],
 
             promoteBonusData:{},
-
+            headerImgRight: `${require('@/static/images/user/head.png')}`,
 
             // avatarUrl: `url(${require('@/static/images/user/avatar.png')})`,
             inviteBonusRecordIcon: `url(${require('@/static/images/earning/promteBonusRecordIcon.png')})`,
@@ -72,6 +72,7 @@ export default {
             haveNext:true,
             status:'more',
             isNoDataFlag:false,
+            
 
         }
     },

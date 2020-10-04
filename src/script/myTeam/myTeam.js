@@ -53,7 +53,7 @@ export default{
             headerOptions: {
                 show: true,
                 isAllowReturn: true,
-                text: "团队详情",
+                text: this.$t('myTeam').title,
                 rightItem: {
                     type: "text",
                     text: "",

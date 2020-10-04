@@ -310,6 +310,16 @@ export default {
         createTime: '起始时间',
         expiresIn: '结束时间'
     },
+    //团队
+    myTeam:{
+        title:"团队详情",
+        teamPledge:'团队总质押',
+        addPledge:'今日新增质押',
+        teamNum:'团队总人数',
+        invitationRecord:'邀请记录',
+        invitationAccount:'邀请账户',
+        pledgeAmount:'团队质押业绩',
+    },
     //质押弹窗
     transferInAmount: {
         inMining: '参与挖矿',

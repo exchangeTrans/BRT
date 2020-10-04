@@ -4,7 +4,7 @@
         <scroll-view  class="promoteBonusWrap" scroll-y="true">
             <view class="contentWrap">
                 <view class="userInfo">
-                    <view class="avatar" :style="{'background-image': 'url('+promoteBonusData.avatar+')'}">
+                    <view class="avatar" :style="{'background-image': 'url('+!promoteBonusData.avatar||promoteBonusData.avatar===''?headerImgRight:promoteBonusData.avatar+')'}">
 
                     </view>
                     <view class="nicknameInfo">
