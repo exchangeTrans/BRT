@@ -8,12 +8,12 @@
                         <image :src="successImg"></image>
                     </view>
                     <view class="text">
-                        <span class="text-msg">提现成功</span>
+                        <span class="text-msg">{{$t('withdrawal').success}}</span>
                         <span class="money">100 USDT</span>
                     </view>
                     <view class="btn-container">
                         <view class="btn">
-                            <span>完成</span>
+                            <span>{{$t('withdrawal').finish}}</span>
                         </view>
                     </view>
                 </view>

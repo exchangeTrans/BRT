@@ -25,16 +25,16 @@
                     <uni-qrcode cid="qrcode2243" @makeComplete="makeComplete" ref="qrcode2233" :text="data.userWalletAddress" :size="size" backgroundColor="rgba(255,255,255,0)" />
                 </view>
 
-                <view class="rechargeTitle">充币地址</view>
+                <view class="rechargeTitle">{{$t('receipt').address}}</view>
                 <view class="rechargeTitle">{{data.userWalletAddress}}</view>
                 <view class="btnGroup">
-                    <view class="btnItem" @tap='saveImage'> 保存二维码</view>
-                    <view class="btnItem  copy" @tap='copy'>复制地址</view>
+                    <view class="btnItem" @tap='saveImage'>{{$t('receipt').saveCode}}</view>
+                    <view class="btnItem  copy" @tap='copy'>{{$t('receipt').copyAddress}}</view>
 
                 </view>
             </view>
             <view class="remark">
-                请勿向上述地址充值任何非{{choiceType.name}}资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。
+                {{$t('receipt').remark1}}{{choiceType.name}}{{$t('receipt').remark2}}
             </view>
         </view>
     </view>

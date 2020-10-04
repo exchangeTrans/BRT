@@ -21,10 +21,10 @@ export default {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: that.choiceType.name + "收款",
+                text: that.choiceType.name + that.$t('receipt').title,
                 rightItem: {
                     type: "text",
-                    text: "充币记录",
+                    text: that.$t('receipt').subTitle,
                     path: `${require('@/static/images/receipt/detail.png')}`,
                     style: {
                         'fontSize': '28rpx',
@@ -42,10 +42,10 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: that.choiceType.name + "收款",
+                text: that.choiceType.name + that.$t('receipt').title,
                 rightItem: {
                     type: "text",
-                    text: "充币记录",
+                    text: that.$t('receipt').subTitle,
                     path: `${require('@/static/images/receipt/detail.png')}`,
                     style: {
                         'fontSize': '28rpx',
@@ -156,7 +156,7 @@ export default {
                 saveHeadImgFile(filePath).then((res) => {
                     console.log(res);
                     uni.showToast({
-                        title: '保存图片成功',
+                        title: that.$t('receipt').saveTip,
                         mask: false,
                         duration: 1500
                     });

@@ -109,22 +109,22 @@
                     headerIsNoBoder: false,
                 },
                 chartTabArray:[
-                    {code:'5min',name:"5分",id:''},
-                    {code:'15min',name:"15分",id:''},
-                    {code:'60min',name:"1小时",id:''},
-                    {code:'4hour',name:"4小时",id:''},
-                    {code:'1day',name:"日线",id:''},
-                    {code:'1week',name:"周线",id:''},
+                    {code:'5min',name:"5"+this.$t('trade').lineTypeArray[0],id:''},
+                    {code:'15min',name:"15"+this.$t('trade').lineTypeArray[0],id:''},
+                    {code:'60min',name:"1"+this.$t('trade').lineTypeArray[1],id:''},
+                    {code:'4hour',name:"4"+this.$t('trade').lineTypeArray[1],id:''},
+                    {code:'1day',name:this.$t('trade').lineTypeArray[2],id:''},
+                    {code:'1week',name:this.$t('trade').lineTypeArray[3],id:''},
                     // {code:'7',name:"指标",id:''},
                     // 1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
                 ],
-                chartTabSelect:{code:'5min',name:"5分",id:''},
+                chartTabSelect:{code:'5min',name:"5"+this.$t('trade').lineTypeArray[0],id:''},
                 tableTabArray:[
-                    {code:'table1',name:"买单/卖单",id:''},
-                    {code:'table2',name:"最新成交",id:''},
-                    {code:'table3',name:"币种简介",id:''},
+                    {code:'table1',name:this.$t('trade').tabArray[0],id:''},
+                    {code:'table2',name:this.$t('trade').tabArray[1],id:''},
+                    {code:'table3',name:this.$t('trade').tabArray[2],id:''},
                 ],
-                tableTabSelect:{code:'table2',name:"最新成交",id:''},
+                tableTabSelect:{code:'table1',name:this.$t('trade').tabArray[0],id:''},
                 
 
             }

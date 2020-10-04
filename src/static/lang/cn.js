@@ -58,78 +58,100 @@ export default {
         tip: '此币种目前只支持提币',
     },
     //提币{}
-    withdrawal: {
-        title: '提币',
-        subTitle: '提币纪录',
-        number: "到账数量",
-        tipArray: [
+    withdrawal:{
+        title:'提币',
+        subTitle:'提币纪录',
+        number:"到账数量",
+        tipArray:[
             '最小提币数量：',
             '平台间用户转帐无手续费。',
             '为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。',
             '请务必确认电脑及浏览器安全，防止信息被篡改或泄露'
         ],
-        btnText: '提币',
-        addressInput: {
+        btnText:'提币',
+        addressInput:{
             textTitle: "提币地址",
             placeholder: "输入或长按粘贴地址",
         },
-        amountInput: {
+        amountInput:{
             textTitle: "数量",
             placeholder: "最小提币数量",
-            subText: '余额：'
+            subText:'余额：'
         },
-        commissionInput: {
+        commissionInput:{
             textTitle: "手续费",
         },
-        phoneInput: {
+        phoneInput:{
             textTitle: "手机验证码",
             placeholder: "输入手机验证码",
-            subText: '获取验证码'
+            subText:'获取验证码'
         },
-        mainNumber: '最小提币数量',
-        balance: '余额',
-        requestTipArrray: [
+        mainNumber:'最小提币数量',
+        balance:'余额',
+        requestTipArrray:[
             '秒后重新发送',
             '重新发送',
             '未达到最小提币数量不足',
             '提币中',
             '请先输入正确的提币地址'
-        ]
+        ],
+        success:'提币成功',
+        finish:'完成'
         // minNumber:'最小提币数量：'
-
+        
     },
     //提币记录
-    record: {
-        title: "提币记录",
-        noData: '暂无数据'
+    record:{
+        title:"提币记录",
+        noData:'暂无数据'
     },
     //充币记录
-    addRecord: {
-        title: "充币记录",
-        noData: '暂无数据'
+    addRecord:{
+        title:"充币记录",
+        noData:'暂无数据'
     },
-    ////记录组件
-    recordItem: {
-        number: '数量',
-        status: '状态',
-        times: '时间',
-        starusArray: [
+    //记录组件
+    recordItem:{
+        number:'数量',
+        status:'状态',
+        times:'时间',
+        starusArray:[
             '审核中',
             '失败',
             '成功',
         ]
     },
-
+    receipt:{
+        title:'收款',
+        subTitle:'充币记录',
+        address:'充币地址',
+        saveCode:'保存二维码',
+        copyAddress:'复制地址',
+        remark1:'请勿向上述地址充值任何非',
+        remark2:'资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。',
+        saveTip:'保存图片成功'
+    },
     //k线
     trade: {
-        buy: "买入",
-        sell: "卖出",
-        tableHeadTr1: ["买盘", "数量", "价格", "数量", "卖盘"],
-        tableHeadTr2: ["时间", "方向", "价格", "数量"],
-        tableHeadTr3: ["发行时间", "发行总量", "官网", '币种简介'],
-        unit: '万',
-        high: "高",
-        low: '低',
+      buy:"买入",
+      sell:"卖出",
+      tableHeadTr1:["买盘","数量","价格","数量","卖盘"],
+      tableHeadTr2:["时间","方向","价格","数量"],
+      tableHeadTr3:["发行时间","发行总量","官网",'币种简介'],
+      unit:'万',
+      high:"高",
+      low:'低',
+      lineTypeArray:[
+          '分',
+          '小时',
+          '日线',
+          '周线',
+      ],
+      tabArray:[
+          '买单/卖单',
+          '最新成交',
+          '币种简介'
+      ]
     },
     login: {
         phoneLogin: "手机登录",
