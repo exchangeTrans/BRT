@@ -11,12 +11,13 @@ export default {
     },
     mounted() {
         let theme = this.$storage.getSync({key: 'theme'});
+        let that = this;
         // console.log(theme);
         if (theme === 'white') {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: false,
-                text: "资产",
+                text:that.$t('property').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -41,7 +42,7 @@ export default {
 
                 show: true,
                 isAllowReturn: false,
-                text: "资产",
+                text: that.$t('property').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -66,7 +67,7 @@ export default {
             headerOptions: {
                 show: true,
                 isAllowReturn: false,
-                text: "资产",
+                text: this.$t('property').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -80,11 +81,11 @@ export default {
             propertyOption: [
                 {
                     url:"receipt/index",
-                    text:"收款",
+                    text:this.$t('property').receipt,
                 },
                 {
                     url:"withdrawal/withdrawal",
-                    text:"转账",
+                    text:this.$t('property').withdrawal,
                 },
             ],
             isBlack: false,
@@ -97,7 +98,6 @@ export default {
                     "EOS",
                     "DASH",
                 ],
-                "tip": "此币只开发提现",
             }
         }
     },

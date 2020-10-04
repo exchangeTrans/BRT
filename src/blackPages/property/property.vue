@@ -8,22 +8,22 @@
                     <view class="property-wrap-content-asset-container">
                         <view class="totalAsset">
                             <view class="totalAsset-text">
-                                <span>总资产(USDT)</span>
+                                <span>{{$t('property').assetAll}}(USDT)</span>
                             </view>
                             <view class="totalAsset-money">
                                 <span>{{amountTotal}}</span>
-                                <span class="about">≈{{amountTotalRMB}} RMB</span>
+                                <span class="about">≈{{amountTotalRMB}} {{selectedCurrency.code}}</span>
                             </view>
                         </view>
                         <view class="balance">
                             <view class="balance-container">
                                 <view class="balance-content">
                                     <span>{{balanceTotal}}</span>
-                                    <span class="balance-content-text">可用余额</span>
+                                    <span class="balance-content-text">{{$t('property').balance}}</span>
                                 </view>
                                 <view class="balance-content">
                                     <span>{{freezeTotal}}</span>
-                                    <span class="balance-content-text">锁仓余额</span>
+                                    <span class="balance-content-text">{{$t('property').balanceUse}}</span>
                                 </view>
                             </view>
                         </view>
@@ -35,9 +35,9 @@
                           v-for="(item, index) in propertyCardData"
                           :key="index">
                         <PropertyCard :propertyCardData="item"
-                                      :column="2"
-                                      :drawSymbol="drawSymbol"
-                                      :propertyOption="propertyOption" :isBlack="isBlack"></PropertyCard>
+                            :column="2"
+                            :drawSymbol="drawSymbol"
+                            :propertyOption="propertyOption" :isBlack="true"></PropertyCard>
                     </view>
                 </view>
             </view>

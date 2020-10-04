@@ -48,7 +48,15 @@ export default {
         orderNumber:'委托数量',
     },
     //资产
-
+    property:{
+        title:'资产',
+        assetAll:'总资产',
+        balance:'可用余额',
+        balanceUse:'锁仓余额',
+        withdrawal:"转账",
+        receipt:"收款",
+        tip:'此币种目前只支持提币11',
+    },
     //提币{}
     withdrawal:{
 

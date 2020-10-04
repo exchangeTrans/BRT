@@ -20,11 +20,11 @@
                             <view class="balance-container">
                                 <view :class="isBlack ? 'balance-content black':'balance-content'">
                                     <span>{{propertyCardData.availableBalance}}</span>
-                                    <span class="balance-content-text">可用余额</span>
+                                    <span class="balance-content-text">{{$t('property').balance}}</span>
                                 </view>
                                 <view :class="isBlack ? 'balance-content black':'balance-content'">
                                     <span>{{propertyCardData.lockBalance}}</span>
-                                    <span class="balance-content-text">锁仓余额</span>
+                                    <span class="balance-content-text">{{$t('property').balanceUse}}</span>
                                 </view>
                             </view>
                         </view>
@@ -90,7 +90,6 @@
                     "EOS",
                     "DASH",
                 ],
-                tip: "此币只开发提现",
             }
             
         },
@@ -137,11 +136,12 @@
             click(symbolType,url) {
                 let symbolName = this.propertyCardData.name;
                 let drawList = this.drawList;
+                let that = this;
                 this.$store.commit("setSymbolType", {"symbolType": symbolType, "name": symbolName})
                 if (url.toString() === "receipt/index") {
                     if(drawList.indexOf(symbolName)>-1){
                         this.$toast.show({
-                            title: '此币种目前只支持提币',
+                            title: that.$t('property').tip,
                         })
                     }else{
                         this.$jumpPage.jump({
@@ -159,12 +159,6 @@
                     })
                 }
             },
-            // transferClick() {
-            //     this.propertyCardData.symbolType
-            // },
-            // detailClick() {
-            //     this.propertyCardData.symbolType
-            // }
         }
     }
 </script>
