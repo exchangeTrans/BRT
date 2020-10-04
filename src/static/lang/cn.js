@@ -46,6 +46,10 @@ export default {
         orderPrice:'委托价格',
         orderNumber:'委托数量',
     },
+    //提币{}
+    withdrawal:{
+
+    },
     //k线
     trade: {
       buy:"买入",
@@ -178,8 +182,5 @@ export default {
         bestHold:'昨日最佳持币',
         pledgeEarningRecord:'质押收益记录',
     },
-    property: {
-
-    }
 
 }

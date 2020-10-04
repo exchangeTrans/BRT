@@ -19,7 +19,7 @@
                 </view>
                 <view class="withdrawal-wrap-container-text">
                     <view class="text">
-                        <span>到账数量</span>
+                        <span>{{$t('tradePage').prcie}}到账数量</span>
                     </view>
                     <view class="text">
                         <span class="blue">{{receiveAmount}}</span>
