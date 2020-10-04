@@ -12,11 +12,11 @@ export function saveHeadImgFile(base64) {
                 uni.saveImageToPhotosAlbum({
                     filePath: i.target,
                     success: function() {
+                        bitmap.clear(); //销毁Bitmap图片
                         resolve({
                             code: 0,
                             msg: '保存成功',
                         });
-                        bitmap.clear(); //销毁Bitmap图片
                     },
                     fail: function (e) {
                         reject('保存图片失败saveImageToPhotosAlbum：' + JSON.stringify(e));
