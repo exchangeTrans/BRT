@@ -22,6 +22,7 @@ export default {
     },
     //行情
     quotes:{
+        title:'行情',
         currency:'计价货币：',
         price:'价格',
         addAndDown:'涨跌',
@@ -46,6 +47,8 @@ export default {
         orderPrice:'委托价格',
         orderNumber:'委托数量',
     },
+    //资产
+
     //提币{}
     withdrawal:{
 

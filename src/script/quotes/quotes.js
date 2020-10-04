@@ -156,7 +156,7 @@ export default {
             headerOptions: {
                 show:true,
                 isAllowReturn:false,
-                text:"行情",
+                text:this.$t('quotes').title,
                 rightItem:{
                     type:"text",
                     /*path: `${require('@/static/images/quotes/search.png')}`,
@@ -171,12 +171,13 @@ export default {
     },
     mounted() {
         let theme = this.$storage.getSync({key:'theme'});
+        let that = this;
         // console.log(theme);
         if(theme === 'white'){
             this.headerOptions = {
                 show:true,
                 isAllowReturn:false,
-                text:"行情",
+                text:that.$t('quotes').title,
                 rightItem:{
                     type:"text",
                     /*path: `${require('@/static/images/quotes/search.png')}`,
@@ -191,7 +192,7 @@ export default {
             this.headerOptions = {
                 show:true,
                 isAllowReturn:false,
-                text:"行情",
+                text:that.$t('quotes').title,
                 rightItem:{
                     type:"icon",
                     path: `${require('@/static/images/quotes/blacksearch.png')}`,
