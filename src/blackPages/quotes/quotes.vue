@@ -19,20 +19,20 @@
                 <view class="quotes-content-wrap-title">
                     <view class="quotes-content-wrap-title-container">
                         <view class="currency">
-                            <span>计价货币：</span>
+                            <span>{{$t('quotes').currency}}</span>
                             <span>USTD</span>
                             <!-- <view class="icon">
                                 <image :src="currencyIcon"></image>
                             </view> -->
                         </view>
                         <view class="price">
-                            <span>价格</span>
+                            <span>{{$t('quotes').price}}</span>
                         </view>
                         <view class="upsAndDowns">
-                            <span>24H涨跌</span>
-                            <view class="icon">
+                            <span>24H{{$t('quotes').addAndDown}}</span>
+                            <!-- <view class="icon">
                                 <image :src="upsAndDownsIcon"></image>
-                            </view>
+                            </view> -->
                         </view>
                     </view>
                 </view>

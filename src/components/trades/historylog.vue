@@ -2,16 +2,16 @@
 	<view :class="'logitem '+theme">
 		<view class="oneline">
 			<view class="buyitem" v-if="String(historylogdata.orderType)==='1'">
-                <text class="buyitin buy" >买单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
+                <text class="buyitin buy" >{{$t('tradePage').orderBuy}}</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
-			<view class="buyitem" v-if="String(historylogdata.orderType)==='2'">          
-				<text class="buyitin sell"  >卖单</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
+			<view class="buyitem" v-if="String(historylogdata.orderSell)==='2'">          
+				<text class="buyitin sell"  >{{$t('tradePage').tradeAll}}</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
-			<view class="cancelitem" @tap='cancelTrade(historylogdata)'>撤单</view>
+			<view class="cancelitem" @tap='cancelTrade(historylogdata)'>{{$t('tradePage').orderReturn}}</view>
 		</view>
 		<view class="twoline" >
-			<view class="item-tr-left">委托价格({{KLineTradingPair.type}})</view>
-			<view class="item-tr-right">委托数量({{KLineTradingPair.name}})</view>
+			<view class="item-tr-left">{{$t('tradePage').orderPrice}}({{KLineTradingPair.type}})</view>
+			<view class="item-tr-right">{{$t('tradePage').orderNumber}}({{KLineTradingPair.name}})</view>
 		</view>
 		<view class="threeline">
 			<view class="itemcharge">{{historylogdata.price}}</view>

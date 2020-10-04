@@ -12,7 +12,39 @@ export default {
             '团队详情',
             '推广收益',
             '上币申请',
-        ]
+        ],
+        quotation:'币价行情',
+        currency:'币种',
+        newPrice:'最新价',
+        addAndDown:'涨跌',
+        amount:'量'
+
+    },
+    //行情
+    quotes:{
+        currency:'计价货币：',
+        price:'价格',
+        addAndDown:'涨跌',
+    },
+    //交易
+    tradePage:{
+        headerTab:['币币交易','合约交易'],
+        buy:"买入",
+        sell:"卖出",
+        prcie:'价格',
+        number:'数量',
+        tip1:'请先填写交易价格',
+        tip2:'暂未开放',
+        use:'可用：',
+        tradeAll:'交易额:',
+        nowTrade:'当前委托',
+        historyTrade:'历史记录',
+        noData:'暂无数据',
+        orderBuy:'买单',
+        orderSell:'卖单',
+        orderReturn:'撤单',
+        orderPrice:'委托价格',
+        orderNumber:'委托数量',
     },
     //k线
     trade: {

@@ -8,8 +8,8 @@
 				</view>
 
 				<view class="earning">
-					<view class="earningTitle">资产总额</view>
-					<view class="earningNumber">
+					<view class="earningTitle " v-if="changeMoneyData.asset">{{$t('index').totalAssets}}</view>
+					<view class="earningNumber" v-if="changeMoneyData.asset">
 						<span>{{changeMoneyData.asset}} {{changeMoneyData.firstCode}}</span>
 						<span>≈ {{changeMoneyData.price==="NaN" ? 0.00 : changeMoneyData.price}} {{changeMoneyData.lastCode}}</span>
 					</view>
@@ -23,7 +23,7 @@
 				</view>
 				<view class="clearfix"></view>
 			</view>
-			<view class="notice" v-if="discovery.length>0"> <!--gonoticelist_details-->
+			<view class="notice"  v-if="discovery.length>0"> <!--gonoticelist_details-->
 				<view class="noticeIcon" :style="{'background-image':'url('+notice2+')'}"></view>
 				<view class="noticeText" @click="goNoticeDetail(discovery[0])">{{discovery[0].details}}</view>
 				<view class="more" :style="{'background-image':'url('+more+')'}" @click.self.stop="gonoticelist"></view>
@@ -34,18 +34,18 @@
 			</view>
 
 			<view class="performer">
-				<view class="performerTitle">24H <span>币价行情</span></view>
+				<view class="performerTitle">24H <span>{{$t('index').quotation}}</span></view>
 
 				<view class="performerTab">
-					<view class="cate">币种</view>
-					<view class="newest">最新价</view>
-					<view class="upAndDown">24H涨跌</view>
+					<view class="cate">{{$t('index').currency}}</view>
+					<view class="newest">{{$t('index').newPrice}}</view>
+					<view class="upAndDown">24H{{$t('index').addAndDown}}</view>
 				</view>
 
 				<view class="performerItem" v-for="(item,index) in tradePairData" :key="index" @tap="toKline(item)">
 					<view class="currency">
 						<view class="currencyTitle"> <span>{{item.name}}</span>/{{item.type}}</view>
-						<view class="currencyData">24H量{{item.nowData===null?'0.00':item.nowData.amount.toFixed(2)}}</view>
+						<view class="currencyData">24H{{$t('index').amount}}{{item.nowData===null?'0.00':item.nowData.amount.toFixed(2)}}</view>
 					</view>
 					<view class="newest">
 						<view class="newestPercentage">{{item.nowData===null?'0.00':item.nowData.close.toFixed(2)}}</view>

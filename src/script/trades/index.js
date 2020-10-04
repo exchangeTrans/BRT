@@ -39,32 +39,32 @@
 			headerData:[
 				{
 					code:'1',
-					name:'币币交易'
+					name:this.$t('tradePage').headerTab[0]
 				},
 				{
 					code:'2',
-					name:'合约交易'
+					name:this.$t('tradePage').headerTab[1]
 				}
 			],
 			selectHeader:{
 				code:'1',
-				name:'币币交易'
+				name:this.$t('tradePage').headerTab[0]
 			},
 			tradeNameData:[
 				{
 					code:'buy',
-					name:'买入',
+					name:this.$t('tradePage').buy,
 					id:'1'
 				},
 				{
 					code:'sale',
-					name:'卖出',
+					name:this.$t('tradePage').sell,
 					id:'2'
 				}
 			],
 			selectedTradeName:{
 				code:'buy',
-				name:'买入',
+				name:this.$t('tradePage').buy,
 				id:'1'
 			},
 			precentList:[
@@ -120,11 +120,11 @@
 			tradeInfo:{},
 			checkArray: [
                 {
-                    name: "价格",
+                    name: this.$t('tradePage').prcie,
                     checkKey: "price",
                 },
                 {
-                    name: "数量",
+                    name: this.$t('tradePage').number,
                     checkKey: "amount",
                 },
             ],
@@ -226,12 +226,13 @@
 			this.selectedTradeName = item;
 		},
 		choosePrecent(item){
+			let that = this;
 			let {tradePrice,selectedTradeName,tradeInfo} = this;
 			let pr = selectedTradeName.code==='buy'?(tradeInfo.usdtBalanceNum?tradeInfo.usdtBalanceNum:0):(tradeInfo.symbolBalanceNum?tradeInfo.symbolBalanceNum:0);
 			pr = String(pr).replace(/,/g,"");
 			if(String(tradePrice).trim()===''||Number(tradePrice)===0){
 				this.$toast.show({
-					title: "请先填写交易价格",
+					title: that.$t('tradePage').tip1,
 				})
 				return
 			}
@@ -263,9 +264,10 @@
 			this.$mySocket.subscribeDetail();
 		},
 		selectTradeHeader(item){
+			let that = this;
 			if(item.code==='2'){
 				this.$toast.show({
-					title: "暂未开放",
+					title: that.$t('tradePage').tip2
 				})
 			}
 		},
