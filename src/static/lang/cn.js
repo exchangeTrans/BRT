@@ -110,7 +110,14 @@ export default {
     },
     ////记录组件
     recordItem:{
-
+        number:'数量',
+        status:'状态',
+        times:'时间',
+        starusArray:[
+            '审核中',
+            '失败',
+            '成功',
+        ]
     },
 
     //k线

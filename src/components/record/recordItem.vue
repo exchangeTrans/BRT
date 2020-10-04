@@ -7,15 +7,15 @@
                 </view>
                 <view class="recordItem-wrap-container-content">
                     <view :class="isBlack ? 'recordItem-wrap-container-content-title black' : 'recordItem-wrap-container-content-title'">
-                        <view class="text">数量</view>
-                        <view class="text">状态</view>
-                        <view class="text end">时间</view>
+                        <view class="text">{{$t('recordItem').number}}</view>
+                        <view class="text">{{$t('recordItem').status}}</view>
+                        <view class="text end">{{$t('recordItem').times}}</view>
                     </view>
                     <view :class="isBlack?'recordItem-wrap-container-content-text blackText':'recordItem-wrap-container-content-text'">
                         <view class="text">{{recordData.number}}</view>
-                        <view class="text blue" v-if="recordData.status === 'inTheReview'">审核中</view>
-                        <view class="text red" v-else-if="recordData.status === 'fail'">失败</view>
-                        <view class="text" v-else>成功</view>
+                        <view class="text blue" v-if="recordData.status === 'inTheReview'">{{$t('recordItem').starusArray[0]}}</view>
+                        <view class="text red" v-else-if="recordData.status === 'fail'">{{$t('recordItem').starusArray[1]}}</view>
+                        <view class="text" v-else>{{$t('recordItem').starusArray[2]}}</view>
                         <view class="text end">{{recordData.date}}</view>
                     </view>
                 </view>
