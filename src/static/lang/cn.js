@@ -1,5 +1,7 @@
 export default {
     footer: ['首页', '行情', '交易', '资产', '我的'],
+    noData:'暂无数据',
+    
     //首页
     index: {
         totalAssets: "资产总额",
@@ -17,7 +19,8 @@ export default {
         currency: '币种',
         newPrice: '最新价',
         addAndDown: '涨跌',
-        amount: '量'
+        amount: '量',
+        noOpen:'暂未开放',
 
     },
     //行情
@@ -152,6 +155,32 @@ export default {
           '最新成交',
           '币种简介'
       ]
+    },
+    //量化
+    earnings:{
+        title:'量化理财',
+        balance: '可用余额',
+        yield:'累计收益率',
+        profitDetail:'收益详情',
+        earningsData:'量化数据',
+        investment:'投资金额',
+        quantBalance:'量化余额',
+        lastYield:'昨日收益率',
+        stopRatio:'止盈率',
+        stopRate:'止损率',
+        set:'设置',
+        maxReturn:'最大撤回',
+        rule:'规则',
+        rulerText:'量化理财运行七天后或是收益率达到止盈率或止损率时，量化馀额会自动转入可用余额。量化运行时可以转入加仓，但不可提现。最少需投入1000 USDT才可进行量化。',
+        join:'转入加仓',
+        downLoad:'下载韩亚量化App',
+        noOpen:'暂未开放',
+        setSuccess:'设置成功',
+    },
+    //更新
+    upData:{
+        updateBtn:'发现新版本',
+        find:'立即更新'
     },
     login: {
         phoneLogin: "手机登录",

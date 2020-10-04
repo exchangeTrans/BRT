@@ -15,11 +15,12 @@ export default {
 		let theme = this.$storage.getSync({
 			key: 'theme'
 		});
+		let that = this;
 		if (theme === 'white') {
 			this.headerOptions = {
 				show: true,
 				isAllowReturn: true,
-				text: "量化理财",
+				text: that.$t('earnings').title,
 				rightItem: {
 					type: "text",
 					text: "",
@@ -36,7 +37,7 @@ export default {
 				show: true,
 				isAllowReturn: true,
 				isWhiteIcon: true,
-				text: "量化理财",
+				text: that.$t('earnings').title,
 				rightItem: {
 					type: "text",
 					text: "",
@@ -66,7 +67,7 @@ export default {
 			logoIcon: `${require('@/static/images/earning/logoIcon.png')}`,
 			sliderValue: 50,
 			selectedTab: 'earningInfo',
-			rulerText:'量化理财运行七天后或是收益率达到止盈率或止损率时，量化馀额会自动转入可用余额。量化运行时可以转入加仓，但不可提现。最少需投入1000 USDT才可进行量化。',
+			// rulerText:'量化理财运行七天后或是收益率达到止盈率或止损率时，量化馀额会自动转入可用余额。量化运行时可以转入加仓，但不可提现。最少需投入1000 USDT才可进行量化。',
 			transferDate: {},
 			showincome_earing: true,
 			showdata_earing: false,
@@ -94,9 +95,10 @@ export default {
 	},
 	methods: {
 		transferInAmount() {
+			let that = this;
 			// this.$refs.financierInAmount.open();
 			this.$toast.show({
-				title: "暂未开放",
+				title: that.$t('earnings').noOpen,
 			})
 		},
 		sliderChange(e) {
@@ -117,7 +119,7 @@ export default {
 			this.$refs.subRuler.open();
 		},
 		setincomerate(){
-			console.log("inceom");
+			let that = this;
 				this.$request({
 					url: "finance/setRate",
 					method: "post",
@@ -127,14 +129,14 @@ export default {
 					}
 				}).then((res) => {
 					this.$toast.show({
-						title: '设置成功',
+						title: that.$t('earnings').setSuccess,
 					})
 				}).catch((err) => {
 					console.log(err)
 				})
 		},
 		setlossrate(){
-			console.log("loss")
+			let that = this;
 				this.$request({
 					url: "finance/setRate",
 					method: "post",
@@ -144,7 +146,7 @@ export default {
 					}
 				}).then((res) => {
 					this.$toast.show({
-						title: '设置成功',
+						title: that.$t('earnings').setSuccess,
 					})
 				}).catch((err) => {
 					console.log(err)

@@ -154,9 +154,10 @@ export default {
         },
         toInfo(item) {
             // debugger
+            let that = this;
             if (item.url === "#") {
                 this.$toast.show({
-                    title: "暂未开放",
+                    title: that.$t('index').noOpen,
                 })
             } else {
                 this.$jumpPage.jump({

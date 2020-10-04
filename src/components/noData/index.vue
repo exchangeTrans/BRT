@@ -1,7 +1,7 @@
 <template>
     <view class="noData" :style="{'top':noDataStyle.top}">
         <view class="noDataImg" :style="{'background-image':isGrey?'url('+noData_grey+')':'url('+noData+')'}"></view>
-        <view class="noDataText" :class="{'isBlack': isBlack, 'isNotBlack': !isBlack}">暂无数据</view>
+        <view class="noDataText" :class="{'isBlack': isBlack, 'isNotBlack': !isBlack}">{{$t('noData')}}</view>
     </view>
 </template>
 

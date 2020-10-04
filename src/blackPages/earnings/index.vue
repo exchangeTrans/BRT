@@ -5,7 +5,7 @@
 			<view class="contentEarningsPadding">
 				<view class="earningsTop" :style="{'background-image':'url('+topBg+')'}">
 					<view class="left">
-						<view class="balance">可用余额</view>
+						<view class="balance">{{$t('earnings').balance}}</view>
 						<view class="balanceNum"><span>{{userdata.usdtBalance}}</span>USDT</view>
 					</view>
 					<!-- <view class="right">
@@ -20,7 +20,7 @@
 				<view class="yield">
 					<view class="yieldText">
 						<view class="yieldPercent">{{interestrate.left}}<span>.{{interestrate.right}}%</span></view>
-						<view class="addUp">累计收益率</view>
+						<view class="addUp">{{$t('earnings').yield}}</view>
 					</view>
 					<!--<view class="slider">-->
 					<!--<slider :value="sliderValue"-->
@@ -33,8 +33,8 @@
 				</view>
 
 				<view class="tab">
-					<view :class="selectedTab==='earningInfo'?'tabItem active earningInfo':'tabItem earningInfo'" @tap="chooseTab('earningInfo')">收益详情</view>
-					<view :class="selectedTab==='data'?'tabItem active data':'tabItem data'" @tap="chooseTab('data')">量化数据</view>
+					<view :class="selectedTab==='earningInfo'?'tabItem active earningInfo':'tabItem earningInfo'" @tap="chooseTab('earningInfo')">{{$t('earnings').profitDetail}}</view>
+					<view :class="selectedTab==='data'?'tabItem active data':'tabItem data'" @tap="chooseTab('data')">{{$t('earnings').earningsData}}</view>
 				</view>
 
 				<view class="info">
@@ -42,33 +42,33 @@
 						<view class="logoIcon" :style="{'background-image':'url('+logoIcon+')'}"></view>
 						<view class="dataList" v-if="showincome_earing" >
 							<view class="dataItem">
-								<view class="itemTitle">投资金额</view>
+								<view class="itemTitle">{{$t('earnings').investment}}</view>
 								<view class="itemText">{{userdata.loan}} USDT</view>
 							</view>
 							<view class="dataItem">
-								<view class="itemTitle">量化余额</view>
+								<view class="itemTitle">{{$t('earnings').quantBalance}}</view>
 								<view class="itemText">{{userdata.financeBalance}} USDT</view>
 							</view>
 							<view class="dataItem">
-								<view class="itemTitle">昨日收益率</view>
+								<view class="itemTitle">{{$t('earnings').lastYield}}</view>
 								<view class="itemText">{{userdata.interestRateDay}}</view>
 							</view>
 						</view>
 						<view class="dataList" v-if="showdata_earing" >
 							<view class="dataItem">
-								<view class="itemTitle">止盈率</view>
+								<view class="itemTitle">{{$t('earnings').stopRatio}}</view>
 								<input class="itemInput" v-model="userdata.stopWinRate"/>
-								<view class="itemSet" @tap="setincomerate">设置</view>
+								<view class="itemSet" @tap="setincomerate">{{$t('earnings').set}}</view>
 								<view class="clearfix"></view>
 							</view>
 							<view class="dataItem">
-								<view class="itemTitle">止损率</view>
+								<view class="itemTitle">{{$t('earnings').stopRate}}</view>
 								<input class="itemInput" v-model="userdata.stopLoseRate"/>
-								<view class="itemSet" @tap="setlossrate">设置</view>
+								<view class="itemSet" @tap="setlossrate">{{$t('earnings').set}}</view>
 								<view class="clearfix"></view>
 							</view>
 							<view class="dataItem">
-								<view class="itemTitle">最大撤回</view>
+								<view class="itemTitle">{{$t('earnings').maxReturn}}</view>
 								<view class="itemText">{{userdata.maxDawndown}}</view>
 								<view class="clearfix"></view>
 							</view>
@@ -77,9 +77,9 @@
 					</view>
 					<view class="ruler">
 						<view class="line"></view>
-						规则
+						{{$t('earnings').rule}}
 					</view>
-					<view class="rulerInfo">{{rulerText}}</view>
+					<view class="rulerInfo">{{$t('earnings').rulerText}}</view>
 					<!--<view class="btnGroup">-->
 					<!--&lt;!&ndash;<view class="btnItem">转入</view>&ndash;&gt;-->
 					<!--&lt;!&ndash;<view class="btnItem export">转出</view>&ndash;&gt;-->
@@ -90,16 +90,15 @@
 				</view>
 			</view>
 			<view class="btnGroup">
-				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'转入加仓'" v-if="selectedTab==='earningInfo'"
+				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="$t('earnings').join" v-if="selectedTab==='earningInfo'"
 							@btnClick="transferInAmount"></earningBtn>
-				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="'下载韩亚量化App'" v-if="selectedTab==='data'"
+				<earningBtn :background="background" :borderRadius="borderRadius" :btnText="$t('earnings').downLoad" v-if="selectedTab==='data'"
 							@btnClick="downloadAPP"></earningBtn>
 			</view>
 		</scroll-view>
 		<financierInAmount ref="financierInAmount"
-						  @transferInAmountSuccess="transferInAmountSuccess"
-						  :mode="'night'"
-						  :availableCounts="userdata.usdtBalance"></financierInAmount>
+						   @transferInAmountSuccess="transferInAmountSuccess"
+						   :availableCounts="userdata.usdtBalance"></financierInAmount>
 		<subRuler ref="subRuler"></subRuler>
 	</view>
 </template>
