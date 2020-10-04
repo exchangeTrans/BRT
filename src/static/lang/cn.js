@@ -354,5 +354,77 @@ export default {
         showCurrency: "显示币种",
         showLang: "显示语言",
     },
+    //推广链接
+    share: {
+        inviteCode: "邀请码",
+        saveImg: "保存图片",
+        copyLink: "复制分享链接",
+    },
+    //公告列表
+    noticelist: {
+        noticelistText: "公告列表",
+        noData: "暂无数据",
+    },
+    //联系客服
+    connectUs: {
+        content: "BRT 全球匿名公链，由英国贝莱特基金会（Beilette Foundation）支持， " +
+            "致力于结合信用抵押挖矿，量化机器人，合约等打造全球最佳DEFI数字货币" +
+            "生态，将支持一切有价值的数字资产和实物资产的存托。",
+        aboutText: "关于BRT",
+        connectUsText: "联系我们",
+        email: "客服邮箱",
+        connectUser: "联系客服",
+    },
+    //修改绑定手机邮箱
+    changePhone: {
+        leftText: "手机号注册",
+        rightText: "邮箱注册",
+        btnText: "更换手机绑定",
+        country: "中国",
+        changePhoneText: "更换手机号码",
+        getPhoneCode: "请获取当前手机验证码",
+        getNewPhoneCode: "请获取当新绑定手机验证码",
+        resend1: "秒后重新发送",
+        resend2: "重新发送",
+        spanNameNew: '发送验证码',
+        spanNameOld: '发送验证码',
+        nowPhoneTitle: "当前绑定手机号码：",
+        oldPhonePlaceholder: "请输入当前手机验证码",
+        newPhonePlaceholder: "请输入新绑定手机号码",
+        newPhoneVerifyCode: "请输入新手机验证码",
+
+        newPhoneText: "新绑定手机号码",
+        checkPhoneArray: [
+            {name: "新绑定手机号码"},
+            {name: "当前手机验证码"},
+            {name: "新手机验证码"},
+            {name: "手机号"},
+        ],
+
+    },
+    changeEmail: {
+        leftText: "手机号注册",
+        rightText: "邮箱注册",
+        btnText: "更换邮箱绑定",
+        country: "中国",
+        nowEmailTitle: "当前绑定邮箱：",
+        VerifyCodeText: "输入当前邮箱验证码",
+        spanNameNew: '发送验证码',
+        spanNameOld: '发送验证码',
+        changeEmailText: "更换邮箱",
+        getEmailCode: "请获取当前手机验证码",
+        getNewEmailCode: "请获取当新绑定手机验证码",
+        resend1: "秒后重新发送",
+        resend2: "重新发送",
+        newEmail:"新绑定邮箱",
+        newEmailPlaceholder:"请输入新绑定邮箱",
+        newVerifyCodePlaceholder:"请输入新绑定邮箱",
+        checkEmailArray: [
+            {name: "新绑定邮箱号码"},
+            {name: "当前邮箱验证码"},
+            {name: "新邮箱验证码"},
+            {name: "邮箱"},
+        ]
+    }
 
 }

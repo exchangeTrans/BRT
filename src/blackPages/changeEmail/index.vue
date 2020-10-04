@@ -7,7 +7,7 @@
 
 
                 <view class="nowPhone">
-                    <view class="nowPhoneTitle">当前绑定邮箱：</view>
+                    <view class="nowPhoneTitle">{{$t('changeEmail').nowEmailTitle}}</view>
                     <view class="phoneNum">{{userInfo.email}}</view>
                 </view>
 
@@ -15,7 +15,7 @@
                     <loginInput :mode="'DARK'"
                                 :iconShow="true"
                                 :iconSrc="smsVerifyCode"
-                                :placeHolder="'输入当前邮箱验证码'"
+                                :placeHolder=VerifyCodeText
                                 :lastTextShow="true"
                                 :lastText="spanNameOld"
                                 :lastTextStyle="phoneLastTextStyle"
@@ -40,13 +40,13 @@
                             :iconShow="true"
                             :iconSrc="emailIcon"
                             :firstTextShow="true"
-                            :placeHolder="'请输入新绑定邮箱'"
+                            :placeHolder=newEmailPlaceholder
                             :inputData="postData.email"
                             @inputChange="inputChange('phone', $event)"></loginInput>
                 <loginInput :mode="'DARK'"
                             :iconShow="true"
                             :iconSrc="smsVerifyCode"
-                            :placeHolder="'请输入新邮箱验证码'"
+                            :placeHolder=newVerifyCodePlaceholder
                             :lastTextShow="true"
                             :lastText="spanNameNew"
                             :lastTextStyle="phoneLastTextStyle"

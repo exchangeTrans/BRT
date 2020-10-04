@@ -15,11 +15,14 @@ export default {
     data() {
         return {
             defaultChoice: "PHONE",
-            leftText: "手机号注册",
-            rightText: "邮箱注册",
-            btnText: "更换邮箱绑定",
-            country: "中国",
+            leftText: this.$t('changeEmail').leftText,
+            rightText: this.$t('changeEmail').rightText,
+            btnText: this.$t('changeEmail').btnText,
+            country: this.$t('changeEmail').country,
+            VerifyCodeText: this.$t('changeEmail').VerifyCodeText,
             countryNumber: "+86",
+            newEmailPlaceholder: this.$t('changeEmail').newEmailPlaceholder,
+            newVerifyCodePlaceholder: this.$t('changeEmail').newVerifyCodePlaceholder,
 
             topBg: `url(${require('@/static/images/changePhone/topBg.png')})`,
             countryIcon: `url(${require('@/static/images/login/phoneHead.png')})`,
@@ -55,7 +58,7 @@ export default {
 
             },
             headerOptions: {
-                show: true,
+                /*show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
                 text: "更换邮箱",
@@ -67,15 +70,15 @@ export default {
                 style: {
                     'color': '#ffffff',
                 },
-                headerIsNoBoder: true,
+                headerIsNoBoder: true,*/
             },
             type: "PHONE",
 
             userInfo: {},
 
             getCodeStatus: false,
-            spanNameNew: '发送验证码',
-            spanNameOld: '发送验证码',
+            spanNameNew: this.$t('changeEmail').spanNameNew,
+            spanNameOld: this.$t('changeEmail').spanNameOld,
             timeNew: 60,
             timeOld: 60,
 
@@ -113,7 +116,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "更换邮箱",
+                text: this.$t('changeEmail').changeEmailText,
 
                 rightItem: {
                     type: "text",
@@ -129,7 +132,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "更换邮箱",
+                text: this.$t('changeEmail').changeEmailText,
 
                 rightItem: {
                     type: "text",
@@ -184,16 +187,16 @@ export default {
 
             let checkEmailArray = [
                 {
-                    name: "新绑定邮箱号码",
+                    name: this.$t('changeEmail').checkEmailArray[0],
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
                 {
-                    name: "当前邮箱验证码",
+                    name: this.$t('changeEmail').checkEmailArray[1],
                     checkKey: "verifyCode",
                 },
                 {
-                    name: "新邮箱验证码",
+                    name: this.$t('changeEmail').checkEmailArray[2],
                     checkKey: "verifyCodeNew",
                 },
             ];
@@ -211,11 +214,11 @@ export default {
             if (checkDataFunc.checkBasics(postData, checkEmailArray)) {
                 if (postData.verifyKey === "") {
                     this.$toast.show({
-                        title: "请获取当前邮箱验证码",
+                        title: this.$t('changeEmail').getEmailCode,
                     })
                 } else if (postData.verifyKeyNew === "") {
                     this.$toast.show({
-                        title: "请获取当新绑定邮箱验证码",
+                        title: this.$t('changeEmail').getNewEmailCode,
                     })
                 } else {
                     return {
@@ -246,7 +249,7 @@ export default {
         sendSmsVerify(type) {
             let that = this;
             let sendCodeData = this.getSendCodeData(type);
-            
+
             if (sendCodeData) {
                 if (type === 4) {
                     that.setIntervalFun(type, "spanNameOld")
@@ -289,7 +292,7 @@ export default {
 
             let checkEmailArray = [
                 {
-                    name: "邮箱",
+                    name: this.$t('changeEmail').checkEmailArray[3],
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
@@ -330,10 +333,10 @@ export default {
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that[name] = that[tempType] + '秒后重新发送';
+                that[name] = that[tempType] + this.$t('changeEmail').resend1;
                 --that[tempType];
                 if (that[tempType] < 0) {
-                    that[name] = "重新发送";
+                    that[name] = this.$t('changeEmail').resend2;
                     that[tempType] = 60;
                     that.getCodeStatus = false
                     clearInterval(interval);

@@ -13,7 +13,7 @@
                 <view class="oldPhone">
                     <loginInput :iconShow="true"
                                 :iconSrc="smsVerifyCode"
-                                :placeHolder="'输入当前手机验证码'"
+                                :placeHolder=oldPhonePlaceholder
                                 :lastTextShow="true"
                                 :lastText="spanNameOld"
                                 :inputData="postData.verifyCode"
@@ -25,7 +25,7 @@
             <view class="phoneRegsFlag">
                 <view class="changePhoneText">
                     <view class="line"></view>
-                    新绑定手机号码
+                    {{$t('changePhone').newPhoneText}}
                 </view>
                 <view class="countryChoice" @tap="toChooseCountry">
                     <view class="chountryChoiceIcon"
@@ -40,11 +40,11 @@
                             :firstText="'+'+chooseCountry.dialingCode"
                             :firstTextStyle="phoneFirstTextStyle"
                             :inputData="postData.tel"
-                            :placeHolder="'请输入新绑定手机号码'"
+                            :placeHolder=newPhonePlaceholder
                             @inputChange="inputChange('tel', $event)"></loginInput>
                 <loginInput :iconShow="true"
                             :iconSrc="smsVerifyCode"
-                            :placeHolder="'请输入新手机验证码'"
+                            :placeHolder=newPhoneVerifyCode
                             :lastTextShow="true"
                             :lastText="spanNameNew"
                             :inputData="postData.verifyCodeNew"

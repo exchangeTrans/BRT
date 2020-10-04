@@ -14,7 +14,7 @@ export default{
                 // bodyPadding: {"padding": '0,0,0,0'},
                 // headerIsNoBoder: true,
             },
-            emailadress:'客服邮箱:ukbatubrt@gmail.com',
+            emailadress: this.$t('connectUs').email + ':ukbatubrt@gmail.com',
             copyText:'ukbatubrt@gmail.com'
         }
     },
@@ -39,7 +39,7 @@ export default{
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "联系客服",
+                text: this.$t('connectUs').connectUser,
                 background: "#FFFFFF",
                 rightItem: {
                     type: "text",
@@ -61,7 +61,7 @@ export default{
             this.headerOptions={
                 show: true,
                 isAllowReturn: true,
-                text: "联系客服",
+                text: this.$t('connectUs').connectUser,
                 background: '#00001A',
                 isWhiteIcon: true,
                 rightItem: {

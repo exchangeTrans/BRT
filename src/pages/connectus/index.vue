@@ -2,15 +2,13 @@
 	<view class="connectus">
 		<appheader :headerOptions="headerOptions"></appheader>
 		<view class="aboutbrt">
-			<view class="head">关于BRT</view>
+			<view class="head">{{$t('connectUs').aboutText}}</view>
 			<view class="content">
-				BRT 全球匿名公链，由英国贝莱特基金会（Beilette Foundation）支持， 
-				致力于结合信用抵押挖矿，量化机器人，合约等打造全球最佳DEFI数字货币
-				生态，将支持一切有价值的数字资产和实物资产的存托。
+				{{$t('connectUs').content}}
 			</view>
 		</view>
 		<view class="relation">
-			<view class="relationus">联系我们</view>
+			<view class="relationus">{{$t('connectUs').connectUsText}}</view>
 			<view class="main">
 				<view class="email" @click="copymsg" :data-clipboard-text="this.emailadress">{{emailadress}}
 				<image src="../../static/images/connectus/email.png" mode="" class="img"></image>

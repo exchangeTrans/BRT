@@ -15,10 +15,13 @@ export default {
     data() {
         return {
             defaultChoice: "PHONE",
-            leftText: "手机号注册",
-            rightText: "邮箱注册",
-            btnText: "更换手机绑定",
-            country: "中国",
+            leftText: this.$t('changePhone').leftText,
+            rightText:this.$t('changePhone').rightText,
+            btnText: this.$t('changePhone').btnText,
+            country: this.$t('changePhone').country,
+            oldPhonePlaceholder: this.$t("changePhone").oldPhonePlaceholder,
+            newPhonePlaceholder: this.$t("changePhone").newPhonePlaceholder,
+            newPhoneVerifyCode: this.$t("changePhone").newPhoneVerifyCode,
             countryNumber: "+86",
 
             topBg: `url(${require('@/static/images/changePhone/topBg.png')})`,
@@ -55,7 +58,7 @@ export default {
 
             },
             headerOptions: {
-                show: true,
+                /*show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
                 text: "更换手机号码",
@@ -67,14 +70,14 @@ export default {
                 style: {
                     'color': '#ffffff',
                 },
-                headerIsNoBoder: true,
+                headerIsNoBoder: true,*/
             },
             type: "PHONE",
             userInfo: {},
 
             getCodeStatus: false,
-            spanNameNew: '发送验证码',
-            spanNameOld: '发送验证码',
+            spanNameNew: this.$t('changePhone').spanNameNew,
+            spanNameOld: this.$t('changePhone').spanNameOld,
             timeNew: 60,
             timeOld: 60,
 
@@ -113,7 +116,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "更换手机号码",
+                text: this.$t('changePhone').changePhoneText,
 
                 rightItem: {
                     type: "text",
@@ -129,7 +132,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "更换手机号码",
+                text: this.$t('changePhone').changePhoneText,
 
                 rightItem: {
                     type: "text",
@@ -184,16 +187,16 @@ export default {
 
             let checkPhoneArray = [
                 {
-                    name: "新绑定手机号码",
+                    name: this.$t('changePhone').checkPhoneArray[0],
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
                 {
-                    name: "当前手机验证码",
+                    name: this.$t('changePhone').checkPhoneArray[1],
                     checkKey: "verifyCode",
                 },
                 {
-                    name: "新手机验证码",
+                    name: this.$t('changePhone').checkPhoneArray[2],
                     checkKey: "verifyCodeNew",
                 },
             ];
@@ -210,11 +213,11 @@ export default {
             if (checkDataFunc.checkBasics(postData, checkPhoneArray)) {
                 if (postData.verifyKey === "") {
                     this.$toast.show({
-                        title: "请获取当前手机验证码",
+                        title: this.$t('changePhone').getPhoneCode,
                     })
                 } else if (postData.verifyKeyNew === "") {
                     this.$toast.show({
-                        title: "请获取当新绑定手机验证码",
+                        title: this.$t('changePhone').getNewPhoneCode,
                     })
                 } else {
                     return {
@@ -288,7 +291,7 @@ export default {
 
             let checkPhoneArray = [
                 {
-                    name: "手机号",
+                    name: this.$t('changePhone').checkPhoneArray[3],
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
@@ -327,10 +330,10 @@ export default {
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that[name] = that[tempType] + '秒后重新发送';
+                that[name] = that[tempType] + that.$t('changePhone').resend1;
                 --that[tempType];
                 if (that[tempType] < 0) {
-                    that[name] = "重新发送";
+                    that[name] = that.$t('changePhone').resend2;
                     that[tempType] = 60;
                     that.getCodeStatus = false
                     clearInterval(interval);
