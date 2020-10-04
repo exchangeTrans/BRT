@@ -77,9 +77,9 @@ export default {
 
             phoneCodeStatus: false,
             emailCodeStatus: false,
-            phoneName: '发送验证码',
+            phoneName: this.$t('regs').phoneName,
             phoneTime: 60,
-            emailName: '发送验证码',
+            emailName: this.$t('regs').emailName,
             emailTime: 60,
             postData: {
                 tel: "",
@@ -93,60 +93,60 @@ export default {
 
             checkPhoneArray: [
                 {
-                    name: "手机号",
+                    name: this.$t('regs').checkPhoneArray[0],
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
                 {
-                    name: "验证码",
+                    name: this.$t('regs').checkPhoneArray[1],
                     checkKey: "verifyCode",
                 },
                 {
-                    name: "密码",
+                    name: this.$t('regs').checkPhoneArray[2],
                     checkKey: "password",
                     checkType: ["length"],
                     minLength: 6,
                     maxLength: 20,
                 },
                 {
-                    name: "确认密码",
+                    name: this.$t('regs').checkPhoneArray[3],
                     checkKey: "passwordConfirm",
                     checkType: ["length"],
                     minLength: 6,
                     maxLength: 20,
                 },
                 {
-                    name: "邀请码",
+                    name: this.$t('regs').checkPhoneArray[4],
                     checkKey: "inviteCode",
                 },
             ],
 
             checkEmailArray: [
                 {
-                    name: "邮箱",
+                    name: this.$t('regs').checkPhoneArray[0],
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
                 {
-                    name: "验证码",
+                    name: this.$t('regs').checkPhoneArray[1],
                     checkKey: "verifyCode",
                 },
                 {
-                    name: "密码",
+                    name: this.$t('regs').checkPhoneArray[2],
                     checkKey: "password",
                     checkType: ["length"],
                     minLength: 6,
                     maxLength: 20,
                 },
                 {
-                    name: "确认密码",
+                    name: this.$t('regs').checkPhoneArray[3],
                     checkKey: "passwordConfirm",
                     checkType: ["length"],
                     minLength: 6,
                     maxLength: 20,
                 },
                 {
-                    name: "邀请码",
+                    name: this.$t('regs').checkPhoneArray[4],
                     checkKey: "inviteCode",
                 },
             ],
@@ -210,7 +210,7 @@ export default {
             let that = this;
             if (postData) {
                 uni.showLoading({
-                    title: "加载中..."
+                    title: that.$t('regs').showLoading
                 })
                 this.$request({
                     url: "common/register",
@@ -277,11 +277,11 @@ export default {
             if (checkDataFunc.checkBasics(postData, checkArray)) {
                 if (postData.verifyKey === "") {
                     this.$toast.show({
-                        title: "请先获取验证码",
+                        title: this.$t('regs').verifyKey,
                     })
                 } else if (postData.password !== postData.passwordConfirm) {
                     this.$toast.show({
-                        title: "两次密码不一致，请重新输入",
+                        title: this.$t('regs').password,
                     })
                 } else {
                     return postData = {
@@ -338,14 +338,14 @@ export default {
 
             let checkPhoneArray = [
                 {
-                    name: "手机号",
+                    name: this.$t('regs').checkPhoneArray[0],
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
             ];
             let checkEmailArray = [
                 {
-                    name: "邮箱",
+                    name: this.$t('regs').checkEmailArray[0],
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
@@ -382,10 +382,10 @@ export default {
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that[tempName] = that[tempAccountType] + '秒后重新发送';
+                that[tempName] = that[tempAccountType] + that.$('regs').resend1;
                 --that[tempAccountType];
                 if (that[tempAccountType] < 0) {
-                    that[tempName] = "重新发送";
+                    that[tempName] = that.$('regs').resend2;
                     that[tempStauts] = false;
                     that[tempAccountType] = 60;
                     clearInterval(interval);

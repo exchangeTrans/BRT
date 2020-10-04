@@ -1,7 +1,7 @@
 export default {
     footer: ['首页', '行情', '交易', '资产', '我的'],
-    noData:'暂无数据',
-    
+    noData: '暂无数据',
+
     //首页
     index: {
         totalAssets: "资产总额",
@@ -20,7 +20,7 @@ export default {
         newPrice: '最新价',
         addAndDown: '涨跌',
         amount: '量',
-        noOpen:'暂未开放',
+        noOpen: '暂未开放',
 
     },
     //行情
@@ -61,126 +61,126 @@ export default {
         tip: '此币种目前只支持提币',
     },
     //提币{}
-    withdrawal:{
-        title:'提币',
-        subTitle:'提币纪录',
-        number:"到账数量",
-        tipArray:[
+    withdrawal: {
+        title: '提币',
+        subTitle: '提币纪录',
+        number: "到账数量",
+        tipArray: [
             '最小提币数量：',
             '平台间用户转帐无手续费。',
             '为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。',
             '请务必确认电脑及浏览器安全，防止信息被篡改或泄露'
         ],
-        btnText:'提币',
-        addressInput:{
+        btnText: '提币',
+        addressInput: {
             textTitle: "提币地址",
             placeholder: "输入或长按粘贴地址",
         },
-        amountInput:{
+        amountInput: {
             textTitle: "数量",
             placeholder: "最小提币数量",
-            subText:'余额：'
+            subText: '余额：'
         },
-        commissionInput:{
+        commissionInput: {
             textTitle: "手续费",
         },
-        phoneInput:{
+        phoneInput: {
             textTitle: "手机验证码",
             placeholder: "输入手机验证码",
-            subText:'获取验证码'
+            subText: '获取验证码'
         },
-        mainNumber:'最小提币数量',
-        balance:'余额',
-        requestTipArrray:[
+        mainNumber: '最小提币数量',
+        balance: '余额',
+        requestTipArrray: [
             '秒后重新发送',
             '重新发送',
             '未达到最小提币数量不足',
             '提币中',
             '请先输入正确的提币地址'
         ],
-        success:'提币成功',
-        finish:'完成'
+        success: '提币成功',
+        finish: '完成'
         // minNumber:'最小提币数量：'
-        
+
     },
     //提币记录
-    record:{
-        title:"提币记录",
-        noData:'暂无数据'
+    record: {
+        title: "提币记录",
+        noData: '暂无数据'
     },
     //充币记录
-    addRecord:{
-        title:"充币记录",
-        noData:'暂无数据'
+    addRecord: {
+        title: "充币记录",
+        noData: '暂无数据'
     },
     //记录组件
-    recordItem:{
-        number:'数量',
-        status:'状态',
-        times:'时间',
-        starusArray:[
+    recordItem: {
+        number: '数量',
+        status: '状态',
+        times: '时间',
+        starusArray: [
             '审核中',
             '失败',
             '成功',
         ]
     },
-    receipt:{
-        title:'收款',
-        subTitle:'充币记录',
-        address:'充币地址',
-        saveCode:'保存二维码',
-        copyAddress:'复制地址',
-        remark1:'请勿向上述地址充值任何非',
-        remark2:'资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。',
-        saveTip:'保存图片成功'
+    receipt: {
+        title: '收款',
+        subTitle: '充币记录',
+        address: '充币地址',
+        saveCode: '保存二维码',
+        copyAddress: '复制地址',
+        remark1: '请勿向上述地址充值任何非',
+        remark2: '资产，否则资产将不可找回。您充值至上述地址后，需要网络节点的确认。您的充值地址不会经常改变，可以重复充值；如果有更改我们会尽量通过网站公告或邮件通知您。',
+        saveTip: '保存图片成功'
     },
     //k线
     trade: {
-      buy:"买入",
-      sell:"卖出",
-      tableHeadTr1:["买盘","数量","价格","数量","卖盘"],
-      tableHeadTr2:["时间","方向","价格","数量"],
-      tableHeadTr3:["发行时间","发行总量","官网",'币种简介'],
-      unit:'万',
-      high:"高",
-      low:'低',
-      lineTypeArray:[
-          '分',
-          '小时',
-          '日线',
-          '周线',
-      ],
-      tabArray:[
-          '买单/卖单',
-          '最新成交',
-          '币种简介'
-      ]
+        buy: "买入",
+        sell: "卖出",
+        tableHeadTr1: ["买盘", "数量", "价格", "数量", "卖盘"],
+        tableHeadTr2: ["时间", "方向", "价格", "数量"],
+        tableHeadTr3: ["发行时间", "发行总量", "官网", '币种简介'],
+        unit: '万',
+        high: "高",
+        low: '低',
+        lineTypeArray: [
+            '分',
+            '小时',
+            '日线',
+            '周线',
+        ],
+        tabArray: [
+            '买单/卖单',
+            '最新成交',
+            '币种简介'
+        ]
     },
     //量化
-    earnings:{
-        title:'量化理财',
+    earnings: {
+        title: '量化理财',
         balance: '可用余额',
-        yield:'累计收益率',
-        profitDetail:'收益详情',
-        earningsData:'量化数据',
-        investment:'投资金额',
-        quantBalance:'量化余额',
-        lastYield:'昨日收益率',
-        stopRatio:'止盈率',
-        stopRate:'止损率',
-        set:'设置',
-        maxReturn:'最大撤回',
-        rule:'规则',
-        rulerText:'量化理财运行七天后或是收益率达到止盈率或止损率时，量化馀额会自动转入可用余额。量化运行时可以转入加仓，但不可提现。最少需投入1000 USDT才可进行量化。',
-        join:'转入加仓',
-        downLoad:'下载韩亚量化App',
-        noOpen:'暂未开放',
-        setSuccess:'设置成功',
+        yield: '累计收益率',
+        profitDetail: '收益详情',
+        earningsData: '量化数据',
+        investment: '投资金额',
+        quantBalance: '量化余额',
+        lastYield: '昨日收益率',
+        stopRatio: '止盈率',
+        stopRate: '止损率',
+        set: '设置',
+        maxReturn: '最大撤回',
+        rule: '规则',
+        rulerText: '量化理财运行七天后或是收益率达到止盈率或止损率时，量化馀额会自动转入可用余额。量化运行时可以转入加仓，但不可提现。最少需投入1000 USDT才可进行量化。',
+        join: '转入加仓',
+        downLoad: '下载韩亚量化App',
+        noOpen: '暂未开放',
+        setSuccess: '设置成功',
     },
     //更新
-    upData:{
-        updateBtn:'发现新版本',
-        find:'立即更新'
+    upData: {
+        updateBtn: '发现新版本',
+        find: '立即更新'
     },
     login: {
         phoneLogin: "手机登录",
@@ -210,6 +210,27 @@ export default {
         inputEmailSurePassword: "请再次输入6-20位登录密码",
         inputEmailInviteCode: "请输入推广码",
         loginJump: "已有账号，立即登录",
+        phoneName: '发送验证码',
+        emailName: '发送验证码',
+        showLoading: "加载中...",
+        verifyKey: "请先获取验证码",
+        password: "两次密码不一致，请重新输入",
+        resend1: "秒后重新发送",
+        resend2: "重新发送",
+        checkPhoneArray: [
+            {name: "手机号"},
+            {name: "验证码"},
+            {name: "密码"},
+            {name: "确认密码"},
+            {name: "邀请码"},
+        ],
+        checkEmailArray: [
+            {name: "邮箱"},
+            {name: "验证码"},
+            {name: "密码"},
+            {name: "确认密码"},
+            {name: "邀请码"},
+        ],
     },
     forgetPassword: {
         phoneForget: "手机号找回",
@@ -416,9 +437,9 @@ export default {
         getNewEmailCode: "请获取当新绑定手机验证码",
         resend1: "秒后重新发送",
         resend2: "重新发送",
-        newEmail:"新绑定邮箱",
-        newEmailPlaceholder:"请输入新绑定邮箱",
-        newVerifyCodePlaceholder:"请输入新绑定邮箱",
+        newEmail: "新绑定邮箱",
+        newEmailPlaceholder: "请输入新绑定邮箱",
+        newVerifyCodePlaceholder: "请输入新绑定邮箱",
         checkEmailArray: [
             {name: "新绑定邮箱号码"},
             {name: "当前邮箱验证码"},
