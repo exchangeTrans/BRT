@@ -1,3 +1,4 @@
+
 <template>
     <view id="bonus">
         <app-header :headerOptions="headerOptions"
@@ -9,41 +10,49 @@
                     <view class="bonus-wrap-content-card-msg">
                         <view class="left">
                             <view class="grade">{{vipTypeArray[vipType].text}}</view>
-                            <view class="grade-text">您的VIP等级</view>
+                            <view class="grade-text">{{$t('bonus').vip}}</view>
                         </view>
                         <view class="right">
                             <view class="number">{{total}}</view>
-                            <view class="number-text">矿池积累数量（BRT）</view>
+                            <view class="number-text">{{$t('bonus').number}}（BRT）</view>
                         </view>
                     </view>
                     <view class="bonus-wrap-content-card-dateTitle">
                         <span class="icon">
                             <image :src="time"></image>
                         </span>
-                        <span class="text">下次分红时间</span>
+                        <span class="text">{{$t('bonus').lastTime}}</span>
                     </view>
                     <view class="bonus-wrap-content-card-date">
-                        <view class="date-number">
-                            <span>1</span>
-                        </view>
-                        <view class="date-number">
-                            <span>2</span>
-                        </view>
-                        <view class="date-text">天</view>
-                        <view class="date-number">
-                            <span>0</span>
-                        </view>
-                        <view class="date-number">
-                            <span>6</span>
-                        </view>
-                        <view class="date-text">时</view>
-                        <view class="date-number">
-                            <span>1</span>
-                        </view>
-                        <view class="date-number">
-                            <span>4</span>
-                        </view>
-                        <view class="date-text">分</view>
+                        <uni-countdown
+                                :showColon="false"
+                                :color="'#098FE0'"
+                                :splitorColor="'#ffffff'"
+                                :day="dayNum"
+                                :hour="hourNum"
+                                :minute="minuteNum"
+                        ></uni-countdown>
+                        <!--<view class="date-number">-->
+                            <!--<span>1</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>2</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-text">天</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>0</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>6</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-text">时</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>1</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-number">-->
+                            <!--<span>4</span>-->
+                        <!--</view>-->
+                        <!--<view class="date-text">分</view>-->
                     </view>
                 </view>
             </view>
@@ -52,21 +61,23 @@
 
                 </view>
                 <view class="list-title-text">
-                    <span class="text">矿池分红收益</span>
+                    <span class="">{{$t('bonus').lastProfit}}</span>
                 </view>
             </view>
-            <earningsRecordList :earningsRecordData="earningsRecordData" :isBlack="isBlack"  v-if="!isNoDataFlag"></earningsRecordList>
-            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"     v-if="!isNoDataFlag"></uni-load-more>
-            <view class="setcenter" v-else>
-                <view class="nologimg">
-                    <image src="../../static/images/nohistorylog/nohistorylog.png" mode="" class="img"></image>
-                    <view class="item">暂无数据</view>
-                </view>
+
+            <view class="noDataBox" v-if="isNoDataFlag">
+                <noData></noData>
             </view>
+            <earningsRecordList
+            isBlack="isBlack"
+                    v-if="!isNoDataFlag"
+                    :earningsRecordData="earningsRecordData">
+            </earningsRecordList>
+            <uni-load-more  @clickLoadMore="getVIPInterest(true)" :status="status"    v-if="!isNoDataFlag"></uni-load-more>
+
         </scroll-view>
     </view>
 </template>
-
 <script src="@/script/bonus/bonus.js"></script>
 
 <style scoped lang="less">

@@ -265,6 +265,34 @@ export default {
         bonusLastDay: "昨日推广收益",
         inviteBonusRecords: "推广收益记录",
     },
+        //矿池分红
+    bonus:{
+        title:'矿池分红',
+        vip:'您的VIP等级',
+        number:'矿池积累数量',
+        lastTime:'下次分红时间',
+        lastProfit:'矿池分红收益',
+        vipArray:[
+            '普通会员',
+            '初级节点',
+            '中级节点',
+            '高级节点',
+            '最高节点',
+        ]
+
+    },
+    //倒计时
+    countDown:{
+        d:'天',
+        h:'时',
+        m:'分',
+        s:'秒',
+    },
+    loadMore:{
+        contentdown: '显示更多',
+        contentrefresh: '正在加载...',
+        contentnomore: '没有更多数据了'
+    },
     sub: {
         title: '质押挖矿',
         availableBalance: '可用余额',

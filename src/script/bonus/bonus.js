@@ -51,23 +51,23 @@ export default {
             vipType: 0,
             vipTypeArray:{
                 0:{
-                    text:'普通会员',
+                    text:this.$t('bonus').vipArray[0],
                     level:0
                 },
                 1:{
-                    text:'初级节点',
+                    text:this.$t('bonus').vipArray[1],
                     level:0
                 },
                 2:{
-                    text:'中级节点',
+                    text:this.$t('bonus').vipArray[2],
                     level:0
                 },
                 3:{
-                    text:'高级节点',
+                    text:this.$t('bonus').vipArray[3],
                     level:0
                 },
                 4:{
-                    text:'最高节点',
+                    text:this.$t('bonus').vipArray[4],
                     level:0
                 },
             },
@@ -82,11 +82,12 @@ export default {
     },
     mounted() {
         let theme = this.$storage.getSync({key:'theme'});
+        let that = this;
         if(theme === 'white'){
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "矿池分红",
+                text: that.$t('bonus').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -101,7 +102,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: "矿池分红",
+                text: that.$t('bonus').title,
                 rightItem: {
                     type: "text",
                     text: "",

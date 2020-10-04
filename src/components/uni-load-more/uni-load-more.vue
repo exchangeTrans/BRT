@@ -72,21 +72,26 @@
 				type: String,
 				default: '#777777'
 			},
-			contentText: {
-				type: Object,
-				default () {
-					return {
-						contentdown: '显示更多',
-						contentrefresh: '正在加载...',
-						contentnomore: '没有更多数据了'
-					}
-				}
-			}
+			// contentText: {
+			// 	type: Object,
+			// 	default () {
+			// 		return {
+			// 			contentdown: '显示更多',
+			// 			contentrefresh: '正在加载...',
+			// 			contentnomore: '没有更多数据了'
+			// 		}
+			// 	}
+			// }
 		},
 		data() {
 			return {
                 webviewHide: false,
-				platform: platform
+				platform: platform,
+				contentText:{
+					contentdown: this.$t('loadMore').contentdown,
+					contentrefresh: this.$t('loadMore').contentrefresh,
+					contentnomore: this.$t('loadMore').contentnomore,
+				}
 			}
 		},
 		// #ifndef APP-NVUE

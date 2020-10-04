@@ -9,18 +9,18 @@
                     <view class="bonus-wrap-content-card-msg">
                         <view class="left">
                             <view class="grade">{{vipTypeArray[vipType].text}}</view>
-                            <view class="grade-text">您的VIP等级</view>
+                            <view class="grade-text">{{$t('bonus').vip}}</view>
                         </view>
                         <view class="right">
                             <view class="number">{{total}}</view>
-                            <view class="number-text">矿池积累数量（BRT）</view>
+                            <view class="number-text">{{$t('bonus').number}}（BRT）</view>
                         </view>
                     </view>
                     <view class="bonus-wrap-content-card-dateTitle">
                         <span class="icon">
                             <image :src="time"></image>
                         </span>
-                        <span class="text">下次分红时间</span>
+                        <span class="text">{{$t('bonus').lastTime}}</span>
                     </view>
                     <view class="bonus-wrap-content-card-date">
                         <uni-countdown
@@ -60,7 +60,7 @@
 
                 </view>
                 <view class="list-title-text">
-                    <span class="">矿池分红收益</span>
+                    <span class="">{{$t('bonus').lastProfit}}</span>
                 </view>
             </view>
 

@@ -2,15 +2,15 @@
 	<view class="uni-countdown">
 		<text v-if="showDay" :style="{ borderColor: borderColor, color: color, backgroundColor: backgroundColor }" class="uni-countdown__number">{{ d[0]}}</text>
 		<text v-if="showDay" :style="{ borderColor: borderColor, color: color, backgroundColor: backgroundColor }" class="uni-countdown__number">{{ d[1]}}</text>
-		<text v-if="showDay" :style="{ color: splitorColor }" class="uni-countdown__splitor">天</text>
+		<text v-if="showDay" :style="{ color: splitorColor }" class="uni-countdown__splitor">{{$t('countDown').d}}</text>
 		<text :style="{ borderColor: borderColor, color: color, backgroundColor: backgroundColor }" class="uni-countdown__number">{{ h[0]}}</text>
 		<text :style="{ borderColor: borderColor, color: color, backgroundColor: backgroundColor }" class="uni-countdown__number">{{ h[1]}}</text>
-		<text :style="{ color: splitorColor }" class="uni-countdown__splitor">{{ showColon ? ':' : '时' }}</text>
+		<text :style="{ color: splitorColor }" class="uni-countdown__splitor">{{ showColon ? ':' : $t('countDown').h }}</text>
 		<text :style="{ borderColor: borderColor, color: color, backgroundColor: backgroundColor }" class="uni-countdown__number">{{ i[0] }}</text>
 		<text :style="{ borderColor: borderColor, color: color, backgroundColor: backgroundColor }" class="uni-countdown__number">{{ i[1] }}</text>
-		<text :style="{ color: splitorColor }" class="uni-countdown__splitor">{{ showColon ? ':' : '分' }}</text>
+		<text :style="{ color: splitorColor }" class="uni-countdown__splitor">{{ showColon ? ':' : $t('countDown').m }}</text>
 		<text v-if="showSecond" :style="{ borderColor: borderColor, color: color, backgroundColor: backgroundColor }" class="uni-countdown__number">{{ s }}</text>
-		<text v-if="showSecond" :style="{ color: splitorColor }" class="uni-countdown__splitor">秒</text>
+		<text v-if="showSecond" :style="{ color: splitorColor }" class="uni-countdown__splitor">{{$t('countDown').s}}</text>
 	</view>
 </template>
 <script>
