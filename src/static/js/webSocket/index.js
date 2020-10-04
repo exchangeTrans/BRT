@@ -243,7 +243,7 @@ export const mySocket={
         let all = 0;
         let depth = 0;
         let NewData = []
-        for (let index = 0; index < data.length; index++) {
+        for (let index = 0; index < 5; index++) {
             let item = data[index];
             let obj = {
                 size:0,
