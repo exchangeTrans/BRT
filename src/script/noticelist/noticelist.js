@@ -17,6 +17,7 @@ export default {
 		setTimeout(function() {
 			uni.stopPullDownRefresh();//停止当前页面下拉刷新
 			that.postData.start='0';
+			that.notice_list=[];
 			that.getdata();
 		}, 1000);
 	},
@@ -27,16 +28,17 @@ export default {
 		console.log('reach');
 		setTimeout(function () {
 			(parseInt(that.postData.start)+1).toString();
+			that.notice_list=[];
 			that.getdata();
 			uni.hideNavigationBarLoading()
 		}, 2000);
 	},
 		mounted() {
 		this.getdata();
-		setTimeout(function() {
-			console.log('start pulldown');
-		}, 1000);
-		uni.startPullDownRefresh();//开始下拉刷新
+		// setTimeout(function() {
+		// 	console.log('start pulldown');
+		// }, 1000);
+		// uni.startPullDownRefresh();//开始下拉刷新
 		let theme = this.$storage.getSync({
 			key: 'theme'
 		});
@@ -111,6 +113,7 @@ export default {
 						notice_list_item.text = res.data.list[i].title;
 						var time = DateFunc.resetTime(parseInt(res.data.list[i].createTime), 'ymdhm');
 						notice_list_item.date = time;
+						// console.log(this.notice_list.indexOf(notice_list_item));
 						this.notice_list.unshift(notice_list_item);
 						notice_list_item = {
 							text: '',
