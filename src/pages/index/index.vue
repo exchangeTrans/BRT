@@ -23,9 +23,9 @@
 				</view>
 				<view class="clearfix"></view>
 			</view>
-			<view class="notice" @click="gonoticelist">
+			<view class="notice"  v-if="discovery.length>0"> <!--gonoticelist_details-->
 				<view class="noticeIcon" :style="{'background-image':'url('+notice2+')'}"></view>
-				<view class="noticeText" @click="gonoticelist">关于BRT上线的公告</view>
+				<view class="noticeText" @click="goNoticeDetail(discovery[0])">{{discovery[0].details}}</view>
 				<view class="more" :style="{'background-image':'url('+more+')'}" @click.self.stop="gonoticelist"></view>
 				<view class="clearfix"></view>
 			</view>
@@ -243,7 +243,13 @@
 					float: left;
 					margin-left: 20rpx;
 					font-size: 24rpx;
+					height: 80rpx;
+					overflow: hidden;
+					width: 500rpx;
 					color: #1A1A1A;
+					overflow: hidden;
+					text-overflow:ellipsis;
+					white-space: nowrap;
 				}
 				.more{
 					float: right;

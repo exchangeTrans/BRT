@@ -64,7 +64,9 @@ export default {
             notice_deails_list: [],
 
             userMsg: {},
-            changeMoneyData: {}
+            changeMoneyData: {},
+            discovery:[],
+            
             // changeMoneyData: {}
 
         }
@@ -119,6 +121,7 @@ export default {
     },
     mounted() {
         this.getChangeMoneyData();
+        this.getDiscoveryData()
         //   this.$refs.update.open();
         // this.getfirst();
     },
@@ -168,34 +171,41 @@ export default {
                 url: 'noticelist/index'
             })
         },
-        gonoticelist_details() {
+        goNoticeDetail(){
+            var that = this;
+            var obj = JSON.stringify(that.discovery);
+            console.log(that.discovery)
+			this.$jumpPage.jump({
+				type: "navigateTo",
+				url: 'noticedetails/index?details_list=' + obj+'&id=0'
+			})
+        },
+        getDiscoveryData() {
             let postData = {
                 infoType: '1',
                 start: '0',
                 index: "1",
             };
+            let that = this;
             this.$request({
                 url: "discovery/getInfo",
                 method: "post",
                 params: postData
             }).then((res) => {
-                var notice_details = {
-                    title: '',
-                    date: '',
-                    details: ''
-                };
-                console.log(res)
-                notice_details.title = res.data.list[0].title;
-                var time = DateFunc.resetTime(parseInt(res.data.list[0].createTime), 'ymd');
-                notice_details.date = time;
-                notice_details.details = res.data.list[0].detail;
-                this.notice_deails_list.push(notice_details);
-                console.log(this.notice_deails_list);
-                var obj = JSON.stringify(this.notice_deails_list);
-                this.$jumpPage.jump({
-                    type: 'navigateTo',
-                    url: 'noticedetails/index?details_list=' + obj + '&id=' + 0
-                })
+                if (res.result.returnCode.toString() === "0") {
+                    let list = res.data.list;
+                    let discovery = [];
+                    for (var i = 0; i < list.length; i++){
+                        var item = {
+                            title: list[i].title,
+                            date: DateFunc.resetTime(parseInt(list[i].createTime), 'ymdhm'),
+                            details: list[i].detail
+                        }
+                        discovery.push(item)
+                    }
+                    that.discovery = discovery;
+                    
+                } 
             }).catch(err => {
                 console.log(err);
             })

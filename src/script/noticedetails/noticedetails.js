@@ -4,11 +4,9 @@ import ndheader from '../../components/common/header'
 			ndheader
 		},
 		onLoad(options) {
-			this.details_msg_list = JSON.parse(options.details_list).reverse();
+			this.details_msg_list = JSON.parse(options.details_list);
 			// console.log(details_msg_list);
-			this.id = options.id
-			// console.log(this.details_msg_list);
-			// console.log(this.id)
+			this.id = options.id;
 		},
 		mounted() {
 			let theme = this.$storage.getSync({
