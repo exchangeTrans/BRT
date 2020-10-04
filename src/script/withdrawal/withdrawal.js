@@ -36,7 +36,7 @@ export default {
                 bodyPadding: {"padding": '0,0,0,0'},
                 headerIsNoBoder: true,*/
             },
-            btnText: "提币",
+            // btnText: "提币",
             BtnackgroundColor: "#8C939B",
             btnCanClick: false,
             btnCorrectNum: 0,
@@ -56,8 +56,8 @@ export default {
             getCodeStatus: true,
 
             address: {
-                textTitle: "提币地址",
-                placeholder: "输入或长按粘贴地址",
+                textTitle:this.$t('withdrawal').addressInput.textTitle,
+                placeholder: this.$t('withdrawal').addressInput.placeholder,
                 rightItem: {
                     type: "isIcon",//isText isBtn isIcon
                     text: "BRT",
@@ -65,17 +65,17 @@ export default {
                 name: "address",
             },
             amount: {
-                textTitle: "数量",
-                placeholder: "最小提币数量10.00000000",
+                textTitle: this.$t('withdrawal').amountInput.textTitle,
+                placeholder: this.$t('withdrawal').amountInput.placeholder+"10",
                 rightItem: {
                     type: "isText",//isText isBtn isIcon
                     text: "BRT",
                 },
-                haveTip: "余额：0.562 BRT",
+                haveTip: this.$t('withdrawal').amountInput.subText+"0.562 BRT",
                 name: "amount",
             },
             commission: {
-                textTitle: "手续费",
+                textTitle: this.$t('withdrawal').commissionInput.textTitle,
                 placeholder: "1.00000000",
                 rightItem: {
                     type: "isText",//isText isBtn isIcon
@@ -86,11 +86,11 @@ export default {
                 name: "commission",
             },
             phoneInput: {
-                textTitle: "手机验证码",
-                placeholder: "输入手机验证码",
+                textTitle: this.$t('withdrawal').phoneInput.textTitle,
+                placeholder: this.$t('withdrawal').phoneInput.placeholder,
                 rightItem: {
                     type: "isBtn",//isText isBtn isIcon
-                    text: "获取验证码",
+                    text: this.$t('withdrawal').phoneInput.subText,
                 },
                 name: "verifyCode",
             },
@@ -101,14 +101,15 @@ export default {
         let theme = this.$storage.getSync({key: 'theme'});
         let symbolType = this.$store.state.wallet.symbolType
         let userInfo = this.$store.state.defaultData.userInfo
+        let that= this;
         if (theme === 'white') {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: symbolType.name + " 提币",
+                text: symbolType.name + " " +that.$t('withdrawal').title,
                 rightItem: {
                     type: "text",
-                    text: "提币纪录",
+                    text: that.$t('withdrawal').subTitle,
                     style: {
                         fontSize: "28rpx",
                         color: "#098FE0",
@@ -126,10 +127,10 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: symbolType.name + " 提币",
+                text: symbolType.name + " " +that.$t('withdrawal').title,
                 rightItem: {
                     type: "text",
-                    text: "提币纪录",
+                    text: that.$t('withdrawal').subTitle,
                     style: {
                         fontSize: "28rpx",
                         color: "#098FE0",
@@ -255,8 +256,8 @@ export default {
                 let that = this
                 if (res.result.returnCode.toString() === "0") {
                     that.symbolDetail = res.data
-                    that.amount.placeholder = "最小提币数量" + res.data.withdrwaMin
-                    that.amount.haveTip = "余额：" + res.data.symbolBalance + " " + res.data.symbolTitle
+                    that.amount.placeholder = that.$t('withdrawal').mainNumber + res.data.withdrwaMin
+                    that.amount.haveTip = that.$t('withdrawal').balance + res.data.symbolBalance + " " + res.data.symbolTitle
                     that.minDrawTip = res.data.withdrwaMin + " （" + res.data.symbolTitle + "）"
                     that.commissionAmount = res.data.symbolFeeMin
                 }
@@ -301,10 +302,10 @@ export default {
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that.phoneInput.rightItem.text = that.time + '秒后重新发送';
+                that.phoneInput.rightItem.text = that.time + that.$t('withdrawal').requestTipArrray[0];
                 --that.time;
                 if (that.time < 0) {
-                    that.phoneInput.rightItem.text = "重新发送";
+                    that.phoneInput.rightItem.text = that.$t('withdrawal').requestTipArrray[1];
                     that.time = 60;
                     that.getCodeStatus = true
                     clearInterval(interval);
@@ -327,17 +328,17 @@ export default {
             //     })
             //     return;
             // }
+            let that = this;
             if (parseInt(this.postData['amount']) < parseInt(this.symbolDetail.withdrwaMin)) {
                 this.$toast.show({
-                    title: "未达到最小提币数量不足"
+                    title: that.$t('withdrawal').requestTipArrray[2]
                 })
                 return;
             }
             this.isAllowClick = false;
             this.$toast.showLoading({
-                title:'提币中'
+                title:that.$t('withdrawal').requestTipArrray[3]
             })
-            let that = this;
             this.$request({
                 url: "wallet/validateAddress",
                 method: "post",
@@ -372,7 +373,7 @@ export default {
                 } else {
                     that.isAllowClick = true;
                     that.$toast.show({
-                        title: "请先输入正确的提币地址"
+                        title: that.$t('withdrawal').requestTipArrray[4]
                     })
                 }
             })

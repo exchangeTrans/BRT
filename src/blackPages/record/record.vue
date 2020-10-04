@@ -13,7 +13,7 @@
         <view class="listcontent" v-else>
             <view class="datacontent">
                 <image src="../../static/images/addrecord/addlog.png" mode="" class="img"></image>
-                <view class="item">暂无数据</view>
+                <view class="item">{{$t('record').noData}}</view>
             </view>
         </view>
     </view>

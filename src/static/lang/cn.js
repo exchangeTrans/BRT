@@ -55,12 +55,64 @@ export default {
         balanceUse:'锁仓余额',
         withdrawal:"转账",
         receipt:"收款",
-        tip:'此币种目前只支持提币11',
+        tip:'此币种目前只支持提币',
     },
     //提币{}
     withdrawal:{
+        title:'提币',
+        subTitle:'提币纪录',
+        number:"到账数量",
+        tipArray:[
+            '最小提币数量：',
+            '平台间用户转帐无手续费。',
+            '为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。',
+            '请务必确认电脑及浏览器安全，防止信息被篡改或泄露'
+        ],
+        btnText:'提币',
+        addressInput:{
+            textTitle: "提币地址",
+            placeholder: "输入或长按粘贴地址",
+        },
+        amountInput:{
+            textTitle: "数量",
+            placeholder: "最小提币数量",
+            subText:'余额：'
+        },
+        commissionInput:{
+            textTitle: "手续费",
+        },
+        phoneInput:{
+            textTitle: "手机验证码",
+            placeholder: "输入手机验证码",
+            subText:'获取验证码'
+        },
+        mainNumber:'最小提币数量',
+        balance:'余额',
+        requestTipArrray:[
+            '秒后重新发送',
+            '重新发送',
+            '未达到最小提币数量不足',
+            '提币中',
+            '请先输入正确的提币地址'
+        ]
+        // minNumber:'最小提币数量：'
+        
+    },
+    //提币记录
+    record:{
+        title:"提币记录",
+        noData:'暂无数据'
+    },
+    //充币记录
+    addRecord:{
+        title:"充币记录",
+        noData:'暂无数据'
+    },
+    ////记录组件
+    recordItem:{
 
     },
+
     //k线
     trade: {
       buy:"买入",

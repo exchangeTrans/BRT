@@ -19,7 +19,7 @@
                 </view>
                 <view class="withdrawal-wrap-container-text">
                     <view class="text">
-                        <span>{{$t('tradePage').prcie}}到账数量</span>
+                        <span>{{$t('withdrawal').number}}</span>
                     </view>
                     <view class="text">
                         <span class="blue">{{receiveAmount}}</span>
@@ -30,11 +30,11 @@
                 </view>
                 <view class="withdrawal-wrap-container-tip">
                     <view class="withdrawal-wrap-container-tip-content">
-                        <span class="tipTitle">最小提币数量：{{minDrawTip}}</span>
-                        <span class="tipContent">平台间用户转帐无手续费。</span>
+                        <span class="tipTitle">{{$t('withdrawal').tipArray[0]}}{{minDrawTip}}</span>
+                        <span class="tipContent">{{$t('withdrawal').tipArray[1]}}</span>
                         
-                        <span class="tipContent">为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。</span>
-                        <span class="tipContent mgt">请务必确认电脑及浏览器安全，防止信息被篡改或泄露</span>
+                        <span class="tipContent">{{$t('withdrawal').tipArray[2]}}</span>
+                        <span class="tipContent mgt">{{$t('withdrawal').tipArray[3]}}</span>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-btn">
@@ -44,7 +44,7 @@
                          width="690rpx"
                          borderRadius="50rpx"></Btn>-->
                     <view class="btn-wrap" :class="{'canClick': btnCanClick, 'cannotClick': !btnCanClick}" @tap="transfer">
-                        <span>提币</span>
+                        <span>{{$t('withdrawal').btnText}}</span>
                     </view>
                 </view>
             </view>

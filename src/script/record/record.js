@@ -36,11 +36,13 @@ export default {
         let theme = this.$storage.getSync({key:'theme'});
         let symbolType = this.$store.state.wallet.symbolType
         let userInfo = this.$store.state.defaultData.userInfo
+        let that = this;
         if(theme === 'white'){
+            console.log(that.$t('record').title)
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: symbolType.name + "提币记录",
+                text: symbolType.name + that.$t('record').title,
                 rightItem: {
                     type: "text",
                     text: "ID:" + userInfo.inviteCode,
@@ -63,7 +65,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: symbolType.name + "提币记录",
+                text: symbolType.name + that.$t('record').title,
                 rightItem: {
                     type: "text",
                     text: "ID:" + userInfo.inviteCode,

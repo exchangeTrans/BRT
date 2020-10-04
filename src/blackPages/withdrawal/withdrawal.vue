@@ -3,37 +3,38 @@
         <app-header :headerOptions="headerOptions"
                     @headertap=headertap
                     class="appHeader"></app-header>
-        <scroll-view class="withdrawal-wrap" :scroll-y="true">
+        <scroll-view class="withdrawal-wrap" :scroll-y="true" @touchmove.stop.prevent="moveHandle">
             <view class="withdrawal-wrap-container">
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="address" inputType="text" :isBlack="true" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" @btnClick="toScanCode"></WithdrawalInput>
+                         <!-- @btnClick="toScanCode" -->
+                        <WithdrawalInput :isBlack="true" :inputData="address" inputType="text" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" :inputType="'text'"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="amount" :isBlack="true" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
+                        <WithdrawalInput :isBlack="true" :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
-                        <WithdrawalInput :inputData="commission"  :isBlack="true" @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
+                        <WithdrawalInput :isBlack="true" :inputData="commission"  @inputChange="inputChange(commission.name, $event)" :inputValue="commissionAmount"></WithdrawalInput>
                     </view>
                 </view>
-                <view :class="isBlack ? 'withdrawal-wrap-container-text black':'withdrawal-wrap-container-text'">
+                <view class="withdrawal-wrap-container-text black">
                     <view class="text">
-                        <span>到账数量</span>
+                        <span>{{$t('withdrawal').number}}</span>
                     </view>
                     <view class="text">
                         <span class="blue">{{receiveAmount}}</span>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-phoneInput">
-                    <WithdrawalInput :inputData="phoneInput"
-                                     :isBlack="true"></WithdrawalInput>
+                    <WithdrawalInput :isBlack="true" :inputData="phoneInput" @inputChange="inputChange(phoneInput.name, $event)" @btnClick="sendVerifyCode"></WithdrawalInput>
                 </view>
                 <view class="withdrawal-wrap-container-tip">
-                    <view :class="isBlack?'withdrawal-wrap-container-tip-content black': 'withdrawal-wrap-container-tip-content'">
-                        <span class="tipTitle">最小提币数量：{{minDrawTip}}</span>
-                        <span class="tipContent">平台间用户转帐无手续费。</span>
-                        <span class="tipContent">为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。</span>
-                        <span class="tipContent mgt">请务必确认电脑及浏览器安全，防止信息被篡改或泄露</span>
+                    <view class="withdrawal-wrap-container-tip-content black">
+                        <span class="tipTitle">{{$t('withdrawal').tipArray[0]}}{{minDrawTip}}</span>
+                        <span class="tipContent">{{$t('withdrawal').tipArray[1]}}</span>
+                        
+                        <span class="tipContent">{{$t('withdrawal').tipArray[2]}}</span>
+                        <span class="tipContent mgt">{{$t('withdrawal').tipArray[3]}}</span>
                     </view>
                 </view>
                 <view class="withdrawal-wrap-container-btn">
@@ -42,8 +43,8 @@
                          :backgroundColor="BtnackgroundColor"
                          width="690rpx"
                          borderRadius="50rpx"></Btn>-->
-                    <view class="btn-wrap" :class="{'canClick': btnCanClick, 'cannotClick': !btnCanClick}">
-                        <span>提币</span>
+                    <view class="btn-wrap" :class="{'canClick': btnCanClick, 'cannotClick': !btnCanClick}" @tap="transfer">
+                        <span>{{$t('withdrawal').btnText}}</span>
                     </view>
                 </view>
             </view>
