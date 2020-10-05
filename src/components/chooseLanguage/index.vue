@@ -100,14 +100,14 @@
         },
         methods: {
             chooseItem(item) {
-                if(item.name==='zh-CN'){
+                // if(item.name==='zh-CN'){
                     this.selectedObj=item;
                     this.$emit('chooseItem',item);
-                }else{
-                    this.$toast.show({
-                        title: this.$t('setting').noOpen,
-                    })
-                }
+                // }else{
+                //     this.$toast.show({
+                //         title: this.$t('setting').noOpen,
+                //     })
+                // }
                 
             },
         }
