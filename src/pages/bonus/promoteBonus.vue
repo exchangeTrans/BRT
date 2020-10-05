@@ -4,10 +4,11 @@
         <scroll-view  class="promoteBonusWrap" scroll-y="true">
             <view class="contentWrap">
                 <view class="userInfo">
+                    <image class="avatar" :src="promoteBonusData.avatar===''?headerImgRight:promoteBonusData.avatar" mode="" style="width:118rpx; height: 118rpx; border-radius: 50%"></image>
                     <!-- <image :src="teamData.avatar===''?headerImgRight:teamData.avatar" mode="" style="width:118rpx; height: 118rpx; border-radius: 50%"></image> -->
-                    <view class="avatar" :style="{'background-image': 'url('+(promoteBonusData.avatar==='')?headerImgRight:promoteBonusData.avatar+')'}">
+                    <!-- <view class="avatar" :style="{'background-image': 'url('+(promoteBonusData.avatar==='')?headerImgRight:promoteBonusData.avatar+')'}"> -->
 <!-- {{promoteBonusData.avatar}} -->
-                    </view>
+                    <!-- </view> -->
                     <view class="nicknameInfo">
                         <view class="nickname">
                             {{promoteBonusData.nickname}}

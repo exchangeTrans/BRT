@@ -113,11 +113,13 @@ export default {
                     }else {
                         that.status='more'
                     }
+                    that.promoteBonusData=res.data;
+                    console.log(that.promoteBonusData)
                     //判断是第一次加载还是加载更多
                     if (isMore){
                         that.earningsRecordData=that.earningsRecordData.concat(res.data.list);
                     }else {
-                        that.promoteBonusData=res.data;
+                        
                         that.earningsRecordData=res.data.list;
                         //判断是否有数据
                         if (res.data.list.length===0){

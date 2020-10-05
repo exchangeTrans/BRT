@@ -315,10 +315,11 @@ export default {
         title:"团队详情",
         teamPledge:'团队总质押',
         addPledge:'今日新增质押',
-        teamNum:'团队总人数',
+        teamNumAll:'团队总人数',
         invitationRecord:'邀请记录',
         invitationAccount:'邀请账户',
-        pledgeAmount:'团队质押业绩',
+        pledgeAmount:'团队业绩',
+        teamNum:'团队人数'
     },
     //质押弹窗
     transferInAmount: {

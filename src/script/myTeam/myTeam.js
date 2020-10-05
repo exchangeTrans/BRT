@@ -130,11 +130,11 @@ export default{
                     //判断是第一次加载还是加载更多
                     if (isMore){
                         inviteRecord = inviteRecord.concat(res.data.list);
-                        that.inviteRecord = that.getData(inviteRecord)
+                        that.inviteRecord = inviteRecord
                     }else {
                         that.teamData=res.data;
                         inviteRecord=res.data.list;
-                        that.inviteRecord = that.getData(inviteRecord)
+                        that.inviteRecord = inviteRecord
 
                         //判断是否有数据
                         if (res.data.list.length===0){

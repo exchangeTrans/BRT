@@ -26,7 +26,7 @@
 					<view class="num">{{teamData.teamMiningDay}}</view>
 				</view>
 				<view class="teamyestoday">
-					<view class="descrip">{{$t('myTeam').teamNum}}</view>
+					<view class="descrip">{{$t('myTeam').teamNumAll}}</view>
 					<view class="num">{{teamData.teamQty}}</view>
 				</view>
 			</view>
@@ -36,18 +36,43 @@
 			<image src="../../static/images/myteam/item.png" mode="" class="img"></image>
 			<view class="log">{{$t('myTeam').invitationRecord}}</view>
 		</view>
-		<view class="datalisthead">
+		<!-- <view class="datalisthead">
 			<view class="count">{{$t('myTeam').invitationAccount}}</view>
 			<view class="memberid">ID</view>
 			<view class="grade">{{$t('myTeam').pledgeAmount}}</view>
-		</view>
+		</view> -->
 		<scroll-view scroll-y="true" class="scrollh">
+			<view class="listItem" v-for="(item,id) in inviteRecord" :key="id">
+				<view class="listItemLeft">
+					<view class="userMsg">
+						<image class="head" :src="headerImgRight" mode="" style="width:40rpx; height: 40rpx; border-radius: 50%"></image>
+						<view class="id">{{item.account}}</view>
+					</view>
+					<view class="clearfix"></view>
+					<view class="teamNum">
+						<view class="num">{{item.userCount?item.userCount:0}}</view>
+						<view class="text">{{$t('myTeam').teamNum}}</view>
+					</view>
+					<view class="clearfix"></view>
+				</view>
+				<view class="listItemRight">
+					<view class="userMsg">						
+						<view class="id">ID: {{item.inviteCode}}</view>
+					</view>
+					<view class="clearfix"></view>
+					<view class="teamNum">
+						<view class="num">{{item.teamMining}}</view>
+						<view class="text">{{$t('myTeam').pledgeAmount}}(BRT)</view>
+					</view>
+					<view class="clearfix"></view>
+				</view>
+			</view>
 			<!-- <view class="datalist" v-for="(item,id) in datalist" :key="id">
 				<image :src=item.flag mode="" class="flag"></image>
 				<view class="count">{{item.phonenumber}}</view>
 				<view class="memberid">{{item.memberid}}</view>
 				<view class="grade">{{item.grade}}</view> -->
-			<view class="datalist" v-for="(item,id) in inviteRecord" :key="id">
+			<!-- <view class="datalist" v-for="(item,id) in inviteRecord" :key="id">
 				<view class="inviteAccount">
 					<image :src="countryFlagArr[item.countryCode]" mode="" class="flag"></image>
 					<view class="time">{{item.account}}</view>
@@ -55,9 +80,7 @@
 				<view class="memberid">{{item.inviteCode}}</view>
 				<view class="grade">{{item.teamMining}}</view>
 				<view class="clearfix"></view>
-			</view>
-
-
+			</view> -->
 			<uni-load-more  @clickLoadMore="getTeam(true)" :status="status"    v-if="!isNoDataFlag"></uni-load-more>
 
 			<view class="noDataBox"  v-if="isNoDataFlag">
@@ -72,7 +95,8 @@
 <style lang="less">
 	.myTeam{
 		width: 100%;
-		height: 100%;
+		height: 100%;		
+		background: #F9FAFA;
 		// padding-top: calc(100rpx + var(--status-bar-height));
 		.headbg{
 			position: relative;
@@ -207,6 +231,7 @@
 			width: 100%;
 			height: 160rpx;
 			margin-top: -45rpx;
+			background-color: #F9FAFA;
 			.img{
 				width: 32rpx;
 				height: 32rpx;
@@ -248,6 +273,125 @@
 				/*margin-left: 530rpx;*/
 			}
 		}
+		.listItem{
+			width: 690rpx;
+			height: 242rpx;
+			box-sizing: border-box;
+			margin: 0 auto 20rpx;
+			background: #fff;
+			border-radius: 10rpx;
+			padding: 30rpx 40rpx 0 30rpx;
+			.listItemLeft{
+				float: left;
+				.userMsg{
+					height: 40rpx;
+					float: left;
+					display: flex;
+					
+					.head{
+						float: left;
+						// display: inline-block;
+					}
+					.id{
+						padding-left: 12rpx;
+						float: left;
+						height: 40rpx;					
+						font-size: 28rpx;
+						font-family: PingFangSC-Regular, PingFang SC;
+						font-weight: 400;
+						color: #1A1A1A;
+						line-height: 40rpx;
+						// display: inline-block;
+					}
+				}
+				.teamNum{
+					width: 200rpx;
+					text-align: center;
+					margin-top: 40rpx;
+					.num{
+						
+						height: 50rpx;
+						font-size: 36rpx;
+						font-family: PingFangSC-Medium, PingFang SC;
+						font-weight: 500;
+						color: #1A1A1A;
+						line-height: 50rpx;
+					}
+					.text{
+						
+						height: 34rpx;
+						font-size: 24rpx;
+						font-family: PingFangSC-Regular, PingFang SC;
+						font-weight: 400;
+						color: #1A1A1A;
+						line-height: 34rpx;
+						margin-top: 6rpx;
+						opacity: 0.5;
+					}
+				}
+			}
+			.listItemRight{
+				float: right;
+				.userMsg{
+					height: 40rpx;
+					float: right;
+					display: flex;
+					
+					.head{
+						float: right;
+						// display: inline-block;
+					}
+					.id{
+						padding-left: 12rpx;
+						float: left;
+						height: 40rpx;					
+						font-size: 28rpx;
+						font-family: PingFangSC-Regular, PingFang SC;
+						font-weight: 400;
+						color: #1A1A1A;
+						line-height: 40rpx;
+						// display: inline-block;
+					}
+				}
+				.teamNum{
+					width: 160rpx;
+					text-align: center;
+					margin-top: 40rpx;
+					.num{
+						
+						height: 50rpx;
+						font-size: 36rpx;
+						font-family: PingFangSC-Medium, PingFang SC;
+						font-weight: 500;
+						color: #1A1A1A;
+						line-height: 50rpx;
+					}
+					.text{
+						
+						height: 34rpx;
+						font-size: 24rpx;
+						font-family: PingFangSC-Regular, PingFang SC;
+						font-weight: 400;
+						color: #1A1A1A;
+						line-height: 34rpx;
+						margin-top: 6rpx;
+						opacity: 0.5;
+					}
+				}
+			}
+			
+		}
+
+
+
+
+
+
+
+
+
+
+
 		.datalist{
 			font-size: 28rpx;
 			width: 100%;
@@ -293,7 +437,7 @@
 		}
 		.scrollh{
 			width: 100%;
-			height: calc(100vh - 755rpx - var(--status-bar-height));
+			height: calc(100vh - 655rpx - var(--status-bar-height));
 			.noDataBox {
 				position: relative;
 			}
