@@ -4,6 +4,7 @@ const GETCOUNTRYLIST = 'GETCOUNTRYLIST';
 const COUNTRY = 'COUNTRY';
 const GETRANGEDATA = "GETRANGEDATA";
 const GETUSERINFO = "GETUSERINFO";
+const COUNTRYCODE = 'COUNTRYCODE';
 
 export default {
     state: {
@@ -75,6 +76,7 @@ export default {
         },
         conturyList: [],
         contury: {},
+        countryCode:{},
         userInfo: {asset:0,},
         footerArray: [
             {
@@ -206,8 +208,13 @@ export default {
             }).then(res => {
                 if (res.result.returnCode.toString() === '0') {
                     let data = res.data.list;
+                    let countryCode = {};
+                    data.forEach(element => {
+                        countryCode[element.countryCode] = element.dialingCode
+                    });
                     commit('GETCOUNTRYLIST', data);
                     commit('COUNTRY', data[0]);
+                    commit('COUNTRYCODE', countryCode);
                 }
             })
         },
@@ -246,6 +253,10 @@ export default {
         [COUNTRY](state, result) {
             state.contury = result;
         },
+        [COUNTRYCODE](state, result) {
+            state.countryCode = result;
+        },
+        
         [GETRANGEDATA](state, result) {
             state.rangeData = result;
         },

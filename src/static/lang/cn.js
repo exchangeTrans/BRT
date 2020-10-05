@@ -407,7 +407,7 @@ export default {
     //设置
     setting: {
         settingText: "设置",
-        noOpen: "设置",
+        noOpen: "暂未开放",
         modelText: "日夜模式",
         day: "日间模式",
         night: "夜晚模式",
@@ -434,6 +434,9 @@ export default {
         connectUsText: "联系我们",
         email: "客服邮箱",
         connectUser: "联系客服",
+    },
+    chooseCountry:{
+        title:'选择国家'
     },
     //修改绑定手机邮箱
     changePhone: {

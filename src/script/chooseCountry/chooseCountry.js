@@ -61,7 +61,7 @@ export default {
             headerOptions: {
                 show: true,
                 isAllowReturn: true,
-                text: "选择国家",
+                text: this.$t('chooseCountry').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -80,12 +80,13 @@ export default {
     mounted() {
         let theme = this.$storage.getSync({key:'theme'});
         // console.log(theme);
+        let that = this;
         if(theme === 'white'){
             this.isBlack = false
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: "选择国家",
+                text: that.$t('chooseCountry').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -99,7 +100,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon:true,
-                text: "选择国家",
+                text: that.$t('chooseCountry').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -112,8 +113,6 @@ export default {
                 headerIsNoBoder: true,
             }
         }
-        console.log(this.isBlack)
-
         this.assembleCountryData()
     },
     onShow() {

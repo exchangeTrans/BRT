@@ -140,13 +140,22 @@ export default {
         chooseLanguage(languageItem) {
             // console.log(languageItem)
             
-            if(languageItem.name==='zh-CN'){
-                this.languageItem = languageItem;
-            }else{
-                this.$toast.show({
-                    title: this.$t('setting').noOpen,
-                })
-            }
+            // if(languageItem.name==='zh-CN'){
+            //     this.languageItem = languageItem;
+            // }else{
+            //     this.$toast.show({
+            //         title: this.$t('setting').noOpen,
+            //     })
+            // }
+            this.$storage.set({key:'currency',data:languageItem})
+
+            // if(languageItem.name==='zh-CN'){
+            //     this.languageItem = languageItem;
+            // }else{
+            //     this.$toast.show({
+            //         title: this.$t('setting').noOpen,
+            //     })
+            // }
 
 
         },

@@ -8,14 +8,14 @@
                 <view class="recordItem-wrap-container-content">
                     <view :class="isBlack ? 'recordItem-wrap-container-content-title black' : 'recordItem-wrap-container-content-title'">
                         <view class="text">{{$t('recordItem').number}}</view>
-                        <view class="text">{{$t('recordItem').status}}</view>
+                        <view class="text center">{{$t('recordItem').status}}</view>
                         <view class="text end">{{$t('recordItem').times}}</view>
                     </view>
                     <view :class="isBlack?'recordItem-wrap-container-content-text blackText':'recordItem-wrap-container-content-text'">
                         <view class="text">{{recordData.number}}</view>
-                        <view class="text blue" v-if="recordData.status === 'inTheReview'">{{$t('recordItem').starusArray[0]}}</view>
-                        <view class="text red" v-else-if="recordData.status === 'fail'">{{$t('recordItem').starusArray[1]}}</view>
-                        <view class="text" v-else>{{$t('recordItem').starusArray[2]}}</view>
+                        <view class="text center blue" v-if="recordData.status === 'inTheReview'">{{$t('recordItem').starusArray[0]}}</view>
+                        <view class="text center red" v-else-if="recordData.status === 'fail'">{{$t('recordItem').starusArray[1]}}</view>
+                        <view class="text center" v-else>{{$t('recordItem').starusArray[2]}}</view>
                         <view class="text end">{{recordData.date}}</view>
                     </view>
                 </view>
@@ -72,40 +72,63 @@
                 .recordItem-wrap-container-content {
                     margin-top: 30rpx;
                     .recordItem-wrap-container-content-title {
-                        display: grid;
-                        grid-template-columns: 45% 20% 35%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        // grid-template-columns: 45% 20% 35%;
                         
                         .text {
                             font-size: 24rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
                             color: rgba(26, 26, 26, 0.6);
+                            width: 30%;
                             
                         }
                         .end {
-                            justify-self: end;
+                            
+                            text-align: right;
+                        }
+                        .center{
+                            text-align: center;
                         }
                     }
 
                     .recordItem-wrap-container-content-text {
                         margin-top: 10rpx;
-                        display: grid;
-                        grid-template-columns: 45% 20% 35%;
+                        // display: grid;
+                        // grid-template-columns: 45% 20% 35%;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
                         
                         .text {
                             font-size: 28rpx;
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
                             color: #1A1A1A;
+                            width: 30%;
+                            text-align: left;
+                        }
+                        .end {
+                            
+                            text-align: right;
+                        }
+                        .center{
+                            text-align: center;
                         }
                         
                     }
-                    .center {
-                        justify-self: center;
-                    }
-                    .end {
-                        justify-self: end;
-                    }
+                    // .center {
+                    //     text-align: center;
+                    //     // justify-self: center;
+                    // }
+                    // .end {
+                    //     text-align: right;
+                    //     // justify-self: end;
+                    // }
                     .red {
                         color: #FC3C5A !important;
                     }

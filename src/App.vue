@@ -101,22 +101,22 @@
 		watch:{
 			rangeData(){
 				let defaultRangeData = {
-            ch: "market.brtusdt.detail",
-            symbol: "brtusdt",
-            tick:{
-                amount: 0,
-                close: 0.05,
-                count: 32603,
-                high: 0.05,
-                id: 202095710586,
-                low: 0.05,
-                open: 0.05,
-                ts: 0,
-                version: 202095710586,
-                vol: 10696585.162752753,
-            }
-        }
-        this.$mySocket.upDataRangeData(defaultRangeData);
+					ch: "market.brtusdt.detail",
+					symbol: "brtusdt",
+					tick:{
+						amount: 0,
+						close: 0.05,
+						count: 32603,
+						high: 0.05,
+						id: 202095710586,
+						low: 0.05,
+						open: 0.05,
+						ts: 0,
+						version: 202095710586,
+						vol: 10696585.162752753,
+					}
+				}
+				this.$mySocket.upDataRangeData(defaultRangeData);
 			}
 			
 		},
@@ -124,7 +124,6 @@
 			initStoreData(){
 				this.$store.dispatch('getCountryList');
 				this.$store.dispatch('getRange');
-
 				this.$store.dispatch('getKline',{
 					period:'5min',
 				});

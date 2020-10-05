@@ -45,7 +45,7 @@
         },
         data() {
             return {
-                headerText: "选择国家",
+                // headerText: "选择国家",
 
                 countryData: [
                     // {
@@ -105,7 +105,7 @@
                     this.$emit('chooseItem',item);
                 }else{
                     this.$toast.show({
-                        title: "暂未开放",
+                        title: this.$t('setting').noOpen,
                     })
                 }
                 

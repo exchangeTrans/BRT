@@ -6,7 +6,7 @@
 
 
                 <view class="nowPhone">
-                    <view class="nowPhoneTitle">当前绑定手机号码：</view>
+                    <view class="nowPhoneTitle">{{$t('changePhone').nowPhoneTitle}}</view>
                     <view class="phoneNum">{{userInfo.tel}}</view>
                 </view>
 

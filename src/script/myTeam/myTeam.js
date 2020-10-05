@@ -89,6 +89,12 @@ export default{
 
         }
     },
+    computed:{
+        countryCode(){
+            return this.$store.state.defaultData.countryCode;
+        },
+
+    },
     mounted(){
 
         this.getTeam()
@@ -130,11 +136,11 @@ export default{
                     //判断是第一次加载还是加载更多
                     if (isMore){
                         inviteRecord = inviteRecord.concat(res.data.list);
-                        that.inviteRecord = inviteRecord
+                        that.inviteRecord = that.getData(inviteRecord)
                     }else {
                         that.teamData=res.data;
                         inviteRecord=res.data.list;
-                        that.inviteRecord = inviteRecord
+                        that.inviteRecord = that.getData(inviteRecord)
 
                         //判断是否有数据
                         if (res.data.list.length===0){
@@ -155,11 +161,17 @@ export default{
             if(!data||data===null||data.length===0){
                 return []
             }else{
+                let countryCode = this.countryCode;
                 let result = data.map(function (item) {
+                    let countryNum = countryCode[item.countryCode]
                     let account = item.account;
                     let accountArray = account.split("");
 				    let newAccount = accountArray.map(function (item,index) {
-                        if(index>2&&index<accountArray.length-4){
+                        let minLimit  = countryNum.length+2
+                        if(index<countryNum.length){
+                            return ''
+                        }
+                        else if(index>minLimit&&index<accountArray.length-3){
                             return '*'
                         }
                         return item
@@ -167,7 +179,7 @@ export default{
                     newAccount =newAccount.join('')
                     return {
                         ...item,
-                        account:newAccount
+                        account:'+'+countryNum + ' '+newAccount
                     }
                 })
                 return result
