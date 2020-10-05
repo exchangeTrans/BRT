@@ -436,29 +436,29 @@ export default {
 
         checkPhoneArray: [
 
-            {name: "Phone Number"},
+            "Phone Number",
 
-            {name: "Verification Code"},
+            "Verification Code",
 
-            {name: "Password"},
+            "Password",
 
-            {name: "Password confirmation"},
+            "Password confirmation",
 
-            {name: "Invitation code"},
+            "Invitation code",
 
         ],
 
         checkEmailArray: [
 
-            {name: "Email"},
+            "Email",
 
-            {name: "Verification Cod"},
+            "Verification Cod",
 
-            {name: "Password"},
+            "Password",
 
-            {name: "Password confirmation"},
+            "Password confirmation",
 
-            {name: "Invitation code"},
+            "Invitation code",
 
         ],
 

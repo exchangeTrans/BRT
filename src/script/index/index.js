@@ -137,6 +137,7 @@ export default {
             // 46,730,157.7127
             let changeObj = this.getChangeObj(asset);
             let money = getMoney(asset, 'USDT');
+            console.log(money)
             this.changeMoneyData = money;
         },
         toKline(item) {

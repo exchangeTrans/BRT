@@ -139,7 +139,7 @@ export default {
 
         chooseLanguage(languageItem) {
             // console.log(languageItem)
-            
+            this.languageItem = languageItem;
             // if(languageItem.name==='zh-CN'){
             //     this.languageItem = languageItem;
             // }else{
@@ -147,7 +147,8 @@ export default {
             //         title: this.$t('setting').noOpen,
             //     })
             // }
-            this.$storage.set({key:'currency',data:languageItem})
+            this.$storage.set({key:'lang',data:languageItem.name})
+            this.$lang = this.$i18nObj.messages[JSON.parse(uni.getStorageSync('lang')).value]
 
             // if(languageItem.name==='zh-CN'){
             //     this.languageItem = languageItem;

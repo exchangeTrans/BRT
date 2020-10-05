@@ -173,6 +173,11 @@ export default {
             // console.log(oldVal);
         }
     },
+    computed: {  
+        i18n () {  
+          return this.$t('regs')  
+        }  
+      },  
     methods: {
         typeChange(type) {
             this.type = type
@@ -295,15 +300,15 @@ export default {
             }
         },
 
-        sendSmsVerify(name) {
+        sendSmsVerify(name) {         
             let that = this;
             if (!this[name]) {
                 this[name] = true;
                 let sendCodeData = this.getSendCodeData();
                 if (sendCodeData) {
-                    uni.showLoading({
-                        title: "加载中..."
-                    })
+                    // uni.showLoading({
+                    //     title: "加载中..."
+                    // })
                     that.setIntervalFun(sendCodeData.accountType);
                     this.$request({
                         url: "common/sendCode",
@@ -335,10 +340,11 @@ export default {
             let dialingCode = this.chooseCountry.dialingCode;
             let tel = this.postData.tel;
             let email = this.postData.email;
-
+            let tip1 = this.$t('regs').checkPhoneArray[0]
+            debugger
             let checkPhoneArray = [
                 {
-                    name: this.$t('regs').checkPhoneArray[0],
+                    name: tip1,
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
@@ -374,7 +380,10 @@ export default {
         },
         setIntervalFun(accountType) {
             // debugger;
+            console.log(this.i18n.resend2)
             let that = this;
+            let resend1 = this.i18n.resend1;
+            let resend2 = this.i18n.resend2;
             let tempAccountType = accountType === 0 ? 'phoneTime' : 'emailTime';//0手机 1邮箱
             let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
             let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
@@ -382,10 +391,10 @@ export default {
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that[tempName] = that[tempAccountType] + that.$('regs').resend1;
+                that[tempName] = that[tempAccountType] + resend1;
                 --that[tempAccountType];
                 if (that[tempAccountType] < 0) {
-                    that[tempName] = that.$('regs').resend2;
+                    that[tempName] = resend2;
                     that[tempStauts] = false;
                     that[tempAccountType] = 60;
                     clearInterval(interval);
