@@ -18,6 +18,9 @@ export default {
             FR: `${require('@/static/images/user/France.png')}`,
             // Russia: `${require('@/static/images/user/Russia.png')}`,
             US: `${require('@/static/images/user/USA.png')}`,
+            KH: `${require('@/static/images/user/KH.png')}`,
+            MY: `${require('@/static/images/user/MY.png')}`,
+            SG: `${require('@/static/images/user/SG.png')}`,
 
             selectedIcon:`${require('@/static/images/user/select.png')}`,
             countryData: [
