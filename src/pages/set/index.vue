@@ -34,7 +34,7 @@
                   @tap="chooseCurrencyData(item)">
                 <view class="currencyIcon"
                       :style="{'background-image':'url('+item.img+')'}"></view>
-                <view class="currencyText">{{item.name}}（{{item.code}}）</view>
+                <view class="currencyText">{{$t('currency')[item.code]}}（{{item.code}}）</view>
                 <view class="selected"
                       :style="{'background-image':'url('+selectedIcon+')'}"
                       v-if="selectedObj.name===item.name">
@@ -53,6 +53,7 @@
 
             <view class="confirmBtn">
                 <btn :background="background"
+                    :btnText="btnText"
                      :borderRadius="borderRadius"
                      @btnClick="btnClick"></btn>
             </view>

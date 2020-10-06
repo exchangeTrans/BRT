@@ -3,7 +3,14 @@ export default {
     footer: ['Homepage', 'Market', 'Transaction', 'Asset', 'My'],
 
     noData: 'No Data',
-
+    currency:{
+        RMB:'RMB',
+        USD:'USD',
+        KRW:'KRW',
+    },
+    btn:{
+        confirm:'confirm'
+    },
 
 
     //Homepage
@@ -812,7 +819,7 @@ export default {
 
         settingText: "Set up",
 
-        noOpen: "Set up",
+        noOpen: "Not Yet Open",
 
         modelText: "Day and night mode",
 

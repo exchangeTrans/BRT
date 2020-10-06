@@ -100,7 +100,9 @@
         },
         methods: {
             chooseItem(item) {
+                let langArray = this.$store.state.defaultData.langArray;
                 // if(item.name==='zh-CN'){
+                    this.countryData = langArray[item.name];
                     this.selectedObj=item;
                     this.$emit('chooseItem',item);
                 // }else{

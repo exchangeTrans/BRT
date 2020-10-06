@@ -11,7 +11,7 @@
         props: {
             btnText: {
                 type: String,
-                default: '确认'
+                default: '',
             },
             background: {type: String, default: ''},
             backgroundColor: {type: String, default: ''},

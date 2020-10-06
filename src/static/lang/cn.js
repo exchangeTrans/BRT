@@ -1,6 +1,14 @@
 export default {
     footer: ['首页', '行情', '交易', '资产', '我的'],
     noData: '暂无数据',
+    currency:{
+        RMB:'人民币',
+        USD:'美元',
+        KRW:'韩元',
+    },
+    btn:{
+        confirm:'确认'
+    },
 
     //首页
     index: {

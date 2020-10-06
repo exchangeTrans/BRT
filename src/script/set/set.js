@@ -106,6 +106,8 @@ export default {
                 code: "RMB",
                 unit:'¥'
             },//币种类
+            btnText:this.$t('btn').confirm
+            
 
         }
     },
@@ -139,17 +141,21 @@ export default {
 
         chooseLanguage(languageItem) {
             // console.log(languageItem)
-            this.languageItem = languageItem;
+            // this.languageItem = languageItem;
             // if(languageItem.name==='zh-CN'){
-            //     this.languageItem = languageItem;
+                this.languageItem = languageItem;
+                console.log(this.$i18n.locale)
             // }else{
             //     this.$toast.show({
             //         title: this.$t('setting').noOpen,
             //     })
             // }
             this.$storage.set({key:'lang',data:languageItem.name})
-            this.$lang = this.$i18nObj.messages[JSON.parse(uni.getStorageSync('lang')).value]
-
+            this.$storage.set({key:'langMsg',data:languageItem});
+            // this.$lang = this.$i18nObj.messages[JSON.parse(uni.getStorageSync('lang')).value]
+            this.$i18n.locale = languageItem.name;
+            this.btnText = this.$t('btn').confirm;
+            this.headerOptions.text=this.$t('setting').settingText;
             // if(languageItem.name==='zh-CN'){
             //     this.languageItem = languageItem;
             // }else{
