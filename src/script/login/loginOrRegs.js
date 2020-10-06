@@ -14,6 +14,26 @@ export default {
     mounted() {
 
     },
+    computed:{
+        langMsg(){
+            return this.$store.state.defaultData.langMsg;
+        }, 
+
+
+        // 		tradingSymol: [
+        //     {name:'BRT',isLocal:true},
+        //     {name:'USDT',isLocal:true},
+        //     {name:'BTC',isLocal:false},
+        //     {name:'ETH',isLocal:false},
+        //     {name:'XRP',isLocal:false},
+        //     {name:'BCH',isLocal:false},
+        //     {name:'LTC',isLocal:false},
+        //     {name:'XMR',isLocal:false},
+        // ],
+        // selectSymbol:{name:'USDT',isLocal:false},
+        // quotationData:{},
+
+    },
     methods: {
         jumpLogin() {
             this.$jumpPage.jump({
@@ -25,6 +45,12 @@ export default {
             this.$jumpPage.jump({
                 type: 'navigateTo',
                 url: 'regs/regs'
+            })
+        },
+        toLang(){            
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: 'login/chooseLanguage'
             })
         }
     },

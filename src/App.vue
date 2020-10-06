@@ -30,6 +30,10 @@
 			if(isLogin){
 				this.$store.dispatch('getUserMsg');
 			}
+			let langMsg = this.$storage.getSync({key:'langMsg'});
+			if(langMsg){
+				this.$store.commit("setDefaultSync",{key:"langMsg", val: langMsg,})
+			}
 
 			// this.initAuotationData();
 			let that = this;

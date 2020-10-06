@@ -5,7 +5,6 @@ import chooseLanguage from "@/components/chooseLanguage/index.vue"
 export default {
     components: {
         appHeader,
-        btn,
         chooseLanguage,
     },
 
@@ -15,7 +14,7 @@ export default {
             this.headerOptions = {
                 show: true,
                 isAllowReturn: true,
-                text: this.$t('setting').settingText,
+                text: this.$t('chooseLanguage').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -31,7 +30,7 @@ export default {
                 show: true,
                 isAllowReturn: true,
                 isWhiteIcon: true,
-                text: this.$t('setting').settingText,
+                text: this.$t('chooseLanguage').title,
                 rightItem: {
                     type: "text",
                     text: "",
@@ -44,12 +43,6 @@ export default {
                 background: '#00001A',
                 headerIsNoBoder: true,
             }
-        }
-
-        if(theme === 'white'){
-            this.modelFlag = 'day'//day 白天模式；night 黑夜模式
-        }else if(theme === 'black') {
-            this.modelFlag = 'night'
         }
 
         //获取语言信息
@@ -90,9 +83,7 @@ export default {
             titleLine: `${require('@/static/images/set/titleLine.png')}`,
             selectedIcon:`${require('@/static/images/user/select.png')}`,
 
-            background: 'linear-gradient(135deg, #004FA8 0%, #007CD3 49%, #25D4ED 100%)',
-            borderRadius: '50rpx',
-            modelFlag: 'day',//day 白天模式；night 黑夜模式
+
 
             languageItem:{
                 // name: "简体中文",
@@ -100,13 +91,6 @@ export default {
                 // icon: `${require('@/static/images/user/Chinese.png')}`,
             },//语言
 
-            selectedObj:{
-                name: '人民币',
-                img: `${require('@/static/images/set/rmb.png')}`,
-                code: "RMB",
-                unit:'¥'
-            },//币种类
-            btnText:this.$t('btn').confirm
             
 
         }
@@ -115,36 +99,12 @@ export default {
 
     },
     methods: {
-        chooseModel(item) {
-            // if(item==='day'){
-            //     this.$storage.setSync({key: "theme", data: "white"});
-            // }else{
-            //     this.$storage.setSync({key: "theme", data: "black"});
-                
-            // }
-            // let that = this;
-            // setTimeout(() => {
-            //     that.$jumpPage.jump({
-            //         type: 'reLaunch',
-            //         url: 'set/index'
-            //     }) 
-            // }, 100);
-            if(item==='day'){
-                this.modelFlag = item;
-            }else if(item==='night'){
-                this.$toast.show({
-                    title: this.$t('setting').noOpen,
-                })
-            }
-
-        },
 
         chooseLanguage(languageItem) {
             // console.log(languageItem)
             // this.languageItem = languageItem;
             // if(languageItem.name==='zh-CN'){
                 this.languageItem = languageItem;
-                console.log(this.$i18n.locale)
             // }else{
             //     this.$toast.show({
             //         title: this.$t('setting').noOpen,
@@ -154,9 +114,7 @@ export default {
             this.$storage.set({key:'langMsg',data:languageItem});
             // this.$lang = this.$i18nObj.messages[JSON.parse(uni.getStorageSync('lang')).value]
             this.$i18n.locale = languageItem.name;
-            this.btnText = this.$t('btn').confirm;
-            this.headerOptions.text=this.$t('setting').settingText;
-            this.$store.commit("setDefaultSync",{key:"langMsg", val: languageItem,})
+            this.headerOptions.text=this.$t('chooseLanguage').title;
             // if(languageItem.name==='zh-CN'){
             //     this.languageItem = languageItem;
             // }else{
@@ -165,43 +123,6 @@ export default {
             //     })
             // }
 
-
-        },
-
-        chooseCurrencyData(item) {
-            if(item.code==='"RMB"'){
-                this.selectedObj = item;
-            }else{
-                this.$toast.show({
-                    title: this.$t('setting').noOpen,
-                })
-            }
-            
-        },
-
-        btnClick(){
-            let modelFlag = this.modelFlag
-            if(modelFlag === 'night'){
-                this.$storage.setSync({key: "theme", data: "black"});
-            }else if(modelFlag === 'day') {
-                this.$storage.setSync({key: "theme", data: "white"});
-            }
-            //币种
-
-            this.$store.commit("setDefaultSync", {
-                key: "selectedCurrency",//币种
-                val: this.selectedObj,
-            });
-            this.$storage.setSync({key: "currency", data: this.selectedObj});
-
-            //语言
-            // let langData = langArray[langMsg]
-            this.$storage.setSync({key: "langMsg", data: this.languageItem});
-
-            this.$jumpPage.jump({
-                type: 'reLaunch',
-                url: 'user/user',
-            })
 
         },
     }

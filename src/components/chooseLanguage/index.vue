@@ -5,7 +5,7 @@
                 <view class="chooseLanguage-wrap-item"
                       v-for="(item,index) in countryData"
                       :key="index"
-                      @click="chooseItem(item)"
+                      @click="chooseItem(item,index)"
                       :style="{'color':mode==='night'?'#D9DADB':'rgba(51, 51, 51, 1)',
                         'border-bottom':mode==='night'?'1rpx solid rgba(255,255,255,0.1)':'1rpx solid #F2F2F2'
                       }">
@@ -99,12 +99,14 @@
             }
         },
         methods: {
-            chooseItem(item) {
+            chooseItem(item,index) {
                 let langArray = this.$store.state.defaultData.langArray;
                 // if(item.name==='zh-CN'){
-                    this.countryData = langArray[item.name];
-                    this.selectedObj=item;
-                    this.$emit('chooseItem',item);
+                this.countryData = langArray[item.name];
+                let selectedObj = langArray[item.name][index]
+                this.selectedObj=selectedObj;
+                this.$store.commit("setDefaultSync",{key:"langMsg", val: selectedObj,})
+                this.$emit('chooseItem',selectedObj);
                 // }else{
                 //     this.$toast.show({
                 //         title: this.$t('setting').noOpen,

@@ -23,19 +23,19 @@ export default {
 
             'Staking',
 
-            'Mining revenue',
+            'Revenue',
 
-            'Quantitative financial management',
+            'Quant',
 
-            'Smart contract',
+            'Contract',
 
-            'Nodal ore pool',
+            'Pool',
 
             'Team Details',
 
-            'Promotion income',
+            'Commission',
 
-            'Currency application',
+            'Vote',
 
         ],
 
@@ -47,7 +47,7 @@ export default {
 
         addAndDown: 'Rise and Fall',
 
-        amount: 'Amount',
+        amount: '',
 
         noOpen: 'Not Yet Open',
 
@@ -89,7 +89,7 @@ export default {
 
         use: 'Usable：',
 
-        tradeAll: 'Transaction Volume:',
+        tradeAll: 'Volume:',
 
         nowTrade: 'Current commission',
 
@@ -97,15 +97,15 @@ export default {
 
         noData: 'No Data',
 
-        orderBuy: 'Buying Order',
+        orderBuy: 'Buy',
 
-        orderSell: 'Selling Order',
+        orderSell: 'Sell',
 
-        orderReturn: 'Cancle Order',
+        orderReturn: 'Cancel',
 
-        orderPrice: 'Commission price',
+        orderPrice: 'Price',
 
-        orderNumber: 'Commission amount',
+        orderNumber: 'Amount',
 
     },
 
@@ -117,9 +117,9 @@ export default {
 
         assetAll: 'Total Asset',
 
-        balance: 'Avaliable Balance',
+        balance: 'Avaliable',
 
-        balanceUse: 'Lock Position Balance',
+        balanceUse: 'Lock',
 
         withdrawal: "Transfer",
 
@@ -141,7 +141,7 @@ export default {
 
         tipArray: [
 
-            'Minimum amount of withdrawal：',
+            'Minimum withdrawal：',
 
             'No service charge for transfer between platforms.',
 
@@ -163,7 +163,7 @@ export default {
 
             textTitle: "amount",
 
-            placeholder: "Minimum amount of withdrawal",
+            placeholder: "Minimum withdrawal ",
 
             subText: 'Balance：'
 
@@ -179,13 +179,13 @@ export default {
 
             textTitle: "Phone verification code",
 
-            placeholder: "put in phone verification code",
+            placeholder: "code",
 
-            subText: 'Get phone verification code '
+            subText: 'Send'
 
         },
 
-        mainNumber: 'Minimum amount of withdrawal',
+        mainNumber: 'Minimum withdrawal ',
 
         balance: 'Balance',
 
@@ -195,7 +195,7 @@ export default {
 
             'resent',
 
-            'Not reached to Minimum amount of withdrawal',
+            'Not reached to Minimum withdrawal ',
 
             'Withdrawing',
 
@@ -207,7 +207,7 @@ export default {
 
         finish: 'Accomplished'
 
-        // minNumber:' Minimum amount of withdrawal：'
+        // minNumber:' Minimum withdrawal： '
 
 
 
@@ -217,7 +217,7 @@ export default {
 
     record: {
 
-        title: "Withdraw Record",
+        title: "History",
 
         noData: 'No Data'
 
@@ -259,7 +259,7 @@ export default {
 
         title: 'Receipt',
 
-        subTitle: 'Chaege Record',
+        subTitle: 'History',
 
         address: 'Charge Rocord',
 
@@ -283,7 +283,7 @@ export default {
 
         sell: "Sell",
 
-        tableHeadTr1: ["Buy Order", "Amount", "Price", "Amount", "Sell order"],
+        tableHeadTr1: ["Buy", "Amount", "Price", "Amount", "Sell"],
 
         tableHeadTr2: ["Time", "Direction", "Price", "Amount"],
 
@@ -291,7 +291,7 @@ export default {
 
         unit: 'Ten Thousand',
 
-        high: "HIgh",
+        high: "High",
 
         low: 'Low',
 
@@ -311,9 +311,9 @@ export default {
 
             'Buying Oder/Selling Order',
 
-            'Latest Deal',
+            'History',
 
-            'Currency Introduction'
+            'Intro'
 
         ]
 
@@ -323,21 +323,21 @@ export default {
 
     earnings: {
 
-        title: 'Quantitative financial management',
+        title: 'Quant',
 
         balance: 'Available Balance',
 
         yield: '累计收益率',
 
-        profitDetail: 'Cumulative rate of return',
+        profitDetail: 'Return',
 
-        earningsData: 'Quantitative data',
+        earningsData: 'Data',
 
-        investment: 'Investment amount',
+        investment: 'Investment',
 
-        quantBalance: 'Quantified balance',
+        quantBalance: 'Quant',
 
-        lastYield: "Yesterday's yield",
+        lastYield: "Yield",
 
         stopRatio: 'Profit stop ratio',
 
@@ -353,7 +353,7 @@ export default {
 
         join: 'Transfer to add warehouse',
 
-        downLoad: 'DownloadDownload Hanya Quantization app',
+        downLoad: 'Download Hanya ',
 
         noOpen: 'Not Yet Open',
 
@@ -405,7 +405,7 @@ export default {
 
         inputPhoneVerifyCode: 'Please enter phone verification code',
 
-        sendVerifyCode: 'Send verification code',
+        sendVerifyCode: 'Send',
 
         inputPhonePassword: 'Please enter a 6-20 digit login password',
 
@@ -417,7 +417,7 @@ export default {
 
         inputEmailVerifyCode: 'Please Enter Email verification code',
 
-        sendVerifyEmailCode: "Send verification code",
+        sendVerifyEmailCode: "Send",
 
         inputEmailPassword: "Please enter a 6-20 digit login password",
 
@@ -427,9 +427,9 @@ export default {
 
         loginJump: "Existing account, login now",
 
-        phoneName: 'Send verification code',
+        phoneName: 'Send',
 
-        emailName: 'Send verification code',
+        emailName: 'Send',
 
         showLoading: "loading...",
 
@@ -481,7 +481,7 @@ export default {
 
         inputVerifyCode: "Please input the phone verification code",
 
-        sendVerifyCode: "Send verification code",
+        sendVerifyCode: "Send",
 
         inputPassword: "Please enter the new login password",
 
@@ -491,7 +491,7 @@ export default {
 
         inputEmailVerifyCode: "Please enter email verification code",
 
-        sendVerifyEmailCode: "Send verification code",
+        sendVerifyEmailCode: "Send",
 
         inputEmailPassword: "Please enter the new login password",
 
@@ -525,13 +525,13 @@ export default {
 
     promoteBonus: {
 
-        title: "Promotion income",
+        title: "Commission",
 
-        bonusTotal: "Total pledge of the team",
+        bonusTotal: "Team Pledge",
 
-        bonusNow: "Current promotion computing power",
+        bonusNow: "Promote Power",
 
-        bonusLastDay: "Yesterday's promotion revenue",
+        bonusLastDay: "Revenue",
 
         inviteBonusRecords: "Promotion revenue record",
 
@@ -545,7 +545,7 @@ export default {
 
         vip:'Your VIP level',
 
-        number:'Accumulated quantity of Mining pool',
+        number:'Mining pool',
 
         lastTime:'Next dividend time',
 
@@ -553,15 +553,15 @@ export default {
 
         vipArray:[
 
-            'Ordinary member',
+            'Member',
 
-            'Primary node',
+            'Primary',
 
-            'Intermediate node',
+            'Intermediate',
 
-            'Advanced node',
+            'Advanced',
 
-            'Highest node',
+            'Highest',
 
         ]
 
@@ -573,13 +573,13 @@ export default {
 
     countDown:{
 
-        d:'Day',
+        d:'D',
 
-        h:'Hour',
+        h:'H',
 
-        m:'MInute',
+        m:'M',
 
-        s:'Second',
+        s:'S',
 
     },
 
@@ -643,7 +643,7 @@ export default {
 
         invitationAccount:'Invitation account',
 
-        pledgeAmount:'Team pledge performance',
+        pledgeAmount:'Team Performance',
 
     },
 
@@ -653,11 +653,11 @@ export default {
 
         inMining: 'Participate in mining',
 
-        close: 'cancle',
+        close: 'cancel',
 
         availableCount: 'Available quantity',
 
-        inputHolderText: 'Please input the transfer in quantity',
+        inputHolderText: 'Amount',
 
         allInto: 'All transferred in',
 
@@ -671,11 +671,11 @@ export default {
 
         inMining: 'transfer into',
 
-        close: 'cancle',
+        close: 'cancel',
 
         availableCount: 'Available quantity',
 
-        inputHolderText: 'Please input the transfer in quantity',
+        inputHolderText: 'Amount',
 
         allInto: 'All transferred in',
 
@@ -693,17 +693,11 @@ export default {
 
         rulerData: [
 
-            {text: 'Your pledge balance must be greater than 1000brt in order to obtain pledge income.'},
+            {text: 'Your pledge balance must be greater than 1000 brt in order to obtain pledge income.'},
 
             {
 
                 text: 'Each pledge period is 15 days. Transfer in is not allowed during the pledge period, and 10% service charge will be deducted for transfer out during the pledge period.'
-
-            },
-
-            {
-
-                text: 'After 15 days, the pledge balance will be automatically transferred to the available balance.'
 
             },
 
@@ -717,7 +711,7 @@ export default {
 
     miningEarnings: {
 
-        title: 'Mining revenue',
+        title: 'Revenue',
 
         availableBalance: 'Current pledge',
 
@@ -747,7 +741,7 @@ export default {
 
             {name: "Announcement list"},
 
-            {name: "Contact customer service"},
+            {name: "Contact Us"},
 
             {name: "Modify and bind mobile email"},
 
@@ -869,9 +863,9 @@ export default {
 
         connectUsText: "Contact us",
 
-        email: "Customer service email",
+        email: "Email",
 
-        connectUser: "Contact customer service",
+        connectUser: "Contact Us",
 
     },
 
@@ -897,17 +891,17 @@ export default {
 
         resend2: "Resend",
 
-        spanNameNew: 'Send Verification Code',
+        spanNameNew: 'Send',
 
-        spanNameOld: 'Send Verification Code',
+        spanNameOld: 'Send',
 
         nowPhoneTitle: "Currently bound mobile phone number：",
 
         oldPhonePlaceholder: "Please enter Phone Verification Code",
 
-        newPhonePlaceholder: "Please enter New Phone Number",
+        newPhonePlaceholder: "New Phone Number",
 
-        newPhoneVerifyCode: "Please enter New Phone Verification Code",
+        newPhoneVerifyCode: "Code",
 
 
 
@@ -928,7 +922,12 @@ export default {
 
 
     },
-
+    chooseCountry:{
+        title:'选择国家'
+    },
+    chooseLanguage:{
+        title:'选择语言'
+    },
     changeEmail: {
 
         leftText: "Phone number registration",
@@ -943,9 +942,9 @@ export default {
 
         VerifyCodeText: "Please enter Present E-mail Verification Code",
 
-        spanNameNew: 'Send Verification Code',
+        spanNameNew: 'Send',
 
-        spanNameOld: 'Send Verification Code',
+        spanNameOld: 'Send',
 
         changeEmailText: "Change E-mail",
 
@@ -959,17 +958,17 @@ export default {
 
         newEmail: "New Bound E-mail",
 
-        newEmailPlaceholder: "Please enter new bound E-mal",
+        newEmailPlaceholder: "New E-mal",
 
-        newVerifyCodePlaceholder: "Please enter new bound E-mali",
+        newVerifyCodePlaceholder: "New E-mail",
 
         checkEmailArray: [
 
             {name: "New Bound Email "},
 
-            {name: " Present E-mail Verification Code"},
+            {name: " Send"},
 
-            {name: "New E-mail Verification Code"},
+            {name: "Code"},
 
             {name: "E-mail"},
 

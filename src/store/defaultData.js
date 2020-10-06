@@ -74,6 +74,12 @@ export default {
                 },
             ]
         },
+        langMsg:{
+            name: 'zh-CN',
+            text: '中文',
+            icon: `${require('@/static/images/user/Chinese.png')}`,
+            code: 1
+        },
         conturyList: [],
         contury: {},
         countryCode:{},

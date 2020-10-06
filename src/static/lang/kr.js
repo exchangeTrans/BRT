@@ -226,18 +226,18 @@ export default {
         resend1: "秒后重新发送",
         resend2: "重新发送",
         checkPhoneArray: [
-            {name: "手机号"},
-            {name: "验证码"},
-            {name: "密码"},
-            {name: "确认密码"},
-            {name: "邀请码"},
+            "手机号",
+            "验证码",
+            "密码",
+            "确认密码",
+            "邀请码",
         ],
         checkEmailArray: [
-            {name: "邮箱"},
-            {name: "验证码"},
-            {name: "密码"},
-            {name: "确认密码"},
-            {name: "邀请码"},
+            "邮箱",
+            "验证码",
+            "密码",
+            "确认密码",
+            "邀请码",
         ],
     },
     forgetPassword: {
@@ -358,9 +358,6 @@ export default {
             },
             {
                 text: '15天到期后，质押馀额会自动转入可用余额。'
-            },
-            {
-                text: '15天到期后，质押馀额会自动转入可用余额。'
             }]
     },
     miningEarnings: {
@@ -396,7 +393,7 @@ export default {
         authAwait: "待实名",
         realName: "已实名",
         noRealName: "待审核（未审核）",
-        notReviewed: "待审核（未审核）",
+        notReviewed: "审核失败，请重新提交",
         realname: "真实姓名",
         realnamePlaceholder: "和身份证上的姓名保持一致",
         cardNumber: "证件号",
@@ -415,7 +412,7 @@ export default {
     //设置
     setting: {
         settingText: "设置",
-        noOpen: "设置",
+        noOpen: "暂未开放",
         modelText: "日夜模式",
         day: "日间模式",
         night: "夜晚模式",
@@ -442,6 +439,12 @@ export default {
         connectUsText: "联系我们",
         email: "客服邮箱",
         connectUser: "联系客服",
+    },
+    chooseCountry:{
+        title:'选择国家'
+    },
+    chooseLanguage:{
+        title:'选择语言'
     },
     //修改绑定手机邮箱
     changePhone: {

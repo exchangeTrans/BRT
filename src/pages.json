@@ -26,6 +26,12 @@
       }
     },
     {
+      "path": "pages/login/chooseLanguage",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
+    {
       "path": "pages/externalLinks/index",
       "style": {
         "navigationBarTitleText": "网页",
@@ -307,7 +313,12 @@
         //"navigationBarTitleText": "uni-app"
       }
     },
-
+    {
+      "path": "blackPages/login/chooseLanguage",
+      "style": {
+        //"navigationBarTitleText": "uni-app"
+      }
+    },
     {
       "path": "blackPages/aboutUs/index",
       "style": {

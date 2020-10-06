@@ -1,14 +1,14 @@
 <template>
     <view class="loginOrRegs" :style="{'background-image': indexBackgroundImg}" id="loginOrRegs">
-        <view class="languageChoice">
-            <!-- <view class="languageBack">
-            </view> -->
-            <!-- <view class="languageWrap">
-                <view class="languageIcon" :style="{'background-image': languageIcon}"></view>
+        <view class="languageChoice ">
+            <view class="languageBack" @tap="toLang">
+            </view>
+            <view class="languageWrap" @tap="toLang">
+                <view class="languageIcon" :style="{'background-image': 'url('+langMsg.icon+')'}"></view>
                 <view class="languageText">
-                    {{languageText}}
+                    {{langMsg.text}}
                 </view>
-            </view> -->
+            </view>
         </view>
         <view class="iconWrap">
             <view class="icon" :style="{'background-image': iconBackground}">
@@ -97,7 +97,7 @@
                     width: 54rpx;
                     height: 36rpx;
                     left: 30rpx;
-                    top: 14rpx;
+                    top: 16rpx;
                     position: absolute;
                     background: no-repeat center center;
                     background-size: cover;
