@@ -609,6 +609,8 @@ export default {
 
         closePledge: 'Cancellation of pledge',
 
+        addPledge: '增加质押',
+
         minLimit: 'Minimum holding currency',
 
         pledgeNow: 'Current pledge',
@@ -981,6 +983,18 @@ export default {
 
         ]
 
+    },
+    //取消质押
+    cancelPledge:{
+        cancelTitle: '取消质押',
+        close: '关闭',
+        pledgeCount: '质押数量',
+        inputHolderText: '请输入验证码',
+        code: '获取验证码',
+        intoIntro: '取消质押会收取10%的手续费',
+        into: '确认取消',
+        verifyTip: "请先获取验证码",
+        verifyCountDown:'秒后再次获取'
     }
 
 
