@@ -74,7 +74,7 @@
 
         .languageChoice {
             position: relative;
-             padding-top: calc(20rpx - var(--status-bar-height));
+            padding-top: calc(20rpx + var(--status-bar-height));
 
             .languageBack {
                 position: absolute;
@@ -178,12 +178,13 @@
                 font-family: PingFangSC-Regular, PingFang SC;
                 font-weight: 400;
                 color: #FFFFFF;
-                line-height: 44rpx;
-                width: 128rpx;
-                height: 44rpx;
+                line-height: 100rpx;
+                width: 100%;
+                height: 100rpx;
+                text-align: center;
                 position: absolute;
-                top: 28rpx;
-                left: 312rpx;
+                top: 0;
+                left: 0;
             }
         }
     }

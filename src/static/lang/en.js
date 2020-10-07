@@ -135,7 +135,7 @@ export default {
 
         title: 'Withdrawal',
 
-        subTitle: 'Withdrawl Record',
+        subTitle: 'History',
 
         number: "amount received",
 
@@ -339,13 +339,13 @@ export default {
 
         lastYield: "Yield",
 
-        stopRatio: 'Profit stop ratio',
+        stopRatio: 'Stop Profit',
 
-        stopRate: "Stop loss rate",
+        stopRate: "Stop loss",
 
         set: 'set up',
 
-        maxReturn: 'Maximum withdrawal',
+        maxReturn: 'Max fallback',
 
         rule: 'Rules',
 
@@ -395,23 +395,23 @@ export default {
 
     regs: {
 
-        phoneRegs: 'Mobile phone number registration',
+        phoneRegs: 'Phone',
 
-        emailRegs: 'Email registration',
+        emailRegs: 'Email',
 
         regsBtn: 'Next',
 
-        inputPhone: 'Please enter phone number',
+        inputPhone: 'Phone number',
 
-        inputPhoneVerifyCode: 'Please enter phone verification code',
+        inputPhoneVerifyCode: 'Verification Code',
 
         sendVerifyCode: 'Send',
 
-        inputPhonePassword: 'Please enter a 6-20 digit login password',
+        inputPhonePassword: '6-20 digit login password',
 
-        inputPhoneSurePassword: 'Please enter a 6-20 digit login password again',
+        inputPhoneSurePassword: 'Enter password again',
 
-        inputInviteCode: 'Please input promotion code',
+        inputInviteCode: 'Referral Code',
 
         inputEmail: 'Please Enter Email',
 
@@ -425,7 +425,7 @@ export default {
 
         inputEmailInviteCode: "Please input promotion code",
 
-        loginJump: "Existing account, login now",
+        loginJump: "Log in now",
 
         phoneName: 'Send',
 
@@ -473,33 +473,33 @@ export default {
 
     forgetPassword: {
 
-        phoneForget: "Mobile phone number recovery",
+        phoneForget: "Phone",
 
-        emailForget: "Email recovery",
+        emailForget: "Email",
 
-        inputPhone: "Please enter the registered mobile phone number",
+        inputPhone: "Phone number",
 
-        inputVerifyCode: "Please input the phone verification code",
+        inputVerifyCode: "Verification code",
 
         sendVerifyCode: "Send",
 
-        inputPassword: "Please enter the new login password",
+        inputPassword: "New login password",
 
-        inputSurePassword: "Please confirm the new login password",
+        inputSurePassword: "Re-enter password",
 
-        inputEmail: "Please enter registration email",
+        inputEmail: "Email",
 
-        inputEmailVerifyCode: "Please enter email verification code",
+        inputEmailVerifyCode: "Verification code",
 
         sendVerifyEmailCode: "Send",
 
-        inputEmailPassword: "Please enter the new login password",
+        inputEmailPassword: "New login password",
 
-        inputEmailSurePassword: "Please confirm the new login password",
+        inputEmailSurePassword: "Confirm password",
 
         forgetBtn: "Reset password",
 
-        regsJump: "No account? Register now",
+        regsJump: "Register now",
 
     },
 
@@ -659,7 +659,7 @@ export default {
 
         inputHolderText: 'Amount',
 
-        allInto: 'All transferred in',
+        allInto: 'All',
 
         intoIntro: 'The pledge period is 15 days, and it will be automatically unlocked after expiration.',
 
@@ -705,6 +705,12 @@ export default {
 
                 text: 'After 15 days, the pledge balance will be automatically transferred to the available balance.'
 
+            },
+
+            {
+
+                text: 'You can deposit more during your pledge duration.'
+
             }]
 
     },
@@ -735,7 +741,7 @@ export default {
 
         listItemData: [
 
-            {name: "Real name authentication"},
+            {name: "KYC"},
 
             {name: "Promotion link"},
 
@@ -767,31 +773,31 @@ export default {
 
     authL: {
 
-        authStatus: "Real name status",
+        authStatus: "KYC status",
 
-        authAwait: "Waiting for real name authentication",
+        authAwait: "Pending",
 
-        realName: "Real Name authented",
+        realName: "Success",
 
-        noRealName: "To be reviewed (not reviewed)",
+        noRealName: "Pending",
 
-        notReviewed: "To be reviewed (not reviewed)",
+        notReviewed: "Pending",
 
-        realname: "Real Name",
+        realname: "Legal Name",
 
-        realnamePlaceholder: "The same as the name on the ID card",
+        realnamePlaceholder: "Legal Name",
 
         cardNumber: "ID number",
 
-        cardNumberPlaceholder: "Please enter ID number",
+        cardNumberPlaceholder: "ID number",
 
-        uploadImgText: "Please upload photos of holding legal documents and handwritten notes, which writes (BRT; Date;Please use the date of certification)",
+        uploadImgText: "Photos of holding legal documents and handwritten notes",
 
         uploadImgBtn: "Upload photos",
 
-        button: "Submit for certification review",
+        button: "Submit",
 
-        authentication: "Real name authentication",
+        authentication: "KYC",
 
         checkArray: [
 
@@ -817,9 +823,9 @@ export default {
 
         modelText: "Day and night mode",
 
-        day: "Day mode",
+        day: "Day",
 
-        night: "NOght mode",
+        night: "Night",
 
         showCurrency: "Display currency",
 
@@ -867,6 +873,12 @@ export default {
 
         connectUser: "Contact Us",
 
+    },
+    chooseCountry:{
+        title:'choose country'
+    },
+    chooseLanguage:{
+        title:'choose language'
     },
 
     //Change and bind mobile email
@@ -922,12 +934,7 @@ export default {
 
 
     },
-    chooseCountry:{
-        title:'选择国家'
-    },
-    chooseLanguage:{
-        title:'选择语言'
-    },
+
     changeEmail: {
 
         leftText: "Phone number registration",

@@ -24,9 +24,9 @@
         height: 100%;
         background: #fff !important;
 
-        .appHeader {
-            top: var(--status-bar-height);
-        }
+        // .appHeader {
+        //     top: var(--status-bar-height);
+        // }
 
         .content {
             margin-top: calc(100rpx + var(--status-bar-height));
