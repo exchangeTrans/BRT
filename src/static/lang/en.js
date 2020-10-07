@@ -783,13 +783,13 @@ export default {
 
         notReviewed: "Pending",
 
-        realname: "Legal Name",
+        realname: "Name",
 
-        realnamePlaceholder: "Legal Name",
+        realnamePlaceholder: "Name",
 
-        cardNumber: "ID number",
+        cardNumber: "ID",
 
-        cardNumberPlaceholder: "ID number",
+        cardNumberPlaceholder: "ID",
 
         uploadImgText: "Photos of holding legal documents and handwritten notes",
 
@@ -803,7 +803,7 @@ export default {
 
             {name: "Name"},
 
-            {name: "ID Number"},
+            {name: "ID"},
 
             {name: "Hand held photo"},
 

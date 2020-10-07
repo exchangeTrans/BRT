@@ -101,17 +101,19 @@
         methods: {
             chooseItem(item,index) {
                 let langArray = this.$store.state.defaultData.langArray;
-                // if(item.name==='zh-CN'){
-                this.countryData = langArray[item.name];
-                let selectedObj = langArray[item.name][index]
-                this.selectedObj=selectedObj;
-                this.$store.commit("setDefaultSync",{key:"langMsg", val: selectedObj,})
-                this.$emit('chooseItem',selectedObj);
-                // }else{
-                //     this.$toast.show({
-                //         title: this.$t('setting').noOpen,
-                //     })
-                // }
+                if(item.name==='ko-KR'){
+                    this.$toast.show({
+                        title: this.$t('setting').noOpen,
+                    })
+                
+                }else{
+                    
+                    this.countryData = langArray[item.name];
+                    let selectedObj = langArray[item.name][index]
+                    this.selectedObj=selectedObj;
+                    this.$store.commit("setDefaultSync",{key:"langMsg", val: selectedObj,})
+                    this.$emit('chooseItem',selectedObj);
+                }
                 
             },
         }

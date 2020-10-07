@@ -186,7 +186,8 @@
 				let langMsg = {
 					name:'zh-CN',
 					text:'中文',
-					code:1
+					code:1,
+					icon: `${require('@/static/images/user/Chinese.png')}`,
 				};
 				langMsg = storageLangMsg?storageLangMsg:langMsg;
 				this.$storage.setSync({
