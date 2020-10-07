@@ -11,7 +11,7 @@
                 </view>
                 <view class="beUsedNum">{{$t('transferInAmount').availableCount}}：{{availableCount}} BRT</view>
 
-                <view class="transferInput"   :style="{'background':mode==='night'?'#272A2E':'#ffffff'}">
+                <view class="transferInput"   :style="{'background':mode==='night'?'#272A2E':'#F4F6F7'}">
                     <input type="number"
                            class="input"
                            :placeholder="$t('transferInAmount').inputHolderText"
@@ -192,6 +192,7 @@
 
         }
         .intro{
+            text-indent:30rpx;
             margin-top: 15rpx;
             font-size: 26rpx;
         }

@@ -1,4 +1,4 @@
-
+import cancelPledge from "@/components/popup/cancelPledge/index.vue";
 import appHeader from "@/components/common/header.vue";
 import transferInAmount from "@/components/popup/transferInAmount/index.vue";
 import subRuler from "@/components/popup/subRuler/index.vue";
@@ -10,7 +10,8 @@ export default {
         appHeader,
         subRuler,
         transferInAmount,
-        noData
+        noData,
+        cancelPledge
     },
     mounted(){
 
@@ -71,7 +72,7 @@ export default {
     },
     onShow(){
         this.getMining();
-      //  this.asset();
+        // this.asset();
     },
     methods: {
         transferInAmount(){
@@ -117,23 +118,28 @@ export default {
 
         //取消质押
             cancelMining(){
-            let that = this;
-                this.$request({
-                    url: "mining/cancelMining",
-                    method: "post",
-                }).then((res)=>{
-                    if (res.result.returnCode.toString() === "0") {
-                        that.getMining();
-
-                    }else{
-                        this.$toast.show({
-                            title: res.result.returnMessage,
-                        })
-                    }
-                })
+            this.$refs.cancelPledge.open();
+            // let that = this;
+            //     this.$request({
+            //         url: "mining/cancelMining",
+            //         method: "post",
+            //     }).then((res)=>{
+            //         if (res.result.returnCode.toString() === "0") {
+            //             that.getMining();
+            //
+            //         }else{
+            //             this.$toast.show({
+            //                 title: res.result.returnMessage,
+            //             })
+            //         }
+            //     })
             },
+        //取消质押成功
+        cancelPledgeSuccess(){
+            this.getMining();
+        },
 
-
+        //转入成功
         transferInAmountSuccess(account){
 
             this.$jumpPage.jump({
@@ -148,7 +154,7 @@ export default {
         // asset(){
         //     let that = this;
         //     let postData={
-        //         inviteCode:'HHP652',
+        //         inviteCode:'MAY522',
         //         symbolType:9,
         //         amount:10000
         //     };

@@ -309,6 +309,7 @@ export default {
         bestHold: '昨日最佳持币',
         BeganToDig: '开始挖矿',
         closePledge: '取消质押',
+        addPledge: '增加质押',
         minLimit: '最小持币',
         pledgeNow: '目前质押',
         will: '将于',
@@ -496,6 +497,19 @@ export default {
             {name: "新邮箱验证码"},
             {name: "邮箱"},
         ]
+    },
+
+    //取消质押
+    cancelPledge:{
+        cancelTitle: '取消质押',
+        close: '关闭',
+        pledgeCount: '质押数量',
+        inputHolderText: '请输入验证码',
+        code: '获取验证码',
+        intoIntro: '取消质押会收取10%的手续费',
+        into: '确认取消',
+        verifyTip: "请先获取验证码",
+        verifyCountDown:'秒后再次获取'
     }
 
 }

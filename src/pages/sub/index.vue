@@ -36,7 +36,13 @@
 							<view class="pledgeText">{{subData.holdAmount}}</view>
 					</view>
 					<view class="circleText">{{$t('sub').will}} {{subData.holdExpiresIn}} {{$t('sub').releasePledge}}</view>
-					<view class="closePledge" @tap="cancelMining">{{$t('sub').closePledge}}</view>
+
+					<view class="pledgeGroup">
+						<view class="closePledge" @tap="cancelMining">{{$t('sub').closePledge}}</view>
+						<view class="closePledge addBtn" @tap="cancelMining">{{$t('sub').addPledge}}</view>
+						<view class="clearfix"></view>
+					</view>
+
 				</view>
 
 				<view class="earningsText" :style="{'transform':subData.holdStateType===0?'translateY(-160rpx)':'translateY(-120rpx)'}">
@@ -68,6 +74,8 @@
 
 		<transferInAmount ref="transferInAmount"  :availableCount="subData.brtBalance" @transferInAmountSuccess="transferInAmountSuccess"></transferInAmount>
 		<subRuler ref="subRuler"></subRuler>
+
+		<cancelPledge ref="cancelPledge"  :pledgeCount="subData.holdAmount" @cancelPledgeSuccess="cancelPledgeSuccess"></cancelPledge>
 
 	</view>
 </template>
@@ -222,23 +230,33 @@
 							top: 100rpx;
 						}
 					}
-					.closePledge{
+					.pledgeGroup{
+						width: 100%;
 						position: absolute;
 						bottom: 80rpx;
 						left: 50%;
 						transform: translateX(-50%);
-						margin: 16rpx auto 0;
-						width: 160rpx;
-						height: 56rpx;
-						border-radius: 30rpx;
-						border: 2rpx solid #098FE0;
-						font-size: 28rpx;
-						font-family: PingFangSC-Regular, PingFang SC;
-						font-weight: 400;
-						color: #098FE0;
-						line-height: 56rpx;
 						text-align: center;
+
+						.closePledge{
+							display: inline-block;
+							padding: 0 24rpx;
+							box-sizing: border-box;
+							height: 56rpx;
+							border-radius: 30rpx;
+							border: 2rpx solid #098FE0;
+							font-size: 28rpx;
+							font-family: PingFangSC-Regular, PingFang SC;
+							font-weight: 400;
+							color: #098FE0;
+							line-height: 56rpx;
+							text-align: center;
+						}
+						.addBtn{
+							margin-left: 20rpx;
+						}
 					}
+
 				}
 				.earningsText{
 					//transform: translateY(-160rpx);
