@@ -31,7 +31,7 @@
 			</view>
 
 				<view class="circle pledge" :style="{'background-image':'url('+circleBg+')'}" v-if="subData.holdStateType===1">
-					<view class="circleBtn" :style="{'background-image':'url('+circleBg3+')'}" @tap="transferInAmount">
+					<view class="circleBtn" :style="{'background-image':'url('+circleBg3+')'}" >
 						<view class="pledgeTitle">{{$t('sub').pledgeNow}} BRT</view>
 							<view class="pledgeText">{{subData.holdAmount}}</view>
 					</view>
@@ -39,7 +39,7 @@
 
 					<view class="pledgeGroup">
 						<view class="closePledge" @tap="cancelMining">{{$t('sub').closePledge}}</view>
-						<view class="closePledge addBtn" @tap="cancelMining">{{$t('sub').addPledge}}</view>
+						<view class="closePledge addBtn" @tap="transferInAmount">{{$t('sub').addPledge}}</view>
 						<view class="clearfix"></view>
 					</view>
 

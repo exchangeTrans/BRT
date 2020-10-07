@@ -9,6 +9,8 @@ let setIntervalWesocketPush = null;
 // let socketUrl = "wss://stream.binance.com:9443"
 // let socketUrl = "ws://13.124.107.69:8188/ws/market"
 let socketUrl = "ws://www.brt-finance.com:8188/ws/market"
+// let socketUrl = "ws://ws.aespayment.info:8188/ws/market"
+
 
 let ping = 1492420473027;
 let socketArray=[];

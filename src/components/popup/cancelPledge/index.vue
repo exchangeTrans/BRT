@@ -138,9 +138,10 @@
 
             cancelPledge(){
                 let that = this;
+                let tip = this.$t('cancelPledge').verifyTip
                 if (this.verifyCode===""){
                     this.$toast.show({
-                        title: this.$t('cancelPledge').verifyTip
+                        title: tip
                     });
                     return;
                 }
@@ -154,10 +155,10 @@
                     params:postData,
                 }).then((res)=>{
                     if (res.result.returnCode.toString() === "0") {
-                        this.verifyFlag=true;
-                        this.$emit('cancelPledgeSuccess')
+                        that.verifyFlag=true;
+                        that.$emit('cancelPledgeSuccess')
                     }else{
-                        this.$toast.show({
+                        that.$toast.show({
                             title: res.result.returnMessage,
                         })
                     }

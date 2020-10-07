@@ -605,10 +605,9 @@ export default {
 
         bestHold: "Yesterday's best currency holdings",
 
-        BeganToDig: 'Began To Dig',
+        BeganToDig: 'Start',
 
         closePledge: 'Cancellation of pledge',
-
         addPledge: '增加质押',
 
         minLimit: 'Minimum holding currency',
