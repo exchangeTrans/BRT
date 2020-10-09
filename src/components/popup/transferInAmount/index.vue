@@ -97,10 +97,11 @@
                     return
                 }
                 this.isAllowRequest = false;
+                let EmptyTip = this.$t('transferInAmount').Empty;
 				if(transferDate.type==="finance/inFinance"){
 					if(!this.counts){
 						this.$toast.show({
-							title:'金额不能为空'
+							title:EmptyTip
 						})
 						return;
 					}
@@ -129,9 +130,10 @@
 			},
             miningTransfer() {
                 let that = this;
+                let EmptyTip = this.$t('transferInAmount').Empty;
                 if (!this.counts){
                     this.$toast.show({
-                        title: '金额不能为空',
+                        title: EmptyTip,
                     })
                     return;
                 }

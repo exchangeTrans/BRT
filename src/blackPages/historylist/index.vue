@@ -8,7 +8,7 @@
 		</scroll-view>
 		<view class="nologimg" v-if="listOptions.length===0">
 			<image src="../../static/images/nohistorylog/nohistorylog.png" mode="" class="img"></image>
-			<view class="nologfont">暂无数据</view>
+			<view class="nologfont">{{$t('noData')}}</view>
 		</view> 
 	</view>
 </template>

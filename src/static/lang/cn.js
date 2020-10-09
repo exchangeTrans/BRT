@@ -58,6 +58,16 @@ export default {
         orderPrice: '委托价格',
         orderNumber: '委托数量',
     },
+    historyTrade:{
+        title:'历史记录',
+        buy: "买入",
+        sell: "卖出",
+        noData: '暂无数据',
+        orderNumber: '委托数量',
+        orderPrice: '委托价格',
+        orderAllMoney: '成交总额',
+        orderAll: '成交量',
+    },
     //资产
     property: {
         title: '资产',
@@ -349,6 +359,7 @@ export default {
         close: '取消',
         availableCount: '可用数量',
         inputHolderText: '请输入转入数量',
+        Empty:'数量不能为空',
         allInto: '全部转入',
         intoIntro: '质押週期为15日，到期后会自动解锁。',
         into: '转入',
@@ -358,6 +369,7 @@ export default {
         close: '取消',
         availableCount: '可用数量',
         inputHolderText: '请输入转入数量',
+        Empty:'数量不能为空',
         allInto: '全部转入',
         intoIntro: '量化週期为7日，到期或达到止盈率后会自动解锁。',
         into: '转入',

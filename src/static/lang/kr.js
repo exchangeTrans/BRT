@@ -58,6 +58,15 @@ export default {
         orderPrice: '委托价格',
         orderNumber: '委托数量',
     },
+    historyTrade:{
+        buy: "买入",
+        sell: "卖出",
+        noData: '暂无数据',
+        orderNumber: '委托数量',
+        orderPrice: '委托价格',
+        orderAllMoney: '成交总额',
+        orderAll: '成交量',
+    },
     //资产
     property: {
         title: '资产',
@@ -192,6 +201,9 @@ export default {
     },
     login: {
         phoneLogin: "手机登录",
+        phone:'手机号',
+        email:'邮箱号',
+        password:'密码',
         emailLogin: "邮箱登录",
         inputPhone: "请输入手机号码",
         inputPassword: "请输入登录密码",
@@ -243,6 +255,16 @@ export default {
     forgetPassword: {
         phoneForget: "手机号找回",
         emailForget: "邮箱找回",
+        phone:'手机号',
+        email:'邮箱号',
+        password:'密码',
+        verifyCode:'验证码',
+
+        verifyKey: "请先获取验证码",
+        passwordAgin:'两次密码不一致，请重新输入',
+        resend1: "秒后重新发送",
+        resend2: "重新发送",
+
         inputPhone: "请输入注册手机号码",
         inputVerifyCode: "请输入手机验证码",
         sendVerifyCode: "发送验证码",
@@ -309,6 +331,7 @@ export default {
         bestHold: '昨日最佳持币',
         BeganToDig: '开始挖矿',
         closePledge: '取消质押',
+        addPledge: '增加质押',
         minLimit: '最小持币',
         pledgeNow: '目前质押',
         will: '将于',
@@ -335,6 +358,7 @@ export default {
         close: '取消',
         availableCount: '可用数量',
         inputHolderText: '请输入转入数量',
+        Empty:'数量不能为空',
         allInto: '全部转入',
         intoIntro: '质押週期为15日，到期后会自动解锁。',
         into: '转入',
@@ -344,6 +368,7 @@ export default {
         close: '取消',
         availableCount: '可用数量',
         inputHolderText: '请输入转入数量',
+        Empty:'数量不能为空',
         allInto: '全部转入',
         intoIntro: '量化週期为7日，到期或达到止盈率后会自动解锁。',
         into: '转入',
@@ -496,6 +521,19 @@ export default {
             {name: "新邮箱验证码"},
             {name: "邮箱"},
         ]
+    },
+
+    //取消质押
+    cancelPledge:{
+        cancelTitle: '取消质押',
+        close: '关闭',
+        pledgeCount: '质押数量',
+        inputHolderText: '请输入验证码',
+        code: '获取验证码',
+        intoIntro: '取消质押会收取10%的手续费',
+        into: '确认取消',
+        verifyTip: "请先获取验证码",
+        verifyCountDown:'秒后再次获取'
     }
 
 }

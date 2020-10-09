@@ -108,6 +108,17 @@ export default {
         orderNumber: 'Amount',
 
     },
+    historyTrade:{
+        buy: "Buy",
+        title:'history',
+        sell: "Sell",
+
+        noData: 'no data',
+        orderNumber: 'Amount',
+        orderPrice: 'Price',
+        orderAllMoney: 'Total',
+        orderAll: 'Turnover',
+    },
 
     //Asset
 
@@ -327,7 +338,7 @@ export default {
 
         balance: 'Available Balance',
 
-        yield: '累计收益率',
+        yield: 'Profit',
 
         profitDetail: 'Return',
 
@@ -673,6 +684,7 @@ export default {
         availableCount: 'Available quantity',
 
         inputHolderText: 'Amount',
+        Empty:'Amount Empty error',
 
         allInto: 'All',
 
@@ -691,6 +703,7 @@ export default {
         availableCount: 'Available quantity',
 
         inputHolderText: 'Amount',
+        Empty:'Amount Empty error',
 
         allInto: 'All transferred in',
 

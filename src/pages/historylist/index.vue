@@ -9,7 +9,7 @@
 		<view class="setcenter" v-else>
 			<view class="nologimg">
 				<image src="../../static/images/nohistorylog/nohistorylog.png" mode="" class="img"></image>
-				<view class="nologfont">暂无数据</view>
+				<view class="nologfont">{{$t('noData')}}</view>
 			</view>
 		</view>
 	</view>

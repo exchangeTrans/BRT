@@ -88,9 +88,10 @@
             },
             transfer(){
                 let that = this;
+               let EmptyTip = this.$t('financierInAmount').Empty;
                     if(!this.counts){
                         this.$toast.show({
-                            title:'金额不能为空'
+                            title:EmptyTip
                         })
                         return;
                     }

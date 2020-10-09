@@ -59,7 +59,7 @@ export default {
 				this.headerOptions = {
 					show: true,
 					isAllowReturn: true,
-					text: "历史记录",
+					text: this.$t('historyTrade').title,
 					background: "#FFFFFF",
 	
 					rightItem: {
@@ -82,7 +82,7 @@ export default {
 				this.headerOptions={
 					show: true,
 					isAllowReturn: true,
-					text: "历史记录",
+					text: this.$t('historyTrade').title,
 					background: "#00001A",
 					isWhiteIcon: true,
 					rightItem: {

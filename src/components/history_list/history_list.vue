@@ -2,18 +2,18 @@
 	<view :class="'item '+theme" :style="theme==='black' ? 'background:#272A2E':''">
 		<view class="oneline">
 			<view class="oneline-left">
-				<text class="green" v-if="String(listOptions.orderType)==='1'">买入</text>
-				<text class="red" v-if="String(listOptions.orderType)==='2'">卖出</text>
+				<text class="green" v-if="String(listOptions.orderType)==='1'">{{$t('historyTrade').buy}}</text>
+				<text class="red" v-if="String(listOptions.orderType)==='2'">{{$t('historyTrade').sell}}</text>
 				{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
 			<view class="oneline-right">{{listOptions.createTime}}</view>
 		</view>
 		<!-- :style="{'color':listOptions.style.color}" -->
 		<view class="twoline" >
-			<view class="twoline_1">委托数量</view>
-			<view class="twoline_2">委托价格</view>
-			<view class="twoline_3">成交总额</view>
-			<view class="twoline_4">成交量</view>
+			<view class="twoline_1">{{$t('historyTrade').orderNumber}}</view>
+			<view class="twoline_2">{{$t('historyTrade').orderPrice}}</view>
+			<view class="twoline_3">{{$t('historyTrade').orderAllMoney}}</view>
+			<view class="twoline_4">{{$t('historyTrade').orderAll}}</view>
 		</view>
 	
 		<view class="threeline">
@@ -106,6 +106,7 @@
 		.twoline_1{
 			// width: 112rpx;
 			// height: 40rpx;
+			width: 112rpx;
 			float: left;
 			margin-right: 70rpx;
 			margin-left: 20rpx;
@@ -115,18 +116,22 @@
 			// height: 40rpx;
 			float: left;
 			margin-right: 70rpx;
+			width: 112rpx;
 		}
 		.twoline_3{
 			// width: 112rpx;
 			// height: 40rpx;
+			width: 142rpx;
 			float: left;
-			margin-right: 70rpx;
+			// margin-right: 70rpx;
 		}
 		.twoline_4{
 			// width: 112rpx;
 			// height: 40rpx;
-			float: left;
-			margin-left: 12rpx;
+			width: 112rpx;
+			float: right;
+			text-align: right;
+			margin-right: 20rpx;
 		}
 	}
 	.threeline{
@@ -156,18 +161,20 @@
 			width: 112rpx;
 			height: 50rpx;
 			float: left;
-			margin-right: 70rpx;
+			// margin-right: 70rpx;
 			box-sizing: border-box;
 
 		}
 		.threeline_4{
-			width: 112rpx;
+			width: 140rpx;
 			height: 50rpx;
 			float: right;
 			box-sizing: border-box;
+			text-align: right;
+			margin-right: 20rpx;
 			text{
 				float: right;
-				margin-right: 30rpx;
+				// margin-right: 30rpx;
 			}
 		}
 	}
