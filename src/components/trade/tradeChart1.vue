@@ -213,7 +213,9 @@
 	}
 </script>
 <script module="echarts" lang="renderjs">
-import store from '@/store/index.js';
+    import store from '@/store/index.js';
+    import {DateFunc} from '@/static/js/common.js';
+    import datastorage from '@/static/js/datastorage.js';
     // import uCharts from '@/components/u-charts/component.vue';
     // import uCharts from '@/static/js/uChart/u-charts.js';
     // import {
@@ -291,7 +293,8 @@ import store from '@/store/index.js';
                     KLineTradingPair.dataArray.forEach((item,index) => {
                         // if(index>100){
                             data.push([item.open, item.close, item.low,item.high])
-                            xData.push(new Date(parseInt(item.id) * 1000).toLocaleString().replace(/:\d{1,2}$/,' '));
+                            let time = DateFunc.resetTime(parseInt(item.id) * 1000)
+                            xData.push(time);
                         // }
                     });
                     // this.nowTradePrice = res.data[res.data.length-1].close;
@@ -311,6 +314,33 @@ import store from '@/store/index.js';
                 }
             },
             setEchart(data,xData) {
+                let langMsg = datastorage.getSync({
+                    key: 'langMsg'
+                }).name;
+                let tipObj={
+                    'zh-CN':{
+                        Open:'开盘价:',
+                        Close:'收盘价:',
+                        Highest:'最高价:',
+                        Lowest:'最低价:',
+                    },
+                    'en-US':{
+                        Open:'Open:',
+                        Close:'Close:',
+                        Highest:'Highest:',
+                        Lowest:'Lowest:',
+                    },
+                    'ko-KR':{
+                        Open:'开盘价:',
+                        Close:'收盘价:',
+                        Highest:'最高价:',
+                        Lowest:'最低价:',
+                    },
+                }
+                let OpenTip = tipObj[langMsg].Open;
+                let CloseTip = tipObj[langMsg].Close;
+                let HighestTip = tipObj[langMsg].Highest;
+                let LowestTip = tipObj[langMsg].Lowest;
                 // let $element = document.getElementById("myChart");
                 // let that = this;
                 // let KLineTradingPair1 = this.KLineTradingPair1
@@ -330,10 +360,10 @@ import store from '@/store/index.js';
                             let data = datas[0];
                             var res = datas[0].name +'</br>'                          
                             +datas[0].seriesName+'</br>' 
-                            +'开盘价:'+datas[0].data[1]+'</br>' 
-                            +'收盘价:'+datas[0].data[2]+'</br>' 
-                            +'最低价:'+datas[0].data[3]+'</br>' 
-                            +'最高价:'+datas[0].data[4]+'</br>' 
+                            +OpenTip+datas[0].data[1]+'</br>' 
+                            +CloseTip+datas[0].data[2]+'</br>' 
+                            +LowestTip+datas[0].data[3]+'</br>' 
+                            +HighestTip+datas[0].data[4]+'</br>' 
                             return res
                         }
                     },
