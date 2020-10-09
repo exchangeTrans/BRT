@@ -125,6 +125,7 @@
                     let selectedObj = langArray[item.name][index]
                     this.selectedObj=selectedObj;
                     this.$store.commit("setDefaultSync",{key:"langMsg", val: selectedObj,})
+                    this.$store.dispatch('getCountryList');
                     this.$emit('chooseItem',selectedObj);
                 }
                 

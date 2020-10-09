@@ -59,6 +59,7 @@ export default {
         orderNumber: '委托数量',
     },
     historyTrade:{
+        title:'历史记录',
         buy: "买入",
         sell: "卖出",
         noData: '暂无数据',

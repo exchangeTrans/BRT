@@ -1,5 +1,5 @@
 import request from '@/request/index';
-
+import datastorage from '@/static/js/datastorage.js';
 const GETCOUNTRYLIST = 'GETCOUNTRYLIST';
 const COUNTRY = 'COUNTRY';
 const GETRANGEDATA = "GETRANGEDATA";
@@ -213,13 +213,38 @@ export default {
                 method: 'post',
             }).then(res => {
                 if (res.result.returnCode.toString() === '0') {
+                    let langMsg = datastorage.getSync({
+                        key: 'langMsg'
+                    }).name;
                     let data = res.data.list;
                     let countryCode = {};
-                    data.forEach(element => {
+                    let newData = data.map(element => {
                         countryCode[element.countryCode] = element.dialingCode
+                        let langMsg = datastorage.getSync({
+                            key: 'langMsg'
+                        }).name;
+                        let titleText = element.titleCN;
+                        if(!langMsg){
+                            titleText = element.titleCN;
+                        }else if(langMsg==='zh-CN'){
+                            titleText = element.titleCN;
+                        }
+                        else if(langMsg==='en-US'){
+                            titleText = element.titleEN;
+                        }
+                        else if(langMsg==='ko-KR'){
+                            titleText = element.titleKO;
+                        }else{
+                            titleText = element.titleCN;
+                        }
+                        return {
+                            ...element,
+                            titleText
+                        }
+                        
                     });
-                    commit('GETCOUNTRYLIST', data);
-                    commit('COUNTRY', data[0]);
+                    commit('GETCOUNTRYLIST', newData);
+                    commit('COUNTRY', newData[0]);
                     commit('COUNTRYCODE', countryCode);
                 }
             })

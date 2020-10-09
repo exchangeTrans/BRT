@@ -12,7 +12,7 @@
                     <view class="lastInput" @tap="toChooseCountry">
                         <view class="icon"
                               :style="{'background-image': cityChoiceIcon}"></view>
-                        <view class="cityChoice">{{chooseCountry.titleCN}}</view>
+                        <view class="cityChoice">{{chooseCountry.titleText}}</view>
                         <view class="lastIcon"
                               :style="{'background-image': cityChoiceLastIcon}"></view>
                     </view>

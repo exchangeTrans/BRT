@@ -11,7 +11,7 @@
                           @tap="chooseItem(item)">
                         <image :src=item.icon alt=""/>
                         <view class="name">
-                            {{item.titleCN}}
+                            {{item.titleText}}
                         </view>
                         <view class="selected"
                               :style="{'background-image':'url('+selectedIcon+')'}"

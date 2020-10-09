@@ -12,6 +12,7 @@ export default {
         }
     },
     mounted() {
+        alert(1)
 
     },
     computed:{
@@ -33,6 +34,12 @@ export default {
         // selectSymbol:{name:'USDT',isLocal:false},
         // quotationData:{},
 
+    },
+    watch:{
+        langMsg(){
+            this.loginBtn = this.$t('loginOrRegs').loginBtn;
+            this.regsBtn = this.$t('loginOrRegs').regsBtn
+        }
     },
     methods: {
         jumpLogin() {

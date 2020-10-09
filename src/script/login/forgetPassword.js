@@ -153,7 +153,7 @@ export default {
                 countryId: "37",
                 dialingCode: "86",
                 imagePath: "",
-                titleCN: "中国",
+                titleText: "中国",
                 titleEN: "CHINA",
                 titleJP: "CHINA",
                 titleKO: "CHINA",
@@ -196,7 +196,7 @@ export default {
         },
         setCountry() {
             let contury = this.$store.state.defaultData.contury;
-            if (!contury.titleCN) {
+            if (!contury.titleText) {
 
             } else {
                 this.chooseCountry = contury;
