@@ -48,8 +48,8 @@
 					<view class="precent" hover-class="hoverClass" @tap="choosePrecent(item)" v-for="item in precentList" :key="item.val">{{item.text}}</view>
 				</view>
 				<text class="tradenum">{{$t('tradePage').tradeAll}}</text><text class="number">{{tradeAll.toFixed(2)}} {{KLineTradingPair.type}}</text>
-				<view class="buyit" @tap="tradeFunc" hover-class="hoverClass" v-if="selectedTradeName.code==='buy'">买入{{KLineTradingPair.name}}</view>
-				<view class="buyit" @tap="tradeFunc" hover-class="hoverClass" v-else>卖出{{KLineTradingPair.name}}</view>
+				<view class="buyit" @tap="tradeFunc" hover-class="hoverClass" v-if="selectedTradeName.code==='buy'">{{$t('tradePage').buy}} {{KLineTradingPair.name}}</view>
+				<view class="buyit" @tap="tradeFunc" hover-class="hoverClass" v-else>{{$t('tradePage').sell}} {{KLineTradingPair.name}}</view>
 			</view>
 			<view class="right">
 				<view class="charge_and_num">
