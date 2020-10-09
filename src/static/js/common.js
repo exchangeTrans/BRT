@@ -1,5 +1,6 @@
 import City from './idCardCity.js'
 import toast from './dialog.js'
+import datastorage from '@/static/js/datastorage.js';
 
 //阻止事件冒泡
 export const stopEventBubble = (e) => {
@@ -363,6 +364,40 @@ export const isEmailAvailable = (emailInput) => {
     let myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     return myreg.test(emailInput);
 };*/
+let tipObj={
+    'zh-CN':{
+        loading:'loading',
+        Save:'Save',
+        Empty:'不能为空',
+        Incorrect:'不正确',
+        min:'长度不能小于',
+        max:'长度不能大于',
+        format:'格式不正确',
+        Select:'未选择或填写任何数据',
+    },
+    'en-US':{
+        loading:'loading',
+        Save:'Save',
+        Empty:' Empty Error',
+        Incorrect:' Incorrect',
+        min:'Minimum Length ',
+        max:'Maximum Length ',
+        format:' Invalid format',
+        Select:'Erro Select',
+    },
+    'ko-KR':{
+        loading:'loading',
+        Save:'Save',
+        Empty:' Empty Error',
+        Incorrect:' Incorrect',
+        min:'Minimum Length ',
+        max:'Maximum Length ',
+        format:' Invalid format',
+        Select:'Erro Select',
+    },
+}
+
+
 
 //检查数据
 export const checkDataFunc = {
@@ -434,6 +469,9 @@ export const checkDataFunc = {
     // }
     checkBasics: function (data, checkArray) {
         let __that = this;
+        let langMsg = datastorage.getSync({
+            key: 'langMsg'
+        }).name;
         //电话
         let regPhone = /^[1][3,4,5,7,8][0-9]{9}$/;
         //邮箱
@@ -449,7 +487,7 @@ export const checkDataFunc = {
             isReturn = true;
             if (!checkVal || checkVal === null || checkVal === undefined || checkVal.trim() === "") {
                 toast.show({
-                    title: element.name + "不能为空"
+                    title: element.name + tipObj[langMsg].Empty
                 });
                 // that.$bus.$emit('tip', {text: element.name + "不能为空", type: 'error'});
                 isReturn = false
@@ -457,7 +495,7 @@ export const checkDataFunc = {
                 checkType.some(item => {
                     if (item === "isNumber") {
                         if (parseFloat(checkVal).toString() === "NaN") {
-                            toast.show({title: element.name + "不正确"});
+                            toast.show({title: element.name + tipObj[langMsg].Incorrect});
                             // that.$bus.$emit('tip', {text: element.name + "不正确", type: 'error'});
                             isReturn = false
                         }
@@ -467,31 +505,31 @@ export const checkDataFunc = {
 
                         if (minLength && checkVal.length < minLength) {
 
-                            toast.show({title: element.name + "长度不能小于" + minLength});
+                            toast.show({title: element.name + tipObj[langMsg].min + minLength});
                             // that.$bus.$emit('tip', {text: element.name + "长度不能小于" + minLength, type: 'error'});
                             isReturn = false
                         }
                         if (maxLength && checkVal.length > maxLength) {
-                            toast.show({title: element.name + "长度不能大于" + maxLength});
+                            toast.show({title: element.name + tipObj[langMsg].max + maxLength});
                             // that.$bus.$emit('tip', {text: element.name + "长度不能大于" + maxLength, type: 'error'});
                             isReturn = false
                         }
                     } else if (item === "isPhone") {
                         if (!regPhone.test(checkVal)) {
-                            toast.show({title: element.name + "格式不正确"});
+                            toast.show({title: element.name + tipObj[langMsg].format});
                             // that.$bus.$emit('tip', {text: element.name + "格式不正确", type: 'error'});
                             isReturn = false
                         }
                     } else if (item === "isEmail") {
                         if (!regEmail.test(checkVal)) {
-                            toast.show({title: element.name + "格式不正确"});
+                            toast.show({title: element.name + tipObj[langMsg].format});
                             // that.$bus.$emit('tip', {text: element.name + "格式不正确", type: 'error'});
                             isReturn = false
                         }
                     } else if (item === "isIdcard") {
                         let pass = __that.idcard(checkVal);
                         if (!pass) {
-                            toast.show({title: element.name + "格式不正确"});
+                            toast.show({title: element.name + tipObj[langMsg].format});
                             // that.$bus.$emit('tip', {text: element.name + "格式不正确", type: 'error'});
                             isReturn = false
                         }
@@ -506,9 +544,12 @@ export const checkDataFunc = {
 
     //检查数组
     checkArrayData: function (data, checkArray) {
+        let langMsg = datastorage.getSync({
+            key: 'langMsg'
+        }).name;
         let isReturn = false;
         if (!data || data === null || data.length === 0) {
-            toast.show({title: "未选择或填写任何数据"});
+            toast.show({title: tipObj[langMsg].Select});
             // that.$bus.$emit('tip', {text: "未选择或填写任何数据", type: 'error'});
             return isReturn;
         }

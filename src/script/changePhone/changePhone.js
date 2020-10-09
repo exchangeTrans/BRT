@@ -187,16 +187,16 @@ export default {
 
             let checkPhoneArray = [
                 {
-                    name: this.$t('changePhone').checkPhoneArray[0],
+                    name: this.$t('changePhone').checkPhoneArray[0].name,
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
                 {
-                    name: this.$t('changePhone').checkPhoneArray[1],
+                    name: this.$t('changePhone').checkPhoneArray[1].name,
                     checkKey: "verifyCode",
                 },
                 {
-                    name: this.$t('changePhone').checkPhoneArray[2],
+                    name: this.$t('changePhone').checkPhoneArray[2].name,
                     checkKey: "verifyCodeNew",
                 },
             ];

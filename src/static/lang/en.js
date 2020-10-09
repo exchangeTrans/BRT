@@ -376,6 +376,9 @@ export default {
         phoneLogin: "Mobile login",
 
         emailLogin: "E-mail login",
+        phone:'phone number',
+        email:'emial',
+        password:'password',
 
         inputPhone: "Please enter phone number",
 
@@ -476,6 +479,17 @@ export default {
         phoneForget: "Phone",
 
         emailForget: "Email",
+
+        phone:'Phone number',
+        email:'Email',
+        password:'password',
+        verifyCode:'Verification code',
+
+        verifyKey: "Please get the verification code first",
+        passwordAgin:"The two passwords are inconsistent, please re-enter",
+        resend1: "Resend in Seconds",
+
+        resend2: "Resend",
 
         inputPhone: "Phone number",
 
@@ -607,8 +621,8 @@ export default {
 
         BeganToDig: 'Start',
 
-        closePledge: 'Cancellation of pledge',
-        addPledge: '增加质押',
+        closePledge: 'Cancel',
+        addPledge: 'Add',
 
         minLimit: 'Minimum holding currency',
 
@@ -985,15 +999,15 @@ export default {
     },
     //取消质押
     cancelPledge:{
-        cancelTitle: '取消质押',
-        close: '关闭',
-        pledgeCount: '质押数量',
-        inputHolderText: '请输入验证码',
-        code: '获取验证码',
-        intoIntro: '取消质押会收取10%的手续费',
-        into: '确认取消',
-        verifyTip: "请先获取验证码",
-        verifyCountDown:'秒后再次获取'
+        cancelTitle: 'Cancel',
+        close: 'Close',
+        pledgeCount: 'Amount',
+        inputHolderText: 'Code',
+        code: 'Send',
+        intoIntro: 'Cancel fee: 10%',
+        into: 'Cancel',
+        verifyTip: "Get code first",
+        verifyCountDown:'sec again'
     }
 
 

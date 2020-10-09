@@ -86,12 +86,12 @@ export default {
 
             checkPhoneArray: [
                 {
-                    name: "手机号",
+                    name: this.$t('login').phone,
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
                 {
-                    name: "密码",
+                    name:this.$t('login').password,
                     checkKey: "password",
                     checkType: ["length"],
                     minLength: 6,
@@ -101,12 +101,12 @@ export default {
 
             checkEmailArray: [
                 {
-                    name: "邮箱",
+                    name: this.$t('login').email,
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
                 {
-                    name: "密码",
+                    name: this.$t('login').password,
                     checkKey: "password",
                     checkType: ["length"],
                     minLength: 6,

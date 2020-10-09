@@ -1,6 +1,18 @@
 //提示层
 // import jumpPage from '../static/jumpPage.js';
+import datastorage from '@/static/js/datastorage.js';
 import monitorFunc from '@/static/js/monitorFunc.js';
+let tipObj={
+    'zh-CN':{
+        loading:'loading',
+    },
+    'en-US':{
+        loading:'loading',
+    },
+    'ko-KR':{
+        loading:'loading',
+    },
+}
 const toast = {
     show:function(options,success,fail){
         let defultOptions = {
@@ -38,8 +50,11 @@ const toast = {
         uni.hideToast();
     },
     showLoading:function(options,success,fail){
+        let langMsg = datastorage.getSync({
+            key: 'langMsg'
+        }).name;
         let defultOptions = {
-            title:'加载中',	//String	是	提示的内容
+            title:tipObj[langMsg].loading,	//String	是	提示的内容
             mask:false,	//Boolean	否	是否显示透明蒙层，防止触摸穿透，默认：false
             complete:function(){},	//Function	否	接口调用结束的回调函数（调用成功、失败都会执行）
         }

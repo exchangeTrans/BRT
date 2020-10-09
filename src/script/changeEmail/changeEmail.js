@@ -187,16 +187,16 @@ export default {
 
             let checkEmailArray = [
                 {
-                    name: this.$t('changeEmail').checkEmailArray[0],
+                    name: this.$t('changeEmail').checkEmailArray[0].name,
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
                 {
-                    name: this.$t('changeEmail').checkEmailArray[1],
+                    name: this.$t('changeEmail').checkEmailArray[1].name,
                     checkKey: "verifyCode",
                 },
                 {
-                    name: this.$t('changeEmail').checkEmailArray[2],
+                    name: this.$t('changeEmail').checkEmailArray[2].name,
                     checkKey: "verifyCodeNew",
                 },
             ];

@@ -192,6 +192,9 @@ export default {
     },
     login: {
         phoneLogin: "手机登录",
+        phone:'手机号',
+        email:'邮箱号',
+        password:'密码',
         emailLogin: "邮箱登录",
         inputPhone: "请输入手机号码",
         inputPassword: "请输入登录密码",
@@ -243,6 +246,16 @@ export default {
     forgetPassword: {
         phoneForget: "手机号找回",
         emailForget: "邮箱找回",
+        phone:'手机号',
+        email:'邮箱号',
+        password:'密码',
+        verifyCode:'验证码',
+
+        verifyKey: "请先获取验证码",
+        passwordAgin:'两次密码不一致，请重新输入',
+        resend1: "秒后重新发送",
+        resend2: "重新发送",
+
         inputPhone: "请输入注册手机号码",
         inputVerifyCode: "请输入手机验证码",
         sendVerifyCode: "发送验证码",

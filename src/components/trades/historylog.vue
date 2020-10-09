@@ -4,8 +4,8 @@
 			<view class="buyitem" v-if="String(historylogdata.orderType)==='1'">
                 <text class="buyitin buy" >{{$t('tradePage').orderBuy}}</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
-			<view class="buyitem" v-if="String(historylogdata.orderSell)==='2'">          
-				<text class="buyitin sell"  >{{$t('tradePage').tradeAll}}</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
+			<view class="buyitem" v-if="String(historylogdata.orderType)==='2'">          
+				<text class="buyitin sell"  >{{$t('tradePage').orderSell}}</text>{{KLineTradingPair.name}}/{{KLineTradingPair.type}}
 			</view>
 			<view class="cancelitem" @tap='cancelTrade(historylogdata)'>{{$t('tradePage').orderReturn}}</view>
 		</view>

@@ -83,9 +83,9 @@ export default {
 
             phoneCodeStatus: false,
             emailCodeStatus: false,
-            phoneName: '发送验证码',
+            phoneName: this.$t('forgetPassword').sendVerifyCode,
             phoneTime: 60,
-            emailName: '发送验证码',
+            emailName: this.$t('forgetPassword').sendVerifyCode,
             emailTime: 60,
 
             postData: {
@@ -98,23 +98,23 @@ export default {
             },
             checkPhoneArray: [
                 {
-                    name: "手机号",
+                    name: this.$t('forgetPassword').phone,
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
                 {
-                    name: "验证码",
+                    name: this.$t('forgetPassword').verifyCode,
                     checkKey: "verifyCode",
                 },
                 {
-                    name: "密码",
+                    name: this.$t('forgetPassword').password,
                     checkKey: "password",
                     checkType: ["length"],
                     minLength: 6,
                     maxLength: 20,
                 },
                 {
-                    name: "确认密码",
+                    name: this.$t('forgetPassword').password,
                     checkKey: "passwordConfirm",
                     checkType: ["length"],
                     minLength: 6,
@@ -124,23 +124,23 @@ export default {
 
             checkEmailArray: [
                 {
-                    name: "邮箱",
+                    name: this.$t('forgetPassword').email,
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
                 {
-                    name: "验证码",
+                    name: this.$t('forgetPassword').verifyCode,
                     checkKey: "verifyCode",
                 },
                 {
-                    name: "密码",
+                    name: this.$t('forgetPassword').password,
                     checkKey: "password",
                     checkType: ["length"],
                     minLength: 6,
                     maxLength: 20,
                 },
                 {
-                    name: "确认密码",
+                    name: this.$t('forgetPassword').password,
                     checkKey: "passwordConfirm",
                     checkType: ["length"],
                     minLength: 6,
@@ -205,9 +205,7 @@ export default {
         btnClick() {
             let postData = this.getPostData();
             if (postData) {
-                uni.showLoading({
-                    title: "加载中..."
-                })
+                uni.showLoading()
                 this.$request({
                     url: "common/forget",
                     method: "post",
@@ -267,14 +265,17 @@ export default {
                 verifyKey,
                 verifyCode,
             };
+            let verifyKeyTip = this.$t('forgetPassword').verifyKey;
+            let passwordAginTip = this.$t('forgetPassword').passwordAgin;
+            
             if (checkDataFunc.checkBasics(postData, checkArray)) {
                 if (postData.verifyKey === "") {
                     this.$toast.show({
-                        title: "请先获取验证码",
+                        title: verifyKeyTip,
                     })
                 } else if (postData.password !== postData.passwordConfirm) {
                     this.$toast.show({
-                        title: "两次密码不一致，请重新输入",
+                        title: passwordAginTip,
                     })
                 } else {
                     return postData = {
@@ -295,9 +296,7 @@ export default {
                 let sendCodeData = this.getSendCodeData();
                 if (sendCodeData) {
                     that.setIntervalFun(sendCodeData.accountType);
-                    uni.showLoading({
-                        title: "加载中..."
-                    })
+                    uni.showLoading()
                     this.$request({
                         url: "common/sendCode",
                         method: "post",
@@ -328,17 +327,18 @@ export default {
             let dialingCode = this.chooseCountry.dialingCode;
             let tel = this.postData.tel;
             let email = this.postData.email;
-
+            let phoneTip = this.$t('forgetPassword').phone;
+            let emailTip = this.$t('forgetPassword').email;
             let checkPhoneArray = [
                 {
-                    name: "手机号",
+                    name: phoneTip,
                     checkKey: "tel",
                     // checkType: ["isPhone"],
                 },
             ];
             let checkEmailArray = [
                 {
-                    name: "邮箱",
+                    name: emailTip,
                     checkKey: "email",
                     checkType: ["isEmail"],
                 },
@@ -365,14 +365,15 @@ export default {
             let tempName = accountType === 0 ? 'phoneName' : 'emailName';//0手机 1邮箱
             let tempStauts = accountType === 0 ? 'phoneCodeStatus' : 'emailCodeStatus';
             // that[tempStauts] = true;
-
+            let resend1 = this.$t('forgetPassword').resend1;
+            let resend2 = this.$t('forgetPassword').resend2;
             let interval = setInterval(function () {
                 // eslint-disable-next-line no-debugger
                 // debugger
-                that[tempName] = that[tempAccountType] + '秒后重新发送';
+                that[tempName] = that[tempAccountType] + resend1;
                 --that[tempAccountType];
                 if (that[tempAccountType] < 0) {
-                    that[tempName] = "重新发送";
+                    that[tempName] = resend2;
                     that[tempStauts] = false;
                     that[tempAccountType] = 60;
                     clearInterval(interval);

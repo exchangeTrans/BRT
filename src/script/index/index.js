@@ -58,6 +58,11 @@ export default {
             logo: `${require('@/static/images/home/logo.png')}`, //logo
             qr: `${require('@/static/images/home/qr.png')}`, //二维码
             topBg: `${require('@/static/images/home/topBg.png')}`, //背景
+            advertisingBgs:{
+                'zh-CN':`${require('@/static/images/home/advertising.png')}`,
+                'en-US':`${require('@/static/images/home/advertisingEn.png')}`,
+                'ko-KR':`${require('@/static/images/home/advertisingKo.png')}`,
+            },
             advertising: `${require('@/static/images/home/advertising.png')}`, //广告牌
             notice2: `${require('@/static/images/home/notice2.png')}`, //公告
             more: `${require('@/static/images/home/more.png')}`, //公告

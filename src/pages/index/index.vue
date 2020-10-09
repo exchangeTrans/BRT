@@ -29,7 +29,7 @@
 				<view class="more" :style="{'background-image':'url('+more+')'}" @click.self.stop="gonoticelist"></view>
 				<view class="clearfix"></view>
 			</view>
-			<view class="advertising" :style="{'background-image':'url('+advertising+')'}">
+			<view class="advertising" :style="{'background-image':'url('+advertisingBgs[langMsg]+')'}">
 				<!-- 广告位 -->
 			</view>
 
