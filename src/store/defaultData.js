@@ -10,7 +10,7 @@ export default {
     state: {
         version:{
             text:'v1.0.0',
-            code:5
+            code:7
         },
         langArray: {
             'zh-CN': [

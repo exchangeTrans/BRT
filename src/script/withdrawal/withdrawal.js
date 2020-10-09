@@ -285,7 +285,6 @@ export default {
                 method: "post",
                 params: sendCodeData,
             }).then((res) => {
-                that.getCodeStatus = true
                 if (res.result.returnCode.toString() === "0") {
                     that.postData.verifyKey = res.data.verifyKey;
                     
@@ -355,7 +354,7 @@ export default {
                         method: "post",
                         params: that.postData,
                     }).then((res) => {
-                        that.isAllowClick = true;
+                        
                         that.$toast.hideLoading()
                         that.$store.dispatch('getUserMsg');
                         if (res.result.returnCode.toString() === "0") {
@@ -365,6 +364,7 @@ export default {
                                 type: "navigateTo"
                             })
                         } else {
+                            that.isAllowClick = true;
                             that.$toast.show({
                                 title: res.result.returnMessage,
                             })

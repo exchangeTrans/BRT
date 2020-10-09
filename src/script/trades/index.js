@@ -344,7 +344,7 @@
 					method:'post',
 					params:postData
 				}).then((res)=>{
-					that.isAllowTrade = true;
+					
 					if (res.result.returnCode.toString() === "0") {
 						this.getTradeInfo();
 						this.$toast.show({
@@ -363,11 +363,14 @@
 						// console.log(Number(usdtBalance)) 
 						// this.$emit('transferInAmountSuccess')
 					}else{
+						that.isAllowTrade = true;
 						this.$toast.show({
 							title: res.result.returnMessage,
 						})
 					}
 				})
+			}else{
+				that.isAllowTrade = true;
 			}
 		},
 		cancelTrade(item){

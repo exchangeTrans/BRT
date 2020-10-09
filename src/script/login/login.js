@@ -186,7 +186,6 @@ export default {
                     method: "post",
                     params: postData,
                 }).then((res) => {
-                    that.isAllowClick = true;
                     // debugger
                     // console.log(res);
                     // data: {userLoginId: "1307906608826679298", userLoginToken: "bf1c35263cb4c36d1ad4dafdd04efa85"}
@@ -225,6 +224,8 @@ export default {
                         })
                     }
                 })
+            }else{
+                that.isAllowClick = true;
             }
         },
         getPostData() {

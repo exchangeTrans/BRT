@@ -15,10 +15,9 @@
                     <input type="number"
                            class="input"
                            :placeholder="$t('cancelPledge').inputHolderText"
-                           @input="inputChange('verifyCode', $event)"
-                    >
+                           @input="inputChange('verifyCode', $event)">
                     <!--@input="changeInput"-->
-                    <view class="getCode"  @tap="getCode(availableCount)" v-if="verifyFlag">{{$t('cancelPledge').code}}</view>
+                    <view class="getCode"  @tap="getCode()" v-if="verifyFlag">{{$t('cancelPledge').code}}</view>
                     <view class="getCode" v-else>{{countDown}}{{$t('cancelPledge').verifyCountDown}}</view>
                 </view>
                 <view class="intro">{{$t('cancelPledge').intoIntro}}</view>
@@ -49,6 +48,7 @@
                 countDown:60,
                 verifyFlag:true,//true可以获取，false不可获取
                 timer:'',
+                isAllowRequest:true
 			}
 		},
         watch:{
@@ -84,15 +84,21 @@
             //     // console.log(value)
             // },
             open(){
+                this.isAllowRequest = true;
+                this.countDown=60;
                 this.$nextTick(() => {
                     this.$refs['cancelPledge'].open();
                 })
             },
             close(){
+                let that = this;
+                this.verifyFlag=true;
+                this.countDown=0
                 this.$nextTick(() => {
                     this.$refs['cancelPledge'].close();
+                    // that.isAllowRequest = true;
                 })
-                this.verifyFlag=true;
+                
             },
             getCode(item){
                // let res = item.split(',').join('');
@@ -137,6 +143,10 @@
             },
 
             cancelPledge(){
+                if(!this.isAllowRequest){
+                    return
+                }
+                this.isAllowRequest = false;
                 let that = this;
                 let tip = this.$t('cancelPledge').verifyTip
                 if (this.verifyCode===""){
@@ -154,13 +164,16 @@
                     method: "post",
                     params:postData,
                 }).then((res)=>{
+                    
                     if (res.result.returnCode.toString() === "0") {
-                        that.verifyFlag=true;
+                        // that.verifyFlag=true;
+                        that.close();
                         that.$emit('cancelPledgeSuccess')
                     }else{
                         that.$toast.show({
                             title: res.result.returnMessage,
                         })
+                        that.isAllowRequest = true;
                     }
                 })
             },

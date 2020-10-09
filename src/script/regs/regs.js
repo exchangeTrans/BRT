@@ -161,6 +161,7 @@ export default {
                 titleJP: "CHINA",
                 titleKO: "CHINA",
             },
+            isAllowClick:true,
         }
     },
 
@@ -213,7 +214,11 @@ export default {
             // console.log("下一步")
             let postData = this.getPostData();
             let that = this;
+            if(!this.isAllowClick){
+                return
+            }
             if (postData) {
+                that.isAllowClick = false;
                 uni.showLoading({
                     title: that.$t('regs').showLoading
                 })
@@ -247,11 +252,14 @@ export default {
                         });
                         uni.hideLoading()
                     } else {
+                        that.isAllowClick = true;
                         this.$toast.show({
                             title: res.result.returnMessage,
                         })
                     }
                 })
+            }else{
+                that.isAllowClick = true;
             }
         },
         getPostData() {
@@ -340,8 +348,7 @@ export default {
             let dialingCode = this.chooseCountry.dialingCode;
             let tel = this.postData.tel;
             let email = this.postData.email;
-            let tip1 = this.$t('regs').checkPhoneArray[0]
-            debugger
+            let tip1 = this.$t('regs').checkPhoneArray[0];
             let checkPhoneArray = [
                 {
                     name: tip1,
@@ -380,7 +387,6 @@ export default {
         },
         setIntervalFun(accountType) {
             // debugger;
-            console.log(this.i18n.resend2)
             let that = this;
             let resend1 = this.i18n.resend1;
             let resend2 = this.i18n.resend2;

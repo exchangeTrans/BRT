@@ -1,6 +1,7 @@
 import api from './api.js';
 import datastorage from '@/static/js/datastorage.js';
 import jumpPage from '@/static/js/jumpPage.js';
+import store from '@/store/index.js';
 // import monitorFunc from '@/static/js/monitorFunc.js';
 // import {gloabeData} from '@/static/common.js';
 // import toast from "../static/dialog";
@@ -53,6 +54,7 @@ const getParams = (params) => {
     let userLoginToken = loginMsg ? loginMsg.userLoginToken : '';
     let devicePlatformLanguage = langMsg ? langMsg.code : 1;
     let pageRepeatCode = (new Date()).valueOf();
+    let clientVersion = store.state.defaultData.version.code;
     postData = {
         userLoginId,
         userLoginToken,
@@ -61,6 +63,7 @@ const getParams = (params) => {
         pageRepeatCode,
         ...postData,
         ...params,
+        clientVersion
     };
     if (params) {
         postData = {

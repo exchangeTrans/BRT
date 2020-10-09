@@ -44,6 +44,7 @@
                 isMustUpDate:false,
                 updateIcon:`${require('@/static/images/home/updateIcon.png')}`,
                 closeIcon:`${require('@/static/images/home/close.png')}`,
+                isAllowRequest:true
 			}
 		},
         watch:{
@@ -72,14 +73,18 @@
                 // console.log(value)
             },
             open(){
+                this.isAllowRequest = true;
                 this.$nextTick(() => {
                     this.$refs['transferInAmount'].open();
                 })
             },
             close(){
+                let that = this;
                 this.$nextTick(() => {
                     this.$refs['transferInAmount'].close();
+                    // this.isAllowRequest = true;
                 })
+                
             },
             allTransfer(item){
                let res = item.split(',').join('');
@@ -88,6 +93,10 @@
             },
 			transfer(transferDate){
                 let that = this;
+                if(!this.isAllowRequest){
+                    return
+                }
+                this.isAllowRequest = false;
 				if(transferDate.type==="finance/inFinance"){
 					if(!this.counts){
 						this.$toast.show({
@@ -103,13 +112,15 @@
 					    method:'post',
 					    params:postData
 					}).then((res)=>{
+                        
 						if (res.result.returnCode.toString() === "0") {
                             that.close();
                             that.$emit('transferInAmountSuccess',that.counts)
 						}else{
-						    this.$toast.show({
+						    that.$toast.show({
 						        title: res.result.returnMessage,
-						    })
+                            })
+                            that.isAllowRequest = true;
 						}
 					})
 				}else{
@@ -117,6 +128,7 @@
 				}
 			},
             miningTransfer() {
+                let that = this;
                 if (!this.counts){
                     this.$toast.show({
                         title: '金额不能为空',
@@ -131,13 +143,16 @@
                     method:'post',
                     params:postData
                 }).then((res)=>{
+                    
                     if (res.result.returnCode.toString() === "0") {
-                        this.close();
-                        this.$emit('transferInAmountSuccess',this.counts)
+                        
+                        that.close();
+                        that.$emit('transferInAmountSuccess',this.counts)
                     }else{
-                        this.$toast.show({
+                        that.$toast.show({
                             title: res.result.returnMessage,
                         })
+                        that.isAllowRequest = true;
                     }
                 })
             },

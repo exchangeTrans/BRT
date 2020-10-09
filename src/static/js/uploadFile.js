@@ -1,7 +1,7 @@
 import api from "../../request/api";
 import datastorage from "./datastorage";
 
-export const uploadFile = (FilePath, upToken, cb) => {
+export const uploadFile = (FilePath, upToken, cb,failcb) => {
     let key = datastorage.getSync({key: 'loginMsg'}).userLoginId + (new Date()).valueOf();
     uni.uploadFile({
         /*
@@ -36,6 +36,9 @@ export const uploadFile = (FilePath, upToken, cb) => {
                 this.$toast.show({
                     title: error.response,
                 })
+            }
+            if(failcb){
+                failcb()
             }
         },
         complete: () => {

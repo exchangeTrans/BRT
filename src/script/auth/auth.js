@@ -91,6 +91,7 @@ export default {
                 cardNo: "",
                 disabled: null,
             },
+            isAllowClick:true,
 
         }
     },
@@ -142,13 +143,19 @@ export default {
             // debugger
             let that = this;
             let filePath = this.filePath;
+            if(!this.isAllowClick){
+                return
+            }
             this.getUploadToken(function (upToken) {
+                that.isAllowClick = false;
                 // debugger
                 uploadFile(filePath, upToken, function (res) {
                     // debugger
                     // console.log(res);
                     that.getAuth(res)
 
+                },function(){
+                    that.isAllowClick=true
                 })
             })
 
@@ -156,6 +163,7 @@ export default {
 
         getAuth(cardImage) {
             // debugger
+            let that = this;
             let postData = this.getAuthPostData(cardImage);
             if (postData) {
                 uni.showLoading({
@@ -180,6 +188,7 @@ export default {
                             uni.hideLoading()
                         }, 2000)
                     } else {
+                        that.isAllowClick = true;
                         setTimeout(() => {
                             this.$toast.show({
                                 title: res.result.returnMessage,
@@ -188,6 +197,8 @@ export default {
                         }, 2000)
                     }
                 })
+            }else{
+                this.isAllowClick = true
             }
 
         },
