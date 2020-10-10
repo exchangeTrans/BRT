@@ -629,7 +629,7 @@ export default {
 
         interestDay: "Yesterday's earnings",
 
-        bestHold: "Yesterday's best currency holdings",
+        bestHold: "Best currency holdings",
 
         BeganToDig: 'Start',
 
@@ -757,7 +757,7 @@ export default {
 
         interestDay: "Yesterday's earnings",
 
-        bestHold: "Yesterday's best currency holdings",
+        bestHold: "Best currency holdings",
 
         pledgeEarningRecord: 'Pledge income record',
 
