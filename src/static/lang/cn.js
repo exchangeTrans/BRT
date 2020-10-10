@@ -330,7 +330,7 @@ export default {
         availableBalance: '可用余额',
         accumulatedIncome: '累计收益',
         interestDay: '昨日收益',
-        bestHold: '最佳持币区',
+        bestHold: '昨日最佳持币',
         BeganToDig: '开始挖矿',
         closePledge: '取消质押',
         addPledge: '增加质押',
@@ -394,7 +394,7 @@ export default {
         availableBalance: '当前质押',
         accumulatedIncome: '累计收益',
         interestDay: '昨日收益',
-        bestHold: '最佳持币区',
+        bestHold: '昨日最佳持币',
         pledgeEarningRecord: '质押收益记录',
     },
     //我的
