@@ -12,7 +12,6 @@ export default {
         }
     },
     mounted() {
-        alert(1)
 
     },
     computed:{

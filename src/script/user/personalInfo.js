@@ -30,7 +30,7 @@ export default {
             userMsgData: {},
             checkArray: [
                 {
-                    name: "昵称",
+                    name: this.$t('personInfo').nicknameText,
                     checkKey: "nickname",
                 },
             ],

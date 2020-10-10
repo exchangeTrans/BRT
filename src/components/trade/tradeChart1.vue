@@ -24,7 +24,7 @@
         :style="{'width':cWidth*pixelRatio+'px','height':cHeight*pixelRatio+'px', 'transform': 'scale('+(1/pixelRatio)+')','margin-left':-cWidth*(pixelRatio-1)/2+'px','margin-top':-cHeight*(pixelRatio-1)/2+'px'}"
         class="tradeChart1" id="tradeChart1" 
         :prop="option" :change:prop="echarts.update" @click="echarts.onClick"></view> -->
-        <view @click="echarts.onClick" :prop="option" :change:prop="echarts.updateEcharts" :change:test="echarts.test" :test="KLineTradingPair" id="echarts" class="echarts tradeChart1"></view>
+        <view @click="echarts.onClick" :prop="option" :change:prop="echarts.updateEcharts" :lang="langMsg" :change:lang="echarts.langMsgChange" :change:test="echarts.test" :test="KLineTradingPair" id="echarts" class="echarts tradeChart1"></view>
 	</view>
 </template>
 <script>
@@ -179,6 +179,9 @@
             symbolDefaultData(){
                 return this.$store.state.tradeData.symbolDefaultData
             },
+            langMsg(){
+                return this.$store.state.defaultData.langMsg.name;
+            }, 
             // depthData(){
             //     let res = this.$store.state.tradeData.KLineTradingPair.depth;
             //     let tradesOptions_list = this.tradesOptions_list;
@@ -198,6 +201,7 @@
             }
         },
         mounted(){
+
             this.cWidth=uni.upx2px(750);
             this.cHeight=uni.upx2px(526);
         },
@@ -221,14 +225,14 @@
     // import {
 	// 	isJSON
     // } from '@/common/checker.js';
-    let myChart
+    let myChart;
+    let localMsg = 'zh-CN'
     export default {
 	    components:{
             // uCharts
 		},
         data() {
             return { 
-                myChart:null,
                 pixelRatio:1,
                 chartType:'line',
                 textarea: '',
@@ -237,6 +241,7 @@
                 arr: [],
                 chart: null,
                 clickData: null, // echarts点击事件的值
+                // localMsg:'zh-CN'
                 
                 
            }
@@ -278,7 +283,8 @@
             },
 
              createKLineData(){
-                let KLineTradingPair = this.KLineTradingPair
+                let KLineTradingPair = this.KLineTradingPair;
+                
                 // let that = this;
                 if(KLineTradingPair.dataArray&&KLineTradingPair.dataArray.length>0){
                     // let data = that.KLindeData =  res.data.map(function (item,index) {
@@ -314,9 +320,11 @@
                 }
             },
             setEchart(data,xData) {
-                let langMsg = datastorage.getSync({
-                    key: 'langMsg'
-                }).name;
+                
+                // let langMsg = localMsg
+
+                let langMsg = this.langMsg
+                console.log(langMsg)
                 let tipObj={
                     'zh-CN':{
                         Open:'开盘价:',
@@ -397,8 +405,17 @@
                 // myChart.setOption(newValue)
                 
             },
-            test(){
+            langMsgChange(newValue, oldValue, ownerInstance, instance){
+                // console.log(111)
+                console.log(newValue)
+                console.log(oldValue)
+                localMsg = newValue
+            },
+            test(newValue, oldValue, ownerInstance, instance){
                 this.initEcharts()
+                // console.log(111)
+                // console.log(newValue)
+                // console.log(oldValue)
             },
 			onClick(event, ownerInstance) {
 				// 调用 service 层的方法

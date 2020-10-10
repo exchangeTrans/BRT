@@ -3,6 +3,7 @@ export default {
     footer: ['Homepage', 'Market', 'Transaction', 'Asset', 'My'],
 
     noData: 'No Data',
+    noOpen:'Not Yet Open',
     currency:{
         RMB:'RMB',
         USD:'USD',
@@ -649,7 +650,10 @@ export default {
 
         createTime: 'Starting time',
 
-        expiresIn: 'Ending time'
+        expiresIn: 'Ending time',
+
+        SuccessfulTransfer:'Successful transfer',
+        complete:'complete'
 
     },
 

@@ -57,9 +57,10 @@
 		},
 		methods: {
 			typeClick(type) {
+				let noOpen = this.$t('noOpen')
 				if(type==='EMAIL'){
 					this.$toast.show({
-                        title: '暂未开放',
+                        title: noOpen,
 					})
 					return
 				}

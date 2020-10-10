@@ -8,12 +8,12 @@
                         <image :src="successImg"></image>
                     </view>
                     <view class="text">
-                        <span class="text-msg">转入成功</span>
+                        <span class="text-msg">{{$t('sub').SuccessfulTransfer}}</span>
                         <span class="money">{{accounts}}BRT</span>
                     </view>
                     <view class="btn-container">
                         <view class="btn" @tap="finishTransfer">
-                            <span>完成</span>
+                            <span>{{$t('sub').complete}}</span>
                         </view>
                     </view>
                 </view>

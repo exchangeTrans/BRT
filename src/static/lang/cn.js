@@ -1,6 +1,7 @@
 export default {
     footer: ['首页', '行情', '交易', '资产', '我的'],
     noData: '暂无数据',
+    noOpen:'暂未开放',
     currency:{
         RMB:'人民币',
         USD:'美元',
@@ -340,7 +341,9 @@ export default {
         pledgeRecord: '质押挖矿记录',
         pledgeNumber: '质押数量',
         createTime: '起始时间',
-        expiresIn: '结束时间'
+        expiresIn: '结束时间',
+        SuccessfulTransfer:'转入成功',
+        complete:'完成'
     },
     //团队
     myTeam:{
