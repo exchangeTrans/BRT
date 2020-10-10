@@ -181,6 +181,8 @@
 			let {tradePrice,tradeNum} = this;
 			if(tradePrice!==''&&tradePrice!==null&&tradeNum!==''&&tradeNum!==null){
 				this.tradeAll = Number(tradePrice)*Number(tradeNum)
+			}else{
+				this.tradeAll=0;
 			}
 		},
 		tradeNum(res){
@@ -335,10 +337,10 @@
 			if(!this.isAllowTrade){
 				return
 			}
+			let that = this;
 			this.isAllowTrade = false;
 			let postData = this.getPostData();
 			if(postData){
-				let that = this;
 				this.$request({
 					url:'trade/trade',
 					method:'post',
@@ -346,11 +348,14 @@
 				}).then((res)=>{
 					
 					if (res.result.returnCode.toString() === "0") {
-						this.getTradeInfo();
-						this.$toast.show({
+						that.tradeNum='';
+            			that.tradePrice='';
+						that.isAllowTrade = true;
+						that.getTradeInfo();
+						that.$toast.show({
 							title: res.result.returnUserMessage,
 						})
-						this.$store.dispatch('getUserMsg');
+						that.$store.dispatch('getUserMsg');
 						// // this.close();
 						// let usdtBalance = res.data.usdtBalance.replace(",","")
 						// let symbolBalance = res.data.symbolBalance.replace(",","")
@@ -364,7 +369,7 @@
 						// this.$emit('transferInAmountSuccess')
 					}else{
 						that.isAllowTrade = true;
-						this.$toast.show({
+						that.$toast.show({
 							title: res.result.returnMessage,
 						})
 					}
