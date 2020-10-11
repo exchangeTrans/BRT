@@ -2,14 +2,15 @@ import pako from 'pako'
 import toast from "@/static/js/dialog.js";
 import store from '@/store/index.js';
 import {getMoney} from "@/static/js/changeMoney";
+import {DateFunc} from '@/static/js/common.js';
 let Socket = false;
 let socketStatus = false;
 let setIntervalWesocketPush = null;
 // let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
 // let socketUrl = "ws://13.124.107.69:8188/ws/market"
-let socketUrl = "ws://www.brt-finance.com:8188/ws/market"
-// let socketUrl = "ws://ws.aespayment.info:8188/ws/market"
+// let socketUrl = "ws://www.brt-finance.com:8188/ws/market"
+let socketUrl = "ws://ws.aespayment.info:8188/ws/market"
 
 
 let ping = 1492420473027;
@@ -91,13 +92,13 @@ export const mySocket={
             mySocket.upData(data);
         });
         uni.onSocketError(function (res) {
-            console.log('错误')
+            // console.log('错误')
             socketStatus = false;
             mySocket.createSocket();
         });
         uni.onSocketClose(function (res) {
             socketStatus = false;
-            console.log('关闭')
+            // console.log('关闭')
             mySocket.createSocket();
         });
         
@@ -106,7 +107,7 @@ export const mySocket={
         let ch = data.ch;
         if(ch.indexOf('trade.detail')>-1&&data.tick){
             mySocket.upDataDetailData(data)
-        }else if(ch.indexOf('depth')>-1){
+        }else if(ch.indexOf('tape')>-1){
             mySocket.upDataDepthData(data)
         }else if(ch.indexOf('kline')>-1){
             mySocket.upDataKlineData(data)
@@ -121,15 +122,28 @@ export const mySocket={
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
         let tick = data.tick;
+        
         let OldDetail = KLineTradingPair.detail;
         if(KLineTradingPair.id===symbol){
+            
             let detail = data.tick.data.concat(OldDetail);
             let newData = detail.slice(0,10)
+            newData = newData.map(function (item) {
+                if(item&&item.ts){
+                    let res = DateFunc.resetTime_getObj(item.ts,'hms')
+                    let viewTime = res.viewTime;
+                    return {
+                        ...item,
+                        viewTime
+                    }
+                }
+            });
             let KLineTradingPairObj = {
                 ...KLineTradingPair,
                 detail:newData
             }
             store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+            // console.log(store.state.tradeData.KLineTradingPair)
         }
     },
 
@@ -217,6 +231,7 @@ export const mySocket={
         //   store.commit("setTredDataSync",{key:"tradePairData", val: newData,})
     },
     upDataDepthData(data){
+        
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
         if(KLineTradingPair.id===symbol){
@@ -233,7 +248,6 @@ export const mySocket={
                     bids
                 }
             }
-            // console.log(asks)
             store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
         }
     },
@@ -272,42 +286,6 @@ export const mySocket={
             
         }
         return NewData
-        // data.forEach(item => {
-        //     all = all+item[1];
-        //     depth=depth+item[1];
-        //     let percent=(depth/all)*2
-        //     percent = percent>1?1:percent;
-        //     percent = percent*100;
-        //     let obj = {
-        //         size:item[1],
-        //         price:item[0],
-        //         all:all,
-        //         percent:percent,
-        //         depth:depth
-        //     }
-        // });
-        // let all = data[0][1]+data[1][1]+data[2][1]+data[3][1]+data[4][1];
-        // // console.log(data)
-        // let newData = data.slice(0,5)
-        
-        // let depth = 0;
-        // let res = newData.map(function (item,index) {
-        //     depth=depth+item[1];
-        //     let percent=(depth/all)*2
-        //     percent = percent>1?1:percent;
-        //     percent = percent*100;
-        //     let obj = {
-        //         size:item[1],
-        //         price:item[0],
-        //         all:all,
-        //         percent:percent,
-        //         depth:depth
-        //     }
-        //     return obj
-            
-        // })
-
-        return res
     },
     //socket 订阅行情
     onopen:function(){
@@ -386,12 +364,12 @@ export const mySocket={
 
         let str = KLineTradingPair.name + KLineTradingPair.type;
         str = str.toLowerCase();
-        let sub = "market."+str+".depth.step0"
+        let sub = "market."+str+".tape"
         let data = {
             sub:sub,
             // sub:"market.all.detail",
             // period:"1min",
-            id: 'marketdepth',
+            id: 'markettape',
             isLocal:KLineTradingPair.isLocal
             
         } 

@@ -5,7 +5,7 @@
             <view class="record-wrap-list">
                 <view class="record-wrap-item" v-for="(item, index) in recordDataList"
                       :key="index">
-                    <RecordItem :recordData="item"></RecordItem>
+                    <RecordItem :recordData="item" @clickItem="clickItem"></RecordItem>
                 </view>
 
             </view>

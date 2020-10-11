@@ -124,7 +124,7 @@
                     {code:'table2',name:this.$t('trade').tabArray[1],id:''},
                     {code:'table3',name:this.$t('trade').tabArray[2],id:''},
                 ],
-                tableTabSelect:{code:'table1',name:this.$t('trade').tabArray[0],id:''},
+                tableTabSelect:{code:'table2',name:this.$t('trade').tabArray[1],id:''},
                 
 
             }

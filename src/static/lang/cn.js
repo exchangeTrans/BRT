@@ -95,6 +95,12 @@ export default {
             textTitle: "提币地址",
             placeholder: "输入或长按粘贴地址",
         },
+        tagInput:{
+            textTitle: "标签",
+            placeholder: "输入或长按粘贴标签",
+            labe:'(填写错误可能导致资产损失，请仔细核对)',
+            tip:'请输入标签'
+        },
         amountInput: {
             textTitle: "数量",
             placeholder: "最小提币数量",
@@ -126,6 +132,15 @@ export default {
     record: {
         title: "提币记录",
         noData: '暂无数据'
+    },
+    //提币详情
+    orderDetail: {
+        title: "提币详情",
+        type: '类型',
+        state: '状态',
+        serviceCharge: '手续费',
+        withdrawAddress: '提币地址',
+        time: '时间',
     },
     //充币记录
     addRecord: {

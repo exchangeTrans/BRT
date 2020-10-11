@@ -1,6 +1,12 @@
 {
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    // {
+    //   "path": "pages/withdrawal/orderDetail",
+    //   "style": {
+    //     //"navigationBarTitleText": ""
+    //   }
+    // },
     {
       "path": "pages/initPage/index",
       "style": {
@@ -96,6 +102,13 @@
       }
     },
     {
+      "path": "pages/withdrawal/orderDetail",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    
+    {
       "path": "pages/withdrawal/success",
       "style": {
         //"navigationBarTitleText": ""
@@ -189,7 +202,7 @@
       "path": "pages/noticelist/index",
       "style": {
         //"navigationBarTitleText": ""
-		 "enablePullDownRefresh": true
+		    "enablePullDownRefresh": true
       }
     },
     {
@@ -364,6 +377,12 @@
     },
     {
       "path": "blackPages/withdrawal/withdrawal",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "blackPages/withdrawal/orderDetail",
       "style": {
         //"navigationBarTitleText": ""
       }

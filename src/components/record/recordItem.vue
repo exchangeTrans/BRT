@@ -1,7 +1,7 @@
 <template>
     <view id="recordItem" :class="isBlack?'blackBg':''">
         <view class="recordItem-wrap">
-            <view class="recordItem-wrap-container">
+            <view class="recordItem-wrap-container" @tap="clickItem(recordData)">
                 <view :class="isBlack?'recordItem-wrap-container-title black':'recordItem-wrap-container-title'">
                     <span>{{recordData.titleName}}</span>
                 </view>
@@ -43,7 +43,9 @@
             },
         },
         methods: {
-            
+            clickItem(data){
+                this.$emit('clickItem',data)
+            }
         }
     }
 </script>

@@ -93,6 +93,12 @@ export default {
         headertap() {
 
         },
+        clickItem(data){
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: 'withdrawal/orderDetail?transactionId='+data.item.transactionId
+            })
+        },
         getRecordList(index, size) {
             if (!this.hasNext) {
                 // 没有数据了
@@ -133,6 +139,7 @@ export default {
                             "status": status,
                             "number": item.amount,
                             "date": DateFunc.dateFormat(item.createTime, "hh:mm MM/dd"),
+                            item:item
                         }
                         that.recordDataList.push(obj)
                     })

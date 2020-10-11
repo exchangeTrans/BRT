@@ -8,7 +8,11 @@
                 <view class="withdrawal-wrap-container-list">
                     <view class="withdrawal-wrap-container-item">
                          <!-- @btnClick="toScanCode" -->
-                        <WithdrawalInput :inputData="address" inputType="text" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl" :inputType="'text'"></WithdrawalInput>
+                        <WithdrawalInput :inputData="address" inputType="text" @inputChange="inputChange(address.name, $event)" :inputValue="addressUrl"></WithdrawalInput>
+                    </view>
+                    <view class="withdrawal-wrap-container-item" v-if="symbolName==='EOS'||symbolName==='XRP'">
+                         <!-- @btnClick="toScanCode" -->
+                        <WithdrawalInput :inputData="tagInput" inputType="text" @inputChange="inputChange(tagInput.name, $event)" :inputValue="tag"></WithdrawalInput>
                     </view>
                     <view class="withdrawal-wrap-container-item">
                         <WithdrawalInput :inputData="amount" @inputChange="inputChange(amount.name, $event)" :inputValue="amountInputValue"></WithdrawalInput>

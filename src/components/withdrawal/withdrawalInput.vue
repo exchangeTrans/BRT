@@ -5,6 +5,7 @@
                 <view class="withdrawalInput-item">
                     <view :class="isBlack ? 'withdrawalInput-item-title block':'withdrawalInput-item-title'">
                         <span>{{inputData.textTitle}}</span>
+                        <span v-if="inputData.lable" class="lable">{{inputData.lable}}</span>
                     </view>
                     <view :class="isBlack ? 'withdrawalInput-item-content withdrawalInput-item-content-block':'withdrawalInput-item-content'">
                         <input
@@ -94,6 +95,10 @@
                             font-family: PingFangSC-Regular, PingFang SC;
                             font-weight: 400;
                             color: #1A1A1A;
+                        }
+                        .lable{
+                            color: #FC3C5A;
+                            margin-left: 10rpx;
                         }
                     }
 

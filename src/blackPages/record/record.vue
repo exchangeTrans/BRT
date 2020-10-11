@@ -6,7 +6,7 @@
                 <view class="record-wrap-item" v-for="(item, index) in recordDataList"
                       :key="index">
                     <RecordItem :recordData="item"
-                                :isBlack="isBlack"></RecordItem>
+                                :isBlack="isBlack" @clickItem="clickItem"></RecordItem>
                 </view>
             </view>
         </scroll-view>

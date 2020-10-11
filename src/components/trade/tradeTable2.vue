@@ -6,26 +6,30 @@
             <view class="tableLi tableLi3">{{$t('trade').tableHeadTr2[2]}}({{KLineTradingPair.type}})</view>
             <view class="tableLi tableLi4">{{$t('trade').tableHeadTr2[3]}}</view>
         </view>
-        <view class="tableTr" v-for="(item,index) in tableData" :key="index">
-            <view class="tableLi tableLi1">{{item.ts}}</view>
+        <block>
+        <view class="tradeTable2_tableTr" v-for="(item,index) in KLineTradingPair.detail" :key="index">
+            <view class="tableLi tableLi1">{{item.viewTime}}</view>
             <view class="tableLi tableLi2 buy" v-if="item.direction==='buy'">{{$t('trade').buy}}</view>
             <view class="tableLi tableLi2" v-else>{{$t('trade').sell}}</view>
             <view class="tableLi tableLi3">{{item.price}}</view>
             <view class="tableLi tableLi4">{{item.amount}}</view>
+            <view class="clearfix"></view>
         </view>
+        </block>
+        
         <!-- amount: 0.00662
 direction: "buy"
 id: "113148402599112150493040940"
 price: 10898.6
 tradeId: "102194428546"
 ts: 1601307776068 -->
-        <!-- <view class="tableTr">
+        <!-- <view class="tradeTable2_tableTr">
             <view class="tableLi tableLi1">14:34:43</view>
             <view class="tableLi tableLi2 buy">{{$t('trade').buy}}</view>
             <view class="tableLi tableLi3">1200.96</view>
             <view class="tableLi tableLi4">1</view>
         </view>
-        <view class="tableTr">
+        <view class="tradeTable2_tableTr">
             <view class="tableLi tableLi1">14:34:43</view>
             <view class="tableLi tableLi2 buy">{{$t('trade').sell}}</view>
             <view class="tableLi tableLi3">1200.96</view>
@@ -58,22 +62,6 @@ ts: 1601307776068 -->
                     },
                     headerIsNoBoder: false,
                 },
-                chartTabArray:[
-                    {code:'1',name:"1分",id:''},
-                    {code:'2',name:"15分",id:''},
-                    {code:'3',name:"1小时",id:''},
-                    {code:'4',name:"4小时",id:''},
-                    {code:'5',name:"日线",id:''},
-                    {code:'6',name:"周线",id:''},
-                    {code:'7',name:"指标",id:''},
-                ],
-                chartTabSelect:{code:'2',name:"15分",id:''},
-                tableTabArray:[
-                    {code:'1',name:"买单/卖单",id:''},
-                    {code:'2',name:"最新成交",id:''},
-                    {code:'3',name:"币种简介",id:''},
-                ],
-                tableTabSelect:{code:'2',name:"最新成交",id:''},
                 tableData:[],
                 
 
@@ -86,10 +74,10 @@ ts: 1601307776068 -->
             this.getTableData()
         },
         computed: {  
-            pageText () {  
-                // console.log(this.$t('trade'))
-                return this.$t('trade')  
-            },
+            // pageText () {  
+            //     // console.log(this.$t('trade'))
+            //     return this.$t('trade')  
+            // },
             KLineTradingPair(){
                 return this.$store.state.tradeData.KLineTradingPair;
             },
@@ -105,7 +93,7 @@ ts: 1601307776068 -->
         },
         methods: {
             getTableData(){
-                let detail = this.KLineTradingPair.detail;
+                let detail = this.$store.state.tradeData.KLineTradingPair.detail;
                 let newData = detail.map(function (item) {
                     if(item&&item.ts){
                         let res = DateFunc.resetTime_getObj(item.ts,'hms')
@@ -116,7 +104,8 @@ ts: 1601307776068 -->
                         }
                     }
                 });
-                
+                console.log(detail)
+                console.log(newData)
                 this.tableData = newData;
             },   
                 
@@ -169,7 +158,7 @@ ts: 1601307776068 -->
                 text-align: right;
             }
         }
-        .tableTr{
+        .tradeTable2_tableTr{
             width: 100%;
             height: 88rpx;
             box-sizing: border-box;

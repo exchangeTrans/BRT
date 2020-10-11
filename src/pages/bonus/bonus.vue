@@ -1,7 +1,6 @@
 <template>
     <view id="bonus">
         <app-header :headerOptions="headerOptions"
-                    @headertap=headertap
                     class="appHeader"></app-header>
         <scroll-view class="bonus-wrap" scroll-y="true">
             <view class="bonus-wrap-content">
@@ -80,9 +79,12 @@
 <script src="@/script/bonus/bonus.js">
     import UniCountdown from "@/components/uni-countdown/uni-countdown";
     import UniLoadMore from "@/components/uni-load-more/uni-load-more";
-    export default {
-        components: {UniLoadMore, UniCountdown}
-    }
+    
+export default {
+    components: {
+        UniLoadMore, UniCountdown
+    },
+}
 </script>
 
 <style scoped lang="less">
@@ -112,12 +114,14 @@
                     color: #FFFFFF;
 
                     .bonus-wrap-content-card-msg {
-                        display: grid;
-                        grid-template-columns: 50% 50%;
+                        // display: grid;
+                        // grid-template-columns: 50% 50%;
+                        width: 100%;
 
                         .left {
                             text-align: center;
-
+                            width: 50%;
+                            display: inline-block;
                             .grade {
                                 font-size: 40rpx;
                                 font-family: PingFangSC-, PingFang SC;
@@ -135,7 +139,9 @@
                         }
 
                         .right {
+                            width: 50%;
                             text-align: center;
+                            display: inline-block;
 
                             .number {
                                 font-size: 40rpx;

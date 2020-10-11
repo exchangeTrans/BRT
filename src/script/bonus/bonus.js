@@ -2,11 +2,15 @@ import appHeader from "@/components/common/header.vue";
 import earningsRecordList from "@/components/earningsRecordList/index.vue";
 import noData from "@/components/noData/index.vue";
 import recordAmount  from '@/static/js/recordNum.js'
+// import UniCountdown from "@/components/uni-countdown/uni-countdown";
+//     import UniLoadMore from "@/components/uni-load-more/uni-load-more";
+    
 export default {
     components: {
         appHeader,
         earningsRecordList,
-        noData
+        noData,
+        // UniLoadMore, UniCountdown
     },
     name: "bonus",
     data() {

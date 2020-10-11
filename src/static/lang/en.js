@@ -170,6 +170,12 @@ export default {
             placeholder: "put in or press long to copy the address",
 
         },
+        tagInput:{
+            textTitle: "Tag",
+            placeholder: "Enter or paste",
+            labe:'(Wrong address may lead to asset loss.)',
+            tip:'Tag Empty Error'
+        },
 
         amountInput: {
 
@@ -233,6 +239,15 @@ export default {
 
         noData: 'No Data'
 
+    },
+    //提币详情
+    orderDetail: {
+        title: "Withdrawal Detail",
+        type: 'Type',
+        state: 'State',
+        serviceCharge: 'Service Charge',
+        withdrawAddress: 'Withdraw Address',
+        time: 'Time',
     },
 
     //Currency Charge Record

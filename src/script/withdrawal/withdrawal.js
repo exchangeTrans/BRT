@@ -54,6 +54,7 @@ export default {
             addressUrl:"",
             time: 60,
             getCodeStatus: true,
+            tag:'',
 
             address: {
                 textTitle:this.$t('withdrawal').addressInput.textTitle,
@@ -63,6 +64,16 @@ export default {
                     text: "BRT",
                 },
                 name: "address",
+            },
+            tagInput:{
+                textTitle:this.$t('withdrawal').tagInput.textTitle,
+                placeholder: this.$t('withdrawal').tagInput.placeholder,
+                lable:this.$t('withdrawal').tagInput.labe,
+                rightItem: {
+                    type: "isIcon",//isText isBtn isIcon
+                    text: "BRT",
+                },
+                name: "tag",
             },
             amount: {
                 textTitle: this.$t('withdrawal').amountInput.textTitle,
@@ -95,11 +106,14 @@ export default {
                 name: "verifyCode",
             },
             isAllowClick:true,
+            symbolName:''
         }
     },
     mounted() {
         let theme = this.$storage.getSync({key: 'theme'});
+        // debugger
         let symbolType = this.$store.state.wallet.symbolType
+        this.symbolName =  this.$store.state.wallet.symbolType.name
         let userInfo = this.$store.state.defaultData.userInfo
         let that= this;
         if (theme === 'white') {
@@ -243,6 +257,7 @@ export default {
 
             // amount
             //
+            console.log(this.tag)
         },
         getSymbolDetail() {
             let symbolType = this.$store.state.wallet.symbolType
@@ -334,6 +349,17 @@ export default {
                 })
                 return;
             }
+            if(this.symbolName==='EOS'||this.symbolName==='XRP'){
+                if (!this.postData['tag']||this.postData['tag'].trim()==='') {
+                    this.$toast.show({
+                        title: that.$t('withdrawal').tagInput.tip
+                    })
+                    return;
+                }else{
+                    that.postData['address'] = that.postData['address']+'#'+that.postData['tag'];
+                }
+            }
+            
             this.isAllowClick = false;
             this.$toast.showLoading({
                 title:that.$t('withdrawal').requestTipArrray[3]
@@ -360,9 +386,13 @@ export default {
                         if (res.result.returnCode.toString() === "0") {
                             that.postData.verifyKey = res.data.verifyKey;
                             that.$jumpPage.jump({
-                                url: "index/index",
-                                type: "navigateTo"
+                                type: 'navigateTo',
+                                url: 'withdrawal/orderDetail?transactionId='+res.data.transactionId
                             })
+                            // that.$jumpPage.jump({
+                            //     url: "index/index",
+                            //     type: "navigateTo"
+                            // })
                         } else {
                             that.isAllowClick = true;
                             that.$toast.show({
