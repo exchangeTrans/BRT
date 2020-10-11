@@ -191,10 +191,10 @@ export default {
 
         //获取当前时间距离23时59分的时间
         getTime(){
-            let nightTime = new Date(new Date().toLocaleDateString()).getTime() +24 * 60 * 60 * 1000 -1;
+            // let nightTime = new Date(new Date().toLocaleDateString()).getTime() +24 * 60 * 60 * 1000;
+            let nightTime = new Date(new Date().setHours(0, 0, 0, 0)).getTime() +24 * 60 * 60 * 1000;
             let newTime = new Date().getTime();
             let leftTime = parseInt((nightTime- newTime) / 1000);
-
             this.hourNum= parseInt(leftTime / (60 * 60) % 24);
             this.minuteNum = parseInt(leftTime / 60 % 60);
         }

@@ -148,7 +148,6 @@
 				}, 1000)
 			},
 			changeFlag() {
-
 				if (!this.syncFlag) {
 					this.seconds = this.toSeconds(this.day, this.hour, this.minute, this.second)
 					this.startData();
