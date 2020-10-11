@@ -115,7 +115,7 @@ export default {
                     var time = DateFunc.resetTime(parseInt(res.data.list[i].createTime), 'ymdhm');
                     notice_list_item.date = time;
                     // console.log(this.notice_list.indexOf(notice_list_item));
-                    this.notice_list.unshift(notice_list_item);
+                    this.notice_list.push(notice_list_item);
                     notice_list_item = {
                         text: '',
                         date: '',

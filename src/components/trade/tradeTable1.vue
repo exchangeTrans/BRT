@@ -8,7 +8,7 @@
             <view class="tableLi tableLi5">{{$t('trade').tableHeadTr1[4]}}</view>
         </view>
         <block  v-for="(item,index) in tableData" :key="index">
-            <view class="tableTr" v-if="index<10">
+            <view class="tableTr" >
                 <view class="tableLi tableLi1">{{index+1}}</view>
                 <view class="tableLi tableLi2">{{item.bids.size}}</view>
                 <view class="tableLi tableLi3">

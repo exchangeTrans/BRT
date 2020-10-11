@@ -899,6 +899,11 @@ export default {
         noticelistText: "Announcement list",
 
         noData: "No Data",
+        noticeDetail:{
+            title:'Announcement Detail',
+            textTitle:'To BRT Users',
+            textSubTitle:'BRT Lab',
+        }
 
     },
 

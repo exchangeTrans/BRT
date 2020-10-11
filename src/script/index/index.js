@@ -153,6 +153,7 @@ export default {
 
             this.$mySocket.subscribeDepth();
             this.$mySocket.subscribeDetail();
+            this.$mySocket.subscribeTape();
             this.$jumpPage.jump({
                 type: 'navigateTo',
                 url: 'trade/index'

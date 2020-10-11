@@ -75,6 +75,8 @@
                 this.$store.commit("setTredDataSync",{key:"KLineTradingPair", val: item,})
                 this.$mySocket.subscribeDepth();
                 this.$mySocket.subscribeDetail();
+                this.$mySocket.subscribeTape();
+                
                 // this.$store.dispatch('getKline',{
                 //     period:item.code,
                 // });

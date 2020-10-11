@@ -8,11 +8,11 @@
 			</view>
 		</view>
 		<scroll-view scroll-y="true" class="notice_content_details">
-			<view class="user">尊敬的BRT用户</view>
+			<view class="user">{{$t('noticelist').noticeDetail.textTitle}}</view>
 			<view class="article">
 				{{details_msg_list[id].details}}
 			</view>
-			<view class="brt">BRT 实验室</view>
+			<view class="brt">{{$t('noticelist').noticeDetail.textSubTitle}}</view>
 			<view class="date">{{details_msg_list[id].date}}</view>
 		</scroll-view>
 	</view>

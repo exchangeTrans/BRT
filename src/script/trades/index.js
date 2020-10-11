@@ -164,7 +164,7 @@
 			return this.$store.state.tradeData.symbolDefaultData
 		},
 		depthData(){
-			let res = this.$store.state.tradeData.KLineTradingPair.depth;
+			let res = this.$store.state.tradeData.KLineTradingPair.tape;
 			let tradesOptions_list = this.tradesOptions_list;
 			let defult = {
 				asks:tradesOptions_list,
@@ -264,6 +264,7 @@
 			this.getTradeInfo(symbolCode);
 			this.$mySocket.subscribeDepth(item);
 			this.$mySocket.subscribeDetail();
+			this.$mySocket.subscribeTape(item);
 		},
 		selectTradeHeader(item){
 			let that = this;

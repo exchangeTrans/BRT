@@ -158,8 +158,8 @@ export default {
                 if (res.result.returnCode.toString() === "0") {
                     //判断是否还有数据
                     if (res.data.list.length<recordAmount.num){
-                        this.haveNext=false;
-                        this.status='noMore'
+                        that.haveNext=false;
+                        that.status='noMore'
                     }else {
                         that.status='more'
                     }
@@ -171,7 +171,7 @@ export default {
                         that.vipType= res.data.vipType;
                         that.dayNum=res.data.periodDay;
                         that.earningsRecordData=res.data.list;
-                        this.getTime();
+                        that.getTime();
 
                         //判断是否有数据
                         if (res.data.list.length===0){

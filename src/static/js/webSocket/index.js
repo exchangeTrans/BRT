@@ -108,6 +108,8 @@ export const mySocket={
         if(ch.indexOf('trade.detail')>-1&&data.tick){
             mySocket.upDataDetailData(data)
         }else if(ch.indexOf('tape')>-1){
+            mySocket.upDataTapeData(data)
+        }else if(ch.indexOf('depth')>-1){
             mySocket.upDataDepthData(data)
         }else if(ch.indexOf('kline')>-1){
             mySocket.upDataKlineData(data)
@@ -127,7 +129,7 @@ export const mySocket={
         if(KLineTradingPair.id===symbol){
             
             let detail = data.tick.data.concat(OldDetail);
-            let newData = detail.slice(0,10)
+            let newData = detail.slice(0,100)
             newData = newData.map(function (item) {
                 if(item&&item.ts){
                     let res = DateFunc.resetTime_getObj(item.ts,'hms')
@@ -251,15 +253,73 @@ export const mySocket={
             store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
         }
     },
-    handleDeepData(data){
+    upDataTapeData(data){
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let symbol = data.symbol;
+        if(KLineTradingPair.id===symbol){
+            let asks = data.tick.asks;
+            let bids = data.tick.bids;
+            asks = mySocket.handleTapeData(asks,true);//卖单
+            bids = mySocket.handleTapeData(bids);//买单
+            
+            let KLineTradingPairObj = {
+                ...KLineTradingPair,
+                tape:{
+
+                    asks, 
+                    bids
+                }
+            }
+            store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+        }
         
+    },
+    handleTapeData(data,isReverse){
+        if(data.length===0){
+            return []
+        }
+        if(isReverse){
+            data = data.reverse()
+        }
+        let all = 0;
+        let depth = 0;
+        let NewData = []
+        for (let index = 0; index < 5; index++) {
+            let item = data[index];
+            let obj = {
+                size:0,
+                price:0,
+                all:all,
+                percent:0,
+                depth:depth
+            }
+            if(item){
+                all = all+item[1];
+                depth=depth+item[1];
+                let percent=(depth/all)*2
+                percent = percent>1?1:percent;
+                percent = percent*100;
+                obj = {
+                    size:item[1],
+                    price:item[0],
+                    all:all,
+                    percent:percent,
+                    depth:depth
+                }
+            }
+            NewData.push(obj)
+            
+        }
+        return NewData
+    },
+    handleDeepData(data){
         if(data.length===0){
             return []
         }
         let all = 0;
         let depth = 0;
         let NewData = []
-        for (let index = 0; index < 5; index++) {
+        for (let index = 0; index < data.length; index++) {
             let item = data[index];
             let obj = {
                 size:0,
@@ -336,6 +396,8 @@ export const mySocket={
             
                                 
         });
+        
+        mySocket.subscribeTape();
         mySocket.subscribeDepth();
         mySocket.subscribeKline('5min');
         mySocket.subscribeDetail()
@@ -359,7 +421,7 @@ export const mySocket={
         } 
         mySocket.subscribe(data); 
     },
-    subscribeDepth(item){
+    subscribeTape(item){
         let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
 
         let str = KLineTradingPair.name + KLineTradingPair.type;
@@ -370,6 +432,23 @@ export const mySocket={
             // sub:"market.all.detail",
             // period:"1min",
             id: 'markettape',
+            isLocal:KLineTradingPair.isLocal
+            
+        } 
+        mySocket.subscribe(data); 
+    
+    },
+    subscribeDepth(item){
+        let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
+
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".depth.step0"
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            // period:"1min",
+            id: 'marketdepth',
             isLocal:KLineTradingPair.isLocal
             
         } 

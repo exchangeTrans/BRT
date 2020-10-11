@@ -12,10 +12,12 @@ import ndheader from '../../components/common/header'
 			let theme = this.$storage.getSync({
 				key: 'theme'
 			});
+			let that = this;
+			let title = that.$t('noticelist').noticeDetail.title;
 			if (theme === 'white') {
 				this.headerOptions = {
 					show: true,
-					text: "公告详情",
+					text: title,
 					isAllowReturn: true,
 					fontfamily: "PingFangSC-Regular, PingFang SC",
 					fontSize: '34',
@@ -35,7 +37,7 @@ import ndheader from '../../components/common/header'
 			} else {
 				this.headerOptions = {
 					show: true,
-					text: "公告详情",
+					text: title,
 					isAllowReturn: true,
 					isWhiteIcon:true,
 					fontfamily: "PingFangSC-Regular, PingFang SC",

@@ -473,6 +473,11 @@ export default {
     noticelist: {
         noticelistText: "公告列表",
         noData: "暂无数据",
+        noticeDetail:{
+            title:'公告详情',
+            textTitle:'尊敬的BRT用户',
+            textSubTitle:'BRT 实验室',
+        }
     },
     //联系客服
     connectUs: {
