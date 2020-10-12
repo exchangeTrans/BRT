@@ -160,6 +160,8 @@ export default {
             ' In order to ensure the security of funds, when your account security policy changes, password changes, we will manually audit the withdrawal, please wait patiently for the staff to contact you over phone or email'
 
         ],
+        tipArrayBRT: '转帐需经过60个区块确认才会到帐',
+        
 
         btnText: 'Withdraw',
 
@@ -248,6 +250,7 @@ export default {
         serviceCharge: 'Service Charge',
         withdrawAddress: 'Withdraw Address',
         time: 'Time',
+        tip:'转帐需经过60个区块确认才会到帐'
     },
 
     //Currency Charge Record

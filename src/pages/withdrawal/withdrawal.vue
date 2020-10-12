@@ -35,8 +35,9 @@
                 <view class="withdrawal-wrap-container-tip">
                     <view class="withdrawal-wrap-container-tip-content">
                         <span class="tipTitle">{{$t('withdrawal').tipArray[0]}}{{minDrawTip}}</span>
-                        <span class="tipContent">{{$t('withdrawal').tipArray[1]}}</span>
-                        
+                        <!-- v-if="symbolName==='EOS'||symbolName==='XRP'" -->
+                        <span v-if="symbolName==='BRT'" class="tipContent">{{$t('withdrawal').tipArrayBRT}}</span>
+                        <span v-else class="tipContent">{{$t('withdrawal').tipArray[1]}}</span>
                         <span class="tipContent">{{$t('withdrawal').tipArray[2]}}</span>
                         <span class="tipContent mgt">{{$t('withdrawal').tipArray[3]}}</span>
                     </view>

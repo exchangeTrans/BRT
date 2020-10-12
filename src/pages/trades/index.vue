@@ -32,7 +32,7 @@
 				
 				<view class="charge">
 					<image src="../../static/images/trades/sub.png" mode="" class="sub" @tap="reduce('tradePrice')"></image>
-					<input :placeholder="$t('tradePage').prcie+'('+KLineTradingPair.type+')'" class="charge_name" type="number" min="0" :value="tradePrice" @input="inputChange($event,'tradePrice')">
+					<input :value="tradePrice" :placeholder="$t('tradePage').prcie+'('+KLineTradingPair.type+')'" @blur="blur" class="charge_name" type="number" min="0"  @input="inputChange($event,'tradePrice')">
 					<image src="../../static/images/trades/add.png" mode="" class="add" @tap="add('tradePrice')"></image>
 				</view>
 				

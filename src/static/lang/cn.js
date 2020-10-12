@@ -90,6 +90,7 @@ export default {
             '为保障资金安全，当您账户安全策略变更、密码修改、我们会对提币进行人工审核、请耐心等待工作人员电话或邮件联系。',
             '请务必确认电脑及浏览器安全，防止信息被篡改或泄露'
         ],
+        tipArrayBRT: '转帐需经过60个区块确认才会到帐',
         btnText: '提币',
         addressInput: {
             textTitle: "提币地址",
@@ -141,6 +142,7 @@ export default {
         serviceCharge: '手续费',
         withdrawAddress: '提币地址',
         time: '时间',
+        tip:'转帐需经过60个区块确认才会到帐'
     },
     //充币记录
     addRecord: {

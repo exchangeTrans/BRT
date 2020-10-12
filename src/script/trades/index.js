@@ -178,6 +178,7 @@
 	  },
 	  watch:{
 		tradePrice(res){
+
 			let {tradePrice,tradeNum} = this;
 			if(tradePrice!==''&&tradePrice!==null&&tradeNum!==''&&tradeNum!==null){
 				this.tradeAll = Number(tradePrice)*Number(tradeNum)
@@ -408,8 +409,40 @@
 		},
 		
 		inputChange(e,type){
+			let KLineTradingPair = this.$store.state.tradeData.KLineTradingPair;
 			let value = e.detail.value;
-            this[type] = e.detail.value;
+			if(KLineTradingPair.name==='BRT'){
+				
+				if(type==='tradePrice'){
+					// value = value.to;
+					// value = String(value);
+					value = value.substring(0,value.indexOf(".") + 4);
+					// value = Math.round(value*1000)/1000
+					// var a = "23.456322";
+					
+					// var re = /([0-9]+.[0-9]{3})*/;
+					// aNew = value.replace(re,"$1");
+					// alert(aNew);
+					// console.log(aNew)
+					this.tradePrice= value;
+				}else if(type==='tradeNum'){
+					value = value.replace(/[^0-9]/g,"")
+					this.tradeNum= Number(value);
+				}
+			}else{
+				this[type] = Number(value);
+			}
+			// if()
+            
+		},
+		blur(){
+			let KLineTradingPair = this.$store.state.tradeData.KLineTradingPair;
+			if(KLineTradingPair.name==='BRT'){
+					let value = String(this.tradePrice);
+					value = value.substring(0,value.indexOf(".") + 4);
+					this.tradePrice= Number(value);
+			}
+			
 		},
 		getPostData() {
             // debugger

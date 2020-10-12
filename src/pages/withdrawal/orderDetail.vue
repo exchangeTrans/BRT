@@ -29,6 +29,7 @@
                     <view class="detailItem_left">{{$t('orderDetail').time}}</view>
                     <view class="detailItem_right">{{createTime}}</view>
                 </view>
+                <view v-if='symbolTypeText==="BRT"' class="orderDetailTip">{{$t('orderDetail').tip}}</view>
             </view>
             
             
@@ -190,6 +191,17 @@
                         line-height: 44rpx;
                         padding:  30rpx 0;
                     }
+                }
+                .orderDetailTip{
+                    width: 100;
+                    height: 34rpx;
+                    font-size: 24rpx;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #098FE0;
+                    line-height: 34rpx;
+                    margin:  30rpx 0;
+                    text-align: right;
                 }
             }
         }
