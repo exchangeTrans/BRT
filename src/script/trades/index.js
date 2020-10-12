@@ -11,7 +11,7 @@
 	  components: {dataList,historylog,tradelist,pageFooter,uniDrawer},
 	  
 	  created(){
-	  		  this.judgedata();
+	  	this.judgedata();
 	  },
 	  data(){
 	    return{
@@ -127,7 +127,8 @@
                     name: this.$t('tradePage').number,
                     checkKey: "amount",
                 },
-            ],
+			],
+			klineShowFlag:'0',
 		}
 	  },
 	  
@@ -219,11 +220,20 @@
 		toKline(){
             this.$store.dispatch('getKline',{
                 period:'5min',
-            });
-            this.$jumpPage.jump({
-                type: 'navigateTo',
-                url: 'trade/index'
-            })
+			});
+			let that = this;
+			let klineShowFlag = this.klineShowFlag;
+			if(klineShowFlag===0||klineShowFlag==="0"){
+				this.$toast.show({
+					title: that.$t('maintain'),
+				})
+			}else{
+				this.$jumpPage.jump({
+					type: 'navigateTo',
+					url: 'trade/index'
+				})
+			}
+            
 		},
 		changeTradeType(item){
 			this.selectedTradeName = item;
@@ -291,8 +301,6 @@
 				params:postData
 			}).then((res)=>{
 				if (res.result.returnCode.toString() === "0") {
-					
-					// this.close();
 					let usdtBalance = res.data.usdtBalance.replace(/,/g,"")
 					let symbolBalance = res.data.symbolBalance.replace(/,/g,"")
 					let data = {
@@ -302,6 +310,10 @@
 					}
 					that.tradeInfo = data;
 					that.historylogdata_list = data&&data.orderList?data.orderList:[];
+					let klineShowFlag = data.klineShowFlag?res.data.klineShowFlag:'0';
+					that.klineShowFlag = klineShowFlag;
+					// let symbolPrice = data.symbolPrice?res.data.symbolPrice:0;
+					// that.upDataRange_BRT(symbolPrice)
 					setTimeout(() => {
 						that.getTradeInfo()
 					}, 3000);
@@ -314,6 +326,9 @@
 				}
 			})
 		},
+		// upDataRange_BRT(symbolPrice){
+			
+		// },
 		refreshHistory(){
 			let symbolType =  this.KLineTradingPair.name;
 			symbolType = String(this.symbolDefaultData[symbolType])			
@@ -328,6 +343,10 @@
 			}).then((res)=>{
 				if (res.result.returnCode.toString() === "0") {
 					that.historylogdata_list = res.data&&res.data.orderList?res.data.orderList:[];
+					let klineShowFlag = data.klineShowFlag?res.data.klineShowFlag:'0';
+					that.klineShowFlag = klineShowFlag;
+					// let symbolPrice = data.symbolPrice?res.data.symbolPrice:0;
+					// that.upDataRange_BRT(symbolPrice)
 					setTimeout(() => {
 						that.refreshHistory()
 					}, 3000);

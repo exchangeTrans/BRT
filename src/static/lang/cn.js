@@ -1,7 +1,8 @@
 export default {
     footer: ['首页', '行情', '交易', '资产', '我的'],
     noData: '暂无数据',
-    noOpen:'暂未开放',
+    noOpen:'维护中，暂未开放',
+    maintain:'维护中，暂未开放',
     currency:{
         RMB:'人民币',
         USD:'美元',

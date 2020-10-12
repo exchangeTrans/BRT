@@ -142,22 +142,22 @@ export default {
             // 46,730,157.7127
             let changeObj = this.getChangeObj(asset);
             let money = getMoney(asset, 'USDT');
-            console.log(money)
             this.changeMoneyData = money;
         },
         toKline(item) {
-            this.$store.commit("setTredDataSync", {key: "KLineTradingPair", val: item,})
-            this.$store.dispatch('getKline', {
-                period: '5min',
-            });
+            // this.$store.commit("setTredDataSync", {key: "KLineTradingPair", val: item,})
+            // this.$store.dispatch('getKline', {
+            //     period: '5min',
+            // });
 
-            this.$mySocket.subscribeDepth();
-            this.$mySocket.subscribeDetail();
-            this.$mySocket.subscribeTape();
-            this.$jumpPage.jump({
-                type: 'navigateTo',
-                url: 'trade/index'
-            })
+            // this.$mySocket.subscribeDepth();
+            // this.$mySocket.subscribeDetail();
+            // this.$mySocket.subscribeTape();
+            // this.$jumpPage.jump({
+            //     type: 'navigateTo',
+            //     url: 'trade/index'
+            // })
+            this.$monitor.emit("changeTab",{path:'trades/index'});
         },
         toInfo(item) {
             // debugger

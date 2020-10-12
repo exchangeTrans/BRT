@@ -128,7 +128,7 @@ export const mySocket={
         let OldDetail = KLineTradingPair.detail;
         if(KLineTradingPair.id===symbol){
             
-            let detail = data.tick.data.concat(OldDetail);
+            let detail = data.tick.data;
             let newData = detail.slice(0,100)
             newData = newData.map(function (item) {
                 if(item&&item.ts){
@@ -239,7 +239,7 @@ export const mySocket={
         if(KLineTradingPair.id===symbol){
             let asks = data.tick.asks;
             let bids = data.tick.bids;
-            asks = mySocket.handleDeepData(asks).reverse();//卖单
+            asks = mySocket.handleDeepData(asks,true);//卖单
             bids = mySocket.handleDeepData(bids);//买单
             
             let KLineTradingPairObj = {
@@ -312,9 +312,12 @@ export const mySocket={
         }
         return NewData
     },
-    handleDeepData(data){
+    handleDeepData(data,isReverse){
         if(data.length===0){
             return []
+        }
+        if(isReverse){
+            data = data.reverse()
         }
         let all = 0;
         let depth = 0;

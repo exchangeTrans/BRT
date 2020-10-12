@@ -3,7 +3,8 @@ export default {
     footer: ['Homepage', 'Market', 'Transaction', 'Asset', 'My'],
 
     noData: 'No Data',
-    noOpen:'Not Yet Open',
+    noOpen:'maintain',
+    maintain:'maintain',
     currency:{
         RMB:'RMB',
         USD:'USD',
