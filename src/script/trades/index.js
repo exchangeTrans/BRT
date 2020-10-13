@@ -129,6 +129,8 @@
                 },
 			],
 			klineShowFlag:'0',
+			buyFlag:'0',
+			sellFlag:'0'
 		}
 	  },
 	  
@@ -249,12 +251,19 @@
 				})
 				return
 			}
+			let tradeNum = 0;
 			if(selectedTradeName.code==='buy'){
-				this.tradeNum = (Number(pr)/Number(tradePrice))*item.val
+				tradeNum = (Number(pr)/Number(tradePrice))*item.val
 			}else{
-				this.tradeNum =  Number(pr)*item.val
+				tradeNum =  Number(pr)*item.val
+			}
+
+			let symbolType = this.KLineTradingPair.name;
+			if(symbolType==='BRT'){
+				tradeNum = Math.ceil(tradeNum)
 			}
 			
+			this.tradeNum = tradeNum;
 			// 可用馀额/用户上方填写的价格 * 用户选择的百分比。如果用户没有填写价格
 		},
 		reduce(code){
@@ -312,11 +321,15 @@
 					that.historylogdata_list = data&&data.orderList?data.orderList:[];
 					let klineShowFlag = data.klineShowFlag?res.data.klineShowFlag:'0';
 					that.klineShowFlag = klineShowFlag;
+					let buyFlag = data.buyFlag?res.data.buyFlag:'0';
+					that.buyFlag = buyFlag;
+					let sellFlag = data.sellFlag?res.data.sellFlag:'0';
+					that.sellFlag = sellFlag;
 					// let symbolPrice = data.symbolPrice?res.data.symbolPrice:0;
 					// that.upDataRange_BRT(symbolPrice)
 					setTimeout(() => {
 						that.getTradeInfo()
-					}, 3000);
+					}, 1000);
 					// console.log(Number(usdtBalance)) 
 					// this.$emit('transferInAmountSuccess')
 				}else{
@@ -345,20 +358,53 @@
 					that.historylogdata_list = res.data&&res.data.orderList?res.data.orderList:[];
 					let klineShowFlag = data.klineShowFlag?res.data.klineShowFlag:'0';
 					that.klineShowFlag = klineShowFlag;
+					let buyFlag = data.buyFlag?res.data.buyFlag:'0';
+					that.buyFlag = buyFlag;
+					let sellFlag = data.sellFlag?res.data.sellFlag:'0';
+					that.sellFlag = sellFlag;
 					// let symbolPrice = data.symbolPrice?res.data.symbolPrice:0;
 					// that.upDataRange_BRT(symbolPrice)
 					setTimeout(() => {
 						that.refreshHistory()
-					}, 3000);
+					}, 1000);
 				}else{
 				}
 			})
 		},
 		tradeFunc(){
+
+
+
 			if(!this.isAllowTrade){
 				return
 			}
 			let that = this;
+			let symbolType = this.KLineTradingPair.name;
+			let {buyFlag,sellFlag,selectedTradeName} = this;
+			if(symbolType==='BRT'){
+				if(selectedTradeName.code==='buy'&&(buyFlag==='0'||buyFlag===0)){
+					this.$toast.show({
+						title: that.$t('tradePage').tradeFlgTip,
+					})
+					return
+				}
+				if(selectedTradeName.code==='sale'&&(sellFlag==='0'||sellFlag===0)){
+					this.$toast.show({
+						title: that.$t('tradePage').tradeFlgTip,
+					})
+					return
+				}
+			}
+
+			// let buyFlag = data.buyFlag?res.data.buyFlag:'0';
+			// that.buyFlag = buyFlag;
+			// let sellFlag = data.sellFlag?res.data.sellFlag:'0';
+			// that.sellFlag = sellFlag;
+
+
+
+
+
 			this.isAllowTrade = false;
 			let postData = this.getPostData();
 			if(postData){

@@ -108,6 +108,7 @@ export default {
         orderPrice: 'Price',
 
         orderNumber: 'Amount',
+        tradeFlgTip:"maintain"
 
     },
     historyTrade:{

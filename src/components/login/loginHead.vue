@@ -58,12 +58,12 @@
 		methods: {
 			typeClick(type) {
 				let noOpen = this.$t('noOpen')
-				if(type==='EMAIL'){
-					this.$toast.show({
-                        title: noOpen,
-					})
-					return
-				}
+				// if(type==='EMAIL'){
+				// 	this.$toast.show({
+                //         title: noOpen,
+				// 	})
+				// 	return
+				// }
 				if (type !== this.type) {
 					this.type = type
 					this.$emit('typeChange', type)

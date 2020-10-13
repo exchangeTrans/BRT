@@ -59,6 +59,7 @@ export default {
         orderReturn: '撤单',
         orderPrice: '委托价格',
         orderNumber: '委托数量',
+        tradeFlgTip:"价格不在允许范围内"
     },
     historyTrade:{
         title:'历史记录',

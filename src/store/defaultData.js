@@ -10,7 +10,7 @@ export default {
     state: {
         version:{
             text:'v1.0.0',
-            code:13
+            code:18
         },
         langArray: {
             'zh-CN': [
@@ -251,12 +251,22 @@ export default {
         },
         //获取汇率
         getRange({commit}) {
+            // let KLineTradingPair = this.state.tradeData.tradePairData;
+            // let tradePairData = this.state.tradeData.KLineTradingPair;
             request({
                 url: 'wallet/getRate',
                 method: 'post',
             }).then(res => {
                 if (res.result.returnCode.toString() === '0') {
                     let data = res.data;
+
+                    // console.log(KLineTradingPair)
+                    
+
+
+
+                    // store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+                    // BRTPRICE: "0.125000000"
                     commit('GETRANGEDATA', data);
                 }
             })

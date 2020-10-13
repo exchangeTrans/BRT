@@ -126,8 +126,11 @@
 		},
 		methods: {
 			initStoreData(){
+				let that = this;
 				this.$store.dispatch('getCountryList');
+				// setInterval(() => {
 				this.$store.dispatch('getRange');
+				// }, 1000)
 				this.$store.dispatch('getKline',{
 					period:'5min',
 				});
