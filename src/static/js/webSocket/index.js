@@ -3,15 +3,16 @@ import toast from "@/static/js/dialog.js";
 import store from '@/store/index.js';
 import {getMoney} from "@/static/js/changeMoney";
 import {DateFunc} from '@/static/js/common.js';
+import api from '../../../request/api.js';
 let Socket = false;
 let socketStatus = false;
 let setIntervalWesocketPush = null;
 // let socketUrl = 'wss://api-aws.huobi.pro/ws';
 // let socketUrl = "wss://stream.binance.com:9443"
 // let socketUrl = "ws://13.124.107.69:8188/ws/market"
-let socketUrl = "ws://www.brt-finance.com:8188/ws/market"
+// let socketUrl = "ws://www.brt-finance.com:8188/ws/market"
 // let socketUrl = "ws://ws.aespayment.info:8188/ws/market"
-
+let socketUrl  = api.socketUrl;
 
 let ping = 1492420473027;
 let socketArray=[];
@@ -115,19 +116,15 @@ export const mySocket={
             mySocket.upDataKlineData(data)
         }else if(ch.indexOf('detail')>-1){
             mySocket.upDataRangeData(data)
-        }
-        // console.log(data)
-        
+        }       
     },
     //成交明细订阅
     upDataDetailData(data){
         let KLineTradingPair = store.state.tradeData.KLineTradingPair;
         let symbol = data.symbol;
-        let tick = data.tick;
-        
+        let tick = data.tick;       
         let OldDetail = KLineTradingPair.detail;
-        if(KLineTradingPair.id===symbol){
-            
+        if(KLineTradingPair.id===symbol){            
             let detail = data.tick.data;
             let newData = detail.slice(0,100)
             newData = newData.map(function (item) {
@@ -145,7 +142,6 @@ export const mySocket={
                 detail:newData
             }
             store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
-            // console.log(store.state.tradeData.KLineTradingPair)
         }
     },
 
@@ -203,11 +199,17 @@ export const mySocket={
                 // let price = Number(rangeList[code])*tick.close;
                 // debugger
                 let close  = tick.close;
-                if(symbolName==="brtusdt"){
-                    close = tick.close===0||tick.close==='0'?0.05:tick.close
+                // if(symbolName==="brtusdt"){
+                //     close = tick.close===0||tick.close==='0'?0.05:tick.close;
+                //     range = 0;
+                // }
+                let price = getMoney(tick.close,"USDT").price;
+                if(item.name==='BRT'){
+                    // price = Number(price)/2
+                    tick.amount = Number(tick.amount)/2
                 }
-                let price = getMoney(tick.close,"USDT").price
                 if(KLineTradingPair.id === item.id){
+                    
                     let KLineTradingPairObj = {
                         ...KLineTradingPair,
                         range:range,
@@ -239,6 +241,7 @@ export const mySocket={
         if(KLineTradingPair.id===symbol){
             let asks = data.tick.asks;
             let bids = data.tick.bids;
+            
             asks = mySocket.handleDeepData(asks,true);//卖单
             bids = mySocket.handleDeepData(bids);//买单
             
@@ -259,6 +262,10 @@ export const mySocket={
         if(KLineTradingPair.id===symbol){
             let asks = data.tick.asks;
             let bids = data.tick.bids;
+            // if(KLineTradingPair.id==="brtusdt"){
+            //     asks = [];
+            //     bids = [[0.05,6000000]];
+            // }
             asks = mySocket.handleTapeData(asks,true);//卖单
             bids = mySocket.handleTapeData(bids);//买单
             
@@ -293,15 +300,22 @@ export const mySocket={
                 percent:100,
                 depth:depth
             }
+            let KLineTradingPair = store.state.tradeData.KLineTradingPair;
             if(item){
                 all = all+item[1];
                 depth=depth+item[1];
                 let percent=(depth/all)*2
                 percent = percent>1?1:percent;
                 percent = percent*100;
+                let size = item[1];
+                let price = item[0];
+                if(KLineTradingPair.name==='BRT'){
+                    price = Number(price).toFixed(3);
+                }
+
                 obj = {
-                    size:item[1],
-                    price:item[0],
+                    size:size,
+                    price:price,
                     all:all,
                     percent:percent,
                     depth:depth
@@ -409,20 +423,20 @@ export const mySocket={
         
     },
     subscribeDetail(item){
-        let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
+        // let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
 
-        let str = KLineTradingPair.name + KLineTradingPair.type;
-        str = str.toLowerCase();
-        let sub = "market."+str+".trade.detail"
-        let data = {
-            sub:sub,
-            // sub:"market.all.detail",
-            // period:"1min",
-            id: 'markettradeDetail',
-            isLocal:KLineTradingPair.isLocal
+        // let str = KLineTradingPair.name + KLineTradingPair.type;
+        // str = str.toLowerCase();
+        // let sub = "market."+str+".trade.detail"
+        // let data = {
+        //     sub:sub,
+        //     // sub:"market.all.detail",
+        //     // period:"1min",
+        //     id: 'markettradeDetail',
+        //     isLocal:KLineTradingPair.isLocal
             
-        } 
-        mySocket.subscribe(data); 
+        // } 
+        // mySocket.subscribe(data); 
     },
     subscribeTape(item){
         let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
@@ -442,37 +456,37 @@ export const mySocket={
     
     },
     subscribeDepth(item){
-        let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
+        // let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
 
-        let str = KLineTradingPair.name + KLineTradingPair.type;
-        str = str.toLowerCase();
-        let sub = "market."+str+".depth.step0"
-        let data = {
-            sub:sub,
-            // sub:"market.all.detail",
-            // period:"1min",
-            id: 'marketdepth',
-            isLocal:KLineTradingPair.isLocal
+        // let str = KLineTradingPair.name + KLineTradingPair.type;
+        // str = str.toLowerCase();
+        // let sub = "market."+str+".depth.step0"
+        // let data = {
+        //     sub:sub,
+        //     // sub:"market.all.detail",
+        //     // period:"1min",
+        //     id: 'marketdepth',
+        //     isLocal:KLineTradingPair.isLocal
             
-        } 
-        mySocket.subscribe(data); 
+        // } 
+        // mySocket.subscribe(data); 
     
     },
     subscribeKline(period){
-        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        // let KLineTradingPair = store.state.tradeData.KLineTradingPair;
 
-        let str = KLineTradingPair.name + KLineTradingPair.type;
-        str = str.toLowerCase();
-        let sub = "market."+str+".kline."+period;
-        let data = {
-            sub:sub,
-            // sub:"market.all.detail",
-            period:period,
-            id: 'marketKLine',
-            isLocal:KLineTradingPair.isLocal
+        // let str = KLineTradingPair.name + KLineTradingPair.type;
+        // str = str.toLowerCase();
+        // let sub = "market."+str+".kline."+period;
+        // let data = {
+        //     sub:sub,
+        //     // sub:"market.all.detail",
+        //     period:period,
+        //     id: 'marketKLine',
+        //     isLocal:KLineTradingPair.isLocal
             
-        } 
-        mySocket.subscribe(data); 
+        // } 
+        // mySocket.subscribe(data); 
     
     },
     //订阅主题

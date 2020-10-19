@@ -11,9 +11,17 @@
 			</view>
 			<view class="msgright">
 				<image src="../../static/images/trades/headright.png" mode="" @tap="toKline"  class="righticon"></image>
-				<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>						
-				<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
-				<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
+				<!-- <block  v-if="KLineTradingPair.name==='BRT'">
+					<view class="change up" v-if="brtPriceObj.range>0">+{{brtPriceObj.range.toFixed(2)}}%</view>						
+					<view class="change down" v-else-if="brtPriceObj.range<0">{{brtPriceObj.range.toFixed(2)}}%</view>
+					<view class="change" v-else>{{brtPriceObj.range.toFixed(2)}}%</view>
+				</block> -->
+				<!-- <block  v-else> -->
+					<view class="change up" v-if="KLineTradingPair.range>0">+{{KLineTradingPair.range.toFixed(2)}}%</view>						
+					<view class="change down" v-else-if="KLineTradingPair.range<0">{{KLineTradingPair.range.toFixed(2)}}%</view>
+					<view class="change" v-else>{{KLineTradingPair.range.toFixed(2)}}%</view>
+				<!-- </block> -->
+				
 			</view>
 		</view>
 		<view class="main">
@@ -55,22 +63,40 @@
 				<view class="charge_and_num">
 					<view class="money">{{$t('tradePage').prcie}}</view>
 					<view class="lednum">{{$t('tradePage').number}}</view><br>
-					<block v-for="(item,index) in depthData.asks" :key="index">
-						<view v-if="index<5">
-							<data-list :colorOptions="red" :tradesOptions="item"></data-list>
-						</view>
-					</block>
-					<!-- <view v-for="(item,index) in depthData.asks" :key="index">
-						<data-list :colorOptions="red" :tradesOptions="item"></data-list>
-					</view> -->
-					
+					<!-- <block v-if="KLineTradingPair.name==='BRT'">
+						<block v-for="(item,index) in tapeData.asks" :key="index">
+							<view v-if="index<5">
+								<data-list :colorOptions="red" :tradesOptions="item"></data-list>
+							</view>
+						</block>
+					</block>		 -->
+					<!-- <block v-else> -->
+						<block v-for="(item,index) in depthData.asks" :key="index">
+							<view v-if="index<5">
+								<data-list :colorOptions="red" :tradesOptions="item"></data-list>
+							</view>
+						</block>
+					<!-- </block>					 -->
 				</view>
 				
+				<!-- <view class="charge_exchange" v-if="KLineTradingPair.name==='BRT'">
+					<view class="exchange_rate1">{{brtPriceObj.price===null?'0.00':brtPriceObj.price.toFixed(3)}}</view>
+					<view class="exchange_rate2">≈{{brtPriceObj.priceRate}}{{selectedCurrency.code}}</view>
+				</view> -->
+				<!-- <view class="charge_exchange" v-else> -->
 				<view class="charge_exchange">
 					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(3)}}</view>
 					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
+				<!-- <view class="charge_and_num" v-if="KLineTradingPair.name==='BRT'">
+					<block v-for="(item,index) in tapeData.bids" :key="index">
+						<view v-if="index<5">
+							<data-list :colorOptions="green" :tradesOptions="item"></data-list>
+						</view>
+					</block>
+				</view> -->
 				<view class="charge_and_num">
+				<!-- <view class="charge_and_num" v-else> -->
 					<block v-for="(item,index) in depthData.bids" :key="index">
 						<view v-if="index<5">
 							<data-list :colorOptions="green" :tradesOptions="item"></data-list>
