@@ -211,7 +211,7 @@ export default {
                         });
                         // switchTab
                         this.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                         this.$jumpPage.jump({
                             type:'reLaunch',
@@ -220,7 +220,7 @@ export default {
                     } else {
                         that.isAllowClick = true;
                         this.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                     }
                 })

@@ -254,7 +254,7 @@ export default {
                     } else {
                         that.isAllowClick = true;
                         this.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                     }
                 })
@@ -330,7 +330,7 @@ export default {
                         } else {
                             // this[name] = false;
                             that.$toast.show({
-                                title: res.result.returnMessage,
+                                title: res.result.returnUserMessage,
                             })
                             // uni.hideLoading()
                             setTimeout(function () {

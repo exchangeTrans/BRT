@@ -119,7 +119,7 @@
                             that.$emit('transferInAmountSuccess',that.counts)
 						}else{
 						    that.$toast.show({
-						        title: res.result.returnMessage,
+						        title: res.result.returnUserMessage,
                             })
                             that.isAllowRequest = true;
 						}
@@ -152,7 +152,7 @@
                         that.$emit('transferInAmountSuccess',this.counts)
                     }else{
                         that.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                         that.isAllowRequest = true;
                     }

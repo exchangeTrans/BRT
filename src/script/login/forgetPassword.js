@@ -236,7 +236,7 @@ export default {
                         uni.hideLoading()
                     } else {
                         this.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                     }
                 })
@@ -309,7 +309,7 @@ export default {
                         } else {
 
                             that.$toast.show({
-                                title: res.result.returnMessage,
+                                title: res.result.returnUserMessage,
                             });
                             // uni.hideLoading();
                             setTimeout(function () {

@@ -162,14 +162,14 @@ export default {
                     // console.log(res);
                     if (res.result.returnCode.toString() === "0") {
                         this.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                         this.$jumpPage.jump({
                             type: 'navigateBack',
                         })
                     } else {
                         this.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                     }
                 })
@@ -270,7 +270,7 @@ export default {
 
                     } else {
                         this.$toast.show({
-                            title: res.result.returnMessage,
+                            title: res.result.returnUserMessage,
                         })
                     }
 

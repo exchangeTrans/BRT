@@ -62,7 +62,7 @@ export const uploadImage = (num, callback) => {
                     }
                 } else {
                     this.$toast.show({
-                        title: res.result.returnMessage,
+                        title: res.result.returnUserMessage,
                     })
                 }
 

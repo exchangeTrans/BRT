@@ -125,7 +125,7 @@ export default {
                     // console.log(res);
                 } else {
                     this.$toast.show({
-                        title: res.result.returnMessage,
+                        title: res.result.returnUserMessage,
                     })
                 }
             })
@@ -177,7 +177,7 @@ export default {
                     if (res.result.returnCode.toString() === "0") {
                         setTimeout(() => {
                             this.$toast.show({
-                                title: res.result.returnMessage,
+                                title: res.result.returnUserMessage,
                             });
                             this.getAuthStatus()
                             // // 服务端响应的 message 提示
@@ -191,7 +191,7 @@ export default {
                         that.isAllowClick = true;
                         setTimeout(() => {
                             this.$toast.show({
-                                title: res.result.returnMessage,
+                                title: res.result.returnUserMessage,
                             })
                             uni.hideLoading()
                         }, 2000)
@@ -229,7 +229,7 @@ export default {
                     cb(res.data.uptoken)
                 } else {
                     this.$toast.show({
-                        title: res.result.returnMessage,
+                        title: res.result.returnUserMessage,
                     })
                 }
                 // console.log(res)

@@ -427,7 +427,7 @@ export default {
                 // this.$emit('transferInAmountSuccess')
             }else{
                 // this.$toast.show({
-                // 	title: res.result.returnMessage,
+                // 	title: res.result.returnUserMessage,
                 // })
             }
         })
@@ -593,7 +593,7 @@ export default {
                 }else{
                     that.isAllowTrade = true;
                     that.$toast.show({
-                        title: res.result.returnMessage,
+                        title: res.result.returnUserMessage,
                     })
                 }
             })
@@ -630,7 +630,7 @@ export default {
                 }, 1000);
             }else{
                 this.$toast.show({
-                    title: res.result.returnMessage,
+                    title: res.result.returnUserMessage,
                 })
                 setTimeout(() => {
                     that.isAllowCancle=true;

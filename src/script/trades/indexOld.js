@@ -335,7 +335,7 @@
 					// this.$emit('transferInAmountSuccess')
 				}else{
 					// this.$toast.show({
-					// 	title: res.result.returnMessage,
+					// 	title: res.result.returnUserMessage,
 					// })
 				}
 			})
@@ -438,7 +438,7 @@
 					}else{
 						that.isAllowTrade = true;
 						that.$toast.show({
-							title: res.result.returnMessage,
+							title: res.result.returnUserMessage,
 						})
 					}
 				})
@@ -468,7 +468,7 @@
 					this.getTradeInfo();
 				}else{
 					this.$toast.show({
-						title: res.result.returnMessage,
+						title: res.result.returnUserMessage,
 					})
 				}
 			})

@@ -305,7 +305,7 @@ export default {
                     
                 } else {
                     this.$toast.show({
-                        title: res.result.returnMessage,
+                        title: res.result.returnUserMessage,
                     })
                 }
             })
@@ -396,7 +396,7 @@ export default {
                         } else {
                             that.isAllowClick = true;
                             that.$toast.show({
-                                title: res.result.returnMessage,
+                                title: res.result.returnUserMessage,
                             })
                         }
                     })
