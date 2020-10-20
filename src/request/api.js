@@ -1,7 +1,7 @@
 // 生产环境
 // let commonIp='https://www.brt.today';
 // let qiniuApi='http://sida-tj.com/';
-// let socketUrl = "ws://www.brt-finance.com:8188/ws/market"
+// let socketUrl = "ws://3.34.46.102:8188/ws/market"
 // let api={
 //     commApi:commonIp,
 //     klineApi:'http://www.brt-finance.com:8100',

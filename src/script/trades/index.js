@@ -555,8 +555,9 @@ export default {
     getTradeInfo_refresh(times,isChangeFlag,symbolType){
         if(this.closeRefresh) return
         if(times===0) {
+            uni.hideLoading()
 			if(isChangeFlag){
-				this.isAllowCancle = true
+                this.isAllowCancle = true;
 			}	
 			
 			return
@@ -771,6 +772,7 @@ export default {
             orderId: item.tradeOrderId,
             symbolType:item.symbolType
         };
+        uni.showLoading()
         this.$request({
             url:'trade/cancel',
             method:'post',
@@ -785,6 +787,7 @@ export default {
                 that.getTradeInfoSymbolBalance_refresh(2);
                 // setTimeout(() => {
                 //     that.isAllowCancle=true;
+                
                 // }, 1000);
             }else{
                 this.$toast.show({
@@ -792,6 +795,7 @@ export default {
                 })
                 setTimeout(() => {
                     that.isAllowCancle=true;
+                    uni.hideLoading()
                 }, 1000);
             }
         })
