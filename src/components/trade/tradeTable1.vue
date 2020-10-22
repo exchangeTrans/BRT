@@ -77,8 +77,23 @@
                 if(depth!==null){
                     let asks = depth.asks.reverse();
                     let bids = depth.bids;
-                    let newData = bids.map(function (item,index) {
-                        return {bids:item,asks:asks[index]}                   
+                    if(asks.length===0&&bids.length===0){
+                        return
+                    }
+                    
+
+                    let array = asks.length>bids.length?asks:bids;
+                    let newData = array.map(function (item,index) {
+                        let nullObj = {
+                            all: 0,
+                            depth: 0,
+                            percent: 0,
+                            price: 0,
+                            size: 0,
+                        }
+                        let bidsItem = bids[index]?bids[index]:nullObj;
+                        let asksItem = asks[index]?asks[index]:nullObj;
+                        return {bids:bidsItem,asks:asksItem}                   
                     });
                     this.tableData = newData;
                 }

@@ -416,27 +416,27 @@ export const mySocket={
         
         mySocket.subscribeTape();
         mySocket.subscribeDepth();
-        mySocket.subscribeKline('5min');
+        mySocket.subscribeKline('15min');
         mySocket.subscribeDetail()
         
 
         
     },
     subscribeDetail(item){
-        // let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
+        let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
 
-        // let str = KLineTradingPair.name + KLineTradingPair.type;
-        // str = str.toLowerCase();
-        // let sub = "market."+str+".trade.detail"
-        // let data = {
-        //     sub:sub,
-        //     // sub:"market.all.detail",
-        //     // period:"1min",
-        //     id: 'markettradeDetail',
-        //     isLocal:KLineTradingPair.isLocal
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".trade.detail"
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            // period:"1min",
+            id: 'markettradeDetail',
+            isLocal:KLineTradingPair.isLocal
             
-        // } 
-        // mySocket.subscribe(data); 
+        } 
+        mySocket.subscribe(data); 
     },
     subscribeTape(item){
         let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
@@ -456,37 +456,37 @@ export const mySocket={
     
     },
     subscribeDepth(item){
-        // let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
+        let KLineTradingPair = item?item:store.state.tradeData.KLineTradingPair;
 
-        // let str = KLineTradingPair.name + KLineTradingPair.type;
-        // str = str.toLowerCase();
-        // let sub = "market."+str+".depth.step0"
-        // let data = {
-        //     sub:sub,
-        //     // sub:"market.all.detail",
-        //     // period:"1min",
-        //     id: 'marketdepth',
-        //     isLocal:KLineTradingPair.isLocal
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".depth.step0"
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            // period:"1min",
+            id: 'marketdepth',
+            isLocal:KLineTradingPair.isLocal
             
-        // } 
-        // mySocket.subscribe(data); 
+        } 
+        mySocket.subscribe(data); 
     
     },
     subscribeKline(period){
-        // let KLineTradingPair = store.state.tradeData.KLineTradingPair;
+        let KLineTradingPair = store.state.tradeData.KLineTradingPair;
 
-        // let str = KLineTradingPair.name + KLineTradingPair.type;
-        // str = str.toLowerCase();
-        // let sub = "market."+str+".kline."+period;
-        // let data = {
-        //     sub:sub,
-        //     // sub:"market.all.detail",
-        //     period:period,
-        //     id: 'marketKLine',
-        //     isLocal:KLineTradingPair.isLocal
+        let str = KLineTradingPair.name + KLineTradingPair.type;
+        str = str.toLowerCase();
+        let sub = "market."+str+".kline."+period;
+        let data = {
+            sub:sub,
+            // sub:"market.all.detail",
+            period:period,
+            id: 'marketKLine',
+            isLocal:KLineTradingPair.isLocal
             
-        // } 
-        // mySocket.subscribe(data); 
+        } 
+        mySocket.subscribe(data); 
     
     },
     //订阅主题

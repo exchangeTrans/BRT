@@ -310,7 +310,7 @@ export default {
   methods:{
     toKline(){
         this.$store.dispatch('getKline',{
-            period:'5min',
+            period:'15min',
         });
         let that = this;
         let klineShowFlag = this.klineShowFlag;

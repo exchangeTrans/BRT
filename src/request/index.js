@@ -34,7 +34,18 @@ const formatHeaders = (acHeaders) => {
     }
     return headers;
 };
-const getParams = (params) => {
+const getParams = (params,url) => {
+    let pageRepeatCodeRecord = store.state.defaultData.pageRepeatCodeRecord;
+    let obj = {
+        url:url,
+        code:(new Date()).valueOf(),
+        status:0,
+    }
+    if(!pageRepeatCodeRecord[url]){
+        pageRepeatCodeRecord[url] = obj;
+        store.commit("setDefaultSync",{key:"pageRepeatCodeRecord", val: pageRepeatCodeRecord,})
+    }   
+    
     // debugger
     // let postData = {
     //     appPackage:"com.xinshenkj.mm",//App 包名
@@ -53,7 +64,7 @@ const getParams = (params) => {
     let userLoginId = loginMsg ? loginMsg.userLoginId : '';
     let userLoginToken = loginMsg ? loginMsg.userLoginToken : '';
     let devicePlatformLanguage = langMsg ? langMsg.code : 1;
-    let pageRepeatCode = (new Date()).valueOf();
+    let pageRepeatCode = pageRepeatCodeRecord[url].code;
     let clientVersion = store.state.defaultData.version.code;
     postData = {
         userLoginId,
@@ -83,8 +94,8 @@ const getParams = (params) => {
     return postData;
 };
 const http = ({
-                  url, headers, params, method, dataType, responseType,hostType
-              }) => {
+        url, headers, params, method, dataType, responseType,hostType
+    }) => {
     let timestamp = (new Date()).valueOf();
     let prefix = '';
     if(hostType){
@@ -96,7 +107,7 @@ const http = ({
         // eslint-disable-next-line no-undef
         uni.request({
             url: `${prefix}/${url}?&&t=${timestamp}`, //
-            data: getParams(params),
+            data: getParams(params,url),
             method: method || 'post',
             header: formatHeaders(headers),
             responseType: responseType || '',
@@ -129,11 +140,17 @@ const http = ({
                             userLoginToken:''
                         }
                         datastorage.setSync({key: "loginMsg",data: loginMsg});
+                        upDataRepeatCode(url)
                         jumpPage.jump({
                             type: 'reLaunch',
                             url: 'login/login',
                         })
-                    }else{
+                    }
+                    else if(res[1].data&&res[1].data.result&&res[1].data.result.returnCode&&(res[1].data.result.returnCode.toString()==='99999')){
+                        console.log(11)
+                    }
+                    else{
+                        upDataRepeatCode(url)
                         resolve(res[1].data);
                     }
                     
@@ -149,4 +166,13 @@ const http = ({
     });
 
 };
+function upDataRepeatCode(url){
+    let pageRepeatCodeRecord = store.state.defaultData.pageRepeatCodeRecord;
+    let obj = {
+        url:url,
+        code:(new Date()).valueOf(),
+    }
+    pageRepeatCodeRecord[url] = obj;
+    store.commit("setDefaultSync",{key:"pageRepeatCodeRecord", val: pageRepeatCodeRecord,})
+}
 export default http;

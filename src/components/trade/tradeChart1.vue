@@ -324,7 +324,7 @@
                 // let langMsg = localMsg
 
                 let langMsg = this.langMsg
-                console.log(langMsg)
+                // console.log(langMsg)
                 let tipObj={
                     'zh-CN':{
                         Open:'开盘价:',
@@ -406,9 +406,9 @@
                 
             },
             langMsgChange(newValue, oldValue, ownerInstance, instance){
-                // console.log(111)
-                console.log(newValue)
-                console.log(oldValue)
+                // // console.log(111)
+                // console.log(newValue)
+                // console.log(oldValue)
                 localMsg = newValue
             },
             test(newValue, oldValue, ownerInstance, instance){

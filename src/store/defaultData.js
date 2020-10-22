@@ -10,7 +10,10 @@ export default {
     state: {
         version:{
             text:'v1.0.0',
-            code:31
+            code:32
+        },
+        pageRepeatCodeRecord:{
+
         },
         langArray: {
             'zh-CN': [

@@ -54,19 +54,20 @@ const toast = {
             key: 'langMsg'
         }).name;
         let defultOptions = {
-            title:tipObj[langMsg].loading,	//String	是	提示的内容
-            mask:false,	//Boolean	否	是否显示透明蒙层，防止触摸穿透，默认：false
+            title:'',	//String	是	提示的内容
+            // title:tipObj[langMsg].loading,	//String	是	提示的内容
+            mask:true,	//Boolean	否	是否显示透明蒙层，防止触摸穿透，默认：false
             complete:function(){},	//Function	否	接口调用结束的回调函数（调用成功、失败都会执行）
         }
         if(options){
-            options={
+            defultOptions={
                 ...defultOptions,
                 ...options
             }
         }
         // eslint-disable-next-line no-undef
         uni.showLoading({
-            ...options,
+            ...defultOptions,
             success:function(){//Function	否	9 口调用成功的回调函数
                 if(success){
                     success();

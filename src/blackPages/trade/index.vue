@@ -118,7 +118,7 @@
                     // {code:'7',name:"指标",id:''},
                     // 1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
                 ],
-                chartTabSelect:{code:'5min',name:"5"+this.$t('trade').lineTypeArray[0],id:''},
+                chartTabSelect:{code:'15min',name:"15"+this.$t('trade').lineTypeArray[0],id:''},
                 tableTabArray:[
                     {code:'table1',name:this.$t('trade').tabArray[0],id:''},
                     {code:'table2',name:this.$t('trade').tabArray[1],id:''},

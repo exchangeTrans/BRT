@@ -104,8 +104,8 @@ ts: 1601307776068 -->
                         }
                     }
                 });
-                console.log(detail)
-                console.log(newData)
+                // console.log(detail)
+                // console.log(newData)
                 this.tableData = newData;
             },   
                 

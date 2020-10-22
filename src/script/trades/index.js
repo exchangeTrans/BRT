@@ -315,7 +315,7 @@ export default {
   methods:{
     toKline(){
         this.$store.dispatch('getKline',{
-            period:'5min',
+            period:'15min',
         });
         let that = this;
         let klineShowFlag = this.klineShowFlag;
@@ -555,8 +555,9 @@ export default {
     getTradeInfo_refresh(times,isChangeFlag,symbolType){
         if(this.closeRefresh) return
         if(times===0) {
-            uni.hideLoading()
+            
 			if(isChangeFlag){
+                uni.hideLoading()
                 this.isAllowCancle = true;
 			}	
 			
@@ -684,9 +685,7 @@ export default {
     // },
     
     tradeFunc(){
-
-
-
+        
         if(!this.isAllowTrade){
             return
         }
@@ -772,33 +771,44 @@ export default {
             orderId: item.tradeOrderId,
             symbolType:item.symbolType
         };
-        uni.showLoading()
-        this.$request({
-            url:'trade/cancel',
-            method:'post',
-            params:postData
-        }).then((res)=>{
-            if (res.result.returnCode.toString() === "0") {
-                
-                this.$toast.show({
-                    title: res.result.returnUserMessage,
-                })
-                that.getTradeInfo_refresh(5,true);
-                that.getTradeInfoSymbolBalance_refresh(2);
-                // setTimeout(() => {
-                //     that.isAllowCancle=true;
-                
-                // }, 1000);
-            }else{
-                this.$toast.show({
-                    title: res.result.returnUserMessage,
-                })
-                setTimeout(() => {
-                    that.isAllowCancle=true;
-                    uni.hideLoading()
-                }, 1000);
-            }
-        })
+        this.$toast.showLoading();
+        setTimeout(() => {
+            this.$request({
+                url:'trade/cancel',
+                method:'post',
+                params:postData
+            }).then((res)=>{
+                if (res.result.returnCode.toString() === "0") {
+                    
+                    that.$toast.show({
+                        title: res.result.returnUserMessage,
+                    })
+                    that.getTradeInfo_refresh(5,true);
+                    that.getTradeInfoSymbolBalance_refresh(2);
+                    // setTimeout(() => {
+                    //     that.isAllowCancle=true;
+                    
+                    // }, 1000);
+                }else{
+                    this.$toast.show({
+                        title: res.result.returnUserMessage,
+                    })
+                    setTimeout(() => {
+                        that.isAllowCancle=true;
+                        uni.hideLoading()
+                    }, 1000);
+                }
+            })
+        }, 5000);
+        // setTimeout(() => {
+        //     this.$toast.showLoading();
+        // }, 5000);
+        
+        
+
+        // that.$toast.showLoading()
+        
+        
     },
     
     inputChange(e,type){
