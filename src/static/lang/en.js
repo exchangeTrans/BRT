@@ -252,7 +252,8 @@ export default {
         serviceCharge: 'Service Charge',
         withdrawAddress: 'Withdraw Address',
         time: 'Time',
-        tip:'转帐需经过60个区块确认才会到帐'
+        addressFrom:'Receive Address',
+        tip:'All Transfer requires 60 blocks confirmations.'
     },
 
     //Currency Charge Record

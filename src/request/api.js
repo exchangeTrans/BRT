@@ -1,13 +1,13 @@
 // 生产环境
-// let commonIp='https://www.brt.today';
-// let qiniuApi='http://sida-tj.com/';
-// let socketUrl = "ws://3.34.46.102:8188/ws/market"
-// let api={
-//     commApi:commonIp,
-//     klineApi:'http://www.brt-finance.com:8100',
-//     socketUrl:socketUrl,
-//     qiniuApi:qiniuApi,
-// };
+let commonIp='https://www.brt.today';
+let qiniuApi='http://sida-tj.com/';
+let socketUrl = "ws://3.35.47.120:8188/ws/market"
+let api={
+    commApi:commonIp,
+    klineApi:'http://3.35.47.120:8100',
+    socketUrl:socketUrl,
+    qiniuApi:qiniuApi,
+};
 
 // let commonIp='https://www.brt.today';
 // let qiniuApi='http://sida-tj.com/';
@@ -34,14 +34,14 @@
 
 
 //测试环境
-let commonIp='http://www.aespayment.info'
-let qiniuApi='http://sida-tj.com/';
-let socketUrl = "ws://ws.aespayment.info:8188/ws/market"
+// let commonIp='http://www.aespayment.info'
+// let qiniuApi='http://sida-tj.com/';
+// let socketUrl = "ws://ws.aespayment.info:8188/ws/market"
 
-let api={
-    commApi:commonIp,
-    socketUrl:socketUrl,
-    klineApi:'http://ws.aespayment.info:8100',
-    qiniuApi:qiniuApi,
-};
+// let api={
+//     commApi:commonIp,
+//     socketUrl:socketUrl,
+//     klineApi:'http://ws.aespayment.info:8100',
+//     qiniuApi:qiniuApi,
+// };
 export default api;

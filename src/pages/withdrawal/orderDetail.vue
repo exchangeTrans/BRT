@@ -22,9 +22,14 @@
                     <view class="detailItem_right">{{fee}} {{symbolTypeText}}</view>
                 </view>
                 <view class="detailItem detailItem5">
+                    <view class="detailItem_left">{{$t('orderDetail').addressFrom}}</view>
+                    <view class="detailItem_right">{{addressFrom}}</view>
+                </view>
+                <view class="detailItem detailItem5">
                     <view class="detailItem_left">{{$t('orderDetail').withdrawAddress}}</view>
                     <view class="detailItem_right">{{memo}}</view>
                 </view>
+                
                 <view class="detailItem detailItem6">
                     <view class="detailItem_left">{{$t('orderDetail').time}}</view>
                     <view class="detailItem_right">{{createTime}}</view>
@@ -78,7 +83,8 @@
                     operationTypeText: "",
                     stateType: 1,
                     stateTypeText: "",
-                    symbolTypeText:''
+                    symbolTypeText:'',
+                    addressFrom:''
                 }
             },
             mounted(){
@@ -109,7 +115,8 @@
                         that.operationType = res.data.operationType;
                         that.operationTypeText = res.data.operationTypeText;
                         that.stateTypeText = res.data.stateTypeText;
-                        that.symbolTypeText = res.data.symbolTypeText?res.data.symbolTypeText:''
+                        that.symbolTypeText = res.data.symbolTypeText?res.data.symbolTypeText:'';
+                        that.addressFrom = res.data.addressFrom?res.data.addressFrom:'';
                         // this.$emit('transferInAmountSuccess')
                     }else{
                         // this.$toast.show({

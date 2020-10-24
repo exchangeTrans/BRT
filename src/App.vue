@@ -132,7 +132,7 @@
 				this.$store.dispatch('getRange');
 				// }, 1000)
 				this.$store.dispatch('getKline',{
-					period:'15min',
+					period:'5min',
 				});
 				this.$store.dispatch('getRate');
 				// this.$store.dispatch('getUserMsg');

@@ -90,7 +90,7 @@
                     //     }
                     // ],
                     xAxis: {
-                        show:false,
+                        show:true,
                         type: 'category',
                         data: [],
                         axisTick: {
@@ -297,11 +297,11 @@
                     let data = [];
                     let xData = [];
                     KLineTradingPair.dataArray.forEach((item,index) => {
-                        // if(index>100){
+                        if(index>KLineTradingPair.dataArray.length-30){
                             data.push([item.open, item.close, item.low,item.high])
-                            let time = DateFunc.resetTime(parseInt(item.id) * 1000)
+                            let time = DateFunc.resetTime_getObj(parseInt(item.id) * 1000,'mdhm').viewTime
                             xData.push(time);
-                        // }
+                        }
                     });
                     // this.nowTradePrice = res.data[res.data.length-1].close;
                     this.KLindeData = data;
@@ -355,6 +355,8 @@
                 let KLineTradingPair = this.KLineTradingPair
                 let chartOpts = this.option;
                 let xAxis = this.option.xAxis;
+                let yAxis = this.option.yAxis;
+                
                 let tooltip = this.option.tooltip;
                 let opts = {
                     ...chartOpts,
@@ -362,6 +364,28 @@
                         ...xAxis,
                         data: xData
                     },
+                    yAxis: {
+                        ...yAxis,
+                        max: function (value) {
+                            let maxRange = (value.max-value.min)*0.1
+                            let num = value.min.toString().split(".")[1]
+                            
+                            num = num?num.length:0
+                            console.log(num)
+                            // let max = (value.max + maxRange).toFixed(num)
+                            let max = num>0?(value.max + maxRange).toFixed(num):parseInt(value.max + maxRange)
+                            return max;
+                        },
+                        min: function (value) {
+                            let maxRange = (value.max-value.min)*0.1;
+                            let num = value.max.toString().split(".")[1]
+                            num = num?num.length:0
+                            console.log(num)
+                            let min = num>0?(value.min - maxRange).toFixed(num):parseInt(value.min - maxRange)
+                            return min;
+                        }
+                    },
+                    
                     tooltip:{
                         ...tooltip,
                         formatter: function (datas) {
@@ -376,11 +400,11 @@
                         }
                     },
                     dataZoom:[{
-                    type: 'slider',//图表下方的伸缩条inside
-                    show : true, //是否显示
-                    realtime : true, //拖动时，是否实时更新系列的视图
-                    start : 0, //伸缩条开始位置（1-100），可以随时更改
-                    end : 100, //伸缩条结束位置（1-100），可以随时更改
+                        type: 'inside',//图表下方的伸缩条inside
+                        show : true, //是否显示
+                        realtime : true, //拖动时，是否实时更新系列的视图
+                        start : 0, //伸缩条开始位置（1-100），可以随时更改
+                        end : 100, //伸缩条结束位置（1-100），可以随时更改
                     }],
                     
                     series: [
@@ -390,10 +414,14 @@
                             data: data,
                             barWidth : "60%",
                             itemStyle: {
-                                color: '#F44E33',
-                                color0: '#01AF90',
-                                borderColor: '#F44E33',
-                                borderColor0: '#01AF90'
+                                color: '#01AF90',
+                                color0: '#F44E33',
+                                borderColor: '#01AF90',
+                                borderColor0: '#F44E33'
+                                // color: '#F44E33',
+                                // color0: '#01AF90',
+                                // borderColor: '#F44E33',
+                                // borderColor0: '#01AF90'
                             }
                         }
                     ]

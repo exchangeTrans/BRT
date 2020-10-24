@@ -313,9 +313,12 @@ export default {
     this.closeRefresh = true;
   },
   methods:{
+    itemClick(item){
+        this.tradePrice=item.price;
+    },
     toKline(){
         this.$store.dispatch('getKline',{
-            period:'15min',
+            period:'5min',
         });
         let that = this;
         let klineShowFlag = this.klineShowFlag;
@@ -420,6 +423,8 @@ export default {
                     ...tradeInfo,
                     symbolBalance:data.symbolBalance,
                     usdtBalance:data.usdtBalance,
+                    usdtBalanceNum:Number(usdtBalance),
+                    symbolBalanceNum:Number(symbolBalance),
                 };
                 // that.historylogdata_list = data&&data.orderList?data.orderList:[];
                 // let klineShowFlag = data.klineShowFlag?res.data.klineShowFlag:'0';
@@ -819,7 +824,7 @@ export default {
             if(type==='tradePrice'){
                 // value = value.to;
                 // value = String(value);
-                value = value.substring(0,value.indexOf(".") + 4);
+                value = value.substring(0,value.indexOf(".") + 5);
                 // value = Math.round(value*1000)/1000
                 // var a = "23.456322";
                 
@@ -842,7 +847,7 @@ export default {
         let KLineTradingPair = this.$store.state.tradeData.KLineTradingPair;
         if(KLineTradingPair.name==='BRT'){
                 let value = String(this.tradePrice);
-                value = value.substring(0,value.indexOf(".") + 4);
+                value = value.substring(0,value.indexOf(".") + 5);
                 this.tradePrice= Number(value);
         }
         

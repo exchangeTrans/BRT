@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="datalist">
-			<view class="item"  :style="{'color':bgstyle.color}">
+			<view class="item"  :style="{'color':bgstyle.color}" @tap="itemClick(tradesOptions)">
 				<view class="money">{{tradesOptions.price}}</view>
 				<view class="num">{{tradesOptions.size}}</view>
 				<view class="bg" :style="{'background':bgstyle.background_color,width:tradesOptions.percent+'%'}"></view>
@@ -43,6 +43,11 @@
 					background_color,
 					color
 				}
+			}
+		},
+		methods:{
+			itemClick(item){
+				this.$emit('itemClick',item)
 			}
 		}
 	}

@@ -5,7 +5,7 @@
         <scroll-view class="tradeContent" scroll-y>
             <!-- <view @tap="changeTest">tatsadd</view> -->
             <view class="tradeTopView">
-                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(3)}}</view>
+                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(4)}}</view>
                 <view class="moneyView">
                     <view class="money">≈{{KLineTradingPair.price}} {{selectedCurrency.code}}</view>
                     <view v-if="KLineTradingPair.range>0" class="range add">+{{KLineTradingPair.range.toFixed(2)}}%</view>
@@ -109,16 +109,16 @@
                     headerIsNoBoder: false,
                 },
                 chartTabArray:[
-                    // {code:'5min',name:"5"+this.$t('trade').lineTypeArray[0],id:''},
-                    // {code:'15min',name:"15"+this.$t('trade').lineTypeArray[0],id:''},
-                    // {code:'60min',name:"1"+this.$t('trade').lineTypeArray[1],id:''},
-                    // {code:'4hour',name:"4"+this.$t('trade').lineTypeArray[1],id:''},
-                    // {code:'1day',name:this.$t('trade').lineTypeArray[2],id:''},
+                    {code:'5min',name:"5"+this.$t('trade').lineTypeArray[0],id:'1'},
+                    {code:'15min',name:"15"+this.$t('trade').lineTypeArray[0],id:'1'},
+                    {code:'60min',name:"1"+this.$t('trade').lineTypeArray[1],id:'0'},
+                    {code:'4hour',name:"4"+this.$t('trade').lineTypeArray[1],id:'0'},
+                    {code:'1day',name:this.$t('trade').lineTypeArray[2],id:'0'},
                     // {code:'1week',name:this.$t('trade').lineTypeArray[3],id:''},
                     // {code:'7',name:"指标",id:''},
                     // 1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
                 ],
-                chartTabSelect:{code:'15min',name:"15"+this.$t('trade').lineTypeArray[0],id:''},
+                chartTabSelect:{code:'5min',name:"5"+this.$t('trade').lineTypeArray[0],id:'1'},
                 tableTabArray:[
                     {code:'table1',name:this.$t('trade').tabArray[0],id:''},
                     {code:'table2',name:this.$t('trade').tabArray[1],id:''},
@@ -157,7 +157,15 @@
         },
         methods: {
             selectChartTab(item){
-                this.chartTabSelect = item;
+                if(item.id==='1'){
+                    this.chartTabSelect = item;
+                }else{
+                    let that = this;
+                    this.$toast.show({
+                        title: that.$t('maintain'),
+                    })
+                }
+                
             },
             selectTableTab(item){
                 this.tableTabSelect = item;
@@ -301,6 +309,7 @@
                 font-weight: 400;
                 color: #1A1A1A;
                 position: relative;
+                margin-right: 20rpx;
                 .line{
                     display: none;
                     width: 100%;

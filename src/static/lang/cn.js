@@ -142,8 +142,9 @@ export default {
         type: '类型',
         state: '状态',
         serviceCharge: '手续费',
-        withdrawAddress: '提币地址',
+        withdrawAddress: '接收地址',
         time: '时间',
+        addressFrom:'发送地址',
         tip:'转帐需经过60个区块确认才会到帐'
     },
     //充币记录

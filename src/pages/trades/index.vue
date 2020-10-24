@@ -73,7 +73,7 @@
 					<!-- <block v-else> -->
 						<block v-for="(item,index) in depthData.asks" :key="index">
 							<view v-if="index<5">
-								<data-list :colorOptions="red" :tradesOptions="item"></data-list>
+								<data-list :colorOptions="red" :tradesOptions="item" @itemClick="itemClick"></data-list>
 							</view>
 						</block>
 					<!-- </block>					 -->
@@ -85,7 +85,7 @@
 				</view> -->
 				<!-- <view class="charge_exchange" v-else> -->
 				<view class="charge_exchange">
-					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(3)}}</view>
+					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(4)}}</view>
 					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
 				<!-- <view class="charge_and_num" v-if="KLineTradingPair.name==='BRT'">
@@ -99,7 +99,7 @@
 				<!-- <view class="charge_and_num" v-else> -->
 					<block v-for="(item,index) in depthData.bids" :key="index">
 						<view v-if="index<5">
-							<data-list :colorOptions="green" :tradesOptions="item"></data-list>
+							<data-list :colorOptions="green" :tradesOptions="item" @itemClick="itemClick"></data-list>
 						</view>
 					</block>
 				</view>
@@ -239,17 +239,19 @@
 		}
 		.msgright{
 			float: right;
-			margin-top: 24rpx;
+			// margin-top: 24rpx;
 			.righticon{
 				width: 40rpx;
 				height: 40rpx;
-				margin-right: 10rpx;
+				padding: 24rpx 10rpx 0 50rpx;
 				position: relative;
 				
 			}
 			.change{
-				width: 116rpx;
+				margin-top: 24rpx;
+				// width: 116rpx;
 				height: 40rpx;
+				padding:0 16rpx;
 				line-height: 40rpx;
 				background-color: #8D989E;
 				float: right;

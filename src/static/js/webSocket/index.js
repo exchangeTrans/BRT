@@ -124,24 +124,78 @@ export const mySocket={
         let symbol = data.symbol;
         let tick = data.tick;       
         let OldDetail = KLineTradingPair.detail;
-        if(KLineTradingPair.id===symbol){            
+        if(KLineTradingPair.id===symbol){   
+            // console.log(KLineTradingPair.name)         
             let detail = data.tick.data;
-            let newData = detail.slice(0,100)
-            newData = newData.map(function (item) {
-                if(item&&item.ts){
-                    let res = DateFunc.resetTime_getObj(item.ts,'hms')
-                    let viewTime = res.viewTime;
-                    return {
-                        ...item,
-                        viewTime
+            let newData = detail;
+            if(KLineTradingPair.name==='BRT'){
+                let lastTime = null;
+                let result = [];
+                newData.forEach(item => {
+                    console.log(item)
+                    if(item&&item.ts){
+                        let res = DateFunc.resetTime_getObj(item.ts,'hms')
+                        let viewTime = res.viewTime;
+                        let tradeTypeArray = ['buy','sell']
+                        let num = item.ts%2===0?0:1
+                        // let num = Math.floor(Math.random() + 0.5);
+                        if(viewTime!==lastTime){
+                            lastTime = viewTime;
+                            
+                            result.push({
+                                ...item,
+                                viewTime,
+                                direction:tradeTypeArray[num]
+                            }) 
+                        }
+                        // }
+                        
+                        
+                        
                     }
+                });
+                result = result.slice(0,30);
+                let KLineTradingPairObj = {
+                    ...KLineTradingPair,
+                    detail:result
                 }
-            });
-            let KLineTradingPairObj = {
-                ...KLineTradingPair,
-                detail:newData
+                store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+                // let result = newData.map(function (item) {
+                //     if(item&&item.ts){
+                //         let res = DateFunc.resetTime_getObj(item.ts,'hms')
+                //         let viewTime = res.viewTime;
+                //         return {
+                //             ...item,
+                //             viewTime
+                //         }
+                //     }
+                // });
+                // let KLineTradingPairObj = {
+                //     ...KLineTradingPair,
+                //     detail:result
+                // }
+                // store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+
+            }else{
+                let result = OldDetail==null?[]:OldDetail.reverse();
+                newData.forEach(item => {
+                    if(item&&item.ts){
+                        let res = DateFunc.resetTime_getObj(item.ts,'hms')
+                        let viewTime = res.viewTime;
+                        result.push({
+                            ...item,
+                            viewTime
+                        }) 
+                    }
+                });
+                result = result.reverse().slice(0,30);
+                let KLineTradingPairObj = {
+                    ...KLineTradingPair,
+                    detail:result
+                }
+                store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
             }
-            store.commit("setTredDataSync",{key:"KLineTradingPair", val: KLineTradingPairObj,})
+            
         }
     },
 
@@ -310,7 +364,7 @@ export const mySocket={
                 let size = item[1];
                 let price = item[0];
                 if(KLineTradingPair.name==='BRT'){
-                    price = Number(price).toFixed(3);
+                    price = Number(price).toFixed(4);
                 }
 
                 obj = {
@@ -336,7 +390,7 @@ export const mySocket={
         let all = 0;
         let depth = 0;
         let NewData = []
-        for (let index = 0; index < data.length; index++) {
+        for (let index = 0; index < 20; index++) {
             let item = data[index];
             let obj = {
                 size:0,
@@ -416,7 +470,7 @@ export const mySocket={
         
         mySocket.subscribeTape();
         mySocket.subscribeDepth();
-        mySocket.subscribeKline('15min');
+        mySocket.subscribeKline('5min');
         mySocket.subscribeDetail()
         
 
