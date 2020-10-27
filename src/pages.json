@@ -107,6 +107,12 @@
         //"navigationBarTitleText": ""
       }
     },
+    {
+      "path": "pages/withdrawal/addOrderDetail",
+      "style": {
+        //"navigationBarTitleText": ""
+      }
+    },
     
     {
       "path": "pages/withdrawal/success",

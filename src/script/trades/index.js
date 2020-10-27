@@ -824,7 +824,7 @@ export default {
             if(type==='tradePrice'){
                 // value = value.to;
                 // value = String(value);
-                value = value.substring(0,value.indexOf(".") + 5);
+                value = value.substring(0,value.indexOf(".") + 6);
                 // value = Math.round(value*1000)/1000
                 // var a = "23.456322";
                 
@@ -847,7 +847,7 @@ export default {
         let KLineTradingPair = this.$store.state.tradeData.KLineTradingPair;
         if(KLineTradingPair.name==='BRT'){
                 let value = String(this.tradePrice);
-                value = value.substring(0,value.indexOf(".") + 5);
+                value = value.substring(0,value.indexOf(".") + 6);
                 this.tradePrice= Number(value);
         }
         

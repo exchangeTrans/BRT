@@ -255,6 +255,17 @@ export default {
         addressFrom:'Receive Address',
         tip:'All Transfer requires 60 blocks confirmations.'
     },
+    //充币详情
+    addOrderDetail: {
+        title: "Currency Charge Detail",
+        type: 'Type',
+        state: 'State',
+        serviceCharge: 'Service Charge',
+        withdrawAddress: 'Withdraw Address',
+        time: 'Time',
+        addressFrom:'Receive Address',
+        tip:'All Transfer requires 60 blocks confirmations.'
+    },
 
     //Currency Charge Record
 

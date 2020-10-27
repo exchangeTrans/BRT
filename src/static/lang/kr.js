@@ -147,6 +147,17 @@ export default {
         addressFrom:'发送地址',
         tip:'转帐需经过60个区块确认才会到帐'
     },
+    //充币详情
+    addOrderDetail: {
+        title: "充币详情",
+        type: '类型',
+        state: '状态',
+        serviceCharge: '手续费',
+        withdrawAddress: '接收地址',
+        time: '时间',
+        addressFrom:'发送地址',
+        tip:'转帐需经过60个区块确认才会到帐'
+    },
     //充币记录
     addRecord: {
         title: "充币记录",

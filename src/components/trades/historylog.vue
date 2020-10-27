@@ -14,7 +14,7 @@
 			<view class="item-tr-right">{{$t('tradePage').orderNumber}}({{KLineTradingPair.name}})</view>
 		</view>
 		<view class="threeline">
-			<view class="itemcharge">{{historylogdata.price}}</view>
+			<view class="itemcharge">{{Number(historylogdata.price).toFixed(5)}}</view>
 			<view class="itemnum">{{historylogdata.amountSum}}</view>
 		</view>
 	</view>

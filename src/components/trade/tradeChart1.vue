@@ -324,7 +324,6 @@
                 // let langMsg = localMsg
 
                 let langMsg = this.langMsg
-                // console.log(langMsg)
                 let tipObj={
                     'zh-CN':{
                         Open:'开盘价:',
@@ -368,19 +367,24 @@
                         ...yAxis,
                         max: function (value) {
                             let maxRange = (value.max-value.min)*0.1
-                            let num = value.min.toString().split(".")[1]
+                            let min_num = value.min.toString().split(".")[1]
+                            let max_num = value.max.toString().split(".")[1]
                             
-                            num = num?num.length:0
-                            console.log(num)
+                            min_num = min_num?min_num.length:0
+                            max_num = max_num?max_num.length:0
+                            let num = min_num>max_num?min_num:max_num
                             // let max = (value.max + maxRange).toFixed(num)
                             let max = num>0?(value.max + maxRange).toFixed(num):parseInt(value.max + maxRange)
                             return max;
                         },
                         min: function (value) {
                             let maxRange = (value.max-value.min)*0.1;
-                            let num = value.max.toString().split(".")[1]
-                            num = num?num.length:0
-                            console.log(num)
+                            let min_num = value.min.toString().split(".")[1]
+                            let max_num = value.max.toString().split(".")[1]
+                            
+                            min_num = min_num?min_num.length:0
+                            max_num = max_num?max_num.length:0
+                            let num = min_num>max_num?min_num:max_num
                             let min = num>0?(value.min - maxRange).toFixed(num):parseInt(value.min - maxRange)
                             return min;
                         }

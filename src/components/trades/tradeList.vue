@@ -4,7 +4,7 @@
 		<scroll-view class="datalist" scroll-y>
 			<view class="datalist_item" v-for="(item,index) in data" :key="index" @tap="chooseTradePair(item)">
                 <view class="itemName">{{item.name}}/{{item.type}}</view>
-                <view class="itemPrice">{{item.nowData===null?'0.00':item.nowData.close.toFixed(4)}}</view>
+                <view class="itemPrice">{{item.nowData===null?'0.00':item.nowData.close.toFixed(5)}}</view>
                 <view v-if="item.range>0" class="itemRange up">+{{item.range.toFixed(2)}}%</view>
                 <view v-else-if="item.range<0" class="itemRange down">{{item.range.toFixed(2)}}%</view>
                 <view v-else class="itemRange">{{item.range.toFixed(2)}}%</view>
@@ -117,10 +117,11 @@
             text-align: right;
         }
         .itemRange.up{         
-            color: #FC3C5A;
+            
+            color: #5BC788;
         }
         .itemRange.down{         
-            color: #5BC788;
+            color: #FC3C5A;
         }
     }
 	// .item{

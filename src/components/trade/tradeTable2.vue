@@ -11,7 +11,7 @@
             <view class="tableLi tableLi1">{{item.viewTime}}</view>
             <view class="tableLi tableLi2 buy" v-if="item.direction==='buy'">{{$t('trade').buy}}</view>
             <view class="tableLi tableLi2" v-else>{{$t('trade').sell}}</view>
-            <view class="tableLi tableLi3">{{item.price}}</view>
+            <view class="tableLi tableLi3">{{Number(item.price).toFixed(5)}}</view>
             <view class="tableLi tableLi4">{{item.amount}}</view>
             <view class="clearfix"></view>
         </view>
@@ -180,11 +180,12 @@ ts: 1601307776068 -->
             }
             .tableLi2{
                 width: 130rpx;
-                color: #5BC788;
+                color: #FC3C5A;
             }
              .tableLi2.buy{
                 width: 130rpx;
-                color: #FC3C5A;
+                
+                color: #5BC788;
             }
             .tableLi3{
                 width: 280rpx;

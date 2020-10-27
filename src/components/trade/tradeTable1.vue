@@ -12,8 +12,9 @@
                 <view class="tableLi tableLi1">{{index+1}}</view>
                 <view class="tableLi tableLi2">{{item.bids.size}}</view>
                 <view class="tableLi tableLi3">
-                    <view class="price1">{{item.bids.price}}</view>
-                    <view class="price2">{{item.asks.price}}</view>
+                    <view class="price1">{{Number(item.bids.price).toFixed(5)}}</view>
+                    <view class="price2">{{Number(item.asks.price).toFixed(5)}}</view>
+                    <!-- <view class="price2">{{item.asks.price}}</view> -->
                 </view>
                 <view class="tableLi tableLi4">{{item.asks.size}}</view>
                 <view class="tableLi tableLi5">{{index+1}}</view>

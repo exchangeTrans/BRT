@@ -5,7 +5,7 @@
         <scroll-view class="tradeContent" scroll-y>
             <!-- <view @tap="changeTest">tatsadd</view> -->
             <view class="tradeTopView">
-                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(4)}}</view>
+                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(5)}}</view>
                 <view class="moneyView">
                     <view class="money">≈{{KLineTradingPair.price}} {{selectedCurrency.code}}</view>
                     <view v-if="KLineTradingPair.range>0" class="range add">+{{KLineTradingPair.range.toFixed(2)}}%</view>
@@ -14,11 +14,11 @@
                 </view>
                 <view class="rightView">
                     <view class="rightLi">
-                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.high.toFixed(2)}}</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.high.toFixed(5)}}</view>
                         <view class="title">{{$t('trade').high}}</view>
                     </view>
                     <view class="rightLi">
-                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.low.toFixed(2)}}</view>
+                        <view class="text">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.low.toFixed(5)}}</view>
                         <view class="title">{{$t('trade').low}}</view>
                     </view>
                     <view class="rightLi">
@@ -111,8 +111,8 @@
                 chartTabArray:[
                     {code:'5min',name:"5"+this.$t('trade').lineTypeArray[0],id:'1'},
                     {code:'15min',name:"15"+this.$t('trade').lineTypeArray[0],id:'1'},
-                    {code:'60min',name:"1"+this.$t('trade').lineTypeArray[1],id:'0'},
-                    {code:'4hour',name:"4"+this.$t('trade').lineTypeArray[1],id:'0'},
+                    {code:'60min',name:"1"+this.$t('trade').lineTypeArray[1],id:'1'},
+                    {code:'4hour',name:"4"+this.$t('trade').lineTypeArray[1],id:'1'},
                     {code:'1day',name:this.$t('trade').lineTypeArray[2],id:'0'},
                     // {code:'1week',name:this.$t('trade').lineTypeArray[3],id:''},
                     // {code:'7',name:"指标",id:''},
@@ -217,14 +217,16 @@
                 font-size: 52rpx;
                 font-family: PingFangSC-Semibold, PingFang SC;
                 font-weight: 600;
-                color: #5BC788;
+                // color: #5BC788;
                 line-height: 74rpx;
                 position: absolute;
                 left: 30rpx;
                 top: 44rpx;
+                color: #FC3C5A;
             }
             .priceView.add{
-                color: #FC3C5A;
+                
+                color: #5BC788;
             }
             .moneyView{
                 width: 100%;
@@ -245,10 +247,11 @@
                     margin-left: 20rpx;
                 }
                 .range.add{
-                    color: #FC3C5A;
+                    color: #5BC788;
                 }
                 .range.down{
-                    color: #5BC788;
+                    
+                    color: #FC3C5A;
                 }
             }
             .rightView{
@@ -281,7 +284,7 @@
                         font-weight: 400;
                         color: #1A1A1A;
                         line-height: 36rpx;
-                        width: 200rpx;
+                        width: 220rpx;
                     }
                     
                 }

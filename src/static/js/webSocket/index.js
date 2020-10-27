@@ -132,22 +132,21 @@ export const mySocket={
                 let lastTime = null;
                 let result = [];
                 newData.forEach(item => {
-                    console.log(item)
                     if(item&&item.ts){
                         let res = DateFunc.resetTime_getObj(item.ts,'hms')
                         let viewTime = res.viewTime;
                         let tradeTypeArray = ['buy','sell']
                         let num = item.ts%2===0?0:1
                         // let num = Math.floor(Math.random() + 0.5);
-                        if(viewTime!==lastTime){
-                            lastTime = viewTime;
+                        // if(viewTime!==lastTime){
+                        //     lastTime = viewTime;
                             
                             result.push({
                                 ...item,
                                 viewTime,
                                 direction:tradeTypeArray[num]
                             }) 
-                        }
+                        // }
                         // }
                         
                         
@@ -363,9 +362,9 @@ export const mySocket={
                 percent = percent*100;
                 let size = item[1];
                 let price = item[0];
-                if(KLineTradingPair.name==='BRT'){
-                    price = Number(price).toFixed(4);
-                }
+                // if(KLineTradingPair.name==='BRT'){
+                    price = Number(price).toFixed(5);
+                // }
 
                 obj = {
                     size:size,

@@ -85,7 +85,7 @@
 				</view> -->
 				<!-- <view class="charge_exchange" v-else> -->
 				<view class="charge_exchange">
-					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(4)}}</view>
+					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(5)}}</view>
 					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
 				<!-- <view class="charge_and_num" v-if="KLineTradingPair.name==='BRT'">
@@ -262,10 +262,11 @@
 				border-radius: 5rpx;
 			}
 			.change.up{
-				background-color: #FC3C5A;
+				background-color: #5BC788;
 			}
 			.change.down{
-				background-color: #5BC788;
+				
+				background-color: #FC3C5A;
 			}
 		}
 	}

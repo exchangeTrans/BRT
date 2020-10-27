@@ -6,7 +6,7 @@
             <view
                     v-for="(item,index) in recordData_list"
                     :key="index">
-                <record :recordData="item"></record>
+                <record :recordData="item"  @clickItem="clickItem"></record>
             </view>
         </view>
         </scroll-view>

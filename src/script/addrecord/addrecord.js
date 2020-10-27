@@ -74,6 +74,13 @@ export default {
         }
     },
 	methods: {
+        clickItem(data){
+            console.log(data)
+            this.$jumpPage.jump({
+                type: 'navigateTo',
+                url: 'withdrawal/addOrderDetail?transactionId='+data.item.transactionId
+            })
+        },
     	getRecordList(index, size) {
     	    if (!this.hasNext) {
     	        // 没有数据了
@@ -105,6 +112,7 @@ export default {
                             "status": 'success',
                             "number": item.amount,
                             "date": DateFunc.dateFormat(item.createTime, "hh:mm MM/dd"),
+                            item:item
                         }
                         that.recordData_list.push(obj)
                     })

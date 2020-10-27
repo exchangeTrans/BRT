@@ -67,7 +67,7 @@
 				</view>
 				
 				<view class="charge_exchange">
-					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(3)}}</view>
+					<view class="exchange_rate1">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(5)}}</view>
 					<view class="exchange_rate2">≈{{KLineTradingPair.price}}{{selectedCurrency.code}}</view>
 				</view>
 				<view class="charge_and_num">

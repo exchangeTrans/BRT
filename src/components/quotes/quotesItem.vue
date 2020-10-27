@@ -13,7 +13,7 @@
                         </view>
                     </view>
                     <view :class="isBlack ? 'price black' : 'price'">
-                        <span>{{quotesData.nowData===null?'0.00':quotesData.nowData.close.toFixed(4)}}</span>
+                        <span>{{quotesData.nowData===null?'0.00':quotesData.nowData.close.toFixed(5)}}</span>
                     </view>
                     <view class="upsAndDowns">
                         <view class="upsAndDowns-bg unchanging up" v-if="quotesData.range>0"><!--涨跌幅为0 unchanging ， 跌 down ，涨 up-->
@@ -217,11 +217,11 @@
                         }
 
                         .up {
-                            background: #FC3C5A;
+                            background: #5BC788;
                         }
 
                         .down {
-                            background: #5BC788;
+                            background: #FC3C5A;
                         }
                     }
                 }

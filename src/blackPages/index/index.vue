@@ -48,7 +48,7 @@
 						<view class="currencyData">24H{{$t('index').amount}}{{item.nowData===null?'0.00':item.nowData.amount.toFixed(2)}}</view>
 					</view>
 					<view class="newest">
-						<view class="newestPercentage">{{item.nowData===null?'0.00':item.nowData.close.toFixed(4)}}</view>
+						<view class="newestPercentage">{{item.nowData===null?'0.00':item.nowData.close.toFixed(5)}}</view>
 						<view class="newestMoney">{{selectedCurrency.unit}}{{item.price}}</view>
 					</view>
 					<view class="upAndDown">
@@ -375,10 +375,11 @@
 							background: #CBCCCD;
 						}
 						.upAndDownItem.up{
-							background: #FC3C5A;
+							background: #5BC788;
 						}
 						.upAndDownItem.down{
-							background: #5BC788;
+							
+							background: #FC3C5A;
 						}
 					}
 				}

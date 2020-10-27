@@ -5,7 +5,7 @@
         <scroll-view class="tradeContent" scroll-y>
             <!-- <view @tap="changeTest">tatsadd</view> -->
             <view class="tradeTopView">
-                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(2)}}</view>
+                <view class="priceView add">{{KLineTradingPair.nowData===null?'0.00':KLineTradingPair.nowData.close.toFixed(5)}}</view>
                 <view class="moneyView">
                     <view class="money">≈{{KLineTradingPair.price}} {{selectedCurrency.code}}</view>
                     <view v-if="KLineTradingPair.range>0" class="range add">+{{KLineTradingPair.range.toFixed(2)}}%</view>
