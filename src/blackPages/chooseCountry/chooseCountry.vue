@@ -9,7 +9,7 @@
                           v-for="(item,index) in countryData"
                           :key="index"
                           @click="chooseItem(item)">
-                        <image :src=item.icon alt=""/>
+                        掌控资产、安全随行
                         <view class="name">
                             {{item.name}}
                         </view>

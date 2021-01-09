@@ -140,11 +140,11 @@ const http = ({
                             userLoginToken:''
                         }
                         datastorage.setSync({key: "loginMsg",data: loginMsg});
-                        upDataRepeatCode(url)
-                        jumpPage.jump({
-                            type: 'reLaunch',
-                            url: 'login/login',
-                        })
+                        // upDataRepeatCode(url)
+                        // jumpPage.jump({
+                        //     type: 'reLaunch',
+                        //     url: 'login/login',
+                        // })
                     }
                     else if(res[1].data&&res[1].data.result&&res[1].data.result.returnCode&&(res[1].data.result.returnCode.toString()==='99999')){
                         console.log(11)
